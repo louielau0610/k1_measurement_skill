@@ -1,0 +1,47 @@
+experiment:
+  name: "k1_forward_velocity_tracking_baseline_v0"
+  full_project: "K1 Velocity Measurement, Compensation and Navigation Safety Pipeline"
+  repository_role: "measurement_predecessor"
+  robot: "Booster K1"
+  skill_version: "measurement_v0"
+  mode: "measurement_only"
+
+safety:
+  require_manual_confirmation: true
+  require_emergency_stop_ready: true
+  dry_run_default: true
+  max_vx_cmd_mps: 0.4
+  allow_turning: false
+  allow_lateral_motion: false
+
+environment:
+  floor_type: "tile"
+  condition: "dry"
+  slope: "flat"
+  notes: "indoor flat floor; manually labeled"
+
+trial_plan:
+  vx_cmd_values_mps: [0.1, 0.2, 0.3, 0.4]
+  vy_cmd_mps: 0.0
+  wz_cmd_radps: 0.0
+  repeats_per_speed: 5
+  baseline_duration_sec: 1.0
+  command_duration_sec: 6.0
+  stop_duration_sec: 2.0
+  stable_window_start_sec: 2.0
+  stable_window_end_sec: 5.0
+
+topics:
+  odom_topic: "TO_BE_FILLED_AFTER_ROS2_TOPIC_LIST"
+  imu_topic: "TO_BE_FILLED_AFTER_ROS2_TOPIC_LIST"
+  low_state_topic: "TO_BE_FILLED_AFTER_ROS2_TOPIC_LIST"
+  robot_state_topic: "TO_BE_FILLED_AFTER_ROS2_TOPIC_LIST"
+  battery_topic: "TO_BE_FILLED_AFTER_ROS2_TOPIC_LIST"
+  command_topic: "TO_BE_FILLED_AFTER_ROS2_TOPIC_LIST"
+
+output:
+  raw_log_dir: "data/raw"
+  processed_dir: "data/processed"
+  report_dir: "reports"
+  figure_dir: "reports/figures"
+  downstream_profile_name: "processed_environment_profile.json"

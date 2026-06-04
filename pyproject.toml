@@ -1,0 +1,24 @@
+[project]
+name = "k1-measurement-skill"
+version = "0.0.1"
+description = "Measurement pipeline for Booster Robotics K1 forward velocity tracking."
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "matplotlib>=3.7",
+    "pyyaml>=6.0",
+    "scipy>=1.10",
+    "jsonschema>=4.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0"
+]
+
+[tool.setuptools.packages.find]
+include = ["k1_measurement*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

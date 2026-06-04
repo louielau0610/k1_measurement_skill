@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/k1_measurement/measurement_profile_schema.json",
+  "title": "K1 Measurement Environment Profile",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "profile_type",
+    "robot",
+    "environment",
+    "confidence",
+    "valid_speed_range_mps",
+    "speed_points"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "profile_type": {
+      "const": "forward_velocity_measurement"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "robot": {
+      "type": "string"
+    },
+    "environment": {
+      "type": "object",
+      "required": ["floor_type", "condition", "slope"],
+      "properties": {
+        "floor_type": {
+          "type": "string"
+        },
+        "condition": {
+          "type": "string"
+        },
+        "slope": {
+          "type": "string"
+        }
+      }
+    },
+    "confidence": {
+      "type": "string"
+    },
+    "valid_speed_range_mps": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": ["number", "null"]
+        },
+        "max": {
+          "type": ["number", "null"]
+        }
+      }
+    },
+    "speed_points": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "downstream_warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

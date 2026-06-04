@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Generated logs and data
+*.log
+data/raw/*.csv
+data/raw/*.bag
+data/raw/*.db3
+data/processed/*.csv
+data/processed/*.json
+reports/figures/*.png
+reports/figures/*.jpg
+reports/figures/*.pdf
+
+# ROS2 / colcon
+build/
+install/
+log/
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
