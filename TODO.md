@@ -42,20 +42,21 @@
 
 ## M4 ROS2 Topic Discovery and Logger Skeleton
 
-- [ ] discover available ROS2 topics
-- [ ] classify candidate odom, imu, robot_state, battery, command topics
-- [ ] create topic mapping template
-- [ ] keep logger in dry-run or skeleton mode
-- [ ] refuse to start real logging if topic mapping is incomplete
-- [ ] do not implement real robot movement commands
+- [x] discover available ROS2 topics
+- [x] classify candidate odom, imu, robot_state, battery, command topics
+- [x] create topic mapping template
+- [x] keep logger in dry-run or skeleton mode
+- [x] refuse to start real logging if topic mapping is incomplete
+- [x] do not implement real robot movement commands
 
-## M5 Logger Prototype
+## M5 Dry-run Forward Baseline Trial Manager
 
-- [ ] 创建 ROS2 logger 节点原型
-- [ ] 支持只订阅已验证 topic
-- [ ] 写入 raw CSV
-- [ ] 保留环境标签
-- [ ] 不把 odom 默认当成 ground truth
+- [ ] generate full trial plan from `config/experiment_forward_v0.yaml`
+- [ ] dry-run baseline execution
+- [ ] command_runner stays dry-run by default
+- [ ] safety checks for vx, vy, wz
+- [ ] reject real execution until command interface is verified
+- [ ] add tests for trial manager and command runner
 
 ## M6 Forward Baseline
 

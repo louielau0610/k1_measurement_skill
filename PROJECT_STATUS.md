@@ -2,7 +2,7 @@
 
 ## 当前阶段
 
-M3: Dummy Data Pipeline completed.
+M4: ROS2 Topic Discovery and Logger Skeleton completed.
 
 ## 当前仓库
 
@@ -48,10 +48,15 @@ v_x_cmd -> v_x_actual measurement
 - [x] dummy raw log can be processed into profile JSON
 - [x] generated dummy profile passes schema validation
 - [x] profile builder tests passed
-- [x] README usage updated
+- [x] ROS2 discovery script implemented
+- [x] topic classification implemented
+- [x] topic mapping template created
+- [x] logger skeleton implemented
+- [x] logger refuses incomplete mapping
+- [x] ROS2 discovery docs updated
 - [x] tests passed
 - [x] main branch pushed to GitHub
 
 ## Next Milestone
 
-M4: ROS2 Topic Discovery and Logger Skeleton.
+M5: Dry-run Forward Baseline Trial Manager.

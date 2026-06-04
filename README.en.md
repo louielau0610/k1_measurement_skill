@@ -61,3 +61,11 @@ dummy raw measurement log -> processed environment profile -> schema validation 
 ```
 
 Dummy data is not real robot data. Dummy profiles must not be used for compensation, navigation, or robot safety decisions. This repository still does not implement compensation.
+
+## M4 ROS2 Topic Discovery and Logger Skeleton
+
+The discovery script is read-only. It detects whether `ros2` is available and, when present, runs only `ros2 topic list`.
+
+Candidate topic classification is keyword-based and is not verification. Real logging remains disabled until odom, imu, and robot_state topics are manually verified in `config/topic_mapping_template.yaml`.
+
+The repository still does not implement robot movement, ROS2 publishers, or velocity compensation.

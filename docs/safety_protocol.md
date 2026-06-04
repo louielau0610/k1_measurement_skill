@@ -26,3 +26,5 @@
 - 禁止在 topic 未验证时发送真实运动命令
 - 禁止把占位 topic 当成最终 topic
 - 禁止在本仓库实现速度补偿或导航闭环控制
+- M4 topic discovery 必须保持只读，不得发布消息
+- logger skeleton 在 topic mapping 不完整时必须拒绝真实 logging

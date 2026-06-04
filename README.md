@@ -26,13 +26,11 @@
 导航安全层（Navigation Safety Layer）
 ```
 
-本仓库只实现其中的 **速度测量模块（Measurement Skill）**。本阶段的输出会为后续速度误差建模、速度命令补偿、安全命令适配和导航安全验证提供基础数据。
+本仓库只实现其中的 **速度测量模块（Measurement Skill）**。
 
 ## 当前仓库范围
 
-当前版本：
-
-**K1 Forward Velocity Tracking Measurement Skill v0**
+当前版本：**K1 Forward Velocity Tracking Measurement Skill v0**
 
 v0 范围：
 
@@ -42,22 +40,10 @@ v0 范围：
 - 不做自主导航
 - 不做实时补偿
 - 使用人工环境标签
-- 先完成 ROS2 topic discovery 和 logging
+- 先完成 ROS2 topic discovery 和 logging skeleton
 - 后续支持外部 ground truth 校验
 
 ## 核心研究问题
-
-给定：
-
-```text
-v_x_cmd
-```
-
-测量：
-
-```text
-v_x_actual
-```
 
 当前映射关系：
 
@@ -85,15 +71,11 @@ v_x_cmd ∈ {0.1, 0.2, 0.3, 0.4} m/s
 
 ## 环境标签
 
-实验数据必须带有人工标注的环境标签：
-
 ```yaml
 floor_type: tile | concrete | wood | carpet | rubber | unknown
 condition: dry | wet | dusty | uneven | unknown
 slope: flat | mild_uphill | mild_downhill | unknown
 ```
-
-这些标签会被写入测量 profile，供下游模块判断环境是否匹配。
 
 ## 数据接口契约（Data Interface Contract）
 
@@ -111,65 +93,21 @@ contracts/measurement_profile_schema.json
 examples/dummy_processed_environment_profile.json
 ```
 
-下游模块使用 profile 前必须检查：
-
-- `schema_version`
-- `environment` 是否匹配当前部署环境
-- `valid_speed_range` 是否覆盖目标速度
-- `quality.confidence`
-- `velocity_profile[].n_trials`
-- `quality.ground_truth_method`
-- `quality.odom_validated`
-- `downstream_usage.extrapolation_allowed`
-- `quality.warnings`
-
-下游模块不能默认认为 profile 是高置信度，也不能在速度超出有效范围、环境不匹配、样本量不足或存在安全关键 warning 时盲目使用。
+下游模块使用 profile 前必须检查 `schema_version`、环境匹配、有效速度范围、置信度、样本数量、ground truth 方法、odom 是否验证、是否允许外推和 warnings。
 
 本仓库不实现速度补偿，也不提供 `compensate_velocity()`。补偿逻辑属于未来下游项目范围。
 
 ## 核心测量指标（Core Measurement Metrics）
 
-M2 实现的是纯测量指标计算层。这些指标只描述实验观测结果，不执行速度补偿，也不生成机器人运动命令。后续 profile builder 会把这些指标聚合进 `processed_environment_profile.json`。
-
-1. 实际速度：
+M2 实现纯测量指标计算层。这些指标只描述实验观测结果，不执行速度补偿，也不生成机器人运动命令。后续 profile builder 会把这些指标聚合进 `processed_environment_profile.json`。
 
 ```text
 v_x_actual = (x_end - x_start) / (t_end - t_start)
-```
-
-2. 速度增益：
-
-```text
 speed_gain = v_x_actual / v_x_cmd
-```
-
-3. 绝对误差：
-
-```text
 e_abs = v_x_actual - v_x_cmd
-```
-
-4. 相对误差：
-
-```text
 e_rel = (v_x_actual - v_x_cmd) / v_x_cmd
-```
-
-5. 横向漂移率：
-
-```text
 lateral_drift_rate = |y_end - y_start| / (t_end - t_start)
-```
-
-6. 偏航漂移率：
-
-```text
 yaw_drift_rate = |yaw_end - yaw_start| / (t_end - t_start)
-```
-
-7. 速度跟踪 RMSE：
-
-```text
 RMSE = sqrt(mean((v_actual_i - v_cmd)^2))
 ```
 
@@ -177,15 +115,7 @@ RMSE = sqrt(mean((v_actual_i - v_cmd)^2))
 
 M3 建立 dummy 数据流水线，用于在连接真实 K1 ROS2 topic 之前验证仓库内部数据流程。
 
-该阶段生成的是 dummy raw log，不是真实机器人数据。由 dummy raw log 生成的 dummy profile 也不能用于速度补偿、导航或任何真实机器人决策。
-
-M3 的目的只是验证：
-
-- raw log format
-- metric calculation
-- profile generation
-- schema validation
-- downstream interface consistency
+dummy raw log 不是真实机器人数据。由 dummy raw log 生成的 dummy profile 不能用于速度补偿、导航或任何真实机器人决策。
 
 默认流程：
 
@@ -196,11 +126,28 @@ py scripts/validate_profile_schema.py data/processed/dummy_processed_environment
 py -m pytest
 ```
 
-在部分 Windows 环境中，`python` launcher 可能不可用，可以优先使用 `py`。
+## M4 ROS2 Topic Discovery and Logger Skeleton
+
+M4 为未来真实 K1 集成做准备，但仍然保持安全、只读和非侵入。
+
+`scripts/discover_ros2_topics.py` 只检测 `ros2` 命令是否存在，并在可用时运行只读命令 `ros2 topic list`。它只根据关键词对 topic 名称做候选分类，不代表人工验证完成。
+
+真实 logging 至少需要人工验证 odom、imu 和 robot_state topic，并更新 `config/topic_mapping_template.yaml`。默认模板状态是 incomplete，logger skeleton 会拒绝不完整 mapping。
+
+本里程碑不发布 ROS2 command，不启动真实 ROS2 subscription，不移动机器人，也不实现速度补偿。
+
+使用命令：
+
+```powershell
+py scripts/discover_ros2_topics.py
+py scripts/discover_ros2_topics.py --save config/discovered_topics.yaml
+py -m pytest
+py -m compileall k1_measurement scripts
+```
+
+如果开发环境没有安装 ROS2，discovery 脚本会安全退出并返回 0。这在普通开发环境中是可以接受的。
 
 ## 计划输出文件
-
-计划生成的关键文件包括：
 
 - `raw_measurement_log.csv`
 - `processed_environment_profile.json`
@@ -208,23 +155,6 @@ py -m pytest
 - `measurement_report.md`
 
 其中 `processed_environment_profile.json` 是最重要的下游接口文件。
-
-## 与后续项目的接口
-
-本仓库面向后续项目的核心接口是：
-
-```text
-processed_environment_profile.json
-```
-
-该文件会被以下下游模块消费：
-
-- velocity compensation model
-- safe command adapter
-- navigation safety layer
-- simulation validation pipeline
-
-下游模块使用 profile 前必须检查 confidence、valid speed range、environment match、sample size 和 extrapolation risk。
 
 ## 使用方式
 
@@ -234,14 +164,6 @@ processed_environment_profile.json
 py scripts/validate_profile_schema.py
 py -m pytest
 py -m compileall k1_measurement scripts
-```
-
-如果当前 shell 中 `python` 可用，也可以运行：
-
-```powershell
-python scripts/validate_profile_schema.py
-python -m pytest
-python -m compileall k1_measurement scripts
 ```
 
 ## 安全声明

@@ -1,0 +1,25 @@
+mapping_status: "incomplete"
+source: "manual_ros2_topic_discovery_required"
+notes: "Do not use this mapping for real logging until all required topics are verified."
+
+required_topics:
+  odom_topic: "TBD"
+  imu_topic: "TBD"
+  robot_state_topic: "TBD"
+
+optional_topics:
+  low_state_topic: "TBD"
+  battery_topic: "TBD"
+  command_topic: "TBD"
+  velocity_topic: "TBD"
+  loco_topic: "TBD"
+
+validation:
+  odom_verified: false
+  imu_verified: false
+  robot_state_verified: false
+  command_interface_verified: false
+
+safety:
+  allow_real_logging: false
+  allow_real_robot_command: false
