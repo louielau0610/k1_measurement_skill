@@ -37,3 +37,17 @@ examples/dummy_processed_environment_profile.json
 ```
 
 This repository does not implement compensation. Future downstream modules may consume the profile, but they must validate schema version, environment match, speed range, confidence, trial count, ground-truth method, odom validation status, extrapolation policy, and warnings before use.
+
+## Core Measurement Metrics
+
+M2 implements pure measurement metrics:
+
+- actual velocity: `v_x_actual = (x_end - x_start) / (t_end - t_start)`
+- speed gain: `speed_gain = v_x_actual / v_x_cmd`
+- absolute error: `e_abs = v_x_actual - v_x_cmd`
+- relative error: `e_rel = (v_x_actual - v_x_cmd) / v_x_cmd`
+- lateral drift rate: `|y_end - y_start| / (t_end - t_start)`
+- yaw drift rate: `|yaw_end - yaw_start| / (t_end - t_start)`
+- tracking RMSE: `sqrt(mean((v_actual_i - v_cmd)^2))`
+
+These metrics are measurement-only. They do not implement compensation, and they will later support `processed_environment_profile.json` generation.

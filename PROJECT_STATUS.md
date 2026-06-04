@@ -2,7 +2,7 @@
 
 ## 当前阶段
 
-M1: Interface Contracts completed.
+M2: Metrics Core completed.
 
 ## 当前仓库
 
@@ -34,9 +34,18 @@ v_x_cmd -> v_x_actual measurement
 - [x] downstream interface documented
 - [x] schema validation script added
 - [x] schema tests added
+- [x] actual velocity metric implemented
+- [x] speed gain metric implemented
+- [x] absolute error metric implemented
+- [x] relative error metric implemented
+- [x] lateral drift rate metric implemented
+- [x] yaw drift rate metric implemented
+- [x] tracking RMSE implemented
+- [x] trial summary aggregation implemented
+- [x] metric tests passed
 - [x] tests passed
-- [ ] Initial commit pushed to GitHub
+- [x] main branch pushed to GitHub
 
 ## Next Milestone
 
-M2: Metrics Core.
+M3: Dummy Data Pipeline.

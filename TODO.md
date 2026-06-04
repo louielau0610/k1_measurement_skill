@@ -22,22 +22,23 @@
 
 ## M2 Metrics Core
 
-- [ ] implement velocity measurement metrics
-- [ ] test actual velocity calculation
-- [ ] test speed gain
-- [ ] test absolute and relative error
-- [ ] test lateral drift rate
-- [ ] test yaw drift rate
-- [ ] test tracking RMSE
-- [ ] test trial summary aggregation
+- [x] implement velocity measurement metrics
+- [x] test actual velocity calculation
+- [x] test speed gain
+- [x] test absolute and relative error
+- [x] test lateral drift rate
+- [x] test yaw drift rate
+- [x] test tracking RMSE
+- [x] test trial summary aggregation
 
 ## M3 Dummy Data Pipeline
 
-- [ ] 生成 dummy raw log
-- [ ] 处理 dummy trial logs
-- [ ] 输出 dummy `processed_environment_profile.json`
-- [ ] 生成 dummy plot
-- [ ] 生成 dummy measurement report
+- [ ] generate dummy raw measurement log
+- [ ] process dummy raw log into dummy processed environment profile
+- [ ] validate generated profile against JSON schema
+- [ ] use `metrics.py` functions in `profile_builder.py`
+- [ ] add tests for profile builder
+- [ ] keep dummy data clearly separated from real robot data
 
 ## M4 ROS2 Discovery
 

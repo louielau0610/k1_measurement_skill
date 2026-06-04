@@ -23,3 +23,15 @@ v0 只测试前进速度，不测试转向、不测试横向移动、不实现�
 推荐使用外部 ground truth，例如 motion capture、视觉定位、标定过的里程计对照或其他独立测量系统。
 
 `odom` 在未经验证前不能被直接视为 ground truth。它可以作为机器人内部估计来源，但必须与外部测量或独立校验结果对比后再用于结论。
+
+## M2 核心指标
+
+测量分析阶段使用 `k1_measurement.metrics` 中的纯 Python 指标函数。它们只计算测量结果，不执行速度补偿、不发布 ROS2 命令。
+
+- `v_x_actual = (x_end - x_start) / (t_end - t_start)`
+- `speed_gain = v_x_actual / v_x_cmd`
+- `e_abs = v_x_actual - v_x_cmd`
+- `e_rel = (v_x_actual - v_x_cmd) / v_x_cmd`
+- `lateral_drift_rate = |y_end - y_start| / (t_end - t_start)`
+- `yaw_drift_rate = |yaw_end - yaw_start| / (t_end - t_start)`
+- `RMSE = sqrt(mean((v_actual_i - v_cmd)^2))`

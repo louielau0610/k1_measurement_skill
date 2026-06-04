@@ -127,6 +127,52 @@ examples/dummy_processed_environment_profile.json
 
 本仓库不实现速度补偿，也不提供 `compensate_velocity()`。补偿逻辑属于未来下游项目范围。
 
+## 核心测量指标（Core Measurement Metrics）
+
+M2 实现的是纯测量指标计算层。这些指标只描述实验观测结果，不执行速度补偿，也不生成机器人运动命令。后续 profile builder 会把这些指标聚合进 `processed_environment_profile.json`。
+
+1. 实际速度：
+
+```text
+v_x_actual = (x_end - x_start) / (t_end - t_start)
+```
+
+2. 速度增益：
+
+```text
+speed_gain = v_x_actual / v_x_cmd
+```
+
+3. 绝对误差：
+
+```text
+e_abs = v_x_actual - v_x_cmd
+```
+
+4. 相对误差：
+
+```text
+e_rel = (v_x_actual - v_x_cmd) / v_x_cmd
+```
+
+5. 横向漂移率：
+
+```text
+lateral_drift_rate = |y_end - y_start| / (t_end - t_start)
+```
+
+6. 偏航漂移率：
+
+```text
+yaw_drift_rate = |yaw_end - yaw_start| / (t_end - t_start)
+```
+
+7. 速度跟踪 RMSE：
+
+```text
+RMSE = sqrt(mean((v_actual_i - v_cmd)^2))
+```
+
 ## 计划输出文件
 
 计划生成的关键文件包括：
