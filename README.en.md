@@ -69,3 +69,9 @@ The discovery script is read-only. It detects whether `ros2` is available and, w
 Candidate topic classification is keyword-based and is not verification. Real logging remains disabled until odom, imu, and robot_state topics are manually verified in `config/topic_mapping_template.yaml`.
 
 The repository still does not implement robot movement, ROS2 publishers, or velocity compensation.
+
+## M5 Dry-run Forward Baseline Trial Manager
+
+This milestone generates and validates the forward velocity baseline trial plan. It is dry-run only, does not publish ROS2 commands, and does not move the robot.
+
+Real execution remains disabled until the K1 command interface is manually verified in a future milestone.

@@ -47,3 +47,19 @@ py scripts/validate_profile_schema.py data/processed/dummy_processed_environment
 ```
 
 生成的数据只用于开发验证，不是真实机器人数据，不能用于补偿、导航或安全决策。
+
+## Dry-run Baseline Trial Plan
+
+真实 K1 测试之前必须先运行 dry-run baseline trial plan。dry-run 用于验证实验调度、安全限制和命令参数，不会移动机器人。
+
+baseline trial plan:
+
+- `v_x_cmd ∈ {0.1, 0.2, 0.3, 0.4} m/s`
+- 每个速度重复 5 次
+- baseline phase: 1 second
+- command phase: 6 seconds
+- stop phase: 2 seconds
+- `v_y_cmd = 0`
+- `w_z_cmd = 0`
+
+当前 v0 禁止横向移动和转向。真实执行必须等到 command interface 被人工验证后才允许进入后续里程碑。

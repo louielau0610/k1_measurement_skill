@@ -147,6 +147,31 @@ py -m compileall k1_measurement scripts
 
 如果开发环境没有安装 ROS2，discovery 脚本会安全退出并返回 0。这在普通开发环境中是可以接受的。
 
+## M5 Dry-run Forward Baseline Trial Manager
+
+M5 生成并验证前进速度 baseline 实验计划，用于在真实 K1 测试之前检查实验调度和安全限制。
+
+该阶段只运行 dry-run：
+
+- 不发布 ROS2 command
+- 不移动机器人
+- 不使用真实 K1 command topic
+- 不启动真实 ROS2 subscription
+- 不实现速度补偿
+
+真实执行在当前仓库中仍然被禁用，直到未来里程碑中 K1 command interface 被人工验证。
+
+使用命令：
+
+```powershell
+py scripts/run_forward_baseline.py --dry-run
+py scripts/run_forward_baseline.py --print-only
+py -m pytest
+py -m compileall k1_measurement scripts
+```
+
+在部分 Windows 环境中，`py` 可用于替代不可用的 `python` launcher。
+
 ## 计划输出文件
 
 - `raw_measurement_log.csv`

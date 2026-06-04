@@ -2,7 +2,7 @@
 
 ## 当前阶段
 
-M4: ROS2 Topic Discovery and Logger Skeleton completed.
+M5: Dry-run Forward Baseline Trial Manager completed.
 
 ## 当前仓库
 
@@ -54,9 +54,17 @@ v_x_cmd -> v_x_actual measurement
 - [x] logger skeleton implemented
 - [x] logger refuses incomplete mapping
 - [x] ROS2 discovery docs updated
+- [x] trial manager implemented
+- [x] forward baseline trial plan generated
+- [x] trial validation implemented
+- [x] dry-run command runner implemented
+- [x] real execution blocked
+- [x] command runner tests passed
+- [x] trial manager tests passed
+- [x] README usage updated
 - [x] tests passed
 - [x] main branch pushed to GitHub
 
 ## Next Milestone
 
-M5: Dry-run Forward Baseline Trial Manager.
+M6: Measurement Report Generator.

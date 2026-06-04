@@ -51,20 +51,21 @@
 
 ## M5 Dry-run Forward Baseline Trial Manager
 
-- [ ] generate full trial plan from `config/experiment_forward_v0.yaml`
-- [ ] dry-run baseline execution
-- [ ] command_runner stays dry-run by default
-- [ ] safety checks for vx, vy, wz
-- [ ] reject real execution until command interface is verified
-- [ ] add tests for trial manager and command runner
+- [x] generate full trial plan from `config/experiment_forward_v0.yaml`
+- [x] dry-run baseline execution
+- [x] command_runner stays dry-run by default
+- [x] safety checks for vx, vy, wz
+- [x] reject real execution until command interface is verified
+- [x] add tests for trial manager and command runner
 
-## M6 Forward Baseline
+## M6 Measurement Report Generator
 
-- [ ] 在安全区域进行 dry-run
-- [ ] 人工确认急停可用
-- [ ] 低速开始
-- [ ] 每个 `v_x_cmd` 重复多次
-- [ ] 保存原始日志和实验记录
+- [ ] generate report from dummy processed profile
+- [ ] summarize velocity profile
+- [ ] summarize confidence and limitations
+- [ ] include downstream usage notes
+- [ ] warn that dummy data is not real robot data
+- [ ] add tests for report generator
 
 ## M7 Measurement Report
 

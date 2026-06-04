@@ -28,3 +28,10 @@
 - 禁止在本仓库实现速度补偿或导航闭环控制
 - M4 topic discovery 必须保持只读，不得发布消息
 - logger skeleton 在 topic mapping 不完整时必须拒绝真实 logging
+- M5 dry-run 必须先通过，才能考虑未来真实执行
+- M5 阶段真实 command execution 在本仓库中仍然禁用
+- 未来真实执行必须要求 manual confirmation
+- 未来真实执行必须确认 emergency stop ready
+- 任何真实 command 之前必须验证 command topic
+- 必须检查 `vx`、`vy`、`wz` 限制
+- 当前 v0 禁止 lateral motion 和 turning
