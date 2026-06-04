@@ -75,3 +75,22 @@ The repository still does not implement robot movement, ROS2 publishers, or velo
 This milestone generates and validates the forward velocity baseline trial plan. It is dry-run only, does not publish ROS2 commands, and does not move the robot.
 
 Real execution remains disabled until the K1 command interface is manually verified in a future milestone.
+
+## M6 Measurement Report Generator
+
+This milestone generates a Markdown report from a processed environment profile. The report summarizes velocity tracking results, confidence, limitations, and downstream usage constraints.
+
+It is measurement-only and does not implement compensation. Dummy reports must not be used for real robot operation.
+
+Dry-run workflow:
+
+```powershell
+py scripts/check_environment.py
+py scripts/generate_dummy_raw_log.py
+py scripts/process_trial_logs.py
+py scripts/validate_profile_schema.py data/processed/dummy_processed_environment_profile.json
+py scripts/generate_measurement_report.py
+py scripts/run_forward_baseline.py --dry-run
+py -m pytest
+py -m compileall k1_measurement scripts
+```

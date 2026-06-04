@@ -2,7 +2,7 @@
 
 ## 当前阶段
 
-M5: Dry-run Forward Baseline Trial Manager completed.
+M6: Measurement Report Generator completed.
 
 ## 当前仓库
 
@@ -18,53 +18,30 @@ v_x_cmd -> v_x_actual measurement
 
 本仓库不实现速度补偿、自主导航、实时闭环控制或真实机器人运动命令。
 
+## 当前 v0 状态
+
+仓库现在支持完整 dry-run measurement workflow：dummy raw log、processed profile、schema validation、measurement report 和 dry-run baseline trial plan。
+
+仓库仍然不支持真实 K1 logging，也不支持真实机器人运动。
+
 ## Completed
 
-- [x] Project folder created
-- [x] Git initialized
-- [x] Chinese-first README created
-- [x] English reference README created
-- [x] Project roadmap created
-- [x] AGENTS.md created
-- [x] Downstream interface folder created
-- [x] Safety protocol placeholder created
-- [x] measurement profile JSON schema defined
-- [x] dummy profile example created
-- [x] raw log schema documented
-- [x] downstream interface documented
-- [x] schema validation script added
-- [x] schema tests added
-- [x] actual velocity metric implemented
-- [x] speed gain metric implemented
-- [x] absolute error metric implemented
-- [x] relative error metric implemented
-- [x] lateral drift rate metric implemented
-- [x] yaw drift rate metric implemented
-- [x] tracking RMSE implemented
-- [x] trial summary aggregation implemented
-- [x] dummy raw log generator implemented
-- [x] dummy raw log includes required fields
-- [x] profile builder implemented
-- [x] dummy raw log can be processed into profile JSON
-- [x] generated dummy profile passes schema validation
-- [x] profile builder tests passed
-- [x] ROS2 discovery script implemented
-- [x] topic classification implemented
-- [x] topic mapping template created
-- [x] logger skeleton implemented
-- [x] logger refuses incomplete mapping
-- [x] ROS2 discovery docs updated
-- [x] trial manager implemented
-- [x] forward baseline trial plan generated
-- [x] trial validation implemented
-- [x] dry-run command runner implemented
-- [x] real execution blocked
-- [x] command runner tests passed
-- [x] trial manager tests passed
-- [x] README usage updated
+- [x] M1 interface contracts completed
+- [x] M2 metrics core completed
+- [x] M3 dummy data pipeline completed
+- [x] M4 ROS2 discovery script and logger skeleton completed
+- [x] M5 dry-run forward baseline trial manager completed
+- [x] report generator implemented
+- [x] report CLI implemented
+- [x] dummy report can be generated
+- [x] report includes velocity profile summary
+- [x] report includes confidence and limitations
+- [x] report includes downstream usage notes
+- [x] report warns about dummy data
+- [x] report generator tests passed
+- [x] v0 dry-run workflow documented
 - [x] tests passed
-- [x] main branch pushed to GitHub
 
 ## Next Milestone
 
-M6: Measurement Report Generator.
+M7: Real K1 Read-only Logger Validation.

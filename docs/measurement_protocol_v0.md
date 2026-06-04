@@ -4,7 +4,7 @@
 
 ## 范围
 
-v0 只测试前进速度，不测试转向、不测试横向移动、不实现补偿、不实现自主导航。
+v0 只测试前进速度，不测试转向、不测试横向移动、不实现速度补偿、不实现自主导航。
 
 ## 重复实验
 
@@ -26,8 +26,6 @@ v0 只测试前进速度，不测试转向、不测试横向移动、不实现�
 
 ## M2 核心指标
 
-测量分析阶段使用 `k1_measurement.metrics` 中的纯 Python 指标函数。它们只计算测量结果，不执行速度补偿、不发布 ROS2 命令。
-
 - `v_x_actual = (x_end - x_start) / (t_end - t_start)`
 - `speed_gain = v_x_actual / v_x_cmd`
 - `e_abs = v_x_actual - v_x_cmd`
@@ -38,13 +36,7 @@ v0 只测试前进速度，不测试转向、不测试横向移动、不实现�
 
 ## M3 Dummy Data Pipeline
 
-在真实 K1 ROS2 topic 接入之前，可以使用 dummy 数据流水线验证格式和处理流程：
-
-```bash
-py scripts/generate_dummy_raw_log.py
-py scripts/process_trial_logs.py
-py scripts/validate_profile_schema.py data/processed/dummy_processed_environment_profile.json
-```
+在真实 K1 ROS2 topic 接入之前，可以使用 dummy 数据流水线验证格式和处理流程。
 
 生成的数据只用于开发验证，不是真实机器人数据，不能用于补偿、导航或安全决策。
 
@@ -63,3 +55,17 @@ baseline trial plan:
 - `w_z_cmd = 0`
 
 当前 v0 禁止横向移动和转向。真实执行必须等到 command interface 被人工验证后才允许进入后续里程碑。
+
+## Measurement Report
+
+measurement report 由 processed profile JSON 生成，用于人工审阅测量结果和下游接口风险。
+
+报告应重点检查：
+
+- confidence
+- warnings
+- valid speed range
+- environment labels
+- downstream usage notes
+
+dummy report 不是真实实验结果，不能用于速度补偿、导航或安全决策。

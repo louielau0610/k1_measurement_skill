@@ -16,9 +16,6 @@
 - [x] 增加 schema validation
 - [x] 增加 profile 版本字段
 - [x] 写清下游模块的置信度和外推风险检查要求
-- [x] 创建 dummy profile 示例
-- [x] 增加 schema validation 单元测试
-- [x] 更新 README、PROJECT_STATUS 和 TODO
 
 ## M2 Metrics Core
 
@@ -60,17 +57,25 @@
 
 ## M6 Measurement Report Generator
 
-- [ ] generate report from dummy processed profile
-- [ ] summarize velocity profile
-- [ ] summarize confidence and limitations
-- [ ] include downstream usage notes
-- [ ] warn that dummy data is not real robot data
-- [ ] add tests for report generator
+- [x] generate report from dummy processed profile
+- [x] summarize velocity profile
+- [x] summarize confidence and limitations
+- [x] include downstream usage notes
+- [x] warn that dummy data is not real robot data
+- [x] add tests for report generator
 
-## M7 Measurement Report
+## M7 Real K1 Read-only Logger Validation
 
-- [ ] 汇总实验配置
-- [ ] 汇总环境标签
-- [ ] 汇总速度误差统计
-- [ ] 输出图表
-- [ ] 明确 profile 置信度和适用范围
+- [ ] rerun M4.5 in a shell where ROS2 is available
+- [ ] identify real odom, imu, and robot_state topics
+- [ ] update a reviewed topic mapping file
+- [ ] implement real read-only logger subscriptions only after topic verification
+- [ ] validate static robot logging
+- [ ] validate manually controlled walking logging
+- [ ] do not send robot movement commands
+- [ ] do not implement compensation
+
+## 如果 ROS2 和 K1 暂不可用
+
+- [ ] continue improving documentation, tests, and CI
+- [ ] do not fake real topic data
