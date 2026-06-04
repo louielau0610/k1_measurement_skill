@@ -2,28 +2,34 @@
 
 ## M0 Repository Initialization
 
-- [ ] 创建项目目录结构
-- [ ] 初始化 Git 仓库
-- [ ] 创建中文优先 README
-- [ ] 创建英文参考 README
-- [ ] 创建 ROADMAP、PROJECT_STATUS、AGENTS
-- [ ] 创建基础 Python package 和测试入口
+- [x] 创建项目目录结构
+- [x] 初始化 Git 仓库
+- [x] 创建中文优先 README
+- [x] 创建英文参考 README
+- [x] 创建 ROADMAP、PROJECT_STATUS、AGENTS
+- [x] 创建基础 Python package 和测试入口
 
 ## M1 Interface Contracts
 
-- [ ] 明确 `processed_environment_profile.json` schema
-- [ ] 明确 raw log 字段定义
-- [ ] 增加 schema validation
-- [ ] 增加 profile 版本字段
-- [ ] 写清下游模块的置信度和外推风险检查要求
+- [x] 明确 `processed_environment_profile.json` schema
+- [x] 明确 raw log 字段定义
+- [x] 增加 schema validation
+- [x] 增加 profile 版本字段
+- [x] 写清下游模块的置信度和外推风险检查要求
+- [x] 创建 dummy profile 示例
+- [x] 增加 schema validation 单元测试
+- [x] 更新 README、PROJECT_STATUS 和 TODO
 
 ## M2 Metrics Core
 
-- [ ] 实现稳定窗口速度均值计算
-- [ ] 实现速度误差计算
-- [ ] 实现重复实验统计
-- [ ] 增加 metrics 单元测试
-- [ ] 定义异常值处理策略
+- [ ] implement velocity measurement metrics
+- [ ] test actual velocity calculation
+- [ ] test speed gain
+- [ ] test absolute and relative error
+- [ ] test lateral drift rate
+- [ ] test yaw drift rate
+- [ ] test tracking RMSE
+- [ ] test trial summary aggregation
 
 ## M3 Dummy Data Pipeline
 

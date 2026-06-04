@@ -95,6 +95,38 @@ slope: flat | mild_uphill | mild_downhill | unknown
 
 这些标签会被写入测量 profile，供下游模块判断环境是否匹配。
 
+## 数据接口契约（Data Interface Contract）
+
+`processed_environment_profile.json` 是本仓库最重要的下游数据契约。它把当前测量 skill 与未来的速度补偿、命令安全适配、导航安全和仿真验证模块连接起来。
+
+M1 已定义严格 JSON Schema：
+
+```text
+contracts/measurement_profile_schema.json
+```
+
+示例 dummy profile：
+
+```text
+examples/dummy_processed_environment_profile.json
+```
+
+下游模块使用 profile 前必须检查：
+
+- `schema_version`
+- `environment` 是否匹配当前部署环境
+- `valid_speed_range` 是否覆盖目标速度
+- `quality.confidence`
+- `velocity_profile[].n_trials`
+- `quality.ground_truth_method`
+- `quality.odom_validated`
+- `downstream_usage.extrapolation_allowed`
+- `quality.warnings`
+
+下游模块不能默认认为 profile 是高置信度，也不能在速度超出有效范围、环境不匹配、样本量不足或存在安全关键 warning 时盲目使用。
+
+本仓库不实现速度补偿，也不提供 `compensate_velocity()`。补偿逻辑属于未来下游项目范围。
+
 ## 计划输出文件
 
 计划生成的关键文件包括：
@@ -121,15 +153,25 @@ processed_environment_profile.json
 - navigation safety layer
 - simulation validation pipeline
 
-下游模块使用 profile 前必须检查：
+下游模块使用 profile 前必须检查 confidence、valid speed range、environment match、sample size 和 extrapolation risk。
 
-- confidence
-- valid speed range
-- environment match
-- sample size
-- extrapolation risk
+## 使用方式
 
-下游模块不能默认认为 profile 一定是高置信度，也不能在超出有效速度范围或环境不匹配时盲目使用。
+在 Windows 环境中，如果 `python` launcher 不可用，可以使用 `py`：
+
+```powershell
+py scripts/validate_profile_schema.py
+py -m pytest
+py -m compileall k1_measurement scripts
+```
+
+如果当前 shell 中 `python` 可用，也可以运行：
+
+```powershell
+python scripts/validate_profile_schema.py
+python -m pytest
+python -m compileall k1_measurement scripts
+```
 
 ## 安全声明
 

@@ -19,3 +19,21 @@ processed_environment_profile.json
 ```
 
 This profile is intended for later modules such as velocity compensation models, safe command adapters, navigation safety layers, and simulation validation pipelines. Downstream users must check confidence, valid speed range, environment match, sample size, and extrapolation risk before using a profile.
+
+## Data Interface Contract
+
+`processed_environment_profile.json` is the downstream contract between this measurement repository and future compensation or navigation safety modules.
+
+The schema is defined in:
+
+```text
+contracts/measurement_profile_schema.json
+```
+
+A dummy validation-only example is provided at:
+
+```text
+examples/dummy_processed_environment_profile.json
+```
+
+This repository does not implement compensation. Future downstream modules may consume the profile, but they must validate schema version, environment match, speed range, confidence, trial count, ground-truth method, odom validation status, extrapolation policy, and warnings before use.

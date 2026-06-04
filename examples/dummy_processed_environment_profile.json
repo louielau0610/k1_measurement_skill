@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1.0",
+  "metadata": {
+    "robot": "Booster K1",
+    "skill_version": "measurement_v0",
+    "experiment_name": "k1_forward_velocity_tracking_baseline_v0",
+    "created_at": "2026-06-04T00:00:00Z",
+    "profile_id": "dummy_tile_dry_flat_measurement_v0",
+    "repository_role": "measurement_predecessor",
+    "full_project": "K1 Velocity Measurement, Compensation and Navigation Safety Pipeline"
+  },
+  "environment": {
+    "floor_type": "tile",
+    "condition": "dry",
+    "slope": "flat",
+    "notes": "Dummy profile for schema validation only. Not real robot data."
+  },
+  "valid_speed_range": {
+    "min_vx_cmd_mps": 0.1,
+    "max_vx_cmd_mps": 0.4
+  },
+  "velocity_profile": [
+    {
+      "vx_cmd_mps": 0.1,
+      "vx_actual_mean_mps": 0.08,
+      "vx_actual_std_mps": 0.004,
+      "speed_gain_mean": 0.8,
+      "speed_gain_std": 0.04,
+      "absolute_error_mean_mps": -0.02,
+      "relative_error_mean": -0.2,
+      "n_trials": 5
+    },
+    {
+      "vx_cmd_mps": 0.2,
+      "vx_actual_mean_mps": 0.16,
+      "vx_actual_std_mps": 0.006,
+      "speed_gain_mean": 0.8,
+      "speed_gain_std": 0.03,
+      "absolute_error_mean_mps": -0.04,
+      "relative_error_mean": -0.2,
+      "n_trials": 5
+    },
+    {
+      "vx_cmd_mps": 0.3,
+      "vx_actual_mean_mps": 0.24,
+      "vx_actual_std_mps": 0.008,
+      "speed_gain_mean": 0.8,
+      "speed_gain_std": 0.027,
+      "absolute_error_mean_mps": -0.06,
+      "relative_error_mean": -0.2,
+      "n_trials": 5
+    },
+    {
+      "vx_cmd_mps": 0.4,
+      "vx_actual_mean_mps": 0.32,
+      "vx_actual_std_mps": 0.01,
+      "speed_gain_mean": 0.8,
+      "speed_gain_std": 0.025,
+      "absolute_error_mean_mps": -0.08,
+      "relative_error_mean": -0.2,
+      "n_trials": 5
+    }
+  ],
+  "quality": {
+    "confidence": "low",
+    "ground_truth_method": "unknown",
+    "odom_validated": false,
+    "warnings": [
+      "Dummy data only; not collected from a real K1 robot.",
+      "Do not use this profile for compensation or navigation."
+    ]
+  },
+  "downstream_usage": {
+    "recommended_for_compensation": false,
+    "extrapolation_allowed": false,
+    "notes": "This file is only for validating the profile schema and downstream interface format."
+  }
+}

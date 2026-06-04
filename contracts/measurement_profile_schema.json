@@ -1,69 +1,195 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.local/k1_measurement/measurement_profile_schema.json",
-  "title": "K1 Measurement Environment Profile",
+  "title": "K1 processed_environment_profile.json",
+  "description": "Strict downstream contract for K1 forward velocity measurement profiles.",
   "type": "object",
+  "additionalProperties": false,
   "required": [
     "schema_version",
-    "profile_type",
-    "robot",
+    "metadata",
     "environment",
-    "confidence",
-    "valid_speed_range_mps",
-    "speed_points"
+    "valid_speed_range",
+    "velocity_profile",
+    "quality",
+    "downstream_usage"
   ],
   "properties": {
     "schema_version": {
-      "type": "string"
+      "type": "string",
+      "examples": ["0.1.0"]
     },
-    "profile_type": {
-      "const": "forward_velocity_measurement"
-    },
-    "created_at": {
-      "type": "string"
-    },
-    "robot": {
-      "type": "string"
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "robot",
+        "skill_version",
+        "experiment_name",
+        "created_at",
+        "profile_id",
+        "repository_role",
+        "full_project"
+      ],
+      "properties": {
+        "robot": {
+          "type": "string",
+          "examples": ["Booster K1"]
+        },
+        "skill_version": {
+          "type": "string",
+          "examples": ["measurement_v0"]
+        },
+        "experiment_name": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "profile_id": {
+          "type": "string"
+        },
+        "repository_role": {
+          "type": "string",
+          "enum": ["measurement_predecessor"]
+        },
+        "full_project": {
+          "type": "string",
+          "examples": ["K1 Velocity Measurement, Compensation and Navigation Safety Pipeline"]
+        }
+      }
     },
     "environment": {
       "type": "object",
-      "required": ["floor_type", "condition", "slope"],
+      "additionalProperties": false,
+      "required": ["floor_type", "condition", "slope", "notes"],
       "properties": {
         "floor_type": {
-          "type": "string"
+          "type": "string",
+          "enum": ["tile", "concrete", "wood", "carpet", "rubber", "unknown"]
         },
         "condition": {
-          "type": "string"
+          "type": "string",
+          "enum": ["dry", "wet", "dusty", "uneven", "unknown"]
         },
         "slope": {
+          "type": "string",
+          "enum": ["flat", "mild_uphill", "mild_downhill", "unknown"]
+        },
+        "notes": {
           "type": "string"
         }
       }
     },
-    "confidence": {
-      "type": "string"
-    },
-    "valid_speed_range_mps": {
+    "valid_speed_range": {
       "type": "object",
+      "additionalProperties": false,
+      "required": ["min_vx_cmd_mps", "max_vx_cmd_mps"],
       "properties": {
-        "min": {
-          "type": ["number", "null"]
+        "min_vx_cmd_mps": {
+          "type": "number",
+          "minimum": 0
         },
-        "max": {
-          "type": ["number", "null"]
+        "max_vx_cmd_mps": {
+          "type": "number",
+          "exclusiveMinimum": 0
         }
       }
     },
-    "speed_points": {
+    "velocity_profile": {
       "type": "array",
+      "minItems": 1,
       "items": {
-        "type": "object"
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "vx_cmd_mps",
+          "vx_actual_mean_mps",
+          "vx_actual_std_mps",
+          "speed_gain_mean",
+          "speed_gain_std",
+          "absolute_error_mean_mps",
+          "relative_error_mean",
+          "n_trials"
+        ],
+        "properties": {
+          "vx_cmd_mps": {
+            "type": "number",
+            "minimum": 0
+          },
+          "vx_actual_mean_mps": {
+            "type": "number"
+          },
+          "vx_actual_std_mps": {
+            "type": "number",
+            "minimum": 0
+          },
+          "speed_gain_mean": {
+            "type": "number"
+          },
+          "speed_gain_std": {
+            "type": "number",
+            "minimum": 0
+          },
+          "absolute_error_mean_mps": {
+            "type": "number"
+          },
+          "relative_error_mean": {
+            "type": "number"
+          },
+          "n_trials": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
       }
     },
-    "downstream_warnings": {
-      "type": "array",
-      "items": {
-        "type": "string"
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["confidence", "ground_truth_method", "odom_validated", "warnings"],
+      "properties": {
+        "confidence": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "ground_truth_method": {
+          "type": "string",
+          "enum": [
+            "odom_only",
+            "tape_measure_video",
+            "uwb",
+            "motion_capture",
+            "external_tracking",
+            "unknown"
+          ]
+        },
+        "odom_validated": {
+          "type": "boolean"
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "downstream_usage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recommended_for_compensation", "extrapolation_allowed", "notes"],
+      "properties": {
+        "recommended_for_compensation": {
+          "type": "boolean"
+        },
+        "extrapolation_allowed": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
       }
     }
   }
