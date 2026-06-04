@@ -173,6 +173,31 @@ yaw_drift_rate = |yaw_end - yaw_start| / (t_end - t_start)
 RMSE = sqrt(mean((v_actual_i - v_cmd)^2))
 ```
 
+## M3 Dummy Data Pipeline
+
+M3 建立 dummy 数据流水线，用于在连接真实 K1 ROS2 topic 之前验证仓库内部数据流程。
+
+该阶段生成的是 dummy raw log，不是真实机器人数据。由 dummy raw log 生成的 dummy profile 也不能用于速度补偿、导航或任何真实机器人决策。
+
+M3 的目的只是验证：
+
+- raw log format
+- metric calculation
+- profile generation
+- schema validation
+- downstream interface consistency
+
+默认流程：
+
+```powershell
+py scripts/generate_dummy_raw_log.py
+py scripts/process_trial_logs.py
+py scripts/validate_profile_schema.py data/processed/dummy_processed_environment_profile.json
+py -m pytest
+```
+
+在部分 Windows 环境中，`python` launcher 可能不可用，可以优先使用 `py`。
+
 ## 计划输出文件
 
 计划生成的关键文件包括：

@@ -51,3 +51,13 @@ M2 implements pure measurement metrics:
 - tracking RMSE: `sqrt(mean((v_actual_i - v_cmd)^2))`
 
 These metrics are measurement-only. They do not implement compensation, and they will later support `processed_environment_profile.json` generation.
+
+## M3 Dummy Data Pipeline
+
+The dummy pipeline validates the repository workflow before real K1 ROS2 integration:
+
+```text
+dummy raw measurement log -> processed environment profile -> schema validation -> tests
+```
+
+Dummy data is not real robot data. Dummy profiles must not be used for compensation, navigation, or robot safety decisions. This repository still does not implement compensation.

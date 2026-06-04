@@ -2,7 +2,7 @@
 
 ## 当前阶段
 
-M2: Metrics Core completed.
+M3: Dummy Data Pipeline completed.
 
 ## 当前仓库
 
@@ -42,10 +42,16 @@ v_x_cmd -> v_x_actual measurement
 - [x] yaw drift rate metric implemented
 - [x] tracking RMSE implemented
 - [x] trial summary aggregation implemented
-- [x] metric tests passed
+- [x] dummy raw log generator implemented
+- [x] dummy raw log includes required fields
+- [x] profile builder implemented
+- [x] dummy raw log can be processed into profile JSON
+- [x] generated dummy profile passes schema validation
+- [x] profile builder tests passed
+- [x] README usage updated
 - [x] tests passed
 - [x] main branch pushed to GitHub
 
 ## Next Milestone
 
-M3: Dummy Data Pipeline.
+M4: ROS2 Topic Discovery and Logger Skeleton.

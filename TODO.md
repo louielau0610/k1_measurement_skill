@@ -33,20 +33,21 @@
 
 ## M3 Dummy Data Pipeline
 
-- [ ] generate dummy raw measurement log
-- [ ] process dummy raw log into dummy processed environment profile
-- [ ] validate generated profile against JSON schema
-- [ ] use `metrics.py` functions in `profile_builder.py`
-- [ ] add tests for profile builder
-- [ ] keep dummy data clearly separated from real robot data
+- [x] generate dummy raw measurement log
+- [x] process dummy raw log into dummy processed environment profile
+- [x] validate generated profile against JSON schema
+- [x] use `metrics.py` functions in `profile_builder.py`
+- [x] add tests for profile builder
+- [x] keep dummy data clearly separated from real robot data
 
-## M4 ROS2 Discovery
+## M4 ROS2 Topic Discovery and Logger Skeleton
 
-- [ ] 记录 `ros2 topic list`
-- [ ] 检查候选 odom、imu、battery、robot state topic
-- [ ] 记录 message type
-- [ ] 验证 command topic 前保持 dry-run
-- [ ] 更新 topic checklist
+- [ ] discover available ROS2 topics
+- [ ] classify candidate odom, imu, robot_state, battery, command topics
+- [ ] create topic mapping template
+- [ ] keep logger in dry-run or skeleton mode
+- [ ] refuse to start real logging if topic mapping is incomplete
+- [ ] do not implement real robot movement commands
 
 ## M5 Logger Prototype
 

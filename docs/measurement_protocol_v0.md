@@ -35,3 +35,15 @@ v0 只测试前进速度，不测试转向、不测试横向移动、不实现�
 - `lateral_drift_rate = |y_end - y_start| / (t_end - t_start)`
 - `yaw_drift_rate = |yaw_end - yaw_start| / (t_end - t_start)`
 - `RMSE = sqrt(mean((v_actual_i - v_cmd)^2))`
+
+## M3 Dummy Data Pipeline
+
+在真实 K1 ROS2 topic 接入之前，可以使用 dummy 数据流水线验证格式和处理流程：
+
+```bash
+py scripts/generate_dummy_raw_log.py
+py scripts/process_trial_logs.py
+py scripts/validate_profile_schema.py data/processed/dummy_processed_environment_profile.json
+```
+
+生成的数据只用于开发验证，不是真实机器人数据，不能用于补偿、导航或安全决策。
