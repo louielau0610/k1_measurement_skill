@@ -1,0 +1,1 @@
+trial_id,date,operator,vx_cmd_mps,repeat_index,planned_distance_m,measured_distance_m,elapsed_time_s,visible_motion_started,start_marker,end_marker,floor_type,condition,slope,battery_before,battery_after,robot_mode,odom_topic,imu_topic,command_topic,notes

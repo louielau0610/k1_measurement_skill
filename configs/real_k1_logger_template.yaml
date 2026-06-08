@@ -1,0 +1,12 @@
+odom_topic: TBD
+imu_topic: TBD
+battery_topic: TBD
+robot_state_topic: TBD
+command_topic: TBD
+output_rate_hz: 20
+trial_id: TBD
+environment_label:
+  floor_type: TBD
+  condition: TBD
+  slope: TBD
+notes: ""

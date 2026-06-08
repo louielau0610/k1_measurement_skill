@@ -1,0 +1,26 @@
+experiment_name: real_k1_forward_velocity_baseline_m7
+scope: measurement_only
+environment:
+  order: fixed_environment_first
+  labels: manual
+  floor_type: TBD
+  condition: TBD
+  slope: TBD
+motion:
+  forward_velocity_only: true
+  no_turning_test: true
+  no_navigation_test: true
+  no_compensation: true
+vx_cmd_mps:
+  - 0.1
+  - 0.2
+  - 0.3
+  - 0.4
+repeats_per_speed: 3
+ground_truth:
+  distance_measurement_required: true
+  method: TBD
+notes:
+  - Do not change velocity groups for M7/M8-prep.
+  - Do not publish motion commands from this repository.
+  - Fill real topics only after manual K1 ROS2 confirmation.

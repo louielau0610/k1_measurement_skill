@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-06-08T14:04:34.902847+00:00",
+  "mode": "print_only",
+  "ros2_availability": {
+    "ros2_available": false,
+    "ros2_cli_command": "ros2 --help",
+    "return_code": null,
+    "stdout_preview": "",
+    "stderr_preview": "",
+    "error_message": "print-only mode: ROS2 commands were not executed",
+    "checked_at": "2026-06-08T14:04:34.902847+00:00",
+    "timeout_sec": 5.0
+  },
+  "topic_discovery": {
+    "commands": {},
+    "topics": [],
+    "errors": []
+  },
+  "candidate_classification": {
+    "odom_candidates": [],
+    "imu_candidates": [],
+    "battery_candidates": [],
+    "robot_state_candidates": [],
+    "command_candidates": [],
+    "unknown_topics": []
+  },
+  "interface_inspection": {},
+  "sample_once": {
+    "enabled": false,
+    "topics": [],
+    "note": "planned only; no ROS2 commands were executed"
+  },
+  "manual_confirmation_required": true,
+  "topic_mapping_status": "TBD",
+  "warnings": [
+    "Real K1 topic mapping is still TBD.",
+    "Dummy reports are not real K1 findings.",
+    "This tool does not publish motion commands."
+  ]
+}

@@ -1,81 +1,41 @@
 # TODO
 
-## M0 Repository Initialization
+## M0-M6
 
-- [x] 创建项目目录结构
-- [x] 初始化 Git 仓库
-- [x] 创建中文优先 README
-- [x] 创建英文参考 README
-- [x] 创建 ROADMAP、PROJECT_STATUS、AGENTS
-- [x] 创建基础 Python package 和测试入口
+- [x] M0 project structure
+- [x] M1 interface contracts
+- [x] M2 metrics core
+- [x] M3 dummy data pipeline
+- [x] M4 ROS2 topic discovery / logger skeleton
+- [x] M5 dry-run forward baseline trial manager
+- [x] M6 measurement report generator
 
-## M1 Interface Contracts
+## M7 Real K1 Measurement Preparation
 
-- [x] 明确 `processed_environment_profile.json` schema
-- [x] 明确 raw log 字段定义
-- [x] 增加 schema validation
-- [x] 增加 profile 版本字段
-- [x] 写清下游模块的置信度和外推风险检查要求
+- [x] Add structured ROS2 availability check.
+- [x] Add read-only topic discovery report generation.
+- [x] Add candidate topic classification.
+- [x] Add optional message type inspection.
+- [x] Add real K1 logger config template with TBD topics.
+- [x] Add forward velocity baseline plan using original velocity groups.
+- [x] Add ground-truth trial sheet template.
+- [x] Add field-test checklist.
+- [x] Add static measurement visualization support.
 
-## M2 Metrics Core
+## Next Step On Real K1
 
-- [x] implement velocity measurement metrics
-- [x] test actual velocity calculation
-- [x] test speed gain
-- [x] test absolute and relative error
-- [x] test lateral drift rate
-- [x] test yaw drift rate
-- [x] test tracking RMSE
-- [x] test trial summary aggregation
+- [ ] Run M7 in the real K1 ROS2 shell.
+- [ ] Confirm candidate odom / IMU / battery / robot_state / command topics.
+- [ ] Fill `configs/real_k1_logger_template.yaml`.
+- [ ] Run static logging test.
+- [ ] Check timestamp, odom, IMU, robot mode, and battery fields.
+- [ ] Run one smoke forward trial.
+- [ ] Run full forward velocity baseline.
+- [ ] Generate first real measurement report and plots.
 
-## M3 Dummy Data Pipeline
+## Still Do Not Implement
 
-- [x] generate dummy raw measurement log
-- [x] process dummy raw log into dummy processed environment profile
-- [x] validate generated profile against JSON schema
-- [x] use `metrics.py` functions in `profile_builder.py`
-- [x] add tests for profile builder
-- [x] keep dummy data clearly separated from real robot data
-
-## M4 ROS2 Topic Discovery and Logger Skeleton
-
-- [x] discover available ROS2 topics
-- [x] classify candidate odom, imu, robot_state, battery, command topics
-- [x] create topic mapping template
-- [x] keep logger in dry-run or skeleton mode
-- [x] refuse to start real logging if topic mapping is incomplete
-- [x] do not implement real robot movement commands
-
-## M5 Dry-run Forward Baseline Trial Manager
-
-- [x] generate full trial plan from `config/experiment_forward_v0.yaml`
-- [x] dry-run baseline execution
-- [x] command_runner stays dry-run by default
-- [x] safety checks for vx, vy, wz
-- [x] reject real execution until command interface is verified
-- [x] add tests for trial manager and command runner
-
-## M6 Measurement Report Generator
-
-- [x] generate report from dummy processed profile
-- [x] summarize velocity profile
-- [x] summarize confidence and limitations
-- [x] include downstream usage notes
-- [x] warn that dummy data is not real robot data
-- [x] add tests for report generator
-
-## M7 Real K1 Read-only Logger Validation
-
-- [ ] rerun M4.5 in a shell where ROS2 is available
-- [ ] identify real odom, imu, and robot_state topics
-- [ ] update a reviewed topic mapping file
-- [ ] implement real read-only logger subscriptions only after topic verification
-- [ ] validate static robot logging
-- [ ] validate manually controlled walking logging
-- [ ] do not send robot movement commands
-- [ ] do not implement compensation
-
-## 如果 ROS2 和 K1 暂不可用
-
-- [ ] continue improving documentation, tests, and CI
-- [ ] do not fake real topic data
+- [ ] Do not implement velocity compensation in this repository.
+- [ ] Do not implement navigation.
+- [ ] Do not publish robot movement commands.
+- [ ] Do not treat dummy artifacts as real K1 findings.

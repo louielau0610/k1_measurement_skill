@@ -1,128 +1,103 @@
-# K1 速度测量 Skill
+# K1 速度测量工具包
 
 ## 项目定位
 
-本仓库 `k1_measurement_skill` 是完整项目 **K1 Velocity Measurement, Compensation and Navigation Safety Pipeline** 的第一阶段前置测量模块。
-
-完整项目要解决的问题是：Booster Robotics K1 的速度命令 `v_cmd` 与实际执行速度 `v_actual` 可能不一致。在导航任务中，这种误差会累积成位置误差、轨迹漂移和碰撞风险。
-
-本仓库只负责：
+`k1_measurement_skill` 是 **K1 Velocity Measurement, Compensation, and Navigation Safety Pipeline** 的测量优先模块。大项目关心的问题是：
 
 ```text
-v_x_cmd -> v_x_actual measurement
+v_actual = f(v_cmd, environment, robot_state)
 ```
 
-本仓库不实现速度补偿、自主导航、实时闭环控制、真实机器人运动命令，也不硬编码未经验证的 K1 ROS2 topic 名称。
-
-## 大项目整体设计
+本仓库只负责把 K1 的前进速度测量流程做得可重复、可检查、可用于后续建模。它不是完整 ROS2 package，不实现速度补偿、不实现导航、不发布真实机器人运动命令，也不硬编码尚未确认的 K1 topic。
 
 ```text
-速度命令（Velocity Command）
-    ->
-速度测量模块（Measurement Skill）
-    ->
-环境相关速度画像（Environment-specific Velocity Profile）
-    ->
-速度误差模型（Velocity Error Model）
-    ->
-速度命令补偿层（Velocity Command Compensation Layer）
-    ->
-导航安全层（Navigation Safety Layer）
+measurement -> compensation -> navigation safety
 ```
 
-## 当前仓库范围
+当前仓库只覆盖第一步 measurement。后续 compensation 和 navigation safety 必须基于真实测量数据、环境标签、ground truth 和置信度判断，不能使用 dummy artifact 作为真实 K1 结论。
 
-当前版本：**K1 Forward Velocity Tracking Measurement Skill v0**
+## 当前状态
 
-- 只测前进速度
-- 不测转向
-- 不测横向移动
-- 不做自主导航
-- 不做实时补偿
-- 使用人工环境标签
-- 支持 dummy data pipeline、schema validation、dry-run trial plan 和 measurement report
-- 真实 K1 logging 仍需等待 ROS2 topic 人工验证
+- M0-M6 completed。
+- M7 in progress: Real K1 Measurement Preparation Pack。
+- 真实 K1 ROS2 topic mapping 仍为 TBD，需要在明天的 K1 ROS2 shell 中确认。
+- 现有 dummy raw log、dummy profile、dummy report 只用于验证数据流水线，不是 K1 实测发现。
 
-## 数据接口契约（Data Interface Contract）
+M7 的目标是让真实测试前的准备更快、更清楚、更可复现：
 
-`processed_environment_profile.json` 是本仓库最重要的下游数据契约。它连接当前测量 skill 与未来的速度补偿、命令安全适配、导航安全和仿真验证模块。
+- ROS2 availability check
+- real K1 topic discovery
+- candidate topic classification
+- message type inspection
+- logger configuration template
+- forward velocity baseline plan
+- ground-truth recording template
+- field-test checklist
+- static visualization artifacts
 
-Schema:
+## 仓库边界
 
-```text
-contracts/measurement_profile_schema.json
-```
+本仓库保持为 Python-based K1 velocity measurement toolkit，包含配置、脚本、分析、可视化 artifact 和报告生成能力。M7 不创建完整 ROS2 package layout。
 
-下游模块使用 profile 前必须检查环境匹配、有效速度范围、置信度、样本数量、ground truth 方法、odom 是否验证、是否允许外推和 warnings。
+M7 discovery tools 只执行 ROS2 CLI 只读检查：
 
-本仓库不实现 `compensate_velocity()`。
+- `ros2 --help`
+- `ros2 topic list`
+- `ros2 topic list -t`
+- optional `ros2 interface show <message_type>`
 
-## 核心测量指标（Core Measurement Metrics）
+这些工具不会发布到 `cmd_vel` 或任何运动 topic。候选 topic 只来自保守关键词分类，不代表人工确认。
 
-```text
-v_x_actual = (x_end - x_start) / (t_end - t_start)
-speed_gain = v_x_actual / v_x_cmd
-e_abs = v_x_actual - v_x_cmd
-e_rel = (v_x_actual - v_x_cmd) / v_x_cmd
-lateral_drift_rate = |y_end - y_start| / (t_end - t_start)
-yaw_drift_rate = |yaw_end - yaw_start| / (t_end - t_start)
-RMSE = sqrt(mean((v_actual_i - v_cmd)^2))
-```
+## M7 快速流程
 
-这些指标只描述测量结果，不执行速度补偿。
-
-## M3 Dummy Data Pipeline
-
-M3 建立 dummy 数据流水线，用于在连接真实 K1 ROS2 topic 之前验证仓库内部数据流程。dummy raw log 和 dummy profile 都不是真实机器人数据，不能用于速度补偿、导航或安全决策。
-
-## M4 ROS2 Topic Discovery and Logger Skeleton
-
-M4 提供只读 topic discovery 和 logger skeleton。`scripts/discover_ros2_topics.py` 只运行只读 `ros2 topic list`，关键词分类只是候选建议，不代表人工验证完成。
-
-如果 ROS2 未安装，discovery 脚本会安全退出并返回 0。
-
-## M5 Dry-run Forward Baseline Trial Manager
-
-M5 生成并验证前进速度 baseline 实验计划。该阶段只运行 dry-run，不发布 ROS2 command，不移动机器人，不使用真实 K1 command topic。
-
-真实执行仍然禁用，直到 K1 command interface 被人工验证。
-
-## M6 Measurement Report Generator
-
-M6 从 `processed_environment_profile.json` 生成 Markdown 测量报告。报告总结环境标签、速度画像、置信度、局限性和下游使用说明。
-
-报告仍然是 measurement-only 输出，不实现速度补偿。由 dummy profile 生成的报告必须视为 dummy output，不能用于真实机器人补偿、导航或安全决策。
-
-## v0 Dry-run Workflow
-
-按顺序运行：
+在真实 K1 ROS2 shell 中运行：
 
 ```powershell
-py scripts/check_environment.py
-py scripts/generate_dummy_raw_log.py
-py scripts/process_trial_logs.py
-py scripts/validate_profile_schema.py data/processed/dummy_processed_environment_profile.json
-py scripts/generate_measurement_report.py
-py scripts/run_forward_baseline.py --dry-run
-py -m pytest
-py -m compileall k1_measurement scripts
+python scripts/validate_ros2_readonly_topics.py --output-dir outputs/ros2_readonly_validation --include-interface-show
 ```
 
-在部分 Windows 环境中，`py` 可用于替代 `python`。`data/raw` 和 `data/processed` 中的生成文件可能被 Git 忽略。`reports/dummy_measurement_report.md` 如果来自 dummy profile，也只是 dummy output。
+没有 ROS2 的开发环境中可先运行 dry-run report：
 
-## 安全声明
+```powershell
+python scripts/validate_ros2_readonly_topics.py --print-only --output-dir outputs/ros2_readonly_validation
+```
 
-本仓库在以下条件全部满足之前，必须不得向 K1 发送真实运动命令：
+生成报告后，人工确认候选 odom / IMU / battery / robot_state / command topics，再填写：
 
-- 机器人处于安全开阔区域
-- 急停装置可用
-- 机器人处于正确运动模式
-- ROS2 topic 名称已确认
-- command interface 已确认
-- 有人工监督实验过程
+```text
+configs/real_k1_logger_template.yaml
+```
 
-任何可能发送运动命令的文件必须默认 dry-run，并包含人工确认、速度限制检查和急停提醒。
+前进速度 baseline 保持原始速度组：
 
-## 当前开发状态
+```text
+0.1, 0.2, 0.3, 0.4 m/s
+每个速度 3 次
+```
 
-当前状态见 [PROJECT_STATUS.md](PROJECT_STATUS.md)。
+## 关键 artifact
+
+- `outputs/ros2_readonly_validation/ros2_topic_discovery_report.json`
+- `outputs/ros2_readonly_validation/ros2_topic_discovery_report.md`
+- `configs/real_k1_logger_template.yaml`
+- `configs/forward_velocity_baseline_plan.yaml`
+- `templates/ground_truth_trial_sheet.csv`
+- `docs/real_k1_field_test_checklist.md`
+- `docs/m7_real_k1_measurement_preparation.md`
+
+可视化只作为测量报告 artifact，用于提升可读性和诊断效率，不是 dashboard、frontend 或 RViz plugin：
+
+- `velocity_error_plot.png`
+- `speed_gain_plot.png`
+- `trial_timeseries_plot.png`
+- `drift_plot.png`
+
+## 验证命令
+
+```powershell
+python -m pytest
+python -m pytest tests/test_ros2_readonly_validator.py -q
+python -m pytest tests/test_visualization.py -q
+python -m compileall k1_measurement scripts tests
+python scripts/validate_ros2_readonly_topics.py --print-only --output-dir outputs/ros2_readonly_validation
+```
