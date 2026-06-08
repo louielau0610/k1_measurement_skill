@@ -10,3 +10,5 @@ environment_label:
   condition: TBD
   slope: TBD
 notes: ""
+topic_mapping_file: topic_mapping.yaml
+session_manifest_file: session_manifest.json

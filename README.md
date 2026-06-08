@@ -19,53 +19,65 @@ measurement -> compensation -> navigation safety
 ## 当前状态
 
 - M0-M6 completed。
-- M7 in progress: Real K1 Measurement Preparation Pack。
+- M7 complete: Real K1 Measurement Preparation Pack。
+- M8 current milestone: Real K1 Field Logging and Forward Baseline Execution Support。
 - 真实 K1 ROS2 topic mapping 仍为 TBD，需要在明天的 K1 ROS2 shell 中确认。
 - 现有 dummy raw log、dummy profile、dummy report 只用于验证数据流水线，不是 K1 实测发现。
 
-M7 的目标是让真实测试前的准备更快、更清楚、更可复现：
+M8 让项目进入 real field logging workflow ready 状态：
 
-- ROS2 availability check
-- real K1 topic discovery
-- candidate topic classification
-- message type inspection
-- logger configuration template
-- forward velocity baseline plan
-- ground-truth recording template
-- field-test checklist
-- static visualization artifacts
+- 创建真实测试 session 目录。
+- 校验人工确认后的 topic mapping。
+- 使用 `ros2 bag record` 启动只读多 topic logging。
+- 记录 ground-truth trial metadata。
+- 生成 session manifest。
+- 在 exported CSV logs 可用时归一化到测量 pipeline 兼容格式。
+- 生成或引用 first real measurement artifacts 和 plots。
 
 ## 仓库边界
 
-本仓库保持为 Python-based K1 velocity measurement toolkit，包含配置、脚本、分析、可视化 artifact 和报告生成能力。M7 不创建完整 ROS2 package layout。
+本仓库保持为 Python-based K1 velocity measurement toolkit，包含配置、脚本、分析、可视化 artifact 和报告生成能力。M8 不创建完整 ROS2 package layout。
 
-M7 discovery tools 只执行 ROS2 CLI 只读检查：
+M7/M8 工具只做只读 discovery 和 logging：
 
 - `ros2 --help`
 - `ros2 topic list`
 - `ros2 topic list -t`
 - optional `ros2 interface show <message_type>`
+- `ros2 bag record -o <session_dir>/raw_ros/rosbag <confirmed topics...>`
 
 这些工具不会发布到 `cmd_vel` 或任何运动 topic。候选 topic 只来自保守关键词分类，不代表人工确认。
 
-## M7 快速流程
+## M8 快速流程
 
-在真实 K1 ROS2 shell 中运行：
-
-```powershell
-python scripts/validate_ros2_readonly_topics.py --output-dir outputs/ros2_readonly_validation --include-interface-show
-```
-
-没有 ROS2 的开发环境中可先运行 dry-run report：
+创建 session：
 
 ```powershell
-python scripts/validate_ros2_readonly_topics.py --print-only --output-dir outputs/ros2_readonly_validation
+py scripts/create_real_k1_field_session.py --session-id 20260609_k1_forward_baseline --output-root data/real_k1_sessions
 ```
 
-生成报告后，人工确认候选 odom / IMU / battery / robot_state / command topics，再填写：
+在真实 K1 ROS2 shell 中运行 discovery：
 
-```text
-configs/real_k1_logger_template.yaml
+```powershell
+py scripts/validate_ros2_readonly_topics.py --output-dir outputs/ros2_readonly_validation --include-interface-show
+```
+
+填写并校验 mapping：
+
+```powershell
+py scripts/validate_real_k1_topic_mapping.py --mapping data/real_k1_sessions/20260609_k1_forward_baseline/topic_mapping.yaml
+```
+
+启动静态 logger：
+
+```powershell
+py scripts/start_real_k1_field_logger.py --session-dir data/real_k1_sessions/20260609_k1_forward_baseline --duration-sec 30
+```
+
+归一化 exported CSV logs：
+
+```powershell
+py scripts/normalize_real_k1_logs.py --session-dir data/real_k1_sessions/20260609_k1_forward_baseline
 ```
 
 前进速度 baseline 保持原始速度组：
@@ -75,15 +87,16 @@ configs/real_k1_logger_template.yaml
 每个速度 3 次
 ```
 
-## 关键 artifact
+## 关键 Artifact
 
-- `outputs/ros2_readonly_validation/ros2_topic_discovery_report.json`
-- `outputs/ros2_readonly_validation/ros2_topic_discovery_report.md`
-- `configs/real_k1_logger_template.yaml`
-- `configs/forward_velocity_baseline_plan.yaml`
-- `templates/ground_truth_trial_sheet.csv`
+- `data/real_k1_sessions/<session_id>/session_manifest.json`
+- `data/real_k1_sessions/<session_id>/topic_mapping.yaml`
+- `data/real_k1_sessions/<session_id>/ground_truth_trial_sheet.csv`
+- `data/real_k1_sessions/<session_id>/logger_run_summary.json`
+- `data/real_k1_sessions/<session_id>/normalized/normalization_report.json`
+- `data/real_k1_sessions/<session_id>/normalized/raw_measurement_log.csv`
+- `docs/m8_real_k1_field_logging_workflow.md`
 - `docs/real_k1_field_test_checklist.md`
-- `docs/m7_real_k1_measurement_preparation.md`
 
 可视化只作为测量报告 artifact，用于提升可读性和诊断效率，不是 dashboard、frontend 或 RViz plugin：
 
@@ -95,9 +108,10 @@ configs/real_k1_logger_template.yaml
 ## 验证命令
 
 ```powershell
-python -m pytest
-python -m pytest tests/test_ros2_readonly_validator.py -q
-python -m pytest tests/test_visualization.py -q
-python -m compileall k1_measurement scripts tests
-python scripts/validate_ros2_readonly_topics.py --print-only --output-dir outputs/ros2_readonly_validation
+py -m pytest
+py -m compileall k1_measurement scripts tests
+py scripts/create_real_k1_field_session.py --session-id test_m8_session --output-root outputs/m8_field_session_test
+py scripts/validate_real_k1_topic_mapping.py --mapping outputs/m8_field_session_test/test_m8_session/topic_mapping.yaml
 ```
+
+默认 template mapping 仍包含 `TBD`，所以 mapping validator 会以 controlled validation failure 返回，而不是 Python crash。

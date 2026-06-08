@@ -1,0 +1,49 @@
+odom:
+  topic: TBD
+  message_type: TBD
+  timestamp_field: TBD
+  required: true
+  confirmed: false
+  linear_velocity_x_field: TBD
+  linear_velocity_y_field: TBD
+  angular_velocity_z_field: TBD
+  position_x_field: TBD
+  position_y_field: TBD
+  notes: ""
+imu:
+  topic: TBD
+  message_type: TBD
+  timestamp_field: TBD
+  required: true
+  confirmed: false
+  angular_velocity_z_field: TBD
+  orientation_field: TBD
+  notes: ""
+battery:
+  topic: TBD
+  message_type: TBD
+  timestamp_field: TBD
+  required: false
+  confirmed: false
+  battery_percentage_field: TBD
+  voltage_field: TBD
+  notes: ""
+robot_state:
+  topic: TBD
+  message_type: TBD
+  timestamp_field: TBD
+  required: false
+  confirmed: false
+  mode_field: TBD
+  gait_field: TBD
+  notes: ""
+command:
+  topic: TBD
+  message_type: TBD
+  timestamp_field: TBD
+  required: true
+  confirmed: false
+  command_vx_field: TBD
+  command_vy_field: TBD
+  command_wz_field: TBD
+  notes: ""

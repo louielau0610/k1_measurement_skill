@@ -1,0 +1,31 @@
+{
+  "session_id": "test_m8_session",
+  "created_at": "2026-06-08T14:17:19.589445+00:00",
+  "project_version_or_git_commit": "0e8db1131b152617cd9f86d42d61c96d473d7996",
+  "operator": "TBD",
+  "robot_id": "TBD",
+  "environment_label": {
+    "floor_type": "TBD",
+    "condition": "TBD",
+    "slope": "TBD"
+  },
+  "planned_velocity_groups": [
+    0.1,
+    0.2,
+    0.3,
+    0.4
+  ],
+  "repeats_per_speed": 3,
+  "paths": {
+    "session_dir": "outputs\\m8_field_session_test\\test_m8_session",
+    "topic_mapping": "outputs\\m8_field_session_test\\test_m8_session\\topic_mapping.yaml",
+    "field_session_config": "outputs\\m8_field_session_test\\test_m8_session\\field_session_config.yaml",
+    "ground_truth_trial_sheet": "outputs\\m8_field_session_test\\test_m8_session\\ground_truth_trial_sheet.csv",
+    "trial_notes": "outputs\\m8_field_session_test\\test_m8_session\\trial_notes.md",
+    "raw_ros": "outputs\\m8_field_session_test\\test_m8_session\\raw_ros",
+    "normalized": "outputs\\m8_field_session_test\\test_m8_session\\normalized",
+    "processed": "outputs\\m8_field_session_test\\test_m8_session\\processed",
+    "plots": "outputs\\m8_field_session_test\\test_m8_session\\plots",
+    "reports": "outputs\\m8_field_session_test\\test_m8_session\\reports"
+  }
+}

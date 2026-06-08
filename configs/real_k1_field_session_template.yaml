@@ -1,0 +1,20 @@
+session:
+  operator: TBD
+  robot_id: TBD
+  date: TBD
+environment_label:
+  floor_type: TBD
+  condition: TBD
+  slope: TBD
+baseline_plan:
+  vx_cmd_mps:
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+  repeats_per_speed: 3
+logging:
+  output_rate_hz: 20
+  raw_log_format: ros2_bag
+  exported_csv_supported: true
+notes: ""
