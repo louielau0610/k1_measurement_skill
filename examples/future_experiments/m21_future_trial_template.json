@@ -1,0 +1,18 @@
+﻿{
+  "trial_id": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+  "session_id": "TO_BE_FILLED",
+  "date": "TO_BE_FILLED",
+  "vx_cmd_mps": "TO_BE_FILLED",
+  "vy_cmd_mps": null,
+  "omega_z_cmd_radps": null,
+  "advisory_condition": false,
+  "trial_valid": "TO_BE_FILLED",
+  "exclusion_reason": null,
+  "operator_notes": "TO_BE_FILLED",
+  "downstream_readiness": {
+    "compensation_ready": false,
+    "safe_command_adapter_ready": false,
+    "navigation_outcome_claim_ready": false
+  },
+  "notes": "M21 trial template. All values are placeholders."
+}

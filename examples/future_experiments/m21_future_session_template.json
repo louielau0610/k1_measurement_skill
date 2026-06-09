@@ -1,0 +1,20 @@
+﻿{
+  "session_id": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+  "protocol_version": "1.0.0",
+  "date": "TO_BE_FILLED",
+  "robot_model": "K1",
+  "robot_id": "TO_BE_FILLED",
+  "surface_type": "TO_BE_FILLED",
+  "operator": "TO_BE_FILLED",
+  "experiment_tier": "TO_BE_FILLED",
+  "command_grid": [],
+  "trial_count_planned": "TO_BE_FILLED",
+  "trial_count_completed": "TO_BE_FILLED",
+  "downstream_readiness": {
+    "compensation_ready": false,
+    "navigation_control_ready": false,
+    "safe_command_adapter_ready": false,
+    "navigation_outcome_claim_ready": false
+  },
+  "notes": "M21 session template. All values are placeholders. No experiments executed."
+}
