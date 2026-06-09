@@ -11,3 +11,7 @@ P1 adds seed literature search, literature matrix v1, citation verification arti
 ## P2 Gap Analysis and Positioning
 
 P2 analyzes P1 literature clusters against M13-M17 project artifacts, creates contribution candidates, claim-upgrade rules, and paper framing options. P2 does not write the paper manuscript, does not claim final novelty, and does not claim publication readiness.
+
+## M18 Method Skeleton and Claim Audit
+
+M18 creates the paper method skeleton, experiments skeleton, figure specifications, artifact/evidence tables, manuscript scaffold, and strict claim audit. M18 does not write a full paper draft, does not claim final novelty, and does not claim performance superiority or publication readiness.

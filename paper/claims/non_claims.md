@@ -26,3 +26,9 @@ The project must not state these as established claims:
 - P2 proves response uncertainty labels are calibrated probabilities.
 - P2 proves navigation warning labels reduce collision, near-miss, or failure rates.
 - P2 proves the method generalizes to other legged robots.
+- M18 writes a full paper draft.
+- M18 establishes final novelty.
+- M18 establishes performance superiority.
+- M18 establishes publication readiness.
+- M18 figure specs are experimental result figures.
+- M18 manuscript scaffold is a completed manuscript.

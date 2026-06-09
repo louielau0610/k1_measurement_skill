@@ -29,7 +29,13 @@ Navigation-Aware Velocity Response Calibration for Closed-Source Legged Robots
 - M17 pipeline evaluation:
   - method artifacts are organized into evaluation reports and artifact tables
   - outputs should support later manuscript drafting without becoming final paper prose
+- M18 paper method skeleton:
+  - skeleton path: `paper/manuscript/sections/03_method_skeleton.md`
+  - stages: measurement artifact construction -> velocity response dataset construction -> uncertainty-aware response modeling -> navigation-aware risk mapping -> claim-governed evaluation
+  - this remains bullet-point method structure, not final manuscript prose
 
 ## Boundaries
 
 This repository currently covers measurement and profile export only. Compensation and navigation safety belong to downstream projects unless explicitly re-scoped.
+
+M18 preserves this boundary: no compensation, no inverse command mapping, no navigation control, and no safe command adapter logic are introduced.

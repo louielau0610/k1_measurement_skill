@@ -27,6 +27,11 @@
 | P2-NC1 | P2 establishes final novelty. | non_claim | none | none | none | no | P2 keeps all contributions tentative. |
 | P2-NC2 | P2 establishes performance superiority. | non_claim | none | none | none | no | No comparative performance experiment exists. |
 | P2-NC3 | P2 establishes publication readiness. | non_claim | none | none | none | no | P2 is positioning only. |
+| M18-S1 | M18 creates a method skeleton, experiments skeleton, figure specs, artifact tables, manuscript scaffold, and claim audit. | supported_structural_claim | `outputs/research_foundation/m18_method_skeleton_summary.json` | scaffold artifact validation | medium | no | Structural scaffold claim only; not a full paper draft. |
+| M18-C1 | The method skeleton can organize current artifacts into a five-stage paper method structure. | supported_structural_claim | `paper/manuscript/sections/03_method_skeleton.md` | manuscript scaffold | medium | no | Bullet-point skeleton only. |
+| M18-C2 | Current evaluation evidence remains structural and does not support navigation outcome claims. | supported_structural_claim | `paper/manuscript/sections/04_experiments_skeleton.md`; `paper/claims/m18_claim_audit.md` | claim audit | high | no | Keeps performance/safety claims prohibited. |
+| M18-NC1 | M18 writes a full paper draft. | non_claim | none | none | none | no | M18 creates scaffold artifacts only. |
+| M18-NC2 | M18 establishes final novelty or performance superiority. | non_claim | none | none | none | no | Candidate contributions remain tentative. |
 
 Claim type options:
 

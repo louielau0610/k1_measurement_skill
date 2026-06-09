@@ -123,6 +123,16 @@ Readiness flags remain:
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
 
+## M18 Paper Method Skeleton and Claim Audit
+
+M18 creates paper method skeleton, experiments skeleton, figure specs, artifact/evidence tables, manuscript scaffold, and strict claim audit. M18 does not implement engineering functionality, does not write a full paper draft, does not claim final novelty, does not claim performance superiority, and does not claim publication readiness.
+
+Readiness flags remain:
+
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`
+
 ## Pending Real K1 Validation
 
 真实 K1 validation 仍需等明天机器测试完成：
