@@ -85,3 +85,10 @@ Evidence kind examples:
 | E-P11-CITATION | `paper/tables/citation_audit_table.md` | audit_table | yes | 16-row citation audit table covering all matrix entries. | P11-A4 |
 | E-P11-PRIORITY | `paper/tables/revision_priority_table.md` | audit_table | yes | 12-row revision priority table with blocking assessment and next-step owner. | P11-A2 |
 | E-P11-SUMMARY | `outputs/research_foundation/p11_full_manuscript_audit_summary.json` | metadata | yes | Machine-readable P11 summary. | P11-A1 |
+
+| E-P12-ASSEMBLY | `paper/manuscript/manuscript_v1_assembly.md` | manuscript_assembly | yes | Revised manuscript v1 assembly with Abstract through Conclusion, evidence gaps, and revision notes. | P12-R2 |
+| E-P12-CHANGELOG | `paper/manuscript/manuscript_v1_revision_changelog.md` | revision_artifact | yes | P12 revision changelog tracking 5 resolved and 3 deferred P11 issues. | P12-R1 |
+| E-P12-CONSISTENCY | `paper/manuscript/manuscript_v1_consistency_check.md` | audit | yes | Post-revision consistency check confirming all boundaries preserved. | P12-R3 |
+| E-P12-AUDIT | `paper/claims/p12_revision_claim_audit.md` | claim_governance | yes | P12 revision claim audit verifying no new overclaims. | P12-R1; P12-NC1; P12-NC2 |
+| E-P12-RESOLVED | `paper/tables/p12_resolved_and_deferred_issues_table.md` | revision_table | yes | 13-row resolved/deferred issues table. | P12-R1 |
+| E-P12-SUMMARY | `outputs/research_foundation/p12_manuscript_revision_summary.json` | metadata | yes | Machine-readable P12 summary. | P12-R1 |

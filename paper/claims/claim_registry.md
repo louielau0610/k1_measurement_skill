@@ -113,3 +113,9 @@ Claim type options:
 | P11-A4 | All 8 cited keys in .bib; 8 matrix-only entries documented as missing. | supported_by_literature | `paper/tables/citation_audit_table.md` | citation audit artifact | high | no | No rejected/unverified sources cited. |
 | P11-NC1 | P11 establishes submission readiness. | non_claim | none | none | none | no | submission_readiness=not_submission_ready. |
 | P11-NC2 | P11 writes new manuscript sections. | non_claim | none | none | none | no | new_manuscript_sections_written=false. |
+
+| P12-R1 | P12 resolves 5/8 Codex-editable P11 issues: stale references, path verification, heading consistency, figure notes. | supported_structural_claim | `paper/manuscript/manuscript_v1_revision_changelog.md` | revision artifact | high | no | All claim boundaries preserved. |
+| P12-R2 | P12 creates manuscript v1 assembly with Abstract through Conclusion, evidence gaps, and revision notes. | supported_structural_claim | `paper/manuscript/manuscript_v1_assembly.md` | manuscript assembly artifact | medium | no | Not submission ready. |
+| P12-R3 | P12 post-revision consistency check confirms all terminology, claims, citations, and numbers remain consistent. | supported_structural_claim | `paper/manuscript/manuscript_v1_consistency_check.md` | consistency artifact | high | no | revision_v1_complete. |
+| P12-NC1 | P12 establishes submission readiness. | non_claim | none | none | none | no | submission_readiness=not_submission_ready. |
+| P12-NC2 | P12 adds new scientific results or sections. | non_claim | none | none | none | no | new_scientific_results_added=false. |

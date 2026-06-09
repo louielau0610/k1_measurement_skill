@@ -51,3 +51,7 @@ P10 creates an academic Abstract draft v1 (193 words primary) with short and ext
 ## P11 Full Manuscript Claim Audit
 
 P11 performs a comprehensive full-manuscript claim audit and creates a prioritized revision plan. P11 audits 19 claims, 12 numeric items, 16 citation keys. 0 blocking issues found. Submission readiness: not_submission_ready. P11 does not write new manuscript sections and does not claim publication readiness.
+
+## P12 Manuscript Revision v1
+
+P12 creates manuscript v1 assembly, revision changelog, consistency check, and resolves 5/8 Codex-editable P11 audit issues. P12 does not add new scientific results and does not claim publication readiness.

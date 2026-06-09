@@ -90,3 +90,9 @@ The project must not state these as established claims:
 - P11 does not prove navigation safety improvement.
 - P11 revision plan is not completed revision.
 - P11 does not claim publication readiness.
+- P12 creates a manuscript revision v1. P12 does not make the paper submission-ready.
+- P12 does not add new scientific results.
+- P12 does not establish final novelty.
+- P12 does not establish performance superiority.
+- P12 does not prove navigation safety improvement.
+- P12 experiment-required gaps remain unresolved.

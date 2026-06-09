@@ -238,3 +238,12 @@ Readiness flags remain:
 - `compensation_ready=false`
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
+
+## P12 Manuscript Revision v1
+
+P12 creates manuscript v1 assembly, revision changelog, post-revision consistency check, and resolves 5/8 Codex-editable P11 audit issues. P12 does not add new scientific results, does not claim publication readiness, and preserves all evidence gaps.
+
+Readiness flags remain:
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`
