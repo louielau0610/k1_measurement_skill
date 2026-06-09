@@ -54,3 +54,9 @@ Evidence kind examples:
 | E-P6-METRICS-TABLE | `paper/tables/experiment_metrics_status_table.md` | experiment_table | yes | 26-row metrics status table with available/unavailable indicators. | P6-E5 |
 | E-P6-EQ-MAP | `paper/tables/evaluation_question_artifact_map.md` | experiment_table | yes | 5-row EQ-to-artifact mapping with current results and interpretation limits. | P6-E1 |
 | E-P6-SUMMARY | `outputs/research_foundation/p6_experiments_draft_summary.json` | metadata | yes | Machine-readable P6 summary with conservative flags. | P6-E1 |
+
+| E-P7-DRAFT | `paper/manuscript/sections/05_discussion_limitations_draft_v1.md` | manuscript_draft | yes | Academic Discussion/Limitations draft with 14 subsections. | P7-D1 |
+| E-P7-CLAIM-MAP | `paper/claims/p7_discussion_claim_map.md` | claim_governance | yes | Maps 17 discussion statements to artifacts and evidence status. | P7-D1 |
+| E-P7-AUDIT | `paper/claims/p7_discussion_claim_audit.md` | claim_governance | yes | P7-specific claim audit with limitation completeness and future-work audits. | P7-D1; P7-NC1; P7-NC2; P7-NC3 |
+| E-P7-UPGRADE | `paper/tables/claim_upgrade_requirements_table.md` | method_table | yes | 14-row claim-upgrade requirements table. | P7-D3 |
+| E-P7-SUMMARY | `outputs/research_foundation/p7_discussion_limitations_summary.json` | metadata | yes | Machine-readable P7 summary. | P7-D1 |

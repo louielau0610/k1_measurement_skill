@@ -189,3 +189,13 @@ Readiness flags remain:
 - `compensation_ready=false`
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
+
+## P7 Discussion and Limitations Draft v1
+
+P7 creates an academic Discussion and Limitations draft v1 interpreting the pipeline, its limitations, and future work. P7 adds a claim-upgrade requirements table documenting evidence needed for each claim type. P7 does not implement engineering functionality, does not write a final conclusion, and does not claim final novelty or publication readiness.
+
+Readiness flags remain:
+
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`

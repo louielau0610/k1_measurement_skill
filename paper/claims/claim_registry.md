@@ -80,3 +80,10 @@ Claim type options:
 | P6-NC1 | P6 establishes navigation safety improvement. | non_claim | none | none | none | no | No navigation outcome data exists. |
 | P6-NC2 | P6 establishes performance superiority over baselines. | non_claim | none | none | none | no | Baselines not evaluated on held-out data. |
 | P6-NC3 | P6 establishes calibrated uncertainty. | non_claim | none | none | none | no | Labels are categorical, not calibrated. |
+
+| P7-D1 | P7 creates an academic Discussion and Limitations draft v1 with 5 discussion subsections, 5 limitation subsections, and 4 future-work subsections. | supported_structural_claim | `paper/manuscript/sections/05_discussion_limitations_draft_v1.md` | manuscript draft artifact | medium | no | Draft only; not final conclusion. |
+| P7-D2 | Deployment-layer response modeling differs from policy training, adaptation, and compensation. | candidate_interpretation | TanRSS2018, HwangboSciRobot2019, KumarRMA2021, MargolisRSS2022 | P1-P2 lit + P3-P5 drafts | low | no | Requires more system-ID literature. |
+| P7-D3 | Claim-upgrade requirements table documents evidence needed to upgrade each claim type. | supported_structural_claim | `paper/tables/claim_upgrade_requirements_table.md` | method table | medium | no | Structural documentation of upgrade paths. |
+| P7-NC1 | P7 establishes final novelty. | non_claim | none | none | none | no | Discussion explicitly avoids novelty language. |
+| P7-NC2 | P7 writes a final conclusion. | non_claim | none | none | none | no | §8 states "not a final conclusion." |
+| P7-NC3 | P7 establishes navigation safety improvement. | non_claim | none | none | none | no | No navigation outcome data exists. |

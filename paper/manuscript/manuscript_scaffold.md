@@ -53,23 +53,23 @@ No abstract has been written. The Introduction draft (§1) is not a substitute f
 - Metrics status table at: `paper/tables/experiment_metrics_status_table.md`.
 - Evaluation question artifact map at: `paper/tables/evaluation_question_artifact_map.md`.
 - P6 draft covers 5 evaluation questions, structural validation, and missing performance evidence. No navigation safety claims.
-## 5. Discussion - planned content only
 
-- Discuss what artifact governance enables銆?
-- Discuss sparse evidence limits銆?
-- Discuss why candidate contributions remain tentative銆?
-- Do not claim final novelty銆?
+## 5. Discussion
 
-## 6. Limitations - planned content only
+- Draft v1 exists at: `paper/manuscript/sections/05_discussion_limitations_draft_v1.md`.
+- Covers pipeline interpretation, deployment-layer positioning, uncertainty labels, risk mapping, and claim governance (§5.1-5.5).
+- No final conclusion written.
 
-- sparse dataset銆?
-- single robot銆?
-- single environment/session銆?
-- odometer-primary evidence銆?
-- no calibrated uncertainty銆?
-- no navigation outcome metrics銆?
-- no compensation or safe adapter銆?
+## 6. Limitations
 
+- Included in: `paper/manuscript/sections/05_discussion_limitations_draft_v1.md` §6.1-6.5.
+- Covers dataset, model, risk-mapping, system/scope, and generalization limitations.
+
+## 7. Future Work
+
+- Included in: `paper/manuscript/sections/05_discussion_limitations_draft_v1.md` §7.1-7.4.
+- Covers experimental expansion, navigation outcome evaluation, calibrated uncertainty, and command adaptation.
+- Claim-upgrade requirements table at: `paper/tables/claim_upgrade_requirements_table.md`.
 ## 7. Conclusion - planned content only
 
 - Summarize structural pipeline only銆?

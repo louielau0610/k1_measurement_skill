@@ -60,3 +60,11 @@ The project must not state these as established claims:
 - P6 exact-source reconstruction is a sanity check, not predictive-performance evidence.
 - P6 risk-map warnings are advisory classifications, not real navigation outcomes.
 - P6 baseline hooks are not evaluated for superiority.
+- P7 creates a Discussion draft. P7 does not establish final novelty.
+- P7 does not establish performance superiority.
+- P7 does not prove navigation safety improvement.
+- P7 does not establish collision reduction.
+- P7 does not establish generalization.
+- P7 does not make safe command adapter ready.
+- P7 future work statements are not implemented results.
+- P7 does not write a final conclusion.

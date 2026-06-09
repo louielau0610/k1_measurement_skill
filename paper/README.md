@@ -31,3 +31,7 @@ P5 creates an academic Method draft v1 from M13-M18 artifacts with formal notati
 ## P6 Experiments and Evaluation Draft v1
 
 P6 creates an academic Experiments/Evaluation draft v1 reporting structural evaluation only: dataset evidence, model sanity checks, risk-map assessment, and claim-governed evaluation. P6 does not claim navigation performance or safety improvement.
+
+## P7 Discussion and Limitations Draft v1
+
+P7 creates an academic Discussion and Limitations draft v1 interpreting the pipeline, its limitations, and future work. P7 adds a claim-upgrade requirements table. P7 does not write a final conclusion or claim navigation performance.
