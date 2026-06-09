@@ -68,3 +68,9 @@ The project must not state these as established claims:
 - P7 does not make safe command adapter ready.
 - P7 future work statements are not implemented results.
 - P7 does not write a final conclusion.
+- P8 manuscript assembly does not mean submission readiness.
+- P8 does not establish final novelty.
+- P8 does not establish performance superiority.
+- P8 does not prove navigation safety improvement.
+- P8 abstract and conclusion are intentionally not finalized.
+- P8 does not claim publication readiness.

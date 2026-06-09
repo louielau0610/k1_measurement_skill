@@ -70,41 +70,10 @@ No abstract has been written. The Introduction draft (§1) is not a substitute f
 - Included in: `paper/manuscript/sections/05_discussion_limitations_draft_v1.md` §7.1-7.4.
 - Covers experimental expansion, navigation outcome evaluation, calibrated uncertainty, and command adaptation.
 - Claim-upgrade requirements table at: `paper/tables/claim_upgrade_requirements_table.md`.
-## 7. Conclusion - planned content only
 
-- Summarize structural pipeline only銆?
-- State future evidence requirements銆?
-- Do not write final conclusion prose銆?
+## 7. Conclusion
 
-## Figures planned
-
-- Method pipeline figure銆?
-- Evidence chain / claim-governance figure銆?
-- Future possible dataset/model/risk flow figure after figure-generation milestone銆?
-
-## Tables planned
-
-- Method artifact evidence table銆?
-- Current metrics and missing evidence table銆?
-- Claim audit table銆?
-- Literature positioning table銆?
-
-## Claims allowed now
-
-- Offline artifact-governed pipeline exists銆?
-- Dataset/model/risk-map artifacts exist銆?
-- Current evidence supports structural/software validation銆?
-- Candidate contributions are documented but tentative銆?
-
-## Claims not allowed now
-
-- final novelty銆?
-- performance superiority銆?
-- navigation safety improvement銆?
-- collision reduction銆?
-- near-miss reduction銆?
-- success-rate improvement銆?
-- compensation readiness銆?
-- safe command adapter readiness銆?
-- publication readiness銆?
-
+- Placeholder only — not yet written. Planned in P9.
+- Full manuscript assembly v0 exists at: `paper/manuscript/manuscript_v0_assembly.md`.
+- Consistency audit at: `paper/manuscript/manuscript_v0_consistency_audit.md`.
+- Section status table at: `paper/tables/manuscript_section_status_table.md`.

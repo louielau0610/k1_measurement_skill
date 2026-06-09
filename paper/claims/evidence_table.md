@@ -60,3 +60,10 @@ Evidence kind examples:
 | E-P7-AUDIT | `paper/claims/p7_discussion_claim_audit.md` | claim_governance | yes | P7-specific claim audit with limitation completeness and future-work audits. | P7-D1; P7-NC1; P7-NC2; P7-NC3 |
 | E-P7-UPGRADE | `paper/tables/claim_upgrade_requirements_table.md` | method_table | yes | 14-row claim-upgrade requirements table. | P7-D3 |
 | E-P7-SUMMARY | `outputs/research_foundation/p7_discussion_limitations_summary.json` | metadata | yes | Machine-readable P7 summary. | P7-D1 |
+
+| E-P8-ASSEMBLY | `paper/manuscript/manuscript_v0_assembly.md` | manuscript_assembly | yes | Assembled manuscript v0 with all section drafts, placeholder abstract/conclusion, and claim boundaries. | P8-A1; P8-A4 |
+| E-P8-CONSISTENCY | `paper/manuscript/manuscript_v0_consistency_audit.md` | audit | yes | Cross-section consistency audit with terminology, contribution, claim, citation, figure/table, and flow checks. | P8-A2 |
+| E-P8-CLAIM-AUDIT | `paper/claims/p8_manuscript_claim_audit.md` | claim_governance | yes | Manuscript-level claim audit confirming no prohibited claims and abstract/conclusion boundaries. | P8-A3; P8-NC1; P8-NC2 |
+| E-P8-SECTION-TABLE | `paper/tables/manuscript_section_status_table.md` | manuscript_table | yes | 13-row section status table with current status, evidence sources, and next actions. | P8-A1 |
+| E-P8-TERM-TABLE | `paper/tables/terminology_consistency_table.md` | manuscript_table | yes | 10-row terminology consistency table with preferred terms, variants, and definitions. | P8-A1 |
+| E-P8-SUMMARY | `outputs/research_foundation/p8_manuscript_assembly_summary.json` | metadata | yes | Machine-readable P8 summary. | P8-A1 |

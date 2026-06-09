@@ -87,3 +87,10 @@ Claim type options:
 | P7-NC1 | P7 establishes final novelty. | non_claim | none | none | none | no | Discussion explicitly avoids novelty language. |
 | P7-NC2 | P7 writes a final conclusion. | non_claim | none | none | none | no | §8 states "not a final conclusion." |
 | P7-NC3 | P7 establishes navigation safety improvement. | non_claim | none | none | none | no | No navigation outcome data exists. |
+
+| P8-A1 | P8 assembles a manuscript v0 from P3-P7 section drafts with consistent heading numbering. | supported_structural_claim | `paper/manuscript/manuscript_v0_assembly.md` | manuscript assembly artifact | medium | no | Assembly only; not submission ready. |
+| P8-A2 | P8 creates a cross-section consistency audit identifying 8 issues (0 blocking, 3 high evidence gaps, 3 medium). | supported_structural_claim | `paper/manuscript/manuscript_v0_consistency_audit.md` | audit artifact | medium | no | Evidence gaps correctly documented. |
+| P8-A3 | P8 creates manuscript-level claim audit confirming no prohibited claims in any section. | supported_structural_claim | `paper/claims/p8_manuscript_claim_audit.md` | claim audit artifact | high | no | All sections maintain conservative boundary. |
+| P8-A4 | Abstract and Conclusion are intentionally placeholder-only. | supported_structural_claim | manuscript assembly | assembly artifact | high | no | Satisfies P8 non-goals. |
+| P8-NC1 | P8 establishes submission readiness. | non_claim | none | none | none | no | Explicitly marked "not submission ready." |
+| P8-NC2 | P8 writes a final abstract or conclusion. | non_claim | none | none | none | no | Both are placeholder-only. |

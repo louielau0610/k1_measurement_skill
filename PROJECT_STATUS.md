@@ -199,3 +199,13 @@ Readiness flags remain:
 - `compensation_ready=false`
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
+
+## P8 Manuscript Assembly v0
+
+P8 assembles all P3-P7 section drafts into a manuscript v0, performs a cross-section consistency audit, and creates manuscript-level claim audit and status tables. P8 does not implement engineering functionality, does not write final abstract or conclusion, and does not claim publication readiness.
+
+Readiness flags remain:
+
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`

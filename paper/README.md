@@ -35,3 +35,7 @@ P6 creates an academic Experiments/Evaluation draft v1 reporting structural eval
 ## P7 Discussion and Limitations Draft v1
 
 P7 creates an academic Discussion and Limitations draft v1 interpreting the pipeline, its limitations, and future work. P7 adds a claim-upgrade requirements table. P7 does not write a final conclusion or claim navigation performance.
+
+## P8 Manuscript Assembly v0
+
+P8 assembles all P3-P7 section drafts into a manuscript v0 and performs a cross-section consistency audit. P8 identifies remaining gaps and recommended next milestones. P8 does not write final abstract or conclusion, and does not claim publication readiness.
