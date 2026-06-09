@@ -108,3 +108,7 @@ The project must not state these as established claims:
 - M19.1 evidence-gap figure does not resolve evidence gaps.
 - M19.1 table/caption packs do not establish performance superiority.
 - M19.1 integration assets do not make the manuscript submission-ready.
+- P14 manuscript v2 polish does not make the paper submission-ready.
+- P14 figure/table integration does not add new scientific evidence.
+- P14 does not establish final novelty or performance superiority.
+- P14 evidence gaps remain unresolved.

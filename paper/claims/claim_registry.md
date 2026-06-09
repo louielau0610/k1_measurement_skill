@@ -131,3 +131,7 @@ Claim type options:
 
 | M19.1-I1 | M19.1 completes figure/table caption packs, table packs, evidence-gap figure, integration plan, and figure/table claim audit. | supported_structural_claim | 8 new asset files | presentation asset | medium | no | No new scientific claims. |
 | M19.1-NC1 | M19.1 establishes publication readiness. | non_claim | none | none | none | no | submission_readiness unchanged. |
+
+| P14-V1 | P14 creates polished manuscript v2 assembly with integrated figure/table references and main/appendix asset separation. | supported_structural_claim | `paper/manuscript/manuscript_v2_assembly.md` | manuscript assembly artifact | medium | no | Not submission ready. |
+| P14-V2 | P14 creates main-paper and appendix asset plans (5 main + 13 appendix) with consistent cross-references. | supported_structural_claim | `paper/tables/p14_main_paper_asset_plan.md` | asset plan artifact | low | no | All captions claim-safe. |
+| P14-NC1 | P14 establishes submission readiness. | non_claim | none | none | none | no | submission_readiness=not_submission_ready. |

@@ -110,3 +110,11 @@ Evidence kind examples:
 | E-M19.1-PLAN | `paper/manuscript/figure_table_integration_plan_v1.md` | integration_plan | yes | Integration plan with insertion points and rendering instructions. | M19.1-I1 |
 | E-M19.1-AUDIT | `paper/claims/m19_1_figure_table_claim_audit.md` | claim_governance | yes | Figure/table claim audit confirming 0 caption violations. | M19.1-I1 |
 | E-M19.1-SUMMARY | `outputs/research_foundation/m19_1_figure_table_completion_summary.json` | metadata | yes | Machine-readable M19.1 summary. | M19.1-I1 |
+
+| E-P14-V2 | `paper/manuscript/manuscript_v2_assembly.md` | manuscript_assembly | yes | Polished manuscript v2 with integrated figure/table references. | P14-V1 |
+| E-P14-REPORT | `paper/manuscript/manuscript_v2_polish_report.md` | revision_report | yes | Polish report: 7 integration changes, claim-boundary preservation confirmed. | P14-V1 |
+| E-P14-CONSISTENCY | `paper/manuscript/manuscript_v2_consistency_check.md` | audit | yes | V2 consistency check: all 5 assets cross-referenced consistently. | P14-V1 |
+| E-P14-AUDIT | `paper/claims/p14_manuscript_v2_claim_audit.md` | claim_governance | yes | V2 claim audit: 0 claim changes, 0 overclaims. | P14-V1; P14-NC1 |
+| E-P14-MAIN-ASSETS | `paper/tables/p14_main_paper_asset_plan.md` | asset_plan | yes | 5 main-paper asset plan with source/caption/claim-boundary mappings. | P14-V2 |
+| E-P14-APP-ASSETS | `paper/tables/p14_appendix_asset_plan.md` | asset_plan | yes | 13 appendix/internal asset plan. | P14-V2 |
+| E-P14-SUMMARY | `outputs/research_foundation/p14_manuscript_v2_polish_summary.json` | metadata | yes | Machine-readable P14 summary. | P14-V1 |

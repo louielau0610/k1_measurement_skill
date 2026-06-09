@@ -274,3 +274,12 @@ Readiness flags remain:
 - `compensation_ready=false`
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
+
+## P14 Manuscript v2 Polish
+
+P14 creates polished manuscript v2 assembly with integrated figure/table references, main/appendix asset separation, and cross-referenced caption packs. P14 does not add new experimental evidence, does not claim publication readiness, and preserves all evidence gaps.
+
+Readiness flags remain:
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`

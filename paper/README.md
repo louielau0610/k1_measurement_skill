@@ -67,3 +67,7 @@ M19 generates Mermaid figure sources (.mmd) for the method pipeline and evidence
 ## M19.1 Figure/Table Caption and Integration Assets
 
 M19.1 completes missing figure/table caption packs, table packs (main + appendix), evidence-gap figure spec, integration plan, and figure/table claim audit. M19.1 does not add new experimental evidence and does not claim publication readiness.
+
+## P14 Manuscript v2 Polish
+
+P14 creates polished manuscript v2 assembly integrating M19/M19.1 figure/table assets with proper placement, captions, and appendix separation. P14 does not add new experimental evidence and does not claim publication readiness.
