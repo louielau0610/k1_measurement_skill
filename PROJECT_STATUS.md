@@ -83,6 +83,16 @@ Readiness flags remain:
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
 
+## M16 Navigation-Aware Risk Mapping
+
+M16 implements offline navigation-aware reliability and risk mapping from M15R predictions. It does not implement real navigation control and does not prove navigation performance improvement.
+
+Readiness flags remain:
+
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`
+
 ## Pending Real K1 Validation
 
 真实 K1 validation 仍需等明天机器测试完成：

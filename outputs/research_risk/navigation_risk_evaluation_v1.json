@@ -1,0 +1,60 @@
+{
+  "risk_map_name": "navigation_reliability_risk_mapper_v1",
+  "predictions_path": "outputs/research_models/response_model_predictions_v1.json",
+  "assessments_count": 5,
+  "warnings_count": 5,
+  "risk_level_counts": {
+    "critical": 1,
+    "high": 2,
+    "medium": 2
+  },
+  "warning_category_counts": {
+    "deadzone_or_no_motion": 1,
+    "high_uncertainty": 2,
+    "under_tracking": 1,
+    "weak_tracking": 1
+  },
+  "limitations": [
+    "structural readiness evaluation only",
+    "no real navigation outcomes exist yet",
+    "no collision, near-miss, or success-rate metrics exist yet",
+    "uncertainty labels are not calibrated probabilities"
+  ],
+  "metrics": {
+    "available_metrics": [
+      "assessments_count",
+      "warnings_count",
+      "risk_level_counts",
+      "warning_category_counts"
+    ],
+    "unavailable_metrics": [
+      "collision_rate",
+      "near_miss_rate",
+      "navigation_success_rate",
+      "real_world_safety_improvement"
+    ],
+    "no_real_navigation_outcomes": true,
+    "fabricated_navigation_outcomes": false,
+    "no_safety_improvement_claim": true
+  },
+  "available_metrics": [
+    "assessments_count",
+    "warnings_count",
+    "risk_level_counts",
+    "warning_category_counts"
+  ],
+  "unavailable_metrics": [
+    "collision_rate",
+    "near_miss_rate",
+    "navigation_success_rate",
+    "real_world_safety_improvement"
+  ],
+  "m17_readiness": {
+    "can_evaluate_warning_distribution": true,
+    "requires_real_navigation_trials_for_outcome_metrics": true,
+    "must_not_claim_navigation_safety_improvement": true
+  },
+  "no_real_navigation_outcomes": true,
+  "fabricated_navigation_outcomes": false,
+  "no_safety_improvement_claim": true
+}

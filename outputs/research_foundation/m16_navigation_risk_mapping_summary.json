@@ -1,0 +1,47 @@
+{
+  "milestone": "M16",
+  "chapter": "Navigation-aware reliability and risk mapping",
+  "created_files": [
+    "k1_measurement/navigation_risk_mapping.py",
+    "scripts/run_navigation_risk_mapping_v1.py",
+    "docs/m16_navigation_aware_risk_mapping.md",
+    "outputs/research_risk/navigation_risk_map_v1.json",
+    "outputs/research_risk/navigation_risk_evaluation_v1.json",
+    "outputs/research_foundation/m16_navigation_risk_mapping_summary.json",
+    "tests/test_navigation_risk_mapping.py"
+  ],
+  "modified_files": [
+    "README.md",
+    "PROJECT_STATUS.md",
+    "TODO.md",
+    "paper/method/method_outline.md",
+    "paper/experiments/experiment_plan.md",
+    "paper/claims/claim_registry.md"
+  ],
+  "source_predictions_path": "outputs/research_models/response_model_predictions_v1.json",
+  "risk_map_output_path": "outputs/research_risk/navigation_risk_map_v1.json",
+  "risk_evaluation_output_path": "outputs/research_risk/navigation_risk_evaluation_v1.json",
+  "assessments_count": 5,
+  "warnings_count": 5,
+  "risk_levels_present": [
+    "critical",
+    "high",
+    "medium"
+  ],
+  "warning_categories_present": [
+    "deadzone_or_no_motion",
+    "high_uncertainty",
+    "under_tracking",
+    "weak_tracking"
+  ],
+  "fabricated_navigation_outcomes": false,
+  "compensation_logic_implemented": false,
+  "inverse_command_mapping_implemented": false,
+  "navigation_control_implemented": false,
+  "safe_command_adapter_implemented": false,
+  "ros2_commands_run": false,
+  "booster_sdk_movement_commands_run": false,
+  "real_robot_commands_run": false,
+  "battery_state_required": false,
+  "remote_controller_state_allowed": false
+}

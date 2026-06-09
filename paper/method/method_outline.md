@@ -22,6 +22,10 @@ Navigation-Aware Velocity Response Calibration for Closed-Source Legged Robots
   - uncertainty-aware hybrid response model
   - minimal baseline hooks for future comparison
   - uncertainty/confidence labels are not calibrated probabilities
+- M16 navigation-aware risk mapping:
+  - response prediction is mapped to tracking reliability
+  - tracking reliability is mapped to offline risk level
+  - advisory warning output is generated without navigation control
 
 ## Boundaries
 

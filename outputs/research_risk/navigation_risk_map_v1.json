@@ -1,0 +1,337 @@
+{
+  "risk_map_name": "navigation_reliability_risk_mapper_v1",
+  "source_predictions_path": "outputs/research_models/response_model_predictions_v1.json",
+  "source_model_name": "uncertainty_aware_hybrid_v1",
+  "assessments": [
+    {
+      "query_vx_cmd_mps": 0.1,
+      "model_name": "uncertainty_aware_hybrid_v1",
+      "prediction_type": "exact_qualitative_source",
+      "qualitative_response_label": "deadzone_or_ineffective_low_speed",
+      "predicted_vx_actual_mps": null,
+      "uncertainty_label": "high",
+      "confidence_label": "low",
+      "tracking_reliability_label": "unreliable",
+      "navigation_risk_level": "critical",
+      "warning_required": true,
+      "warning_category": "deadzone_or_no_motion",
+      "risk_reasons": [
+        "compensation is not an allowed downstream use",
+        "confidence label is low",
+        "qualitative response indicates deadzone or ineffective motion",
+        "safe command adapter execution is not an allowed downstream use",
+        "uncertainty label is high"
+      ],
+      "allowed_downstream_uses": [
+        "offline_analysis",
+        "research_evaluation",
+        "planner_warning_advisory",
+        "human_review"
+      ],
+      "disallowed_downstream_uses": [
+        "automatic_compensation",
+        "inverse_command_mapping",
+        "real_time_navigation_control",
+        "safe_command_adapter_execution",
+        "robot_motion_commanding"
+      ],
+      "source_record_ids": [
+        "measurement_v0_vx_0_1_smoke"
+      ],
+      "compensation_allowed": false,
+      "safe_command_adapter_allowed": false,
+      "navigation_warning_ready": true,
+      "limitations": [
+        "No numeric actual velocity is available for this command point.",
+        "absolute_odom_coordinates_should_not_be_compared_across_trials",
+        "missing_response_dimensions_not_fabricated",
+        "mostly_single_trial_per_speed",
+        "no real navigation outcomes are represented",
+        "no_compensation_or_safe_command_adapter_authority",
+        "no_compensation_readiness_inferred",
+        "no_safe_command_adapter_readiness_inferred",
+        "odometer_primary_no_external_ground_truth",
+        "offline advisory risk mapping only",
+        "single_environment_lab_hard_floor",
+        "single_session",
+        "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+        "vx_0_45_yaw_drift_requires_repeat"
+      ],
+      "metadata": {
+        "risk_map_name": "navigation_reliability_risk_mapper_v1",
+        "source_prediction_metadata": {
+          "source_confidence_label": "qualitative_only_no_numeric_velocity"
+        }
+      }
+    },
+    {
+      "query_vx_cmd_mps": 0.3,
+      "model_name": "uncertainty_aware_hybrid_v1",
+      "prediction_type": "exact_numeric_source",
+      "qualitative_response_label": "first_effective_but_weak_response",
+      "predicted_vx_actual_mps": 0.144272,
+      "uncertainty_label": "medium",
+      "confidence_label": "low",
+      "tracking_reliability_label": "weak",
+      "navigation_risk_level": "high",
+      "warning_required": true,
+      "warning_category": "weak_tracking",
+      "risk_reasons": [
+        "compensation is not an allowed downstream use",
+        "confidence label is low",
+        "qualitative response indicates weak tracking",
+        "safe command adapter execution is not an allowed downstream use"
+      ],
+      "allowed_downstream_uses": [
+        "offline_analysis",
+        "research_evaluation",
+        "planner_warning_advisory",
+        "human_review"
+      ],
+      "disallowed_downstream_uses": [
+        "automatic_compensation",
+        "inverse_command_mapping",
+        "real_time_navigation_control",
+        "safe_command_adapter_execution",
+        "robot_motion_commanding"
+      ],
+      "source_record_ids": [
+        "measurement_v0_vx_0_3_transition"
+      ],
+      "compensation_allowed": false,
+      "safe_command_adapter_allowed": false,
+      "navigation_warning_ready": true,
+      "limitations": [
+        "Exact source reconstruction is a structural sanity check, not performance evidence.",
+        "absolute_odom_coordinates_should_not_be_compared_across_trials",
+        "missing_response_dimensions_not_fabricated",
+        "mostly_single_trial_per_speed",
+        "no real navigation outcomes are represented",
+        "no_compensation_or_safe_command_adapter_authority",
+        "no_compensation_readiness_inferred",
+        "no_safe_command_adapter_readiness_inferred",
+        "odometer_primary_no_external_ground_truth",
+        "offline advisory risk mapping only",
+        "single_environment_lab_hard_floor",
+        "single_session",
+        "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+        "vx_0_45_yaw_drift_requires_repeat"
+      ],
+      "metadata": {
+        "risk_map_name": "navigation_reliability_risk_mapper_v1",
+        "source_prediction_metadata": {
+          "source_confidence_label": "single_session_single_trial_low_confidence"
+        }
+      }
+    },
+    {
+      "query_vx_cmd_mps": 0.4,
+      "model_name": "uncertainty_aware_hybrid_v1",
+      "prediction_type": "exact_numeric_source",
+      "qualitative_response_label": "effective_but_under_tracking",
+      "predicted_vx_actual_mps": 0.274004,
+      "uncertainty_label": "medium",
+      "confidence_label": "low",
+      "tracking_reliability_label": "limited",
+      "navigation_risk_level": "high",
+      "warning_required": true,
+      "warning_category": "under_tracking",
+      "risk_reasons": [
+        "compensation is not an allowed downstream use",
+        "confidence label is low",
+        "qualitative response indicates under-tracking",
+        "safe command adapter execution is not an allowed downstream use"
+      ],
+      "allowed_downstream_uses": [
+        "offline_analysis",
+        "research_evaluation",
+        "planner_warning_advisory",
+        "human_review"
+      ],
+      "disallowed_downstream_uses": [
+        "automatic_compensation",
+        "inverse_command_mapping",
+        "real_time_navigation_control",
+        "safe_command_adapter_execution",
+        "robot_motion_commanding"
+      ],
+      "source_record_ids": [
+        "measurement_v0_vx_0_4_effective"
+      ],
+      "compensation_allowed": false,
+      "safe_command_adapter_allowed": false,
+      "navigation_warning_ready": true,
+      "limitations": [
+        "Exact source reconstruction is a structural sanity check, not performance evidence.",
+        "absolute_odom_coordinates_should_not_be_compared_across_trials",
+        "missing_response_dimensions_not_fabricated",
+        "mostly_single_trial_per_speed",
+        "no real navigation outcomes are represented",
+        "no_compensation_or_safe_command_adapter_authority",
+        "no_compensation_readiness_inferred",
+        "no_safe_command_adapter_readiness_inferred",
+        "odometer_primary_no_external_ground_truth",
+        "offline advisory risk mapping only",
+        "single_environment_lab_hard_floor",
+        "single_session",
+        "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+        "vx_0_45_yaw_drift_requires_repeat"
+      ],
+      "metadata": {
+        "risk_map_name": "navigation_reliability_risk_mapper_v1",
+        "source_prediction_metadata": {
+          "source_confidence_label": "single_session_single_trial_low_confidence"
+        }
+      }
+    },
+    {
+      "query_vx_cmd_mps": 0.45,
+      "model_name": "uncertainty_aware_hybrid_v1",
+      "prediction_type": "exact_numeric_source",
+      "qualitative_response_label": "near_stable_tracking_but_yaw_drift_needs_repeat",
+      "predicted_vx_actual_mps": 0.419672,
+      "uncertainty_label": "medium",
+      "confidence_label": "medium",
+      "tracking_reliability_label": "limited",
+      "navigation_risk_level": "medium",
+      "warning_required": true,
+      "warning_category": "high_uncertainty",
+      "risk_reasons": [
+        "compensation is not an allowed downstream use",
+        "response needs repeat or further validation",
+        "safe command adapter execution is not an allowed downstream use"
+      ],
+      "allowed_downstream_uses": [
+        "offline_analysis",
+        "research_evaluation",
+        "planner_warning_advisory",
+        "human_review"
+      ],
+      "disallowed_downstream_uses": [
+        "automatic_compensation",
+        "inverse_command_mapping",
+        "real_time_navigation_control",
+        "safe_command_adapter_execution",
+        "robot_motion_commanding"
+      ],
+      "source_record_ids": [
+        "measurement_v0_vx_0_45_transition_upper"
+      ],
+      "compensation_allowed": false,
+      "safe_command_adapter_allowed": false,
+      "navigation_warning_ready": true,
+      "limitations": [
+        "Exact source reconstruction is a structural sanity check, not performance evidence.",
+        "absolute_odom_coordinates_should_not_be_compared_across_trials",
+        "missing_response_dimensions_not_fabricated",
+        "mostly_single_trial_per_speed",
+        "no real navigation outcomes are represented",
+        "no_compensation_or_safe_command_adapter_authority",
+        "no_compensation_readiness_inferred",
+        "no_safe_command_adapter_readiness_inferred",
+        "odometer_primary_no_external_ground_truth",
+        "offline advisory risk mapping only",
+        "single_environment_lab_hard_floor",
+        "single_session",
+        "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+        "vx_0_45_yaw_drift_requires_repeat"
+      ],
+      "metadata": {
+        "risk_map_name": "navigation_reliability_risk_mapper_v1",
+        "source_prediction_metadata": {
+          "source_confidence_label": "repeat_required"
+        }
+      }
+    },
+    {
+      "query_vx_cmd_mps": 0.5,
+      "model_name": "uncertainty_aware_hybrid_v1",
+      "prediction_type": "exact_numeric_source",
+      "qualitative_response_label": "stable_tracking",
+      "predicted_vx_actual_mps": 0.50197,
+      "uncertainty_label": "medium",
+      "confidence_label": "low",
+      "tracking_reliability_label": "reliable_reference",
+      "navigation_risk_level": "medium",
+      "warning_required": true,
+      "warning_category": "high_uncertainty",
+      "risk_reasons": [
+        "compensation is not an allowed downstream use",
+        "confidence label is low",
+        "safe command adapter execution is not an allowed downstream use",
+        "source label indicates stable reference under current dataset scope"
+      ],
+      "allowed_downstream_uses": [
+        "offline_analysis",
+        "research_evaluation",
+        "planner_warning_advisory",
+        "human_review"
+      ],
+      "disallowed_downstream_uses": [
+        "automatic_compensation",
+        "inverse_command_mapping",
+        "real_time_navigation_control",
+        "safe_command_adapter_execution",
+        "robot_motion_commanding"
+      ],
+      "source_record_ids": [
+        "measurement_v0_vx_0_5_stable"
+      ],
+      "compensation_allowed": false,
+      "safe_command_adapter_allowed": false,
+      "navigation_warning_ready": true,
+      "limitations": [
+        "Exact source reconstruction is a structural sanity check, not performance evidence.",
+        "absolute_odom_coordinates_should_not_be_compared_across_trials",
+        "missing_response_dimensions_not_fabricated",
+        "mostly_single_trial_per_speed",
+        "no real navigation outcomes are represented",
+        "no_compensation_or_safe_command_adapter_authority",
+        "no_compensation_readiness_inferred",
+        "no_safe_command_adapter_readiness_inferred",
+        "odometer_primary_no_external_ground_truth",
+        "offline advisory risk mapping only",
+        "single_environment_lab_hard_floor",
+        "single_session",
+        "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+        "vx_0_45_yaw_drift_requires_repeat"
+      ],
+      "metadata": {
+        "risk_map_name": "navigation_reliability_risk_mapper_v1",
+        "source_prediction_metadata": {
+          "source_confidence_label": "single_session_single_trial_low_confidence"
+        }
+      }
+    }
+  ],
+  "safety_readiness_flags": {
+    "compensation_ready": false,
+    "safe_command_adapter_ready": false,
+    "navigation_warning_ready": true
+  },
+  "allowed_downstream_uses": [
+    "offline_analysis",
+    "research_evaluation",
+    "planner_warning_advisory",
+    "human_review"
+  ],
+  "disallowed_downstream_uses": [
+    "automatic_compensation",
+    "inverse_command_mapping",
+    "real_time_navigation_control",
+    "safe_command_adapter_execution",
+    "robot_motion_commanding"
+  ],
+  "limitations": [
+    "offline advisory risk mapping only",
+    "no real navigation outcomes are represented",
+    "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+    "sparse single-robot dataset",
+    "missing yaw/lateral/delay/stop-distance metrics"
+  ],
+  "fabricated_navigation_outcomes": false,
+  "compensation_logic_implemented": false,
+  "inverse_command_mapping_implemented": false,
+  "navigation_control_implemented": false,
+  "safe_command_adapter_implemented": false
+}
