@@ -1,0 +1,46 @@
+{
+  "schema_version": "measurement_v0_closure_summary",
+  "date": "2026-06-09",
+  "project": "k1_measurement_skill",
+  "phase": "measurement_v0",
+  "status": {
+    "measurement_v0_complete": true,
+    "real_k1_profile_available": true,
+    "compensation_ready": false,
+    "navigation_warning_ready": true,
+    "safe_command_adapter_ready": false
+  },
+  "completed_capabilities": [
+    "real_k1_ros2_topic_discovery",
+    "read_only_topic_schema_validation",
+    "stationary_topic_stability_check",
+    "sdk_locomotion_command_path_validation",
+    "real_forward_velocity_field_test_record",
+    "offline_velocity_analysis",
+    "velocity_profile_contract"
+  ],
+  "out_of_scope": [
+    "low_speed_deadzone_elimination",
+    "gait_controller_tuning",
+    "velocity_compensation",
+    "navigation_control",
+    "safe_command_adapter",
+    "manual_controller_input_modeling"
+  ],
+  "core_artifacts": {
+    "field_test_record": "docs/real_k1_forward_velocity_field_test_v0.md",
+    "analysis_report": "reports/real_k1_forward_velocity_analysis_v0.md",
+    "velocity_profile_contract": "docs/real_k1_velocity_profile_contract_v0.md",
+    "velocity_profile_json": "outputs/real_k1_field_tests/real_k1_velocity_profile_v0.json",
+    "analysis_plot": "reports/real_k1_forward_velocity_curve_v0.png"
+  },
+  "handoff_recommendation": {
+    "next_step": "downstream_project_or_scope_freeze",
+    "do_not_continue_speed_testing_without_new_goal": true,
+    "recommended_downstream_projects": [
+      "k1_velocity_compensation_adapter",
+      "k1_navigation_safety_layer",
+      "k1_controller_tuning_if_deadzone_elimination_is_required"
+    ]
+  }
+}
