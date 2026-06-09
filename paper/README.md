@@ -39,3 +39,7 @@ P7 creates an academic Discussion and Limitations draft v1 interpreting the pipe
 ## P8 Manuscript Assembly v0
 
 P8 assembles all P3-P7 section drafts into a manuscript v0 and performs a cross-section consistency audit. P8 identifies remaining gaps and recommended next milestones. P8 does not write final abstract or conclusion, and does not claim publication readiness.
+
+## P9 Conclusion Draft v1
+
+P9 creates an academic Conclusion draft v1 completing the manuscript narrative. The conclusion is confident but bounded, summarizing the pipeline, current evidence, and future work without claiming novelty, performance superiority, or publication readiness.

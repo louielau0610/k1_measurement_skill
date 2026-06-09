@@ -209,3 +209,13 @@ Readiness flags remain:
 - `compensation_ready=false`
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
+
+## P9 Conclusion Draft v1
+
+P9 creates an academic Conclusion draft v1 completing the first complete manuscript narrative (except final abstract). P9 does not implement engineering functionality, does not write the abstract, and does not claim final novelty or publication readiness.
+
+Readiness flags remain:
+
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`

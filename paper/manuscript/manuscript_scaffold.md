@@ -71,9 +71,9 @@ No abstract has been written. The Introduction draft (§1) is not a substitute f
 - Covers experimental expansion, navigation outcome evaluation, calibrated uncertainty, and command adaptation.
 - Claim-upgrade requirements table at: `paper/tables/claim_upgrade_requirements_table.md`.
 
+
 ## 7. Conclusion
 
-- Placeholder only — not yet written. Planned in P9.
-- Full manuscript assembly v0 exists at: `paper/manuscript/manuscript_v0_assembly.md`.
-- Consistency audit at: `paper/manuscript/manuscript_v0_consistency_audit.md`.
-- Section status table at: `paper/tables/manuscript_section_status_table.md`.
+- Draft v1 exists at: `paper/manuscript/sections/06_conclusion_draft_v1.md`.
+- P9 draft is confident but bounded; no performance/safety claim.
+- Abstract remains placeholder only (planned in P10).

@@ -94,3 +94,9 @@ Claim type options:
 | P8-A4 | Abstract and Conclusion are intentionally placeholder-only. | supported_structural_claim | manuscript assembly | assembly artifact | high | no | Satisfies P8 non-goals. |
 | P8-NC1 | P8 establishes submission readiness. | non_claim | none | none | none | no | Explicitly marked "not submission ready." |
 | P8-NC2 | P8 writes a final abstract or conclusion. | non_claim | none | none | none | no | Both are placeholder-only. |
+
+| P9-C1 | P9 creates a confident but bounded Conclusion draft v1 completing the manuscript narrative. | supported_structural_claim | `paper/manuscript/sections/06_conclusion_draft_v1.md` | manuscript draft artifact | medium | no | Draft only; not final submission. |
+| P9-C2 | Conclusion summarizes pipeline, evaluation results, and future work within evidence boundaries. | supported_by_project_artifact | P6 eval + P5 method + P8 assembly | manuscript + project artifacts | high | no | All claims traceable to project artifacts. |
+| P9-NC1 | P9 establishes final novelty. | non_claim | none | none | none | no | Conclusion avoids "novel"/"first" language. |
+| P9-NC2 | P9 establishes performance superiority or safety improvement. | non_claim | none | none | none | no | No such claims made. |
+| P9-NC3 | P9 claims publication readiness. | non_claim | none | none | none | no | Abstract remains unwritten. |

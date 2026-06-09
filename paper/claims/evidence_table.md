@@ -67,3 +67,8 @@ Evidence kind examples:
 | E-P8-SECTION-TABLE | `paper/tables/manuscript_section_status_table.md` | manuscript_table | yes | 13-row section status table with current status, evidence sources, and next actions. | P8-A1 |
 | E-P8-TERM-TABLE | `paper/tables/terminology_consistency_table.md` | manuscript_table | yes | 10-row terminology consistency table with preferred terms, variants, and definitions. | P8-A1 |
 | E-P8-SUMMARY | `outputs/research_foundation/p8_manuscript_assembly_summary.json` | metadata | yes | Machine-readable P8 summary. | P8-A1 |
+
+| E-P9-CONCLUSION | `paper/manuscript/sections/06_conclusion_draft_v1.md` | manuscript_draft | yes | Academic Conclusion draft: 619 words, 6 paragraphs. | P9-C1; P9-C2 |
+| E-P9-CLAIM-MAP | `paper/claims/p9_conclusion_claim_map.md` | claim_governance | yes | Maps 9 conclusion statements to artifacts and evidence status. | P9-C1 |
+| E-P9-AUDIT | `paper/claims/p9_conclusion_claim_audit.md` | claim_governance | yes | P9 conclusion claim audit confirming confident but bounded tone. | P9-C1; P9-NC1; P9-NC2; P9-NC3 |
+| E-P9-SUMMARY | `outputs/research_foundation/p9_conclusion_summary.json` | metadata | yes | Machine-readable P9 summary. | P9-C1 |

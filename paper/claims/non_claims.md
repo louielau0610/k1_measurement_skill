@@ -74,3 +74,8 @@ The project must not state these as established claims:
 - P8 does not prove navigation safety improvement.
 - P8 abstract and conclusion are intentionally not finalized.
 - P8 does not claim publication readiness.
+- P9 creates a Conclusion draft. P9 does not establish final novelty.
+- P9 does not establish performance superiority.
+- P9 does not prove navigation safety improvement.
+- P9 does not claim publication readiness.
+- P9 does not write a final abstract.
