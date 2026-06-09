@@ -1,0 +1,174 @@
+{
+  "metadata": {
+    "schema_version": "real_k1_forward_velocity_field_test_v0",
+    "date": "2026-06-09",
+    "platform": "Booster Robotics K1",
+    "environment": {
+      "floor_type": "lab_hard_floor",
+      "condition": "dry"
+    },
+    "command_interface": {
+      "sdk": "booster_robotics_sdk_python",
+      "client": "B1LocoClient",
+      "network_interface": "lo"
+    },
+    "measurement_scope": {
+      "required_topics": {
+        "odometer": {
+          "topic": "/odometer_state",
+          "type": "booster_interface/msg/Odometer",
+          "fields": [
+            "x",
+            "y",
+            "theta"
+          ]
+        },
+        "imu": {
+          "topic": "/low_state",
+          "type": "booster_interface/msg/LowState",
+          "fields": [
+            "imu_state.rpy",
+            "imu_state.gyro",
+            "imu_state.acc"
+          ]
+        },
+        "robot_state": {
+          "topic": "/robot_states",
+          "type": "booster_interface/msg/RobotStatesMsg",
+          "fields": [
+            "current_mode",
+            "current_body_control",
+            "current_actions"
+          ]
+        },
+        "safety_state": {
+          "topic": "/fall_down",
+          "type": "booster_interface/msg/FallDownState",
+          "fields": [
+            "fall_down_state",
+            "is_recovery_available"
+          ]
+        }
+      },
+      "removed_or_optional": {
+        "battery_state": {
+          "status": "optional_future_only"
+        },
+        "remote_controller_state": {
+          "status": "permanently_removed",
+          "reason": "navigation-focused measurement excludes manual-control input"
+        }
+      }
+    }
+  },
+  "analyzed_trials": [
+    {
+      "trial_id": "vx_0_1_smoke",
+      "vx_cmd_mps": 0.1,
+      "duration_s": 2.0,
+      "movement_observed": "almost_none",
+      "interpretation": "deadzone_or_ineffective_low_speed",
+      "commanded_distance_m": 0.2,
+      "distance_error_m": null,
+      "relative_distance_error": null,
+      "abs_dtheta_rad": null,
+      "tracking_category": "ineffective_or_deadzone"
+    },
+    {
+      "trial_id": "vx_0_3_transition",
+      "vx_cmd_mps": 0.3,
+      "duration_s": 2.0,
+      "distance_m": 0.288544,
+      "v_actual_est_mps": 0.144272,
+      "speed_gain_est": 0.480907,
+      "dtheta_rad": 0.033154,
+      "fall_down_state_post": 0,
+      "human_observation": "weak movement, approximately 0.1 m",
+      "interpretation": "first_effective_but_weak_response",
+      "commanded_distance_m": 0.6,
+      "distance_error_m": -0.31145599999999996,
+      "relative_distance_error": -0.5190933333333333,
+      "abs_dtheta_rad": 0.033154,
+      "tracking_category": "weak_response"
+    },
+    {
+      "trial_id": "vx_0_4_effective",
+      "vx_cmd_mps": 0.4,
+      "duration_s": 2.0,
+      "distance_m": 0.548009,
+      "v_actual_est_mps": 0.274004,
+      "speed_gain_est": 0.685011,
+      "dtheta_rad": 0.006043,
+      "fall_down_state_post": 0,
+      "interpretation": "effective_but_under_tracking",
+      "commanded_distance_m": 0.8,
+      "distance_error_m": -0.2519910000000001,
+      "relative_distance_error": -0.3149887500000001,
+      "abs_dtheta_rad": 0.006043,
+      "tracking_category": "under_tracking"
+    },
+    {
+      "trial_id": "vx_0_5_stable",
+      "vx_cmd_mps": 0.5,
+      "duration_s": 2.0,
+      "distance_m": 1.00394,
+      "v_actual_est_mps": 0.50197,
+      "speed_gain_est": 1.00394,
+      "dtheta_rad": 0.005665,
+      "fall_down_state_post": 0,
+      "interpretation": "stable_tracking",
+      "commanded_distance_m": 1.0,
+      "distance_error_m": 0.003940000000000055,
+      "relative_distance_error": 0.003940000000000055,
+      "abs_dtheta_rad": 0.005665,
+      "tracking_category": "stable_tracking"
+    },
+    {
+      "trial_id": "vx_0_45_transition_upper",
+      "vx_cmd_mps": 0.45,
+      "duration_s": 2.0,
+      "distance_m": 0.839345,
+      "v_actual_est_mps": 0.419672,
+      "speed_gain_est": 0.932605,
+      "dtheta_rad": -0.094939,
+      "fall_down_state_post": 0,
+      "interpretation": "near_stable_tracking_but_yaw_drift_needs_repeat",
+      "commanded_distance_m": 0.9,
+      "distance_error_m": -0.060655000000000014,
+      "relative_distance_error": -0.06739444444444447,
+      "abs_dtheta_rad": 0.094939,
+      "tracking_category": "stable_tracking"
+    }
+  ],
+  "first_effective_command_speed_mps": 0.3,
+  "stable_tracking_region": "0.45_to_0.5",
+  "best_tracking_trial": {
+    "trial_id": "vx_0_5_stable",
+    "vx_cmd_mps": 0.5,
+    "speed_gain_est": 1.00394,
+    "abs_speed_gain_error": 0.003940000000000055
+  },
+  "highest_yaw_drift_trial": {
+    "trial_id": "vx_0_45_transition_upper",
+    "vx_cmd_mps": 0.45,
+    "dtheta_rad": -0.094939,
+    "abs_dtheta_rad": 0.094939
+  },
+  "modeling_recommendation": {
+    "global_gain_model_recommended": false,
+    "recommended_model": "piecewise_or_nonlinear_mapping",
+    "notes": [
+      "A single global proportional gain is not appropriate.",
+      "Use a piecewise or nonlinear mapping for low-speed transition behavior.",
+      "Commands below the observed effective threshold should be low-confidence or avoided in navigation."
+    ]
+  },
+  "limitations": [
+    "single_environment_lab_hard_floor",
+    "single_session",
+    "mostly_single_trial_per_speed",
+    "odometer_primary_no_external_ground_truth",
+    "absolute_odom_coordinates_should_not_be_compared_across_trials",
+    "vx_0_45_yaw_drift_requires_repeat"
+  ]
+}

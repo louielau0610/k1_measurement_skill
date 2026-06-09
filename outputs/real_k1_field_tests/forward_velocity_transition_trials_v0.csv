@@ -1,0 +1,6 @@
+trial_id,vx_cmd_mps,duration_s,commanded_distance_m,distance_m,v_actual_est_mps,speed_gain_est,distance_error_m,relative_distance_error,dtheta_rad,abs_dtheta_rad,fall_down_state_post,tracking_category,interpretation
+vx_0_1_smoke,0.1,2,0.2,,,,,,,,,ineffective_or_deadzone,deadzone_or_ineffective_low_speed
+vx_0_3_transition,0.3,2,0.6,0.288544,0.144272,0.480907,-0.311456,-0.519093,0.033154,0.033154,0,weak_response,first_effective_but_weak_response
+vx_0_4_effective,0.4,2,0.8,0.548009,0.274004,0.685011,-0.251991,-0.314989,0.006043,0.006043,0,under_tracking,effective_but_under_tracking
+vx_0_5_stable,0.5,2,1,1.00394,0.50197,1.00394,0.00394,0.00394,0.005665,0.005665,0,stable_tracking,stable_tracking
+vx_0_45_transition_upper,0.45,2,0.9,0.839345,0.419672,0.932605,-0.060655,-0.0673944,-0.094939,0.094939,0,stable_tracking,near_stable_tracking_but_yaw_drift_needs_repeat
