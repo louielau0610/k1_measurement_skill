@@ -15,3 +15,7 @@ The project must not state these as established claims:
 - The current pipeline is ready for full publication submission.
 - The current pipeline is compensation-ready.
 - The current pipeline is safe-command-adapter-ready.
+- P1 establishes novelty by itself.
+- P1 proves the method outperforms prior work.
+- P1 proves navigation safety improvement.
+- P1 literature metadata proves publication readiness.

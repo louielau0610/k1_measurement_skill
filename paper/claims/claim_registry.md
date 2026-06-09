@@ -11,6 +11,13 @@
 | M17-NC1 | The current pipeline is ready for full publication submission. | unsupported_and_must_not_be_stated | none | none | none | no | Literature review, calibrated uncertainty, and real navigation evaluation are missing. |
 | M17-NC2 | The current pipeline demonstrates compensation readiness. | unsupported_and_must_not_be_stated | none | none | none | no | Compensation remains disabled and unimplemented. |
 | M17-NC3 | The current pipeline demonstrates safe command adapter readiness. | unsupported_and_must_not_be_stated | none | none | none | no | Safe command adapter remains disabled and unimplemented. |
+| P1-C1 | Prior work establishes sim-to-real mismatch, actuator/latency modeling, online adaptation, and deployment calibration as relevant contexts for legged locomotion. | supported_by_prior_work | `paper/related_work/literature_matrix.md` | verified literature metadata | medium | no | Context claim only; does not imply novelty or performance superiority. |
+| P1-C2 | Prior work establishes navigation/locomotion coupling and risk-aware traversability as relevant contexts for navigation-aware response interpretation. | supported_by_prior_work | `paper/related_work/literature_matrix.md` | verified literature metadata | medium | no | Context claim only; not evidence that our M16 map improves navigation safety. |
+| P1-G1 | Closed-source deployment-layer command-to-motion calibration may be an underexplored gap. | plausible_but_unverified | `paper/claims/literature_gap_candidates.md` | candidate gap | low | no | Candidate only; requires P2 literature expansion and experiments. |
+| P1-G2 | Low-level response uncertainty labels may help bridge response modeling and planner advisory layers. | plausible_but_unverified | `paper/claims/literature_gap_candidates.md` | candidate gap | low | no | Candidate only; current labels are not calibrated probabilities. |
+| P1-NC1 | P1 establishes final novelty. | unsupported_and_must_not_be_stated | none | none | none | no | P1 is seed search only. |
+| P1-NC2 | P1 proves our method outperforms prior work. | unsupported_and_must_not_be_stated | none | none | none | no | No comparative experiment exists. |
+| P1-NC3 | P1 proves real navigation safety improvement. | unsupported_and_must_not_be_stated | none | none | none | no | No navigation outcome experiment exists. |
 
 Claim type options:
 

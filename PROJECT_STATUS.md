@@ -103,6 +103,16 @@ Readiness flags remain:
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
 
+## P1 Seed Literature Matrix
+
+P1 creates seed literature search artifacts, literature matrix v1, citation verification report, rejected-source log, seed BibTeX, paper notes, and conservative candidate gaps. P1 is literature/positioning work only: it does not implement engineering functionality, does not claim novelty, does not write a full related-work section, and does not claim publication readiness.
+
+Readiness flags remain:
+
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`
+
 ## Pending Real K1 Validation
 
 真实 K1 validation 仍需等明天机器测试完成：

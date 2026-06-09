@@ -17,6 +17,7 @@
 - [x] M15R uncertainty-aware response model foundation with minimal baseline hooks
 - [x] M16 navigation-aware reliability / risk mapping
 - [x] M17 pipeline evaluation and paper-style report
+- [x] P1 seed literature search and literature matrix v1
 
 ## Research Foundation Follow-Up
 
@@ -24,11 +25,11 @@
 - [ ] Validate schema changes with `scripts/validate_velocity_response_dataset_schema.py`.
 - [ ] Keep `battery_state` optional.
 - [ ] Keep `remote_controller_state` permanently out of scope.
-- [ ] Start literature review only after the project explicitly enters the next research phase.
+- [x] Start seed literature review only after M17 completion.
 
 ## Next Research Milestone
 
-- [ ] P1 seed literature search and literature matrix v1.
+- [ ] P2 gap analysis and contribution positioning.
 - [ ] M18 paper method skeleton + figures + claim audit.
 - [ ] Future experimental expansion before compensation or safe command adapter work.
 
@@ -52,4 +53,5 @@
 - [ ] Do not publish robot movement commands.
 - [ ] Do not hard-code unconfirmed K1 topics.
 - [ ] Do not treat dummy artifacts as real K1 findings.
-- [ ] Do not claim publication readiness from M13 artifacts.
+- [ ] Do not claim publication readiness from M13-P1 artifacts.
+- [ ] Do not claim novelty from P1 seed literature search alone.
