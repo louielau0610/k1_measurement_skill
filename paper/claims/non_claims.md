@@ -84,3 +84,9 @@ The project must not state these as established claims:
 - P10 does not prove navigation safety improvement.
 - P10 abstract remains draft v1, not final submission abstract.
 - P10 does not claim publication readiness.
+- P11 creates a full manuscript claim audit. P11 does not make the paper submission-ready.
+- P11 does not establish final novelty.
+- P11 does not establish performance superiority.
+- P11 does not prove navigation safety improvement.
+- P11 revision plan is not completed revision.
+- P11 does not claim publication readiness.

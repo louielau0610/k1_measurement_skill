@@ -228,3 +228,13 @@ Readiness flags remain:
 - `compensation_ready=false`
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
+
+## P11 Full Manuscript Claim Audit
+
+P11 performs a comprehensive full-manuscript claim audit with 19 claims classified, 12 numeric items verified, 16 citation keys audited, and a prioritized revision plan. P11 finds 0 blocking issues and 6 high-severity evidence gaps (correctly documented). Submission readiness: not_submission_ready. P11 does not implement engineering functionality and does not write new manuscript sections.
+
+Readiness flags remain:
+
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`

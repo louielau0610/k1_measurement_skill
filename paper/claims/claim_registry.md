@@ -106,3 +106,10 @@ Claim type options:
 | P10-NC1 | P10 establishes final novelty. | non_claim | none | none | none | no | Abstract avoids "novel"/"first." |
 | P10-NC2 | P10 establishes performance superiority or safety improvement. | non_claim | none | none | none | no | No such claims in abstract. |
 | P10-NC3 | P10 claims publication readiness. | non_claim | none | none | none | no | Abstract marked "draft v1, not final." |
+
+| P11-A1 | P11 creates a full-manuscript claim audit covering 19 claims across 7 sections. 0 overclaims found. | supported_structural_claim | `paper/manuscript/full_manuscript_claim_audit_v1.md` | audit artifact | high | no | Confirms claim-governance integrity. |
+| P11-A2 | P11 creates a prioritized revision plan: 0 P0, 3 P1, 3 P2, 2 P3. | supported_structural_claim | `paper/manuscript/manuscript_revision_plan_v1.md` | revision plan artifact | medium | no | Codex can execute P1/P2 items in P12. |
+| P11-A3 | All 12 numeric items verified traceable to source artifacts. | supported_by_project_artifact | `paper/tables/numeric_traceability_table.md` | numeric audit artifact | high | no | No fabricated numbers. |
+| P11-A4 | All 8 cited keys in .bib; 8 matrix-only entries documented as missing. | supported_by_literature | `paper/tables/citation_audit_table.md` | citation audit artifact | high | no | No rejected/unverified sources cited. |
+| P11-NC1 | P11 establishes submission readiness. | non_claim | none | none | none | no | submission_readiness=not_submission_ready. |
+| P11-NC2 | P11 writes new manuscript sections. | non_claim | none | none | none | no | new_manuscript_sections_written=false. |

@@ -77,3 +77,11 @@ Evidence kind examples:
 | E-P10-CLAIM-MAP | `paper/claims/p10_abstract_claim_map.md` | claim_governance | yes | Maps 8 abstract clauses to artifacts and evidence status. | P10-A1 |
 | E-P10-AUDIT | `paper/claims/p10_abstract_claim_audit.md` | claim_governance | yes | P10 abstract claim audit confirming safe wording and numeric accuracy. | P10-A1; P10-NC1; P10-NC2; P10-NC3 |
 | E-P10-SUMMARY | `outputs/research_foundation/p10_abstract_summary.json` | metadata | yes | Machine-readable P10 summary. | P10-A1 |
+
+| E-P11-AUDIT | `paper/manuscript/full_manuscript_claim_audit_v1.md` | audit | yes | Full-manuscript claim audit with section-by-section analysis, numeric traceability, citation audit, overclaim scan. | P11-A1 |
+| E-P11-REVISION | `paper/manuscript/manuscript_revision_plan_v1.md` | revision_plan | yes | Prioritized revision plan: 0 P0, 3 P1, 3 P2, 2 P3; separates Codex-editable from experiment-required fixes. | P11-A2 |
+| E-P11-MATRIX | `paper/claims/p11_full_manuscript_claim_matrix.md` | claim_governance | yes | 19-row full manuscript claim matrix with evidence status and decisions. | P11-A1 |
+| E-P11-NUMERIC | `paper/tables/numeric_traceability_table.md` | audit_table | yes | 12-row numeric traceability table with source artifacts and interpretation boundaries. | P11-A3 |
+| E-P11-CITATION | `paper/tables/citation_audit_table.md` | audit_table | yes | 16-row citation audit table covering all matrix entries. | P11-A4 |
+| E-P11-PRIORITY | `paper/tables/revision_priority_table.md` | audit_table | yes | 12-row revision priority table with blocking assessment and next-step owner. | P11-A2 |
+| E-P11-SUMMARY | `outputs/research_foundation/p11_full_manuscript_audit_summary.json` | metadata | yes | Machine-readable P11 summary. | P11-A1 |
