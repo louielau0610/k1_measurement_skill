@@ -1,0 +1,38 @@
+{
+  "milestone": "M14",
+  "chapter": "Research-grade Chapter 2 dataset construction",
+  "created_files": [
+    "k1_measurement/velocity_response_dataset_builder.py",
+    "scripts/build_velocity_response_dataset_v1.py",
+    "docs/m14_velocity_response_dataset_v1.md",
+    "outputs/research_datasets/velocity_response_dataset_v1.json",
+    "outputs/research_datasets/velocity_response_dataset_v1_validation_report.json",
+    "outputs/research_datasets/future_velocity_response_trial_template_v1.json",
+    "tests/test_velocity_response_dataset_builder.py",
+    "outputs/research_foundation/m14_velocity_response_dataset_summary.json"
+  ],
+  "modified_files": [
+    "k1_measurement/research_dataset_schema.py",
+    "README.md",
+    "PROJECT_STATUS.md",
+    "TODO.md",
+    "paper/method/method_outline.md",
+    "paper/experiments/experiment_plan.md"
+  ],
+  "dataset_path": "outputs/research_datasets/velocity_response_dataset_v1.json",
+  "validation_report_path": "outputs/research_datasets/velocity_response_dataset_v1_validation_report.json",
+  "future_trial_template_path": "outputs/research_datasets/future_velocity_response_trial_template_v1.json",
+  "records_count": 5,
+  "schema_validation_passed": true,
+  "measurement_v0_source_used": true,
+  "fabricated_values": false,
+  "compensation_logic_implemented": false,
+  "inverse_command_mapping_implemented": false,
+  "navigation_control_implemented": false,
+  "safe_command_adapter_implemented": false,
+  "ros2_commands_run": false,
+  "booster_sdk_movement_commands_run": false,
+  "real_robot_commands_run": false,
+  "battery_state_required": false,
+  "remote_controller_state_allowed": false
+}

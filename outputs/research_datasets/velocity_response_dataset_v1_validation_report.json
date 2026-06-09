@@ -1,0 +1,69 @@
+{
+  "milestone": "M14",
+  "dataset_path": "outputs/research_datasets/velocity_response_dataset_v1.json",
+  "schema_path": "configs/velocity_response_dataset_schema_v1.json",
+  "source_measurement_root": "outputs/real_k1_field_tests",
+  "records_count": 5,
+  "validation_passed": true,
+  "validation_errors": [],
+  "source_artifacts_used": [
+    "outputs\\real_k1_field_tests\\real_k1_velocity_profile_v0.json",
+    "outputs\\real_k1_field_tests\\forward_velocity_transition_summary_v0.json",
+    "outputs\\real_k1_field_tests\\measurement_v0_closure_summary.json",
+    "outputs\\real_k1_field_tests\\forward_velocity_transition_trials_v0.csv"
+  ],
+  "source_artifacts_missing": [],
+  "direct_fields_populated": [
+    "robot_model",
+    "vx_cmd_mps",
+    "measurement_source",
+    "environment_label",
+    "duration_s",
+    "trial_id"
+  ],
+  "derived_fields_populated": [
+    "created_at",
+    "records_count",
+    "trial_count",
+    "localization_source"
+  ],
+  "qualitative_fields_populated": [
+    "qualitative_response_label",
+    "confidence_label",
+    "limitations"
+  ],
+  "unavailable_fields": [
+    "battery_state",
+    "confidence_score",
+    "sample_count",
+    "vx_actual_mps_std",
+    "vy_actual_mps_mean",
+    "vy_actual_mps_std",
+    "wz_actual_radps_mean",
+    "wz_actual_radps_std",
+    "tracking_error_mps",
+    "lateral_drift_m",
+    "response_delay_s",
+    "stop_distance_m"
+  ],
+  "fabricated_values": false,
+  "compensation_ready": false,
+  "safe_command_adapter_ready": false,
+  "navigation_warning_ready": true,
+  "limitations": [
+    "absolute_odom_coordinates_should_not_be_compared_across_trials",
+    "missing_response_dimensions_not_fabricated",
+    "mostly_single_trial_per_speed",
+    "no_compensation_readiness_inferred",
+    "no_safe_command_adapter_readiness_inferred",
+    "odometer_primary_no_external_ground_truth",
+    "single_environment_lab_hard_floor",
+    "single_session",
+    "vx_0_45_yaw_drift_requires_repeat"
+  ],
+  "m15_readiness": {
+    "baseline_response_models_ready": true,
+    "requires_repeated_trials_for_uncertainty": true,
+    "must_respect_single_session_limit": true
+  }
+}

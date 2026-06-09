@@ -13,6 +13,7 @@
 - [x] M8 real K1 field logging workflow support
 - [x] M13 research-grade velocity response foundation
 - [x] M13.1 harden velocity response schema validation
+- [x] M14 construct velocity response dataset v1
 
 ## Research Foundation Follow-Up
 
@@ -24,9 +25,11 @@
 
 ## Next Research Milestone
 
-- [ ] M14 dataset construction should consume M13.1 schema helpers and bridge documentation.
-- [ ] M14 must remain dataset construction / research data preparation unless explicitly re-scoped.
-- [ ] Do not turn M14 into compensation or navigation control.
+- [ ] M15 baseline response models.
+- [ ] M16 uncertainty-aware response model.
+- [ ] M17 navigation-aware risk mapping.
+- [ ] M18 experimental evaluation and paper-style report.
+- [ ] Do not turn M15-M18 into compensation or navigation control unless explicitly re-scoped.
 
 ## Next Step On Real K1
 

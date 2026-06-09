@@ -14,6 +14,10 @@ Navigation-Aware Velocity Response Calibration for Closed-Source Legged Robots
   - research problem: `v_actual = f(v_cmd, environment, robot_state)`
   - dataset schema v1: `configs/velocity_response_dataset_schema_v1.json`
   - modeling plan: `paper/method/velocity_response_modeling_plan.md`
+- M14 dataset construction layer:
+  - Measurement v0 artifacts are converted into `outputs/research_datasets/velocity_response_dataset_v1.json`
+  - dataset construction precedes M15 baseline response modeling
+  - unavailable response dimensions remain explicit limitations, not fabricated values
 
 ## Boundaries
 

@@ -61,6 +61,18 @@ Preserved readiness flags:
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
 
+## M14 Velocity Response Dataset v1
+
+M14 constructs `outputs/research_datasets/velocity_response_dataset_v1.json` from Measurement v0 artifacts. M14 is dataset construction only: it does not implement baseline modeling, uncertainty-aware modeling, compensation, inverse command mapping, navigation control, or safe command adapter logic.
+
+Preserved readiness flags:
+
+- `measurement_v0_complete=true`
+- `real_k1_profile_available=true`
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`
+
 ## Pending Real K1 Validation
 
 真实 K1 validation 仍需等明天机器测试完成：

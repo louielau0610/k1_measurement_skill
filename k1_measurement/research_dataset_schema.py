@@ -110,6 +110,46 @@ def validate_velocity_response_record(
     ):
         errors.append(f"Disallowed field '{field_name}' found at {field_path}.")
 
+    records = record.get("records")
+    if isinstance(records, list):
+        errors.extend(_validate_dataset_record_collection(record, records, schema))
+        return errors
+
+    errors.extend(_validate_single_velocity_response_record(record, schema))
+    return errors
+
+
+def _validate_dataset_record_collection(
+    dataset: dict[str, Any],
+    records: list[Any],
+    schema: dict[str, Any],
+) -> list[str]:
+    errors: list[str] = []
+    for field_name in ("dataset_id", "schema_version", "measurement_source"):
+        if field_name not in dataset:
+            errors.append(f"Missing required dataset field: {field_name}.")
+    if not records:
+        errors.append("Dataset records must contain at least one record.")
+
+    false_only_fields = _get_false_only_fields(schema)
+    for field_name in sorted(false_only_fields):
+        if field_name in dataset and dataset[field_name] is not False:
+            errors.append(f"Field {field_name} must be false when present.")
+
+    for index, item in enumerate(records):
+        if not isinstance(item, dict):
+            errors.append(f"Dataset records[{index}] must be a JSON object.")
+            continue
+        for error in _validate_single_velocity_response_record(item, schema):
+            errors.append(f"records[{index}]: {error}")
+    return errors
+
+
+def _validate_single_velocity_response_record(
+    record: dict[str, Any],
+    schema: dict[str, Any],
+) -> list[str]:
+    errors: list[str] = []
     for field_name in _get_required_record_fields(schema):
         if field_name not in record:
             errors.append(f"Missing required record field: {field_name}.")

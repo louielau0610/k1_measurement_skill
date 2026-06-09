@@ -1,0 +1,42 @@
+{
+  "schema_version": "velocity_response_future_trial_template_v1",
+  "dataset_id": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+  "measurement_source": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+  "robot_model": "Booster K1",
+  "environment_label": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+  "localization_source": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+  "records": [
+    {
+      "record_id": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+      "trial_id": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+      "robot_model": "Booster K1",
+      "vx_cmd_mps": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+      "vy_cmd_mps": "TO_BE_FILLED_BY_FUTURE_TRIAL_OPTIONAL",
+      "wz_cmd_radps": "TO_BE_FILLED_BY_FUTURE_TRIAL_OPTIONAL",
+      "vx_actual_mps_mean": "TO_BE_FILLED_BY_FUTURE_TRIAL_OPTIONAL",
+      "vx_actual_mps_std": "TO_BE_FILLED_BY_FUTURE_TRIAL_OPTIONAL",
+      "vy_actual_mps_mean": "TO_BE_FILLED_BY_FUTURE_TRIAL_OPTIONAL",
+      "vy_actual_mps_std": "TO_BE_FILLED_BY_FUTURE_TRIAL_OPTIONAL",
+      "wz_actual_radps_mean": "TO_BE_FILLED_BY_FUTURE_TRIAL_OPTIONAL",
+      "wz_actual_radps_std": "TO_BE_FILLED_BY_FUTURE_TRIAL_OPTIONAL",
+      "tracking_error_mps": "TO_BE_FILLED_BY_FUTURE_TRIAL_OPTIONAL",
+      "lateral_drift_m": "TO_BE_FILLED_BY_FUTURE_TRIAL_OPTIONAL",
+      "yaw_drift_rad": "TO_BE_FILLED_BY_FUTURE_TRIAL_OPTIONAL",
+      "response_delay_s": "TO_BE_FILLED_BY_FUTURE_TRIAL_OPTIONAL",
+      "stop_distance_m": "TO_BE_FILLED_BY_FUTURE_TRIAL_OPTIONAL",
+      "qualitative_response_label": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+      "measurement_source": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+      "localization_source": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+      "environment_label": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+      "confidence_label": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+      "trial_count": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+      "battery_state": "TO_BE_FILLED_BY_FUTURE_TRIAL_OPTIONAL",
+      "compensation_ready": false,
+      "inverse_command_mapping_ready": false,
+      "navigation_control_ready": false,
+      "safe_command_adapter_ready": false
+    }
+  ],
+  "template_only": true,
+  "measured_data": false
+}

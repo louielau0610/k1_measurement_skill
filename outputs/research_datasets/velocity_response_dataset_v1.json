@@ -1,0 +1,301 @@
+{
+  "schema_version": "velocity_response_dataset_v1",
+  "dataset_id": "measurement_v0_velocity_response_dataset_v1",
+  "created_at": "2026-06-09T00:00:00Z",
+  "dataset_role": "research_dataset_constructed_from_measurement_v0",
+  "measurement_source": "outputs\\real_k1_field_tests",
+  "source_schema": "configs/velocity_response_dataset_schema_v1.json",
+  "robot_model": "Booster Robotics K1",
+  "environment_label": "lab_hard_floor_dry",
+  "localization_source": "odometer_primary_no_external_ground_truth",
+  "records_count": 5,
+  "records": [
+    {
+      "record_id": "measurement_v0_vx_0_1_smoke",
+      "trial_id": "vx_0_1_smoke",
+      "robot_model": "Booster Robotics K1",
+      "vx_cmd_mps": 0.1,
+      "qualitative_response_label": "deadzone_or_ineffective_low_speed",
+      "measurement_source": "outputs/real_k1_field_tests/real_k1_velocity_profile_v0.json",
+      "localization_source": "odometer_primary_no_external_ground_truth",
+      "environment_label": "lab_hard_floor_dry",
+      "confidence_label": "qualitative_only_no_numeric_velocity",
+      "trial_count": 1,
+      "source_provenance": {
+        "profile_json": "outputs/real_k1_field_tests/real_k1_velocity_profile_v0.json",
+        "summary_json": "outputs/real_k1_field_tests/forward_velocity_transition_summary_v0.json",
+        "trials_csv": "outputs/real_k1_field_tests/forward_velocity_transition_trials_v0.csv"
+      },
+      "field_categories": {
+        "direct": [
+          "trial_id",
+          "vx_cmd_mps",
+          "duration_s",
+          "tracking_category"
+        ],
+        "derived": [
+          "trial_count",
+          "confidence_label"
+        ],
+        "qualitative": [
+          "qualitative_response_label"
+        ],
+        "unavailable": [
+          "vx_actual_mps_mean",
+          "yaw_drift_rad"
+        ]
+      },
+      "compensation_ready": false,
+      "inverse_command_mapping_ready": false,
+      "navigation_control_ready": false,
+      "safe_command_adapter_ready": false,
+      "duration_s": 2.0
+    },
+    {
+      "record_id": "measurement_v0_vx_0_3_transition",
+      "trial_id": "vx_0_3_transition",
+      "robot_model": "Booster Robotics K1",
+      "vx_cmd_mps": 0.3,
+      "qualitative_response_label": "first_effective_but_weak_response",
+      "measurement_source": "outputs/real_k1_field_tests/real_k1_velocity_profile_v0.json",
+      "localization_source": "odometer_primary_no_external_ground_truth",
+      "environment_label": "lab_hard_floor_dry",
+      "confidence_label": "single_session_single_trial_low_confidence",
+      "trial_count": 1,
+      "source_provenance": {
+        "profile_json": "outputs/real_k1_field_tests/real_k1_velocity_profile_v0.json",
+        "summary_json": "outputs/real_k1_field_tests/forward_velocity_transition_summary_v0.json",
+        "trials_csv": "outputs/real_k1_field_tests/forward_velocity_transition_trials_v0.csv"
+      },
+      "field_categories": {
+        "direct": [
+          "trial_id",
+          "vx_cmd_mps",
+          "duration_s",
+          "tracking_category"
+        ],
+        "derived": [
+          "trial_count",
+          "confidence_label",
+          "distance_m",
+          "vx_actual_mps_mean",
+          "speed_gain_est",
+          "yaw_drift_rad"
+        ],
+        "qualitative": [
+          "qualitative_response_label"
+        ],
+        "unavailable": []
+      },
+      "compensation_ready": false,
+      "inverse_command_mapping_ready": false,
+      "navigation_control_ready": false,
+      "safe_command_adapter_ready": false,
+      "duration_s": 2.0,
+      "distance_m": 0.288544,
+      "vx_actual_mps_mean": 0.144272,
+      "speed_gain_est": 0.480907,
+      "yaw_drift_rad": 0.033154
+    },
+    {
+      "record_id": "measurement_v0_vx_0_4_effective",
+      "trial_id": "vx_0_4_effective",
+      "robot_model": "Booster Robotics K1",
+      "vx_cmd_mps": 0.4,
+      "qualitative_response_label": "effective_but_under_tracking",
+      "measurement_source": "outputs/real_k1_field_tests/real_k1_velocity_profile_v0.json",
+      "localization_source": "odometer_primary_no_external_ground_truth",
+      "environment_label": "lab_hard_floor_dry",
+      "confidence_label": "single_session_single_trial_low_confidence",
+      "trial_count": 1,
+      "source_provenance": {
+        "profile_json": "outputs/real_k1_field_tests/real_k1_velocity_profile_v0.json",
+        "summary_json": "outputs/real_k1_field_tests/forward_velocity_transition_summary_v0.json",
+        "trials_csv": "outputs/real_k1_field_tests/forward_velocity_transition_trials_v0.csv"
+      },
+      "field_categories": {
+        "direct": [
+          "trial_id",
+          "vx_cmd_mps",
+          "duration_s",
+          "tracking_category"
+        ],
+        "derived": [
+          "trial_count",
+          "confidence_label",
+          "distance_m",
+          "vx_actual_mps_mean",
+          "speed_gain_est",
+          "yaw_drift_rad"
+        ],
+        "qualitative": [
+          "qualitative_response_label"
+        ],
+        "unavailable": []
+      },
+      "compensation_ready": false,
+      "inverse_command_mapping_ready": false,
+      "navigation_control_ready": false,
+      "safe_command_adapter_ready": false,
+      "duration_s": 2.0,
+      "distance_m": 0.548009,
+      "vx_actual_mps_mean": 0.274004,
+      "speed_gain_est": 0.685011,
+      "yaw_drift_rad": 0.006043
+    },
+    {
+      "record_id": "measurement_v0_vx_0_45_transition_upper",
+      "trial_id": "vx_0_45_transition_upper",
+      "robot_model": "Booster Robotics K1",
+      "vx_cmd_mps": 0.45,
+      "qualitative_response_label": "near_stable_tracking_but_yaw_drift_needs_repeat",
+      "measurement_source": "outputs/real_k1_field_tests/real_k1_velocity_profile_v0.json",
+      "localization_source": "odometer_primary_no_external_ground_truth",
+      "environment_label": "lab_hard_floor_dry",
+      "confidence_label": "repeat_required",
+      "trial_count": 1,
+      "source_provenance": {
+        "profile_json": "outputs/real_k1_field_tests/real_k1_velocity_profile_v0.json",
+        "summary_json": "outputs/real_k1_field_tests/forward_velocity_transition_summary_v0.json",
+        "trials_csv": "outputs/real_k1_field_tests/forward_velocity_transition_trials_v0.csv"
+      },
+      "field_categories": {
+        "direct": [
+          "trial_id",
+          "vx_cmd_mps",
+          "duration_s",
+          "tracking_category"
+        ],
+        "derived": [
+          "trial_count",
+          "confidence_label",
+          "distance_m",
+          "vx_actual_mps_mean",
+          "speed_gain_est",
+          "yaw_drift_rad"
+        ],
+        "qualitative": [
+          "qualitative_response_label"
+        ],
+        "unavailable": []
+      },
+      "compensation_ready": false,
+      "inverse_command_mapping_ready": false,
+      "navigation_control_ready": false,
+      "safe_command_adapter_ready": false,
+      "duration_s": 2.0,
+      "distance_m": 0.839345,
+      "vx_actual_mps_mean": 0.419672,
+      "speed_gain_est": 0.932605,
+      "yaw_drift_rad": -0.094939
+    },
+    {
+      "record_id": "measurement_v0_vx_0_5_stable",
+      "trial_id": "vx_0_5_stable",
+      "robot_model": "Booster Robotics K1",
+      "vx_cmd_mps": 0.5,
+      "qualitative_response_label": "stable_tracking",
+      "measurement_source": "outputs/real_k1_field_tests/real_k1_velocity_profile_v0.json",
+      "localization_source": "odometer_primary_no_external_ground_truth",
+      "environment_label": "lab_hard_floor_dry",
+      "confidence_label": "single_session_single_trial_low_confidence",
+      "trial_count": 1,
+      "source_provenance": {
+        "profile_json": "outputs/real_k1_field_tests/real_k1_velocity_profile_v0.json",
+        "summary_json": "outputs/real_k1_field_tests/forward_velocity_transition_summary_v0.json",
+        "trials_csv": "outputs/real_k1_field_tests/forward_velocity_transition_trials_v0.csv"
+      },
+      "field_categories": {
+        "direct": [
+          "trial_id",
+          "vx_cmd_mps",
+          "duration_s",
+          "tracking_category"
+        ],
+        "derived": [
+          "trial_count",
+          "confidence_label",
+          "distance_m",
+          "vx_actual_mps_mean",
+          "speed_gain_est",
+          "yaw_drift_rad"
+        ],
+        "qualitative": [
+          "qualitative_response_label"
+        ],
+        "unavailable": []
+      },
+      "compensation_ready": false,
+      "inverse_command_mapping_ready": false,
+      "navigation_control_ready": false,
+      "safe_command_adapter_ready": false,
+      "duration_s": 2.0,
+      "distance_m": 1.00394,
+      "vx_actual_mps_mean": 0.50197,
+      "speed_gain_est": 1.00394,
+      "yaw_drift_rad": 0.005665
+    }
+  ],
+  "source_artifacts_used": [
+    "outputs\\real_k1_field_tests\\real_k1_velocity_profile_v0.json",
+    "outputs\\real_k1_field_tests\\forward_velocity_transition_summary_v0.json",
+    "outputs\\real_k1_field_tests\\measurement_v0_closure_summary.json",
+    "outputs\\real_k1_field_tests\\forward_velocity_transition_trials_v0.csv"
+  ],
+  "source_artifacts_missing": [],
+  "direct_fields_populated": [
+    "robot_model",
+    "vx_cmd_mps",
+    "measurement_source",
+    "environment_label",
+    "duration_s",
+    "trial_id"
+  ],
+  "derived_fields_populated": [
+    "created_at",
+    "records_count",
+    "trial_count",
+    "localization_source"
+  ],
+  "qualitative_fields_populated": [
+    "qualitative_response_label",
+    "confidence_label",
+    "limitations"
+  ],
+  "unavailable_fields": [
+    "battery_state",
+    "confidence_score",
+    "sample_count",
+    "vx_actual_mps_std",
+    "vy_actual_mps_mean",
+    "vy_actual_mps_std",
+    "wz_actual_radps_mean",
+    "wz_actual_radps_std",
+    "tracking_error_mps",
+    "lateral_drift_m",
+    "response_delay_s",
+    "stop_distance_m"
+  ],
+  "limitations": [
+    "absolute_odom_coordinates_should_not_be_compared_across_trials",
+    "missing_response_dimensions_not_fabricated",
+    "mostly_single_trial_per_speed",
+    "no_compensation_readiness_inferred",
+    "no_safe_command_adapter_readiness_inferred",
+    "odometer_primary_no_external_ground_truth",
+    "single_environment_lab_hard_floor",
+    "single_session",
+    "vx_0_45_yaw_drift_requires_repeat"
+  ],
+  "fabricated_values": false,
+  "compensation_ready": false,
+  "inverse_command_mapping_ready": false,
+  "navigation_control_ready": false,
+  "safe_command_adapter_ready": false,
+  "navigation_warning_ready": true,
+  "m15_readiness": {
+    "baseline_response_models_ready": true,
+    "requires_repeated_trials_for_uncertainty": true,
+    "must_respect_single_session_limit": true
+  }
+}
