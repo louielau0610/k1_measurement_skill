@@ -72,3 +72,8 @@ Evidence kind examples:
 | E-P9-CLAIM-MAP | `paper/claims/p9_conclusion_claim_map.md` | claim_governance | yes | Maps 9 conclusion statements to artifacts and evidence status. | P9-C1 |
 | E-P9-AUDIT | `paper/claims/p9_conclusion_claim_audit.md` | claim_governance | yes | P9 conclusion claim audit confirming confident but bounded tone. | P9-C1; P9-NC1; P9-NC2; P9-NC3 |
 | E-P9-SUMMARY | `outputs/research_foundation/p9_conclusion_summary.json` | metadata | yes | Machine-readable P9 summary. | P9-C1 |
+
+| E-P10-ABSTRACT | `paper/manuscript/sections/00_abstract_draft_v1.md` | manuscript_draft | yes | Academic Abstract draft: 193 words primary, plus short and extended variants. | P10-A1; P10-A2 |
+| E-P10-CLAIM-MAP | `paper/claims/p10_abstract_claim_map.md` | claim_governance | yes | Maps 8 abstract clauses to artifacts and evidence status. | P10-A1 |
+| E-P10-AUDIT | `paper/claims/p10_abstract_claim_audit.md` | claim_governance | yes | P10 abstract claim audit confirming safe wording and numeric accuracy. | P10-A1; P10-NC1; P10-NC2; P10-NC3 |
+| E-P10-SUMMARY | `outputs/research_foundation/p10_abstract_summary.json` | metadata | yes | Machine-readable P10 summary. | P10-A1 |

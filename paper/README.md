@@ -43,3 +43,7 @@ P8 assembles all P3-P7 section drafts into a manuscript v0 and performs a cross-
 ## P9 Conclusion Draft v1
 
 P9 creates an academic Conclusion draft v1 completing the manuscript narrative. The conclusion is confident but bounded, summarizing the pipeline, current evidence, and future work without claiming novelty, performance superiority, or publication readiness.
+
+## P10 Abstract Draft v1
+
+P10 creates an academic Abstract draft v1 (193 words primary) with short and extended variants. P10 completes the first full manuscript narrative from Abstract through Conclusion. P10 does not claim final novelty or publication readiness.

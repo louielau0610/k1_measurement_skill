@@ -79,3 +79,8 @@ The project must not state these as established claims:
 - P9 does not prove navigation safety improvement.
 - P9 does not claim publication readiness.
 - P9 does not write a final abstract.
+- P10 creates an Abstract draft. P10 does not establish final novelty.
+- P10 does not establish performance superiority.
+- P10 does not prove navigation safety improvement.
+- P10 abstract remains draft v1, not final submission abstract.
+- P10 does not claim publication readiness.

@@ -100,3 +100,9 @@ Claim type options:
 | P9-NC1 | P9 establishes final novelty. | non_claim | none | none | none | no | Conclusion avoids "novel"/"first" language. |
 | P9-NC2 | P9 establishes performance superiority or safety improvement. | non_claim | none | none | none | no | No such claims made. |
 | P9-NC3 | P9 claims publication readiness. | non_claim | none | none | none | no | Abstract remains unwritten. |
+
+| P10-A1 | P10 creates an academic Abstract draft v1 with primary (193w), short, and extended variants. | supported_structural_claim | `paper/manuscript/sections/00_abstract_draft_v1.md` | manuscript draft artifact | medium | no | Draft only; not final submission abstract. |
+| P10-A2 | Abstract accurately compresses the manuscript: problem, method, results, significance, boundary. | supported_by_project_artifact | P8 assembly + P9 conclusion + P6 eval | manuscript + project artifacts | high | no | All numbers artifact-backed. |
+| P10-NC1 | P10 establishes final novelty. | non_claim | none | none | none | no | Abstract avoids "novel"/"first." |
+| P10-NC2 | P10 establishes performance superiority or safety improvement. | non_claim | none | none | none | no | No such claims in abstract. |
+| P10-NC3 | P10 claims publication readiness. | non_claim | none | none | none | no | Abstract marked "draft v1, not final." |
