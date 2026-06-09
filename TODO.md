@@ -18,6 +18,7 @@
 - [x] M16 navigation-aware reliability / risk mapping
 - [x] M17 pipeline evaluation and paper-style report
 - [x] P1 seed literature search and literature matrix v1
+- [x] P2 gap analysis and contribution positioning
 
 ## Research Foundation Follow-Up
 
@@ -29,8 +30,8 @@
 
 ## Next Research Milestone
 
-- [ ] P2 gap analysis and contribution positioning.
 - [ ] M18 paper method skeleton + figures + claim audit.
+- [ ] P3 related work section draft after M18 or after additional literature.
 - [ ] Future experimental expansion before compensation or safe command adapter work.
 
 ## Next Step On Real K1
@@ -55,3 +56,4 @@
 - [ ] Do not treat dummy artifacts as real K1 findings.
 - [ ] Do not claim publication readiness from M13-P1 artifacts.
 - [ ] Do not claim novelty from P1 seed literature search alone.
+- [ ] Do not claim novelty or performance superiority from P2 positioning alone.

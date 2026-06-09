@@ -10,6 +10,11 @@
 | E-P1-LIT-A-C | `paper/related_work/literature_matrix.md` entries TanRSS2018, HwangboSciRobot2019, KumarRMA2021, RudinCoRL2021, MargolisRSS2022, MargolisCoRL2022 | peer_reviewed_paper_or_preprint | yes/partial | Seed literature supports sim-to-real mismatch, velocity-command curricula, online adaptation, and deployment calibration as relevant contexts. | P1-C1 |
 | E-P1-LIT-D-F | `paper/related_work/literature_matrix.md` entries FuCVPRW2022, FanRSS2021STEP, FanArxiv2021Costmaps, BenrabahSensors2024, FrancisTOHRI2025 | peer_reviewed_paper_or_preprint | yes/partial | Seed literature supports navigation/locomotion coupling, risk-aware traversability, and navigation evaluation metrics as relevant contexts. | P1-C2 |
 | E-P1-GAP | `paper/claims/literature_gap_candidates.md` | hypothesis | yes | Candidate gaps are logged as hypotheses only. | P1-G1; P1-G2 |
+| E-P2-GAP | `paper/positioning/gap_analysis_v1.md` | positioning_artifact | yes | P2 analyzes six literature clusters and maps them to M13-M17 artifacts. | P2-S1 |
+| E-P2-TABLE | `paper/positioning/related_work_positioning_table.md` | positioning_artifact | yes | Related-work clusters are mapped to possible gaps and next required evidence. | P2-C1; P2-C2; P2-C3; P2-C4; P2-C5 |
+| E-P2-CANDIDATES | `paper/positioning/contribution_candidates_v1.md` | hypothesis | yes | Five contribution candidates are defined with missing evidence and overclaiming risk. | P2-C1; P2-C2; P2-C3; P2-C4; P2-C5 |
+| E-P2-UPGRADE | `paper/claims/claim_upgrade_plan.md` | claim_governance | yes | Upgrade conditions and prohibited wording are documented. | P2-NC1; P2-NC2; P2-NC3 |
+| E-P2-FRAMING | `paper/positioning/paper_framing_options_v1.md` | positioning_artifact | yes | Five paper framing options are documented as non-final options. | P2-C1; P2-C4; P2-C5 |
 
 Evidence kind examples:
 

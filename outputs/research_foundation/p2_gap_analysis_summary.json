@@ -1,0 +1,56 @@
+{
+  "milestone": "P2",
+  "chapter": "Gap analysis and contribution positioning",
+  "created_files": [
+    "paper/positioning/gap_analysis_v1.md",
+    "paper/positioning/related_work_positioning_table.md",
+    "paper/positioning/contribution_candidates_v1.md",
+    "paper/claims/claim_upgrade_plan.md",
+    "paper/positioning/paper_framing_options_v1.md",
+    "outputs/research_foundation/p2_gap_analysis_summary.json"
+  ],
+  "modified_files": [
+    "paper/claims/claim_registry.md",
+    "paper/claims/evidence_table.md",
+    "paper/claims/non_claims.md",
+    "paper/README.md",
+    "PROJECT_STATUS.md",
+    "TODO.md"
+  ],
+  "input_literature_matrix_entries": 16,
+  "input_verified_entries": 11,
+  "input_partially_verified_entries": 5,
+  "clusters_analyzed": [
+    "sim_to_real_and_learned_legged_locomotion",
+    "rapid_motor_adaptation_deployment_adaptation",
+    "perceptive_navigation_coupled_legged_locomotion",
+    "risk_aware_uncertainty_aware_navigation_deployment",
+    "field_robotics_metrics_and_evaluation",
+    "black_box_system_identification_command_response_calibration"
+  ],
+  "candidate_contributions_count": 5,
+  "candidate_gaps_retained": [
+    "closed_source_black_box_deployment_layer_command_to_motion_calibration",
+    "navigation_aware_interpretation_of_low_level_velocity_response_mismatch",
+    "uncertainty_reliability_labels_as_bridge_between_response_modeling_and_planner_advisory",
+    "artifact_governed_pipeline_from_measurement_to_risk_map"
+  ],
+  "candidate_gaps_deferred": [
+    "final_novelty_claim",
+    "calibrated_uncertainty_claim",
+    "navigation_safety_improvement_claim",
+    "absence_of_prior_closed_source_command_response_work"
+  ],
+  "claim_upgrade_plan_created": true,
+  "final_novelty_claim_made": false,
+  "full_paper_draft_written": false,
+  "fabricated_citations": false,
+  "fabricated_metadata": false,
+  "fabricated_results": false,
+  "fabricated_navigation_outcomes": false,
+  "performance_superiority_claim_made": false,
+  "publication_readiness_claimed": false,
+  "ros2_commands_run": false,
+  "booster_sdk_movement_commands_run": false,
+  "real_robot_commands_run": false
+}

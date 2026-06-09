@@ -19,3 +19,10 @@ The project must not state these as established claims:
 - P1 proves the method outperforms prior work.
 - P1 proves navigation safety improvement.
 - P1 literature metadata proves publication readiness.
+- P2 establishes final novelty.
+- P2 establishes performance superiority.
+- P2 establishes publication readiness.
+- P2 proves any candidate contribution is final.
+- P2 proves response uncertainty labels are calibrated probabilities.
+- P2 proves navigation warning labels reduce collision, near-miss, or failure rates.
+- P2 proves the method generalizes to other legged robots.

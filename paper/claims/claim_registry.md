@@ -18,6 +18,15 @@
 | P1-NC1 | P1 establishes final novelty. | unsupported_and_must_not_be_stated | none | none | none | no | P1 is seed search only. |
 | P1-NC2 | P1 proves our method outperforms prior work. | unsupported_and_must_not_be_stated | none | none | none | no | No comparative experiment exists. |
 | P1-NC3 | P1 proves real navigation safety improvement. | unsupported_and_must_not_be_stated | none | none | none | no | No navigation outcome experiment exists. |
+| P2-S1 | P2 analyzes six prior-work clusters against M13-M17 project artifacts. | supported_structural_claim | `paper/positioning/gap_analysis_v1.md` | positioning artifact | medium | no | Structural positioning claim only. |
+| P2-C1 | Artifact-governed black-box command-to-motion response pipeline is a candidate contribution. | candidate_gap | `paper/positioning/contribution_candidates_v1.md` | candidate contribution | low | no | Requires more literature and more experiments. |
+| P2-C2 | Measurement-to-dataset-to-model workflow for closed-source K1 velocity response is a candidate contribution. | candidate_gap | `paper/positioning/contribution_candidates_v1.md` | candidate contribution | low | no | Current evidence is sparse and single-session. |
+| P2-C3 | Uncertainty/reliability-labeled response modeling is a candidate contribution under sparse evidence. | requires_more_experiment | `paper/positioning/contribution_candidates_v1.md` | candidate contribution | low | no | Labels are not calibrated probabilities. |
+| P2-C4 | Navigation-aware risk interpretation of low-level response mismatch is a candidate contribution. | requires_more_experiment | `paper/positioning/contribution_candidates_v1.md` | candidate contribution | low | no | No navigation outcome metrics exist. |
+| P2-C5 | Claim-governed evaluation separating structural and performance evidence is a candidate contribution. | requires_more_literature | `paper/positioning/contribution_candidates_v1.md`; `paper/claims/claim_upgrade_plan.md` | candidate contribution | low | no | Needs artifact-governance literature comparison. |
+| P2-NC1 | P2 establishes final novelty. | non_claim | none | none | none | no | P2 keeps all contributions tentative. |
+| P2-NC2 | P2 establishes performance superiority. | non_claim | none | none | none | no | No comparative performance experiment exists. |
+| P2-NC3 | P2 establishes publication readiness. | non_claim | none | none | none | no | P2 is positioning only. |
 
 Claim type options:
 
@@ -26,3 +35,9 @@ Claim type options:
 - plausible_but_unverified
 - planned_experiment
 - unsupported_and_must_not_be_stated
+- supported_structural_claim
+- literature_context_claim
+- candidate_gap
+- requires_more_literature
+- requires_more_experiment
+- non_claim

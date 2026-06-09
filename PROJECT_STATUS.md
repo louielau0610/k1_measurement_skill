@@ -113,6 +113,16 @@ Readiness flags remain:
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
 
+## P2 Gap Analysis and Contribution Positioning
+
+P2 analyzes P1 literature clusters against M13-M17 project artifacts and produces gap analysis, related-work positioning, contribution candidates, claim-upgrade rules, and paper framing options. P2 does not implement engineering functionality, does not claim final novelty, does not claim performance superiority, and does not claim publication readiness.
+
+Readiness flags remain:
+
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`
+
 ## Pending Real K1 Validation
 
 真实 K1 validation 仍需等明天机器测试完成：
