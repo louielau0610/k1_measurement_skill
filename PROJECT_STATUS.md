@@ -49,6 +49,18 @@ v_actual = f(v_cmd, environment, robot_state)
 
 M13 also adds the Chapter 2 velocity response modeling plan, dataset schema v1, schema validation CLI, tests, and milestone summary JSON. It does not start literature review, P1, full paper drafting, compensation, inverse command mapping, navigation control, or safe command adapter implementation.
 
+## M13.1 Schema Hardening
+
+M13.1 hardens reusable velocity response schema validation and adds the Measurement v0 to velocity response schema v1 bridge. It does not implement M14, compensation, inverse command mapping, navigation control, or safe command adapter logic.
+
+Preserved readiness flags:
+
+- `measurement_v0_complete=true`
+- `real_k1_profile_available=true`
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`
+
 ## Pending Real K1 Validation
 
 真实 K1 validation 仍需等明天机器测试完成：

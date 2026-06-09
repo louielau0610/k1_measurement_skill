@@ -3,6 +3,46 @@
   "$id": "https://example.local/k1_measurement/velocity_response_dataset_schema_v1.json",
   "title": "K1 velocity response dataset schema v1",
   "description": "Research foundation schema for forward velocity response modeling datasets. This schema records measurements only and does not define compensation, inverse command mapping, navigation control, or safe command adapter behavior.",
+  "x_project_validation": {
+    "minimum_viable_record_fields": [
+      "vx_cmd_mps",
+      "measurement_source",
+      "localization_source",
+      "environment_label"
+    ],
+    "either_or_field_groups": [
+      [
+        "robot_model",
+        "robot_id"
+      ],
+      [
+        "vx_actual_mps_mean",
+        "qualitative_response_label"
+      ],
+      [
+        "confidence_label",
+        "confidence_score"
+      ],
+      [
+        "trial_count",
+        "sample_count"
+      ]
+    ],
+    "false_only_record_fields": [
+      "compensation_ready",
+      "inverse_command_mapping_ready",
+      "navigation_control_ready",
+      "safe_command_adapter_ready"
+    ],
+    "optional_fields": [
+      "battery_state"
+    ],
+    "disallowed_fields": [
+      "remote_controller_state",
+      "hand_controller_state",
+      "unconfirmed_ros2_topic"
+    ]
+  },
   "type": "object",
   "additionalProperties": false,
   "required": [

@@ -1,0 +1,31 @@
+{
+  "milestone": "M13.1",
+  "title": "Harden velocity response schema validation",
+  "created_files": [
+    "k1_measurement/research_dataset_schema.py",
+    "docs/measurement_v0_to_velocity_response_schema_v1_mapping.md",
+    "examples/velocity_response/minimal_valid_record.json",
+    "examples/velocity_response/invalid_disallowed_field_record.json",
+    "outputs/research_foundation/m13_1_schema_hardening_summary.json"
+  ],
+  "modified_files": [
+    "configs/velocity_response_dataset_schema_v1.json",
+    "scripts/validate_velocity_response_dataset_schema.py",
+    "tests/test_velocity_response_dataset_schema.py",
+    "PROJECT_STATUS.md",
+    "TODO.md"
+  ],
+  "reusable_schema_module_added": true,
+  "measurement_v0_bridge_doc_added": true,
+  "minimal_example_record_added": true,
+  "invalid_example_record_added": true,
+  "compensation_logic_implemented": false,
+  "inverse_command_mapping_implemented": false,
+  "navigation_control_implemented": false,
+  "safe_command_adapter_implemented": false,
+  "ros2_commands_run": false,
+  "booster_sdk_movement_commands_run": false,
+  "real_robot_commands_run": false,
+  "battery_state_required": false,
+  "remote_controller_state_allowed": false
+}

@@ -1,4 +1,4 @@
-"""Validate the velocity response dataset schema and optional dataset files."""
+"""Validate velocity response schema metadata and example records."""
 
 from __future__ import annotations
 
@@ -8,13 +8,21 @@ from pathlib import Path
 import sys
 from typing import Any
 
-from jsonschema import Draft202012Validator
-from jsonschema.exceptions import SchemaError, ValidationError
-
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from k1_measurement.research_dataset_schema import (
+    get_disallowed_fields,
+    load_velocity_response_schema,
+    validate_velocity_response_record,
+    validate_velocity_response_schema,
+)
+
+
 DEFAULT_SCHEMA_PATH = REPO_ROOT / "configs" / "velocity_response_dataset_schema_v1.json"
-PROHIBITED_KEYS = {"remote_controller_state"}
+DEFAULT_RECORD_PATH = REPO_ROOT / "examples" / "velocity_response" / "minimal_valid_record.json"
 
 
 def load_json(path: Path) -> Any:
@@ -22,76 +30,16 @@ def load_json(path: Path) -> Any:
         return json.load(file)
 
 
-def iter_schema_keys(node: Any) -> list[str]:
-    keys: list[str] = []
-    if isinstance(node, dict):
-        keys.extend(str(key) for key in node.keys())
-        for value in node.values():
-            keys.extend(iter_schema_keys(value))
-    elif isinstance(node, list):
-        for item in node:
-            keys.extend(iter_schema_keys(item))
-    return keys
-
-
-def find_required_paths(node: Any, path: tuple[str, ...] = ()) -> list[tuple[str, ...]]:
-    paths: list[tuple[str, ...]] = []
-    if isinstance(node, dict):
-        required = node.get("required")
-        if isinstance(required, list) and "battery_state" in required:
-            paths.append(path + ("required",))
-        for key, value in node.items():
-            paths.extend(find_required_paths(value, path + (str(key),)))
-    elif isinstance(node, list):
-        for index, item in enumerate(node):
-            paths.extend(find_required_paths(item, path + (str(index),)))
-    return paths
-
-
-def validate_schema_file(schema_path: Path) -> dict[str, Any]:
-    schema = load_json(schema_path)
-    Draft202012Validator.check_schema(schema)
-
-    all_keys = set(iter_schema_keys(schema))
-    prohibited = sorted(PROHIBITED_KEYS.intersection(all_keys))
-    if prohibited:
-        raise ValueError(
-            "Velocity response schema contains prohibited field(s): "
-            + ", ".join(prohibited)
-        )
-
-    required_battery_paths = find_required_paths(schema)
-    if required_battery_paths:
-        rendered = ["/".join(path) for path in required_battery_paths]
-        raise ValueError(
-            "battery_state must remain optional; found required reference at "
-            + ", ".join(rendered)
-        )
-
-    return {
-        "schema": str(schema_path),
-        "valid_schema": True,
-        "battery_state_required": False,
-        "prohibited_fields_present": prohibited,
-    }
-
-
-def validate_dataset_file(dataset_path: Path, schema_path: Path) -> dict[str, Any]:
-    schema = load_json(schema_path)
-    dataset = load_json(dataset_path)
-    Draft202012Validator(schema).validate(dataset)
-    return {
-        "dataset": str(dataset_path),
-        "valid_dataset": True,
-    }
+def resolve_path(path: str | Path) -> Path:
+    candidate = Path(path)
+    if candidate.is_absolute():
+        return candidate
+    return (Path.cwd() / candidate).resolve()
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description=(
-            "Validate the M13 velocity response dataset schema and, optionally, "
-            "a dataset JSON file."
-        )
+        description="Validate the M13 velocity response dataset schema and a record example."
     )
     parser.add_argument(
         "--schema",
@@ -99,44 +47,71 @@ def parse_args() -> argparse.Namespace:
         help="Schema JSON path. Defaults to configs/velocity_response_dataset_schema_v1.json.",
     )
     parser.add_argument(
+        "--record",
+        help="Optional record JSON path. Defaults to examples/velocity_response/minimal_valid_record.json.",
+    )
+    parser.add_argument(
         "--dataset",
-        help="Optional dataset JSON path to validate against the schema.",
+        help="Compatibility alias for --record.",
     )
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
-    schema_path = Path(args.schema)
-    if not schema_path.is_absolute():
-        schema_path = (Path.cwd() / schema_path).resolve()
+    schema_path = resolve_path(args.schema)
+    record_arg = args.record or args.dataset or str(DEFAULT_RECORD_PATH)
+    record_path = resolve_path(record_arg)
+
+    summary: dict[str, Any] = {
+        "schema": str(schema_path),
+        "record": str(record_path),
+        "valid_schema": False,
+        "valid_record": False,
+        "battery_state_required": False,
+        "disallowed_fields": [],
+        "errors": [],
+    }
 
     try:
-        summary = validate_schema_file(schema_path)
-        if args.dataset:
-            dataset_path = Path(args.dataset)
-            if not dataset_path.is_absolute():
-                dataset_path = (Path.cwd() / dataset_path).resolve()
-            summary.update(validate_dataset_file(dataset_path, schema_path))
+        schema = load_velocity_response_schema(schema_path)
+        schema_errors = validate_velocity_response_schema(schema)
+        summary["disallowed_fields"] = sorted(get_disallowed_fields(schema))
+
+        if schema_errors:
+            summary["errors"].extend(schema_errors)
+        else:
+            summary["valid_schema"] = True
+
+        record = load_json(record_path)
+        if not isinstance(record, dict):
+            summary["errors"].append("Velocity response record must be a JSON object.")
+        else:
+            record_errors = validate_velocity_response_record(record, schema)
+            if record_errors:
+                summary["errors"].extend(record_errors)
+            else:
+                summary["valid_record"] = True
     except FileNotFoundError as exc:
-        print(f"Velocity response schema validation failed: file not found: {exc.filename}", file=sys.stderr)
+        summary["errors"].append(f"File not found: {exc.filename}")
+        print(json.dumps(summary, indent=2, ensure_ascii=False), file=sys.stderr)
         return 2
     except json.JSONDecodeError as exc:
-        print(f"Velocity response schema validation failed: invalid JSON: {exc}", file=sys.stderr)
+        summary["errors"].append(f"Invalid JSON: {exc}")
+        print(json.dumps(summary, indent=2, ensure_ascii=False), file=sys.stderr)
         return 2
-    except SchemaError as exc:
-        print(f"Velocity response schema validation failed: invalid schema: {exc.message}", file=sys.stderr)
-        return 1
-    except ValidationError as exc:
-        path = ".".join(str(part) for part in exc.absolute_path) or "<root>"
-        print(f"Velocity response dataset validation failed at {path}: {exc.message}", file=sys.stderr)
-        return 1
     except ValueError as exc:
-        print(f"Velocity response schema validation failed: {exc}", file=sys.stderr)
+        summary["errors"].append(str(exc))
+        print(json.dumps(summary, indent=2, ensure_ascii=False), file=sys.stderr)
         return 1
 
-    print(json.dumps(summary, indent=2, ensure_ascii=False))
-    return 0
+    output = json.dumps(summary, indent=2, ensure_ascii=False)
+    if summary["valid_schema"] and summary["valid_record"]:
+        print(output)
+        return 0
+
+    print(output, file=sys.stderr)
+    return 1
 
 
 if __name__ == "__main__":

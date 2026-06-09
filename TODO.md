@@ -12,6 +12,7 @@
 - [x] M7 real K1 measurement preparation pack
 - [x] M8 real K1 field logging workflow support
 - [x] M13 research-grade velocity response foundation
+- [x] M13.1 harden velocity response schema validation
 
 ## Research Foundation Follow-Up
 
@@ -20,6 +21,12 @@
 - [ ] Keep `battery_state` optional.
 - [ ] Keep `remote_controller_state` permanently out of scope.
 - [ ] Start literature review only after the project explicitly enters the next research phase.
+
+## Next Research Milestone
+
+- [ ] M14 dataset construction should consume M13.1 schema helpers and bridge documentation.
+- [ ] M14 must remain dataset construction / research data preparation unless explicitly re-scoped.
+- [ ] Do not turn M14 into compensation or navigation control.
 
 ## Next Step On Real K1
 

@@ -1,0 +1,17 @@
+{
+  "record_kind": "minimal_velocity_response_example",
+  "example_only": true,
+  "experimental_result": false,
+  "robot_model": "Booster K1",
+  "vx_cmd_mps": 0.1,
+  "qualitative_response_label": "example_only_response_not_validated",
+  "measurement_source": "example_minimal_record_not_real_experiment",
+  "localization_source": "example_only_no_localization_claim",
+  "environment_label": "example_environment_not_real_trial",
+  "confidence_label": "example_only_low_confidence",
+  "trial_count": 1,
+  "compensation_ready": false,
+  "inverse_command_mapping_ready": false,
+  "navigation_control_ready": false,
+  "safe_command_adapter_ready": false
+}
