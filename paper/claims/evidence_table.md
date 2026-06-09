@@ -118,3 +118,12 @@ Evidence kind examples:
 | E-P14-MAIN-ASSETS | `paper/tables/p14_main_paper_asset_plan.md` | asset_plan | yes | 5 main-paper asset plan with source/caption/claim-boundary mappings. | P14-V2 |
 | E-P14-APP-ASSETS | `paper/tables/p14_appendix_asset_plan.md` | asset_plan | yes | 13 appendix/internal asset plan. | P14-V2 |
 | E-P14-SUMMARY | `outputs/research_foundation/p14_manuscript_v2_polish_summary.json` | metadata | yes | Machine-readable P14 summary. | P14-V1 |
+
+| E-M20-PROTOCOL | `paper/experiments/m20_future_experiment_protocol_v1.md` | experiment_protocol | yes | 4-tier future experiment protocol with claim-upgrade criteria. | M20-P1 |
+| E-M20-METRICS | `paper/experiments/m20_metric_definitions_v1.md` | metric_definitions | yes | 35 metrics defined across velocity response, model evaluation, navigation outcome, and coverage. | M20-P1 |
+| E-M20-DESIGN | `paper/experiments/m20_trial_design_matrix_v1.md` | trial_design | yes | Command grid, trial counts, held-out split, surface/session plan. | M20-P1 |
+| E-M20-NAV | `paper/experiments/m20_navigation_outcome_protocol_v1.md` | navigation_protocol | yes | Navigation outcome protocol with collision/near-miss definitions and advisory condition rules. | M20-P1 |
+| E-M20-SCHEMA | `configs/future_experiment_protocol_schema_v1.json` + examples + validator + tests | schema_and_tools | yes | JSON schema, 2 examples, validator script, 7 tests. | M20-P1 |
+| E-M20-AUDIT | `paper/claims/m20_experiment_protocol_claim_audit.md` | claim_governance | yes | M20 claim audit confirming protocol-only boundaries. | M20-NC1; M20-NC2 |
+| E-M20-MATRIX | `paper/tables/m20_claim_upgrade_evidence_matrix.md` | claim_table | yes | 11-row claim-upgrade evidence matrix. | M20-P1 |
+| E-M20-SUMMARY | `outputs/research_foundation/m20_future_experiment_protocol_summary.json` | metadata | yes | Machine-readable M20 summary. | M20-P1 |

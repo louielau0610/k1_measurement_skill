@@ -1,0 +1,75 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Future Experiment Protocol Record Schema v1",
+  "description": "Schema for future K1 velocity response and navigation outcome experiment records. Protocol only — no experiments executed.",
+  "type": "object",
+  "required": ["experiment_id", "protocol_version", "trial_records"],
+  "properties": {
+    "experiment_id": {"type": "string", "description": "Unique experiment identifier"},
+    "protocol_version": {"type": "string", "const": "1.0.0"},
+    "experiment_metadata": {
+      "type": "object",
+      "properties": {
+        "robot_model": {"type": "string"},
+        "robot_id": {"type": "string"},
+        "surface_type": {"type": "string"},
+        "session_id": {"type": "string"},
+        "experimenter": {"type": "string"},
+        "date": {"type": "string", "format": "date"},
+        "notes": {"type": "string"}
+      }
+    },
+    "command_grid": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "vx_cmd_mps": {"type": "number"},
+          "vy_cmd_mps": {"type": "number"},
+          "omega_z_cmd_radps": {"type": "number"},
+          "trials_planned": {"type": "integer"},
+          "trials_completed": {"type": "integer"}
+        }
+      }
+    },
+    "trial_records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["trial_id", "vx_cmd_mps", "trial_valid"],
+        "properties": {
+          "trial_id": {"type": "string"},
+          "vx_cmd_mps": {"type": "number"},
+          "vy_cmd_mps": {"type": "number"},
+          "omega_z_cmd_radps": {"type": "number"},
+          "vx_actual_mps_mean": {"type": ["number", "null"]},
+          "vx_actual_mps_std": {"type": ["number", "null"]},
+          "qualitative_response_label": {"type": "string"},
+          "uncertainty_label": {"type": "string"},
+          "tracking_error_mps": {"type": ["number", "null"]},
+          "response_delay_s": {"type": ["number", "null"]},
+          "stop_distance_m": {"type": ["number", "null"]},
+          "lateral_drift_mps": {"type": ["number", "null"]},
+          "yaw_drift_deg_per_s": {"type": ["number", "null"]},
+          "collision_count": {"type": "integer"},
+          "near_miss_count": {"type": "integer"},
+          "task_success": {"type": "boolean"},
+          "trial_valid": {"type": "boolean"},
+          "exclusion_reason": {"type": "string"},
+          "advisory_condition": {"type": "boolean"},
+          "battery_state": {"type": "object"},
+          "source_provenance": {"type": "string"}
+        }
+      }
+    },
+    "downstream_readiness": {
+      "type": "object",
+      "properties": {
+        "compensation_ready": {"type": "boolean", "const": false},
+        "navigation_control_ready": {"type": "boolean", "const": false},
+        "safe_command_adapter_ready": {"type": "boolean", "const": false},
+        "navigation_outcome_claim_ready": {"type": "boolean", "const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+﻿{
+  "experiment_id": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+  "protocol_version": "1.0.0",
+  "experiment_metadata": {
+    "robot_model": "K1",
+    "robot_id": "TO_BE_FILLED",
+    "surface_type": "TO_BE_FILLED",
+    "session_id": "TO_BE_FILLED",
+    "experimenter": "AUTHOR_DECISION_REQUIRED",
+    "date": "FUTURE_DATE",
+    "notes": "Minimal valid future experiment record. All values are placeholders."
+  },
+  "command_grid": [
+    {"vx_cmd_mps": 0.10, "trials_planned": 3, "trials_completed": 0},
+    {"vx_cmd_mps": 0.30, "trials_planned": 3, "trials_completed": 0}
+  ],
+  "trial_records": [
+    {
+      "trial_id": "TO_BE_FILLED_001",
+      "vx_cmd_mps": 0.30,
+      "trial_valid": true,
+      "advisory_condition": false
+    }
+  ],
+  "downstream_readiness": {
+    "compensation_ready": false,
+    "navigation_control_ready": false,
+    "safe_command_adapter_ready": false,
+    "navigation_outcome_claim_ready": false
+  }
+}

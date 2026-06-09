@@ -283,3 +283,12 @@ Readiness flags remain:
 - `compensation_ready=false`
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
+
+## M20 Future Experiment Protocol
+
+M20 designs a future experiment protocol for real navigation outcome evaluation: 4 experiment tiers, 35 defined metrics, claim-upgrade evidence matrix, JSON schema, examples, validator, and test suite. M20 is protocol-only — no experiments have been executed. M20 does not claim publication readiness.
+
+Readiness flags remain:
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`

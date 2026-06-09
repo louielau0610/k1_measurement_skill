@@ -71,3 +71,7 @@ M19.1 completes missing figure/table caption packs, table packs (main + appendix
 ## P14 Manuscript v2 Polish
 
 P14 creates polished manuscript v2 assembly integrating M19/M19.1 figure/table assets with proper placement, captions, and appendix separation. P14 does not add new experimental evidence and does not claim publication readiness.
+
+## M20 Future Experiment Protocol
+
+M20 designs the future experiment protocol for real navigation outcome evaluation across 4 tiers with 35 defined metrics, claim-upgrade criteria, schema/validator/tests. Protocol only — no experiments executed.

@@ -1,0 +1,27 @@
+﻿{
+  "experiment_id": "INVALID_EXAMPLE",
+  "protocol_version": "1.0.0",
+  "experiment_metadata": {
+    "robot_model": "K1",
+    "robot_id": "TO_BE_FILLED",
+    "surface_type": "TO_BE_FILLED",
+    "session_id": "TO_BE_FILLED",
+    "date": "FUTURE_DATE"
+  },
+  "command_grid": [],
+  "trial_records": [
+    {
+      "trial_id": "INVALID_001",
+      "vx_cmd_mps": 0.30,
+      "trial_valid": true,
+      "advisory_condition": false,
+      "remote_controller_state": "disallowed_field"
+    }
+  ],
+  "downstream_readiness": {
+    "compensation_ready": false,
+    "navigation_control_ready": false,
+    "safe_command_adapter_ready": false,
+    "navigation_outcome_claim_ready": false
+  }
+}

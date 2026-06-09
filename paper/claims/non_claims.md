@@ -112,3 +112,7 @@ The project must not state these as established claims:
 - P14 figure/table integration does not add new scientific evidence.
 - P14 does not establish final novelty or performance superiority.
 - P14 evidence gaps remain unresolved.
+- M20 future experiment protocol is not completed experiment evidence.
+- M20 protocol design does not establish navigation outcome improvement.
+- M20 does not establish collision reduction or success-rate improvement.
+- M20 compensation/safe adapter/navigation control are not implemented.

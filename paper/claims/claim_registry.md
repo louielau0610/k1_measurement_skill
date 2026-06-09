@@ -135,3 +135,7 @@ Claim type options:
 | P14-V1 | P14 creates polished manuscript v2 assembly with integrated figure/table references and main/appendix asset separation. | supported_structural_claim | `paper/manuscript/manuscript_v2_assembly.md` | manuscript assembly artifact | medium | no | Not submission ready. |
 | P14-V2 | P14 creates main-paper and appendix asset plans (5 main + 13 appendix) with consistent cross-references. | supported_structural_claim | `paper/tables/p14_main_paper_asset_plan.md` | asset plan artifact | low | no | All captions claim-safe. |
 | P14-NC1 | P14 establishes submission readiness. | non_claim | none | none | none | no | submission_readiness=not_submission_ready. |
+
+| M20-P1 | M20 creates a future experiment protocol with 4 tiers, 35 metrics, claim-upgrade matrix, schema, and validator/tests. | supported_structural_claim | 12 new files (protocol, metrics, schema, etc.) | protocol artifact | medium | no | Protocol only; no experiments executed. |
+| M20-NC1 | M20 establishes navigation outcome improvement. | non_claim | none | none | none | no | No experiments executed; protocol only. |
+| M20-NC2 | M20 implements compensation or safe command adapter. | non_claim | none | none | none | no | compensation/safe_adapter_ready=false. |
