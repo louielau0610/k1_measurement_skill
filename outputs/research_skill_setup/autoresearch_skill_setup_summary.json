@@ -1,0 +1,42 @@
+{
+  "milestone": "P0",
+  "task": "autoresearch_skill_setup",
+  "installed_skill_name": "autoresearch",
+  "installed_skill_path": ".agents/skills/autoresearch/SKILL.md",
+  "source_decision": "custom_repo_scoped_skill_created_after_evaluating_external_and_local_candidates",
+  "candidate_count": 5,
+  "accepted_candidate": "custom repo-scoped autoresearch skill",
+  "rejected_candidates": [
+    "OpenAI Codex Agent Skills documentation: adapted for structure only, not a research workflow",
+    "Open Agent Skills directory: discovery source only, not directly installable as project workflow",
+    "Literature Review Agent: useful idea but domain mismatch, external API assumption, unclear license for repo inclusion",
+    "Local karpathy-guidelines skill: coding behavior guidance, not autoresearch"
+  ],
+  "created_files": [
+    "docs/autoresearch_skill_evaluation.md",
+    ".agents/skills/autoresearch/SKILL.md",
+    ".agents/skills/autoresearch/references/research_workflow_template.md",
+    ".agents/skills/autoresearch/references/literature_matrix_template.md",
+    ".agents/skills/autoresearch/references/claim_registry_template.md",
+    "paper/README.md",
+    "paper/related_work/literature_matrix.md",
+    "paper/related_work/notes/README.md",
+    "paper/claims/claim_registry.md",
+    "paper/claims/evidence_table.md",
+    "paper/claims/non_claims.md",
+    "paper/experiments/experiment_plan.md",
+    "paper/method/method_outline.md",
+    "outputs/research_skill_setup/autoresearch_skill_setup_summary.json"
+  ],
+  "modified_files": [],
+  "citation_integrity_rules_enabled": true,
+  "claim_registry_enabled": true,
+  "literature_matrix_enabled": true,
+  "paper_workspace_created_or_verified": true,
+  "external_code_executed": false,
+  "untrusted_scripts_executed": false,
+  "api_keys_added": false,
+  "ros2_commands_run": false,
+  "booster_sdk_movement_commands_run": false,
+  "real_robot_commands_run": false
+}
