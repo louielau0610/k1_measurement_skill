@@ -59,3 +59,7 @@ P12 creates manuscript v1 assembly, revision changelog, consistency check, and r
 ## P13 Reference and BibTeX Cleanup
 
 P13 resolves 8 matrix-only BibTeX entries from verified P1 metadata, adds 3 new manuscript citations to strengthen Related Work §4/§5, and creates comprehensive citation audit reports. P13 does not add new experimental evidence or claim publication readiness.
+
+## M19 Figure Rendering and Table Assets
+
+M19 generates Mermaid figure sources (.mmd) for the method pipeline and evidence chain figures, ready for SVG rendering. M19 does not add new experimental evidence and does not claim publication readiness.

@@ -124,3 +124,7 @@ Claim type options:
 | P13-R2 | P13 strengthens Related Work §4 (3->4 citations) and §5 (1->3 citations) with P1-verified sources. | literature_context | `paper/manuscript/sections/02_related_work_draft_v1.md` | manuscript section | medium | no | Context only; no novelty claim. |
 | P13-NC1 | P13 establishes final novelty. | non_claim | none | none | none | no | No claim wording changed. |
 | P13-NC2 | P13 fabricates citation metadata. | non_claim | none | none | none | no | fabricated_metadata=false. |
+
+| M19-F1 | M19 generates method pipeline figure (.mmd) with 12 nodes, validation lane, and prohibited execution path markings. | supported_structural_claim | `paper/figures/method_pipeline_figure.mmd` | figure asset | medium | no | Ready for SVG rendering. |
+| M19-F2 | M19 generates evidence chain figure (.mmd) with 15 nodes and color-coded claim categories. | supported_structural_claim | `paper/figures/evidence_chain_figure.mmd` | figure asset | medium | no | Ready for SVG rendering. |
+| M19-NC1 | M19 establishes publication readiness. | non_claim | none | none | none | no | submission_readiness=not_submission_ready. |

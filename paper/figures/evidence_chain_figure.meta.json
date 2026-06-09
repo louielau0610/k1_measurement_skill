@@ -1,0 +1,8 @@
+{
+  "figure_title": "Evidence Chain and Claim Governance",
+  "caption": "Evidence chain for the current research pipeline. Raw measurement evidence is converted to validated datasets, model prediction contracts, advisory risk maps, and pipeline evaluation reports. Claim governance separates supported structural/software claims from literature context, candidate contributions, claims requiring more experiment, and prohibited non-claims.",
+  "mermaid_source": "evidence_chain_figure.mmd",
+  "rendering_note": "Render with mermaid-cli (mmdc) or https://mermaid.live for final SVG/PNG.",
+  "rendered": false,
+  "format": "mermaid"
+}

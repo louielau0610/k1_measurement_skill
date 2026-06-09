@@ -672,7 +672,7 @@ Per P11 full-manuscript claim audit:
 - Sparse command grid (5 forward-velocity points; no v_y or omega_z).
 - No calibrated uncertainty.
 - No collision, near-miss, or success-rate metrics.
-- Figures not rendered (specs only).
+- Figures generated (M19): .mmd Mermaid sources ready for SVG rendering in paper/figures/.
 - 8 BibTeX entries added (P13); 16 total entries in seed_references.bib.
 - Final title not selected.
 

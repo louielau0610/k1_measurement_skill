@@ -256,3 +256,12 @@ Readiness flags remain:
 - `compensation_ready=false`
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
+
+## M19 Figure Rendering and Table Assets
+
+M19 generates Mermaid (.mmd) figure sources for the method pipeline and evidence chain figures using `scripts/generate_m19_figures.py`. Both figures respect claim boundaries with explicit prohibited execution path and claim category markings. Final SVG rendering pending external Mermaid CLI or mermaid.live.
+
+Readiness flags remain:
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`

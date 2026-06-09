@@ -1,0 +1,8 @@
+{
+  "figure_title": "Artifact-Governed Velocity Response Pipeline",
+  "caption": "Pipeline overview for offline K1 velocity response analysis. Measurement artifacts are converted into schema-governed dataset records, used by a conservative response model, mapped into advisory navigation-risk metadata, and audited through claim governance. The figure explicitly excludes compensation, inverse command mapping, navigation control, and safe command adapter execution.",
+  "mermaid_source": "method_pipeline_figure.mmd",
+  "rendering_note": "Render with mermaid-cli (mmdc) or https://mermaid.live for final SVG/PNG.",
+  "rendered": false,
+  "format": "mermaid"
+}

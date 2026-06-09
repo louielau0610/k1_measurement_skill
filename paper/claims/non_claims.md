@@ -101,3 +101,6 @@ The project must not state these as established claims:
 - P13 BibTeX completion is not publication readiness.
 - P13 does not fabricate citation metadata.
 - P13 missing experimental evidence remains unresolved.
+- M19 figure rendering does not establish publication readiness.
+- M19 does not fabricate experimental results.
+- M19 figure assets are not final submission figures.

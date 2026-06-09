@@ -1,0 +1,23 @@
+flowchart LR
+    A["Measurement v0<br/>artifacts"] --> B["Schema v1<br/>mapping"]
+    B --> C["Dataset v1<br/>(5 records)"]
+    C --> D["Response model<br/>(uncertainty-aware)"]
+    C --> E["Baseline hooks<br/>(3 interfaces)"]
+    D --> F["Response predictions<br/>(5 predictions)"]
+    E --> F
+    F --> G["Navigation risk<br/>mapper"]
+    G --> H["Offline risk map<br/>(5 assessments)"]
+    C --> V1["Dataset validation<br/>report"]
+    F --> V2["Model evaluation<br/>(sanity checks)"]
+    H --> V3["Risk evaluation<br/>(warning counts)"]
+    V1 --> I["M17 pipeline<br/>evaluation"]
+    V2 --> I
+    V3 --> I
+    I --> J["Claim registry"]
+    I --> K["Non-claims"]
+    I --> L["M18/M19 claim audit"]
+    H -.-> X["<b>PROHIBITED:</b><br/>No compensation<br/>No navigation control<br/>No safe adapter"]
+    style X fill:#f88,stroke:#c00,stroke-width:2px
+    style D fill:#adf,stroke:#358
+    style G fill:#adf,stroke:#358
+    style I fill:#ffa,stroke:#a80

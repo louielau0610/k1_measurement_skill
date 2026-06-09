@@ -24,7 +24,7 @@ All 15+ prohibited claims remain absent. Overclaim scan clean. Submission readin
 ## Remaining unresolved issues
 - 6 high-severity evidence gaps (require experiments).
 - 8 missing BibTeX entries (require P13).
-- 2 figures unrendered (require M19).
+- 2 figures have generated Mermaid sources (M19); final SVG rendering pending mmdc or mermaid.live.
 - Final title not selected (requires post-revision review).
 - 1 literature-expansion citation gap (Related Work §4, §5).
 
