@@ -92,3 +92,10 @@ Evidence kind examples:
 | E-P12-AUDIT | `paper/claims/p12_revision_claim_audit.md` | claim_governance | yes | P12 revision claim audit verifying no new overclaims. | P12-R1; P12-NC1; P12-NC2 |
 | E-P12-RESOLVED | `paper/tables/p12_resolved_and_deferred_issues_table.md` | revision_table | yes | 13-row resolved/deferred issues table. | P12-R1 |
 | E-P12-SUMMARY | `outputs/research_foundation/p12_manuscript_revision_summary.json` | metadata | yes | Machine-readable P12 summary. | P12-R1 |
+
+| E-P13-CLEANUP | `paper/related_work/p13_reference_cleanup_report.md` | citation_report | yes | Reference cleanup report: 8 BibTeX added, 3 new manuscript citations. | P13-R1; P13-R2 |
+| E-P13-BIB-AUDIT | `paper/related_work/p13_bibtex_verification_audit.md` | audit_table | yes | 8-row BibTeX verification audit with field-level verification status. | P13-R1 |
+| E-P13-LIT-EXP | `paper/related_work/p13_literature_expansion_report.md` | citation_report | yes | Literature expansion report documenting RW §4/§5 improvements. | P13-R2 |
+| E-P13-CLAIM-AUDIT | `paper/claims/p13_citation_claim_audit.md` | claim_governance | yes | P13 citation claim audit confirming no new overclaims. | P13-NC1; P13-NC2 |
+| E-P13-REF-TABLE | `paper/tables/p13_reference_status_table.md` | reference_table | yes | 16-row reference status table for all literature entries. | P13-R1 |
+| E-P13-SUMMARY | `outputs/research_foundation/p13_reference_cleanup_summary.json` | metadata | yes | Machine-readable P13 summary. | P13-R1 |

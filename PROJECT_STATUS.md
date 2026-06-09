@@ -247,3 +247,12 @@ Readiness flags remain:
 - `compensation_ready=false`
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
+
+## P13 Reference and BibTeX Cleanup
+
+P13 resolves all 8 matrix-only BibTeX entries from verified P1 metadata, strengthening seed_references.bib to 16 entries. P13 adds 3 new manuscript citations (FanArxiv2021Costmaps, BenrabahSensors2024, FrancisTOHRI2025) to Related Work §4/§5. P13 does not add new experimental evidence and does not claim publication readiness.
+
+Readiness flags remain:
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`

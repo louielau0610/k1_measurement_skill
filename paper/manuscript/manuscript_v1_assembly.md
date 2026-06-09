@@ -673,7 +673,7 @@ Per P11 full-manuscript claim audit:
 - No calibrated uncertainty.
 - No collision, near-miss, or success-rate metrics.
 - Figures not rendered (specs only).
-- 8 BibTeX entries missing for matrix-only papers.
+- 8 BibTeX entries added (P13); 16 total entries in seed_references.bib.
 - Final title not selected.
 
 These gaps are correctly documented and require future experiments and literature expansion before any performance, safety, or generalization claim can be supported.

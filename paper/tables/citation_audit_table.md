@@ -10,11 +10,11 @@
 | FanRSS2021STEP | Intro, Related Work, Experiments, Discussion | yes | verified | STEP traversability, risk-aware evaluation. | no (context only) | yes — context claims; most-cited key (9 appearances) | none |
 | YangRAL2022 | Related Work, Discussion | yes | verified | Online kinematic calibration using velocity prediction errors. | no (context only) | yes — context claims | none |
 | MaRSS2024DrEureka | Intro, Related Work | yes | verified | LLM-guided sim-to-real domain randomization. | no (context only) | yes — context claims | none |
-| *RudinCoRL2021* | *not cited* | *no* | *verified (matrix)* | *—* | *—* | *not cited* | *add BibTeX entry* |
-| *MargolisCoRL2022* | *not cited* | *no* | *verified (matrix)* | *—* | *—* | *not cited* | *add BibTeX entry* |
-| *DaoArxiv2026* | *not cited* | *no* | *partially_verified (matrix)* | *—* | *—* | *not cited* | *add BibTeX entry* |
-| *GangapurwalaArxiv2020* | *not cited* | *no* | *partially_verified (matrix)* | *—* | *—* | *not cited* | *add BibTeX entry* |
-| *GrandiaTRO2023* | *not cited* | *no* | *partially_verified (matrix)* | *—* | *—* | *not cited* | *add BibTeX entry* |
-| *FanArxiv2021Costmaps* | *not cited* | *no* | *partially_verified (matrix)* | *—* | *—* | *not cited* | *add BibTeX entry* |
-| *BenrabahSensors2024* | *not cited* | *no* | *verified (matrix)* | *—* | *—* | *not cited* | *add BibTeX entry* |
-| *FrancisTOHRI2025* | *not cited* | *no* | *verified (matrix)* | *—* | *—* | *not cited* | *add BibTeX entry* |
+| *RudinCoRL2021* | not cited | **yes (P13)** | verified | — | — | not cited | none | |
+| *MargolisCoRL2022* | not cited | **yes (P13)** | verified | — | — | not cited | none | |
+| *DaoArxiv2026* | not cited | **yes (P13)** | partially_verified | — | — | not cited | verify venue | |
+| *GangapurwalaArxiv2020* | not cited | **yes (P13)** | partially_verified | — | — | not cited | verify venue | |
+| *GrandiaTRO2023* | not cited | **yes (P13)** | partially_verified | — | — | not cited | verify DOI | |
+| *FanArxiv2021Costmaps* | RW \~4 | **yes (P13)** | partially_verified | risk-aware costmap context | no (context only) | yes — context only | verify venue | |
+| *BenrabahSensors2024* | RW \~4, \~5 | **yes (P13)** | verified | traversability metrics taxonomy | no (context only) | yes — context only | verify full author list | |
+| *FrancisTOHRI2025* | RW \~5 | **yes (P13)** | verified | navigation evaluation guidelines | no (context only) | yes — context only | verify author list | |

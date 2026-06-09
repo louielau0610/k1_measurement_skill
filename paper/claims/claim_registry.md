@@ -119,3 +119,8 @@ Claim type options:
 | P12-R3 | P12 post-revision consistency check confirms all terminology, claims, citations, and numbers remain consistent. | supported_structural_claim | `paper/manuscript/manuscript_v1_consistency_check.md` | consistency artifact | high | no | revision_v1_complete. |
 | P12-NC1 | P12 establishes submission readiness. | non_claim | none | none | none | no | submission_readiness=not_submission_ready. |
 | P12-NC2 | P12 adds new scientific results or sections. | non_claim | none | none | none | no | new_scientific_results_added=false. |
+
+| P13-R1 | P13 adds 8 verified BibTeX entries to seed_references.bib (total 16 entries). All fields from P1 metadata only. | supported_structural_claim | `paper/related_work/seed_references.bib` | citation artifact | high | no | No fabricated fields. |
+| P13-R2 | P13 strengthens Related Work §4 (3->4 citations) and §5 (1->3 citations) with P1-verified sources. | literature_context | `paper/manuscript/sections/02_related_work_draft_v1.md` | manuscript section | medium | no | Context only; no novelty claim. |
+| P13-NC1 | P13 establishes final novelty. | non_claim | none | none | none | no | No claim wording changed. |
+| P13-NC2 | P13 fabricates citation metadata. | non_claim | none | none | none | no | fabricated_metadata=false. |

@@ -7,7 +7,7 @@ All 10 preferred terms from `paper/tables/terminology_consistency_table.md` rema
 4-part contribution structure consistent across Abstract, Introduction, Method, Discussion, and Conclusion. All remain "candidate"/"tentative." No upgrade to final.
 
 ## Citation status
-8 cited keys all in `seed_references.bib`. 8 matrix-only entries documented as needing BibTeX (deferred to P13). No rejected or unverified sources cited. Partially verified KumarRMA2021 used only for context.
+8 cited keys all in `seed_references.bib`. 8 matrix-only entries resolved — BibTeX added in P13 (16 total entries in seed_references.bib). No rejected or unverified sources cited. Partially verified KumarRMA2021 used only for context.
 
 ## Numeric traceability status
 All 12 numeric items verified per P11 audit. No new numbers added in P12. All remain traceable to source artifacts.
@@ -37,7 +37,7 @@ All 15+ prohibited claims remain absent. Overclaim scan clean. Submission readin
 | Conclusion drafted | yes (P9, 619 words) |
 | All claims artifact-backed or properly bounded | yes |
 | All numbers traceable | yes |
-| All citations in .bib | yes (cited) / partial (matrix-only) |
+| All citations in .bib | yes (cited) / yes (16 entries, all matrix-only resolved in P13) |
 | P11 P0 blocking issues | 0 |
 | P11 P1 issues resolved or deferred | 3/3 addressed |
 | P11 P2 issues resolved or deferred | 3/3 addressed |

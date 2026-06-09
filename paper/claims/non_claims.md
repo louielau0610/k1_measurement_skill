@@ -96,3 +96,8 @@ The project must not state these as established claims:
 - P12 does not establish performance superiority.
 - P12 does not prove navigation safety improvement.
 - P12 experiment-required gaps remain unresolved.
+- P13 reference cleanup does not establish final novelty.
+- P13 literature expansion does not establish performance superiority.
+- P13 BibTeX completion is not publication readiness.
+- P13 does not fabricate citation metadata.
+- P13 missing experimental evidence remains unresolved.
