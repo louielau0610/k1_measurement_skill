@@ -1,0 +1,35 @@
+{
+  "milestone": "M13",
+  "title": "Research-grade velocity response foundation",
+  "created_at": "2026-06-09T00:00:00Z",
+  "scope": [
+    "research problem formulation",
+    "Chapter 2 velocity response modeling plan",
+    "velocity response dataset schema v1",
+    "schema validation utility",
+    "CLI schema validation",
+    "tests",
+    "project status updates"
+  ],
+  "research_problem": "v_actual = f(v_cmd, environment, robot_state)",
+  "schema": "configs/velocity_response_dataset_schema_v1.json",
+  "validator": "scripts/validate_velocity_response_dataset_schema.py",
+  "tests": [
+    "tests/test_velocity_response_dataset_schema.py"
+  ],
+  "boundaries": {
+    "literature_review_started": false,
+    "p1_started": false,
+    "full_paper_draft_written": false,
+    "ros2_commands_run": false,
+    "booster_sdk_movement_commands_run": false,
+    "real_robot_movement_commands_run": false,
+    "compensation_logic_implemented": false,
+    "inverse_command_mapping_implemented": false,
+    "navigation_control_implemented": false,
+    "safe_command_adapter_implemented": false,
+    "battery_state_required": false,
+    "remote_controller_state_in_scope": false,
+    "publication_ready_claim": false
+  }
+}

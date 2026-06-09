@@ -11,6 +11,15 @@
 - [x] M6 measurement report generator
 - [x] M7 real K1 measurement preparation pack
 - [x] M8 real K1 field logging workflow support
+- [x] M13 research-grade velocity response foundation
+
+## Research Foundation Follow-Up
+
+- [ ] Use `configs/velocity_response_dataset_schema_v1.json` when preparing real velocity response datasets.
+- [ ] Validate schema changes with `scripts/validate_velocity_response_dataset_schema.py`.
+- [ ] Keep `battery_state` optional.
+- [ ] Keep `remote_controller_state` permanently out of scope.
+- [ ] Start literature review only after the project explicitly enters the next research phase.
 
 ## Next Step On Real K1
 
@@ -32,3 +41,4 @@
 - [ ] Do not publish robot movement commands.
 - [ ] Do not hard-code unconfirmed K1 topics.
 - [ ] Do not treat dummy artifacts as real K1 findings.
+- [ ] Do not claim publication readiness from M13 artifacts.

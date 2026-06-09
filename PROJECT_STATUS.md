@@ -37,6 +37,17 @@ M7 commit: `0e8db1131b152617cd9f86d42d61c96d473d7996`
 - [x] M8 ground-truth sheet validation helpers
 - [x] M8 mapping-driven real log normalizer
 - [x] M8 workflow documentation and checklist updates
+- [x] M13 research-grade velocity response foundation
+
+## M13 Research Foundation
+
+M13 adds research problem framing for:
+
+```text
+v_actual = f(v_cmd, environment, robot_state)
+```
+
+M13 also adds the Chapter 2 velocity response modeling plan, dataset schema v1, schema validation CLI, tests, and milestone summary JSON. It does not start literature review, P1, full paper drafting, compensation, inverse command mapping, navigation control, or safe command adapter implementation.
 
 ## Pending Real K1 Validation
 

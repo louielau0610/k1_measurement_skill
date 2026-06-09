@@ -115,3 +115,21 @@ py scripts/validate_real_k1_topic_mapping.py --mapping outputs/m8_field_session_
 ```
 
 默认 template mapping 仍包含 `TBD`，所以 mapping validator 会以 controlled validation failure 返回，而不是 Python crash。
+
+## M13 研究级速度响应基础
+
+M13 将研究问题固定为：
+
+```text
+v_actual = f(v_cmd, environment, robot_state)
+```
+
+新增内容：
+
+- `docs/m13_research_grade_velocity_response_foundation.md`
+- `paper/method/velocity_response_modeling_plan.md`
+- `configs/velocity_response_dataset_schema_v1.json`
+- `scripts/validate_velocity_response_dataset_schema.py`
+- `outputs/research_foundation/m13_research_foundation_summary.json`
+
+M13 只定义研究问题、建模计划、数据集 schema、schema 校验 CLI 和测试。M13 不启动文献综述，不启动 P1，不撰写完整论文草稿，不实现速度补偿、反向命令映射、导航控制或 safe command adapter。`battery_state` 保持可选，`remote_controller_state` 永久不进入范围。
