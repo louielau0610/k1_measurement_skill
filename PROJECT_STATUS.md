@@ -179,3 +179,13 @@ Readiness flags remain:
 - `compensation_ready=false`
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
+
+## P6 Experiments and Evaluation Draft v1
+
+P6 creates an academic Experiments/Evaluation draft v1 reporting structural evaluation from current artifacts. P6 covers 5 evaluation questions, dataset/model/risk-map evidence, current metrics, missing evidence, and future experiment protocol. P6 does not implement engineering functionality, does not claim navigation performance, and does not claim novelty or publication readiness.
+
+Readiness flags remain:
+
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`

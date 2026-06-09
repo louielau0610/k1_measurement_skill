@@ -71,3 +71,12 @@ Claim type options:
 | P5-NC1 | P5 establishes final novelty. | non_claim | none | none | none | no | Method draft explicitly avoids novelty language. |
 | P5-NC2 | P5 establishes performance superiority. | non_claim | none | none | none | no | No comparative experiment evaluated. |
 | P5-NC3 | P5 establishes publication readiness. | non_claim | none | none | none | no | Draft is v1 only. |
+
+| P6-E1 | P6 creates an academic Experiments/Evaluation draft v1 with 5 evaluation questions and structural validation. | supported_structural_claim | `paper/manuscript/sections/04_experiments_draft_v1.md` | manuscript draft artifact | medium | no | Draft only; not final submission prose. |
+| P6-E2 | Dataset v1 contains 5 records: 4 numeric, 1 qualitative-only at 0.10 m/s deadzone. | supported_by_project_artifact | `outputs/research_datasets/velocity_response_dataset_v1.json`; `outputs/research_models/response_model_evaluation_v1.json` | project dataset + model eval artifact | high | no | Numbers verified against output artifacts. |
+| P6-E3 | Exact-source reconstruction MAE is 0.0 — a structural sanity check, not predictive performance evidence. | sanity_check_only | `outputs/research_models/response_model_evaluation_v1.json` | model eval artifact | high | no | No held-out evaluation exists. |
+| P6-E4 | Risk map reports 5 assessments with 5 warnings across 3 risk levels. | structural_validation_only | `outputs/research_risk/navigation_risk_evaluation_v1.json` | risk eval artifact | medium | no | Advisory classification only; no navigation outcomes. |
+| P6-E5 | All unavailable metrics (collision, near-miss, success, generalization, calibration) are explicitly documented. | supported_by_project_artifact | `paper/tables/experiment_metrics_status_table.md` | metrics table + M17 eval | high | no | Future experiments required. |
+| P6-NC1 | P6 establishes navigation safety improvement. | non_claim | none | none | none | no | No navigation outcome data exists. |
+| P6-NC2 | P6 establishes performance superiority over baselines. | non_claim | none | none | none | no | Baselines not evaluated on held-out data. |
+| P6-NC3 | P6 establishes calibrated uncertainty. | non_claim | none | none | none | no | Labels are categorical, not calibrated. |

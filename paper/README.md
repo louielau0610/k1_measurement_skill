@@ -27,3 +27,7 @@ P4 creates a citation-safe Introduction draft, formal Problem Statement, and tit
 ## P5 Method Section Draft v1
 
 P5 creates an academic Method draft v1 from M13-M18 artifacts with formal notation, algorithmic contracts, artifact traceability, and claim audit. P5 does not implement engineering functionality and does not claim novelty or performance.
+
+## P6 Experiments and Evaluation Draft v1
+
+P6 creates an academic Experiments/Evaluation draft v1 reporting structural evaluation only: dataset evidence, model sanity checks, risk-map assessment, and claim-governed evaluation. P6 does not claim navigation performance or safety improvement.

@@ -45,16 +45,14 @@ No abstract has been written. The Introduction draft (§1) is not a substitute f
 - Method stage I/O contract table at: `paper/tables/method_stage_io_contract_table.md`.
 - Algorithm summary table at: `paper/tables/method_algorithm_summary_table.md`.
 - P5 draft is academic and citation-safe; covers 10 subsections with formal notation, 3 pseudo-algorithms, and scope/limitations.
-## 4. Experiments - planned content only
 
-- Use `paper/manuscript/sections/04_experiments_skeleton.md`銆?
-- Separate:
-  - structural validation銆?
-  - dataset summary銆?
-  - model sanity checks銆?
-  - risk-map readiness銆?
-  - missing real navigation outcomes銆?
+## 4. Experiments and Evaluation
 
+- Draft v1 exists at: `paper/manuscript/sections/04_experiments_draft_v1.md`.
+- Skeleton preserved at: `paper/manuscript/sections/04_experiments_skeleton.md`.
+- Metrics status table at: `paper/tables/experiment_metrics_status_table.md`.
+- Evaluation question artifact map at: `paper/tables/evaluation_question_artifact_map.md`.
+- P6 draft covers 5 evaluation questions, structural validation, and missing performance evidence. No navigation safety claims.
 ## 5. Discussion - planned content only
 
 - Discuss what artifact governance enables銆?

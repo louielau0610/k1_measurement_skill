@@ -53,3 +53,10 @@ The project must not state these as established claims:
 - P5 does not convert risk mapping into navigation control.
 - P5 does not claim any proposed method component is novel.
 - P5 does not claim prediction accuracy on held-out data.
+- P6 creates an Experiments/Evaluation draft. P6 does not establish navigation performance.
+- P6 does not establish navigation safety improvement.
+- P6 does not establish collision reduction.
+- P6 does not establish success-rate improvement.
+- P6 exact-source reconstruction is a sanity check, not predictive-performance evidence.
+- P6 risk-map warnings are advisory classifications, not real navigation outcomes.
+- P6 baseline hooks are not evaluated for superiority.

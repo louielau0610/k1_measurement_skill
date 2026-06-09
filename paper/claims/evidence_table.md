@@ -47,3 +47,10 @@ Evidence kind examples:
 | E-P5-IO-TABLE | `paper/tables/method_stage_io_contract_table.md` | method_table | yes | Five-stage input/output contract table with producer scripts and validation artifacts. | P5-M2 |
 | E-P5-ALGO-TABLE | `paper/tables/method_algorithm_summary_table.md` | method_table | yes | Algorithm summary table with conservative rules and avoided unsupported operations. | P5-M2 |
 | E-P5-SUMMARY | `outputs/research_foundation/p5_method_draft_summary.json` | metadata | yes | Machine-readable P5 summary with conservative flags. | P5-M1 |
+
+| E-P6-DRAFT | `paper/manuscript/sections/04_experiments_draft_v1.md` | manuscript_draft | yes | Academic Experiments/Evaluation draft with 5 EQs, structural validation, and missing evidence. | P6-E1; P6-E5 |
+| E-P6-CLAIM-MAP | `paper/claims/p6_experiments_claim_map.md` | claim_governance | yes | Maps 16 experiment statements to artifacts and evidence status. | P6-E1 |
+| E-P6-AUDIT | `paper/claims/p6_experiments_claim_audit.md` | claim_governance | yes | P6-specific claim audit with metric availability and baseline comparison audits. | P6-E1; P6-NC1; P6-NC2; P6-NC3 |
+| E-P6-METRICS-TABLE | `paper/tables/experiment_metrics_status_table.md` | experiment_table | yes | 26-row metrics status table with available/unavailable indicators. | P6-E5 |
+| E-P6-EQ-MAP | `paper/tables/evaluation_question_artifact_map.md` | experiment_table | yes | 5-row EQ-to-artifact mapping with current results and interpretation limits. | P6-E1 |
+| E-P6-SUMMARY | `outputs/research_foundation/p6_experiments_draft_summary.json` | metadata | yes | Machine-readable P6 summary with conservative flags. | P6-E1 |
