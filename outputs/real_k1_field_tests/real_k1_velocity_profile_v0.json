@@ -1,0 +1,195 @@
+{
+  "schema_version": "real_k1_velocity_profile_v0",
+  "source": {
+    "field_test_yaml": "outputs/real_k1_field_tests/forward_velocity_transition_trials_v0.yaml",
+    "analysis_summary_json": "outputs/real_k1_field_tests/forward_velocity_transition_summary_v0.json",
+    "date": "2026-06-09"
+  },
+  "platform": "Booster Robotics K1",
+  "environment": {
+    "floor_type": "lab_hard_floor",
+    "condition": "dry"
+  },
+  "command_interface": {
+    "sdk": "booster_robotics_sdk_python",
+    "client": "B1LocoClient",
+    "method": "Move(vx, 0.0, 0.0)",
+    "network_interface": "lo"
+  },
+  "measurement_topics": {
+    "odometer": {
+      "topic": "/odometer_state",
+      "type": "booster_interface/msg/Odometer",
+      "usage": [
+        "within_trial_displacement",
+        "relative_heading"
+      ]
+    },
+    "imu": {
+      "topic": "/low_state",
+      "type": "booster_interface/msg/LowState",
+      "usage": [
+        "rpy",
+        "gyro",
+        "acc",
+        "yaw_cross_check"
+      ]
+    },
+    "robot_state": {
+      "topic": "/robot_states",
+      "type": "booster_interface/msg/RobotStatesMsg",
+      "usage": [
+        "current_mode",
+        "current_body_control",
+        "current_actions"
+      ]
+    },
+    "safety_state": {
+      "topic": "/fall_down",
+      "type": "booster_interface/msg/FallDownState",
+      "usage": [
+        "fall_down_state",
+        "is_recovery_available"
+      ]
+    }
+  },
+  "excluded_or_optional_topics": {
+    "battery_state": {
+      "status": "optional_future_only"
+    },
+    "remote_controller_state": {
+      "status": "permanently_removed",
+      "reason": "navigation-focused measurement excludes manual-control input"
+    }
+  },
+  "observed_velocity_regions": {
+    "ineffective_or_deadzone": {
+      "observed_vx_cmd_mps": [
+        0.1
+      ],
+      "interpretation": "almost no measurable translation"
+    },
+    "first_effective_region": {
+      "observed_vx_cmd_mps": [
+        0.3
+      ],
+      "interpretation": "first clearly effective but weak response"
+    },
+    "transition_region": {
+      "observed_vx_cmd_mps": [
+        0.3,
+        0.4,
+        0.45
+      ],
+      "interpretation": "nonlinear low-speed transition; gain increases rapidly"
+    },
+    "stable_tracking_region": {
+      "observed_vx_cmd_mps": [
+        0.45,
+        0.5
+      ],
+      "interpretation": "near-stable to stable tracking, but 0.45 requires yaw repeat check"
+    }
+  },
+  "profile_thresholds": {
+    "last_ineffective_observed_vx_cmd_mps": 0.1,
+    "first_effective_observed_vx_cmd_mps": 0.3,
+    "stable_tracking_observed_vx_cmd_mps": 0.5,
+    "stable_tracking_candidate_lower_bound_mps": 0.45,
+    "effective_threshold_interval_mps": [
+      0.1,
+      0.3
+    ]
+  },
+  "trial_points": [
+    {
+      "trial_id": "vx_0_1_smoke",
+      "vx_cmd_mps": 0.1,
+      "duration_s": 2.0,
+      "distance_m": null,
+      "v_actual_est_mps": null,
+      "speed_gain_est": null,
+      "dtheta_rad": null,
+      "tracking_category": "ineffective_or_deadzone",
+      "interpretation": "deadzone_or_ineffective_low_speed"
+    },
+    {
+      "trial_id": "vx_0_3_transition",
+      "vx_cmd_mps": 0.3,
+      "duration_s": 2.0,
+      "distance_m": 0.288544,
+      "v_actual_est_mps": 0.144272,
+      "speed_gain_est": 0.480907,
+      "dtheta_rad": 0.033154,
+      "tracking_category": "weak_response",
+      "interpretation": "first_effective_but_weak_response"
+    },
+    {
+      "trial_id": "vx_0_4_effective",
+      "vx_cmd_mps": 0.4,
+      "duration_s": 2.0,
+      "distance_m": 0.548009,
+      "v_actual_est_mps": 0.274004,
+      "speed_gain_est": 0.685011,
+      "dtheta_rad": 0.006043,
+      "tracking_category": "under_tracking",
+      "interpretation": "effective_but_under_tracking"
+    },
+    {
+      "trial_id": "vx_0_5_stable",
+      "vx_cmd_mps": 0.5,
+      "duration_s": 2.0,
+      "distance_m": 1.00394,
+      "v_actual_est_mps": 0.50197,
+      "speed_gain_est": 1.00394,
+      "dtheta_rad": 0.005665,
+      "tracking_category": "stable_tracking",
+      "interpretation": "stable_tracking"
+    },
+    {
+      "trial_id": "vx_0_45_transition_upper",
+      "vx_cmd_mps": 0.45,
+      "duration_s": 2.0,
+      "distance_m": 0.839345,
+      "v_actual_est_mps": 0.419672,
+      "speed_gain_est": 0.932605,
+      "dtheta_rad": -0.094939,
+      "tracking_category": "stable_tracking",
+      "interpretation": "near_stable_tracking_but_yaw_drift_needs_repeat",
+      "requires_repeat_due_to_yaw_drift": true
+    }
+  ],
+  "modeling_recommendation": {
+    "global_gain_model_recommended": false,
+    "recommended_model_family": "piecewise_or_nonlinear_mapping",
+    "reason": "low-speed response is nonlinear with deadzone and transition region"
+  },
+  "downstream_usage": {
+    "compensation_ready": false,
+    "navigation_warning_ready": true,
+    "safe_command_adapter_ready": false,
+    "recommended_use": [
+      "warn on low target speeds below observed effective threshold",
+      "treat 0.3-0.45 as transition/low-confidence region",
+      "use 0.5 as current stable tracking reference for lab hard floor only"
+    ]
+  },
+  "profile_rules": [
+    "Do not compare absolute odometer coordinates across trials.",
+    "Use only within-trial delta-derived values from the M10 analysis.",
+    "Treat 0.1 m/s as observed ineffective/deadzone.",
+    "Treat 0.3 m/s as first observed effective but weak.",
+    "Treat 0.4 m/s as effective but under-tracking.",
+    "Treat 0.45 m/s as near stable tracking, but repeat due to yaw drift.",
+    "Treat 0.5 m/s as the current stable tracking reference.",
+    "Do not output corrected command velocity from this profile."
+  ],
+  "limitations": [
+    "single_environment_lab_hard_floor",
+    "single_session",
+    "mostly_single_trial_per_speed",
+    "odometer_primary_no_external_ground_truth",
+    "absolute_odom_coordinates_should_not_be_compared_across_trials",
+    "vx_0_45_yaw_drift_requires_repeat"
+  ]
+}
