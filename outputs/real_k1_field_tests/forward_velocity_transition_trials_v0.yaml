@@ -1,0 +1,90 @@
+schema_version: "real_k1_forward_velocity_field_test_v0"
+date: "2026-06-09"
+platform: "Booster Robotics K1"
+environment:
+  floor_type: "lab_hard_floor"
+  condition: "dry"
+command_interface:
+  sdk: "booster_robotics_sdk_python"
+  client: "B1LocoClient"
+  network_interface: "lo"
+measurement_scope:
+  required_topics:
+    odometer:
+      topic: "/odometer_state"
+      type: "booster_interface/msg/Odometer"
+      fields: ["x", "y", "theta"]
+    imu:
+      topic: "/low_state"
+      type: "booster_interface/msg/LowState"
+      fields: ["imu_state.rpy", "imu_state.gyro", "imu_state.acc"]
+    robot_state:
+      topic: "/robot_states"
+      type: "booster_interface/msg/RobotStatesMsg"
+      fields: ["current_mode", "current_body_control", "current_actions"]
+    safety_state:
+      topic: "/fall_down"
+      type: "booster_interface/msg/FallDownState"
+      fields: ["fall_down_state", "is_recovery_available"]
+  removed_or_optional:
+    battery_state:
+      status: "optional_future_only"
+    remote_controller_state:
+      status: "permanently_removed"
+      reason: "navigation-focused measurement excludes manual-control input"
+trials:
+  - trial_id: "vx_0_1_smoke"
+    vx_cmd_mps: 0.1
+    duration_s: 2.0
+    movement_observed: "almost_none"
+    interpretation: "deadzone_or_ineffective_low_speed"
+  - trial_id: "vx_0_3_transition"
+    vx_cmd_mps: 0.3
+    duration_s: 2.0
+    distance_m: 0.288544
+    v_actual_est_mps: 0.144272
+    speed_gain_est: 0.480907
+    dtheta_rad: 0.033154
+    fall_down_state_post: 0
+    human_observation: "weak movement, approximately 0.1 m"
+    interpretation: "first_effective_but_weak_response"
+  - trial_id: "vx_0_4_effective"
+    vx_cmd_mps: 0.4
+    duration_s: 2.0
+    distance_m: 0.548009
+    v_actual_est_mps: 0.274004
+    speed_gain_est: 0.685011
+    dtheta_rad: 0.006043
+    fall_down_state_post: 0
+    interpretation: "effective_but_under_tracking"
+  - trial_id: "vx_0_5_stable"
+    vx_cmd_mps: 0.5
+    duration_s: 2.0
+    distance_m: 1.003940
+    v_actual_est_mps: 0.501970
+    speed_gain_est: 1.003940
+    dtheta_rad: 0.005665
+    fall_down_state_post: 0
+    interpretation: "stable_tracking"
+  - trial_id: "vx_0_45_transition_upper"
+    vx_cmd_mps: 0.45
+    duration_s: 2.0
+    distance_m: 0.839345
+    v_actual_est_mps: 0.419672
+    speed_gain_est: 0.932605
+    dtheta_rad: -0.094939
+    fall_down_state_post: 0
+    interpretation: "near_stable_tracking_but_yaw_drift_needs_repeat"
+preliminary_findings:
+  first_effective_vx_cmd_mps: 0.3
+  stable_tracking_region_mps: "0.45_to_0.5"
+  low_speed_response: "nonlinear"
+  global_gain_model_recommended: false
+  recommended_model: "piecewise_or_nonlinear_mapping"
+limitations:
+  - "single_environment_lab_hard_floor"
+  - "single_session"
+  - "mostly_single_trial_per_speed"
+  - "odometer_primary_no_external_ground_truth"
+  - "absolute_odom_coordinates_should_not_be_compared_across_trials"
+  - "vx_0_45_yaw_drift_requires_repeat"
