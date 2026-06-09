@@ -15,3 +15,7 @@ P2 analyzes P1 literature clusters against M13-M17 project artifacts, creates co
 ## M18 Method Skeleton and Claim Audit
 
 M18 creates the paper method skeleton, experiments skeleton, figure specifications, artifact/evidence tables, manuscript scaffold, and strict claim audit. M18 does not write a full paper draft, does not claim final novelty, and does not claim performance superiority or publication readiness.
+
+## P3 Related Work Draft v1
+
+P3 creates a citation-safe Related Work draft v1 that synthesizes P1/P2 literature and respects M18 claim boundaries. The draft uses only verified/partially verified citation keys from `paper/related_work/seed_references.bib`. P3 does not claim final novelty, performance superiority, or publication readiness.

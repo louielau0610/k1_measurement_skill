@@ -32,3 +32,10 @@ The project must not state these as established claims:
 - M18 establishes publication readiness.
 - M18 figure specs are experimental result figures.
 - M18 manuscript scaffold is a completed manuscript.
+- P3 creates a citation-safe Related Work draft. P3 does not establish final novelty.
+- P3 does not establish performance superiority.
+- P3 does not prove navigation safety improvement.
+- P3 does not prove the pipeline is publication-ready.
+- P3 does not prove any candidate contribution is final.
+- P3 does not prove the gap analysis is exhaustive.
+- P3 does not prove that 8 uncited matrix entries are irrelevant.

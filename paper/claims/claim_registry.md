@@ -46,3 +46,11 @@ Claim type options:
 - requires_more_literature
 - requires_more_experiment
 - non_claim
+
+| P3-RW1 | P3 creates a citation-safe Related Work draft v1 synthesizing P1/P2 literature. | supported_structural_claim | `paper/manuscript/sections/02_related_work_draft_v1.md` | manuscript draft artifact | medium | no | Draft only; not final manuscript prose. |
+| P3-RW2 | The Related Work draft covers seven prior-work clusters and uses 8 verified/partially verified seed citations. | supported_structural_claim | `paper/related_work/related_work_claim_map.md` | draft audit artifact | medium | no | Structural claim about draft content only. |
+| P3-RW3 | The seed literature does not yet establish a directly equivalent artifact-governed closed-source command-response pipeline. | candidate_gap | `paper/positioning/gap_analysis_v1.md`; P3 draft | candidate gap | low | no | Requires more literature before upgrading to novelty. |
+| P3-RW4 | The current project is positioned as candidate contributions, not final novelty. | supported_structural_claim | `paper/manuscript/sections/02_related_work_draft_v1.md` §7 | positioning artifact | medium | no | Explicitly conservative framing. |
+| P3-NC1 | P3 establishes final novelty. | non_claim | none | none | none | no | P3 draft explicitly states this is not final novelty. |
+| P3-NC2 | P3 establishes performance superiority over prior work. | non_claim | none | none | none | no | No comparative experiment exists. |
+| P3-NC3 | P3 establishes publication readiness. | non_claim | none | none | none | no | Draft is v1 only. |

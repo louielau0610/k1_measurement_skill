@@ -149,3 +149,13 @@ Readiness flags remain:
 - test field distance TBD
 
 Dummy artifacts remain pipeline-validation outputs only and must not be presented as real K1 findings.
+
+## P3 Related Work Draft v1
+
+P3 creates a citation-safe Related Work draft v1 that synthesizes P1 verified/partially verified literature, follows P2 cluster positioning, and respects M18 claim boundaries. P3 does not implement engineering functionality, does not write a full paper, does not claim final novelty, and does not claim publication readiness.
+
+Readiness flags remain:
+
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`

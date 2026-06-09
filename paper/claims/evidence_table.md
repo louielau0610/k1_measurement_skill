@@ -28,3 +28,8 @@ Evidence kind examples:
 - arxiv_preprint
 - official_documentation
 - official_dataset
+
+| E-P3-DRAFT | `paper/manuscript/sections/02_related_work_draft_v1.md` | manuscript_draft | yes | Citation-safe Related Work draft covering 7 prior-work clusters with 8 seed citations. | P3-RW1; P3-RW2; P3-RW4 |
+| E-P3-CLAIM-MAP | `paper/related_work/related_work_claim_map.md` | claim_governance | yes | Maps 18 draft statements to citations, evidence status, and wording boundaries. | P3-RW2 |
+| E-P3-AUDIT | `paper/claims/p3_related_work_claim_audit.md` | claim_governance | yes | P3-specific claim audit with safety checks and prohibited wording table. | P3-RW1; P3-NC1; P3-NC2; P3-NC3 |
+| E-P3-SUMMARY | `outputs/research_foundation/p3_related_work_summary.json` | metadata | yes | Machine-readable P3 summary with conservative flags. | P3-RW1 |

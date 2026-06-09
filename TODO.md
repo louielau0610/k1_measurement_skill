@@ -1,4 +1,4 @@
-# TODO
+﻿# TODO
 
 ## Completed
 
@@ -31,7 +31,10 @@
 
 ## Next Research Milestone
 
-- [ ] P3 related work section draft after M18 or after additional literature.
+- [x] P3 related work section draft v1 (citation-safe, P1/P2 synthesized).
+
+
+- [x] P3 related work section draft after M18 or after additional literature.
 - [ ] P4 introduction/problem statement draft.
 - [ ] M19 future experiment protocol and figure-generation assets.
 - [ ] Future experimental expansion before compensation or safe command adapter work.
