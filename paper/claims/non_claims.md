@@ -104,3 +104,7 @@ The project must not state these as established claims:
 - M19 figure rendering does not establish publication readiness.
 - M19 does not fabricate experimental results.
 - M19 figure assets are not final submission figures.
+- M19.1 figure/table integration does not establish new experimental evidence.
+- M19.1 evidence-gap figure does not resolve evidence gaps.
+- M19.1 table/caption packs do not establish performance superiority.
+- M19.1 integration assets do not make the manuscript submission-ready.

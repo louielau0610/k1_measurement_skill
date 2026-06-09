@@ -265,3 +265,12 @@ Readiness flags remain:
 - `compensation_ready=false`
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
+
+## M19.1 Figure/Table Caption and Integration Assets
+
+M19.1 completes missing figure/table caption packs, main and appendix table packs, evidence-gap figure spec, integration plan, and figure/table claim audit. M19.1 does not add new experimental evidence, does not claim publication readiness, and preserves all evidence gaps.
+
+Readiness flags remain:
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`

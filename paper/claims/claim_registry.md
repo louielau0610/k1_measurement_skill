@@ -128,3 +128,6 @@ Claim type options:
 | M19-F1 | M19 generates method pipeline figure (.mmd) with 12 nodes, validation lane, and prohibited execution path markings. | supported_structural_claim | `paper/figures/method_pipeline_figure.mmd` | figure asset | medium | no | Ready for SVG rendering. |
 | M19-F2 | M19 generates evidence chain figure (.mmd) with 15 nodes and color-coded claim categories. | supported_structural_claim | `paper/figures/evidence_chain_figure.mmd` | figure asset | medium | no | Ready for SVG rendering. |
 | M19-NC1 | M19 establishes publication readiness. | non_claim | none | none | none | no | submission_readiness=not_submission_ready. |
+
+| M19.1-I1 | M19.1 completes figure/table caption packs, table packs, evidence-gap figure, integration plan, and figure/table claim audit. | supported_structural_claim | 8 new asset files | presentation asset | medium | no | No new scientific claims. |
+| M19.1-NC1 | M19.1 establishes publication readiness. | non_claim | none | none | none | no | submission_readiness unchanged. |
