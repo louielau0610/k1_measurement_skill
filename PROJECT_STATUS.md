@@ -292,3 +292,4 @@ Readiness flags remain:
 - `compensation_ready=false`
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
+M21.1 closes M21 completion gaps (navigation task template, validator/test updates, cross-references). Pack-only.

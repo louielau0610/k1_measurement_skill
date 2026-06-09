@@ -116,6 +116,10 @@ See `paper/tables/m20_claim_upgrade_evidence_matrix.md` for detailed upgrade cri
 3. Tier 3 (navigation outcomes) — tests advisory warning/outcome correlation.
 4. Tier 4 (before/after comparison) — evaluates advisory impact.
 
+## M21/M21.1 Data Collection Pack
+
+The M20 protocol is operationalized through the M21/M21.1 future data collection pack (`paper/experiments/m21_future_data_collection_pack_v1.md`). This pack provides session/trial/navigation-task templates, pre/post-session checklists, a logging manifest, JSON placeholder templates, a validator, and a handoff matrix linking templates to downstream pipeline stages. The pack is template-only — no experiments have been executed.
+
 ## How M20 connects to future manuscript v3
 
 Results from Tiers 1-4 would be integrated into a future manuscript v3:

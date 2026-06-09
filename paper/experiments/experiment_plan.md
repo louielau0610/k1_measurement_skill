@@ -1,4 +1,4 @@
-# Experiment Plan
+﻿# Experiment Plan
 
 Use this file for planned experiments only. Do not record planned experiments as completed results.
 
@@ -26,3 +26,17 @@ Status options:
 - completed
 - blocked
 - cancelled
+## M20/M21 Future Experiment Protocol and Data Collection Pack
+
+- M20 protocol: paper/experiments/m20_future_experiment_protocol_v1.md (4 tiers, 35 metrics).
+- M21/M21.1 data collection pack: paper/experiments/m21_future_data_collection_pack_v1.md (8 templates/checklists, 3 JSON templates, validator/tests).
+- Navigation task JSON template: examples/future_experiments/m21_future_navigation_task_template.json.
+- **No experiments have been executed.** All values are placeholders. Evidence gaps remain.
+
+
+## M20/M21 Future Experiment Protocol and Data Collection Pack
+
+- M20 protocol: paper/experiments/m20_future_experiment_protocol_v1.md (4 tiers, 35 metrics).
+- M21/M21.1 data collection pack: paper/experiments/m21_future_data_collection_pack_v1.md (8 templates/checklists, 3 JSON templates, validator/tests).
+- Navigation task JSON template: examples/future_experiments/m21_future_navigation_task_template.json.
+- **No experiments have been executed.** All values are placeholders. Evidence gaps remain.

@@ -14,6 +14,7 @@ REQUIRED_DOCS = [
 ]
 
 JSON_TEMPLATES = [
+    'examples/future_experiments/m21_future_navigation_task_template.json',
     "examples/future_experiments/m21_future_session_template.json",
     "examples/future_experiments/m21_future_trial_template.json",
 ]

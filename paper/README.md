@@ -75,3 +75,7 @@ P14 creates polished manuscript v2 assembly integrating M19/M19.1 figure/table a
 ## M20 Future Experiment Protocol
 
 M20 designs the future experiment protocol for real navigation outcome evaluation across 4 tiers with 35 defined metrics, claim-upgrade criteria, schema/validator/tests. Protocol only — no experiments executed.
+
+## M21.1 Data Collection Pack Completion
+
+M21.1 closes M21 completion gaps: navigation task JSON template, validator/test updates, M20/experiment_plan cross-references. Pack-only — no experiments executed.

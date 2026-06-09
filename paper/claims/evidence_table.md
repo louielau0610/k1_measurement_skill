@@ -127,3 +127,6 @@ Evidence kind examples:
 | E-M20-AUDIT | `paper/claims/m20_experiment_protocol_claim_audit.md` | claim_governance | yes | M20 claim audit confirming protocol-only boundaries. | M20-NC1; M20-NC2 |
 | E-M20-MATRIX | `paper/tables/m20_claim_upgrade_evidence_matrix.md` | claim_table | yes | 11-row claim-upgrade evidence matrix. | M20-P1 |
 | E-M20-SUMMARY | `outputs/research_foundation/m20_future_experiment_protocol_summary.json` | metadata | yes | Machine-readable M20 summary. | M20-P1 |
+
+| E-M21.1-NAV-TMPL | `examples/future_experiments/m21_future_navigation_task_template.json` | json_template | yes | M21.1 navigation task JSON placeholder template. | M21-P1 |
+| E-M21.1-SUMMARY | `outputs/research_foundation/m21_1_data_collection_pack_completion_summary.json` | metadata | yes | M21.1 completion patch summary. | M21-P1 |

@@ -1,0 +1,80 @@
+﻿{
+  "template_type": "future_navigation_task_template",
+  "template_version": "m21.1_v1",
+  "task_metadata": {
+    "task_id": "TO_BE_FILLED_BY_FUTURE_TRIAL",
+    "task_type": "TO_BE_FILLED",
+    "task_description": "AUTHOR_DECISION_REQUIRED",
+    "date": "TO_BE_FILLED",
+    "operator": "TO_BE_FILLED"
+  },
+  "session_reference": {
+    "session_id": "TO_BE_FILLED",
+    "protocol_version": "1.0.0"
+  },
+  "environment": {
+    "surface_type": "TO_BE_FILLED",
+    "lighting": "SITE_SPECIFIC",
+    "test_area_description": "SITE_SPECIFIC",
+    "obstacle_description": "SITE_SPECIFIC"
+  },
+  "navigation_task": {
+    "start_location": "TO_BE_FILLED",
+    "goal_location": "TO_BE_FILLED",
+    "planned_path": "TO_BE_FILLED",
+    "task_constraints": "TO_BE_FILLED",
+    "time_limit_s": "TO_BE_FILLED"
+  },
+  "condition": {
+    "condition_type": "TO_BE_FILLED",
+    "advisory_labels_available": false,
+    "notes": "TO_BE_FILLED"
+  },
+  "allowed_advisory_usage": [
+    "display_warnings",
+    "manual_decision_support",
+    "pre_trip_analysis",
+    "post_trip_analysis"
+  ],
+  "disallowed_control_usage": {
+    "automatic_compensation": false,
+    "inverse_command_mapping": false,
+    "real_time_navigation_control": false,
+    "safe_command_adapter_execution": false,
+    "robot_motion_commanding": false
+  },
+  "required_artifacts": {
+    "raw_rosbag": "TO_BE_FILLED",
+    "video_recording": "OPTIONAL_IF_AVAILABLE",
+    "operator_notes": "TO_BE_FILLED"
+  },
+  "outcome_placeholders": {
+    "task_success": "TO_BE_FILLED",
+    "failure_category": "NOT_APPLICABLE",
+    "collision_count": "TO_BE_FILLED",
+    "near_miss_count": "TO_BE_FILLED",
+    "min_obstacle_distance_m": "TO_BE_FILLED",
+    "path_deviation_m": "TO_BE_FILLED",
+    "completion_time_s": "TO_BE_FILLED",
+    "intervention_count": "TO_BE_FILLED",
+    "abort_count": "TO_BE_FILLED"
+  },
+  "validity": {
+    "trial_valid": "TO_BE_FILLED",
+    "exclusion_reason": "NOT_APPLICABLE"
+  },
+  "provenance": {
+    "raw_log_path": "TO_BE_FILLED",
+    "processed_path": "TO_BE_FILLED",
+    "checksum": "TO_BE_FILLED"
+  },
+  "readiness_flags": {
+    "compensation_ready": false,
+    "navigation_control_ready": false,
+    "safe_command_adapter_ready": false,
+    "navigation_outcome_claim_ready": false,
+    "navigation_safety_improvement_claim_ready": false,
+    "publication_ready": false
+  },
+  "notes": "M21.1 navigation task template. All values are placeholders. No experiments executed."
+}
