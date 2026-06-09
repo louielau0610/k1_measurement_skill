@@ -35,7 +35,7 @@
 
 
 - [x] P3 related work section draft after M18 or after additional literature.
-- [ ] P4 introduction/problem statement draft.
+- [x] P4 introduction/problem statement draft.
 - [ ] M19 future experiment protocol and figure-generation assets.
 - [ ] Future experimental expansion before compensation or safe command adapter work.
 

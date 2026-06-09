@@ -54,3 +54,13 @@ Claim type options:
 | P3-NC1 | P3 establishes final novelty. | non_claim | none | none | none | no | P3 draft explicitly states this is not final novelty. |
 | P3-NC2 | P3 establishes performance superiority over prior work. | non_claim | none | none | none | no | No comparative experiment exists. |
 | P3-NC3 | P3 establishes publication readiness. | non_claim | none | none | none | no | Draft is v1 only. |
+
+| P4-I1 | P4 creates a citation-safe Introduction draft v1 synthesizing P1-P3 literature and M18 skeleton. | supported_structural_claim | `paper/manuscript/sections/01_introduction_draft_v1.md` | manuscript draft artifact | medium | no | Draft only; not final submission prose. |
+| P4-I2 | P4 creates a formal Problem Statement with notation, system boundary, and current scope. | supported_structural_claim | `paper/manuscript/sections/01_problem_statement_v1.md` | manuscript draft artifact | medium | no | Formal documentation of problem scope. |
+| P4-I3 | P4 provides tentative title and contribution options documenting 7 candidate titles and 3 contribution structures. | supported_structural_claim | `paper/manuscript/sections/00_title_and_contribution_options_v1.md` | manuscript options artifact | low | no | No final title or contribution structure selected. |
+| P4-I4 | The deployment-layer command-to-motion mismatch is a measurable problem relevant to navigation. | allowed_context_claim | FuCVPRW2022, FanRSS2021STEP | P1/P2 literature + M13-M17 artifacts | low | no | Context framing only; not a safety claim. |
+| P4-I5 | Current contributions remain tentative and require more literature and experiments. | allowed_structural_claim | — | P4 claim audit, M18 audit, P2 candidates | high | no | Explicitly conservative. |
+| P4-I6 | The Introduction draft does not constitute a final abstract or final contribution claim. | non_claim | — | P4 draft headers and disclaimer | high | no | Draft safeguards in place. |
+| P4-NC1 | P4 establishes final novelty. | non_claim | none | none | none | no | Draft explicitly states this. |
+| P4-NC2 | P4 establishes performance superiority. | non_claim | none | none | none | no | No comparative experiment exists. |
+| P4-NC3 | P4 establishes publication readiness. | non_claim | none | none | none | no | Draft is v1 only. |

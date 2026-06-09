@@ -39,3 +39,10 @@ The project must not state these as established claims:
 - P3 does not prove any candidate contribution is final.
 - P3 does not prove the gap analysis is exhaustive.
 - P3 does not prove that 8 uncited matrix entries are irrelevant.
+- P4 creates an Introduction draft. P4 does not establish final novelty.
+- P4 does not establish performance superiority.
+- P4 does not prove navigation safety improvement.
+- P4 does not finalize an abstract.
+- P4 does not finalize a title or contribution structure.
+- P4 does not prove any candidate contribution is final.
+- P4 does not prove publication readiness.

@@ -4,12 +4,16 @@
 
 ## Candidate title options
 
+See `paper/manuscript/sections/00_title_and_contribution_options_v1.md` for tentative title candidates and contribution structures. No final title selected.
+
 - Deployment-Layer Velocity Response Calibration for Closed-Source Legged Robots
 - Black-Box Command-to-Motion Response Modeling for Legged Robot Deployment
 - Claim-Governed Measurement Artifacts for Legged Robot Deployment Research
 - Navigation-Aware Reliability Labels from Legged Robot Velocity Response Measurements
 
 ## Abstract placeholder
+
+No abstract has been written. The Introduction draft (§1) is not a substitute for an abstract. An abstract should be written last, after all sections are drafted and evidence is reviewed.
 
 - Planned only:
   - problem context銆?
@@ -19,14 +23,14 @@
   - limitations and future experiments銆?
 - Do not write final abstract prose here銆?
 
-## 1. Introduction - planned content only
 
-- Motivation: command-response mismatch in closed-source legged robot deployment銆?
-- Problem boundary: measurement and advisory interpretation only銆?
-- Candidate contributions: use P2/M18 candidate language only銆?
-- Required caveat: no navigation safety improvement claim yet銆?
+## 1. Introduction
 
-
+- Draft v1 exists at: `paper/manuscript/sections/01_introduction_draft_v1.md`.
+- A formal Problem Statement exists at: `paper/manuscript/sections/01_problem_statement_v1.md`.
+- Title and contribution options exist at: `paper/manuscript/sections/00_title_and_contribution_options_v1.md`.
+- P4 drafts are citation-safe and conservative; not final submission prose.
+- All contribution statements use tentative/candidate language.
 ## 2. Related Work
 
 - Draft v1 exists at: `paper/manuscript/sections/02_related_work_draft_v1.md`.

@@ -159,3 +159,13 @@ Readiness flags remain:
 - `compensation_ready=false`
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
+
+## P4 Introduction and Problem Statement Draft v1
+
+P4 creates a citation-safe Introduction draft, formal Problem Statement, and title/contribution options. P4 synthesizes P1-P3 literature and M18 artifacts. P4 does not implement engineering functionality, does not write a final abstract, does not claim final novelty, and does not claim publication readiness.
+
+Readiness flags remain:
+
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`

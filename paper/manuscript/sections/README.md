@@ -7,6 +7,9 @@ This directory contains manuscript section files. Some are skeletons (bullet-poi
 ## Current section files
 
 | file | type | status | description |
+| `00_title_and_contribution_options_v1.md` | options | P4 draft v1 | Tentative title candidates and contribution structures; no final title selected. |
+| `01_introduction_draft_v1.md` | draft | P4 draft v1 | Citation-safe Introduction prose draft; not an abstract. |
+| `01_problem_statement_v1.md` | draft | P4 draft v1 | Formal problem statement with notation, system boundary, and scope. |
 | --- | --- | --- | --- |
 | `03_method_skeleton.md` | skeleton | M18 scaffold | Bullet-point five-stage method skeleton; not final prose. |
 | `04_experiments_skeleton.md` | skeleton | M18 scaffold | Bullet-point experiments skeleton; separates structural validation from missing navigation outcomes. |

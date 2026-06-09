@@ -33,3 +33,10 @@ Evidence kind examples:
 | E-P3-CLAIM-MAP | `paper/related_work/related_work_claim_map.md` | claim_governance | yes | Maps 18 draft statements to citations, evidence status, and wording boundaries. | P3-RW2 |
 | E-P3-AUDIT | `paper/claims/p3_related_work_claim_audit.md` | claim_governance | yes | P3-specific claim audit with safety checks and prohibited wording table. | P3-RW1; P3-NC1; P3-NC2; P3-NC3 |
 | E-P3-SUMMARY | `outputs/research_foundation/p3_related_work_summary.json` | metadata | yes | Machine-readable P3 summary with conservative flags. | P3-RW1 |
+
+| E-P4-INTRO | `paper/manuscript/sections/01_introduction_draft_v1.md` | manuscript_draft | yes | Citation-safe Introduction draft covering deployment motivation, problem, gap, approach, contributions, scope, and organization. | P4-I1; P4-I4; P4-I5 |
+| E-P4-PROBLEM | `paper/manuscript/sections/01_problem_statement_v1.md` | manuscript_draft | yes | Formal problem statement with notation, system boundary, input/output, scope, and evidence needs. | P4-I2 |
+| E-P4-TITLES | `paper/manuscript/sections/00_title_and_contribution_options_v1.md` | manuscript_options | yes | 7 candidate titles and 3 contribution structures, all marked tentative. | P4-I3 |
+| E-P4-CLAIM-MAP | `paper/claims/p4_introduction_claim_map.md` | claim_governance | yes | Maps 17 Introduction draft statements to citations, artifacts, and evidence status. | P4-I1; P4-I5 |
+| E-P4-AUDIT | `paper/claims/p4_introduction_claim_audit.md` | claim_governance | yes | P4-specific claim audit with introduction, problem statement, and abstract checks. | P4-I1; P4-I6; P4-NC1; P4-NC2; P4-NC3 |
+| E-P4-SUMMARY | `outputs/research_foundation/p4_introduction_summary.json` | metadata | yes | Machine-readable P4 summary with conservative flags. | P4-I1 |

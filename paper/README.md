@@ -19,3 +19,7 @@ M18 creates the paper method skeleton, experiments skeleton, figure specificatio
 ## P3 Related Work Draft v1
 
 P3 creates a citation-safe Related Work draft v1 that synthesizes P1/P2 literature and respects M18 claim boundaries. The draft uses only verified/partially verified citation keys from `paper/related_work/seed_references.bib`. P3 does not claim final novelty, performance superiority, or publication readiness.
+
+## P4 Introduction and Problem Statement Draft v1
+
+P4 creates a citation-safe Introduction draft, formal Problem Statement, and title/contribution options. P4 synthesizes P1-P3 literature and M18 method skeleton. P4 does not write a final abstract, does not claim final novelty, and does not claim performance superiority or publication readiness.
