@@ -14,6 +14,7 @@
 - [x] M13 research-grade velocity response foundation
 - [x] M13.1 harden velocity response schema validation
 - [x] M14 construct velocity response dataset v1
+- [x] M15R uncertainty-aware response model foundation with minimal baseline hooks
 
 ## Research Foundation Follow-Up
 
@@ -25,11 +26,10 @@
 
 ## Next Research Milestone
 
-- [ ] M15 baseline response models.
-- [ ] M16 uncertainty-aware response model.
-- [ ] M17 navigation-aware risk mapping.
-- [ ] M18 experimental evaluation and paper-style report.
-- [ ] Do not turn M15-M18 into compensation or navigation control unless explicitly re-scoped.
+- [ ] M16 navigation-aware reliability / risk mapping.
+- [ ] M17 evaluation and paper-style experiment report.
+- [ ] M18 paper method section + figures + claim audit.
+- [ ] Do not turn M16-M18 into compensation or navigation control unless explicitly re-scoped.
 
 ## Next Step On Real K1
 

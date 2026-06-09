@@ -73,6 +73,16 @@ Preserved readiness flags:
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
 
+## M15R Uncertainty-Aware Response Model Foundation
+
+M15R implements the conservative response model foundation. The old baseline-only M15 is compressed into minimal baseline hooks for future paper comparison. The proposed hybrid model outputs uncertainty/confidence labels, not calibrated probabilities, and M15R does not prove performance superiority.
+
+Readiness flags remain:
+
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`
+
 ## Pending Real K1 Validation
 
 真实 K1 validation 仍需等明天机器测试完成：

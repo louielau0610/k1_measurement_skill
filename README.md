@@ -4,6 +4,10 @@
 
 M14 现在可以从 Measurement v0 artifact 构造 `outputs/research_datasets/velocity_response_dataset_v1.json`，并生成 validation report 与 future trial template。M14 只做数据集构造和校验，不实现建模、速度补偿、导航控制或 safe command adapter，也不声称 publication readiness。
 
+## M15R 不确定性感知响应模型基础
+
+M15R 新增保守的 response model foundation 和最小 baseline hooks，用于从 M14 数据集生成 prediction contract、uncertainty/confidence 标签和 limited evaluation。M15R 不实现速度补偿、反向命令映射、导航控制或 safe command adapter，也不声称 publication readiness。
+
 ## 项目定位
 
 `k1_measurement_skill` 是 **K1 Velocity Measurement, Compensation, and Navigation Safety Pipeline** 的测量优先模块。大项目关心的问题是：

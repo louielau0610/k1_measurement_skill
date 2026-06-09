@@ -1,0 +1,45 @@
+{
+  "milestone": "M15R",
+  "chapter": "Research-grade Chapter 2 response model foundation",
+  "created_files": [
+    "k1_measurement/velocity_response_model.py",
+    "scripts/run_velocity_response_model_v1.py",
+    "docs/m15r_uncertainty_aware_velocity_response_model.md",
+    "outputs/research_models/response_model_predictions_v1.json",
+    "outputs/research_models/response_model_evaluation_v1.json",
+    "outputs/research_foundation/m15r_response_model_summary.json",
+    "tests/test_velocity_response_model.py"
+  ],
+  "modified_files": [
+    "README.md",
+    "PROJECT_STATUS.md",
+    "TODO.md",
+    "paper/method/method_outline.md",
+    "paper/experiments/experiment_plan.md"
+  ],
+  "dataset_path": "outputs/research_datasets/velocity_response_dataset_v1.json",
+  "predictions_output_path": "outputs/research_models/response_model_predictions_v1.json",
+  "evaluation_output_path": "outputs/research_models/response_model_evaluation_v1.json",
+  "models_included": [
+    "uncertainty_aware_hybrid_v1",
+    "nearest_lookup_baseline_v1",
+    "naive_global_gain_baseline_v1",
+    "piecewise_linear_baseline_v1"
+  ],
+  "records_count": 5,
+  "numeric_records_count": 4,
+  "qualitative_only_records_count": 1,
+  "standalone_baseline_m15_compressed": true,
+  "minimal_baseline_hooks_retained": true,
+  "uncertainty_aware_hybrid_model_added": true,
+  "fabricated_values": false,
+  "compensation_logic_implemented": false,
+  "inverse_command_mapping_implemented": false,
+  "navigation_control_implemented": false,
+  "safe_command_adapter_implemented": false,
+  "ros2_commands_run": false,
+  "booster_sdk_movement_commands_run": false,
+  "real_robot_commands_run": false,
+  "battery_state_required": false,
+  "remote_controller_state_allowed": false
+}

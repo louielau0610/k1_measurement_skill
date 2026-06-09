@@ -1,0 +1,45 @@
+{
+  "model_name": "uncertainty_aware_hybrid_v1",
+  "dataset_path": "outputs/research_datasets/velocity_response_dataset_v1.json",
+  "records_count": 5,
+  "numeric_records_count": 4,
+  "qualitative_only_records_count": 1,
+  "evaluated_queries_count": 5,
+  "metrics": {
+    "available_metrics": [
+      "exact_source_reconstruction_absolute_error_sanity_check"
+    ],
+    "unavailable_metrics": [
+      "generalization_error",
+      "cross_validation_error",
+      "calibrated_uncertainty_error",
+      "navigation_risk_reduction"
+    ],
+    "numeric_error_evaluation_possible": true,
+    "exact_source_reconstruction_only": true,
+    "superiority_claim_supported": false,
+    "publication_readiness_claim_supported": false,
+    "exact_source_reconstruction_absolute_error_mean": 0.0,
+    "exact_source_reconstruction_absolute_error_max": 0.0
+  },
+  "limitations": [
+    "absolute_odom_coordinates_should_not_be_compared_across_trials",
+    "missing_response_dimensions_not_fabricated",
+    "mostly_single_trial_per_speed",
+    "no_compensation_or_safe_command_adapter_authority",
+    "no_compensation_readiness_inferred",
+    "no_safe_command_adapter_readiness_inferred",
+    "odometer_primary_no_external_ground_truth",
+    "single_environment_lab_hard_floor",
+    "single_session",
+    "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+    "vx_0_45_yaw_drift_requires_repeat"
+  ],
+  "model_names": [
+    "uncertainty_aware_hybrid_v1",
+    "nearest_lookup_baseline_v1",
+    "naive_global_gain_baseline_v1",
+    "piecewise_linear_baseline_v1"
+  ],
+  "m16_readiness_note": "M16 may consume uncertainty/confidence labels for risk mapping, but must not treat them as calibrated probabilities."
+}

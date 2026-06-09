@@ -1,0 +1,789 @@
+{
+  "dataset_path": "outputs/research_datasets/velocity_response_dataset_v1.json",
+  "schema_path": "configs/velocity_response_dataset_schema_v1.json",
+  "models_included": [
+    "uncertainty_aware_hybrid_v1",
+    "nearest_lookup_baseline_v1",
+    "naive_global_gain_baseline_v1",
+    "piecewise_linear_baseline_v1"
+  ],
+  "query_velocities_mps": [
+    0.1,
+    0.3,
+    0.4,
+    0.45,
+    0.5
+  ],
+  "predictions_by_model": {
+    "uncertainty_aware_hybrid_v1": [
+      {
+        "query_vx_cmd_mps": 0.1,
+        "model_name": "uncertainty_aware_hybrid_v1",
+        "prediction_type": "exact_qualitative_source",
+        "predicted_vx_actual_mps": null,
+        "qualitative_response_label": "deadzone_or_ineffective_low_speed",
+        "uncertainty_label": "high",
+        "confidence_label": "low",
+        "source_record_ids": [
+          "measurement_v0_vx_0_1_smoke"
+        ],
+        "nearest_command_points_mps": [
+          0.1
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "No numeric actual velocity is available for this command point.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {
+          "source_confidence_label": "qualitative_only_no_numeric_velocity"
+        }
+      },
+      {
+        "query_vx_cmd_mps": 0.3,
+        "model_name": "uncertainty_aware_hybrid_v1",
+        "prediction_type": "exact_numeric_source",
+        "predicted_vx_actual_mps": 0.144272,
+        "qualitative_response_label": "first_effective_but_weak_response",
+        "uncertainty_label": "medium",
+        "confidence_label": "low",
+        "source_record_ids": [
+          "measurement_v0_vx_0_3_transition"
+        ],
+        "nearest_command_points_mps": [
+          0.3
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Exact source reconstruction is a structural sanity check, not performance evidence.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {
+          "source_confidence_label": "single_session_single_trial_low_confidence"
+        }
+      },
+      {
+        "query_vx_cmd_mps": 0.4,
+        "model_name": "uncertainty_aware_hybrid_v1",
+        "prediction_type": "exact_numeric_source",
+        "predicted_vx_actual_mps": 0.274004,
+        "qualitative_response_label": "effective_but_under_tracking",
+        "uncertainty_label": "medium",
+        "confidence_label": "low",
+        "source_record_ids": [
+          "measurement_v0_vx_0_4_effective"
+        ],
+        "nearest_command_points_mps": [
+          0.4
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Exact source reconstruction is a structural sanity check, not performance evidence.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {
+          "source_confidence_label": "single_session_single_trial_low_confidence"
+        }
+      },
+      {
+        "query_vx_cmd_mps": 0.45,
+        "model_name": "uncertainty_aware_hybrid_v1",
+        "prediction_type": "exact_numeric_source",
+        "predicted_vx_actual_mps": 0.419672,
+        "qualitative_response_label": "near_stable_tracking_but_yaw_drift_needs_repeat",
+        "uncertainty_label": "medium",
+        "confidence_label": "medium",
+        "source_record_ids": [
+          "measurement_v0_vx_0_45_transition_upper"
+        ],
+        "nearest_command_points_mps": [
+          0.45
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Exact source reconstruction is a structural sanity check, not performance evidence.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {
+          "source_confidence_label": "repeat_required"
+        }
+      },
+      {
+        "query_vx_cmd_mps": 0.5,
+        "model_name": "uncertainty_aware_hybrid_v1",
+        "prediction_type": "exact_numeric_source",
+        "predicted_vx_actual_mps": 0.50197,
+        "qualitative_response_label": "stable_tracking",
+        "uncertainty_label": "medium",
+        "confidence_label": "low",
+        "source_record_ids": [
+          "measurement_v0_vx_0_5_stable"
+        ],
+        "nearest_command_points_mps": [
+          0.5
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Exact source reconstruction is a structural sanity check, not performance evidence.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {
+          "source_confidence_label": "single_session_single_trial_low_confidence"
+        }
+      }
+    ],
+    "nearest_lookup_baseline_v1": [
+      {
+        "query_vx_cmd_mps": 0.1,
+        "model_name": "nearest_lookup_baseline_v1",
+        "prediction_type": "nearest_lookup_qualitative",
+        "predicted_vx_actual_mps": null,
+        "qualitative_response_label": "deadzone_or_ineffective_low_speed",
+        "uncertainty_label": "high",
+        "confidence_label": "low",
+        "source_record_ids": [
+          "measurement_v0_vx_0_1_smoke"
+        ],
+        "nearest_command_points_mps": [
+          0.1
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Nearest lookup is discontinuous and only reports nearest source evidence.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {}
+      },
+      {
+        "query_vx_cmd_mps": 0.3,
+        "model_name": "nearest_lookup_baseline_v1",
+        "prediction_type": "nearest_lookup_numeric",
+        "predicted_vx_actual_mps": 0.144272,
+        "qualitative_response_label": "first_effective_but_weak_response",
+        "uncertainty_label": "high",
+        "confidence_label": "low",
+        "source_record_ids": [
+          "measurement_v0_vx_0_3_transition"
+        ],
+        "nearest_command_points_mps": [
+          0.3
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Nearest lookup is discontinuous and only reports nearest source evidence.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {}
+      },
+      {
+        "query_vx_cmd_mps": 0.4,
+        "model_name": "nearest_lookup_baseline_v1",
+        "prediction_type": "nearest_lookup_numeric",
+        "predicted_vx_actual_mps": 0.274004,
+        "qualitative_response_label": "effective_but_under_tracking",
+        "uncertainty_label": "high",
+        "confidence_label": "low",
+        "source_record_ids": [
+          "measurement_v0_vx_0_4_effective"
+        ],
+        "nearest_command_points_mps": [
+          0.4
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Nearest lookup is discontinuous and only reports nearest source evidence.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {}
+      },
+      {
+        "query_vx_cmd_mps": 0.45,
+        "model_name": "nearest_lookup_baseline_v1",
+        "prediction_type": "nearest_lookup_numeric",
+        "predicted_vx_actual_mps": 0.419672,
+        "qualitative_response_label": "near_stable_tracking_but_yaw_drift_needs_repeat",
+        "uncertainty_label": "high",
+        "confidence_label": "low",
+        "source_record_ids": [
+          "measurement_v0_vx_0_45_transition_upper"
+        ],
+        "nearest_command_points_mps": [
+          0.45
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Nearest lookup is discontinuous and only reports nearest source evidence.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {}
+      },
+      {
+        "query_vx_cmd_mps": 0.5,
+        "model_name": "nearest_lookup_baseline_v1",
+        "prediction_type": "nearest_lookup_numeric",
+        "predicted_vx_actual_mps": 0.50197,
+        "qualitative_response_label": "stable_tracking",
+        "uncertainty_label": "high",
+        "confidence_label": "low",
+        "source_record_ids": [
+          "measurement_v0_vx_0_5_stable"
+        ],
+        "nearest_command_points_mps": [
+          0.5
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Nearest lookup is discontinuous and only reports nearest source evidence.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {}
+      }
+    ],
+    "naive_global_gain_baseline_v1": [
+      {
+        "query_vx_cmd_mps": 0.1,
+        "model_name": "naive_global_gain_baseline_v1",
+        "prediction_type": "global_gain_numeric_baseline",
+        "predicted_vx_actual_mps": 0.07756152777777779,
+        "qualitative_response_label": null,
+        "uncertainty_label": "high",
+        "confidence_label": "low",
+        "source_record_ids": [
+          "measurement_v0_vx_0_3_transition",
+          "measurement_v0_vx_0_4_effective",
+          "measurement_v0_vx_0_45_transition_upper",
+          "measurement_v0_vx_0_5_stable"
+        ],
+        "nearest_command_points_mps": [
+          0.1,
+          0.3
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": true,
+        "limitations": [
+          "Global gain baseline ignores deadzone, environment, sparse data, and uncertainty.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {
+          "global_gain": 0.7756152777777778,
+          "numeric_records_used": 4
+        }
+      },
+      {
+        "query_vx_cmd_mps": 0.3,
+        "model_name": "naive_global_gain_baseline_v1",
+        "prediction_type": "global_gain_numeric_baseline",
+        "predicted_vx_actual_mps": 0.23268458333333333,
+        "qualitative_response_label": null,
+        "uncertainty_label": "high",
+        "confidence_label": "low",
+        "source_record_ids": [
+          "measurement_v0_vx_0_3_transition",
+          "measurement_v0_vx_0_4_effective",
+          "measurement_v0_vx_0_45_transition_upper",
+          "measurement_v0_vx_0_5_stable"
+        ],
+        "nearest_command_points_mps": [
+          0.3,
+          0.4
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Global gain baseline ignores deadzone, environment, sparse data, and uncertainty.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {
+          "global_gain": 0.7756152777777778,
+          "numeric_records_used": 4
+        }
+      },
+      {
+        "query_vx_cmd_mps": 0.4,
+        "model_name": "naive_global_gain_baseline_v1",
+        "prediction_type": "global_gain_numeric_baseline",
+        "predicted_vx_actual_mps": 0.31024611111111117,
+        "qualitative_response_label": null,
+        "uncertainty_label": "high",
+        "confidence_label": "low",
+        "source_record_ids": [
+          "measurement_v0_vx_0_3_transition",
+          "measurement_v0_vx_0_4_effective",
+          "measurement_v0_vx_0_45_transition_upper",
+          "measurement_v0_vx_0_5_stable"
+        ],
+        "nearest_command_points_mps": [
+          0.4,
+          0.45
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Global gain baseline ignores deadzone, environment, sparse data, and uncertainty.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {
+          "global_gain": 0.7756152777777778,
+          "numeric_records_used": 4
+        }
+      },
+      {
+        "query_vx_cmd_mps": 0.45,
+        "model_name": "naive_global_gain_baseline_v1",
+        "prediction_type": "global_gain_numeric_baseline",
+        "predicted_vx_actual_mps": 0.349026875,
+        "qualitative_response_label": null,
+        "uncertainty_label": "high",
+        "confidence_label": "low",
+        "source_record_ids": [
+          "measurement_v0_vx_0_3_transition",
+          "measurement_v0_vx_0_4_effective",
+          "measurement_v0_vx_0_45_transition_upper",
+          "measurement_v0_vx_0_5_stable"
+        ],
+        "nearest_command_points_mps": [
+          0.45,
+          0.4
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Global gain baseline ignores deadzone, environment, sparse data, and uncertainty.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {
+          "global_gain": 0.7756152777777778,
+          "numeric_records_used": 4
+        }
+      },
+      {
+        "query_vx_cmd_mps": 0.5,
+        "model_name": "naive_global_gain_baseline_v1",
+        "prediction_type": "global_gain_numeric_baseline",
+        "predicted_vx_actual_mps": 0.3878076388888889,
+        "qualitative_response_label": null,
+        "uncertainty_label": "high",
+        "confidence_label": "low",
+        "source_record_ids": [
+          "measurement_v0_vx_0_3_transition",
+          "measurement_v0_vx_0_4_effective",
+          "measurement_v0_vx_0_45_transition_upper",
+          "measurement_v0_vx_0_5_stable"
+        ],
+        "nearest_command_points_mps": [
+          0.5,
+          0.45
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Global gain baseline ignores deadzone, environment, sparse data, and uncertainty.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {
+          "global_gain": 0.7756152777777778,
+          "numeric_records_used": 4
+        }
+      }
+    ],
+    "piecewise_linear_baseline_v1": [
+      {
+        "query_vx_cmd_mps": 0.1,
+        "model_name": "piecewise_linear_baseline_v1",
+        "prediction_type": "piecewise_out_of_range_unavailable",
+        "predicted_vx_actual_mps": null,
+        "qualitative_response_label": null,
+        "uncertainty_label": "high",
+        "confidence_label": "low",
+        "source_record_ids": [],
+        "nearest_command_points_mps": [],
+        "interpolation_used": false,
+        "extrapolation_used": true,
+        "limitations": [
+          "Piecewise linear baseline does not extrapolate outside numeric source range.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {}
+      },
+      {
+        "query_vx_cmd_mps": 0.3,
+        "model_name": "piecewise_linear_baseline_v1",
+        "prediction_type": "exact_numeric_source",
+        "predicted_vx_actual_mps": 0.144272,
+        "qualitative_response_label": "first_effective_but_weak_response",
+        "uncertainty_label": "medium",
+        "confidence_label": "medium",
+        "source_record_ids": [
+          "measurement_v0_vx_0_3_transition"
+        ],
+        "nearest_command_points_mps": [
+          0.3
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Exact source reconstruction is not model performance evidence.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {}
+      },
+      {
+        "query_vx_cmd_mps": 0.4,
+        "model_name": "piecewise_linear_baseline_v1",
+        "prediction_type": "exact_numeric_source",
+        "predicted_vx_actual_mps": 0.274004,
+        "qualitative_response_label": "effective_but_under_tracking",
+        "uncertainty_label": "medium",
+        "confidence_label": "medium",
+        "source_record_ids": [
+          "measurement_v0_vx_0_4_effective"
+        ],
+        "nearest_command_points_mps": [
+          0.4
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Exact source reconstruction is not model performance evidence.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {}
+      },
+      {
+        "query_vx_cmd_mps": 0.45,
+        "model_name": "piecewise_linear_baseline_v1",
+        "prediction_type": "exact_numeric_source",
+        "predicted_vx_actual_mps": 0.419672,
+        "qualitative_response_label": "near_stable_tracking_but_yaw_drift_needs_repeat",
+        "uncertainty_label": "medium",
+        "confidence_label": "medium",
+        "source_record_ids": [
+          "measurement_v0_vx_0_45_transition_upper"
+        ],
+        "nearest_command_points_mps": [
+          0.45
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Exact source reconstruction is not model performance evidence.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {}
+      },
+      {
+        "query_vx_cmd_mps": 0.5,
+        "model_name": "piecewise_linear_baseline_v1",
+        "prediction_type": "exact_numeric_source",
+        "predicted_vx_actual_mps": 0.50197,
+        "qualitative_response_label": "stable_tracking",
+        "uncertainty_label": "medium",
+        "confidence_label": "medium",
+        "source_record_ids": [
+          "measurement_v0_vx_0_5_stable"
+        ],
+        "nearest_command_points_mps": [
+          0.5
+        ],
+        "interpolation_used": false,
+        "extrapolation_used": false,
+        "limitations": [
+          "Exact source reconstruction is not model performance evidence.",
+          "absolute_odom_coordinates_should_not_be_compared_across_trials",
+          "missing_response_dimensions_not_fabricated",
+          "mostly_single_trial_per_speed",
+          "no_compensation_or_safe_command_adapter_authority",
+          "no_compensation_readiness_inferred",
+          "no_safe_command_adapter_readiness_inferred",
+          "odometer_primary_no_external_ground_truth",
+          "single_environment_lab_hard_floor",
+          "single_session",
+          "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+          "vx_0_45_yaw_drift_requires_repeat"
+        ],
+        "compensation_allowed": false,
+        "safe_command_adapter_allowed": false,
+        "navigation_warning_ready": true,
+        "metadata": {}
+      }
+    ]
+  },
+  "safety_readiness_flags": {
+    "compensation_ready": false,
+    "safe_command_adapter_ready": false,
+    "navigation_warning_ready": true
+  },
+  "limitations": [
+    "absolute_odom_coordinates_should_not_be_compared_across_trials",
+    "missing_response_dimensions_not_fabricated",
+    "mostly_single_trial_per_speed",
+    "no_compensation_readiness_inferred",
+    "no_safe_command_adapter_readiness_inferred",
+    "odometer_primary_no_external_ground_truth",
+    "single_environment_lab_hard_floor",
+    "single_session",
+    "vx_0_45_yaw_drift_requires_repeat"
+  ],
+  "fabricated_values": false,
+  "compensation_logic_implemented": false,
+  "inverse_command_mapping_implemented": false,
+  "navigation_control_implemented": false,
+  "safe_command_adapter_implemented": false
+}
