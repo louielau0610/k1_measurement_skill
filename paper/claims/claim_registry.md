@@ -64,3 +64,10 @@ Claim type options:
 | P4-NC1 | P4 establishes final novelty. | non_claim | none | none | none | no | Draft explicitly states this. |
 | P4-NC2 | P4 establishes performance superiority. | non_claim | none | none | none | no | No comparative experiment exists. |
 | P4-NC3 | P4 establishes publication readiness. | non_claim | none | none | none | no | Draft is v1 only. |
+
+| P5-M1 | P5 creates an academic Method draft v1 with formal notation, 10 subsections, and 3 pseudo-algorithms. | supported_structural_claim | `paper/manuscript/sections/03_method_draft_v1.md` | manuscript draft artifact | medium | no | Draft only; not final submission prose. |
+| P5-M2 | Method describes five pipeline stages with explicit input/output contracts and artifact paths. | supported_structural_claim | `paper/tables/method_stage_io_contract_table.md`; `paper/tables/method_algorithm_summary_table.md` | method tables | medium | no | Structural documentation of pipeline contracts. |
+| P5-M3 | Method explicitly documents that compensation, inverse mapping, navigation control, and safe adapter are not implemented. | supported_structural_claim | `paper/manuscript/sections/03_method_draft_v1.md` §3.1, §3.6, §3.9 | method draft + non-claims | high | no | Conservative scope boundary maintained. |
+| P5-NC1 | P5 establishes final novelty. | non_claim | none | none | none | no | Method draft explicitly avoids novelty language. |
+| P5-NC2 | P5 establishes performance superiority. | non_claim | none | none | none | no | No comparative experiment evaluated. |
+| P5-NC3 | P5 establishes publication readiness. | non_claim | none | none | none | no | Draft is v1 only. |

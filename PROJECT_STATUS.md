@@ -169,3 +169,13 @@ Readiness flags remain:
 - `compensation_ready=false`
 - `navigation_warning_ready=true`
 - `safe_command_adapter_ready=false`
+
+## P5 Method Section Draft v1
+
+P5 creates an academic Method draft v1 from M13-M18 artifacts with formal notation, algorithmic contracts, artifact traceability, and claim audit. P5 does not implement engineering functionality, does not claim novelty, and does not claim performance superiority or publication readiness.
+
+Readiness flags remain:
+
+- `compensation_ready=false`
+- `navigation_warning_ready=true`
+- `safe_command_adapter_ready=false`

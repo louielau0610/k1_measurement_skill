@@ -46,3 +46,10 @@ The project must not state these as established claims:
 - P4 does not finalize a title or contribution structure.
 - P4 does not prove any candidate contribution is final.
 - P4 does not prove publication readiness.
+- P5 creates a Method draft. P5 does not establish final novelty.
+- P5 does not establish performance superiority.
+- P5 does not prove navigation safety improvement.
+- P5 does not implement compensation or safe command adapter.
+- P5 does not convert risk mapping into navigation control.
+- P5 does not claim any proposed method component is novel.
+- P5 does not claim prediction accuracy on held-out data.

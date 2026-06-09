@@ -37,16 +37,14 @@ No abstract has been written. The Introduction draft (§1) is not a substitute f
 - P3 draft covers seven clusters based on P1/P2 literature.
 - Draft is citation-safe and conservative; not final submission prose.
 - Additional literature review needed before final version.
-## 3. Method - planned content only
 
-- Use `paper/manuscript/sections/03_method_skeleton.md`銆?
-- Cover:
-  - system boundary銆?
-  - notation銆?
-  - five-stage pipeline銆?
-  - algorithmic contracts銆?
-  - non-goals銆?
+## 3. Method
 
+- Draft v1 exists at: `paper/manuscript/sections/03_method_draft_v1.md`.
+- Skeleton preserved at: `paper/manuscript/sections/03_method_skeleton.md`.
+- Method stage I/O contract table at: `paper/tables/method_stage_io_contract_table.md`.
+- Algorithm summary table at: `paper/tables/method_algorithm_summary_table.md`.
+- P5 draft is academic and citation-safe; covers 10 subsections with formal notation, 3 pseudo-algorithms, and scope/limitations.
 ## 4. Experiments - planned content only
 
 - Use `paper/manuscript/sections/04_experiments_skeleton.md`銆?

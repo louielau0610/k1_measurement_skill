@@ -23,3 +23,7 @@ P3 creates a citation-safe Related Work draft v1 that synthesizes P1/P2 literatu
 ## P4 Introduction and Problem Statement Draft v1
 
 P4 creates a citation-safe Introduction draft, formal Problem Statement, and title/contribution options. P4 synthesizes P1-P3 literature and M18 method skeleton. P4 does not write a final abstract, does not claim final novelty, and does not claim performance superiority or publication readiness.
+
+## P5 Method Section Draft v1
+
+P5 creates an academic Method draft v1 from M13-M18 artifacts with formal notation, algorithmic contracts, artifact traceability, and claim audit. P5 does not implement engineering functionality and does not claim novelty or performance.

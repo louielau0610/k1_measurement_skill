@@ -40,3 +40,10 @@ Evidence kind examples:
 | E-P4-CLAIM-MAP | `paper/claims/p4_introduction_claim_map.md` | claim_governance | yes | Maps 17 Introduction draft statements to citations, artifacts, and evidence status. | P4-I1; P4-I5 |
 | E-P4-AUDIT | `paper/claims/p4_introduction_claim_audit.md` | claim_governance | yes | P4-specific claim audit with introduction, problem statement, and abstract checks. | P4-I1; P4-I6; P4-NC1; P4-NC2; P4-NC3 |
 | E-P4-SUMMARY | `outputs/research_foundation/p4_introduction_summary.json` | metadata | yes | Machine-readable P4 summary with conservative flags. | P4-I1 |
+
+| E-P5-METHOD | `paper/manuscript/sections/03_method_draft_v1.md` | manuscript_draft | yes | Academic Method draft covering 10 subsections with formal notation, 3 pseudo-algorithms, and scope/limitations. | P5-M1; P5-M3 |
+| E-P5-CLAIM-MAP | `paper/claims/p5_method_claim_map.md` | claim_governance | yes | Maps 15 Method draft statements to project artifacts and evidence status. | P5-M1 |
+| E-P5-AUDIT | `paper/claims/p5_method_claim_audit.md` | claim_governance | yes | P5-specific method claim audit with algorithm consistency checks and artifact traceability audit. | P5-M1; P5-NC1; P5-NC2; P5-NC3 |
+| E-P5-IO-TABLE | `paper/tables/method_stage_io_contract_table.md` | method_table | yes | Five-stage input/output contract table with producer scripts and validation artifacts. | P5-M2 |
+| E-P5-ALGO-TABLE | `paper/tables/method_algorithm_summary_table.md` | method_table | yes | Algorithm summary table with conservative rules and avoided unsupported operations. | P5-M2 |
+| E-P5-SUMMARY | `outputs/research_foundation/p5_method_draft_summary.json` | metadata | yes | Machine-readable P5 summary with conservative flags. | P5-M1 |
