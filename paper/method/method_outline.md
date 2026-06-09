@@ -26,6 +26,9 @@ Navigation-Aware Velocity Response Calibration for Closed-Source Legged Robots
   - response prediction is mapped to tracking reliability
   - tracking reliability is mapped to offline risk level
   - advisory warning output is generated without navigation control
+- M17 pipeline evaluation:
+  - method artifacts are organized into evaluation reports and artifact tables
+  - outputs should support later manuscript drafting without becoming final paper prose
 
 ## Boundaries
 

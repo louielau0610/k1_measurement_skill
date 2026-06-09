@@ -16,6 +16,7 @@
 - [x] M14 construct velocity response dataset v1
 - [x] M15R uncertainty-aware response model foundation with minimal baseline hooks
 - [x] M16 navigation-aware reliability / risk mapping
+- [x] M17 pipeline evaluation and paper-style report
 
 ## Research Foundation Follow-Up
 
@@ -27,9 +28,9 @@
 
 ## Next Research Milestone
 
-- [ ] M17 evaluation and paper-style experiment report.
-- [ ] M18 paper method section + figures + claim audit.
-- [ ] Do not turn M17-M18 into compensation or navigation control unless explicitly re-scoped.
+- [ ] P1 seed literature search and literature matrix v1.
+- [ ] M18 paper method skeleton + figures + claim audit.
+- [ ] Future experimental expansion before compensation or safe command adapter work.
 
 ## Next Step On Real K1
 

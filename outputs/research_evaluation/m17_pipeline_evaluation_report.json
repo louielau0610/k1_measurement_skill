@@ -1,0 +1,238 @@
+{
+  "milestone": "M17",
+  "evaluation_name": "research_pipeline_evaluation_v1",
+  "artifacts": [
+    {
+      "chapter_level": "Chapter 2 / Dataset",
+      "milestone": "M13",
+      "artifact": "Velocity response dataset schema v1",
+      "path": "configs/velocity_response_dataset_schema_v1.json",
+      "producer_script": "manual/repository artifact",
+      "reproducible": false,
+      "purpose": "Velocity response dataset schema v1",
+      "evidence_type": "schema",
+      "limitations": "",
+      "exists": true
+    },
+    {
+      "chapter_level": "Chapter 2 / Dataset",
+      "milestone": "M14",
+      "artifact": "Velocity response dataset v1",
+      "path": "outputs/research_datasets/velocity_response_dataset_v1.json",
+      "producer_script": "scripts/build_velocity_response_dataset_v1.py",
+      "reproducible": true,
+      "purpose": "Velocity response dataset v1",
+      "evidence_type": "dataset",
+      "limitations": "single robot; single environment; sparse command samples",
+      "exists": true
+    },
+    {
+      "chapter_level": "Chapter 2 / Dataset",
+      "milestone": "M14",
+      "artifact": "Dataset validation report",
+      "path": "outputs/research_datasets/velocity_response_dataset_v1_validation_report.json",
+      "producer_script": "scripts/build_velocity_response_dataset_v1.py",
+      "reproducible": true,
+      "purpose": "Dataset validation report",
+      "evidence_type": "validation_report",
+      "limitations": "",
+      "exists": true
+    },
+    {
+      "chapter_level": "Chapter 2 / Model",
+      "milestone": "M15R",
+      "artifact": "Response model predictions",
+      "path": "outputs/research_models/response_model_predictions_v1.json",
+      "producer_script": "scripts/run_velocity_response_model_v1.py",
+      "reproducible": true,
+      "purpose": "Response model predictions",
+      "evidence_type": "prediction_output",
+      "limitations": "uncertainty labels are not calibrated probabilities",
+      "exists": true
+    },
+    {
+      "chapter_level": "Chapter 2 / Model",
+      "milestone": "M15R",
+      "artifact": "Response model structural evaluation",
+      "path": "outputs/research_models/response_model_evaluation_v1.json",
+      "producer_script": "scripts/run_velocity_response_model_v1.py",
+      "reproducible": true,
+      "purpose": "Response model structural evaluation",
+      "evidence_type": "evaluation_output",
+      "limitations": "exact-source reconstruction is not performance evidence",
+      "exists": true
+    },
+    {
+      "chapter_level": "Chapter 3 / Risk",
+      "milestone": "M16",
+      "artifact": "Offline navigation risk map",
+      "path": "outputs/research_risk/navigation_risk_map_v1.json",
+      "producer_script": "scripts/run_navigation_risk_mapping_v1.py",
+      "reproducible": true,
+      "purpose": "Offline navigation risk map",
+      "evidence_type": "risk_map",
+      "limitations": "advisory only; no navigation outcomes",
+      "exists": true
+    },
+    {
+      "chapter_level": "Chapter 3 / Risk",
+      "milestone": "M16",
+      "artifact": "Risk-map structural evaluation",
+      "path": "outputs/research_risk/navigation_risk_evaluation_v1.json",
+      "producer_script": "scripts/run_navigation_risk_mapping_v1.py",
+      "reproducible": true,
+      "purpose": "Risk-map structural evaluation",
+      "evidence_type": "risk_evaluation",
+      "limitations": "no collision, near-miss, or success-rate metrics",
+      "exists": true
+    },
+    {
+      "chapter_level": "Research Governance",
+      "milestone": "P0-M17",
+      "artifact": "Conservative claim registry",
+      "path": "paper/claims/claim_registry.md",
+      "producer_script": "manual/repository artifact",
+      "reproducible": false,
+      "purpose": "Conservative claim registry",
+      "evidence_type": "claim_registry",
+      "limitations": "",
+      "exists": true
+    },
+    {
+      "chapter_level": "Research Governance",
+      "milestone": "P0-M17",
+      "artifact": "Prohibited overclaim list",
+      "path": "paper/claims/non_claims.md",
+      "producer_script": "manual/repository artifact",
+      "reproducible": false,
+      "purpose": "Prohibited overclaim list",
+      "evidence_type": "non_claims",
+      "limitations": "",
+      "exists": true
+    }
+  ],
+  "artifact_counts": {
+    "artifacts_count": 9,
+    "missing_artifacts_count": 0
+  },
+  "dataset_summary": {
+    "records_count": 5,
+    "numeric_records_count": 4,
+    "qualitative_only_records_count": 1
+  },
+  "response_model_summary": {
+    "predictions_count": 5,
+    "exact_source_reconstruction_is_sanity_check_only": true
+  },
+  "navigation_risk_summary": {
+    "risk_assessments_count": 5,
+    "warnings_count": 5,
+    "risk_level_counts": {
+      "critical": 1,
+      "high": 2,
+      "medium": 2
+    },
+    "warning_category_counts": {
+      "deadzone_or_no_motion": 1,
+      "high_uncertainty": 2,
+      "under_tracking": 1,
+      "weak_tracking": 1
+    },
+    "no_real_navigation_outcomes": true
+  },
+  "supported_claims": [
+    "Measurement v0 source artifacts exist and are represented in the repository.",
+    "Velocity response dataset schema v1 and dataset v1 exist.",
+    "Response model foundation exists with conservative uncertainty/confidence labels.",
+    "Offline navigation-aware risk mapping layer exists.",
+    "Pipeline evaluation artifacts exist."
+  ],
+  "non_claims": [
+    "No real navigation safety improvement is demonstrated.",
+    "No collision-rate reduction is demonstrated.",
+    "No near-miss-rate reduction is demonstrated.",
+    "No navigation success-rate improvement is demonstrated.",
+    "No velocity compensation readiness is demonstrated.",
+    "No safe command adapter readiness is demonstrated.",
+    "No publication readiness is claimed."
+  ],
+  "available_metrics": [
+    "dataset_records_count",
+    "numeric_records_count",
+    "qualitative_only_records_count",
+    "response_predictions_count",
+    "risk_assessments_count",
+    "warnings_count",
+    "risk_level_counts",
+    "warning_category_counts",
+    "exact_source_reconstruction_absolute_error_sanity_check"
+  ],
+  "unavailable_metrics": [
+    "generalization_error",
+    "calibrated_uncertainty_error",
+    "collision_rate",
+    "near_miss_rate",
+    "navigation_success_rate",
+    "real_world_safety_improvement",
+    "compensation_performance",
+    "safe_command_adapter_performance"
+  ],
+  "limitations": [
+    "0.1 m/s record is qualitative-only",
+    "absolute_odom_coordinates_should_not_be_compared_across_trials",
+    "limited environment coverage",
+    "missing_response_dimensions_not_fabricated",
+    "mostly_single_trial_per_speed",
+    "no collision, near-miss, or success-rate metrics exist yet",
+    "no full paper manuscript yet",
+    "no real navigation outcomes exist yet",
+    "no_compensation_or_safe_command_adapter_authority",
+    "no_compensation_readiness_inferred",
+    "no_safe_command_adapter_readiness_inferred",
+    "odometer_primary_no_external_ground_truth",
+    "single robot",
+    "single_environment_lab_hard_floor",
+    "single_session",
+    "structural readiness evaluation only",
+    "uncertainty labels are not calibrated probabilities",
+    "uncertainty_and_confidence_are_labels_not_calibrated_probabilities",
+    "vx_0_45_yaw_drift_requires_repeat"
+  ],
+  "next_experiments": [
+    "repeated trials per command velocity",
+    "multi-surface velocity response tests",
+    "vx plus wz command grid",
+    "yaw and lateral drift measurement",
+    "response delay and stop-distance logging",
+    "navigation task trials with and without advisory risk layer",
+    "baseline comparison under a fixed protocol"
+  ],
+  "safety_flags": {
+    "measurement_v0_complete": true,
+    "real_k1_profile_available": true,
+    "compensation_ready": false,
+    "navigation_warning_ready": true,
+    "safe_command_adapter_ready": false
+  },
+  "publication_readiness": {
+    "level": "not_ready_for_full_submission",
+    "reason": [
+      "no literature review matrix with verified citations yet",
+      "no calibrated uncertainty evaluation",
+      "no real navigation outcome evaluation",
+      "no collision, near-miss, or success-rate metrics",
+      "single robot and limited environment coverage"
+    ]
+  },
+  "fabricated_values": false,
+  "fabricated_navigation_outcomes": false,
+  "compensation_logic_implemented": false,
+  "inverse_command_mapping_implemented": false,
+  "navigation_control_implemented": false,
+  "safe_command_adapter_implemented": false,
+  "ros2_commands_run": false,
+  "booster_sdk_movement_commands_run": false,
+  "real_robot_commands_run": false,
+  "battery_state_required": false,
+  "remote_controller_state_allowed": false
+}

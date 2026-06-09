@@ -12,6 +12,10 @@ M15R 新增保守的 response model foundation 和最小 baseline hooks，用于
 
 M16 消费 M15R response model predictions，生成离线 navigation-aware reliability / risk assessments 和 warning metadata。M16 只支持 advisory 分析，不实现速度补偿、反向命令映射、导航控制或 safe command adapter，也不声称真实导航安全提升。
 
+## M17 管线评估报告
+
+M17 将 M13-M16 artifact 汇总为 paper-style evaluation outputs，包括 JSON evaluation report、Markdown summary、artifact table、limitations 和 next-experiments。M17 不是真实导航性能评估，不实现速度补偿、反向命令映射、导航控制或 safe command adapter，也不声称 publication readiness。
+
 ## 项目定位
 
 `k1_measurement_skill` 是 **K1 Velocity Measurement, Compensation, and Navigation Safety Pipeline** 的测量优先模块。大项目关心的问题是：
