@@ -1,18 +1,18 @@
 ﻿% Table 1: Method Stage I/O Contract — NON-FINAL (P17)
-% Source: paper/tables/main_paper_table_pack_v1.md (Table 1)
+% Source: paper/tables/main\_paper\_table\_pack\_v1.md (Table 1)
 \begin{table}[htbp]
 \centering
 \caption{Method Stage I/O Contract. Structural pipeline description only. Does not validate performance or safety.}
-\label{tab:method_io}
+\label{tab:method\_io}
 \begin{tabular}{p{2.5cm}p{2.5cm}p{3.5cm}p{3cm}p{2.5cm}}
 \toprule
 \textbf{Stage} & \textbf{Input} & \textbf{Output} & \textbf{Producer Script} & \textbf{Non-Goals} \\
 \midrule
 1. Measurement & K1 field ROS2 logs & Velocity profile v0 & M7/M8 workflow & Not compensation-ready \\
-2. Dataset & Measurement v0 + schema v1 & Dataset v1 (5 records) & \texttt{build\_velocity\_response\_dataset\_v1.py} & No numeric fabrication \\
-3. Response model & Dataset v1 & 5 predictions + uncertainty labels & \texttt{run\_velocity\_response\_model\_v1.py} & Not calibrated probabilities \\
-4. Risk mapping & Response predictions & 5 risk assessments + warnings & \texttt{run\_navigation\_risk\_mapping\_v1.py} & No compensation/control \\
-5. Evaluation & All upstream outputs & Evaluation report + claim governance & \texttt{generate\_research\_pipeline\_evaluation\_v1.py} & Not publication readiness \\
+2. Dataset & Measurement v0 + schema v1 & Dataset v1 (5 records) & [path] & No numeric fabrication \\
+3. Response model & Dataset v1 & 5 predictions + uncertainty labels & [path] & Not calibrated probabilities \\
+4. Risk mapping & Response predictions & 5 risk assessments + warnings & [path] & No compensation/control \\
+5. Evaluation & All upstream outputs & Evaluation report + claim governance & [path] & Not publication readiness \\
 \bottomrule
 \end{tabular}
 \end{table}

@@ -118,3 +118,4 @@ The project must not state these as established claims:
 - M20 compensation/safe adapter/navigation control are not implemented.
 - P16 LaTeX scaffold is not a final manuscript or submission package. |
 - P17 rendered/converted assets are not new experimental evidence. - P17 does not establish publication readiness.
+- P18 compile validation is not publication readiness. Smoke-build failure does not invalidate scientific content.

@@ -91,3 +91,7 @@ P16.1 links P16 scaffold into evidence table, updates P16 summary consistency, r
 ## P17 Figure/Table LaTeX Assets
 
 P17 creates 3 LaTeX table files, copies Mermaid figure sources, and documents rendering status. No PDF built. Not submission ready.
+
+## P18 LaTeX Compile Validation
+
+P18 validates LaTeX scaffold: pdflatex found, structure valid, compile attempted. Full compile blocked by underscore escaping in filenames (documented). P19 should fix and retry.
