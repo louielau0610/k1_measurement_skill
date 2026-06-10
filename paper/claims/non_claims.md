@@ -116,3 +116,4 @@ The project must not state these as established claims:
 - M20 protocol design does not establish navigation outcome improvement.
 - M20 does not establish collision reduction or success-rate improvement.
 - M20 compensation/safe adapter/navigation control are not implemented.
+- P16 LaTeX scaffold is not a final manuscript or submission package. |

@@ -6,14 +6,14 @@
 
 - [ ] Final title selected.
 - [ ] Author/affiliation block prepared.
-- [ ] LaTeX sections converted from Markdown.
+- [x] LaTeX sections converted (scaffold with placeholders) from Markdown.
 - [ ] Figure 1 rendered to SVG.
 - [ ] Figure 2 rendered to SVG.
 - [ ] Figure 3 (appendix) rendered to SVG.
 - [ ] Table 1 converted to LaTeX.
 - [ ] Table 2 converted to LaTeX.
 - [ ] Table 3 converted to LaTeX.
-- [ ] BibTeX integrated and compiles.
+- [x] BibTeX integrated (copied from seed_references.bib) and compiles.
 - [ ] All citation keys resolve.
 - [ ] PDF builds without errors.
 - [ ] Supplementary material packaged.

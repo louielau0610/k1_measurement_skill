@@ -294,3 +294,4 @@ Readiness flags remain:
 - `safe_command_adapter_ready=false`
 M21.1 closes M21 completion gaps (navigation task template, validator/test updates, cross-references). Pack-only.
 M21.1 merged. P15 planning-only: 9 docs created, 0 .tex, 0 PDF, not submission ready.
+P16 creates non-final LaTeX scaffold (17 files). No PDF, no submission package, not submission ready.

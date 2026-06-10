@@ -79,3 +79,7 @@ M20 designs the future experiment protocol for real navigation outcome evaluatio
 ## M21.1 Data Collection Pack Completion
 
 M21.1 closes M21 completion gaps: navigation task JSON template, validator/test updates, M20/experiment_plan cross-references. Pack-only — no experiments executed.
+
+## P16 Non-Final LaTeX Scaffold
+
+P16 creates non-final LaTeX scaffold: 17 files including main.tex, macros, references.bib, 8 section .tex files, placeholder figures/tables. No PDF built, no submission package.

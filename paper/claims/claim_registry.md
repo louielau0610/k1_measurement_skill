@@ -139,3 +139,4 @@ Claim type options:
 | M20-P1 | M20 creates a future experiment protocol with 4 tiers, 35 metrics, claim-upgrade matrix, schema, and validator/tests. | supported_structural_claim | 12 new files (protocol, metrics, schema, etc.) | protocol artifact | medium | no | Protocol only; no experiments executed. |
 | M20-NC1 | M20 establishes navigation outcome improvement. | non_claim | none | none | none | no | No experiments executed; protocol only. |
 | M20-NC2 | M20 implements compensation or safe command adapter. | non_claim | none | none | none | no | compensation/safe_adapter_ready=false. |
+| P16-L1 | P16 creates non-final LaTeX scaffold with 17 files (main, macros, BibTeX, sections, placeholders). | supported_structural_claim | paper/latex/ | scaffold artifact | medium | no | Non-final only; no PDF built. |

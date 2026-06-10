@@ -6,12 +6,16 @@
 
 Plan the conversion of manuscript v2 (`paper/manuscript/manuscript_v2_assembly.md`) and its figure/table assets into a LaTeX-ready manuscript package for a future submission venue.
 
+## P16 Scaffold Status
+
+P16 has created a non-final LaTeX scaffold (17 files). All .tex files are marked non-final. No PDF built.
+
 ## Current status
 
 | component | status |
 | --- | --- |
 | Manuscript v2 (Markdown) | complete (P14) |
-| LaTeX sections | not created (planning only) |
+| LaTeX sections | scaffold created (8 .tex files) — non-final |
 | Figure rendering | Mermaid .mmd sources ready (M19); SVG not rendered |
 | Table conversion | Markdown tables exist; LaTeX format pending |
 | BibTeX | 16 entries in seed_references.bib (P13) |
