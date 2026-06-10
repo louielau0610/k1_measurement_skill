@@ -99,3 +99,7 @@ P18 validates LaTeX scaffold: pdflatex found, structure valid, compile attempted
 ## P19 LaTeX Path Escaping Recovery
 
 P19 resolves P18 underscore blocker. Smoke PDF built (build_main.pdf, 3pp, 95KB). Full main.tex compilation deferred to P20. Not submission ready.
+
+## M19-A Repeated Real K1 Validation Pack
+
+M19-A implements repeated validation infrastructure: protocol, schema, analyzer, 10 tests. Runs in pending-data mode (no real repeated logs). No robot access attempted.
