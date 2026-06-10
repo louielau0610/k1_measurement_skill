@@ -83,3 +83,7 @@ M21.1 closes M21 completion gaps: navigation task JSON template, validator/test 
 ## P16 Non-Final LaTeX Scaffold
 
 P16 creates non-final LaTeX scaffold: 17 files including main.tex, macros, references.bib, 8 section .tex files, placeholder figures/tables. No PDF built, no submission package.
+
+## P16.1 LaTeX Scaffold Evidence Patch
+
+P16.1 links P16 scaffold into evidence table, updates P16 summary consistency, runs git diff --check. No PDF, no figures, no tables. Not submission ready.

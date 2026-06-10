@@ -1,1 +1,47 @@
-﻿{"milestone":"P16","chapter":"Non-final LaTeX scaffold generation","created_files":["paper/latex/main.tex","paper/latex/macros.tex","paper/latex/references.bib","paper/latex/sections/00_abstract.tex","paper/latex/sections/01_introduction.tex","paper/latex/sections/02_related_work.tex","paper/latex/sections/03_method.tex","paper/latex/sections/04_experiments.tex","paper/latex/sections/05_discussion_limitations.tex","paper/latex/sections/06_conclusion.tex","paper/latex/sections/07_appendix_plan.tex","paper/latex/figures/README.md","paper/latex/tables/README.md","paper/latex/build_notes_v1.md","paper/latex/p16_latex_scaffold_claim_audit.md","paper/tables/p16_latex_scaffold_asset_status.md","outputs/research_foundation/p16_latex_scaffold_summary.json"],"modified_files":[],"main_tex_created":true,"macros_created":true,"references_bib_created":true,"section_tex_files_created":true,"non_final_scaffold_only":true,"latex_manuscript_created":true,"final_latex_manuscript_created":false,"pdf_built":false,"submission_readiness":"not_submission_ready","figures_rendered":false,"tables_fully_converted":false,"notes":"P16 creates non-final LaTeX scaffold: 17 files (main.tex, macros, references.bib, 8 section .tex, figure/table READMEs, build notes, claim audit, asset status, summary). All .tex files marked non-final. 0 PDFs built. 0 figures rendered. 0 tables converted."}
+﻿{
+    "milestone":  "P16",
+    "chapter":  "Non-final LaTeX scaffold generation",
+    "created_files":  [
+                          "paper/latex/main.tex",
+                          "paper/latex/macros.tex",
+                          "paper/latex/references.bib",
+                          "paper/latex/sections/00_abstract.tex",
+                          "paper/latex/sections/01_introduction.tex",
+                          "paper/latex/sections/02_related_work.tex",
+                          "paper/latex/sections/03_method.tex",
+                          "paper/latex/sections/04_experiments.tex",
+                          "paper/latex/sections/05_discussion_limitations.tex",
+                          "paper/latex/sections/06_conclusion.tex",
+                          "paper/latex/sections/07_appendix_plan.tex",
+                          "paper/latex/figures/README.md",
+                          "paper/latex/tables/README.md",
+                          "paper/latex/build_notes_v1.md",
+                          "paper/latex/p16_latex_scaffold_claim_audit.md",
+                          "paper/tables/p16_latex_scaffold_asset_status.md",
+                          "outputs/research_foundation/p16_latex_scaffold_summary.json"
+                      ],
+    "main_tex_created":  true,
+    "macros_created":  true,
+    "references_bib_created":  true,
+    "section_tex_files_created":  true,
+    "non_final_scaffold_only":  true,
+    "latex_manuscript_created":  true,
+    "final_latex_manuscript_created":  false,
+    "pdf_built":  false,
+    "submission_readiness":  "not_submission_ready",
+    "figures_rendered":  false,
+    "tables_fully_converted":  false,
+    "notes":  "P16 creates non-final LaTeX scaffold: 17 files (main.tex, macros, references.bib, 8 section .tex, figure/table READMEs, build notes, claim audit, asset status, summary). All .tex files marked non-final. 0 PDFs built. 0 figures rendered. 0 tables converted.",
+    "p16_1_consistency_patch_applied":  true,
+    "p16_1_correction_note":  "P16.1 adds evidence_table links, runs git diff --check, and documents all modified files",
+    "strict_validation_completed_by":  "P16.1",
+    "modified_files":  [
+                           "paper/latex/README.md",
+                           "paper/latex/submission_readiness_checklist_v1.md",
+                           "paper/README.md",
+                           "paper/claims/claim_registry.md",
+                           "paper/claims/non_claims.md",
+                           "PROJECT_STATUS.md",
+                           "TODO.md"
+                       ]
+}

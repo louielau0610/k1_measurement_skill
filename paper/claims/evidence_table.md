@@ -130,3 +130,16 @@ Evidence kind examples:
 
 | E-M21.1-NAV-TMPL | `examples/future_experiments/m21_future_navigation_task_template.json` | json_template | yes | M21.1 navigation task JSON placeholder template. | M21-P1 |
 | E-M21.1-SUMMARY | `outputs/research_foundation/m21_1_data_collection_pack_completion_summary.json` | metadata | yes | M21.1 completion patch summary. | M21-P1 |
+
+## P16 LaTeX Scaffold Evidence (format-scaffold only)
+
+| E-P16-SCAFFOLD | `paper/latex/main.tex`; `paper/latex/macros.tex`; `paper/latex/references.bib` | latex_scaffold | yes | Non-final LaTeX scaffold (main, macros, BibTeX). No PDF built. | P16-L1 |
+| E-P16-SECTIONS | `paper/latex/sections/00-07_*.tex` (8 files) | latex_scaffold | yes | Section scaffolds (abstract fully converted, 01-06 placeholders, 07 appendix plan). | P16-L1 |
+| E-P16-FIG-README | `paper/latex/figures/README.md` | scaffold_doc | yes | Figure status: 3 figures not rendered. | P16-L1 |
+| E-P16-TAB-README | `paper/latex/tables/README.md` | scaffold_doc | yes | Table status: 3 main tables not converted. | P16-L1 |
+| E-P16-BUILD | `paper/latex/build_notes_v1.md` | scaffold_doc | yes | Build notes: no PDF built; blockers documented. | P16-L1 |
+| E-P16-CLAIM-AUDIT | `paper/latex/p16_latex_scaffold_claim_audit.md` | claim_governance | yes | P16 scaffold claim audit. | P16-L1 |
+| E-P16-ASSET-STATUS | `paper/tables/p16_latex_scaffold_asset_status.md` | scaffold_table | yes | 16-row asset status table. | P16-L1 |
+| E-P16-SUMMARY | `outputs/research_foundation/p16_latex_scaffold_summary.json` | metadata | yes | P16 summary. | P16-L1 |
+
+**Evidence boundary**: These assets support the claim that a non-final LaTeX scaffold exists. They do not support publication readiness, scientific performance claims, navigation safety improvement, or final PDF/submission package existence.
