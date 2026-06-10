@@ -143,3 +143,14 @@ Evidence kind examples:
 | E-P16-SUMMARY | `outputs/research_foundation/p16_latex_scaffold_summary.json` | metadata | yes | P16 summary. | P16-L1 |
 
 **Evidence boundary**: These assets support the claim that a non-final LaTeX scaffold exists. They do not support publication readiness, scientific performance claims, navigation safety improvement, or final PDF/submission package existence.
+
+## P17 Figure/Table LaTeX Assets (format-asset only)
+
+| E-P17-TABLES | `paper/latex/tables/table1-3_*.tex` (3 files) | latex_asset | yes | Non-final LaTeX tables from existing table packs. | P17-L1 |
+| E-P17-FIG-COPY | `paper/latex/figures/*.mmd` (2 copies) | latex_asset | yes | Mermaid sources copied for future rendering. | P17-L1 |
+| E-P17-REPORT | `paper/latex/p17_figure_table_asset_report.md` | report | yes | P17 asset production report. | P17-L1 |
+| E-P17-AUDIT | `paper/latex/p17_figure_table_claim_audit.md` | claim_governance | yes | P17 claim audit. | P17-L1 |
+| E-P17-STATUS | `paper/tables/p17_latex_asset_status.md` | asset_table | yes | P17 asset status table. | P17-L1 |
+| E-P17-SUMMARY | `outputs/research_foundation/p17_figure_table_latex_assets_summary.json` | metadata | yes | P17 summary. | P17-L1 |
+
+**Evidence boundary**: These assets are non-final format production only. No scientific evidence added.

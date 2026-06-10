@@ -9,6 +9,9 @@ pdflatex main.tex
 pdflatex main.tex
 ```
 
+## P17 Status
+Tables 1-3 converted to LaTeX (.tex files). Figures not rendered (Mermaid CLI unavailable). Section files updated to input table files.
+
 ## Current blockers
 - Figures not rendered (SVG pending mmdc/mermaid.live).
 - Tables not converted to LaTeX format (pending P17).

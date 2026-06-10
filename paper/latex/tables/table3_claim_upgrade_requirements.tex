@@ -1,0 +1,23 @@
+﻿% Table 3: Claim-Upgrade Requirements — NON-FINAL (P17)
+% Source: paper/tables/main_paper_table_pack_v1.md (Table 3)
+% Prohibited claims remain prohibited until evidence exists.
+\begin{table}[htbp]
+\centering
+\caption{Evidence Boundary / Claim-Upgrade Requirements. Documents what evidence is needed before upgrading each claim type. Prohibited claims remain prohibited until evidence exists.}
+\label{tab:claim_upgrade}
+\begin{tabular}{p{3.5cm}p{2.5cm}p{5cm}}
+\toprule
+\textbf{Claim Type} & \textbf{Current Status} & \textbf{Required Evidence} \\
+\midrule
+Pipeline existence & supported (structural) & Already met \\
+Dataset construction & supported (structural) & Already met \\
+Model predictive quality & not supported & Held-out evaluation on repeated trials \\
+Risk warning usefulness & not supported & Navigation outcome trials \\
+Navigation safety improvement & \textbf{prohibited} & Navigation trials + collision/success metrics \\
+Calibrated uncertainty & \textbf{prohibited} & Repeated trials + calibration protocol \\
+Generalization & \textbf{prohibited} & Multi-surface, multi-session data \\
+Compensation readiness & \textbf{prohibited} & All above + offline compensation validation \\
+Safe command adapter & \textbf{prohibited} & All above + safety validation \\
+\bottomrule
+\end{tabular}
+\end{table}

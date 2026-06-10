@@ -1,0 +1,26 @@
+flowchart TD
+    A["Raw measurement<br/>evidence"] --> B["Dataset validation<br/>(schema compliance)"]
+    B --> C["Model prediction<br/>contract"]
+    C --> D["Risk map<br/>output"]
+    D --> E["Pipeline evaluation<br/>report"]
+    E --> F["Supported<br/>structural/software<br/>claims"]
+    E --> G["Literature<br/>context claims"]
+    E --> H["Candidate<br/>contributions"]
+    E --> I["Requires more<br/>experiment"]
+    E --> J["Non-claims"]
+    J --> K["No navigation<br/>safety improvement"]
+    J --> L["No collision<br/>reduction"]
+    J --> M["No success-rate<br/>improvement"]
+    J --> N["No compensation<br/>readiness"]
+    J --> O["No safe<br/>adapter readiness"]
+    style A fill:#dfd,stroke:#385
+    style F fill:#dfd,stroke:#385
+    style G fill:#adf,stroke:#358
+    style H fill:#ffa,stroke:#a80
+    style I fill:#fca,stroke:#c80
+    style J fill:#faa,stroke:#c00
+    style K fill:#fcc,stroke:#c00
+    style L fill:#fcc,stroke:#c00
+    style M fill:#fcc,stroke:#c00
+    style N fill:#fcc,stroke:#c00
+    style O fill:#fcc,stroke:#c00

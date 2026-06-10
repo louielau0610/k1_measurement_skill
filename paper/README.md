@@ -87,3 +87,7 @@ P16 creates non-final LaTeX scaffold: 17 files including main.tex, macros, refer
 ## P16.1 LaTeX Scaffold Evidence Patch
 
 P16.1 links P16 scaffold into evidence table, updates P16 summary consistency, runs git diff --check. No PDF, no figures, no tables. Not submission ready.
+
+## P17 Figure/Table LaTeX Assets
+
+P17 creates 3 LaTeX table files, copies Mermaid figure sources, and documents rendering status. No PDF built. Not submission ready.
