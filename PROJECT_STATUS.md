@@ -312,3 +312,9 @@ Empirical response analysis remains blocked until real `measured_actual_velocity
 M19R-C-prep refreshes the annotation package after replacement trial execution. The updated `m19_trial_records.csv` contains 77 rows: 72 execution-valid formal trials, 5 invalid/debug rows, and 5 valid replacement rows. All 24 surface-speed cells now have exactly 3 execution-valid trials, and `m19_valid_trial_measurement_annotation_template.csv` is ready for manual, video-assisted, or log-derived measurement annotation.
 
 Empirical analysis remains blocked because `measured_actual_velocity` and `yaw_drift_statistic` are still blank. M19R-C-prep does not compute response statistics, generate response plots, validate the risk map, claim navigation improvement, or add cross-robot generalization.
+
+## M19R-C Annotation Intake Validation
+
+M19R-C annotation intake validation adds a strict pre-analysis validator for filled measurement annotation CSV files. It verifies the exact 72 expected valid trial IDs, rejects invalid/debug or duplicate trial IDs, checks required annotation fields and quality flags, and detects placeholder/fabricated tokens where possible.
+
+The current valid-only template passes intake validation with 72 pending rows, 5 replacement rows, and 0 issues. No empirical statistics are computed, and empirical response analysis remains blocked until real `measured_actual_velocity` and `yaw_drift_statistic` values are filled and pass QC.

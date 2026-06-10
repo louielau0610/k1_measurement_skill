@@ -18,3 +18,5 @@ M19R records real execution metadata but adds no new empirical response-model cl
 M19R-B adds a measurement completion pack: exact replacement-trial planning, a blank annotation template, a measurement protocol, and annotation QC. It does not fill real measurements and does not add response-model or risk-map empirical claims.
 
 M19R-C-prep records that replacement trials completed the execution-level M19 design and creates a valid-only annotation template. It does not add measured velocity/yaw values, response-model validation, risk-map validation, navigation improvement, or cross-robot generalization.
+
+M19R-C annotation intake validation adds a QC gate for future filled measurements. The current template passes structural validation, but no empirical response-model or risk-map claim is added until real actual velocity and yaw drift values are present.

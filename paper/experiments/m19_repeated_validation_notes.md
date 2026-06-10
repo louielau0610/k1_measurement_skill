@@ -39,3 +39,8 @@
 - Replacement trials restored execution-level completeness: 72 execution-valid formal trials are now available across 24 surface-speed cells.
 - The valid-only annotation template excludes 5 invalid/debug rows and includes 5 valid replacement rows.
 - Actual velocity and yaw drift remain unfilled, so empirical response analysis and risk-map validation remain blocked.
+
+## M19R-C annotation intake validation
+- The annotation intake validator checks exact valid-trial ID membership, duplicate IDs, invalid/debug ID exclusion, required annotation fields, quality flags, numeric measurement parsing, and detectable placeholder tokens.
+- The current valid-only annotation template passes intake validation with no filled measurements and no issues.
+- This validation is a pre-analysis safeguard only; it does not compute response statistics or add empirical claims.

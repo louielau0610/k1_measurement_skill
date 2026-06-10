@@ -1,0 +1,22 @@
+{
+  "annotation_csv": "data\\m19_repeated_validation_inputs\\m19_valid_trial_measurement_annotation_template.csv",
+  "trial_records_csv": "data\\m19_repeated_validation_inputs\\m19_trial_records.csv",
+  "timestamp": "2026-06-10T17:35:24.560877",
+  "status": "pass",
+  "expected_trial_id_count": 72,
+  "row_count": 72,
+  "unique_trial_id_count": 72,
+  "missing_expected_trial_ids": [],
+  "unexpected_trial_ids": [],
+  "invalid_debug_trial_ids_included": [],
+  "duplicate_trial_ids": [],
+  "measured_rows": 0,
+  "complete_measurement_rows": 0,
+  "pending_rows": 72,
+  "replacement_rows": 5,
+  "all_required_measurements_present": false,
+  "empirical_response_analysis_blocked": true,
+  "statistics_computed": false,
+  "issue_count": 0,
+  "issues": []
+}
