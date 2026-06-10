@@ -1,0 +1,40 @@
+{
+  "input_csv": "c:\\Users\\86138\\Desktop\\data\\m19_repeated_validation_inputs\\m19_trial_records.csv",
+  "qc_summary": "outputs\\real_k1_validation_m19\\m19r_qc_summary.json",
+  "missing_cells": [
+    {
+      "surface_id": "S1_lab_hard_floor",
+      "command_velocity": 0.1,
+      "current_valid_count": 2,
+      "missing_count": 1
+    },
+    {
+      "surface_id": "S1_lab_hard_floor",
+      "command_velocity": 0.4,
+      "current_valid_count": 2,
+      "missing_count": 1
+    },
+    {
+      "surface_id": "S3_artificial_turf",
+      "command_velocity": 0.2,
+      "current_valid_count": 2,
+      "missing_count": 1
+    },
+    {
+      "surface_id": "S3_artificial_turf",
+      "command_velocity": 0.3,
+      "current_valid_count": 2,
+      "missing_count": 1
+    },
+    {
+      "surface_id": "S3_artificial_turf",
+      "command_velocity": 0.6,
+      "current_valid_count": 2,
+      "missing_count": 1
+    }
+  ],
+  "replacement_trials_required": 5,
+  "annotation_template": "data\\m19_repeated_validation_inputs\\m19_measurement_annotation_template.csv",
+  "annotation_template_rows": 72,
+  "real_measurements_prefilled": 0
+}

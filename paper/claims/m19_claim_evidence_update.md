@@ -14,3 +14,5 @@
 | Navigation improvement | not claimed | not claimed | no navigation experiment evidence |
 
 M19R records real execution metadata but adds no new empirical response-model claim until actual velocity and yaw drift are extracted from valid measurement logs.
+
+M19R-B adds a measurement completion pack: exact replacement-trial planning, a blank annotation template, a measurement protocol, and annotation QC. It does not fill real measurements and does not add response-model or risk-map empirical claims.

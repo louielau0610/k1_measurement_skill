@@ -28,3 +28,9 @@
 - Cross-robot generalization remains unsupported.
 - All-K1-unit generalization remains unsupported.
 - Compensation controller, safe command adapter, and navigation improvement claims remain out of scope.
+
+## M19R-B completion pack
+- M19R-B adds a replacement-trial plan for the five incomplete surface-speed cells.
+- M19R-B adds a blank measurement annotation template for 67 execution-valid trials plus 5 replacement placeholders.
+- M19R-B adds annotation QC, but no real measurements are filled by the template.
+- Empirical response analysis remains blocked until actual velocity and yaw drift are filled from acceptable evidence sources and pass QC.

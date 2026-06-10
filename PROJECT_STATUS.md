@@ -300,3 +300,9 @@ P17: 3 LaTeX tables created, figures copied (not rendered). No PDF. Not submissi
 P18: LaTeX tools detected. Compile attempted. Underscore escaping in filenames blocks full build (documented). Not submission ready.
 P19: Underscore escaping fixed. Smoke build PDF built (3pp, 95KB). Not submission ready.
 M19-A: Repeated validation infrastructure ready. Pending-data mode (no real repeated logs). 209/209 tests pass.
+
+## M19R-B Measurement Completion Pack
+
+M19R-B creates the measurement completion pack after blocker-aware M19R ingestion. It generates the exact replacement-trial plan for incomplete surface-speed cells, a blank measurement annotation template, a measurement annotation protocol, and annotation QC tooling.
+
+Empirical response analysis remains blocked until real `measured_actual_velocity` and `yaw_drift_statistic` values are filled from acceptable evidence sources. Replacement trials are required because M19R found only 67 execution-valid trials after QC, with 5 invalid/debug rows excluded. No response-model validation, risk-map validation, navigation improvement claim, compensation claim, or cross-robot generalization claim is added by M19R-B.
