@@ -1,0 +1,206 @@
+{
+  "analysis_timestamp": "2026-06-10T15:34:06.420216",
+  "input_csv": "c:\\Users\\86138\\Desktop\\data\\m19_repeated_validation_inputs\\m19_trial_records.csv",
+  "validation_status": "blocked_missing_actual_velocity_or_yaw",
+  "total_rows": 72,
+  "valid_rows": 67,
+  "invalid_or_debug_rows": 5,
+  "per_surface": {
+    "S1_lab_hard_floor": {
+      "total": 24,
+      "valid": 22
+    },
+    "S2_marble_floor": {
+      "total": 24,
+      "valid": 24
+    },
+    "S3_artificial_turf": {
+      "total": 24,
+      "valid": 21
+    }
+  },
+  "per_surface_speed_cell": [
+    {
+      "surface_id": "S1_lab_hard_floor",
+      "command_velocity": 0.1,
+      "n_total": 3,
+      "n_valid": 2,
+      "complete": false
+    },
+    {
+      "surface_id": "S1_lab_hard_floor",
+      "command_velocity": 0.2,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S1_lab_hard_floor",
+      "command_velocity": 0.3,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S1_lab_hard_floor",
+      "command_velocity": 0.35,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S1_lab_hard_floor",
+      "command_velocity": 0.4,
+      "n_total": 3,
+      "n_valid": 2,
+      "complete": false
+    },
+    {
+      "surface_id": "S1_lab_hard_floor",
+      "command_velocity": 0.45,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S1_lab_hard_floor",
+      "command_velocity": 0.5,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S1_lab_hard_floor",
+      "command_velocity": 0.6,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S2_marble_floor",
+      "command_velocity": 0.1,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S2_marble_floor",
+      "command_velocity": 0.2,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S2_marble_floor",
+      "command_velocity": 0.3,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S2_marble_floor",
+      "command_velocity": 0.35,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S2_marble_floor",
+      "command_velocity": 0.4,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S2_marble_floor",
+      "command_velocity": 0.45,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S2_marble_floor",
+      "command_velocity": 0.5,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S2_marble_floor",
+      "command_velocity": 0.6,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S3_artificial_turf",
+      "command_velocity": 0.1,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S3_artificial_turf",
+      "command_velocity": 0.2,
+      "n_total": 3,
+      "n_valid": 2,
+      "complete": false
+    },
+    {
+      "surface_id": "S3_artificial_turf",
+      "command_velocity": 0.3,
+      "n_total": 3,
+      "n_valid": 2,
+      "complete": false
+    },
+    {
+      "surface_id": "S3_artificial_turf",
+      "command_velocity": 0.35,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S3_artificial_turf",
+      "command_velocity": 0.4,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S3_artificial_turf",
+      "command_velocity": 0.45,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S3_artificial_turf",
+      "command_velocity": 0.5,
+      "n_total": 3,
+      "n_valid": 3,
+      "complete": true
+    },
+    {
+      "surface_id": "S3_artificial_turf",
+      "command_velocity": 0.6,
+      "n_total": 3,
+      "n_valid": 2,
+      "complete": false
+    }
+  ],
+  "duplicate_trial_ids": [],
+  "malformed_trial_ids": [],
+  "missing_command_velocity_rows": 0,
+  "missing_actual_velocity_valid_rows": 67,
+  "missing_yaw_drift_valid_rows": 67,
+  "missing_raw_log_path_or_file_rows": 72,
+  "missing_normalized_record_path_or_file_rows": 72,
+  "measured_actual_velocity_available_or_computed": false,
+  "yaw_drift_statistic_available_or_computed": false,
+  "actual_velocity_extracted_from_logs": 0,
+  "yaw_drift_extracted_from_logs": 0,
+  "debug_invalid_command_path_rows": 4,
+  "cells_with_at_least_3_valid_trials": 19,
+  "expected_cells": 24
+}

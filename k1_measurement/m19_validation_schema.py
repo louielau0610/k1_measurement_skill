@@ -9,6 +9,8 @@ EVIDENCE_LEVELS = [
     "real_single_or_sparse",
     "pipeline_only",
     "pending_real_data",
+    "pending_measurement_extraction",
+    "debug_invalid_command_path",
     "test_fixture_only",
 ]
 
@@ -19,6 +21,8 @@ REGION_LABELS = [
     "reliable",
     "insufficient_evidence",
     "pending_real_data",
+    "pending_measurement_extraction",
+    "debug_invalid_command_path",
 ]
 
 @dataclass
