@@ -37,7 +37,13 @@ def has_measurement(row: dict[str, str]) -> bool:
     return bool(str(row.get("measured_actual_velocity", "")).strip() or str(row.get("yaw_drift_statistic", "")).strip())
 
 
-def qc_annotations(annotation_csv: Path, output_dir: Path = OUTPUT_DIR) -> dict[str, Any]:
+def qc_annotations(
+    annotation_csv: Path,
+    output_dir: Path = OUTPUT_DIR,
+    summary_name: str = "m19r_b_annotation_qc_summary.json",
+    report_name: str = "m19r_b_annotation_qc_report.md",
+    report_title: str = "M19R-B Measurement Annotation QC Report",
+) -> dict[str, Any]:
     fieldnames, rows = read_annotations(annotation_csv)
     issues: list[dict[str, Any]] = []
     missing_columns = [column for column in ANNOTATION_COLUMNS if column not in fieldnames]
@@ -102,19 +108,25 @@ def qc_annotations(annotation_csv: Path, output_dir: Path = OUTPUT_DIR) -> dict[
         "status": "pass" if not issues else "fail",
         "issues": issues,
     }
-    write_outputs(output_dir, summary)
+    write_outputs(output_dir, summary, summary_name, report_name, report_title)
     return summary
 
 
-def write_outputs(output_dir: Path, summary: dict[str, Any]) -> None:
+def write_outputs(
+    output_dir: Path,
+    summary: dict[str, Any],
+    summary_name: str,
+    report_name: str,
+    report_title: str,
+) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
-    (output_dir / "m19r_b_annotation_qc_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    (output_dir / summary_name).write_text(json.dumps(summary, indent=2), encoding="utf-8")
     issue_lines = "\n".join(
         f"- row {issue['row']}: `{issue['field']}` - {issue['message']}" if issue["row"] else f"- `{issue['field']}` - {issue['message']}"
         for issue in summary["issues"]
     ) or "- None"
     report = (
-        "# M19R-B Measurement Annotation QC Report\n\n"
+        f"# {report_title}\n\n"
         f"Status: `{summary['status']}`\n\n"
         f"Rows: {summary['row_count']}\n\n"
         f"Measured rows: {summary['measured_rows']}\n\n"
@@ -123,18 +135,21 @@ def write_outputs(output_dir: Path, summary: dict[str, Any]) -> None:
         "## Issues\n"
         f"{issue_lines}\n"
     )
-    (output_dir / "m19r_b_annotation_qc_report.md").write_text(report, encoding="utf-8")
+    (output_dir / report_name).write_text(report, encoding="utf-8")
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--annotation-csv", type=Path, default=ANNOTATION_TEMPLATE)
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
+    parser.add_argument("--summary-name", default="m19r_b_annotation_qc_summary.json")
+    parser.add_argument("--report-name", default="m19r_b_annotation_qc_report.md")
+    parser.add_argument("--report-title", default="M19R-B Measurement Annotation QC Report")
     args = parser.parse_args(argv)
     if not args.annotation_csv.exists():
         print(f"Annotation CSV not found: {args.annotation_csv}", file=sys.stderr)
         return 2
-    summary = qc_annotations(args.annotation_csv, args.output_dir)
+    summary = qc_annotations(args.annotation_csv, args.output_dir, args.summary_name, args.report_name, args.report_title)
     print(f"M19R-B annotation_qc_status={summary['status']}")
     print(f"M19R-B annotation_qc_issues={summary['issue_count']}")
     return 0 if summary["status"] == "pass" else 1

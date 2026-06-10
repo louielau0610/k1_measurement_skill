@@ -39,8 +39,9 @@
 - [ ] M19 future experiment protocol and figure-generation assets.
 - [ ] Future experimental expansion before compensation or safe command adapter work.
 - [x] M19R-B measurement completion pack: replacement trial plan, annotation template, annotation protocol, and annotation QC.
-- [ ] Complete M19 replacement trials for the 5 incomplete surface-speed cells.
-- [ ] Fill M19 measurement annotations from real velocity/yaw evidence only.
+- [x] Complete M19 replacement trials for the 5 incomplete surface-speed cells.
+- [x] Refresh M19 valid-only annotation template after replacements.
+- [ ] Fill M19 valid-only measurement annotations from real velocity/yaw evidence only.
 - [ ] Re-run M19R empirical analysis only after actual velocity and yaw drift annotations pass QC.
 
 ## Next Step On Real K1
@@ -64,6 +65,7 @@
 - [ ] Do not hard-code unconfirmed K1 topics.
 - [ ] Do not treat dummy artifacts as real K1 findings.
 - [ ] Do not treat M19R-B pending annotation rows as empirical measurements.
+- [ ] Do not treat M19R-C valid-only pending annotation rows as empirical measurements.
 - [ ] Do not claim publication readiness from M13-P1 artifacts.
 - [ ] Do not claim novelty from P1 seed literature search alone.
 - [ ] Do not claim novelty or performance superiority from P2 positioning alone.

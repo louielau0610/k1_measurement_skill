@@ -1,0 +1,10 @@
+{
+  "annotation_csv": "data\\m19_repeated_validation_inputs\\m19_valid_trial_measurement_annotation_template.csv",
+  "row_count": 72,
+  "measured_rows": 0,
+  "pending_rows": 72,
+  "replacement_rows": 5,
+  "issue_count": 0,
+  "status": "pass",
+  "issues": []
+}

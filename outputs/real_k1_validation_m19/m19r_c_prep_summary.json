@@ -1,0 +1,34 @@
+{
+  "milestone": "M19R-C-prep",
+  "timestamp": "2026-06-10T17:26:06.000314",
+  "branch": "feature/m19r-c-prep-valid-annotation-template",
+  "trial_records_csv": "data\\m19_repeated_validation_inputs\\m19_trial_records.csv",
+  "valid_template_csv": "data\\m19_repeated_validation_inputs\\m19_valid_trial_measurement_annotation_template.csv",
+  "total_trial_record_rows": 77,
+  "execution_valid_rows": 72,
+  "invalid_debug_rows": 5,
+  "replacement_rows": 5,
+  "valid_template_rows": 72,
+  "cells_with_3_valid": 24,
+  "total_cells": 24,
+  "all_cells_have_3_valid_trials": true,
+  "per_surface": {
+    "S1_lab_hard_floor": {
+      "total": 26,
+      "valid": 24
+    },
+    "S2_marble_floor": {
+      "total": 24,
+      "valid": 24
+    },
+    "S3_artificial_turf": {
+      "total": 27,
+      "valid": 24
+    }
+  },
+  "real_measurements_filled": false,
+  "measured_actual_velocity_available": false,
+  "yaw_drift_statistic_available": false,
+  "empirical_response_analysis_blocked": true,
+  "worklist_rows": 24
+}

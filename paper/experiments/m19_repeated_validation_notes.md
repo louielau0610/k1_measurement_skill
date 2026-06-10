@@ -34,3 +34,8 @@
 - M19R-B adds a blank measurement annotation template for 67 execution-valid trials plus 5 replacement placeholders.
 - M19R-B adds annotation QC, but no real measurements are filled by the template.
 - Empirical response analysis remains blocked until actual velocity and yaw drift are filled from acceptable evidence sources and pass QC.
+
+## M19R-C prep update
+- Replacement trials restored execution-level completeness: 72 execution-valid formal trials are now available across 24 surface-speed cells.
+- The valid-only annotation template excludes 5 invalid/debug rows and includes 5 valid replacement rows.
+- Actual velocity and yaw drift remain unfilled, so empirical response analysis and risk-map validation remain blocked.
