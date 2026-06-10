@@ -298,3 +298,4 @@ P16 creates non-final LaTeX scaffold (17 files). No PDF, no submission package, 
 P16.1 evidence patch: evidence_table updated, P16 summary consistency fixed, git diff --check passed.
 P17: 3 LaTeX tables created, figures copied (not rendered). No PDF. Not submission ready.
 P18: LaTeX tools detected. Compile attempted. Underscore escaping in filenames blocks full build (documented). Not submission ready.
+P19: Underscore escaping fixed. Smoke build PDF built (3pp, 95KB). Not submission ready.

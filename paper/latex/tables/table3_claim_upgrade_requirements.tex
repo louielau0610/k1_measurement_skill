@@ -1,23 +1,20 @@
-﻿% Table 3: Claim-Upgrade Requirements — NON-FINAL (P17)
-% Source: paper/tables/main\_paper\_table\_pack\_v1.md (Table 3)
-% Prohibited claims remain prohibited until evidence exists.
-\begin{table}[htbp]
+﻿\begin{table}[htbp]
 \centering
-\caption{Evidence Boundary / Claim-Upgrade Requirements. Documents what evidence is needed before upgrading each claim type. Prohibited claims remain prohibited until evidence exists.}
-\label{tab:claim\_upgrade}
+\caption{Evidence Boundary and Claim-Upgrade Requirements}
+\label{tab:claim-upgrade}
 \begin{tabular}{p{3.5cm}p{2.5cm}p{5cm}}
-\toprule
-\textbf{Claim Type} & \textbf{Current Status} & \textbf{Required Evidence} \\
-\midrule
+\hline
+Claim Type & Current Status & Required Evidence \\
+\hline
 Pipeline existence & supported (structural) & Already met \\
 Dataset construction & supported (structural) & Already met \\
 Model predictive quality & not supported & Held-out evaluation on repeated trials \\
 Risk warning usefulness & not supported & Navigation outcome trials \\
-Navigation safety improvement & \textbf{prohibited} & Navigation trials + collision/success metrics \\
-Calibrated uncertainty & \textbf{prohibited} & Repeated trials + calibration protocol \\
-Generalization & \textbf{prohibited} & Multi-surface, multi-session data \\
-Compensation readiness & \textbf{prohibited} & All above + offline compensation validation \\
-Safe command adapter & \textbf{prohibited} & All above + safety validation \\
-\bottomrule
+Navigation safety improvement & prohibited & Trials + collision/success metrics \\
+Calibrated uncertainty & prohibited & Repeated trials + calibration protocol \\
+Generalization & prohibited & Multi-surface, multi-session data \\
+Compensation readiness & prohibited & All above + offline validation \\
+Safe command adapter & prohibited & All above + safety validation \\
+\hline
 \end{tabular}
 \end{table}

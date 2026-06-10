@@ -95,3 +95,7 @@ P17 creates 3 LaTeX table files, copies Mermaid figure sources, and documents re
 ## P18 LaTeX Compile Validation
 
 P18 validates LaTeX scaffold: pdflatex found, structure valid, compile attempted. Full compile blocked by underscore escaping in filenames (documented). P19 should fix and retry.
+
+## P19 LaTeX Path Escaping Recovery
+
+P19 resolves P18 underscore blocker. Smoke PDF built (build_main.pdf, 3pp, 95KB). Full main.tex compilation deferred to P20. Not submission ready.
