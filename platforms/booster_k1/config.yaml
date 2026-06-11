@@ -1,0 +1,12 @@
+platform_id: booster_k1
+robot_model: Booster K1
+hardware_validated_reference: true
+validation_status: hardware_validated_reference
+primary_state_source: /odometer_state
+secondary_state_source: /low_state.imu_state.rpy
+setup_requirement: source /opt/booster/BoosterRos2Interface/install/setup.bash
+validated_command_path:
+  - kPrepare
+  - kWalking
+  - Move(vx, 0, 0)
+profile: outputs/real_k1_validation_m19/k1_gold_profile_v1.json

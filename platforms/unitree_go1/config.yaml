@@ -1,0 +1,8 @@
+platform_id: unitree_go1
+robot_model: Unitree GO1
+hardware_validated_reference: false
+validation_status: scaffold_only
+primary_state_source: null
+secondary_state_source: null
+profile: null
+claim_boundary: no Unitree GO1 measurements, profiles, or validation claims are present

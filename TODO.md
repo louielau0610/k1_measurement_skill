@@ -53,7 +53,9 @@
 - [ ] Extract `m19c_extracted_measurements.csv` and pass M19C measurement-run QC before empirical analysis.
 - [x] Ingest completed M19C 72-trial K1 odometer dataset.
 - [x] Generate M19C empirical response statistics, region classification, and `k1_gold_profile_v1`.
-- [ ] M20 Cross-Platform Calibration Skill Core: common command adapter, state logger, measurement schema, and Booster K1 / Unitree G1 / Unitree GO1 adapters.
+- [x] M20 Cross-Platform Calibration Skill Core: common command adapter, state logger, measurement schema, and Booster K1 / Unitree G1 / Unitree GO1 adapters.
+- [ ] Add real Unitree G1 state-source discovery before enabling any G1 measurement extraction.
+- [ ] Add real Unitree GO1 state-source discovery before enabling any GO1 measurement extraction.
 - [ ] Keep paper updates minimal unless directly useful for the calibration skill.
 - [ ] Fill M19 valid-only measurement annotations from real velocity/yaw evidence only.
 - [ ] Re-run M19R empirical analysis only after actual velocity and yaw drift annotations pass QC.

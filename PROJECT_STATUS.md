@@ -38,6 +38,20 @@ M7 commit: `0e8db1131b152617cd9f86d42d61c96d473d7996`
 - [x] M8 mapping-driven real log normalizer
 - [x] M8 workflow documentation and checklist updates
 - [x] M13 research-grade velocity response foundation
+- [x] M20 cross-platform calibration skill core scaffold
+
+## M20 Cross-Platform Calibration Core
+
+M20 adds `calibration_core/` and `platforms/` as a reusable calibration skill layer. Booster K1 is registered as the only `hardware_validated_reference`, using the completed M19C ROS2 odometer profile. Unitree G1 and Unitree GO1 are scaffold-only entries with no hardware access, no extracted measurements, and no validation claims.
+
+Readiness flags:
+
+- `booster_k1_hardware_validated_reference=true`
+- `unitree_g1_hardware_validated_reference=false`
+- `unitree_go1_hardware_validated_reference=false`
+- `cross_platform_empirical_validation=false`
+- `compensation_ready=false`
+- `navigation_control_ready=false`
 
 ## M13 Research Foundation
 
