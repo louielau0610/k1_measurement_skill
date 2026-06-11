@@ -336,3 +336,13 @@ Robot-side discovery showed that sourcing `/opt/booster/BoosterRos2Interface/ins
 M19C full-run infrastructure now provides the 72-trial ROS2 odometer measurement runner, full-run extractor, measurement-run QC, and protocol documentation. Robot-side smoke evidence indicates ROS2 odometer extraction is feasible, including low-speed deadzone behavior at 0.20 m/s and measurable motion/yaw drift at 0.40 and 0.60 m/s.
 
 Full empirical M19C analysis remains pending until the physical 72-trial run is completed, logs are extracted, and QC reports `m19c_measurement_extraction_ready_for_empirical_analysis`. No response-model or risk-map validation claim is added yet.
+
+## M19C-E K1 Empirical Gold Profile
+
+M19C-E ingests the completed 72-trial Booster K1 ROS2 odometer dataset and freezes `k1_gold_profile_v1.json` as a skill-facing single-unit reference profile. All 24 surface-speed cells have 3 measured trials. Default conservative region classification yields 8 deadzone cells, 6 unstable cells, 4 drift-prone cells, 2 over-response cells, and 4 reliable cells.
+
+Project priority is now skill completion first. The paper track is kept minimal: M19C-E supports tested-K1 evidence of speed-response nonlinearity, surface dependence, deadzone behavior, and yaw-drift variation, but does not claim cross-robot generalization, compensation-controller validation, or navigation improvement.
+
+## M20 Cross-Platform Calibration Skill Core
+
+Next planned milestone: build a reusable calibration skill core with a common command adapter interface, common state logger interface, common measurement schema, robot-specific adapters for Booster K1, Unitree G1, and Unitree GO1, and simulated/test-fixture adapters for CI. No fake hardware results should be treated as empirical evidence.

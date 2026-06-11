@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-06-11T14:48:27.701167",
+  "dataset_id": "m19c_full_72_ros2_odometer_20260611",
+  "input_csv": "data\\m19_repeated_validation_inputs\\m19c_extracted_measurements.csv",
+  "rows_ingested": 72,
+  "surface_speed_cells": 24,
+  "complete_cells_n3": 24,
+  "surfaces": [
+    "S1_lab_hard_floor",
+    "S2_marble_floor",
+    "S3_artificial_turf"
+  ],
+  "region_counts": {
+    "deadzone": 8,
+    "drift_prone": 4,
+    "over_response": 2,
+    "reliable": 4,
+    "unstable": 6
+  },
+  "skill_integration_ready": true,
+  "cross_robot_generalization_claimed": false,
+  "compensation_controller_validated": false,
+  "navigation_improvement_claimed": false
+}

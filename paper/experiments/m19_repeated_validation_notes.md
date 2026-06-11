@@ -60,3 +60,8 @@
 - Physical smoke tests indicate ROS2 odometer extraction is feasible: 0.20 m/s produced near-zero motion, while 0.40 and 0.60 m/s produced nonzero extracted velocity and yaw drift.
 - The full 72-trial ROS2 odometer runner, extractor, QC, and protocol are implemented.
 - Empirical M19C analysis remains pending until full physical logs are collected and extracted; no response-model or risk-map claim is added yet.
+
+## M19C-E empirical K1 profile
+- M19C produced a complete 72-trial K1 empirical velocity-response dataset across three surfaces and eight command speeds.
+- The dataset supports tested-K1 evidence of speed-response nonlinearity, surface dependence, low-speed deadzone behavior, and yaw-drift variation.
+- The result is a single-K1, odometer-measured calibration profile; it does not prove cross-robot generalization, navigation improvement, or compensation-controller validity.

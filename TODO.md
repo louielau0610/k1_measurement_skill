@@ -51,6 +51,10 @@
 - [ ] Run three ROS2 odometer dynamic smoke trials and verify nonzero extracted velocity before full M19C measurement run.
 - [ ] Run full M19C ROS2 odometer measurement by surface: S1, then S2, then S3.
 - [ ] Extract `m19c_extracted_measurements.csv` and pass M19C measurement-run QC before empirical analysis.
+- [x] Ingest completed M19C 72-trial K1 odometer dataset.
+- [x] Generate M19C empirical response statistics, region classification, and `k1_gold_profile_v1`.
+- [ ] M20 Cross-Platform Calibration Skill Core: common command adapter, state logger, measurement schema, and Booster K1 / Unitree G1 / Unitree GO1 adapters.
+- [ ] Keep paper updates minimal unless directly useful for the calibration skill.
 - [ ] Fill M19 valid-only measurement annotations from real velocity/yaw evidence only.
 - [ ] Re-run M19R empirical analysis only after actual velocity and yaw drift annotations pass QC.
 
@@ -78,6 +82,8 @@
 - [ ] Do not treat M19R-C valid-only pending annotation rows as empirical measurements.
 - [ ] Do not compute M19 empirical response statistics until annotation intake validation confirms complete real measurements.
 - [ ] Do not run the full M19C measurement protocol until ROS2 odometer standing and dynamic smoke logs pass.
+- [ ] Do not claim Unitree G1 or GO1 results before real or explicitly simulated adapter evidence exists.
+- [ ] Do not treat K1 gold profile as cross-robot validation.
 - [ ] Do not claim publication readiness from M13-P1 artifacts.
 - [ ] Do not claim novelty from P1 seed literature search alone.
 - [ ] Do not claim novelty or performance superiority from P2 positioning alone.

@@ -26,3 +26,5 @@ M19R-C SDK state logger prep adds tooling to discover and log SDK state sources,
 M19R-C ROS2 odometer prep updates the planned measurement source priority to `/odometer_state` after robot-side interface discovery. This remains measurement-source validation only; no M19 empirical response or risk-map claim is added.
 
 M19C full-run infrastructure incorporates smoke-test evidence that ROS2 odometer measurement is feasible and prepares the 72-trial collection pipeline. It still adds no empirical response-model or risk-map validation claim before the full physical run is completed and QC-passed.
+
+M19C-E adds a complete 72-trial Booster K1 empirical odometer dataset and a skill-facing K1 gold profile. Supported claims are limited to the tested K1 unit: speed-response nonlinearity, surface dependence, deadzone behavior, and yaw-drift variation. Cross-robot generalization, navigation improvement, and compensation-controller validation remain unsupported.
