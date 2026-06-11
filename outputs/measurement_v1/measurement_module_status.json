@@ -1,6 +1,8 @@
 {
-  "measurement_module_v1_status": "consolidated_reference_ready",
+  "measurement_module_v1_status": "complete",
+  "measurement_module_v1_complete": true,
   "booster_k1_reference_ready": true,
+  "measurement_contract_v1_ready": true,
   "unitree_go1_measurement_ready": false,
   "unitree_g1_measurement_ready": false,
   "velocity_compensation_ready": false,
@@ -19,5 +21,11 @@
     "unitree_go1",
     "unitree_g1"
   ],
-  "next_required_step": "close Measurement Module v1, then study and implement the velocity compensation principle for Booster K1 validation"
+  "next_phase": "velocity_compensation_principle_research",
+  "closure_artifacts": {
+    "closure_summary": "outputs/measurement_v1/measurement_module_v1_closure_summary.json",
+    "closure_report": "outputs/measurement_v1/measurement_module_v1_closure_report.md",
+    "closure_documentation": "docs/measurement_module_v1_closure.md",
+    "step2_plan": "docs/step2_velocity_compensation_research_plan.md"
+  }
 }

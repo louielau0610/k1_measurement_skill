@@ -33,7 +33,8 @@ def main(argv: list[str] | None = None) -> int:
         print(f"validated_platforms: {', '.join(status.get('validated_platforms', []))}")
         print(f"scaffold_only_platforms: {', '.join(status.get('scaffold_only_platforms', []))}")
         print(f"velocity_compensation_ready: {status['velocity_compensation_ready']}")
-        print(f"next_required_step: {status['next_required_step']}")
+        next_phase = status.get('next_phase', status.get('next_required_step', 'unknown'))
+        print(f"next_phase: {next_phase}")
     return 0
 
 

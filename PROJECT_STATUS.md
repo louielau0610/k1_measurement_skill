@@ -2,7 +2,7 @@
 
 ## 当前阶段
 
-M8: Real K1 Field Logging and Forward Baseline Execution Support is the current milestone.
+**Step 1 (Measurement Module) is complete.** Step 2 (Velocity Compensation Principle Research) is the next phase.
 
 ## 仓库定位
 
@@ -13,6 +13,23 @@ v_x_cmd -> v_x_actual measurement
 ```
 
 本仓库不实现 velocity compensation、navigation、真实机器人运动执行脚本或完整 ROS2 package layout。
+
+## Step 1: Measurement Module — COMPLETE
+
+Step 1 formally closed with M21-D. All milestones M19C-E through M21-D are complete and validated.
+
+- `measurement_module_v1_status = "complete"`
+- `measurement_module_v1_complete = true`
+- `booster_k1_reference_ready = true`
+- `measurement_contract_v1_ready = true`
+- `velocity_compensation_ready = false`
+- `next_phase = "velocity_compensation_principle_research"`
+
+Closure artifacts:
+- `docs/measurement_module_v1_closure.md`
+- `outputs/measurement_v1/measurement_module_v1_closure_summary.json`
+- `outputs/measurement_v1/measurement_module_v1_closure_report.md`
+- `docs/step2_velocity_compensation_research_plan.md`
 
 ## Completed Milestones
 
@@ -123,6 +140,34 @@ Readiness flags:
 - `unitree_go1_measurement_ready=false`
 - `unitree_g1_measurement_ready=false`
 - `velocity_compensation_ready=false`
+
+## M21-D Measurement Module Closure
+
+M21-D formally closes Step 1 (Measurement Module). It adds:
+
+- **Closure summary**: `docs/measurement_module_v1_closure.md` and `outputs/measurement_v1/measurement_module_v1_closure_summary.json`
+- **Closure report**: `outputs/measurement_v1/measurement_module_v1_closure_report.md`
+- **Updated status**: `outputs/measurement_v1/measurement_module_status.json` — status changed to `complete`
+- **Closure validation CLI**: `scripts/validate_measurement_module_closure.py`
+- **Step 2 transition plan**: `docs/step2_velocity_compensation_research_plan.md` (planning only, no implementation)
+
+M21-D does NOT:
+- Implement velocity compensation
+- Add inverse response modeling
+- Add command remapping
+- Claim compensation readiness
+- Claim GO1/G1 hardware validation
+
+Readiness flags:
+
+- `measurement_module_v1_status=complete`
+- `measurement_module_v1_complete=true`
+- `booster_k1_reference_ready=true`
+- `measurement_contract_v1_ready=true`
+- `velocity_compensation_ready=false`
+- `unitree_go1_measurement_ready=false`
+- `unitree_g1_measurement_ready=false`
+- `next_phase=velocity_compensation_principle_research`
 
 ## M13 Research Foundation
 

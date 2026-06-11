@@ -22,7 +22,7 @@ def test_measurement_manifest_schema_fields_present() -> None:
 
 def test_measurement_module_status_flags_preserve_boundary() -> None:
     status = json.loads(STATUS_PATH.read_text(encoding="utf-8"))
-    assert status["measurement_module_v1_status"] == "consolidated_reference_ready"
+    assert status["measurement_module_v1_status"] == "complete"
     assert status["booster_k1_reference_ready"] is True
     assert status["unitree_go1_measurement_ready"] is False
     assert status["unitree_g1_measurement_ready"] is False
@@ -71,7 +71,7 @@ def test_show_measurement_module_status_cli_output() -> None:
         capture_output=True,
         text=True,
     )
-    assert "measurement_module_v1_status: consolidated_reference_ready" in result.stdout
+    assert "measurement_module_v1_status: complete" in result.stdout
     assert "validated_platforms: booster_k1" in result.stdout
     assert "scaffold_only_platforms: unitree_go1, unitree_g1" in result.stdout
     assert "velocity_compensation_ready: False" in result.stdout

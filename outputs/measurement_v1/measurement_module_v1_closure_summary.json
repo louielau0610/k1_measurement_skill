@@ -1,0 +1,71 @@
+{
+  "closure_version": "measurement_module_v1.0",
+  "closure_date": "2026-06-11",
+  "closure_status": "complete",
+
+  "status_flags": {
+    "measurement_module_v1_status": "complete",
+    "measurement_module_v1_complete": true,
+    "booster_k1_measurement_reference_ready": true,
+    "measurement_contract_v1_ready": true,
+    "velocity_compensation_ready": false,
+    "unitree_go1_measurement_ready": false,
+    "unitree_g1_measurement_ready": false,
+    "cross_platform_empirical_validation": false
+  },
+
+  "milestone_lineage": [
+    {"milestone": "M19C-E", "description": "K1 empirical gold profile (72 trials)", "status": "complete"},
+    {"milestone": "M20", "description": "Cross-platform calibration core scaffold", "status": "complete"},
+    {"milestone": "M21-A", "description": "Measurement module consolidation", "status": "complete"},
+    {"milestone": "M21-B", "description": "Booster K1 measurement reference hardening", "status": "complete"},
+    {"milestone": "M21-C", "description": "Measurement data contract", "status": "complete"},
+    {"milestone": "M21-D", "description": "Measurement module closure", "status": "complete"}
+  ],
+
+  "key_artifact_paths": {
+    "k1_gold_profile": "outputs/real_k1_validation_m19/k1_gold_profile_v1.json",
+    "k1_extracted_measurements": "data/m19_repeated_validation_inputs/m19c_extracted_measurements.csv",
+    "k1_contract_csv": "outputs/measurement_v1/booster_k1_measurements_contract_v1.csv",
+    "contract_definition": "outputs/measurement_v1/measurement_contract_v1.json",
+    "contract_documentation": "outputs/measurement_v1/measurement_contract_v1.md",
+    "k1_contract_validation": "outputs/measurement_v1/booster_k1_measurements_contract_validation.json",
+    "k1_reference_manifest": "outputs/measurement_v1/booster_k1_reference_manifest.json",
+    "measurement_module_status": "outputs/measurement_v1/measurement_module_status.json",
+    "closure_summary": "outputs/measurement_v1/measurement_module_v1_closure_summary.json",
+    "closure_report": "outputs/measurement_v1/measurement_module_v1_closure_report.md",
+    "closure_documentation": "docs/measurement_module_v1_closure.md",
+    "step2_plan": "docs/step2_velocity_compensation_research_plan.md"
+  },
+
+  "k1_contract_validation": {
+    "total_rows": 72,
+    "valid_rows": 72,
+    "invalid_rows": 0,
+    "contract_version": "measurement_v1.0",
+    "validation_passed": true
+  },
+
+  "test_validation": {
+    "total_tests_passed": 402,
+    "total_tests_failed": 0,
+    "compileall_passed": true
+  },
+
+  "known_limitations": [
+    "single Booster K1 unit tested",
+    "three surfaces only (lab hard floor, marble, artificial turf)",
+    "ROS2 odometer-based measurement only",
+    "no low-battery or degraded-state trials",
+    "no dynamic obstacle trials",
+    "no velocity compensation implemented",
+    "no inverse response model",
+    "no command remapping",
+    "no GO1/G1 hardware validation",
+    "no cross-platform empirical validation",
+    "no real-time compensation loop"
+  ],
+
+  "next_step": "Step 2: velocity compensation principle and implementation research",
+  "next_step_document": "docs/step2_velocity_compensation_research_plan.md"
+}

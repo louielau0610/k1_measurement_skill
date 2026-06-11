@@ -48,6 +48,7 @@
 - [x] M21-A measurement module consolidation.
 - [x] M21-B Booster K1 measurement reference implementation hardening.
 - [x] M21-C measurement data contract definition and K1 contract compliance.
+- [x] M21-D measurement module closure and Step 2 transition plan.
 - [ ] Run SDK state discovery on the physical K1 shell with Booster SDK sourced.
 - [ ] Source `/opt/booster/BoosterRos2Interface/install/setup.bash` on K1 and run ROS2 odometer standing smoke logger.
 - [ ] Confirm `/odometer_state` publishes timestamped `x`, `y`, and `theta` at usable frequency before full M19C measurement run.
