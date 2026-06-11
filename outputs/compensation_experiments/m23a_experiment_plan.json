@@ -1,0 +1,32 @@
+{
+  "experiment_id": "m23a_k1_compensation_S2_marble_floor",
+  "generated_at": "2026-06-11T09:34:31.988953+00:00",
+  "m23a_status": "experiment_design_only",
+  "physical_validation": "not_started",
+  "deployment_ready": false,
+  "platform": "booster_k1",
+  "robot_model": "Booster K1",
+  "surface": "S2_marble_floor",
+  "desired_velocities_mps": [
+    0.3,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55
+  ],
+  "repeats": 3,
+  "risk_policy": "balanced",
+  "total_planned_trials": 36,
+  "planned_pairs": 18,
+  "infeasible_compensation_targets": 18,
+  "direct_trials": 18,
+  "compensated_trials": 18,
+  "trial_plan_csv": "outputs\\compensation_experiments\\m23a_trial_plan.csv",
+  "compensator_version": "M22-C",
+  "randomization_seed": 42,
+  "randomized": true,
+  "go1_g1_included": false,
+  "hardware_execution": false,
+  "disclaimer": "experiment design only \u2014 no hardware execution \u2014 no physical validation claim"
+}

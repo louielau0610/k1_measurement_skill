@@ -40,15 +40,27 @@ M22-A does NOT implement a compensator, inverse response model, command remappin
 Current Step 2 flags:
 
 - `velocity_compensation_principle_research_started=true`
-- `recommended_first_method=conservative_piecewise_linear_inverse_mapping`
 - `offline_compensator_prototype_status=offline_prototype_complete`
+- `offline_verification_complete=true`
 - `implementation_ready=offline_only`
 - `velocity_compensation_ready=false`
 - `k1_compensation_validated=false`
 - `unitree_go1_measurement_ready=false`
 - `unitree_g1_measurement_ready=false`
 - `deployment_ready=false`
-- `next_milestone=M22-D offline compensator verification and edge-case audit`
+- `next_milestone=M23-A K1 physical compensation experiment design`
+
+## Step 3: Booster K1 Physical Compensation Validation — STARTED
+
+M23-A begins Step 3 as an experiment-design-only milestone. It defines the paired before/after experiment, generates trial plans, specifies success metrics, and creates the analysis plan. No hardware is executed.
+
+Current Step 3 flags:
+
+- `physical_validation=not_started`
+- `experiment_designed=true`
+- `k1_compensation_validated=false`
+- `deployment_ready=false`
+- `next_milestone=M23-B K1 physical compensation execution`
 
 ## M22-C Offline Velocity Compensator Prototype
 
@@ -82,6 +94,33 @@ Flags:
 - `deployment_ready=false`
 - `k1_compensation_validated=false`
 - `next_milestone=M23-A K1 physical compensation experiment design`
+
+## M23-A K1 Physical Compensation Experiment Design
+
+M23-A designs the physical Booster K1 compensation validation experiment as a design-only milestone. It defines:
+
+- **Experiment design**: Paired before/after structure (direct vs. compensated command) per desired velocity and surface.
+- **Scope**: Primary surface S2_marble_floor, 6 desired velocities (0.30–0.55 m/s), 3 paired repeats minimum.
+- **Success metrics**: Reduction in absolute tracking error, no yaw drift increase, no invalid trial increase.
+- **Analysis plan**: Wilcoxon signed-rank test, paired error comparison, per-velocity summary.
+- **Trial plan generator**: `scripts/generate_m23a_k1_compensation_experiment_plan.py` — generates 36-trial plan (18 direct + 18 compensated).
+- **Result schema**: `docs/m23a_physical_compensation_result_schema.md` — 17 fields for M23-B/M23-C to fill.
+- **Claim boundary**: `docs/m23a_physical_validation_claim_boundary.md`
+
+M23-A does NOT:
+- Execute robot hardware
+- Send commands to K1
+- Generate physical results
+- Claim physical validation
+- Claim tracking improvement
+- Claim GO1/G1 calibration
+
+Flags:
+- `physical_validation=not_started`
+- `experiment_designed=true`
+- `deployment_ready=false`
+- `k1_compensation_validated=false`
+- `next_milestone=M23-B K1 physical compensation execution`
 
 ## M22-B Velocity Compensation Algorithm Specification
 
