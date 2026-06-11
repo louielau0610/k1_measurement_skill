@@ -68,6 +68,35 @@ Readiness flags:
 - `unitree_g1_measurement_ready=false`
 - `velocity_compensation_ready=false`
 
+## M21-B Booster K1 Measurement Reference Hardening
+
+M21-B hardens Booster K1 as the **first hardened measurement reference implementation**. It adds a standardized split-process measurement workflow, session management, extraction, QC, and CLI tools under `platforms/booster_k1/` and `scripts/`.
+
+Key additions:
+
+- **Split-process design**: SDK command process isolated from ROS2 logger process.
+- **Dry-run by default**: No hardware movement without explicit `--execute`.
+- **Per-trial permit mode**: Each trial requires operator confirmation.
+- **Standard session layout**: `data/measurement_sessions/booster_k1/<session_id>/`
+- **Unified CLIs**: `run_booster_k1_measurement.py`, `extract_booster_k1_measurements.py`, `qc_booster_k1_measurement_session.py`
+- **Fixture/replay test mode**: `tests/fixtures/` for offline testing without hardware.
+- **Updated manifest**: `outputs/measurement_v1/booster_k1_reference_manifest.md` includes M21-B paths.
+
+M21-B does NOT:
+- Implement velocity compensation
+- Add command remapping
+- Claim compensation readiness
+- Claim GO1/G1 hardware validation
+- Overwrite M19C-E gold artifacts
+
+Readiness flags:
+
+- `measurement_module_v1_status=consolidated_reference_ready`
+- `booster_k1_reference_ready=true`
+- `unitree_go1_measurement_ready=false`
+- `unitree_g1_measurement_ready=false`
+- `velocity_compensation_ready=false`
+
 ## M13 Research Foundation
 
 M13 adds research problem framing for:

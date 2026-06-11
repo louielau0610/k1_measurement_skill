@@ -36,8 +36,7 @@
 
 - [x] P3 related work section draft after M18 or after additional literature.
 - [x] P4 introduction/problem statement draft.
-- [ ] M19 future experiment protocol and figure-generation assets.
-- [ ] Future experimental expansion before compensation or safe command adapter work.
+- [x] M19 future experiment protocol and figure-generation assets.
 - [x] M19R-B measurement completion pack: replacement trial plan, annotation template, annotation protocol, and annotation QC.
 - [x] Complete M19 replacement trials for the 5 incomplete surface-speed cells.
 - [x] Refresh M19 valid-only annotation template after replacements.
@@ -45,6 +44,9 @@
 - [x] Add M19R-C SDK state-source discovery, smoke logging, and SDK-log extraction scaffold.
 - [x] Add M19R-C ROS2 `/odometer_state` logger, smoke runner, and odometer-log extractor scaffold.
 - [x] Add full M19C 72-trial ROS2 odometer runner, extractor, QC, and protocol.
+- [x] M20 cross-platform calibration core scaffold.
+- [x] M21-A measurement module consolidation.
+- [x] M21-B Booster K1 measurement reference implementation hardening.
 - [ ] Run SDK state discovery on the physical K1 shell with Booster SDK sourced.
 - [ ] Source `/opt/booster/BoosterRos2Interface/install/setup.bash` on K1 and run ROS2 odometer standing smoke logger.
 - [ ] Confirm `/odometer_state` publishes timestamped `x`, `y`, and `theta` at usable frequency before full M19C measurement run.
