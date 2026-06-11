@@ -76,6 +76,31 @@ python scripts/qc_booster_k1_measurement_session.py --session-dir data/measureme
 
 Existing M19C-E gold artifacts remain unchanged. New runs go into new session directories under `data/measurement_sessions/booster_k1/`.
 
+## M21-C Measurement Data Contract
+
+M21-C defines the formal cross-platform measurement data contract. Booster K1 is the first platform with contract-compliant output.
+
+- **Contract version**: `measurement_v1.0`
+- **Contract definition**: `outputs/measurement_v1/measurement_contract_v1.json`
+- **Contract documentation**: `outputs/measurement_v1/measurement_contract_v1.md`
+- **K1 contract measurements**: `outputs/measurement_v1/booster_k1_measurements_contract_v1.csv` (72 rows, all valid)
+- **Contract validation**: `outputs/measurement_v1/booster_k1_measurements_contract_validation.json`
+- **Contract module**: `calibration_core/measurement_contract.py`
+- **Legacy mapping**: `calibration_core/measurement_contract_mapping.py`
+
+### Contract CLI Commands
+
+```bash
+# Convert legacy measurements to contract format
+python scripts/convert_measurements_to_contract.py \\
+  --input data/m19_repeated_validation_inputs/m19c_extracted_measurements.csv \\
+  --output outputs/measurement_v1/booster_k1_measurements_contract_v1.csv
+
+# Validate contract compliance
+python scripts/validate_measurement_contract.py \\
+  --measurements outputs/measurement_v1/booster_k1_measurements_contract_v1.csv
+```
+
 ## Boundary
 
 - Velocity compensation ready: `false`

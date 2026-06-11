@@ -97,6 +97,33 @@ Readiness flags:
 - `unitree_g1_measurement_ready=false`
 - `velocity_compensation_ready=false`
 
+## M21-C Measurement Data Contract
+
+M21-C defines the formal cross-platform measurement data contract (`measurement_v1.0`) that all platforms must satisfy before velocity compensation. It adds:
+
+- **Contract module**: `calibration_core/measurement_contract.py` with trial (27 fields), aggregate (25 fields), and session metadata (22 fields) schemas.
+- **Legacy mapping**: `calibration_core/measurement_contract_mapping.py` maps M19C field names to contract names.
+- **Conversion CLI**: `scripts/convert_measurements_to_contract.py` — converted all 72 K1 rows to contract format (all valid).
+- **Validation CLI**: `scripts/validate_measurement_contract.py` — validates CSVs, metadata, and session directories.
+- **Contract artifacts**: JSON schema, markdown documentation, K1 contract CSV, validation report.
+- **Coordinate convention**: body x forward, y left, z up; yaw in degrees for export.
+
+M21-C does NOT:
+- Implement velocity compensation
+- Add command remapping
+- Claim compensation readiness
+- Claim GO1/G1 hardware validation
+- Overwrite M19C-E gold artifacts
+
+Readiness flags:
+
+- `measurement_module_v1_status=consolidated_reference_ready`
+- `booster_k1_reference_ready=true`
+- `measurement_contract_active=true` (K1 only)
+- `unitree_go1_measurement_ready=false`
+- `unitree_g1_measurement_ready=false`
+- `velocity_compensation_ready=false`
+
 ## M13 Research Foundation
 
 M13 adds research problem framing for:

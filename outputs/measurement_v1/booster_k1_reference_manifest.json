@@ -45,5 +45,14 @@
     "qc_report": "outputs/real_k1_validation_m19/m19c_measurement_run_qc_report.md",
     "region_classification": "outputs/real_k1_validation_m19/region_classification.csv",
     "yaw_drift_summary": "outputs/real_k1_validation_m19/yaw_drift_summary.csv"
+  },
+  "measurement_contract": {
+    "contract_version": "measurement_v1.0",
+    "contract_definition": "outputs/measurement_v1/measurement_contract_v1.json",
+    "contract_documentation": "outputs/measurement_v1/measurement_contract_v1.md",
+    "k1_contract_measurements": "outputs/measurement_v1/booster_k1_measurements_contract_v1.csv",
+    "k1_contract_validation": "outputs/measurement_v1/booster_k1_measurements_contract_validation.json",
+    "k1_contract_rows": 72,
+    "k1_contract_valid_rows": 72
   }
 }

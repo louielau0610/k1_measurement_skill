@@ -1,0 +1,522 @@
+{
+  "conversion_time": "2026-06-11T07:56:30.304818+00:00",
+  "contract_version": "measurement_v1.0",
+  "input_path": "data\\m19_repeated_validation_inputs\\m19c_extracted_measurements.csv",
+  "output_path": "outputs\\measurement_v1\\booster_k1_measurements_contract_v1.csv",
+  "total_rows": 72,
+  "validation": {
+    "valid": true,
+    "errors": [],
+    "warnings": [],
+    "contract_version": "measurement_v1.0",
+    "total_rows": 72,
+    "valid_rows": 72,
+    "invalid_rows": 0,
+    "row_results": [
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B1_U010_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B1_U020_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B1_U030_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B1_U035_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B1_U040_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B1_U045_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B1_U050_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B1_U060_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B2_U010_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B2_U020_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B2_U030_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B2_U035_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B2_U040_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B2_U045_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B2_U050_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B2_U060_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B3_U010_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B3_U020_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B3_U030_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B3_U035_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B3_U040_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B3_U045_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B3_U050_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S1_lab_hard_floor_B3_U060_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B1_U010_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B1_U020_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B1_U030_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B1_U035_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B1_U040_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B1_U045_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B1_U050_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B1_U060_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B2_U010_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B2_U020_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B2_U030_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B2_U035_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B2_U040_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B2_U045_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B2_U050_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B2_U060_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B3_U010_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B3_U020_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B3_U030_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B3_U035_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B3_U040_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B3_U045_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B3_U050_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S2_marble_floor_B3_U060_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B1_U010_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B1_U020_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B1_U030_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B1_U035_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B1_U040_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B1_U045_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B1_U050_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B1_U060_R1"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B2_U010_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B2_U020_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B2_U030_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B2_U035_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B2_U040_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B2_U045_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B2_U050_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B2_U060_R2"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B3_U010_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B3_U020_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B3_U030_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B3_U035_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B3_U040_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B3_U045_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B3_U050_R3"
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "warnings": [],
+        "contract_version": "measurement_v1.0",
+        "trial_id": "M19C_S3_artificial_turf_B3_U060_R3"
+      }
+    ]
+  }
+}
