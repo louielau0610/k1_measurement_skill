@@ -31,6 +31,23 @@ Closure artifacts:
 - `outputs/measurement_v1/measurement_module_v1_closure_report.md`
 - `docs/step2_velocity_compensation_research_plan.md`
 
+## Step 2: Velocity Compensation Principle Research — STARTED
+
+M22-A begins Step 2 as a research/design-only milestone. It documents the feedforward inverse-model compensation principle, compares inverse mapping options, defines feasibility statuses, and recommends the first implementation direction for M22-B.
+
+M22-A does NOT implement a compensator, inverse response model, command remapping CLI, robot execution path, K1 compensation experiment, GO1/G1 validation, or compensation readiness claim.
+
+Current Step 2 flags:
+
+- `velocity_compensation_principle_research_started=true`
+- `recommended_first_method=conservative_piecewise_linear_inverse_mapping`
+- `implementation_ready=false`
+- `velocity_compensation_ready=false`
+- `k1_compensation_validated=false`
+- `unitree_go1_measurement_ready=false`
+- `unitree_g1_measurement_ready=false`
+- `next_milestone=M22-B velocity compensation algorithm specification`
+
 ## Completed Milestones
 
 - [x] M0 project structure
@@ -57,6 +74,7 @@ M7 commit: `0e8db1131b152617cd9f86d42d61c96d473d7996`
 - [x] M13 research-grade velocity response foundation
 - [x] M20 cross-platform calibration skill core scaffold
 - [x] M21-A measurement module consolidation
+- [x] M22-A velocity compensation principle research
 
 ## M20 Cross-Platform Calibration Core
 

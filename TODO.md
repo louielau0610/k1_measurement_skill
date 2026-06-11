@@ -49,6 +49,7 @@
 - [x] M21-B Booster K1 measurement reference implementation hardening.
 - [x] M21-C measurement data contract definition and K1 contract compliance.
 - [x] M21-D measurement module closure and Step 2 transition plan.
+- [x] M22-A velocity compensation principle research and first-method decision framework.
 - [ ] Run SDK state discovery on the physical K1 shell with Booster SDK sourced.
 - [ ] Source `/opt/booster/BoosterRos2Interface/install/setup.bash` on K1 and run ROS2 odometer standing smoke logger.
 - [ ] Confirm `/odometer_state` publishes timestamped `x`, `y`, and `theta` at usable frequency before full M19C measurement run.
@@ -59,8 +60,10 @@
 - [x] Generate M19C empirical response statistics, region classification, and `k1_gold_profile_v1`.
 - [x] M20 Cross-Platform Calibration Skill Core: common command adapter, state logger, measurement schema, and Booster K1 / Unitree G1 / Unitree GO1 adapters.
 - [x] M21-A Measurement Module Consolidation: module boundary, pipeline abstraction, K1 reference manifest, status CLI, and manifest validation CLI.
-- [ ] Close Measurement Module v1 review before starting velocity compensation implementation.
-- [ ] Study and implement the velocity compensation principle after measurement module closure.
+- [x] Close Measurement Module v1 review before starting velocity compensation implementation.
+- [x] Study the velocity compensation principle after measurement module closure.
+- [ ] M22-B specify the offline velocity compensation algorithm without robot execution.
+- [ ] Implement the first dry-run Booster K1 compensator only after M22-B specification is reviewed.
 - [ ] Reproduce and experimentally validate the velocity compensator on Booster K1 before any GO1/G1 generalization.
 - [ ] Add real Unitree G1 state-source discovery before enabling any G1 measurement extraction.
 - [ ] Add real Unitree GO1 state-source discovery before enabling any GO1 measurement extraction.
@@ -94,6 +97,8 @@
 - [ ] Do not run the full M19C measurement protocol until ROS2 odometer standing and dynamic smoke logs pass.
 - [ ] Do not claim Unitree G1 or GO1 results before real or explicitly simulated adapter evidence exists.
 - [ ] Do not treat K1 gold profile as cross-robot validation.
+- [ ] Do not create command remapping or compensation execution before the M22-B algorithm specification is complete.
+- [ ] Do not claim K1 compensation validation before Step 3 physical compensated trials.
 - [ ] Do not claim publication readiness from M13-P1 artifacts.
 - [ ] Do not claim novelty from P1 seed literature search alone.
 - [ ] Do not claim novelty or performance superiority from P2 positioning alone.

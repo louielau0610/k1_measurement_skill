@@ -1,0 +1,68 @@
+{
+  "phase": "velocity_compensation_principle_research",
+  "milestone": "M22-A",
+  "implementation_ready": false,
+  "velocity_compensation_ready": false,
+  "k1_compensation_validated": false,
+  "go1_g1_generalization_ready": false,
+  "recommended_first_method": {
+    "name": "conservative_piecewise_linear_inverse_mapping",
+    "description": "Use piecewise linear inverse lookup over valid monotonic measured segments, with risk filtering and no extrapolation by default.",
+    "scope": "offline dry-run design for Booster K1 only until physical validation"
+  },
+  "rejected_methods_for_now": [
+    {
+      "name": "global_nearest_neighbor_only",
+      "reason": "too coarse as the primary method, though useful as an audit fallback"
+    },
+    {
+      "name": "global_linear_interpolation_without_segments",
+      "reason": "unsafe when response is non-monotonic or crosses risky cells"
+    },
+    {
+      "name": "pchip_like_interpolation",
+      "reason": "defer until monotonicity and overshoot risks are controlled"
+    },
+    {
+      "name": "learned_regression_or_neural_model",
+      "reason": "defer due to small dataset size, auditability concerns, and missing physical validation"
+    }
+  ],
+  "required_inputs": [
+    "platform",
+    "robot_model",
+    "surface",
+    "desired_actual_velocity",
+    "measured_response_profile",
+    "risk_labels",
+    "uncertainty_estimates"
+  ],
+  "expected_outputs": [
+    "recommended_command_velocity",
+    "expected_actual_velocity",
+    "expected_error",
+    "confidence",
+    "feasibility_status",
+    "risk_reason"
+  ],
+  "feasibility_statuses": [
+    "ok",
+    "feasible_but_risky",
+    "infeasible_deadzone",
+    "infeasible_out_of_range",
+    "insufficient_evidence",
+    "platform_not_calibrated",
+    "surface_not_calibrated"
+  ],
+  "risk_controls": [
+    "require platform and surface calibration before lookup",
+    "filter deadzone cells before inverse interpolation",
+    "avoid unstable and drift_prone cells by default",
+    "segment response into monotonic regions",
+    "avoid extrapolation by default",
+    "propagate uncertainty into confidence",
+    "include yaw drift in feasibility decisions",
+    "return refusal statuses instead of forcing a command"
+  ],
+  "next_milestone": "M22-B velocity compensation algorithm specification"
+}
