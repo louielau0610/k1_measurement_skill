@@ -42,6 +42,9 @@
 - [x] Complete M19 replacement trials for the 5 incomplete surface-speed cells.
 - [x] Refresh M19 valid-only annotation template after replacements.
 - [x] Add M19 annotation intake validator for filled measurement CSVs.
+- [x] Add M19R-C SDK state-source discovery, smoke logging, and SDK-log extraction scaffold.
+- [ ] Run SDK state discovery on the physical K1 shell with Booster SDK sourced.
+- [ ] Confirm SDK state logs expose timestamped position and yaw before full M19C measurement run.
 - [ ] Fill M19 valid-only measurement annotations from real velocity/yaw evidence only.
 - [ ] Re-run M19R empirical analysis only after actual velocity and yaw drift annotations pass QC.
 
@@ -68,6 +71,7 @@
 - [ ] Do not treat M19R-B pending annotation rows as empirical measurements.
 - [ ] Do not treat M19R-C valid-only pending annotation rows as empirical measurements.
 - [ ] Do not compute M19 empirical response statistics until annotation intake validation confirms complete real measurements.
+- [ ] Do not run the full M19C measurement protocol until SDK standing and dynamic smoke logs pass.
 - [ ] Do not claim publication readiness from M13-P1 artifacts.
 - [ ] Do not claim novelty from P1 seed literature search alone.
 - [ ] Do not claim novelty or performance superiority from P2 positioning alone.

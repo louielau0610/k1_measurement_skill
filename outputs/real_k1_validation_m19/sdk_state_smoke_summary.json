@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-06-11T10:52:50.167920",
+  "interface": "lo",
+  "duration_sec": 0.2,
+  "sample_hz": 5.0,
+  "sdk_module_imported": null,
+  "sdk_available": false,
+  "channel_init_result": "",
+  "samples_written": 1,
+  "usable_samples": 0,
+  "position_available": false,
+  "yaw_available": false,
+  "output_csv": "data\\m19_sdk_state_smoke\\standing_state_samples.csv",
+  "full_m19c_measurement_run_ready": false
+}

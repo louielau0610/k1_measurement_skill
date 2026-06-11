@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-06-11T10:52:49.897379",
+  "input_path": "data\\m19_sdk_state_logs",
+  "log_files_found": 0,
+  "trials_seen": 0,
+  "measurements_extracted": 0,
+  "blocked_trials": [],
+  "output_csv": "data\\m19_repeated_validation_inputs\\m19_sdk_extracted_measurements.csv",
+  "statistics_computed": false,
+  "empirical_response_analysis_blocked": true
+}

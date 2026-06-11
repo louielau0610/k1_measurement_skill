@@ -1,0 +1,2 @@
+timestamp,t_rel,source,x,y,yaw_rad,yaw_deg,raw_repr,error
+2026-06-11T10:52:49.964095,0.0,sdk_unavailable,,,,,,"ModuleNotFoundError(""No module named 'booster_robotics_sdk'"")"

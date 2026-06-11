@@ -1,0 +1,39 @@
+{
+  "timestamp": "2026-06-11T10:52:49.710391",
+  "sdk_module_imported": null,
+  "sdk_available": false,
+  "classes": {
+    "B1LowStateSubscriber": {
+      "available": false
+    },
+    "B1OdometerStateSubscriber": {
+      "available": false
+    },
+    "LowState": {
+      "available": false
+    },
+    "ImuState": {
+      "available": false
+    },
+    "Odometer": {
+      "available": false
+    },
+    "Frame": {
+      "available": false
+    },
+    "Transform": {
+      "available": false
+    },
+    "B1LocoClient": {
+      "available": false
+    },
+    "ChannelFactory": {
+      "available": false
+    }
+  },
+  "frame_members": [],
+  "transform_fields": [],
+  "get_frame_transform_checked": false,
+  "get_frame_transform_results": [],
+  "usable_state_source_detected": false
+}

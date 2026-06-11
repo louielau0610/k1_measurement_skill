@@ -318,3 +318,9 @@ Empirical analysis remains blocked because `measured_actual_velocity` and `yaw_d
 M19R-C annotation intake validation adds a strict pre-analysis validator for filled measurement annotation CSV files. It verifies the exact 72 expected valid trial IDs, rejects invalid/debug or duplicate trial IDs, checks required annotation fields and quality flags, and detects placeholder/fabricated tokens where possible.
 
 The current valid-only template passes intake validation with 72 pending rows, 5 replacement rows, and 0 issues. No empirical statistics are computed, and empirical response analysis remains blocked until real `measured_actual_velocity` and `yaw_drift_statistic` values are filled and pass QC.
+
+## M19R-C Prep SDK State Logger
+
+M19R-C SDK state logger prep adds SDK state-source discovery, standing-state smoke logging, guarded three-trial smoke planning, and SDK state-log measurement extraction utilities. The local development workspace does not have the Booster SDK importable, so no usable SDK state source, position stream, or yaw stream was detected here.
+
+The full M19C measurement run is not ready until robot-side SDK discovery and standing/dynamic smoke logs confirm timestamped position and yaw. No empirical response statistics, response plots, risk-map validation, navigation improvement claim, or cross-robot generalization claim is added by this prep milestone.

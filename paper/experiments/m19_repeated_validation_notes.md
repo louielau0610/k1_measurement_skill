@@ -44,3 +44,8 @@
 - The annotation intake validator checks exact valid-trial ID membership, duplicate IDs, invalid/debug ID exclusion, required annotation fields, quality flags, numeric measurement parsing, and detectable placeholder tokens.
 - The current valid-only annotation template passes intake validation with no filled measurements and no issues.
 - This validation is a pre-analysis safeguard only; it does not compute response statistics or add empirical claims.
+
+## M19R-C SDK state logger prep
+- SDK state discovery and smoke logging scripts were added to prioritize robot-side odometer/IMU/transform logs over manual video annotation.
+- In the local development workspace, the Booster SDK is not importable, so no usable SDK state source, position stream, or yaw stream is detected yet.
+- The full M19C measurement run remains gated on robot-side SDK discovery and smoke logs; empirical analysis remains blocked.

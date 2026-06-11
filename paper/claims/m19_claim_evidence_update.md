@@ -20,3 +20,5 @@ M19R-B adds a measurement completion pack: exact replacement-trial planning, a b
 M19R-C-prep records that replacement trials completed the execution-level M19 design and creates a valid-only annotation template. It does not add measured velocity/yaw values, response-model validation, risk-map validation, navigation improvement, or cross-robot generalization.
 
 M19R-C annotation intake validation adds a QC gate for future filled measurements. The current template passes structural validation, but no empirical response-model or risk-map claim is added until real actual velocity and yaw drift values are present.
+
+M19R-C SDK state logger prep adds tooling to discover and log SDK state sources, but local discovery did not detect an importable Booster SDK. This is measurement-readiness tooling only and adds no empirical response-model, risk-map, navigation, or cross-robot claim.

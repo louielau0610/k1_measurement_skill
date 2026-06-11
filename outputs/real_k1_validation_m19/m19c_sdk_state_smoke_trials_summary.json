@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-06-11T10:58:25.466261",
+  "execute_requested": false,
+  "sdk_module_imported": null,
+  "sdk_available": false,
+  "channel_init_result": "",
+  "trials": [
+    {
+      "trial_id": "M19C_SMOKE_S1_lab_hard_floor_U020_R1",
+      "vx": 0.2,
+      "planned_output_csv": "data\\m19_sdk_state_smoke\\trials\\M19C_SMOKE_S1_lab_hard_floor_U020_R1.csv",
+      "output_csv": "",
+      "samples": 0,
+      "executed": false
+    },
+    {
+      "trial_id": "M19C_SMOKE_S1_lab_hard_floor_U040_R1",
+      "vx": 0.4,
+      "planned_output_csv": "data\\m19_sdk_state_smoke\\trials\\M19C_SMOKE_S1_lab_hard_floor_U040_R1.csv",
+      "output_csv": "",
+      "samples": 0,
+      "executed": false
+    },
+    {
+      "trial_id": "M19C_SMOKE_S1_lab_hard_floor_U060_R1",
+      "vx": 0.6,
+      "planned_output_csv": "data\\m19_sdk_state_smoke\\trials\\M19C_SMOKE_S1_lab_hard_floor_U060_R1.csv",
+      "output_csv": "",
+      "samples": 0,
+      "executed": false
+    }
+  ],
+  "dynamic_smoke_trials_run": false,
+  "full_72_trial_protocol_run": false
+}
