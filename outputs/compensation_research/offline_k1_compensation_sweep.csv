@@ -1,0 +1,9 @@
+schema_version,platform,robot_model,surface_type,desired_actual_velocity_mps,recommended_command_velocity_mps,expected_actual_velocity_mps,expected_tracking_error_mps,expected_relative_error,selected_segment,region_label,risk_score,confidence,feasibility_status,reason,offline_only,physical_validation_status,deployment_ready
+offline_velocity_compensation_v0.1,booster_k1,Booster K1,S1_lab_hard_floor,0.1,,,,,,,,0.0,infeasible_deadzone,desired velocity 0.100 is below minimum effective actual velocity 0.302,True,not_started,False
+offline_velocity_compensation_v0.1,booster_k1,Booster K1,S1_lab_hard_floor,0.2,,,,,,,,0.0,infeasible_deadzone,desired velocity 0.200 is below minimum effective actual velocity 0.302,True,not_started,False
+offline_velocity_compensation_v0.1,booster_k1,Booster K1,S1_lab_hard_floor,0.3,,,,,,,,0.0,infeasible_deadzone,desired velocity 0.300 is below minimum effective actual velocity 0.302,True,not_started,False
+offline_velocity_compensation_v0.1,booster_k1,Booster K1,S1_lab_hard_floor,0.35,,,,,,,,0.0,insufficient_evidence,risk policy conservative removed all candidate cells,True,not_started,False
+offline_velocity_compensation_v0.1,booster_k1,Booster K1,S1_lab_hard_floor,0.4,,,,,,,,0.0,insufficient_evidence,risk policy conservative removed all candidate cells,True,not_started,False
+offline_velocity_compensation_v0.1,booster_k1,Booster K1,S1_lab_hard_floor,0.45,,,,,,,,0.0,insufficient_evidence,risk policy conservative removed all candidate cells,True,not_started,False
+offline_velocity_compensation_v0.1,booster_k1,Booster K1,S1_lab_hard_floor,0.5,,,,,,,,0.0,insufficient_evidence,risk policy conservative removed all candidate cells,True,not_started,False
+offline_velocity_compensation_v0.1,booster_k1,Booster K1,S1_lab_hard_floor,0.6,,,,,,,,0.0,insufficient_evidence,risk policy conservative removed all candidate cells,True,not_started,False

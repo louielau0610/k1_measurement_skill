@@ -1,0 +1,25 @@
+{
+  "milestone": "M22-C",
+  "implementation_status": "offline_prototype_complete",
+  "algorithm_name": "Conservative Monotonic Segment Inverse Lookup",
+  "novelty_status": "engineering_novelty_plausible_but_requires_K1_physical_validation",
+  "physical_validation_status": "not_started",
+  "deployment_ready": false,
+  "compensation_ready": false,
+  "offline_only": true,
+  "supported_empirical_platform": "booster_k1",
+  "scaffold_only_platforms": [
+    "unitree_go1",
+    "unitree_g1"
+  ],
+  "limitations": [
+    "offline prototype only",
+    "no hardware commands are sent",
+    "not physical validation",
+    "not deployment-ready compensation",
+    "Booster K1 is the only empirical platform",
+    "GO1/G1 remain uncalibrated",
+    "risk policies may refuse many K1 targets under conservative settings"
+  ],
+  "next_milestone": "M22-D offline compensator verification and edge-case audit"
+}

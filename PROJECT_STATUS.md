@@ -41,12 +41,22 @@ Current Step 2 flags:
 
 - `velocity_compensation_principle_research_started=true`
 - `recommended_first_method=conservative_piecewise_linear_inverse_mapping`
-- `implementation_ready=false`
+- `offline_compensator_prototype_status=offline_prototype_complete`
+- `implementation_ready=offline_only`
 - `velocity_compensation_ready=false`
 - `k1_compensation_validated=false`
 - `unitree_go1_measurement_ready=false`
 - `unitree_g1_measurement_ready=false`
-- `next_milestone=M22-B velocity compensation algorithm specification`
+- `deployment_ready=false`
+- `next_milestone=M22-D offline compensator verification and edge-case audit`
+
+## M22-C Offline Velocity Compensator Prototype
+
+M22-C implements the first offline-only velocity compensation decision prototype using the M22-B `Conservative Monotonic Segment Inverse Lookup` specification. It adds structured request/decision models, risk policies, monotonic segment inverse lookup, offline JSON CLIs, a batch sweep, and novelty/positioning audit artifacts.
+
+M22-C does NOT execute robot hardware, modify the Booster SDK command path, add real-time command remapping, claim K1 physical compensation validation, claim deployment readiness, or claim GO1/G1 calibration.
+
+Novelty status: `engineering_novelty_plausible_but_requires_K1_physical_validation`.
 
 ## M22-B Velocity Compensation Algorithm Specification
 
@@ -109,6 +119,7 @@ M7 commit: `0e8db1131b152617cd9f86d42d61c96d473d7996`
 - [x] M20 cross-platform calibration skill core scaffold
 - [x] M21-A measurement module consolidation
 - [x] M22-A velocity compensation principle research
+- [x] M22-C offline velocity compensator prototype
 
 ## M20 Cross-Platform Calibration Core
 

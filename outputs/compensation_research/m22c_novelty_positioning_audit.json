@@ -1,0 +1,22 @@
+{
+  "milestone": "M22-C",
+  "audit_type": "novelty_positioning",
+  "not_novel_by_itself": [
+    "generic feedforward compensation",
+    "generic inverse-model compensation",
+    "generic deadzone compensation",
+    "generic velocity tracking"
+  ],
+  "project_specific": [
+    "measurement-contract-driven compensation",
+    "black-box SDK-level command remapping",
+    "surface-aware legged robot velocity response profile",
+    "risk-aware inverse lookup using deadzone, yaw drift, uncertainty, and region labels",
+    "cross-platform measurement contract foundation for K1, GO1, and G1"
+  ],
+  "current_novelty_status": "engineering_novelty_plausible_but_requires_K1_physical_validation",
+  "paper_claim_level": "idea_and_system_design_only",
+  "physical_validation": "not_started",
+  "deployment_ready": false,
+  "go1_g1_validation_claimed": false
+}
