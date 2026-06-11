@@ -58,6 +58,31 @@ M22-C does NOT execute robot hardware, modify the Booster SDK command path, add 
 
 Novelty status: `engineering_novelty_plausible_but_requires_K1_physical_validation`.
 
+## M22-D Offline Compensator Verification and Edge-Case Audit
+
+M22-D audits and verifies the M22-C offline compensator before any K1 physical experiment is designed. It adds:
+
+- **Verification module**: `calibration_core/compensation_verification.py` with data structures, edge-case audit, leave-one-repeat-out validation, baseline comparison, and risk policy audit.
+- **Verification CLI**: `scripts/verify_offline_compensator.py` generates outputs under `outputs/compensation_research/m22d_offline_verification/`.
+- **Edge-case audit**: 9 explicit test cases (deadzone, out-of-range, unsupported platform/surface, invalid input, policy behavior, no-extrapolation).
+- **Leave-one-repeat-out**: 72 held-out checks from K1 contract CSV.
+- **Baseline comparison**: 4 baselines (direct command, scalar gain, nearest lookup, ordinary interpolation) vs. M22-C algorithm.
+- **Risk policy audit**: Velocity sweep across 3 surfaces × 3 policies.
+- **Claim boundary**: `docs/m22d_offline_verification_and_claim_boundary.md`
+
+M22-D does NOT:
+- Send commands to hardware
+- Add real-time command remapping
+- Claim physical validation
+- Claim deployment readiness
+- Claim GO1/G1 calibration
+
+Flags:
+- `physical_validation=not_started`
+- `deployment_ready=false`
+- `k1_compensation_validated=false`
+- `next_milestone=M23-A K1 physical compensation experiment design`
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

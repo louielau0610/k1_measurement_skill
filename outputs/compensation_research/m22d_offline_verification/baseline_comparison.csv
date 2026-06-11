@@ -1,0 +1,281 @@
+platform,surface_type,desired_velocity_mps,method,recommended_cmd_mps,expected_actual_mps,status,reason
+booster_k1,S1_lab_hard_floor,0.3023864643282712,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S1_lab_hard_floor,0.3023864643282712,direct_command,0.3023864643282712,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S1_lab_hard_floor,0.3023864643282712,scalar_gain,0.3126373654689996,0.3023864643282712,naive,u_cmd = 1.034 * v_desired
+booster_k1,S1_lab_hard_floor,0.3023864643282712,nearest_lookup,0.35,0.3023864643282712,lookup,"nearest match at cmd=0.350 m/s, actual=0.302 m/s"
+booster_k1,S1_lab_hard_floor,0.3023864643282712,ordinary_interpolation,0.35,0.302386,interpolated,global interpolation between cmd=0.300 and 0.350
+booster_k1,S1_lab_hard_floor,0.3048,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S1_lab_hard_floor,0.3048,direct_command,0.3048,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S1_lab_hard_floor,0.3048,scalar_gain,0.31513272000000003,0.3048,naive,u_cmd = 1.034 * v_desired
+booster_k1,S1_lab_hard_floor,0.3048,nearest_lookup,0.35,0.3023864643282712,lookup,"nearest match at cmd=0.350 m/s, actual=0.302 m/s"
+booster_k1,S1_lab_hard_floor,0.3048,ordinary_interpolation,0.374748,0.3048,interpolated,global interpolation between cmd=0.350 and 0.400
+booster_k1,S1_lab_hard_floor,0.3072627045756289,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S1_lab_hard_floor,0.3072627045756289,direct_command,0.3072627045756289,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S1_lab_hard_floor,0.3072627045756289,scalar_gain,0.3176789102607427,0.3072627045756289,naive,u_cmd = 1.034 * v_desired
+booster_k1,S1_lab_hard_floor,0.3072627045756289,nearest_lookup,0.4,0.3072627045756289,lookup,"nearest match at cmd=0.400 m/s, actual=0.307 m/s"
+booster_k1,S1_lab_hard_floor,0.3072627045756289,ordinary_interpolation,0.4,0.307263,interpolated,global interpolation between cmd=0.350 and 0.400
+booster_k1,S1_lab_hard_floor,0.3961,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S1_lab_hard_floor,0.3961,direct_command,0.3961,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S1_lab_hard_floor,0.3961,scalar_gain,0.40952779,0.3961,naive,u_cmd = 1.034 * v_desired
+booster_k1,S1_lab_hard_floor,0.3961,nearest_lookup,0.4,0.3072627045756289,lookup,"nearest match at cmd=0.400 m/s, actual=0.307 m/s"
+booster_k1,S1_lab_hard_floor,0.3961,ordinary_interpolation,0.425,0.3961,interpolated,global interpolation between cmd=0.400 and 0.450
+booster_k1,S1_lab_hard_floor,0.4849377445327107,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S1_lab_hard_floor,0.4849377445327107,direct_command,0.4849377445327107,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S1_lab_hard_floor,0.4849377445327107,scalar_gain,0.5013771340723696,0.4849377445327107,naive,u_cmd = 1.034 * v_desired
+booster_k1,S1_lab_hard_floor,0.4849377445327107,nearest_lookup,0.45,0.4849377445327107,lookup,"nearest match at cmd=0.450 m/s, actual=0.485 m/s"
+booster_k1,S1_lab_hard_floor,0.4849377445327107,ordinary_interpolation,0.45,0.484938,interpolated,global interpolation between cmd=0.400 and 0.450
+booster_k1,S1_lab_hard_floor,0.5392,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S1_lab_hard_floor,0.5392,direct_command,0.5392,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S1_lab_hard_floor,0.5392,scalar_gain,0.55747888,0.5392,naive,u_cmd = 1.034 * v_desired
+booster_k1,S1_lab_hard_floor,0.5392,nearest_lookup,0.6,0.5933949329586784,lookup,"nearest match at cmd=0.600 m/s, actual=0.593 m/s"
+booster_k1,S1_lab_hard_floor,0.5392,ordinary_interpolation,0.472319,0.5392,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,S1_lab_hard_floor,0.5933949329586784,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S1_lab_hard_floor,0.5933949329586784,direct_command,0.5933949329586784,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S1_lab_hard_floor,0.5933949329586784,scalar_gain,0.6135110211859777,0.5933949329586784,naive,u_cmd = 1.034 * v_desired
+booster_k1,S1_lab_hard_floor,0.5933949329586784,nearest_lookup,0.6,0.5933949329586784,lookup,"nearest match at cmd=0.600 m/s, actual=0.593 m/s"
+booster_k1,S1_lab_hard_floor,0.5933949329586784,ordinary_interpolation,0.494609,0.593395,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,S1_lab_hard_floor,0.5999,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S1_lab_hard_floor,0.5999,direct_command,0.5999,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S1_lab_hard_floor,0.5999,scalar_gain,0.62023661,0.5999,naive,u_cmd = 1.034 * v_desired
+booster_k1,S1_lab_hard_floor,0.5999,nearest_lookup,0.6,0.5933949329586784,lookup,"nearest match at cmd=0.600 m/s, actual=0.593 m/s"
+booster_k1,S1_lab_hard_floor,0.5999,ordinary_interpolation,0.497285,0.5999,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,S1_lab_hard_floor,0.6065011456934616,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S1_lab_hard_floor,0.6065011456934616,direct_command,0.6065011456934616,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S1_lab_hard_floor,0.6065011456934616,scalar_gain,0.6270615345324699,0.6065011456934616,naive,u_cmd = 1.034 * v_desired
+booster_k1,S1_lab_hard_floor,0.6065011456934616,nearest_lookup,0.5,0.6065011456934616,lookup,"nearest match at cmd=0.500 m/s, actual=0.607 m/s"
+booster_k1,S1_lab_hard_floor,0.6065011456934616,ordinary_interpolation,0.5,0.606501,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,S2_marble_floor,0.3540264980475401,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.354 is below minimum policy-accepted actual velocity 0.645
+booster_k1,S2_marble_floor,0.3540264980475401,direct_command,0.3540264980475401,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S2_marble_floor,0.3540264980475401,scalar_gain,0.36602799633135175,0.3540264980475401,naive,u_cmd = 1.034 * v_desired
+booster_k1,S2_marble_floor,0.3540264980475401,nearest_lookup,0.35,0.3540264980475401,lookup,"nearest match at cmd=0.350 m/s, actual=0.354 m/s"
+booster_k1,S2_marble_floor,0.3540264980475401,ordinary_interpolation,0.35,0.354026,interpolated,global interpolation between cmd=0.300 and 0.350
+booster_k1,S2_marble_floor,0.3589,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.359 is below minimum policy-accepted actual velocity 0.645
+booster_k1,S2_marble_floor,0.3589,direct_command,0.3589,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S2_marble_floor,0.3589,scalar_gain,0.37106671,0.3589,naive,u_cmd = 1.034 * v_desired
+booster_k1,S2_marble_floor,0.3589,nearest_lookup,0.4,0.36373378794145655,lookup,"nearest match at cmd=0.400 m/s, actual=0.364 m/s"
+booster_k1,S2_marble_floor,0.3589,ordinary_interpolation,0.375102,0.3589,interpolated,global interpolation between cmd=0.350 and 0.400
+booster_k1,S2_marble_floor,0.36373378794145655,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.364 is below minimum policy-accepted actual velocity 0.645
+booster_k1,S2_marble_floor,0.36373378794145655,direct_command,0.36373378794145655,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S2_marble_floor,0.36373378794145655,scalar_gain,0.37606436335267196,0.36373378794145655,naive,u_cmd = 1.034 * v_desired
+booster_k1,S2_marble_floor,0.36373378794145655,nearest_lookup,0.4,0.36373378794145655,lookup,"nearest match at cmd=0.400 m/s, actual=0.364 m/s"
+booster_k1,S2_marble_floor,0.36373378794145655,ordinary_interpolation,0.4,0.363734,interpolated,global interpolation between cmd=0.350 and 0.400
+booster_k1,S2_marble_floor,0.431,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.431 is below minimum policy-accepted actual velocity 0.645
+booster_k1,S2_marble_floor,0.431,direct_command,0.431,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S2_marble_floor,0.431,scalar_gain,0.44561090000000003,0.431,naive,u_cmd = 1.034 * v_desired
+booster_k1,S2_marble_floor,0.431,nearest_lookup,0.45,0.4982146994264897,lookup,"nearest match at cmd=0.450 m/s, actual=0.498 m/s"
+booster_k1,S2_marble_floor,0.431,ordinary_interpolation,0.42501,0.431,interpolated,global interpolation between cmd=0.400 and 0.450
+booster_k1,S2_marble_floor,0.4982146994264897,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.498 is below minimum policy-accepted actual velocity 0.645
+booster_k1,S2_marble_floor,0.4982146994264897,direct_command,0.4982146994264897,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S2_marble_floor,0.4982146994264897,scalar_gain,0.5151041777370478,0.4982146994264897,naive,u_cmd = 1.034 * v_desired
+booster_k1,S2_marble_floor,0.4982146994264897,nearest_lookup,0.45,0.4982146994264897,lookup,"nearest match at cmd=0.450 m/s, actual=0.498 m/s"
+booster_k1,S2_marble_floor,0.4982146994264897,ordinary_interpolation,0.45,0.498215,interpolated,global interpolation between cmd=0.400 and 0.450
+booster_k1,S2_marble_floor,0.5663,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.566 is below minimum policy-accepted actual velocity 0.645
+booster_k1,S2_marble_floor,0.5663,direct_command,0.5663,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S2_marble_floor,0.5663,scalar_gain,0.58549757,0.5663,naive,u_cmd = 1.034 * v_desired
+booster_k1,S2_marble_floor,0.5663,nearest_lookup,0.5,0.6343102041384411,lookup,"nearest match at cmd=0.500 m/s, actual=0.634 m/s"
+booster_k1,S2_marble_floor,0.5663,ordinary_interpolation,0.475014,0.5663,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,S2_marble_floor,0.6343102041384411,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.634 is below minimum policy-accepted actual velocity 0.645
+booster_k1,S2_marble_floor,0.6343102041384411,direct_command,0.6343102041384411,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S2_marble_floor,0.6343102041384411,scalar_gain,0.6558133200587343,0.6343102041384411,naive,u_cmd = 1.034 * v_desired
+booster_k1,S2_marble_floor,0.6343102041384411,nearest_lookup,0.5,0.6343102041384411,lookup,"nearest match at cmd=0.500 m/s, actual=0.634 m/s"
+booster_k1,S2_marble_floor,0.6343102041384411,ordinary_interpolation,0.5,0.63431,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,S2_marble_floor,0.6396,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.640 is below minimum policy-accepted actual velocity 0.645
+booster_k1,S2_marble_floor,0.6396,direct_command,0.6396,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S2_marble_floor,0.6396,scalar_gain,0.6612824399999999,0.6396,naive,u_cmd = 1.034 * v_desired
+booster_k1,S2_marble_floor,0.6396,nearest_lookup,0.5,0.6343102041384411,lookup,"nearest match at cmd=0.500 m/s, actual=0.634 m/s"
+booster_k1,S2_marble_floor,0.6396,ordinary_interpolation,0.549683,0.6396,interpolated,global interpolation between cmd=0.500 and 0.600
+booster_k1,S2_marble_floor,0.6449573282139037,ours_conservative_monotonic,0.6,0.6449573282139037,ok,offline inverse lookup computed from measured monotonic segment
+booster_k1,S2_marble_floor,0.6449573282139037,direct_command,0.6449573282139037,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S2_marble_floor,0.6449573282139037,scalar_gain,0.6668213816403551,0.6449573282139037,naive,u_cmd = 1.034 * v_desired
+booster_k1,S2_marble_floor,0.6449573282139037,nearest_lookup,0.6,0.6449573282139037,lookup,"nearest match at cmd=0.600 m/s, actual=0.645 m/s"
+booster_k1,S2_marble_floor,0.6449573282139037,ordinary_interpolation,0.6,0.644957,interpolated,global interpolation between cmd=0.500 and 0.600
+booster_k1,S3_artificial_turf,0.17412542534979217,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S3_artificial_turf,0.17412542534979217,direct_command,0.17412542534979217,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S3_artificial_turf,0.17412542534979217,scalar_gain,0.18002827726915013,0.17412542534979217,naive,u_cmd = 1.034 * v_desired
+booster_k1,S3_artificial_turf,0.17412542534979217,nearest_lookup,0.3,0.17412542534979217,lookup,"nearest match at cmd=0.300 m/s, actual=0.174 m/s"
+booster_k1,S3_artificial_turf,0.17412542534979217,ordinary_interpolation,0.3,0.174125,interpolated,global interpolation between cmd=0.200 and 0.300
+booster_k1,S3_artificial_turf,0.2268,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S3_artificial_turf,0.2268,direct_command,0.2268,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S3_artificial_turf,0.2268,scalar_gain,0.23448852,0.2268,naive,u_cmd = 1.034 * v_desired
+booster_k1,S3_artificial_turf,0.2268,nearest_lookup,0.35,0.27943846703968217,lookup,"nearest match at cmd=0.350 m/s, actual=0.279 m/s"
+booster_k1,S3_artificial_turf,0.2268,ordinary_interpolation,0.325009,0.2268,interpolated,global interpolation between cmd=0.300 and 0.350
+booster_k1,S3_artificial_turf,0.27943846703968217,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S3_artificial_turf,0.27943846703968217,direct_command,0.27943846703968217,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S3_artificial_turf,0.27943846703968217,scalar_gain,0.2889114310723274,0.27943846703968217,naive,u_cmd = 1.034 * v_desired
+booster_k1,S3_artificial_turf,0.27943846703968217,nearest_lookup,0.35,0.27943846703968217,lookup,"nearest match at cmd=0.350 m/s, actual=0.279 m/s"
+booster_k1,S3_artificial_turf,0.27943846703968217,ordinary_interpolation,0.35,0.279438,interpolated,global interpolation between cmd=0.300 and 0.350
+booster_k1,S3_artificial_turf,0.3531,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S3_artificial_turf,0.3531,direct_command,0.3531,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S3_artificial_turf,0.3531,scalar_gain,0.36507009,0.3531,naive,u_cmd = 1.034 * v_desired
+booster_k1,S3_artificial_turf,0.3531,nearest_lookup,0.35,0.27943846703968217,lookup,"nearest match at cmd=0.350 m/s, actual=0.279 m/s"
+booster_k1,S3_artificial_turf,0.3531,ordinary_interpolation,0.374989,0.3531,interpolated,global interpolation between cmd=0.350 and 0.400
+booster_k1,S3_artificial_turf,0.42682779523085085,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S3_artificial_turf,0.42682779523085085,direct_command,0.42682779523085085,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S3_artificial_turf,0.42682779523085085,scalar_gain,0.4412972574891767,0.42682779523085085,naive,u_cmd = 1.034 * v_desired
+booster_k1,S3_artificial_turf,0.42682779523085085,nearest_lookup,0.4,0.42682779523085085,lookup,"nearest match at cmd=0.400 m/s, actual=0.427 m/s"
+booster_k1,S3_artificial_turf,0.42682779523085085,ordinary_interpolation,0.4,0.426828,interpolated,global interpolation between cmd=0.350 and 0.400
+booster_k1,S3_artificial_turf,0.444,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S3_artificial_turf,0.444,direct_command,0.444,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S3_artificial_turf,0.444,scalar_gain,0.4590516,0.444,naive,u_cmd = 1.034 * v_desired
+booster_k1,S3_artificial_turf,0.444,nearest_lookup,0.45,0.4611539411478762,lookup,"nearest match at cmd=0.450 m/s, actual=0.461 m/s"
+booster_k1,S3_artificial_turf,0.444,ordinary_interpolation,0.425013,0.444,interpolated,global interpolation between cmd=0.400 and 0.450
+booster_k1,S3_artificial_turf,0.4611539411478762,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S3_artificial_turf,0.4611539411478762,direct_command,0.4611539411478762,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S3_artificial_turf,0.4611539411478762,scalar_gain,0.47678705975278923,0.4611539411478762,naive,u_cmd = 1.034 * v_desired
+booster_k1,S3_artificial_turf,0.4611539411478762,nearest_lookup,0.45,0.4611539411478762,lookup,"nearest match at cmd=0.450 m/s, actual=0.461 m/s"
+booster_k1,S3_artificial_turf,0.4611539411478762,ordinary_interpolation,0.45,0.461154,interpolated,global interpolation between cmd=0.400 and 0.450
+booster_k1,S3_artificial_turf,0.541,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S3_artificial_turf,0.541,direct_command,0.541,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S3_artificial_turf,0.541,scalar_gain,0.5593399000000001,0.541,naive,u_cmd = 1.034 * v_desired
+booster_k1,S3_artificial_turf,0.541,nearest_lookup,0.45,0.4611539411478762,lookup,"nearest match at cmd=0.450 m/s, actual=0.461 m/s"
+booster_k1,S3_artificial_turf,0.541,ordinary_interpolation,0.474993,0.541,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,S3_artificial_turf,0.6208891728025406,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S3_artificial_turf,0.6208891728025406,direct_command,0.6208891728025406,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S3_artificial_turf,0.6208891728025406,scalar_gain,0.6419373157605468,0.6208891728025406,naive,u_cmd = 1.034 * v_desired
+booster_k1,S3_artificial_turf,0.6208891728025406,nearest_lookup,0.5,0.6208891728025406,lookup,"nearest match at cmd=0.500 m/s, actual=0.621 m/s"
+booster_k1,S3_artificial_turf,0.6208891728025406,ordinary_interpolation,0.5,0.620889,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,S3_artificial_turf,0.6383,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,S3_artificial_turf,0.6383,direct_command,0.6383,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,S3_artificial_turf,0.6383,scalar_gain,0.65993837,0.6383,naive,u_cmd = 1.034 * v_desired
+booster_k1,S3_artificial_turf,0.6383,nearest_lookup,0.6,0.6556540245628931,lookup,"nearest match at cmd=0.600 m/s, actual=0.656 m/s"
+booster_k1,S3_artificial_turf,0.6383,ordinary_interpolation,0.550082,0.6383,interpolated,global interpolation between cmd=0.500 and 0.600
+booster_k1,artificial_turf,0.17412542534979217,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,artificial_turf,0.17412542534979217,direct_command,0.17412542534979217,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,artificial_turf,0.17412542534979217,scalar_gain,0.18002827726915013,0.17412542534979217,naive,u_cmd = 1.034 * v_desired
+booster_k1,artificial_turf,0.17412542534979217,nearest_lookup,0.3,0.17412542534979217,lookup,"nearest match at cmd=0.300 m/s, actual=0.174 m/s"
+booster_k1,artificial_turf,0.17412542534979217,ordinary_interpolation,0.3,0.174125,interpolated,global interpolation between cmd=0.200 and 0.300
+booster_k1,artificial_turf,0.2268,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,artificial_turf,0.2268,direct_command,0.2268,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,artificial_turf,0.2268,scalar_gain,0.23448852,0.2268,naive,u_cmd = 1.034 * v_desired
+booster_k1,artificial_turf,0.2268,nearest_lookup,0.35,0.27943846703968217,lookup,"nearest match at cmd=0.350 m/s, actual=0.279 m/s"
+booster_k1,artificial_turf,0.2268,ordinary_interpolation,0.325009,0.2268,interpolated,global interpolation between cmd=0.300 and 0.350
+booster_k1,artificial_turf,0.27943846703968217,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,artificial_turf,0.27943846703968217,direct_command,0.27943846703968217,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,artificial_turf,0.27943846703968217,scalar_gain,0.2889114310723274,0.27943846703968217,naive,u_cmd = 1.034 * v_desired
+booster_k1,artificial_turf,0.27943846703968217,nearest_lookup,0.35,0.27943846703968217,lookup,"nearest match at cmd=0.350 m/s, actual=0.279 m/s"
+booster_k1,artificial_turf,0.27943846703968217,ordinary_interpolation,0.35,0.279438,interpolated,global interpolation between cmd=0.300 and 0.350
+booster_k1,artificial_turf,0.3531,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,artificial_turf,0.3531,direct_command,0.3531,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,artificial_turf,0.3531,scalar_gain,0.36507009,0.3531,naive,u_cmd = 1.034 * v_desired
+booster_k1,artificial_turf,0.3531,nearest_lookup,0.35,0.27943846703968217,lookup,"nearest match at cmd=0.350 m/s, actual=0.279 m/s"
+booster_k1,artificial_turf,0.3531,ordinary_interpolation,0.374989,0.3531,interpolated,global interpolation between cmd=0.350 and 0.400
+booster_k1,artificial_turf,0.42682779523085085,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,artificial_turf,0.42682779523085085,direct_command,0.42682779523085085,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,artificial_turf,0.42682779523085085,scalar_gain,0.4412972574891767,0.42682779523085085,naive,u_cmd = 1.034 * v_desired
+booster_k1,artificial_turf,0.42682779523085085,nearest_lookup,0.4,0.42682779523085085,lookup,"nearest match at cmd=0.400 m/s, actual=0.427 m/s"
+booster_k1,artificial_turf,0.42682779523085085,ordinary_interpolation,0.4,0.426828,interpolated,global interpolation between cmd=0.350 and 0.400
+booster_k1,artificial_turf,0.444,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,artificial_turf,0.444,direct_command,0.444,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,artificial_turf,0.444,scalar_gain,0.4590516,0.444,naive,u_cmd = 1.034 * v_desired
+booster_k1,artificial_turf,0.444,nearest_lookup,0.45,0.4611539411478762,lookup,"nearest match at cmd=0.450 m/s, actual=0.461 m/s"
+booster_k1,artificial_turf,0.444,ordinary_interpolation,0.425013,0.444,interpolated,global interpolation between cmd=0.400 and 0.450
+booster_k1,artificial_turf,0.4611539411478762,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,artificial_turf,0.4611539411478762,direct_command,0.4611539411478762,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,artificial_turf,0.4611539411478762,scalar_gain,0.47678705975278923,0.4611539411478762,naive,u_cmd = 1.034 * v_desired
+booster_k1,artificial_turf,0.4611539411478762,nearest_lookup,0.45,0.4611539411478762,lookup,"nearest match at cmd=0.450 m/s, actual=0.461 m/s"
+booster_k1,artificial_turf,0.4611539411478762,ordinary_interpolation,0.45,0.461154,interpolated,global interpolation between cmd=0.400 and 0.450
+booster_k1,artificial_turf,0.541,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,artificial_turf,0.541,direct_command,0.541,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,artificial_turf,0.541,scalar_gain,0.5593399000000001,0.541,naive,u_cmd = 1.034 * v_desired
+booster_k1,artificial_turf,0.541,nearest_lookup,0.45,0.4611539411478762,lookup,"nearest match at cmd=0.450 m/s, actual=0.461 m/s"
+booster_k1,artificial_turf,0.541,ordinary_interpolation,0.474993,0.541,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,artificial_turf,0.6208891728025406,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,artificial_turf,0.6208891728025406,direct_command,0.6208891728025406,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,artificial_turf,0.6208891728025406,scalar_gain,0.6419373157605468,0.6208891728025406,naive,u_cmd = 1.034 * v_desired
+booster_k1,artificial_turf,0.6208891728025406,nearest_lookup,0.5,0.6208891728025406,lookup,"nearest match at cmd=0.500 m/s, actual=0.621 m/s"
+booster_k1,artificial_turf,0.6208891728025406,ordinary_interpolation,0.5,0.620889,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,artificial_turf,0.6383,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,artificial_turf,0.6383,direct_command,0.6383,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,artificial_turf,0.6383,scalar_gain,0.65993837,0.6383,naive,u_cmd = 1.034 * v_desired
+booster_k1,artificial_turf,0.6383,nearest_lookup,0.6,0.6556540245628931,lookup,"nearest match at cmd=0.600 m/s, actual=0.656 m/s"
+booster_k1,artificial_turf,0.6383,ordinary_interpolation,0.550082,0.6383,interpolated,global interpolation between cmd=0.500 and 0.600
+booster_k1,lab_hard_floor,0.3023864643282712,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,lab_hard_floor,0.3023864643282712,direct_command,0.3023864643282712,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,lab_hard_floor,0.3023864643282712,scalar_gain,0.3126373654689996,0.3023864643282712,naive,u_cmd = 1.034 * v_desired
+booster_k1,lab_hard_floor,0.3023864643282712,nearest_lookup,0.35,0.3023864643282712,lookup,"nearest match at cmd=0.350 m/s, actual=0.302 m/s"
+booster_k1,lab_hard_floor,0.3023864643282712,ordinary_interpolation,0.35,0.302386,interpolated,global interpolation between cmd=0.300 and 0.350
+booster_k1,lab_hard_floor,0.3048,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,lab_hard_floor,0.3048,direct_command,0.3048,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,lab_hard_floor,0.3048,scalar_gain,0.31513272000000003,0.3048,naive,u_cmd = 1.034 * v_desired
+booster_k1,lab_hard_floor,0.3048,nearest_lookup,0.35,0.3023864643282712,lookup,"nearest match at cmd=0.350 m/s, actual=0.302 m/s"
+booster_k1,lab_hard_floor,0.3048,ordinary_interpolation,0.374748,0.3048,interpolated,global interpolation between cmd=0.350 and 0.400
+booster_k1,lab_hard_floor,0.3072627045756289,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,lab_hard_floor,0.3072627045756289,direct_command,0.3072627045756289,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,lab_hard_floor,0.3072627045756289,scalar_gain,0.3176789102607427,0.3072627045756289,naive,u_cmd = 1.034 * v_desired
+booster_k1,lab_hard_floor,0.3072627045756289,nearest_lookup,0.4,0.3072627045756289,lookup,"nearest match at cmd=0.400 m/s, actual=0.307 m/s"
+booster_k1,lab_hard_floor,0.3072627045756289,ordinary_interpolation,0.4,0.307263,interpolated,global interpolation between cmd=0.350 and 0.400
+booster_k1,lab_hard_floor,0.3961,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,lab_hard_floor,0.3961,direct_command,0.3961,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,lab_hard_floor,0.3961,scalar_gain,0.40952779,0.3961,naive,u_cmd = 1.034 * v_desired
+booster_k1,lab_hard_floor,0.3961,nearest_lookup,0.4,0.3072627045756289,lookup,"nearest match at cmd=0.400 m/s, actual=0.307 m/s"
+booster_k1,lab_hard_floor,0.3961,ordinary_interpolation,0.425,0.3961,interpolated,global interpolation between cmd=0.400 and 0.450
+booster_k1,lab_hard_floor,0.4849377445327107,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,lab_hard_floor,0.4849377445327107,direct_command,0.4849377445327107,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,lab_hard_floor,0.4849377445327107,scalar_gain,0.5013771340723696,0.4849377445327107,naive,u_cmd = 1.034 * v_desired
+booster_k1,lab_hard_floor,0.4849377445327107,nearest_lookup,0.45,0.4849377445327107,lookup,"nearest match at cmd=0.450 m/s, actual=0.485 m/s"
+booster_k1,lab_hard_floor,0.4849377445327107,ordinary_interpolation,0.45,0.484938,interpolated,global interpolation between cmd=0.400 and 0.450
+booster_k1,lab_hard_floor,0.5392,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,lab_hard_floor,0.5392,direct_command,0.5392,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,lab_hard_floor,0.5392,scalar_gain,0.55747888,0.5392,naive,u_cmd = 1.034 * v_desired
+booster_k1,lab_hard_floor,0.5392,nearest_lookup,0.6,0.5933949329586784,lookup,"nearest match at cmd=0.600 m/s, actual=0.593 m/s"
+booster_k1,lab_hard_floor,0.5392,ordinary_interpolation,0.472319,0.5392,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,lab_hard_floor,0.5933949329586784,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,lab_hard_floor,0.5933949329586784,direct_command,0.5933949329586784,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,lab_hard_floor,0.5933949329586784,scalar_gain,0.6135110211859777,0.5933949329586784,naive,u_cmd = 1.034 * v_desired
+booster_k1,lab_hard_floor,0.5933949329586784,nearest_lookup,0.6,0.5933949329586784,lookup,"nearest match at cmd=0.600 m/s, actual=0.593 m/s"
+booster_k1,lab_hard_floor,0.5933949329586784,ordinary_interpolation,0.494609,0.593395,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,lab_hard_floor,0.5999,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,lab_hard_floor,0.5999,direct_command,0.5999,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,lab_hard_floor,0.5999,scalar_gain,0.62023661,0.5999,naive,u_cmd = 1.034 * v_desired
+booster_k1,lab_hard_floor,0.5999,nearest_lookup,0.6,0.5933949329586784,lookup,"nearest match at cmd=0.600 m/s, actual=0.593 m/s"
+booster_k1,lab_hard_floor,0.5999,ordinary_interpolation,0.497285,0.5999,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,lab_hard_floor,0.6065011456934616,ours_conservative_monotonic,,,insufficient_evidence,risk policy balanced removed all candidate cells
+booster_k1,lab_hard_floor,0.6065011456934616,direct_command,0.6065011456934616,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,lab_hard_floor,0.6065011456934616,scalar_gain,0.6270615345324699,0.6065011456934616,naive,u_cmd = 1.034 * v_desired
+booster_k1,lab_hard_floor,0.6065011456934616,nearest_lookup,0.5,0.6065011456934616,lookup,"nearest match at cmd=0.500 m/s, actual=0.607 m/s"
+booster_k1,lab_hard_floor,0.6065011456934616,ordinary_interpolation,0.5,0.606501,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,marble_floor,0.3540264980475401,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.354 is below minimum policy-accepted actual velocity 0.645
+booster_k1,marble_floor,0.3540264980475401,direct_command,0.3540264980475401,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,marble_floor,0.3540264980475401,scalar_gain,0.36602799633135175,0.3540264980475401,naive,u_cmd = 1.034 * v_desired
+booster_k1,marble_floor,0.3540264980475401,nearest_lookup,0.35,0.3540264980475401,lookup,"nearest match at cmd=0.350 m/s, actual=0.354 m/s"
+booster_k1,marble_floor,0.3540264980475401,ordinary_interpolation,0.35,0.354026,interpolated,global interpolation between cmd=0.300 and 0.350
+booster_k1,marble_floor,0.3589,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.359 is below minimum policy-accepted actual velocity 0.645
+booster_k1,marble_floor,0.3589,direct_command,0.3589,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,marble_floor,0.3589,scalar_gain,0.37106671,0.3589,naive,u_cmd = 1.034 * v_desired
+booster_k1,marble_floor,0.3589,nearest_lookup,0.4,0.36373378794145655,lookup,"nearest match at cmd=0.400 m/s, actual=0.364 m/s"
+booster_k1,marble_floor,0.3589,ordinary_interpolation,0.375102,0.3589,interpolated,global interpolation between cmd=0.350 and 0.400
+booster_k1,marble_floor,0.36373378794145655,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.364 is below minimum policy-accepted actual velocity 0.645
+booster_k1,marble_floor,0.36373378794145655,direct_command,0.36373378794145655,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,marble_floor,0.36373378794145655,scalar_gain,0.37606436335267196,0.36373378794145655,naive,u_cmd = 1.034 * v_desired
+booster_k1,marble_floor,0.36373378794145655,nearest_lookup,0.4,0.36373378794145655,lookup,"nearest match at cmd=0.400 m/s, actual=0.364 m/s"
+booster_k1,marble_floor,0.36373378794145655,ordinary_interpolation,0.4,0.363734,interpolated,global interpolation between cmd=0.350 and 0.400
+booster_k1,marble_floor,0.431,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.431 is below minimum policy-accepted actual velocity 0.645
+booster_k1,marble_floor,0.431,direct_command,0.431,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,marble_floor,0.431,scalar_gain,0.44561090000000003,0.431,naive,u_cmd = 1.034 * v_desired
+booster_k1,marble_floor,0.431,nearest_lookup,0.45,0.4982146994264897,lookup,"nearest match at cmd=0.450 m/s, actual=0.498 m/s"
+booster_k1,marble_floor,0.431,ordinary_interpolation,0.42501,0.431,interpolated,global interpolation between cmd=0.400 and 0.450
+booster_k1,marble_floor,0.4982146994264897,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.498 is below minimum policy-accepted actual velocity 0.645
+booster_k1,marble_floor,0.4982146994264897,direct_command,0.4982146994264897,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,marble_floor,0.4982146994264897,scalar_gain,0.5151041777370478,0.4982146994264897,naive,u_cmd = 1.034 * v_desired
+booster_k1,marble_floor,0.4982146994264897,nearest_lookup,0.45,0.4982146994264897,lookup,"nearest match at cmd=0.450 m/s, actual=0.498 m/s"
+booster_k1,marble_floor,0.4982146994264897,ordinary_interpolation,0.45,0.498215,interpolated,global interpolation between cmd=0.400 and 0.450
+booster_k1,marble_floor,0.5663,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.566 is below minimum policy-accepted actual velocity 0.645
+booster_k1,marble_floor,0.5663,direct_command,0.5663,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,marble_floor,0.5663,scalar_gain,0.58549757,0.5663,naive,u_cmd = 1.034 * v_desired
+booster_k1,marble_floor,0.5663,nearest_lookup,0.5,0.6343102041384411,lookup,"nearest match at cmd=0.500 m/s, actual=0.634 m/s"
+booster_k1,marble_floor,0.5663,ordinary_interpolation,0.475014,0.5663,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,marble_floor,0.6343102041384411,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.634 is below minimum policy-accepted actual velocity 0.645
+booster_k1,marble_floor,0.6343102041384411,direct_command,0.6343102041384411,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,marble_floor,0.6343102041384411,scalar_gain,0.6558133200587343,0.6343102041384411,naive,u_cmd = 1.034 * v_desired
+booster_k1,marble_floor,0.6343102041384411,nearest_lookup,0.5,0.6343102041384411,lookup,"nearest match at cmd=0.500 m/s, actual=0.634 m/s"
+booster_k1,marble_floor,0.6343102041384411,ordinary_interpolation,0.5,0.63431,interpolated,global interpolation between cmd=0.450 and 0.500
+booster_k1,marble_floor,0.6396,ours_conservative_monotonic,,,infeasible_deadzone,desired velocity 0.640 is below minimum policy-accepted actual velocity 0.645
+booster_k1,marble_floor,0.6396,direct_command,0.6396,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,marble_floor,0.6396,scalar_gain,0.6612824399999999,0.6396,naive,u_cmd = 1.034 * v_desired
+booster_k1,marble_floor,0.6396,nearest_lookup,0.5,0.6343102041384411,lookup,"nearest match at cmd=0.500 m/s, actual=0.634 m/s"
+booster_k1,marble_floor,0.6396,ordinary_interpolation,0.549683,0.6396,interpolated,global interpolation between cmd=0.500 and 0.600
+booster_k1,marble_floor,0.6449573282139037,ours_conservative_monotonic,0.6,0.6449573282139037,ok,offline inverse lookup computed from measured monotonic segment
+booster_k1,marble_floor,0.6449573282139037,direct_command,0.6449573282139037,,naive,"u_cmd = v_desired, no compensation"
+booster_k1,marble_floor,0.6449573282139037,scalar_gain,0.6668213816403551,0.6449573282139037,naive,u_cmd = 1.034 * v_desired
+booster_k1,marble_floor,0.6449573282139037,nearest_lookup,0.6,0.6449573282139037,lookup,"nearest match at cmd=0.600 m/s, actual=0.645 m/s"
+booster_k1,marble_floor,0.6449573282139037,ordinary_interpolation,0.6,0.644957,interpolated,global interpolation between cmd=0.500 and 0.600

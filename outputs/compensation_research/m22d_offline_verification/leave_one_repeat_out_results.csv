@@ -1,0 +1,73 @@
+trial_id,platform,surface_type,command_velocity_mps,measured_actual_velocity_mps,predicted_command_mps,absolute_command_error_mps,expected_actual_mps,actual_error_mps,feasibility_status,reason
+M19C_S3_artificial_turf_B1_U010_R1,booster_k1,artificial_turf,0.1,0.0,0.0,0.1,0.0,0.0,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B2_U010_R2,booster_k1,artificial_turf,0.1,3.6912318937835333e-06,,,,,infeasible_deadzone,held-out cell has zero measured actual velocity
+M19C_S3_artificial_turf_B3_U010_R3,booster_k1,artificial_turf,0.1,-6.436697449237721e-07,-0.034875605946501895,0.1348756059465019,-6.436697449237722e-07,1.0587911840678754e-22,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B1_U020_R1,booster_k1,artificial_turf,0.2,0.0015580155172346336,,,,,infeasible_deadzone,held-out cell has zero measured actual velocity
+M19C_S3_artificial_turf_B2_U020_R2,booster_k1,artificial_turf,0.2,7.744661293553024e-05,0.02178292386607596,0.17821707613392404,7.744661293553024e-05,0.0,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B3_U020_R3,booster_k1,artificial_turf,0.2,-0.0001358627628719713,-0.033229204239130936,0.23322920423913096,-0.0001358627628719713,0.0,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B1_U030_R1,booster_k1,artificial_turf,0.3,0.016134360217601198,0.019122510064491765,0.2808774899355082,0.016134360217601194,3.469446951953614e-18,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B2_U030_R2,booster_k1,artificial_turf,0.3,0.1523053969762095,0.24693442081850014,0.053065579181499845,0.15230539697620954,2.7755575615628914e-17,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B3_U030_R3,booster_k1,artificial_turf,0.3,0.3539365188555659,1.2607588306422868,0.9607588306422867,0.3539365188555658,5.551115123125783e-17,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B1_U035_R1,booster_k1,artificial_turf,0.35,0.3603081199350311,0.5276398370539211,0.17763983705392117,0.3603081199350311,0.0,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B2_U035_R2,booster_k1,artificial_turf,0.35,0.17705662185350537,0.1874298522510556,0.16257014774894438,0.17705662185350537,0.0,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B3_U035_R3,booster_k1,artificial_turf,0.35,0.30095065933051,0.3920343951674038,0.042034395167403815,0.30095065933051,0.0,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B1_U040_R1,booster_k1,artificial_turf,0.4,0.2833240369029034,0.22730492352846254,0.17269507647153748,0.28332403690290336,5.551115123125783e-17,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B2_U040_R2,booster_k1,artificial_turf,0.4,0.4859831562266937,0.48934727840511183,0.08934727840511181,0.48598315622669364,5.551115123125783e-17,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B3_U040_R3,booster_k1,artificial_turf,0.4,0.5111761925629555,0.5315704281754642,0.13157042817546416,0.5111761925629557,1.1102230246251565e-16,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B1_U045_R1,booster_k1,artificial_turf,0.45,0.4432549948821984,0.4242997213755226,0.025700278624477435,0.44325499488219844,5.551115123125783e-17,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B2_U045_R2,booster_k1,artificial_turf,0.45,0.5511080336706677,0.59589712499404,0.14589712499404,0.5511080336706677,0.0,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B3_U045_R3,booster_k1,artificial_turf,0.45,0.3890987948907625,0.35217411080873484,0.09782588919126517,0.3890987948907625,0.0,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B1_U050_R1,booster_k1,artificial_turf,0.5,0.6416593393012868,0.5255160041359609,0.02551600413596089,0.6416593393012868,0.0,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B2_U050_R2,booster_k1,artificial_turf,0.5,0.6004728668112658,0.47573713456305644,0.02426286543694356,0.6004728668112658,0.0,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B3_U050_R3,booster_k1,artificial_turf,0.5,0.6205353122950691,0.49957267772416236,0.00042732227583763827,0.6205353122950691,0.0,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B1_U060_R1,booster_k1,artificial_turf,0.6,0.6811176517510837,0.6356454701336859,0.03564547013368591,0.6811176517510839,1.1102230246251565e-16,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B2_U060_R2,booster_k1,artificial_turf,0.6,0.5889862505562894,0.5129142970454299,0.08708570295457008,0.5889862505562895,1.1102230246251565e-16,ok,leave-one-repeat-out prediction
+M19C_S3_artificial_turf_B3_U060_R3,booster_k1,artificial_turf,0.6,0.696858171381306,0.6583948007233147,0.05839480072331471,0.696858171381306,0.0,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B1_U010_R1,booster_k1,lab_hard_floor,0.1,-0.0,-0.0,0.1,-0.0,0.0,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B2_U010_R2,booster_k1,lab_hard_floor,0.1,0.0,0.0,0.1,0.0,0.0,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B3_U010_R3,booster_k1,lab_hard_floor,0.1,1.3857992504271784e-06,,,,,infeasible_deadzone,held-out cell has zero measured actual velocity
+M19C_S1_lab_hard_floor_B1_U020_R1,booster_k1,lab_hard_floor,0.2,1.1617707001870599e-05,,,,,infeasible_deadzone,held-out cell has zero measured actual velocity
+M19C_S1_lab_hard_floor_B2_U020_R2,booster_k1,lab_hard_floor,0.2,0.0,,,,,infeasible_deadzone,held-out cell has zero measured actual velocity
+M19C_S1_lab_hard_floor_B3_U020_R3,booster_k1,lab_hard_floor,0.2,-3.395025811141725e-05,-1.1689142480853003,1.3689142480853003,-3.395025811141725e-05,0.0,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B1_U030_R1,booster_k1,lab_hard_floor,0.3,-2.139536206573071e-07,,,,,infeasible_deadzone,held-out cell has zero measured actual velocity
+M19C_S1_lab_hard_floor_B2_U030_R2,booster_k1,lab_hard_floor,0.3,-3.839880112522298e-06,,,,,infeasible_deadzone,held-out cell has zero measured actual velocity
+M19C_S1_lab_hard_floor_B3_U030_R3,booster_k1,lab_hard_floor,0.3,0.0,,,,,infeasible_deadzone,held-out cell has zero measured actual velocity
+M19C_S1_lab_hard_floor_B1_U035_R1,booster_k1,lab_hard_floor,0.35,0.1923803829321834,0.1884026617438202,0.16159733825617978,0.19238038293218337,2.7755575615628914e-17,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B2_U035_R2,booster_k1,lab_hard_floor,0.35,0.4095129455793556,0.576029555520956,0.22602955552095605,0.4095129455793555,5.551115123125783e-17,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B3_U035_R3,booster_k1,lab_hard_floor,0.35,0.3052660644732747,0.3550234485232306,0.005023448523230611,0.3052660644732747,0.0,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B1_U040_R1,booster_k1,lab_hard_floor,0.4,0.29876080294236923,0.383624663344108,0.016375336655892025,0.29876080294236923,0.0,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B2_U040_R2,booster_k1,lab_hard_floor,0.4,0.3265166421324152,0.43881376173841524,0.03881376173841522,0.3265166421324152,0.0,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B3_U040_R3,booster_k1,lab_hard_floor,0.4,0.2965106686521021,0.3793652510419772,0.02063474895802281,0.2965106686521021,0.0,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B1_U045_R1,booster_k1,lab_hard_floor,0.45,0.5105956705733302,0.48668455397490484,0.03668455397490483,0.5105956705733302,0.0,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B2_U045_R2,booster_k1,lab_hard_floor,0.45,0.45654305443961707,0.4116007445419348,0.03839925545806522,0.45654305443961707,0.0,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B3_U045_R3,booster_k1,lab_hard_floor,0.45,0.48767450858518474,0.45382016703011296,0.003820167030112953,0.4876745085851847,5.551115123125783e-17,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B1_U050_R1,booster_k1,lab_hard_floor,0.5,0.6167544000863683,0.5127872740832105,0.012787274083210454,0.6167544000863682,1.1102230246251565e-16,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B2_U050_R2,booster_k1,lab_hard_floor,0.5,0.6218559719399067,0.5192312345995456,0.019231234599545566,0.6218559719399066,1.1102230246251565e-16,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B3_U050_R3,booster_k1,lab_hard_floor,0.5,0.5808930650541099,0.468987728646105,0.031012271353895005,0.5808930650541099,0.0,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B1_U060_R1,booster_k1,lab_hard_floor,0.6,0.6050434745105608,0.617842428275348,0.017842428275347988,0.605043474510561,1.1102230246251565e-16,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B2_U060_R2,booster_k1,lab_hard_floor,0.6,0.6027875466955546,0.6143593886388531,0.01435938863885311,0.6027875466955547,1.1102230246251565e-16,ok,leave-one-repeat-out prediction
+M19C_S1_lab_hard_floor_B3_U060_R3,booster_k1,lab_hard_floor,0.6,0.5723537776699198,0.5686428988370035,0.031357101162996504,0.5723537776699198,0.0,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B1_U010_R1,booster_k1,marble_floor,0.1,0.0,,,,,infeasible_deadzone,held-out cell has zero measured actual velocity
+M19C_S2_marble_floor_B2_U010_R2,booster_k1,marble_floor,0.1,0.0,,,,,infeasible_deadzone,held-out cell has zero measured actual velocity
+M19C_S2_marble_floor_B3_U010_R3,booster_k1,marble_floor,0.1,-1.87149238779168e-07,,,,,infeasible_deadzone,held-out cell has zero measured actual velocity
+M19C_S2_marble_floor_B1_U020_R1,booster_k1,marble_floor,0.2,3.7268343360297974e-05,0.002850164965338119,0.19714983503466188,3.7268343360297974e-05,0.0,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B2_U020_R2,booster_k1,marble_floor,0.2,0.005228498151524472,53.471885836789994,53.27188583678999,0.005228498151524472,0.0,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B3_U020_R3,booster_k1,marble_floor,0.2,1.843784964356209e-06,0.00014005823966157897,0.19985994176033844,1.843784964356209e-06,0.0,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B1_U030_R1,booster_k1,marble_floor,0.3,-1.0409788062685671e-07,-0.0018348872710458948,0.3018348872710459,-1.0409788062685672e-07,1.3234889800848443e-23,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B2_U030_R2,booster_k1,marble_floor,0.3,0.0,0.0,0.3,0.0,0.0,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B3_U030_R3,booster_k1,marble_floor,0.3,3.4039545296159935e-05,,,,,infeasible_deadzone,held-out cell has zero measured actual velocity
+M19C_S2_marble_floor_B1_U035_R1,booster_k1,marble_floor,0.35,0.4136614731998652,0.4465684510416611,0.09656845104166112,0.4136614731998652,0.0,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B2_U035_R2,booster_k1,marble_floor,0.35,0.3194436640684266,0.3011039271099518,0.04889607289004816,0.31944366406842656,5.551115123125783e-17,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B3_U035_R3,booster_k1,marble_floor,0.35,0.32897435687432863,0.31411872336635194,0.03588127663364804,0.3289743568743286,5.551115123125783e-17,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B1_U040_R1,booster_k1,marble_floor,0.4,0.3282488020330976,0.34418790207603983,0.05581209792396019,0.3282488020330976,0.0,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B2_U040_R2,booster_k1,marble_floor,0.4,0.29164235096857405,0.2918032027949118,0.10819679720508824,0.291642350968574,5.551115123125783e-17,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B3_U040_R3,booster_k1,marble_floor,0.4,0.47131021082269803,0.6082489915082586,0.2082489915082586,0.471310210822698,5.551115123125783e-17,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B1_U045_R1,booster_k1,marble_floor,0.45,0.4863119932618189,0.4340641260529691,0.015935873947030887,0.48631199326181884,5.551115123125783e-17,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B2_U045_R2,booster_k1,marble_floor,0.45,0.5395915765477565,0.5084876567965355,0.0584876567965355,0.5395915765477565,0.0,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B3_U045_R3,booster_k1,marble_floor,0.45,0.46874052846989367,0.4112145507995549,0.03878544920044513,0.4687405284698936,5.551115123125783e-17,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B1_U050_R1,booster_k1,marble_floor,0.5,0.6400188006015921,0.506780279204475,0.006780279204474993,0.6400188006015921,0.0,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B2_U050_R2,booster_k1,marble_floor,0.5,0.6606271320086358,0.531775964913476,0.03177596491347601,0.6606271320086358,0.0,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B3_U050_R3,booster_k1,marble_floor,0.5,0.6022846798050954,0.4630658234531115,0.03693417654688852,0.6022846798050954,0.0,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B1_U060_R1,booster_k1,marble_floor,0.6,0.6547371566584617,0.613751435251502,0.01375143525150202,0.6547371566584617,0.0,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B2_U060_R2,booster_k1,marble_floor,0.6,0.6466183320251591,0.6023208215666124,0.0023208215666123966,0.6466183320251591,0.0,ok,leave-one-repeat-out prediction
+M19C_S2_marble_floor_B3_U060_R3,booster_k1,marble_floor,0.6,0.6335164959580902,0.5841753477512164,0.0158246522487836,0.6335164959580903,1.1102230246251565e-16,ok,leave-one-repeat-out prediction

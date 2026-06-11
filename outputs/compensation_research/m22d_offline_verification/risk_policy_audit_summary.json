@@ -1,0 +1,1901 @@
+{
+  "policy_stats": {
+    "conservative": {
+      "feasible": 0,
+      "risky": 0,
+      "rejected": 78
+    },
+    "balanced": {
+      "feasible": 0,
+      "risky": 0,
+      "rejected": 78
+    },
+    "permissive": {
+      "feasible": 0,
+      "risky": 0,
+      "rejected": 78
+    }
+  },
+  "ordering_checks": {
+    "conservative_most_restrictive": true,
+    "permissive_most_permissive": true,
+    "no_policy_accepts_deadzone_silently": true,
+    "risky_outputs_clearly_labeled": true
+  },
+  "total_decisions": 234,
+  "decisions": [
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.05,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.05,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.05,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.1,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.1,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.1,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.15,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.15,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.15,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.2,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.200 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.2,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.200 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.2,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.200 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.25,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.250 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.25,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.250 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.25,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.250 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.3,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.300 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.3,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.300 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.3,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.300 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.35,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.35,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.35,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.4,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.4,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.4,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.45,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.45,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.45,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.5,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.5,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.5,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.55,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.55,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.55,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.6,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.6,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.6,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.65,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.65,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S1_lab_hard_floor",
+      "desired_velocity_mps": 0.65,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.05,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.05,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.05,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.1,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.1,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.1,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.15,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.15,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.15,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.2,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.200 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.2,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.200 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.2,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.200 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.25,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.250 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.25,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.250 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.25,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.250 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.3,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.300 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.3,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.300 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.3,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.300 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.35,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.350 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.35,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.350 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.35,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.350 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.4,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.4,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.400 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.4,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.400 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.45,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.45,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.450 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.45,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.450 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.5,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.5,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.500 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.5,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.500 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.55,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.55,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.550 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.55,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.550 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.6,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.6,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.600 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.6,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.600 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.65,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.65,
+      "policy": "balanced",
+      "status": "infeasible_out_of_range",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.650 exceeds max measured valid actual velocity 0.645"
+    },
+    {
+      "surface": "S2_marble_floor",
+      "desired_velocity_mps": 0.65,
+      "policy": "permissive",
+      "status": "infeasible_out_of_range",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.650 exceeds max measured valid actual velocity 0.645"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.05,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.05,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.05,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.1,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.1,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.1,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.15,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.15,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.15,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.2,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.2,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.2,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.25,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.25,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.25,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.3,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.3,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.3,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.35,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.35,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.35,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.4,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.4,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.4,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.45,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.45,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.45,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.5,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.5,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.5,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.55,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.55,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.55,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.6,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.6,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.6,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.65,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.65,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "S3_artificial_turf",
+      "desired_velocity_mps": 0.65,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.05,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.05,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.05,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.1,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.1,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.1,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.15,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.15,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.15,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.174"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.2,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.2,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.2,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.25,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.25,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.25,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.3,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.3,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.3,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.35,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.35,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.35,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.4,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.4,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.4,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.45,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.45,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.45,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.5,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.5,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.5,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.55,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.55,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.55,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.6,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.6,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.6,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.65,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.65,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "artificial_turf",
+      "desired_velocity_mps": 0.65,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.05,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.05,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.05,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.1,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.1,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.1,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.15,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.15,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.15,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.2,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.200 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.2,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.200 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.2,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.200 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.25,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.250 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.25,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.250 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.25,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.250 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.3,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.300 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.3,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.300 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.3,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.300 is below minimum effective actual velocity 0.302"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.35,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.35,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.35,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.4,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.4,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.4,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.45,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.45,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.45,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.5,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.5,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.5,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.55,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.55,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.55,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.6,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.6,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.6,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.65,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.65,
+      "policy": "balanced",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy balanced removed all candidate cells"
+    },
+    {
+      "surface": "lab_hard_floor",
+      "desired_velocity_mps": 0.65,
+      "policy": "permissive",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy permissive removed all candidate cells"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.05,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.05,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.05,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.050 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.1,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.1,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.1,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.100 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.15,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.15,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.15,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.150 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.2,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.200 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.2,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.200 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.2,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.200 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.25,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.250 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.25,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.250 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.25,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.250 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.3,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.300 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.3,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.300 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.3,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.300 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.35,
+      "policy": "conservative",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.350 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.35,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.350 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.35,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.350 is below minimum effective actual velocity 0.354"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.4,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.4,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.400 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.4,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.400 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.45,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.45,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.450 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.45,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.450 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.5,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.5,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.500 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.5,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.500 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.55,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.55,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.550 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.55,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.550 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.6,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.6,
+      "policy": "balanced",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.600 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.6,
+      "policy": "permissive",
+      "status": "infeasible_deadzone",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.600 is below minimum policy-accepted actual velocity 0.645"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.65,
+      "policy": "conservative",
+      "status": "insufficient_evidence",
+      "recommended_cmd_mps": null,
+      "reason": "risk policy conservative removed all candidate cells"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.65,
+      "policy": "balanced",
+      "status": "infeasible_out_of_range",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.650 exceeds max measured valid actual velocity 0.645"
+    },
+    {
+      "surface": "marble_floor",
+      "desired_velocity_mps": 0.65,
+      "policy": "permissive",
+      "status": "infeasible_out_of_range",
+      "recommended_cmd_mps": null,
+      "reason": "desired velocity 0.650 exceeds max measured valid actual velocity 0.645"
+    }
+  ],
+  "disclaimer": "offline verification only \u2014 not physical validation \u2014 not deployment-ready \u2014 no hardware execution"
+}

@@ -1,0 +1,235 @@
+surface,desired_velocity_mps,policy,status,recommended_cmd_mps,reason
+S1_lab_hard_floor,0.05,conservative,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.05,balanced,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.05,permissive,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.1,conservative,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.1,balanced,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.1,permissive,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.15,conservative,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.15,balanced,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.15,permissive,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.2,conservative,infeasible_deadzone,,desired velocity 0.200 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.2,balanced,infeasible_deadzone,,desired velocity 0.200 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.2,permissive,infeasible_deadzone,,desired velocity 0.200 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.25,conservative,infeasible_deadzone,,desired velocity 0.250 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.25,balanced,infeasible_deadzone,,desired velocity 0.250 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.25,permissive,infeasible_deadzone,,desired velocity 0.250 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.3,conservative,infeasible_deadzone,,desired velocity 0.300 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.3,balanced,infeasible_deadzone,,desired velocity 0.300 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.3,permissive,infeasible_deadzone,,desired velocity 0.300 is below minimum effective actual velocity 0.302
+S1_lab_hard_floor,0.35,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S1_lab_hard_floor,0.35,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S1_lab_hard_floor,0.35,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S1_lab_hard_floor,0.4,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S1_lab_hard_floor,0.4,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S1_lab_hard_floor,0.4,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S1_lab_hard_floor,0.45,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S1_lab_hard_floor,0.45,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S1_lab_hard_floor,0.45,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S1_lab_hard_floor,0.5,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S1_lab_hard_floor,0.5,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S1_lab_hard_floor,0.5,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S1_lab_hard_floor,0.55,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S1_lab_hard_floor,0.55,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S1_lab_hard_floor,0.55,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S1_lab_hard_floor,0.6,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S1_lab_hard_floor,0.6,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S1_lab_hard_floor,0.6,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S1_lab_hard_floor,0.65,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S1_lab_hard_floor,0.65,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S1_lab_hard_floor,0.65,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S2_marble_floor,0.05,conservative,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.05,balanced,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.05,permissive,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.1,conservative,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.1,balanced,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.1,permissive,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.15,conservative,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.15,balanced,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.15,permissive,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.2,conservative,infeasible_deadzone,,desired velocity 0.200 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.2,balanced,infeasible_deadzone,,desired velocity 0.200 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.2,permissive,infeasible_deadzone,,desired velocity 0.200 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.25,conservative,infeasible_deadzone,,desired velocity 0.250 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.25,balanced,infeasible_deadzone,,desired velocity 0.250 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.25,permissive,infeasible_deadzone,,desired velocity 0.250 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.3,conservative,infeasible_deadzone,,desired velocity 0.300 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.3,balanced,infeasible_deadzone,,desired velocity 0.300 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.3,permissive,infeasible_deadzone,,desired velocity 0.300 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.35,conservative,infeasible_deadzone,,desired velocity 0.350 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.35,balanced,infeasible_deadzone,,desired velocity 0.350 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.35,permissive,infeasible_deadzone,,desired velocity 0.350 is below minimum effective actual velocity 0.354
+S2_marble_floor,0.4,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S2_marble_floor,0.4,balanced,infeasible_deadzone,,desired velocity 0.400 is below minimum policy-accepted actual velocity 0.645
+S2_marble_floor,0.4,permissive,infeasible_deadzone,,desired velocity 0.400 is below minimum policy-accepted actual velocity 0.645
+S2_marble_floor,0.45,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S2_marble_floor,0.45,balanced,infeasible_deadzone,,desired velocity 0.450 is below minimum policy-accepted actual velocity 0.645
+S2_marble_floor,0.45,permissive,infeasible_deadzone,,desired velocity 0.450 is below minimum policy-accepted actual velocity 0.645
+S2_marble_floor,0.5,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S2_marble_floor,0.5,balanced,infeasible_deadzone,,desired velocity 0.500 is below minimum policy-accepted actual velocity 0.645
+S2_marble_floor,0.5,permissive,infeasible_deadzone,,desired velocity 0.500 is below minimum policy-accepted actual velocity 0.645
+S2_marble_floor,0.55,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S2_marble_floor,0.55,balanced,infeasible_deadzone,,desired velocity 0.550 is below minimum policy-accepted actual velocity 0.645
+S2_marble_floor,0.55,permissive,infeasible_deadzone,,desired velocity 0.550 is below minimum policy-accepted actual velocity 0.645
+S2_marble_floor,0.6,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S2_marble_floor,0.6,balanced,infeasible_deadzone,,desired velocity 0.600 is below minimum policy-accepted actual velocity 0.645
+S2_marble_floor,0.6,permissive,infeasible_deadzone,,desired velocity 0.600 is below minimum policy-accepted actual velocity 0.645
+S2_marble_floor,0.65,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S2_marble_floor,0.65,balanced,infeasible_out_of_range,,desired velocity 0.650 exceeds max measured valid actual velocity 0.645
+S2_marble_floor,0.65,permissive,infeasible_out_of_range,,desired velocity 0.650 exceeds max measured valid actual velocity 0.645
+S3_artificial_turf,0.05,conservative,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.174
+S3_artificial_turf,0.05,balanced,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.174
+S3_artificial_turf,0.05,permissive,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.174
+S3_artificial_turf,0.1,conservative,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.174
+S3_artificial_turf,0.1,balanced,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.174
+S3_artificial_turf,0.1,permissive,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.174
+S3_artificial_turf,0.15,conservative,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.174
+S3_artificial_turf,0.15,balanced,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.174
+S3_artificial_turf,0.15,permissive,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.174
+S3_artificial_turf,0.2,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S3_artificial_turf,0.2,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S3_artificial_turf,0.2,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S3_artificial_turf,0.25,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S3_artificial_turf,0.25,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S3_artificial_turf,0.25,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S3_artificial_turf,0.3,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S3_artificial_turf,0.3,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S3_artificial_turf,0.3,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S3_artificial_turf,0.35,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S3_artificial_turf,0.35,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S3_artificial_turf,0.35,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S3_artificial_turf,0.4,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S3_artificial_turf,0.4,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S3_artificial_turf,0.4,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S3_artificial_turf,0.45,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S3_artificial_turf,0.45,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S3_artificial_turf,0.45,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S3_artificial_turf,0.5,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S3_artificial_turf,0.5,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S3_artificial_turf,0.5,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S3_artificial_turf,0.55,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S3_artificial_turf,0.55,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S3_artificial_turf,0.55,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S3_artificial_turf,0.6,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S3_artificial_turf,0.6,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S3_artificial_turf,0.6,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+S3_artificial_turf,0.65,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+S3_artificial_turf,0.65,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+S3_artificial_turf,0.65,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+artificial_turf,0.05,conservative,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.174
+artificial_turf,0.05,balanced,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.174
+artificial_turf,0.05,permissive,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.174
+artificial_turf,0.1,conservative,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.174
+artificial_turf,0.1,balanced,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.174
+artificial_turf,0.1,permissive,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.174
+artificial_turf,0.15,conservative,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.174
+artificial_turf,0.15,balanced,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.174
+artificial_turf,0.15,permissive,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.174
+artificial_turf,0.2,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+artificial_turf,0.2,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+artificial_turf,0.2,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+artificial_turf,0.25,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+artificial_turf,0.25,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+artificial_turf,0.25,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+artificial_turf,0.3,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+artificial_turf,0.3,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+artificial_turf,0.3,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+artificial_turf,0.35,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+artificial_turf,0.35,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+artificial_turf,0.35,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+artificial_turf,0.4,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+artificial_turf,0.4,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+artificial_turf,0.4,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+artificial_turf,0.45,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+artificial_turf,0.45,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+artificial_turf,0.45,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+artificial_turf,0.5,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+artificial_turf,0.5,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+artificial_turf,0.5,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+artificial_turf,0.55,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+artificial_turf,0.55,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+artificial_turf,0.55,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+artificial_turf,0.6,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+artificial_turf,0.6,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+artificial_turf,0.6,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+artificial_turf,0.65,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+artificial_turf,0.65,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+artificial_turf,0.65,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+lab_hard_floor,0.05,conservative,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.05,balanced,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.05,permissive,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.1,conservative,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.1,balanced,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.1,permissive,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.15,conservative,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.15,balanced,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.15,permissive,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.2,conservative,infeasible_deadzone,,desired velocity 0.200 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.2,balanced,infeasible_deadzone,,desired velocity 0.200 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.2,permissive,infeasible_deadzone,,desired velocity 0.200 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.25,conservative,infeasible_deadzone,,desired velocity 0.250 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.25,balanced,infeasible_deadzone,,desired velocity 0.250 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.25,permissive,infeasible_deadzone,,desired velocity 0.250 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.3,conservative,infeasible_deadzone,,desired velocity 0.300 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.3,balanced,infeasible_deadzone,,desired velocity 0.300 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.3,permissive,infeasible_deadzone,,desired velocity 0.300 is below minimum effective actual velocity 0.302
+lab_hard_floor,0.35,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+lab_hard_floor,0.35,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+lab_hard_floor,0.35,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+lab_hard_floor,0.4,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+lab_hard_floor,0.4,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+lab_hard_floor,0.4,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+lab_hard_floor,0.45,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+lab_hard_floor,0.45,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+lab_hard_floor,0.45,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+lab_hard_floor,0.5,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+lab_hard_floor,0.5,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+lab_hard_floor,0.5,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+lab_hard_floor,0.55,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+lab_hard_floor,0.55,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+lab_hard_floor,0.55,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+lab_hard_floor,0.6,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+lab_hard_floor,0.6,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+lab_hard_floor,0.6,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+lab_hard_floor,0.65,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+lab_hard_floor,0.65,balanced,insufficient_evidence,,risk policy balanced removed all candidate cells
+lab_hard_floor,0.65,permissive,insufficient_evidence,,risk policy permissive removed all candidate cells
+marble_floor,0.05,conservative,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.354
+marble_floor,0.05,balanced,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.354
+marble_floor,0.05,permissive,infeasible_deadzone,,desired velocity 0.050 is below minimum effective actual velocity 0.354
+marble_floor,0.1,conservative,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.354
+marble_floor,0.1,balanced,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.354
+marble_floor,0.1,permissive,infeasible_deadzone,,desired velocity 0.100 is below minimum effective actual velocity 0.354
+marble_floor,0.15,conservative,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.354
+marble_floor,0.15,balanced,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.354
+marble_floor,0.15,permissive,infeasible_deadzone,,desired velocity 0.150 is below minimum effective actual velocity 0.354
+marble_floor,0.2,conservative,infeasible_deadzone,,desired velocity 0.200 is below minimum effective actual velocity 0.354
+marble_floor,0.2,balanced,infeasible_deadzone,,desired velocity 0.200 is below minimum effective actual velocity 0.354
+marble_floor,0.2,permissive,infeasible_deadzone,,desired velocity 0.200 is below minimum effective actual velocity 0.354
+marble_floor,0.25,conservative,infeasible_deadzone,,desired velocity 0.250 is below minimum effective actual velocity 0.354
+marble_floor,0.25,balanced,infeasible_deadzone,,desired velocity 0.250 is below minimum effective actual velocity 0.354
+marble_floor,0.25,permissive,infeasible_deadzone,,desired velocity 0.250 is below minimum effective actual velocity 0.354
+marble_floor,0.3,conservative,infeasible_deadzone,,desired velocity 0.300 is below minimum effective actual velocity 0.354
+marble_floor,0.3,balanced,infeasible_deadzone,,desired velocity 0.300 is below minimum effective actual velocity 0.354
+marble_floor,0.3,permissive,infeasible_deadzone,,desired velocity 0.300 is below minimum effective actual velocity 0.354
+marble_floor,0.35,conservative,infeasible_deadzone,,desired velocity 0.350 is below minimum effective actual velocity 0.354
+marble_floor,0.35,balanced,infeasible_deadzone,,desired velocity 0.350 is below minimum effective actual velocity 0.354
+marble_floor,0.35,permissive,infeasible_deadzone,,desired velocity 0.350 is below minimum effective actual velocity 0.354
+marble_floor,0.4,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+marble_floor,0.4,balanced,infeasible_deadzone,,desired velocity 0.400 is below minimum policy-accepted actual velocity 0.645
+marble_floor,0.4,permissive,infeasible_deadzone,,desired velocity 0.400 is below minimum policy-accepted actual velocity 0.645
+marble_floor,0.45,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+marble_floor,0.45,balanced,infeasible_deadzone,,desired velocity 0.450 is below minimum policy-accepted actual velocity 0.645
+marble_floor,0.45,permissive,infeasible_deadzone,,desired velocity 0.450 is below minimum policy-accepted actual velocity 0.645
+marble_floor,0.5,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+marble_floor,0.5,balanced,infeasible_deadzone,,desired velocity 0.500 is below minimum policy-accepted actual velocity 0.645
+marble_floor,0.5,permissive,infeasible_deadzone,,desired velocity 0.500 is below minimum policy-accepted actual velocity 0.645
+marble_floor,0.55,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+marble_floor,0.55,balanced,infeasible_deadzone,,desired velocity 0.550 is below minimum policy-accepted actual velocity 0.645
+marble_floor,0.55,permissive,infeasible_deadzone,,desired velocity 0.550 is below minimum policy-accepted actual velocity 0.645
+marble_floor,0.6,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+marble_floor,0.6,balanced,infeasible_deadzone,,desired velocity 0.600 is below minimum policy-accepted actual velocity 0.645
+marble_floor,0.6,permissive,infeasible_deadzone,,desired velocity 0.600 is below minimum policy-accepted actual velocity 0.645
+marble_floor,0.65,conservative,insufficient_evidence,,risk policy conservative removed all candidate cells
+marble_floor,0.65,balanced,infeasible_out_of_range,,desired velocity 0.650 exceeds max measured valid actual velocity 0.645
+marble_floor,0.65,permissive,infeasible_out_of_range,,desired velocity 0.650 exceeds max measured valid actual velocity 0.645

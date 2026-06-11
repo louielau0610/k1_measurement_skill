@@ -1,0 +1,12 @@
+{
+  "total_comparisons": 56,
+  "method": "ours_conservative_monotonic",
+  "baselines": [
+    "direct_command",
+    "scalar_gain",
+    "nearest_lookup",
+    "ordinary_interpolation"
+  ],
+  "generated_at": "2026-06-11T09:18:56.983909+00:00",
+  "disclaimer": "offline verification only \u2014 not physical validation \u2014 not deployment-ready \u2014 no hardware execution"
+}

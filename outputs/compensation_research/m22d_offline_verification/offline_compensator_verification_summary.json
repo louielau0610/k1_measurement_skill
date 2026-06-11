@@ -1,0 +1,87 @@
+{
+  "generated_at": "2026-06-11T09:18:56.983909+00:00",
+  "platform": "booster_k1",
+  "offline_only": true,
+  "physical_validation": "not_started",
+  "deployment_ready": false,
+  "leave_one_repeat_out": {
+    "total_checks": 72,
+    "feasible_checks": 60,
+    "infeasible_checks": 12,
+    "status_distribution": {
+      "infeasible_deadzone": 12,
+      "ok": 60
+    },
+    "mean_abs_command_error_mps": 1.0084241502936786,
+    "median_abs_command_error_mps": 0.05443883855273002,
+    "max_abs_command_error_mps": 53.27188583678999,
+    "per_surface": {
+      "artificial_turf": {
+        "count": 24,
+        "infeasible_count": 2,
+        "mean_abs_cmd_error_mps": 0.14625620034415135,
+        "median_abs_cmd_error_mps": 0.09891294459563259,
+        "max_abs_cmd_error_mps": 0.9607588306422867
+      },
+      "lab_hard_floor": {
+        "count": 24,
+        "infeasible_count": 6,
+        "mean_abs_cmd_error_mps": 0.1246045617952738,
+        "median_abs_cmd_error_mps": 0.031184686258445754,
+        "max_abs_cmd_error_mps": 1.3689142480853003
+      },
+      "marble_floor": {
+        "count": 24,
+        "infeasible_count": 4,
+        "mean_abs_cmd_error_mps": 2.7522465248867225,
+        "median_abs_cmd_error_mps": 0.052354085407004175,
+        "max_abs_cmd_error_mps": 53.27188583678999
+      }
+    },
+    "disclaimer": "offline verification only \u2014 not physical validation \u2014 not deployment-ready \u2014 no hardware execution"
+  },
+  "edge_case_audit": {
+    "total": 9,
+    "passed": 5,
+    "failed": 4
+  },
+  "baseline_comparison": {
+    "total_comparisons": 56,
+    "method": "ours_conservative_monotonic",
+    "baselines": [
+      "direct_command",
+      "scalar_gain",
+      "nearest_lookup",
+      "ordinary_interpolation"
+    ],
+    "generated_at": "2026-06-11T09:18:56.983909+00:00",
+    "disclaimer": "offline verification only \u2014 not physical validation \u2014 not deployment-ready \u2014 no hardware execution"
+  },
+  "risk_policy_audit": {
+    "policy_stats": {
+      "conservative": {
+        "feasible": 0,
+        "risky": 0,
+        "rejected": 78
+      },
+      "balanced": {
+        "feasible": 0,
+        "risky": 0,
+        "rejected": 78
+      },
+      "permissive": {
+        "feasible": 0,
+        "risky": 0,
+        "rejected": 78
+      }
+    },
+    "ordering_checks": {
+      "conservative_most_restrictive": true,
+      "permissive_most_permissive": true,
+      "no_policy_accepts_deadzone_silently": true,
+      "risky_outputs_clearly_labeled": true
+    }
+  },
+  "disclaimers_applied": true,
+  "disclaimer": "offline verification only \u2014 not physical validation \u2014 not deployment-ready \u2014 no hardware execution"
+}
