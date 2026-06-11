@@ -22,3 +22,5 @@ M19R-C-prep records that replacement trials completed the execution-level M19 de
 M19R-C annotation intake validation adds a QC gate for future filled measurements. The current template passes structural validation, but no empirical response-model or risk-map claim is added until real actual velocity and yaw drift values are present.
 
 M19R-C SDK state logger prep adds tooling to discover and log SDK state sources, but local discovery did not detect an importable Booster SDK. This is measurement-readiness tooling only and adds no empirical response-model, risk-map, navigation, or cross-robot claim.
+
+M19R-C ROS2 odometer prep updates the planned measurement source priority to `/odometer_state` after robot-side interface discovery. This remains measurement-source validation only; no M19 empirical response or risk-map claim is added.

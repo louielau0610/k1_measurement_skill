@@ -324,3 +324,9 @@ The current valid-only template passes intake validation with 72 pending rows, 5
 M19R-C SDK state logger prep adds SDK state-source discovery, standing-state smoke logging, guarded three-trial smoke planning, and SDK state-log measurement extraction utilities. The local development workspace does not have the Booster SDK importable, so no usable SDK state source, position stream, or yaw stream was detected here.
 
 The full M19C measurement run is not ready until robot-side SDK discovery and standing/dynamic smoke logs confirm timestamped position and yaw. No empirical response statistics, response plots, risk-map validation, navigation improvement claim, or cross-robot generalization claim is added by this prep milestone.
+
+## M19R-C ROS2 Odometer Logger Update
+
+Robot-side discovery showed that sourcing `/opt/booster/BoosterRos2Interface/install/setup.bash` exposes `booster_interface` and `/odometer_state [booster_interface/msg/Odometer]` with `x`, `y`, and `theta`. M19R-C prep now prioritizes ROS2 odometer logging as the primary measurement source, with `/low_state.imu_state.rpy` and IMU topics as yaw fallbacks.
+
+`GetFrameTransform` is downgraded because discovered frames are local body-part frames rather than odom/world/map frames. Local Windows smoke outputs cannot import ROS2/Booster packages, so the full M19C measurement run remains gated on robot-side odometer smoke logs.

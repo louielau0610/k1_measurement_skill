@@ -49,3 +49,9 @@
 - SDK state discovery and smoke logging scripts were added to prioritize robot-side odometer/IMU/transform logs over manual video annotation.
 - In the local development workspace, the Booster SDK is not importable, so no usable SDK state source, position stream, or yaw stream is detected yet.
 - The full M19C measurement run remains gated on robot-side SDK discovery and smoke logs; empirical analysis remains blocked.
+
+## M19R-C ROS2 odometer update
+- Robot-side discovery indicates `/odometer_state` provides `x`, `y`, and `theta`, making ROS2 odometer logs the primary planned measurement source.
+- `/low_state.imu_state.rpy` and IMU topics are retained as yaw fallbacks or cross-checks.
+- `GetFrameTransform` is downgraded because available frames are local body-part frames, not global odom/world/map frames.
+- Local smoke artifacts do not confirm ROS2 availability; full M19C measurement remains gated on robot-side odometer smoke validation.

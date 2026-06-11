@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-06-11T11:05:18.863500",
+  "source_requirement": "source /opt/booster/BoosterRos2Interface/install/setup.bash",
+  "primary_topic": "/odometer_state",
+  "execute_requested": false,
+  "status": "dry_run",
+  "trials": [
+    {
+      "trial_id": "M19C_SMOKE_S1_lab_hard_floor_U020_R1",
+      "vx": 0.2,
+      "executed": false,
+      "output_csv": ""
+    },
+    {
+      "trial_id": "M19C_SMOKE_S1_lab_hard_floor_U040_R1",
+      "vx": 0.4,
+      "executed": false,
+      "output_csv": ""
+    },
+    {
+      "trial_id": "M19C_SMOKE_S1_lab_hard_floor_U060_R1",
+      "vx": 0.6,
+      "executed": false,
+      "output_csv": ""
+    }
+  ],
+  "dynamic_smoke_trials_run": false,
+  "full_72_trial_protocol_run": false
+}

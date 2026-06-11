@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-06-11T11:05:18.856911",
+  "source_requirement": "source /opt/booster/BoosterRos2Interface/install/setup.bash",
+  "primary_topic": "/odometer_state",
+  "secondary_topic": "/low_state",
+  "duration": 0.1,
+  "include_low_state": true,
+  "samples_written": 0,
+  "estimated_frequency_hz": 0.0,
+  "position_available": false,
+  "yaw_available": false,
+  "source_status": "ros2_import_unavailable:ModuleNotFoundError(\"No module named 'rclpy'\")",
+  "output_csv": "data\\m19_ros2_state_smoke\\standing_odometer_state.csv",
+  "full_m19c_measurement_run_ready": false
+}
