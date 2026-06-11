@@ -1,0 +1,49 @@
+{
+  "dataset_id": "m19c_full_72_ros2_odometer_20260611",
+  "platform": "booster_k1",
+  "robot_model": "Booster K1",
+  "robot_id": "Booster_K1",
+  "session_id": "m19c_full_72_measurement_run_20260611",
+  "surfaces": [
+    "S1_lab_hard_floor",
+    "S2_marble_floor",
+    "S3_artificial_turf"
+  ],
+  "speeds": [
+    0.1,
+    0.2,
+    0.3,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.6
+  ],
+  "repeats": 3,
+  "state_log_dir": "data/m19c_ros2_odometer_logs",
+  "trial_records_path": "data/m19_repeated_validation_inputs/m19c_trial_records.csv",
+  "extracted_measurements_path": "data/m19_repeated_validation_inputs/m19c_extracted_measurements.csv",
+  "qc_summary_path": "outputs/real_k1_validation_m19/m19c_measurement_run_qc_summary.json",
+  "response_statistics_path": "outputs/real_k1_validation_m19/surface_response_statistics.csv",
+  "profile_path": "outputs/real_k1_validation_m19/k1_gold_profile_v1.json",
+  "validation_status": "booster_k1_reference_ready",
+  "limitations": [
+    "single Booster K1 unit",
+    "three tested surfaces",
+    "ROS2 odometer-based measurement",
+    "no velocity compensation implemented",
+    "no GO1/G1 empirical validation",
+    "no cross-platform generalization claim"
+  ],
+  "empirical_cross_platform_claim": false,
+  "velocity_compensation_ready": false,
+  "navigation_improvement_claimed": false,
+  "artifact_references": {
+    "gold_profile_markdown": "outputs/real_k1_validation_m19/k1_gold_profile_v1.md",
+    "empirical_summary": "outputs/real_k1_validation_m19/m19c_empirical_summary.json",
+    "empirical_report": "outputs/real_k1_validation_m19/m19c_empirical_report.md",
+    "qc_report": "outputs/real_k1_validation_m19/m19c_measurement_run_qc_report.md",
+    "region_classification": "outputs/real_k1_validation_m19/region_classification.csv",
+    "yaw_drift_summary": "outputs/real_k1_validation_m19/yaw_drift_summary.csv"
+  }
+}

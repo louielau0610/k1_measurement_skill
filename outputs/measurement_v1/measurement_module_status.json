@@ -1,0 +1,23 @@
+{
+  "measurement_module_v1_status": "consolidated_reference_ready",
+  "booster_k1_reference_ready": true,
+  "unitree_go1_measurement_ready": false,
+  "unitree_g1_measurement_ready": false,
+  "velocity_compensation_ready": false,
+  "cross_platform_empirical_validation_ready": false,
+  "available_reference_datasets": [
+    {
+      "platform": "booster_k1",
+      "dataset_id": "m19c_full_72_ros2_odometer_20260611",
+      "manifest_path": "outputs/measurement_v1/booster_k1_reference_manifest.json"
+    }
+  ],
+  "validated_platforms": [
+    "booster_k1"
+  ],
+  "scaffold_only_platforms": [
+    "unitree_go1",
+    "unitree_g1"
+  ],
+  "next_required_step": "close Measurement Module v1, then study and implement the velocity compensation principle for Booster K1 validation"
+}

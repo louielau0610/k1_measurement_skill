@@ -2,6 +2,8 @@
 
 from calibration_core.command_adapter import RobotCommandAdapter
 from calibration_core.measurement_extractor import MeasurementExtractor
+from calibration_core.measurement_manifest import MeasurementManifest, validate_measurement_manifest
+from calibration_core.measurement_pipeline import MeasurementPipeline
 from calibration_core.measurement_schema import TrialMeasurement, validate_aggregate_record, validate_trial_measurement
 from calibration_core.platform_registry import PlatformEntry, get_platform, get_platform_registry, list_platforms
 from calibration_core.profile_exporter import CalibrationProfileExporter, JsonMarkdownProfileExporter
@@ -15,6 +17,8 @@ __all__ = [
     "CalibrationProfileExporter",
     "JsonMarkdownProfileExporter",
     "MeasurementExtractor",
+    "MeasurementManifest",
+    "MeasurementPipeline",
     "PlatformEntry",
     "RobotCommandAdapter",
     "RobotStateLogger",
@@ -29,5 +33,6 @@ __all__ = [
     "load_profile",
     "summarize_response",
     "validate_aggregate_record",
+    "validate_measurement_manifest",
     "validate_trial_measurement",
 ]

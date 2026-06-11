@@ -39,6 +39,7 @@ M7 commit: `0e8db1131b152617cd9f86d42d61c96d473d7996`
 - [x] M8 workflow documentation and checklist updates
 - [x] M13 research-grade velocity response foundation
 - [x] M20 cross-platform calibration skill core scaffold
+- [x] M21-A measurement module consolidation
 
 ## M20 Cross-Platform Calibration Core
 
@@ -52,6 +53,20 @@ Readiness flags:
 - `cross_platform_empirical_validation=false`
 - `compensation_ready=false`
 - `navigation_control_ready=false`
+
+## M21-A Measurement Module Consolidation
+
+M21-A consolidates the measurement module as Step 1 of the corrected roadmap. It adds `docs/measurement_module_v1.md`, a hardware-optional measurement pipeline abstraction, a Measurement Module v1 manifest schema, and a Booster K1 reference manifest under `outputs/measurement_v1/`.
+
+K1 remains the only validated measurement reference. GO1/G1 remain future platforms with no measurement readiness or hardware validation claim. Velocity compensation is the next research phase after measurement module closure; it is not implemented or claimed ready in M21-A.
+
+Readiness flags:
+
+- `measurement_module_v1_status=consolidated_reference_ready`
+- `booster_k1_reference_ready=true`
+- `unitree_go1_measurement_ready=false`
+- `unitree_g1_measurement_ready=false`
+- `velocity_compensation_ready=false`
 
 ## M13 Research Foundation
 

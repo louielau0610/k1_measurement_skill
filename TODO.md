@@ -54,6 +54,10 @@
 - [x] Ingest completed M19C 72-trial K1 odometer dataset.
 - [x] Generate M19C empirical response statistics, region classification, and `k1_gold_profile_v1`.
 - [x] M20 Cross-Platform Calibration Skill Core: common command adapter, state logger, measurement schema, and Booster K1 / Unitree G1 / Unitree GO1 adapters.
+- [x] M21-A Measurement Module Consolidation: module boundary, pipeline abstraction, K1 reference manifest, status CLI, and manifest validation CLI.
+- [ ] Close Measurement Module v1 review before starting velocity compensation implementation.
+- [ ] Study and implement the velocity compensation principle after measurement module closure.
+- [ ] Reproduce and experimentally validate the velocity compensator on Booster K1 before any GO1/G1 generalization.
 - [ ] Add real Unitree G1 state-source discovery before enabling any G1 measurement extraction.
 - [ ] Add real Unitree GO1 state-source discovery before enabling any GO1 measurement extraction.
 - [ ] Keep paper updates minimal unless directly useful for the calibration skill.
