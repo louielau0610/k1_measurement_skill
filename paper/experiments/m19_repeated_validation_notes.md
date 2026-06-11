@@ -55,3 +55,8 @@
 - `/low_state.imu_state.rpy` and IMU topics are retained as yaw fallbacks or cross-checks.
 - `GetFrameTransform` is downgraded because available frames are local body-part frames, not global odom/world/map frames.
 - Local smoke artifacts do not confirm ROS2 availability; full M19C measurement remains gated on robot-side odometer smoke validation.
+
+## M19C full-run infrastructure
+- Physical smoke tests indicate ROS2 odometer extraction is feasible: 0.20 m/s produced near-zero motion, while 0.40 and 0.60 m/s produced nonzero extracted velocity and yaw drift.
+- The full 72-trial ROS2 odometer runner, extractor, QC, and protocol are implemented.
+- Empirical M19C analysis remains pending until full physical logs are collected and extracted; no response-model or risk-map claim is added yet.

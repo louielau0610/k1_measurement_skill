@@ -44,10 +44,13 @@
 - [x] Add M19 annotation intake validator for filled measurement CSVs.
 - [x] Add M19R-C SDK state-source discovery, smoke logging, and SDK-log extraction scaffold.
 - [x] Add M19R-C ROS2 `/odometer_state` logger, smoke runner, and odometer-log extractor scaffold.
+- [x] Add full M19C 72-trial ROS2 odometer runner, extractor, QC, and protocol.
 - [ ] Run SDK state discovery on the physical K1 shell with Booster SDK sourced.
 - [ ] Source `/opt/booster/BoosterRos2Interface/install/setup.bash` on K1 and run ROS2 odometer standing smoke logger.
 - [ ] Confirm `/odometer_state` publishes timestamped `x`, `y`, and `theta` at usable frequency before full M19C measurement run.
 - [ ] Run three ROS2 odometer dynamic smoke trials and verify nonzero extracted velocity before full M19C measurement run.
+- [ ] Run full M19C ROS2 odometer measurement by surface: S1, then S2, then S3.
+- [ ] Extract `m19c_extracted_measurements.csv` and pass M19C measurement-run QC before empirical analysis.
 - [ ] Fill M19 valid-only measurement annotations from real velocity/yaw evidence only.
 - [ ] Re-run M19R empirical analysis only after actual velocity and yaw drift annotations pass QC.
 

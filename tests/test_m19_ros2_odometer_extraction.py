@@ -28,12 +28,12 @@ def test_forward_displacement_uses_start_theta():
 
 def test_window_selection_and_measurement_extraction():
     samples = [
-        {"t_rel": "0.5", "x": "0", "y": "0", "theta": "0"},
-        {"t_rel": "1.0", "x": "0", "y": "0", "theta": "0"},
-        {"t_rel": "6.0", "x": "1.0", "y": "0", "theta": str(math.radians(5))},
-        {"t_rel": "6.5", "x": "3.0", "y": "0", "theta": "0"},
+        {"t_rel": "2.5", "x": "0", "y": "0", "theta": "0"},
+        {"t_rel": "3.0", "x": "0", "y": "0", "theta": "0"},
+        {"t_rel": "8.0", "x": "1.0", "y": "0", "theta": str(math.radians(5))},
+        {"t_rel": "8.5", "x": "3.0", "y": "0", "theta": "0"},
     ]
-    assert [row["t_rel"] for row in select_window(samples, 1.0, 6.0)] == ["1.0", "6.0"]
+    assert [row["t_rel"] for row in select_window(samples, 3.0, 8.0)] == ["3.0", "8.0"]
     measurement, reason = extract_trial_measurement(samples)
     assert reason is None
     assert measurement is not None
@@ -55,10 +55,10 @@ def test_missing_theta_blocks_extraction():
 def test_ros2_odometer_extract_from_logs_schema(tmp_path):
     log = tmp_path / "M19C_SMOKE.csv"
     with log.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["trial_id", "t_rel", "x", "y", "theta"])
+        writer = csv.DictWriter(f, fieldnames=["trial_id", "t_rel", "odom_x", "odom_y", "odom_theta", "imu_yaw"])
         writer.writeheader()
-        writer.writerow({"trial_id": "M19C_SMOKE", "t_rel": "1.0", "x": "0", "y": "0", "theta": "0"})
-        writer.writerow({"trial_id": "M19C_SMOKE", "t_rel": "6.0", "x": "1", "y": "0", "theta": "0.1"})
+        writer.writerow({"trial_id": "M19C_SMOKE", "t_rel": "3.0", "odom_x": "0", "odom_y": "0", "odom_theta": "0", "imu_yaw": "0"})
+        writer.writerow({"trial_id": "M19C_SMOKE", "t_rel": "8.0", "odom_x": "1", "odom_y": "0", "odom_theta": "0.1", "imu_yaw": "0.1"})
     output_csv = tmp_path / "measurements.csv"
     output_dir = tmp_path / "out"
 
@@ -69,5 +69,6 @@ def test_ros2_odometer_extract_from_logs_schema(tmp_path):
     rows = list(csv.DictReader(output_csv.open(encoding="utf-8")))
     assert list(rows[0].keys()) == OUTPUT_FIELDS
     assert rows[0]["measurement_source"] == "ros2_odometer_state"
+    assert rows[0]["imu_yaw_drift_deg"]
     assert (output_dir / "m19c_ros2_odometer_smoke_summary.json").exists()
     assert (output_dir / "m19c_ros2_odometer_smoke_report.md").exists()

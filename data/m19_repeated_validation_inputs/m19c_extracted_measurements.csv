@@ -1,0 +1,1 @@
+trial_id,measurement_source,measurement_method,analysis_window_start_sec,analysis_window_end_sec,extraction_status,start_x,start_y,end_x,end_y,start_theta,end_theta,distance_m,time_sec,measured_actual_velocity,start_yaw_deg,end_yaw_deg,yaw_drift_statistic,imu_yaw_drift_deg,measurement_confidence,annotation_notes

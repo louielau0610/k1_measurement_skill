@@ -10,16 +10,19 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-DEFAULT_INPUT = Path("data/m19_ros2_state_smoke")
-OUTPUT_CSV = Path("data/m19_repeated_validation_inputs/m19c_smoke_extracted_measurements.csv")
+DEFAULT_INPUT = Path("data/m19c_ros2_odometer_logs")
+OUTPUT_CSV = Path("data/m19_repeated_validation_inputs/m19c_extracted_measurements.csv")
 OUTPUT_DIR = Path("outputs/real_k1_validation_m19")
-WINDOW_START_SEC = 1.0
-WINDOW_END_SEC = 6.0
+WINDOW_START_SEC = 3.0
+WINDOW_END_SEC = 8.0
 
 OUTPUT_FIELDS = [
     "trial_id",
     "measurement_source",
     "measurement_method",
+    "analysis_window_start_sec",
+    "analysis_window_end_sec",
+    "extraction_status",
     "start_x",
     "start_y",
     "end_x",
@@ -32,6 +35,7 @@ OUTPUT_FIELDS = [
     "start_yaw_deg",
     "end_yaw_deg",
     "yaw_drift_statistic",
+    "imu_yaw_drift_deg",
     "measurement_confidence",
     "annotation_notes",
 ]
@@ -79,12 +83,13 @@ def extract_trial_measurement(
     usable = []
     for row in select_window(samples, start_sec, end_sec):
         t_rel = parse_float(row.get("t_rel"))
-        x = parse_float(row.get("x"))
-        y = parse_float(row.get("y"))
-        theta = parse_float(row.get("theta"))
+        x = parse_float(row.get("odom_x", row.get("x")))
+        y = parse_float(row.get("odom_y", row.get("y")))
+        theta = parse_float(row.get("odom_theta", row.get("theta")))
+        imu_yaw = parse_float(row.get("imu_yaw"))
         if t_rel is None or x is None or y is None or theta is None:
             continue
-        usable.append({"t_rel": t_rel, "x": x, "y": y, "theta": theta})
+        usable.append({"t_rel": t_rel, "x": x, "y": y, "theta": theta, "imu_yaw": imu_yaw})
     if len(usable) < 2:
         return None, "insufficient_odometer_samples"
     start = usable[0]
@@ -94,7 +99,13 @@ def extract_trial_measurement(
         return None, "nonpositive_analysis_window_duration"
     distance = forward_displacement_m(start, end)
     yaw_drift_deg = abs(math.degrees(wrap_to_pi(end["theta"] - start["theta"])))
+    imu_yaw_drift = None
+    if start.get("imu_yaw") is not None and end.get("imu_yaw") is not None:
+        imu_yaw_drift = abs(math.degrees(wrap_to_pi(end["imu_yaw"] - start["imu_yaw"])))
     return {
+        "analysis_window_start_sec": start_sec,
+        "analysis_window_end_sec": end_sec,
+        "extraction_status": "ok",
         "start_x": start["x"],
         "start_y": start["y"],
         "end_x": end["x"],
@@ -107,6 +118,7 @@ def extract_trial_measurement(
         "start_yaw_deg": math.degrees(start["theta"]),
         "end_yaw_deg": math.degrees(end["theta"]),
         "yaw_drift_statistic": yaw_drift_deg,
+        "imu_yaw_drift_deg": imu_yaw_drift,
     }, None
 
 
@@ -143,7 +155,7 @@ def extract_from_logs(input_path: Path, output_csv: Path = OUTPUT_CSV, output_di
             {
                 "trial_id": trial_id,
                 "measurement_source": "ros2_odometer_state",
-                "measurement_method": "odometer_forward_projection_window_1_6s",
+                "measurement_method": "odometer_forward_projection_window_3_8s",
                 "measurement_confidence": "high",
                 "annotation_notes": "extracted_from_ros2_odometer_state",
                 **measurement,

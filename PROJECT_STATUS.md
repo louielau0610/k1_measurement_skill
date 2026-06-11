@@ -330,3 +330,9 @@ The full M19C measurement run is not ready until robot-side SDK discovery and st
 Robot-side discovery showed that sourcing `/opt/booster/BoosterRos2Interface/install/setup.bash` exposes `booster_interface` and `/odometer_state [booster_interface/msg/Odometer]` with `x`, `y`, and `theta`. M19R-C prep now prioritizes ROS2 odometer logging as the primary measurement source, with `/low_state.imu_state.rpy` and IMU topics as yaw fallbacks.
 
 `GetFrameTransform` is downgraded because discovered frames are local body-part frames rather than odom/world/map frames. Local Windows smoke outputs cannot import ROS2/Booster packages, so the full M19C measurement run remains gated on robot-side odometer smoke logs.
+
+## M19C Full ROS2 Odometer Measurement Runner
+
+M19C full-run infrastructure now provides the 72-trial ROS2 odometer measurement runner, full-run extractor, measurement-run QC, and protocol documentation. Robot-side smoke evidence indicates ROS2 odometer extraction is feasible, including low-speed deadzone behavior at 0.20 m/s and measurable motion/yaw drift at 0.40 and 0.60 m/s.
+
+Full empirical M19C analysis remains pending until the physical 72-trial run is completed, logs are extracted, and QC reports `m19c_measurement_extraction_ready_for_empirical_analysis`. No response-model or risk-map validation claim is added yet.

@@ -2,7 +2,7 @@
 
 Odometer source: `/odometer_state`
 
-Log files found: 1
+Log files found: 0
 
 Trials seen: 0
 

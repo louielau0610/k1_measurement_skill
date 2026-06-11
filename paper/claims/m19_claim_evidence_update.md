@@ -24,3 +24,5 @@ M19R-C annotation intake validation adds a QC gate for future filled measurement
 M19R-C SDK state logger prep adds tooling to discover and log SDK state sources, but local discovery did not detect an importable Booster SDK. This is measurement-readiness tooling only and adds no empirical response-model, risk-map, navigation, or cross-robot claim.
 
 M19R-C ROS2 odometer prep updates the planned measurement source priority to `/odometer_state` after robot-side interface discovery. This remains measurement-source validation only; no M19 empirical response or risk-map claim is added.
+
+M19C full-run infrastructure incorporates smoke-test evidence that ROS2 odometer measurement is feasible and prepares the 72-trial collection pipeline. It still adds no empirical response-model or risk-map validation claim before the full physical run is completed and QC-passed.
