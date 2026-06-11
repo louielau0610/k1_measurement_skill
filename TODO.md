@@ -50,6 +50,7 @@
 - [x] M21-C measurement data contract definition and K1 contract compliance.
 - [x] M21-D measurement module closure and Step 2 transition plan.
 - [x] M22-A velocity compensation principle research and first-method decision framework.
+- [x] M22-B velocity compensation algorithm specification (Conservative Monotonic Segment Inverse Lookup).
 - [ ] Run SDK state discovery on the physical K1 shell with Booster SDK sourced.
 - [ ] Source `/opt/booster/BoosterRos2Interface/install/setup.bash` on K1 and run ROS2 odometer standing smoke logger.
 - [ ] Confirm `/odometer_state` publishes timestamped `x`, `y`, and `theta` at usable frequency before full M19C measurement run.

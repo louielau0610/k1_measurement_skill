@@ -1,0 +1,130 @@
+{
+  "spec_version": "compensation_algorithm_spec_v1.0",
+  "algorithm_name": "Conservative Monotonic Segment Inverse Lookup",
+  "status": "specification_only",
+  "implementation_ready": false,
+  "compensation_ready": false,
+
+  "input_contract": {
+    "platform": {"type": "string", "required": true},
+    "robot_model": {"type": "string", "required": true},
+    "robot_id": {"type": "string", "required": true},
+    "surface_type": {"type": "string", "required": true},
+    "desired_actual_velocity_mps": {"type": "float", "required": true, "unit": "m/s"},
+    "measurement_contract_version": {"type": "string", "required": true},
+    "response_profile_path": {"type": "string", "required": true},
+    "allowed_region_labels": {"type": "list[string]", "required": false, "default": ["reliable"]},
+    "risk_policy": {"type": "string", "required": false, "default": "conservative", "options": ["conservative", "balanced", "permissive"]},
+    "extrapolation_policy": {"type": "string", "required": false, "default": "reject", "options": ["reject", "nearest_bound"]},
+    "minimum_confidence": {"type": "float", "required": false, "default": 0.5},
+    "operator_notes": {"type": "string", "required": false}
+  },
+
+  "output_contract": {
+    "schema_version": {"type": "string"},
+    "platform": {"type": "string"},
+    "robot_model": {"type": "string"},
+    "surface_type": {"type": "string"},
+    "desired_actual_velocity_mps": {"type": "float", "unit": "m/s"},
+    "recommended_command_velocity_mps": {"type": "float", "unit": "m/s"},
+    "expected_actual_velocity_mps": {"type": "float", "unit": "m/s"},
+    "expected_tracking_error_mps": {"type": "float", "unit": "m/s"},
+    "expected_relative_error": {"type": "float"},
+    "selected_segment": {"type": "string"},
+    "source_points": {"type": "list[object]"},
+    "region_label": {"type": "string"},
+    "risk_score": {"type": "float"},
+    "confidence": {"type": "float"},
+    "feasibility_status": {"type": "string"},
+    "reason": {"type": "string"},
+    "warnings": {"type": "list[string]"},
+    "limitations": {"type": "list[string]"}
+  },
+
+  "feasibility_statuses": [
+    "ok",
+    "feasible_but_risky",
+    "infeasible_deadzone",
+    "infeasible_out_of_range",
+    "insufficient_evidence",
+    "non_monotonic_ambiguous",
+    "platform_not_calibrated",
+    "surface_not_calibrated",
+    "invalid_input"
+  ],
+
+  "risk_policies": {
+    "conservative": {
+      "description": "Only use reliable cells with low risk, low yaw drift, low uncertainty",
+      "accepted_labels": ["reliable"],
+      "max_risk_score": 0.3,
+      "min_confidence": 0.5,
+      "max_yaw_drift_deg": 5.0,
+      "max_uncertainty_mps": 0.08,
+      "min_repeats": 3,
+      "allow_deadzone": false
+    },
+    "balanced": {
+      "description": "Allow under_track cells with warnings; moderate risk tolerance",
+      "accepted_labels": ["reliable", "under_track"],
+      "max_risk_score": 0.6,
+      "min_confidence": 0.3,
+      "max_yaw_drift_deg": 10.0,
+      "max_uncertainty_mps": 0.12,
+      "min_repeats": 2,
+      "allow_deadzone": false
+    },
+    "permissive": {
+      "description": "Maximum coverage with explicit risk warnings; always returns feasible_but_risky",
+      "accepted_labels": ["reliable", "under_track", "unstable", "drift_prone"],
+      "max_risk_score": 1.0,
+      "min_confidence": 0.0,
+      "max_yaw_drift_deg": 999.0,
+      "max_uncertainty_mps": 999.0,
+      "min_repeats": 1,
+      "allow_deadzone": false
+    }
+  },
+
+  "default_thresholds": {
+    "no_motion_velocity_threshold_mps": 0.02,
+    "under_track_relative_threshold": 0.20,
+    "over_response_relative_threshold": 0.20,
+    "yaw_drift_high_threshold_deg": 5.0,
+    "uncertainty_high_threshold_mps": 0.08,
+    "minimum_segment_points": 2,
+    "minimum_cell_repeats": 3,
+    "minimum_confidence": 0.5,
+    "extrapolation_allowed": false
+  },
+
+  "algorithm_steps": [
+    "Load measurement_v1.0 contract or gold profile",
+    "Filter by platform and surface",
+    "Remove cells with insufficient evidence",
+    "Remove or downgrade high-risk cells according to risk policy",
+    "Detect no-motion/deadzone region",
+    "Sort remaining cells by command velocity",
+    "Build monotonic response segments using mean_actual_velocity_mps",
+    "Reject if desired velocity below minimum effective actual velocity (deadzone)",
+    "Reject if desired velocity above measured range unless extrapolation enabled",
+    "Find all monotonic segments that bracket desired velocity",
+    "Choose segment with lowest risk and sufficient confidence",
+    "Compute recommended command velocity using piecewise linear inverse interpolation",
+    "Return expected actual velocity and expected error",
+    "Return structured status and reason"
+  ],
+
+  "non_goals": [
+    "Real-time compensation loop",
+    "ROS2 node implementation",
+    "Multi-surface blending",
+    "Dynamic surface detection",
+    "Battery-state-aware compensation",
+    "Payload-aware compensation",
+    "Navigation integration",
+    "Online learning or adaptation"
+  ],
+
+  "next_milestone": "M22-C offline velocity compensator prototype"
+}

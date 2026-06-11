@@ -48,6 +48,40 @@ Current Step 2 flags:
 - `unitree_g1_measurement_ready=false`
 - `next_milestone=M22-B velocity compensation algorithm specification`
 
+## M22-B Velocity Compensation Algorithm Specification
+
+M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:
+
+- **Algorithm**: Conservative Monotonic Segment Inverse Lookup (14-step specification)
+- **Input/output contracts**: 12 input fields, 17 output fields
+- **Feasibility statuses**: 9 statuses (`ok` through `invalid_input`)
+- **Risk policies**: Conservative, balanced, permissive — with specific acceptance/rejection criteria per region label
+- **Deadzone policy**: Minimum effective velocity computation, deadzone-infeasible classification
+- **Non-monotonic policy**: Segment splitting, ambiguous case handling
+- **Numerical defaults**: 8 thresholds with units
+- **Decision examples**: 6 illustrative cases using K1 gold profile data
+
+M22-B does NOT:
+- Implement any compensator code
+- Create `compensator.py` or `inverse_response_model.py`
+- Add command remapping CLI
+- Run K1 compensation experiments
+- Claim compensation readiness
+
+Artifacts:
+- `docs/velocity_compensation_algorithm_spec.md`
+- `docs/velocity_compensation_feasibility_status.md`
+- `docs/velocity_compensation_risk_filtering.md`
+- `outputs/compensation_research/velocity_compensation_algorithm_spec_v1.json`
+- `outputs/compensation_research/velocity_compensation_algorithm_spec_v1.md`
+- `outputs/compensation_research/k1_compensation_decision_examples.md`
+
+Flags:
+- `implementation_ready=false`
+- `compensation_ready=false`
+- `k1_compensation_validated=false`
+- `next_milestone=M22-C offline velocity compensator prototype`
+
 ## Completed Milestones
 
 - [x] M0 project structure
