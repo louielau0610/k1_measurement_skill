@@ -207,6 +207,27 @@ Audit result:
 
 Recommendation: refresh or confirm the S2 response profile before another selected-compensation experiment, then run a second K1 validation focused first on identity-fallback non-worsening for the same S2 velocities. M23-F does not claim physical improvement, deployment readiness, navigation improvement, GO1/G1 validation, or cross-platform validation.
 
+## M24-A S2 Current-Condition Profile Refresh Design
+
+M24-A starts the profile-refresh design after M23-F. It creates a direct-only Booster K1 `S2_marble_floor` refresh plan to compare current direct response against the old M19C S2 response profile and the M23-C direct physical response.
+
+Scope:
+
+- surface: `S2_marble_floor`
+- command velocities: 0.35, 0.40, 0.45, 0.50, 0.55, and 0.60 m/s
+- repeats: 5 planned repeats per command velocity, with 3 as the minimum acceptable repeat count
+- condition: `direct_refresh` only
+
+M24-A does NOT run hardware, create refreshed physical results, overwrite `k1_gold_profile_v1`, claim revised compensation improvement, claim deployment readiness, or start GO1/G1 work.
+
+Flags:
+
+- `physical_profile_refresh_status=not_run`
+- `revised_compensator_status=offline_only`
+- `deployment_ready=false`
+- `go1_g1_blocked=true`
+- `next_milestone=M24-B direct-only S2 current-condition profile refresh`
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

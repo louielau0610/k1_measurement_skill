@@ -61,6 +61,9 @@
 - [x] M23-D negative result diagnosis and revised compensator plan.
 - [x] M23-E revised offline compensator with identity fallback and benefit gate.
 - [x] M23-F revised offline audit and second K1 validation readiness assessment.
+- [x] M24-A S2 current-condition profile refresh design.
+- [ ] Run M24-B direct-only S2 current-condition profile refresh on Booster K1.
+- [ ] Analyze M24-C old-vs-current S2 profile mismatch before any new compensation validation.
 - [ ] Revise M22-C compensator policy after M23-C negative physical result.
 - [ ] Run SDK state discovery on the physical K1 shell with Booster SDK sourced.
 - [ ] Source `/opt/booster/BoosterRos2Interface/install/setup.bash` on K1 and run ROS2 odometer standing smoke logger.
@@ -112,6 +115,8 @@
 - [ ] Do not treat K1 gold profile as cross-robot validation.
 - [ ] Do not create hardware command remapping or compensation execution before Step 3 physical validation planning.
 - [ ] Do not claim K1 compensation validation before Step 3 physical compensated trials.
+- [ ] Do not overwrite `k1_gold_profile_v1` without a versioned profile-refresh artifact.
+- [ ] Do not run a second K1 compensation experiment before the S2 current-condition profile refresh is analyzed.
 - [ ] Do not claim publication readiness from M13-P1 artifacts.
 - [ ] Do not claim novelty from P1 seed literature search alone.
 - [ ] Do not claim novelty or performance superiority from P2 positioning alone.

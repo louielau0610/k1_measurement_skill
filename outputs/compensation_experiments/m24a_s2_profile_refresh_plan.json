@@ -1,0 +1,53 @@
+{
+  "milestone": "M24-A",
+  "generated_at": "2026-06-12T05:40:21.090378+00:00",
+  "status": "profile_refresh_design_only",
+  "platform": "booster_k1",
+  "robot_model": "Booster K1",
+  "surface": "S2_marble_floor",
+  "command_velocities_mps": [
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6
+  ],
+  "desired_velocities_mps": [
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6
+  ],
+  "repeats_per_velocity": 5,
+  "recommended_minimum_repeats": 3,
+  "condition": "direct_refresh",
+  "trial_count": 30,
+  "refresh_group_count": 6,
+  "trial_plan_csv": "outputs\\compensation_experiments\\m24a_s2_profile_refresh_plan.csv",
+  "profile_mismatch_metrics": {
+    "old_m19c_mean_actual_velocity_mps": "required_in_M24_C",
+    "new_refresh_mean_actual_velocity_mps": "required_in_M24_C",
+    "difference_mps": "new_refresh_mean_actual_velocity_mps - old_m19c_mean_actual_velocity_mps",
+    "absolute_difference_mps": "abs(difference_mps)",
+    "old_uncertainty_mps": "required_in_M24_C",
+    "new_uncertainty_mps": "required_in_M24_C",
+    "profile_mismatch_threshold_mps": 0.03,
+    "profile_mismatch_flag": "absolute_difference_mps >= profile_mismatch_threshold_mps",
+    "yaw_drift_comparison": "required_in_M24_C",
+    "no_motion_rate": "required_in_M24_C",
+    "repeat_variability": "required_in_M24_C",
+    "direct_tracking_near_optimal": "required_in_M24_C"
+  },
+  "old_profile_path": "outputs/real_k1_validation_m19/k1_gold_profile_v1.json",
+  "new_profile_output": "not_created_in_M24_A",
+  "hardware_execution": false,
+  "physical_profile_refresh_status": "not_run",
+  "gold_profile_overwritten": false,
+  "revised_compensator_status": "offline_only",
+  "deployment_ready": false,
+  "go1_g1_blocked": true,
+  "claim_boundary": "design only; no hardware run; no refreshed profile; no compensation improvement claim"
+}
