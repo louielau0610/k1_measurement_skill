@@ -1,0 +1,89 @@
+{
+  "analysis_id": "m23c_k1_before_after_compensation_analysis",
+  "generated_at": "2026-06-12T04:40:20.513477+00:00",
+  "session_id": "m23b_k1_s2_executable_20260612_121605",
+  "session_dir": "data\\compensation_experiments\\m23b_k1\\m23b_k1_s2_executable_20260612_121605",
+  "surface": "S2_marble_floor",
+  "validation": {
+    "trial_count": 24,
+    "trial_record_count": 24,
+    "pair_count": 12,
+    "expected_pair_count": 12,
+    "desired_velocities_mps": [
+      0.4,
+      0.45,
+      0.5,
+      0.55
+    ],
+    "extraction_status_ok_count": 24,
+    "qc_overall_pass": true,
+    "qc_checks_passed": 16,
+    "qc_checks_total": 16,
+    "errors": [],
+    "passed": true
+  },
+  "aggregate_metrics": {
+    "mean_absolute_error_direct": 0.007916750000000014,
+    "mean_absolute_error_compensated": 0.04400400000000002,
+    "median_absolute_error_direct": 0.007916499999999993,
+    "median_absolute_error_compensated": 0.04791650000000003,
+    "max_absolute_error_direct": 0.009167000000000036,
+    "max_absolute_error_compensated": 0.05570000000000003,
+    "mean_improvement": -0.036087250000000015,
+    "median_improvement": -0.03958300000000001,
+    "percent_reduction_mean_absolute_error": -455.83414911421914,
+    "improved_pairs": 0,
+    "worsened_pairs": 12,
+    "no_change_pairs": 0,
+    "yaw_drift_mean_direct": 0.0,
+    "yaw_drift_mean_compensated": 0.0,
+    "yaw_drift_median_direct": 0.0,
+    "yaw_drift_median_compensated": 0.0,
+    "yaw_drift_mean_delta": 0.0,
+    "invalid_rate_direct": 0.0,
+    "invalid_rate_compensated": 0.0
+  },
+  "statistical_tests": {
+    "n_pairs": 12,
+    "scipy_available": true,
+    "paired_t_test": {
+      "test": "one-sample t-test on paired improvements vs 0",
+      "statistic": -9.980125605060309,
+      "p_value": 7.541405787610429e-07
+    },
+    "wilcoxon_signed_rank": {
+      "test": "Wilcoxon signed-rank on paired improvements vs 0",
+      "statistic": 0.0,
+      "p_value": 0.00048828125
+    },
+    "effect_size_cohen_dz": -2.881014102313923,
+    "notes": []
+  },
+  "claim_level": "negative_result_requires_compensator_revision",
+  "source_provenance": {
+    "session_id": "m23b_k1_s2_executable_20260612_121605",
+    "ingested_at": "2026-06-12T04:37:30.811966+00:00",
+    "source_archive_original_path": "C:/Users/86138/m23b_k1_compensation_results_m23b_k1_s2_executable_20260612_121605.tar.gz",
+    "source_archive_repo_copy": "data/compensation_experiments/m23b_k1/m23b_k1_s2_executable_20260612_121605/source_archive.tar.gz",
+    "source_archive_sha256": "D7D24FEDF10B12C9AEC9BDF12CD8C788DF0E88844633F3A9EDCDBBCA1A26B547",
+    "ingested_session_path": "data/compensation_experiments/m23b_k1/m23b_k1_s2_executable_20260612_121605",
+    "claim_boundary": "M23-C may analyze this K1 S2 before/after experiment only; no deployment readiness, navigation improvement, GO1/G1 validation, cross-platform validation, or universal K1 generalization claim."
+  },
+  "baseline_positioning": {
+    "physical_direct_baseline": "direct command condition from the executed M23-B session",
+    "physical_compensated_condition": "M22-C risk-aware inverse lookup command condition from the executed M23-B session",
+    "offline_only_baselines": [
+      "scalar gain",
+      "nearest lookup",
+      "ordinary interpolation"
+    ],
+    "offline_baseline_boundary": "Offline baselines are context only here; no physical scalar-gain, nearest-lookup, or ordinary-interpolation trials were executed in this session."
+  },
+  "claim_boundary": {
+    "deployment_ready": false,
+    "navigation_improvement_claimed": false,
+    "go1_g1_validation_claimed": false,
+    "cross_platform_validation_claimed": false,
+    "universal_k1_generalization_claimed": false
+  }
+}

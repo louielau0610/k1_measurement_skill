@@ -1,0 +1,78 @@
+{
+  "qc_time": "2026-06-12T04:27:02.778932+00:00",
+  "session_dir": "/home/booster/data/compensation_experiments/m23b_k1/m23b_k1_s2_executable_20260612_121605",
+  "overall_pass": true,
+  "checks_passed": 16,
+  "checks_total": 16,
+  "errors": [],
+  "warnings": [],
+  "checks": [
+    {
+      "check": "session_metadata",
+      "pass": true
+    },
+    {
+      "check": "trial_records",
+      "pass": true
+    },
+    {
+      "check": "record_field:trial_id",
+      "pass": true
+    },
+    {
+      "check": "record_field:pair_id",
+      "pass": true
+    },
+    {
+      "check": "record_field:condition",
+      "pass": true
+    },
+    {
+      "check": "record_field:desired_velocity_mps",
+      "pass": true
+    },
+    {
+      "check": "record_field:command_velocity_mps",
+      "pass": true
+    },
+    {
+      "check": "pair_completeness",
+      "pass": true,
+      "pair_count": 12
+    },
+    {
+      "check": "invalid_trial_reason",
+      "pass": true
+    },
+    {
+      "check": "state_logs",
+      "pass": true,
+      "csv_count": 24
+    },
+    {
+      "check": "extracted_results",
+      "pass": true
+    },
+    {
+      "check": "extraction:measured_actual_velocity_mps",
+      "pass": true
+    },
+    {
+      "check": "extraction:yaw_drift_deg",
+      "pass": true
+    },
+    {
+      "check": "extraction:absolute_tracking_error_mps",
+      "pass": true
+    },
+    {
+      "check": "no_command_velocity_copy",
+      "pass": true
+    },
+    {
+      "check": "no_physical_validation_claim",
+      "pass": true
+    }
+  ],
+  "disclaimer": "M23-B execution pack QC \u2014 not physical validation \u2014 no compensation improvement claim"
+}

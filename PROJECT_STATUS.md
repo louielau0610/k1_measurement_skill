@@ -153,6 +153,16 @@ Flags:
 
 **M23-A/M23-B Trial Plan Hotfix (2026-06-12)**: The pre-hotfix `m23a_trial_plan.csv` had blank `command_velocity_mps` values for compensated rows, so session `m23b_k1_s2_sync3_20260612_104753` is direct-baseline-only/debug and must not be treated as a complete before/after experiment. The generator now writes `m23a_executable_trial_plan.csv` with only complete direct/compensated pairs whose compensated commands come from M22-C and whose status is `ok` or `feasible_but_risky`. Formal M23-B execution must use the executable plan. This does not claim tracking improvement, physical validation, M23-C completion, or deployment readiness.
 
+## M23-C K1 Compensation Before/After Analysis
+
+M23-C ingests and analyzes the completed physical Booster K1 S2 marble session `m23b_k1_s2_executable_20260612_121605`. Robot-side extraction produced 24/24 trials with 0 errors, and robot-side QC passed 16/16 checks. The analysis found 12 complete direct/compensated pairs across desired velocities 0.40, 0.45, 0.50, and 0.55 m/s.
+
+Result: the current M22-C compensated commands worsened velocity tracking error relative to the direct command baseline on this single K1/S2 experiment. Mean direct absolute error was 0.00791675 m/s; mean compensated absolute error was 0.044004 m/s; all 12 pairs worsened. Mean yaw drift was 0.0 deg for both conditions.
+
+Claim level: `negative_result_requires_compensator_revision`.
+
+M23-C does NOT claim deployment readiness, navigation improvement, GO1/G1 validation, cross-platform physical validation, or universal K1 generalization. GO1/G1 remain future work, and the compensator must be revised before broader physical validation.
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

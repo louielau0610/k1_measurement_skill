@@ -1,0 +1,27 @@
+{
+  "session_id": "m23b_k1_s2_executable_20260612_121605",
+  "experiment_id": "m23b_k1_compensation",
+  "platform": "booster_k1",
+  "robot_model": "Booster K1",
+  "surface": "S2_marble_floor",
+  "trial_plan_source": "/home/booster/outputs/compensation_experiments/m23a_executable_trial_plan.csv",
+  "interface": "lo",
+  "split_process_required": true,
+  "permit_enabled": true,
+  "created_at": "2026-06-12T04:16:05.345702+00:00",
+  "physical_validation_status": "execution_in_progress",
+  "deployment_ready": false,
+  "timing": {
+    "idle_sec": 2.0,
+    "command_sec": 6.0,
+    "stop_sec": 2.0
+  },
+  "hotfix2_sync_logger_sdk_subprocess": true,
+  "logger_startup_sec": 0.5,
+  "sdk_python": "/usr/bin/python3",
+  "sdk_env_setup_provided": false,
+  "invalid_debug_sessions": [
+    "m23b_k1_s2_20260612_095811",
+    "failed_auto_subprocess_tests_before_hotfix2"
+  ]
+}

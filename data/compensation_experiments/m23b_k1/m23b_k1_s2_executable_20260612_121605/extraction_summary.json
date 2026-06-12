@@ -1,0 +1,9 @@
+{
+  "extraction_time": "2026-06-12T04:27:02.703474+00:00",
+  "session_dir": "/home/booster/data/compensation_experiments/m23b_k1/m23b_k1_s2_executable_20260612_121605",
+  "total_logs": 24,
+  "successfully_extracted": 24,
+  "extraction_errors": 0,
+  "extraction_method": "odometer_displacement_over_command_window",
+  "disclaimer": "M23-B execution pack \u2014 not physical validation \u2014 no compensation improvement claim"
+}

@@ -1,0 +1,9 @@
+{
+  "session_id": "m23b_k1_s2_executable_20260612_121605",
+  "ingested_at": "2026-06-12T04:37:30.811966+00:00",
+  "source_archive_original_path": "C:/Users/86138/m23b_k1_compensation_results_m23b_k1_s2_executable_20260612_121605.tar.gz",
+  "source_archive_repo_copy": "data/compensation_experiments/m23b_k1/m23b_k1_s2_executable_20260612_121605/source_archive.tar.gz",
+  "source_archive_sha256": "D7D24FEDF10B12C9AEC9BDF12CD8C788DF0E88844633F3A9EDCDBBCA1A26B547",
+  "ingested_session_path": "data/compensation_experiments/m23b_k1/m23b_k1_s2_executable_20260612_121605",
+  "claim_boundary": "M23-C may analyze this K1 S2 before/after experiment only; no deployment readiness, navigation improvement, GO1/G1 validation, cross-platform validation, or universal K1 generalization claim."
+}

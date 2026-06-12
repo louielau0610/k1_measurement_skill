@@ -1,0 +1,12 @@
+{
+  "trial_id": "M23A_S2_marble_floor_V045_dire_R3",
+  "command_velocity": 0.45,
+  "interface": "lo",
+  "sys_executable": "/usr/bin/python3",
+  "started_at": "2026-06-12T12:20:05",
+  "import_status": "ok",
+  "prepare_status": "ok",
+  "walking_status": "ok",
+  "exit_status": "ok",
+  "finished_at": "2026-06-12T12:20:21"
+}
