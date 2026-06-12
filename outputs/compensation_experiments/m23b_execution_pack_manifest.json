@@ -7,7 +7,8 @@
 
   "scripts_to_transfer": [
     "scripts/run_m23b_k1_compensation_trials.py",
-    "scripts/log_m23b_k1_compensation_trial.py"
+    "scripts/log_m23b_k1_compensation_trial.py",
+    "scripts/send_m23b_k1_velocity_command.py"
   ],
 
   "input_trial_plan": "outputs/compensation_experiments/m23a_trial_plan.csv",

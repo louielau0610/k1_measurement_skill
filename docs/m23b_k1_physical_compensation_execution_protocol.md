@@ -4,6 +4,14 @@
 **Physical validation**: `execution_pack_ready_not_run`
 **Deployment ready**: `false`
 
+## M23-B Hotfix: Auto SDK Subprocess (2026-06-12)
+
+**The original M23-B runner only printed SDK command instructions.** The operator had to manually send `Move(...)` in a separate terminal. This led to trials being recorded as `EXECUTED` even when the robot did not move.
+
+**The hotfix runner now automatically launches the SDK command subprocess** (`send_m23b_k1_velocity_command.py`). A trial is only marked `EXECUTED` if both the logger and SDK subprocesses exit with code 0.
+
+**Invalid session**: `m23b_k1_s2_20260612_095811` was run before this hotfix. It must NOT be treated as valid physical compensation data — early trials were marked executed while the robot did not move.
+
 ## Preflight Checklist
 
 Before moving the robot, verify:
@@ -51,12 +59,7 @@ python scripts/run_m23b_k1_compensation_trials.py \
   --session-id m23b_dry_check
 ```
 
-This prints the trial plan without moving hardware. Verify:
-- All 36 trials appear.
-- Direct and compensated conditions are correctly listed.
-- Pair IDs match expectations.
-
-### 2. Execute with Per-Trial Permit
+### 2. Execute with Auto Subprocesses (M23-B Hotfix)
 
 ```bash
 python scripts/run_m23b_k1_compensation_trials.py \
@@ -65,24 +68,12 @@ python scripts/run_m23b_k1_compensation_trials.py \
   --execute
 ```
 
-For each trial:
-1. Runner prints trial info (ID, pair, condition, desired velocity, command velocity).
-2. Runner prompts: `Execute this trial? [y/N]`
-3. Operator types `y` to proceed.
-4. **Start ROS2 logger** (separate terminal):
-   ```bash
-   python scripts/log_m23b_k1_compensation_trial.py \
-     --trial-id M23A_S2_marble_floor_V040_dire_R1 \
-     --pair-id M23A_S2_marble_floor_V040_P1 \
-     --condition direct \
-     --desired-velocity 0.40 \
-     --command-velocity 0.40 \
-     --output-dir data/compensation_experiments/m23b_k1/m23b_s2_marble_run1/state_logs/
-   ```
-5. **Send velocity command** via Booster SDK (separate terminal or script).
-6. Wait for trial duration (idle 2s + command 6s + stop 2s = 10s).
-7. Stop logger.
-8. Runner records trial outcome in `trial_records.csv` (append-only).
+**The runner now automatically launches both subprocesses per trial:**
+
+1. **ROS2 logger subprocess**: `log_m23b_k1_compensation_trial.py` — subscribes to `/odometer_state` and `/low_state`, writes per-trial CSV.
+2. **SDK command subprocess**: `send_m23b_k1_velocity_command.py` — connects via Booster SDK (`ChannelFactory` → `B1LocoClient`), enters `kPrepare` → `kWalking`, sends `Move(vx, 0, 0)` at 10 Hz for the command phase, then zero velocity for stop.
+
+Both subprocesses run concurrently. The runner waits for the SDK subprocess (which controls timing), then waits for the logger (which should complete shortly after).
 
 ### Per-Trial Permit Behavior
 

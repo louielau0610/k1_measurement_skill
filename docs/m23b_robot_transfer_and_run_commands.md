@@ -23,6 +23,9 @@ scp scripts/run_m23b_k1_compensation_trials.py robot@${K1_IP}:~/k1_measurement_s
 # Transfer logger script
 scp scripts/log_m23b_k1_compensation_trial.py robot@${K1_IP}:~/k1_measurement_skill/scripts/
 
+# Transfer SDK command script (M23-B hotfix)
+scp scripts/send_m23b_k1_velocity_command.py robot@${K1_IP}:~/k1_measurement_skill/scripts/
+
 # Transfer trial plan
 scp outputs/compensation_experiments/m23a_trial_plan.csv robot@${K1_IP}:~/k1_measurement_skill/outputs/compensation_experiments/
 ```

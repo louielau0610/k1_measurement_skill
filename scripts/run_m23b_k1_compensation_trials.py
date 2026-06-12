@@ -1,8 +1,13 @@
 """Run M23-B K1 physical compensation trials.
 
 Robot-side runner for the M23-A trial plan. Requires --execute for hardware
-movement. Preserves split-process architecture: ROS2 logger in separate
-terminal from SDK command process.
+movement. Preserves split-process architecture by launching separate
+subprocesses for:
+  1. ROS2 state logger (log_m23b_k1_compensation_trial.py)
+  2. Booster SDK command (send_m23b_k1_velocity_command.py)
+
+The runner itself does NOT import rclpy or Booster SDK — it only orchestrates
+subprocesses. This ensures rclpy and Booster SDK never share a runtime.
 
 Default: dry-run only. No hardware movement.
 
@@ -12,12 +17,18 @@ Usage (dry-run):
 Usage (execute):
   python scripts/run_m23b_k1_compensation_trials.py \\
     --surface S2_marble_floor --session-id m23b_s2_run1 --execute
+
+NOTE: Sessions run before the M23-B hotfix (auto SDK subprocess) that relied
+on manual operator SDK commands should NOT be treated as valid physical
+compensation data. The runner now requires the SDK subprocess to succeed
+before marking a trial as executed.
 """
 from __future__ import annotations
 
 import argparse
 import csv
 import json
+import subprocess
 import sys
 import time
 from datetime import datetime, timezone
@@ -41,6 +52,10 @@ TRIAL_RECORD_FIELDS = [
 IDLE_SEC = 2.0
 COMMAND_SEC = 6.0
 STOP_SEC = 2.0
+
+# Subprocess script paths (relative to ROOT)
+LOGGER_SCRIPT = "scripts/log_m23b_k1_compensation_trial.py"
+SDK_SCRIPT = "scripts/send_m23b_k1_velocity_command.py"
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -120,8 +135,12 @@ def main(argv: list[str] | None = None) -> int:
     print(f"  Trials:   {len(trials)}")
     print(f"  Permit:   {'enabled' if permit else 'DISABLED'}")
     print(f"  Output:   {session_dir}")
-    print(f"  SPLIT-PROCESS: ROS2 logger in separate terminal")
+    print(f"  SPLIT-PROCESS: Auto-launching ROS2 logger + SDK command subprocesses")
+    print(f"  SDK interface: {args.interface}")
     print(f"{'='*60}\n")
+
+    logger_py = str(ROOT / LOGGER_SCRIPT)
+    sdk_py = str(ROOT / SDK_SCRIPT)
 
     for i, trial in enumerate(trials, 1):
         tid = trial["trial_id"]
@@ -141,7 +160,7 @@ def main(argv: list[str] | None = None) -> int:
         # Skip if compensator declared infeasible
         comp_status = trial.get("compensator_status", "")
         if cond == "compensated" and comp_status not in ("ok", "feasible_but_risky"):
-            print(f"    → SKIPPED: compensator returned {comp_status}")
+            print(f"    -> SKIPPED: compensator returned {comp_status}")
             _append_record(trial_records_path, tid, pid, session_id, args.surface,
                           v_desired, cond, v_cmd, str(state_log_path),
                           "false", f"infeasible_compensation:{comp_status}", "skipped")
@@ -150,7 +169,8 @@ def main(argv: list[str] | None = None) -> int:
 
         # Skip if state log exists
         if args.skip_existing and state_log_path.exists():
-            print(f"    → SKIPPED: state log already exists")
+            print(f"    -> SKIPPED: state log already exists")
+            skipped += 1
             continue
 
         # Per-trial permit
@@ -161,37 +181,79 @@ def main(argv: list[str] | None = None) -> int:
                               v_desired, cond, v_cmd, str(state_log_path),
                               "false", "operator_skipped", "skipped")
                 skipped += 1
-                print("    → SKIPPED by operator.")
+                print("    -> SKIPPED by operator.")
                 continue
 
-        # SPLIT-PROCESS: prompt operator to start ROS2 logger
-        print(f"    [SPLIT-PROCESS] Start ROS2 logger in SEPARATE terminal:")
-        print(f"      source /opt/booster/BoosterRos2Interface/install/setup.bash")
-        print(f"      python scripts/log_m23b_k1_compensation_trial.py \\")
-        print(f"        --trial-id {tid} --pair-id {pid} --condition {cond} \\")
-        print(f"        --desired-velocity {v_desired} --command-velocity {v_cmd or 0} \\")
-        print(f"        --output-dir {state_log_dir}")
+        # --- Launch split-process subprocesses ---
+        if v_cmd is None or v_cmd <= 0:
+            print(f"    -> SKIPPED: invalid command velocity {v_cmd}")
+            _append_record(trial_records_path, tid, pid, session_id, args.surface,
+                          v_desired, cond, v_cmd, str(state_log_path),
+                          "false", f"invalid_command_velocity:{v_cmd}", "skipped")
+            skipped += 1
+            continue
 
-        if permit:
-            input("    Press Enter after starting the ROS2 logger...")
+        # 1. Launch ROS2 logger subprocess
+        logger_cmd = [
+            sys.executable, logger_py,
+            "--trial-id", tid,
+            "--pair-id", pid,
+            "--condition", cond,
+            "--desired-velocity", str(v_desired),
+            "--command-velocity", str(v_cmd),
+            "--output-dir", str(state_log_dir),
+        ]
+        print(f"    [LOGGER] Launching: {' '.join(logger_cmd)}")
+        logger_proc = subprocess.Popen(logger_cmd)
+        time.sleep(0.5)  # Brief delay to let logger start
 
-        # SPLIT-PROCESS: prompt operator to send SDK command
-        print(f"    [SPLIT-PROCESS] Send velocity command via Booster SDK (separate terminal):")
-        if v_cmd is not None and v_cmd > 0:
-            print(f"      kPrepare → kWalking → Move({v_cmd:.3f}, 0, 0)")
-            print(f"      Duration: {IDLE_SEC}s idle + {COMMAND_SEC}s command + {STOP_SEC}s stop")
+        # 2. Launch SDK command subprocess
+        sdk_cmd = [
+            sys.executable, sdk_py,
+            "--trial-id", tid,
+            "--command-velocity", str(v_cmd),
+            "--interface", args.interface,
+            "--idle-sec", str(IDLE_SEC),
+            "--command-sec", str(COMMAND_SEC),
+            "--stop-sec", str(STOP_SEC),
+            "--log-dir", str(state_log_dir),
+        ]
+        print(f"    [SDK]    Launching: {' '.join(sdk_cmd)}")
+        sdk_proc = subprocess.Popen(sdk_cmd)
+
+        # 3. Wait for SDK command to finish (it controls timing)
+        print(f"    Waiting for SDK command subprocess...")
+        sdk_rc = sdk_proc.wait(timeout=30)
+        print(f"    [SDK]    Exit code: {sdk_rc}")
+
+        # 4. Wait for logger to finish (should complete shortly after SDK)
+        try:
+            logger_rc = logger_proc.wait(timeout=10)
+        except subprocess.TimeoutExpired:
+            logger_proc.kill()
+            logger_rc = -1
+            print(f"    [LOGGER] Timed out, killed.")
+        print(f"    [LOGGER] Exit code: {logger_rc}")
+
+        # 5. Record trial outcome based on subprocess results
+        if sdk_rc != 0:
+            _append_record(trial_records_path, tid, pid, session_id, args.surface,
+                          v_desired, cond, v_cmd, str(state_log_path),
+                          "false", f"sdk_subprocess_failed_rc={sdk_rc}", "sdk_failed")
+            invalid += 1
+            print(f"    -> INVALID: SDK subprocess failed (rc={sdk_rc})")
+        elif logger_rc != 0:
+            _append_record(trial_records_path, tid, pid, session_id, args.surface,
+                          v_desired, cond, v_cmd, str(state_log_path),
+                          "false", f"logger_subprocess_failed_rc={logger_rc}", "logger_failed")
+            invalid += 1
+            print(f"    -> INVALID: Logger subprocess failed (rc={logger_rc})")
         else:
-            print(f"      WARNING: command velocity is {v_cmd}. Operator must handle manually.")
-
-        if permit:
-            input("    Press Enter after trial duration completes...")
-
-        # Record successful execution
-        _append_record(trial_records_path, tid, pid, session_id, args.surface,
-                      v_desired, cond, v_cmd, str(state_log_path),
-                      "true", "", "executed")
-        executed += 1
-        print(f"    → EXECUTED.")
+            _append_record(trial_records_path, tid, pid, session_id, args.surface,
+                          v_desired, cond, v_cmd, str(state_log_path),
+                          "true", "", "executed")
+            executed += 1
+            print(f"    -> EXECUTED (logger={logger_rc}, sdk={sdk_rc})")
 
     summary = {
         "total": len(trials), "executed": executed,

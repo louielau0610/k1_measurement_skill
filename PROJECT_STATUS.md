@@ -147,6 +147,8 @@ Flags:
 - `k1_compensation_validated=false`
 - `next_milestone=M23-C K1 compensation before/after analysis`
 
+**M23-B Hotfix (2026-06-12)**: Runner now auto-launches SDK command subprocess (`send_m23b_k1_velocity_command.py`) instead of printing manual instructions. Trials only marked executed if both logger and SDK subprocesses succeed. Session `m23b_k1_s2_20260612_095811` (pre-hotfix) is invalid debug data.
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

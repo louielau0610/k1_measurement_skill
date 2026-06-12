@@ -9,8 +9,9 @@
 
 | Script | Purpose |
 |--------|---------|
-| `scripts/run_m23b_k1_compensation_trials.py` | Trial runner — dry-run/execute, split-process prompts, append-only records |
+| `scripts/run_m23b_k1_compensation_trials.py` | Trial runner — dry-run/execute, auto-launches logger + SDK subprocesses |
 | `scripts/log_m23b_k1_compensation_trial.py` | ROS2 state logger — subscribes to `/odometer_state`, `/low_state` |
+| `scripts/send_m23b_k1_velocity_command.py` | Booster SDK command — `kPrepare` → `kWalking` → `Move(vx,0,0)` at 10 Hz |
 
 ### Input Trial Plan
 
