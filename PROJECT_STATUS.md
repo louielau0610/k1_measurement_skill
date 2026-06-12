@@ -122,6 +122,31 @@ Flags:
 - `k1_compensation_validated=false`
 - `next_milestone=M23-B K1 physical compensation execution`
 
+## M23-B K1 Physical Compensation Execution Pack
+
+M23-B creates the physical execution package for running the M23-A trial plan on Booster K1. It includes:
+
+- **Execution protocol**: `docs/m23b_k1_physical_compensation_execution_protocol.md` — preflight, setup, trial execution, stop procedure, battery handling.
+- **Trial runner**: `scripts/run_m23b_k1_compensation_trials.py` — dry-run default, `--execute` flag, per-trial permit, split-process prompts, append-only records, resume support.
+- **ROS2 logger**: `scripts/log_m23b_k1_compensation_trial.py` — subscribes to `/odometer_state` and `/low_state`, writes per-trial state CSVs with pair_id and condition.
+- **Extraction wrapper**: `scripts/extract_m23b_k1_compensation_trials.py` — extracts velocity and yaw drift, preserves pair_id/condition.
+- **QC wrapper**: `scripts/qc_m23b_k1_compensation_session.py` — checks pair completeness, field presence, no command copy, no premature physical validation claim.
+- **Manifest**: `outputs/compensation_experiments/m23b_execution_pack_manifest.json` + `.md`
+- **Transfer guide**: `docs/m23b_robot_transfer_and_run_commands.md`
+
+M23-B does NOT:
+- Execute hardware in the repository
+- Fabricate physical results
+- Claim tracking improvement
+- Claim deployment readiness
+- Claim GO1/G1 validation
+
+Flags:
+- `physical_validation_status=execution_pack_ready_not_run`
+- `deployment_ready=false`
+- `k1_compensation_validated=false`
+- `next_milestone=M23-C K1 compensation before/after analysis`
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

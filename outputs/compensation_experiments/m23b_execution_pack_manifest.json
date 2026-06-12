@@ -1,0 +1,60 @@
+{
+  "pack_name": "m23b_k1_physical_compensation_execution_pack",
+  "pack_version": "m23b_v1.0",
+  "created_at": "2026-06-12",
+  "physical_validation_status": "execution_pack_ready_not_run",
+  "deployment_ready": false,
+
+  "scripts_to_transfer": [
+    "scripts/run_m23b_k1_compensation_trials.py",
+    "scripts/log_m23b_k1_compensation_trial.py"
+  ],
+
+  "input_trial_plan": "outputs/compensation_experiments/m23a_trial_plan.csv",
+
+  "expected_robot_output_paths": {
+    "session_base": "data/compensation_experiments/m23b_k1/<session_id>/",
+    "session_metadata": "session_metadata.json",
+    "trial_records": "trial_records.csv",
+    "state_logs": "state_logs/",
+    "extracted_results": "extracted_results.csv",
+    "extraction_summary": "extraction_summary.json",
+    "extraction_report": "extraction_report.md",
+    "qc_summary": "qc_summary.json"
+  },
+
+  "extraction_command": "python scripts/extract_m23b_k1_compensation_trials.py --session-dir data/compensation_experiments/m23b_k1/<session_id>/",
+  "qc_command": "python scripts/qc_m23b_k1_compensation_session.py --session-dir data/compensation_experiments/m23b_k1/<session_id>/",
+
+  "robot_requirements": {
+    "platform": "booster_k1",
+    "ros2_setup": "source /opt/booster/BoosterRos2Interface/install/setup.bash",
+    "state_sources": ["/odometer_state", "/low_state"],
+    "split_process_required": true,
+    "command_path": "kPrepare → kWalking → Move(vx, 0, 0)"
+  },
+
+  "safety": {
+    "dry_run_default": true,
+    "execute_requires_flag": true,
+    "per_trial_permit_default": true,
+    "split_process_enforced": true
+  },
+
+  "claim_boundary": {
+    "physical_trials_executed": false,
+    "tracking_improvement_claimed": false,
+    "compensation_validated": false,
+    "deployment_ready": false,
+    "go1_g1_included": false,
+    "next_phase": "m23c_before_after_analysis"
+  },
+
+  "limitations": [
+    "execution pack only — no physical results included",
+    "requires operator on physical Booster K1 robot",
+    "ROS2 logger mock used for offline testing",
+    "SDK command path not automated (operator-managed)",
+    "no real-time compensation loop"
+  ]
+}
