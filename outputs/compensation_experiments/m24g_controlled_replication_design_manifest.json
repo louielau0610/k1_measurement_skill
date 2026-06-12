@@ -1,0 +1,24 @@
+{
+  "milestone": "M24-G",
+  "manifest_json": "outputs\\compensation_experiments\\m24g_controlled_replication_design_manifest.json",
+  "manifest_markdown": "outputs\\compensation_experiments\\m24g_controlled_replication_design_manifest.md",
+  "planned_surface": "S2_marble_floor",
+  "planned_condition": "direct_refresh_controlled",
+  "planned_velocities_mps": [
+    0.4,
+    0.45,
+    0.5,
+    0.55
+  ],
+  "optional_extension_velocities_mps": [
+    0.35,
+    0.6
+  ],
+  "planned_repeats_per_velocity": 5,
+  "planned_core_trial_count": 20,
+  "physical_run_status": "not_run",
+  "profile_adoption_status": "not_adopted",
+  "gold_profile_overwritten": false,
+  "deployment_ready": false,
+  "go1_g1_blocked": true
+}

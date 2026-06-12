@@ -377,6 +377,33 @@ Flags:
 - `go1_g1_blocked=true`
 - `next_milestone=review_corrected_extraction_and_collect_or_compare_controlled_replication_before_profile_adoption`
 
+## M24-G Controlled S2 Replication Design
+
+M24-G designs a controlled S2 direct-response replication after the M24-F corrected extraction remained inconclusive. It is a design-only milestone.
+
+Scope:
+
+- surface: `S2_marble_floor`
+- condition: `direct_refresh_controlled`
+- core velocities: 0.40, 0.45, 0.50, and 0.55 m/s
+- repeats: 5 per core velocity
+- planned core trial count: 20
+- compensated commands: none
+
+M24-G creates the controlled replication design document, physical protocol, metadata schema, trial plan, later-analysis plan, claim boundary, and design manifest. The corrected M24-F candidate profile remains not adopted. The K1 gold profile remains unchanged. The revised compensator remains offline-only. Compensation validation remains blocked until controlled replication data exist and pass later analysis.
+
+Flags:
+
+- `physical_run_status=not_run`
+- `new_physical_data=false`
+- `profile_adoption_status=not_adopted`
+- `gold_profile_overwritten=false`
+- `revised_compensator_status=offline_only`
+- `compensation_validation_status=blocked_pending_controlled_replication`
+- `deployment_ready=false`
+- `go1_g1_blocked=true`
+- `next_milestone=M24-H controlled S2 direct-response replication execution pack`
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

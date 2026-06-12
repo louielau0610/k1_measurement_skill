@@ -1,0 +1,36 @@
+{
+  "milestone": "M24-G",
+  "generated_at": "2026-06-12T08:27:46.903085+00:00",
+  "status": "controlled_s2_replication_design_only",
+  "platform": "booster_k1",
+  "planned_surface": "S2_marble_floor",
+  "planned_condition": "direct_refresh_controlled",
+  "core_velocities_mps": [
+    0.4,
+    0.45,
+    0.5,
+    0.55
+  ],
+  "extension_velocities_mps": [
+    0.35,
+    0.6
+  ],
+  "extension_velocities_included": false,
+  "core_repeats_per_velocity": 5,
+  "extension_repeats_per_velocity": 3,
+  "planned_core_trial_count": 20,
+  "planned_extension_trial_count": 0,
+  "planned_total_trial_count": 20,
+  "trial_plan_csv": "outputs\\compensation_experiments\\m24g_controlled_s2_replication_plan.csv",
+  "compensated_command_rows": 0,
+  "physical_run_status": "not_run",
+  "new_physical_data": false,
+  "profile_adoption_status": "not_adopted",
+  "m24f_candidate_profile_adopted": false,
+  "gold_profile_overwritten": false,
+  "revised_compensator_status": "offline_only",
+  "compensation_validation_status": "blocked_pending_controlled_replication",
+  "deployment_ready": false,
+  "go1_g1_blocked": true,
+  "claim_boundary": "design only; no hardware run; no physical results; no profile adoption; no compensation improvement claim"
+}
