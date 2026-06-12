@@ -1,0 +1,36 @@
+{
+  "audit_id": "m24d_response_consistency_audit",
+  "generated_at": "2026-06-12T07:34:00.413286+00:00",
+  "overlapping_velocity_set": [
+    0.4,
+    0.45,
+    0.5
+  ],
+  "overlap_count": 3,
+  "mean_abs_diff_m19c_vs_m23c": 0.075986,
+  "mean_abs_diff_m19c_vs_m24c": 0.497642,
+  "mean_abs_diff_m23c_vs_m24c": 0.441389,
+  "discrepancy_pattern": "systematic_m24c_near_zero_nonreproduction",
+  "m23c_closer_to_m19c_count": 3,
+  "m24c_near_optimal_count": 0,
+  "measurement_assumption_unknown_count": 2,
+  "diagnosis_labels": [
+    "environment_dependent_response",
+    "profile_staleness_possible",
+    "m23c_direct_response_not_reproduced",
+    "candidate_profile_not_adoption_ready",
+    "controlled_replication_required",
+    "extraction_method_audit_required",
+    "operator_reset_or_path_effect_possible",
+    "robot_state_or_warmup_effect_possible"
+  ],
+  "profile_adoption_decision": "investigate_extraction_before_profile_decision",
+  "candidate_profile_adopted": false,
+  "gold_profile_overwritten": false,
+  "revised_compensator_status": "offline_only",
+  "second_compensation_validation_blocked": true,
+  "deployment_ready": false,
+  "go1_g1_blocked": true,
+  "m24c_profile_status_decision": "inconclusive_environment_dependent",
+  "claim_boundary": "Offline consistency audit only; no hardware execution, profile overwrite, compensation improvement, deployment, or GO1/G1 claim."
+}

@@ -288,6 +288,36 @@ Flags:
 - `go1_g1_blocked=true`
 - `next_milestone=collect_more_controlled_s2_refresh_data_or_diagnose_m24b_near_zero_extraction`
 
+## M24-D Response Consistency Audit
+
+M24-D audits the disagreement among M19C, M23-C direct response, and M24-C S2 refresh. It is offline analysis only.
+
+Audit result:
+
+- three-way overlapping velocities: 0.40, 0.45, and 0.50 m/s
+- mean absolute difference M19C vs M23-C: 0.075986 m/s
+- mean absolute difference M19C vs M24-C: 0.497642 m/s
+- mean absolute difference M23-C vs M24-C: 0.441389 m/s
+- M23-C closer to M19C than M24-C: 3/3 overlap velocities
+- M24-C direct near-optimal count: 0/3 overlap velocities
+- discrepancy pattern: `systematic_m24c_near_zero_nonreproduction`
+
+Diagnosis labels include `environment_dependent_response`, `profile_staleness_possible`, `m23c_direct_response_not_reproduced`, `candidate_profile_not_adoption_ready`, `controlled_replication_required`, `extraction_method_audit_required`, `operator_reset_or_path_effect_possible`, and `robot_state_or_warmup_effect_possible`.
+
+Profile adoption decision: `investigate_extraction_before_profile_decision`.
+
+M24-D does NOT adopt the M24-C candidate profile, overwrite `k1_gold_profile_v1`, claim compensation improvement, claim revised compensator physical validation, claim deployment readiness, or start GO1/G1 work. Second compensation validation remains blocked.
+
+Flags:
+
+- `candidate_profile_adopted=false`
+- `gold_profile_overwritten=false`
+- `revised_compensator_status=offline_only`
+- `second_compensation_validation_blocked=true`
+- `deployment_ready=false`
+- `go1_g1_blocked=true`
+- `next_milestone=extraction_audit_or_controlled_s2_direct_replication`
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

@@ -64,9 +64,11 @@
 - [x] M24-A S2 current-condition profile refresh design.
 - [x] M24-B S2 profile refresh execution pack.
 - [x] M24-C analyze clean S2 profile refresh results.
+- [x] M24-D response consistency audit and profile adoption boundary.
 - [ ] Run M24-B direct-only S2 current-condition profile refresh on Booster K1.
 - [x] Analyze M24-C old-vs-current S2 profile mismatch before any new compensation validation.
 - [ ] Collect more controlled S2 refresh data or diagnose M24-B near-zero extracted velocity before compensation validation.
+- [ ] Audit M24-B/M24-C extraction and odometer source before adopting any current S2 profile.
 - [ ] Revise M22-C compensator policy after M23-C negative physical result.
 - [ ] Run SDK state discovery on the physical K1 shell with Booster SDK sourced.
 - [ ] Source `/opt/booster/BoosterRos2Interface/install/setup.bash` on K1 and run ROS2 odometer standing smoke logger.
@@ -122,6 +124,7 @@
 - [ ] Do not run a second K1 compensation experiment before the S2 current-condition profile refresh is analyzed.
 - [ ] Do not treat M24-B execution-pack readiness as a completed physical profile refresh.
 - [ ] Do not treat `m24c_s2_current_profile_candidate.json` as an adopted gold profile.
+- [ ] Do not run a second compensation validation while M24-D adoption decision is `investigate_extraction_before_profile_decision`.
 - [ ] Do not claim publication readiness from M13-P1 artifacts.
 - [ ] Do not claim novelty from P1 seed literature search alone.
 - [ ] Do not claim novelty or performance superiority from P2 positioning alone.
