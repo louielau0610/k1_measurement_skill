@@ -1,0 +1,40 @@
+{
+  "analysis_id": "m24f_corrected_s2_profile_refresh",
+  "generated_at": "2026-06-12T08:13:29.648577+00:00",
+  "session_id": "m24b_s2_profile_refresh_clean_20260612_145358",
+  "corrected_extraction_trial_count": 30,
+  "corrected_qc_pass": true,
+  "velocity_group_count": 6,
+  "repeats_per_velocity": {
+    "0.35": 5,
+    "0.40": 5,
+    "0.45": 5,
+    "0.50": 5,
+    "0.55": 5,
+    "0.60": 5
+  },
+  "old_profile_available_count": 5,
+  "profile_mismatch_count": 5,
+  "m23c_overlap_count": 4,
+  "m24f_matches_m23c_count": 0,
+  "corrected_profile_decision": "corrected_analysis_inconclusive",
+  "allowed_decisions": [
+    "corrected_analysis_inconclusive",
+    "corrected_extraction_failed",
+    "old_profile_confirmed_current_after_correction",
+    "old_profile_stale_current_s2_profile_needed_after_correction"
+  ],
+  "corrected_candidate_profile_path": "outputs/compensation_experiments/m24f_corrected_s2_current_profile_candidate.json",
+  "m24c_artifacts_superseded": true,
+  "gold_profile_overwritten": false,
+  "candidate_profile_adopted": false,
+  "compensation_improvement_claimed": false,
+  "deployment_ready": false,
+  "go1_g1_blocked": true,
+  "thresholds": {
+    "profile_mismatch_threshold_mps": 0.03,
+    "m23c_consistency_threshold_mps": 0.03,
+    "near_optimal_threshold_mps": 0.02
+  },
+  "next_recommended_milestone": "review corrected extraction and collect/compare controlled replication before profile adoption"
+}

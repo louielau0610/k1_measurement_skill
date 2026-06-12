@@ -350,6 +350,33 @@ Flags:
 - `deployment_ready=false`
 - `go1_g1_blocked=true`
 
+## M24-F Corrected S2 Profile Extraction
+
+M24-F corrects the clean M24-B S2 profile-refresh extraction after M24-E found the M24-B/M24-C extraction method faulty. It is offline analysis of existing robot logs only.
+
+Key results:
+
+- Corrected session: `m24b_s2_profile_refresh_clean_20260612_145358`
+- Corrected trial count: 30
+- Velocity groups: 6
+- Repeats per velocity: 5
+- Corrected QC pass: true
+- Corrected profile decision: `corrected_analysis_inconclusive`
+- M24-C artifacts superseded: true
+- Corrected candidate profile: `outputs/compensation_experiments/m24f_corrected_s2_current_profile_candidate.json`
+
+M24-F does NOT execute hardware, fabricate physical results, overwrite `k1_gold_profile_v1`, adopt the corrected candidate profile, claim compensation improvement, claim deployment readiness, or start GO1/G1 work. M24-C artifacts are retained for traceability but should be treated as superseded by corrected M24-F extraction.
+
+Flags:
+
+- `m24c_artifacts_superseded=true`
+- `gold_profile_overwritten=false`
+- `candidate_profile_adopted=false`
+- `compensation_improvement_claimed=false`
+- `deployment_ready=false`
+- `go1_g1_blocked=true`
+- `next_milestone=review_corrected_extraction_and_collect_or_compare_controlled_replication_before_profile_adoption`
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

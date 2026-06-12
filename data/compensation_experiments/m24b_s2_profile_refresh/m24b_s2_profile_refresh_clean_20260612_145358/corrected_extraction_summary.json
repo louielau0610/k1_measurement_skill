@@ -1,0 +1,19 @@
+{
+  "extracted_at": "2026-06-12T08:05:21.785517+00:00",
+  "session_id": "m24b_s2_profile_refresh_clean_20260612_145358",
+  "session_dir": "data\\compensation_experiments\\m24b_s2_profile_refresh\\m24b_s2_profile_refresh_clean_20260612_145358",
+  "method": "command_phase_forward_projection_trimmed",
+  "idle_sec": 2.0,
+  "command_sec": 6.0,
+  "trim_sec": 1.0,
+  "window_start_sec": 3.0,
+  "window_end_sec": 7.0,
+  "corrected_extracted_count": 30,
+  "invalid_count": 0,
+  "invalid_trial_ids": [],
+  "original_faulty_extraction_used": false,
+  "gold_profile_overwritten": false,
+  "deployment_ready": false,
+  "go1_g1_blocked": true,
+  "claim_boundary": "corrected extraction only; no profile adoption or compensation improvement claim"
+}

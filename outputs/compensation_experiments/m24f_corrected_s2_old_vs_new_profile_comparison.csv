@@ -1,0 +1,7 @@
+command_velocity_mps,old_m19c_s2_mean_actual_velocity_mps,new_m24f_mean_actual_velocity_mps,absolute_difference_mps,profile_mismatch_flag,old_profile_available,comparison_status
+0.35,0.354026,0.002785,0.351241,True,True,compared
+0.4,0.363734,0.011353,0.352381,True,True,compared
+0.45,0.498215,0.039635,0.45858,True,True,compared
+0.5,0.63431,0.029037,0.605273,True,True,compared
+0.55,,0.049154,,,False,old_velocity_unavailable
+0.6,0.644957,0.082856,0.562101,True,True,compared

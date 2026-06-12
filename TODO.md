@@ -66,6 +66,7 @@
 - [x] M24-C analyze clean S2 profile refresh results.
 - [x] M24-D response consistency audit and profile adoption boundary.
 - [x] M24-E extraction method audit and raw log reanalysis.
+- [x] M24-F correct S2 profile extraction and rerun corrected analysis.
 - [ ] Run M24-B direct-only S2 current-condition profile refresh on Booster K1.
 - [x] Analyze M24-C old-vs-current S2 profile mismatch before any new compensation validation.
 - [ ] Collect more controlled S2 refresh data or diagnose M24-B near-zero extracted velocity before compensation validation.
@@ -126,6 +127,7 @@
 - [ ] Do not treat M24-B execution-pack readiness as a completed physical profile refresh.
 - [ ] Do not treat `m24c_s2_current_profile_candidate.json` as an adopted gold profile.
 - [ ] Do not run a second compensation validation while M24-D adoption decision is `investigate_extraction_before_profile_decision`.
+- [ ] Do not treat M24-F corrected candidate profile as adopted or deployment-ready.
 - [ ] Do not claim publication readiness from M13-P1 artifacts.
 - [ ] Do not claim novelty from P1 seed literature search alone.
 - [ ] Do not claim novelty or performance superiority from P2 positioning alone.

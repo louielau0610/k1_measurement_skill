@@ -1,0 +1,9 @@
+{
+  "superseded_milestone": "M24-C",
+  "superseded_candidate_profile": "outputs/compensation_experiments/m24c_s2_current_profile_candidate.json",
+  "reason": "M24-C decision and candidate profile were based on faulty extraction.",
+  "m24c_artifacts_retained_for_traceability": true,
+  "use_instead": "outputs/compensation_experiments/m24f_corrected_s2_profile_refresh_summary.json",
+  "m24f_corrected_candidate_profile": "outputs/compensation_experiments/m24f_corrected_s2_current_profile_candidate.json",
+  "gold_profile_overwritten": false
+}
