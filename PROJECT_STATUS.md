@@ -192,6 +192,21 @@ Offline sweep result on the M23-C S2 velocities:
 
 M23-E does NOT run hardware, claim physical validation, claim tracking improvement, claim deployment readiness, or start GO1/G1 work. K1 physical revalidation is still required before any broader claim.
 
+## M23-F Revised Offline Audit
+
+M23-F audits the M23-E revised offline compensator against the M23-C negative physical result. It is offline audit and readiness assessment only.
+
+Audit result:
+
+- harmful M23-C commands avoided: 4/4 tested target velocities
+- identity fallback count: 4/4
+- profile mismatch suspected count: 4/4
+- readiness category: `ready_for_profile_refresh_before_validation`
+- physical validation remains `not_started`
+- `deployment_ready=false`
+
+Recommendation: refresh or confirm the S2 response profile before another selected-compensation experiment, then run a second K1 validation focused first on identity-fallback non-worsening for the same S2 velocities. M23-F does not claim physical improvement, deployment readiness, navigation improvement, GO1/G1 validation, or cross-platform validation.
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

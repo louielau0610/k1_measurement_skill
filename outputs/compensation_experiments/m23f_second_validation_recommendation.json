@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-06-12T05:24:49.269621+00:00",
+  "readiness_category": "ready_for_profile_refresh_before_validation",
+  "should_rerun_same_s2_velocities": true,
+  "same_s2_velocity_reason": "Use the same M23-C velocities to verify that revised identity fallback does not repeat the negative result.",
+  "validate_identity_non_worsening": true,
+  "refresh_s2_profile_before_compensation_experiment": true,
+  "profile_refresh_steps": [
+    "rerun a small S2 direct-response measurement set",
+    "compare current direct response to the M19C gold profile",
+    "write a versioned refreshed profile if mismatch is confirmed",
+    "do not overwrite k1_gold_profile_v1.json in place"
+  ],
+  "choose_different_surface": "optional_after_profile_refresh",
+  "different_surface_reason": "A surface with larger direct tracking error may be better for testing selected compensation, but K1 S2 identity fallback should be revalidated first.",
+  "deadzone_low_speed_targets": "remain_excluded",
+  "deadzone_reason": "Low-speed deadzone targets were outside executable compensated validation and should not be forced into a second validation.",
+  "physical_validation_status": "not_started",
+  "deployment_ready": false,
+  "go1_g1_blocked": true,
+  "claim_boundary": "recommendation only; no physical improvement, deployment, navigation, or GO1/G1 claim"
+}
