@@ -124,3 +124,35 @@ tar -czf m23b_results.tar.gz data/compensation_experiments/m23b_k1/m23b_s2_marbl
 ## Claim Boundary
 
 These are **execution instructions only**. No physical results are included in this pack. M23-C will analyze collected data after robot execution.
+## Hotfix2 Notes
+
+The runner now synchronizes subprocesses automatically:
+
+1. logger first;
+2. `--logger-startup-sec` delay, default `0.5`;
+3. SDK command subprocess while logger is still running;
+4. executed only if both subprocesses return `0`.
+
+SDK environment overrides:
+
+```bash
+python scripts/run_m23b_k1_compensation_trials.py \
+  --surface S2_marble_floor \
+  --session-id m23b_s2_marble_run1 \
+  --execute \
+  --sdk-python /path/to/python-that-imports-sdk
+```
+
+```bash
+python scripts/run_m23b_k1_compensation_trials.py \
+  --surface S2_marble_floor \
+  --session-id m23b_s2_marble_run1 \
+  --execute \
+  --sdk-python python3 \
+  --sdk-env-setup "source /some/sdk/setup.bash"
+```
+
+Manual two-terminal testing confirmed the split-process architecture is valid, but these sessions remain invalid/debug and must not be used for M23-C:
+
+- `m23b_k1_s2_20260612_095811`
+- failed auto-subprocess sessions before hotfix2

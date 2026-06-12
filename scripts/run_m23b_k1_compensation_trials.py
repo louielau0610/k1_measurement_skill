@@ -28,6 +28,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import shlex
 import subprocess
 import sys
 import time
@@ -72,6 +73,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--skip-existing", action="store_true", default=False, help="Skip trials with existing state logs")
     parser.add_argument("--trial-plan", type=Path, default=TRIAL_PLAN_CSV, help="Path to trial plan CSV")
     parser.add_argument("--base-dir", type=Path, default=DEFAULT_SESSION_BASE, help="Base output directory")
+    parser.add_argument("--logger-startup-sec", type=float, default=0.5, help="Delay after logger launch before SDK launch")
+    parser.add_argument("--sdk-python", default=None, help="Python executable for SDK subprocess")
+    parser.add_argument("--sdk-env-setup", default=None, help="Optional shell setup command before SDK subprocess")
+    parser.add_argument("--command-timeout-sec", type=float, default=20.0, help="SDK command subprocess timeout")
+    parser.add_argument("--logger-timeout-sec", type=float, default=20.0, help="Logger subprocess timeout")
     args = parser.parse_args(argv)
 
     # Load trial plan
@@ -121,6 +127,14 @@ def main(argv: list[str] | None = None) -> int:
         "physical_validation_status": "execution_in_progress",
         "deployment_ready": False,
         "timing": {"idle_sec": IDLE_SEC, "command_sec": COMMAND_SEC, "stop_sec": STOP_SEC},
+        "hotfix2_sync_logger_sdk_subprocess": True,
+        "logger_startup_sec": args.logger_startup_sec,
+        "sdk_python": args.sdk_python or sys.executable,
+        "sdk_env_setup_provided": bool(args.sdk_env_setup),
+        "invalid_debug_sessions": [
+            "m23b_k1_s2_20260612_095811",
+            "failed_auto_subprocess_tests_before_hotfix2",
+        ],
     }
     (session_dir / "session_metadata.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8")
 
@@ -136,6 +150,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"  Permit:   {'enabled' if permit else 'DISABLED'}")
     print(f"  Output:   {session_dir}")
     print(f"  SPLIT-PROCESS: Auto-launching ROS2 logger + SDK command subprocesses")
+    print(f"  HOTFIX2: logger first, SDK after {args.logger_startup_sec:.2f}s while logger is running")
     print(f"  SDK interface: {args.interface}")
     print(f"{'='*60}\n")
 
@@ -193,42 +208,43 @@ def main(argv: list[str] | None = None) -> int:
             skipped += 1
             continue
 
-        # 1. Launch ROS2 logger subprocess
-        logger_cmd = [
-            sys.executable, logger_py,
-            "--trial-id", tid,
-            "--pair-id", pid,
-            "--condition", cond,
-            "--desired-velocity", str(v_desired),
-            "--command-velocity", str(v_cmd),
-            "--output-dir", str(state_log_dir),
-        ]
-        print(f"    [LOGGER] Launching: {' '.join(logger_cmd)}")
+        # 1. Launch ROS2 logger subprocess first and keep it alive in realtime.
+        logger_cmd = _build_logger_command(
+            logger_py, tid, pid, cond, v_desired, v_cmd, state_log_dir, sys.executable
+        )
+        print(f"    [LOGGER] Launching: {_command_for_display(logger_cmd)}")
         logger_proc = subprocess.Popen(logger_cmd)
-        time.sleep(0.5)  # Brief delay to let logger start
+        time.sleep(args.logger_startup_sec)
 
-        # 2. Launch SDK command subprocess
-        sdk_cmd = [
-            sys.executable, sdk_py,
-            "--trial-id", tid,
-            "--command-velocity", str(v_cmd),
-            "--interface", args.interface,
-            "--idle-sec", str(IDLE_SEC),
-            "--command-sec", str(COMMAND_SEC),
-            "--stop-sec", str(STOP_SEC),
-            "--log-dir", str(state_log_dir),
-        ]
-        print(f"    [SDK]    Launching: {' '.join(sdk_cmd)}")
+        # 2. Launch SDK command subprocess while logger is still running.
+        sdk_cmd = _build_sdk_command(
+            sdk_py,
+            tid,
+            v_cmd,
+            args.interface,
+            state_log_dir,
+            sdk_python=args.sdk_python or sys.executable,
+            sdk_env_setup=args.sdk_env_setup,
+        )
+        print(f"    [SDK]    Launching: {_command_for_display(sdk_cmd)}")
         sdk_proc = subprocess.Popen(sdk_cmd)
 
         # 3. Wait for SDK command to finish (it controls timing)
         print(f"    Waiting for SDK command subprocess...")
-        sdk_rc = sdk_proc.wait(timeout=30)
+        try:
+            sdk_rc = sdk_proc.wait(timeout=args.command_timeout_sec)
+        except subprocess.TimeoutExpired:
+            sdk_proc.kill()
+            sdk_rc = -1
+            print(f"    [SDK]    Timed out, killed.")
         print(f"    [SDK]    Exit code: {sdk_rc}")
+
+        if sdk_rc != 0 and logger_proc.poll() is None:
+            logger_proc.terminate()
 
         # 4. Wait for logger to finish (should complete shortly after SDK)
         try:
-            logger_rc = logger_proc.wait(timeout=10)
+            logger_rc = logger_proc.wait(timeout=args.logger_timeout_sec)
         except subprocess.TimeoutExpired:
             logger_proc.kill()
             logger_rc = -1
@@ -239,19 +255,22 @@ def main(argv: list[str] | None = None) -> int:
         if sdk_rc != 0:
             _append_record(trial_records_path, tid, pid, session_id, args.surface,
                           v_desired, cond, v_cmd, str(state_log_path),
-                          "false", f"sdk_subprocess_failed_rc={sdk_rc}", "sdk_failed")
+                          "false", f"sdk_subprocess_failed_rc={sdk_rc}", "sdk_failed",
+                          notes=f"hotfix2 logger_rc={logger_rc}; sdk_rc={sdk_rc}")
             invalid += 1
             print(f"    -> INVALID: SDK subprocess failed (rc={sdk_rc})")
         elif logger_rc != 0:
             _append_record(trial_records_path, tid, pid, session_id, args.surface,
                           v_desired, cond, v_cmd, str(state_log_path),
-                          "false", f"logger_subprocess_failed_rc={logger_rc}", "logger_failed")
+                          "false", f"logger_subprocess_failed_rc={logger_rc}", "logger_failed",
+                          notes=f"hotfix2 logger_rc={logger_rc}; sdk_rc={sdk_rc}")
             invalid += 1
             print(f"    -> INVALID: Logger subprocess failed (rc={logger_rc})")
         else:
             _append_record(trial_records_path, tid, pid, session_id, args.surface,
                           v_desired, cond, v_cmd, str(state_log_path),
-                          "true", "", "executed")
+                          "true", "", "executed",
+                          notes=f"hotfix2 logger_rc={logger_rc}; sdk_rc={sdk_rc}")
             executed += 1
             print(f"    -> EXECUTED (logger={logger_rc}, sdk={sdk_rc})")
 
@@ -292,6 +311,7 @@ def _append_record(
     surface: str, v_desired: float, condition: str,
     v_cmd: float | None, state_log_path: str,
     valid: str, reason: str, run_status: str,
+    notes: str = "",
 ) -> None:
     write_header = not path.exists()
     with path.open("a", newline="", encoding="utf-8") as f:
@@ -305,8 +325,63 @@ def _append_record(
             "risk_policy": "na", "state_log_path": state_log_path,
             "valid": valid, "invalid_reason": reason,
             "timestamp": datetime.now(timezone.utc).isoformat(),
-            "physical_run_status": run_status, "notes": "",
+            "physical_run_status": run_status, "notes": notes,
         })
+
+
+def _build_logger_command(
+    logger_py: str,
+    trial_id: str,
+    pair_id: str,
+    condition: str,
+    desired_velocity: float,
+    command_velocity: float,
+    state_log_dir: Path,
+    python_executable: str,
+) -> list[str]:
+    return [
+        python_executable, logger_py,
+        "--trial-id", trial_id,
+        "--pair-id", pair_id,
+        "--condition", condition,
+        "--desired-velocity", str(desired_velocity),
+        "--command-velocity", str(command_velocity),
+        "--output-dir", str(state_log_dir),
+        "--idle-sec", str(IDLE_SEC),
+        "--command-sec", str(COMMAND_SEC),
+        "--stop-sec", str(STOP_SEC),
+        "--realtime",
+    ]
+
+
+def _build_sdk_command(
+    sdk_py: str,
+    trial_id: str,
+    command_velocity: float,
+    interface: str,
+    state_log_dir: Path,
+    *,
+    sdk_python: str,
+    sdk_env_setup: str | None,
+) -> list[str]:
+    direct_cmd = [
+        sdk_python, sdk_py,
+        "--trial-id", trial_id,
+        "--command-velocity", str(command_velocity),
+        "--interface", interface,
+        "--idle-sec", str(IDLE_SEC),
+        "--command-sec", str(COMMAND_SEC),
+        "--stop-sec", str(STOP_SEC),
+        "--log-dir", str(state_log_dir),
+    ]
+    if not sdk_env_setup:
+        return direct_cmd
+    shell_cmd = f"{sdk_env_setup} && " + " ".join(shlex.quote(part) for part in direct_cmd)
+    return ["bash", "-lc", shell_cmd]
+
+
+def _command_for_display(cmd: list[str]) -> str:
+    return " ".join(shlex.quote(part) for part in cmd)
 
 
 if __name__ == "__main__":

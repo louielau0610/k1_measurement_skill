@@ -74,6 +74,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--command-sec", type=float, default=COMMAND_SEC)
     parser.add_argument("--stop-sec", type=float, default=STOP_SEC)
     parser.add_argument("--sample-rate-hz", type=float, default=SAMPLE_RATE_HZ)
+    parser.add_argument("--realtime", action="store_true", help="Sleep between samples to keep logger synchronized with SDK command")
     args = parser.parse_args(argv)
 
     output_dir = Path(args.output_dir)
@@ -107,6 +108,8 @@ def main(argv: list[str] | None = None) -> int:
             row["desired_velocity_mps"] = str(args.desired_velocity)
             row["command_velocity_mps"] = str(args.command_velocity)
             w.writerow(row)
+            if args.realtime:
+                time.sleep(1.0 / args.sample_rate_hz)
 
     print(f"  Log complete: {n_samples} samples written.")
     return 0

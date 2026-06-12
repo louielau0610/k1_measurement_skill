@@ -149,6 +149,8 @@ Flags:
 
 **M23-B Hotfix (2026-06-12)**: Runner now auto-launches SDK command subprocess (`send_m23b_k1_velocity_command.py`) instead of printing manual instructions. Trials only marked executed if both logger and SDK subprocesses succeed. Session `m23b_k1_s2_20260612_095811` (pre-hotfix) is invalid debug data.
 
+**M23-B Hotfix2 (2026-06-12)**: Runner now synchronizes logger + SDK subprocesses by launching the logger first, waiting `--logger-startup-sec`, then launching SDK while the logger is still running. SDK subprocess can use `--sdk-python` and `--sdk-env-setup` for robot-side import environments. Failed auto-subprocess sessions before hotfix2 are invalid/debug and must not be used for M23-C. No tracking-improvement, physical-validation, or deployment-readiness claim is added.
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

@@ -160,3 +160,50 @@ This checks:
 | Tracking improvement analyzed | ❌ M23-C (future) |
 | Deployment ready | ❌ Not claimed |
 | GO1/G1 validation | ❌ Not claimed |
+## Hotfix2 Synchronized Subprocess Orchestration
+
+Manual two-terminal robot-side testing confirmed that the robot can move and the logger can record when these run concurrently:
+
+- terminal A: `log_m23b_k1_compensation_trial.py`
+- terminal B: manual Booster SDK sender using `B1LocoClient.Move(vx, 0, 0)`
+
+Hotfix2 keeps logger and SDK command in separate subprocesses and fixes timing:
+
+1. launch logger subprocess first;
+2. wait `--logger-startup-sec` (default `0.5`);
+3. launch SDK command subprocess while logger is still running;
+4. wait for SDK command subprocess;
+5. wait for logger subprocess;
+6. mark trial executed only when both return code `0`.
+
+New runner options:
+
+- `--logger-startup-sec`
+- `--sdk-python`
+- `--sdk-env-setup`
+- `--command-timeout-sec`
+- `--logger-timeout-sec`
+
+If SDK imports fail in the automatic subprocess, run the SDK script with the same Python interpreter that succeeded in the manual smoke test, or pass that interpreter with `--sdk-python`. Verify on the robot with:
+
+```bash
+python3 -c "import booster_robotics_sdk_python"
+```
+
+If shell setup is needed:
+
+```bash
+python scripts/run_m23b_k1_compensation_trials.py \
+  --surface S2_marble_floor \
+  --session-id m23b_s2_marble_hotfix2 \
+  --execute \
+  --sdk-python python3 \
+  --sdk-env-setup "source /some/sdk/setup.bash"
+```
+
+Invalid/debug sessions:
+
+- `m23b_k1_s2_20260612_095811`
+- any failed auto-subprocess session before hotfix2
+
+Do not use invalid/debug sessions for M23-C analysis. Hotfix2 does not claim tracking improvement, physical validation, or deployment readiness.

@@ -87,3 +87,26 @@ python scripts/qc_m23b_k1_compensation_session.py \
 ## Next Phase
 
 **M23-C**: K1 compensation before/after analysis — load extracted results, compute paired error comparisons, run statistical tests, determine claim level.
+## Hotfix2 Addendum
+
+Hotfix2 synchronized orchestration:
+
+- logger subprocess launches first;
+- runner waits `--logger-startup-sec` (default `0.5`);
+- SDK command subprocess launches while logger is still running;
+- both return codes are recorded;
+- trial is executed only if logger and SDK both return `0`.
+
+SDK environment options:
+
+- `--sdk-python`
+- `--sdk-env-setup`
+- `--command-timeout-sec`
+- `--logger-timeout-sec`
+
+Invalid/debug sessions:
+
+- `m23b_k1_s2_20260612_095811`
+- failed auto-subprocess sessions before hotfix2
+
+Claim boundary remains unchanged: no tracking improvement claim, no compensation validation claim, and `deployment_ready=false`.
