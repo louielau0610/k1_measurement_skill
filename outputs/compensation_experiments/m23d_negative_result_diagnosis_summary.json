@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-06-12T04:52:53.138175+00:00",
+  "source_session": "m23b_k1_s2_executable_20260612_121605",
+  "mean_direct_error": 0.007916750000000014,
+  "mean_compensated_error": 0.04400400000000002,
+  "percent_error_reduction": -455.83414911421914,
+  "yaw_drift_direct": 0.0,
+  "yaw_drift_compensated": 0.0,
+  "claim_level": "negative_result_requires_compensator_revision",
+  "failure_mode_labels": [
+    "compensation_not_beneficial",
+    "identity_preferred",
+    "overcorrection_risk",
+    "profile_mismatch_suspected",
+    "revision_required"
+  ],
+  "revision_required": true,
+  "deployment_ready": false,
+  "hardware_execution": false,
+  "next_milestone": "M23-E revised benefit-gated compensator design and offline validation"
+}

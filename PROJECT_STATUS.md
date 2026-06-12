@@ -163,6 +163,20 @@ Claim level: `negative_result_requires_compensator_revision`.
 
 M23-C does NOT claim deployment readiness, navigation improvement, GO1/G1 validation, cross-platform physical validation, or universal K1 generalization. GO1/G1 remain future work, and the compensator must be revised before broader physical validation.
 
+## M23-D Negative Result Diagnosis
+
+M23-D diagnoses the M23-C negative physical result and defines a revised compensator plan. The failure mode is clear: direct commands were already near optimal on the tested K1/S2 velocity range, while the M22-C compensator lowered the commands and increased tracking error in all 12 pairs.
+
+Failure labels:
+
+- `identity_preferred`
+- `compensation_not_beneficial`
+- `overcorrection_risk`
+- `profile_mismatch_suspected`
+- `revision_required`
+
+M23-D does not implement the revised compensator, run hardware, claim tracking improvement, or claim deployment readiness. Deployment readiness remains false. GO1/G1 work remains blocked until a revised K1 compensator is designed, offline-validated, and physically revalidated on K1.
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

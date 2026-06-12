@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-06-12T04:52:53.138175+00:00",
+  "source_analysis": "outputs/compensation_experiments/m23c_k1_analysis_summary.json",
+  "pair_count": 12,
+  "velocity_count": 4,
+  "direct_outperforms_compensated_pairs": 12,
+  "compensated_outperforms_direct_pairs": 0,
+  "compensated_command_lower_than_direct_pairs": 12,
+  "compensated_command_higher_than_direct_pairs": 0,
+  "identity_preferred_velocity_count": 4,
+  "overcorrection_velocity_count": 4,
+  "profile_mismatch_velocity_count": 3,
+  "mean_direct_error": 0.007916750000000014,
+  "mean_compensated_error": 0.04400400000000002,
+  "percent_error_reduction": -455.83414911421914,
+  "yaw_drift_direct": 0.0,
+  "yaw_drift_compensated": 0.0,
+  "claim_level": "negative_result_requires_compensator_revision",
+  "failure_mode_labels": [
+    "compensation_not_beneficial",
+    "identity_preferred",
+    "overcorrection_risk",
+    "profile_mismatch_suspected",
+    "revision_required"
+  ],
+  "main_reason": "Direct commands were already near optimal; the compensator lowered commands and increased tracking error in every pair.",
+  "revision_required": true,
+  "deployment_ready": false,
+  "hardware_execution": false,
+  "revised_compensator_implemented": false,
+  "next_milestone": "M23-E revised benefit-gated compensator design and offline validation"
+}
