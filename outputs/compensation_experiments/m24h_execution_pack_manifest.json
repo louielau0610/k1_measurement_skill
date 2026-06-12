@@ -1,0 +1,61 @@
+{
+  "pack_name": "m24h_controlled_s2_replication_execution_pack",
+  "pack_version": "m24h_v1.0",
+  "created_at": "2026-06-12",
+  "physical_run_status": "not_run",
+  "profile_adoption_status": "not_adopted",
+  "deployment_ready": false,
+  "go1_g1_blocked": true,
+
+  "scripts_included": [
+    "scripts/run_m24h_controlled_s2_replication_trials.py",
+    "scripts/extract_m24h_controlled_s2_replication_trials.py",
+    "scripts/qc_m24h_controlled_s2_replication_session.py",
+    "scripts/log_m23b_k1_compensation_trial.py",
+    "scripts/send_m23b_k1_velocity_command.py"
+  ],
+
+  "input_plan": "outputs/compensation_experiments/m24g_controlled_s2_replication_plan.csv",
+  "metadata_template": "outputs/compensation_experiments/m24h_controlled_metadata_template.json",
+
+  "expected_session_layout": {
+    "base": "data/compensation_experiments/m24h_controlled_s2_replication/<session_id>/",
+    "files": [
+      "session_metadata.json",
+      "trial_records.csv",
+      "controlled_metadata.json",
+      "state_logs/",
+      "corrected_extracted_results.csv",
+      "corrected_extraction_summary.json",
+      "corrected_extraction_report.md",
+      "qc_summary.json",
+      "qc_report.md"
+    ]
+  },
+
+  "constraints": {
+    "surface": "S2_marble_floor",
+    "condition": "direct_refresh_controlled",
+    "velocities": [0.40, 0.45, 0.50, 0.55],
+    "repeats": 5,
+    "total_trials": 20,
+    "compensated_commands": "forbidden",
+    "extraction_method": "command_phase_with_1s_trim"
+  },
+
+  "safety": {
+    "dry_run_default": true,
+    "execute_requires_flag": true,
+    "per_trial_permit_default": true,
+    "split_process_enforced": true
+  },
+
+  "claim_boundary": {
+    "physical_trials_executed": false,
+    "tracking_improvement_claimed": false,
+    "compensation_validated": false,
+    "profile_adopted": false,
+    "deployment_ready": false,
+    "go1_g1_included": false
+  }
+}

@@ -404,6 +404,26 @@ Flags:
 - `go1_g1_blocked=true`
 - `next_milestone=M24-H controlled S2 direct-response replication execution pack`
 
+## M24-H Controlled S2 Replication Execution Pack
+
+M24-H creates the execution pack for the M24-G controlled S2 replication experiment. It includes:
+
+- **Runner**: `scripts/run_m24h_controlled_s2_replication_trials.py` — strict S2/direct only, auto subprocesses, dry-run default, `--execute` required
+- **Extractor**: `scripts/extract_m24h_controlled_s2_replication_trials.py` — corrected command-phase window with trim
+- **QC**: `scripts/qc_m24h_controlled_s2_replication_session.py` — verifies 20 trials, 4 groups × 5 repeats, no compensated
+- **Metadata template**: `outputs/compensation_experiments/m24h_controlled_metadata_template.json`
+- **Manifest**: `outputs/compensation_experiments/m24h_execution_pack_manifest.json`
+- **Docs**: transfer guide, execution protocol
+
+M24-H does NOT execute hardware, fabricate results, overwrite the gold profile, adopt any candidate profile, claim compensation improvement, claim deployment readiness, or start GO1/G1 work.
+
+Flags:
+- `physical_run_status=not_run`
+- `profile_adoption_status=not_adopted`
+- `gold_profile_overwritten=false`
+- `deployment_ready=false`
+- `go1_g1_blocked=true`
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:
