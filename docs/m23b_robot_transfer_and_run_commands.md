@@ -4,6 +4,8 @@
 
 Use these commands to transfer the M23-B execution pack to the Booster K1 robot and run the experiment.
 
+M23-A hotfix note: the pre-hotfix plan had blank compensated command values, so `m23b_k1_s2_sync3_20260612_104753` is direct-baseline-only/debug. Formal before/after runs must use `outputs/compensation_experiments/m23a_executable_trial_plan.csv`.
+
 > Replace `<K1_IP>` with the robot's IP address and `<session_id>` with your session identifier.
 
 ## 1. Transfer Scripts to Robot
@@ -26,8 +28,8 @@ scp scripts/log_m23b_k1_compensation_trial.py robot@${K1_IP}:~/k1_measurement_sk
 # Transfer SDK command script (M23-B hotfix)
 scp scripts/send_m23b_k1_velocity_command.py robot@${K1_IP}:~/k1_measurement_skill/scripts/
 
-# Transfer trial plan
-scp outputs/compensation_experiments/m23a_trial_plan.csv robot@${K1_IP}:~/k1_measurement_skill/outputs/compensation_experiments/
+# Transfer executable trial plan
+scp outputs/compensation_experiments/m23a_executable_trial_plan.csv robot@${K1_IP}:~/k1_measurement_skill/outputs/compensation_experiments/
 ```
 
 ## 2. On the Robot: Source Environment
@@ -46,7 +48,7 @@ python scripts/run_m23b_k1_compensation_trials.py \
   --session-id m23b_dry_check
 ```
 
-Verify all 36 trials appear and the plan looks correct.
+Verify the executable direct/compensated pairs appear and no compensated command is blank.
 
 ## 4. Execute Trials
 

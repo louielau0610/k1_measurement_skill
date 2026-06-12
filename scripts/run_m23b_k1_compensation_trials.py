@@ -1,7 +1,7 @@
 """Run M23-B K1 physical compensation trials.
 
-Robot-side runner for the M23-A trial plan. Requires --execute for hardware
-movement. Preserves split-process architecture by launching separate
+Robot-side runner for the M23-A executable trial plan. Requires --execute for
+hardware movement. Preserves split-process architecture by launching separate
 subprocesses for:
   1. ROS2 state logger (log_m23b_k1_compensation_trial.py)
   2. Booster SDK command (send_m23b_k1_velocity_command.py)
@@ -40,7 +40,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-TRIAL_PLAN_CSV = Path("outputs/compensation_experiments/m23a_trial_plan.csv")
+TRIAL_PLAN_CSV = Path("outputs/compensation_experiments/m23a_executable_trial_plan.csv")
 DEFAULT_SESSION_BASE = Path("data/compensation_experiments/m23b_k1")
 
 TRIAL_RECORD_FIELDS = [

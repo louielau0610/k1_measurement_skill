@@ -1,7 +1,13 @@
 # M23-A K1 Compensation Analysis Plan
 
-Generated: 2026-06-11T09:34:31.988953+00:00
-Status: Analysis plan only — no data to analyze yet.
+Generated: 2026-06-12T03:12:27.942272+00:00
+Status: Analysis plan only - no data to analyze yet.
+
+## Analysis Set
+
+Use only complete executable pairs from `outputs\compensation_experiments\m23a_executable_trial_plan.csv`.
+The current executable pair count is 12. Infeasible pairs
+from the full traceability plan are excluded from paired before/after comparison.
 
 ## Analysis Steps
 
@@ -10,11 +16,11 @@ Status: Analysis plan only — no data to analyze yet.
 3. Compute per-pair absolute tracking error for both conditions.
 4. Compute per-pair error difference: `error_direct - error_compensated`.
 5. Compute per-pair yaw drift difference.
-6. Aggregate across all pairs on `S2_marble_floor`.
+6. Aggregate across executable pairs on `S2_marble_floor`.
 
 ## Statistical Tests
 
-- **Primary**: Wilcoxon signed-rank test (nonparametric, appropriate for n=18 pairs).
+- **Primary**: Wilcoxon signed-rank test if enough executable pairs have valid physical measurements.
 - **Alternative**: Paired t-test if normality assumption is reasonable.
 - **Effect size**: Rank-biserial correlation.
 

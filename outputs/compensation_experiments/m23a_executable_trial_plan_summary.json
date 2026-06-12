@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-06-12T03:12:27.942272+00:00",
+  "source_trial_plan_csv": "outputs\\compensation_experiments\\m23a_trial_plan.csv",
+  "executable_trial_plan_csv": "outputs\\compensation_experiments\\m23a_executable_trial_plan.csv",
+  "risk_policy": "permissive",
+  "minimum_confidence": 0.0,
+  "surface": "S2_marble_floor",
+  "executable_trial_count": 24,
+  "executable_pair_count": 12,
+  "direct_trial_count": 12,
+  "compensated_trial_count": 12,
+  "desired_velocities_mps": [
+    0.4,
+    0.45,
+    0.5,
+    0.55
+  ],
+  "compensated_command_velocity_complete": true,
+  "blank_compensated_command_trial_ids": [],
+  "allowed_compensator_statuses": [
+    "feasible_but_risky",
+    "ok"
+  ],
+  "excluded_pair_count": 6,
+  "excluded_pair_reasons": {
+    "M23A_S2_marble_floor_V030_P1": "compensator_status=infeasible_deadzone",
+    "M23A_S2_marble_floor_V030_P2": "compensator_status=infeasible_deadzone",
+    "M23A_S2_marble_floor_V030_P3": "compensator_status=infeasible_deadzone",
+    "M23A_S2_marble_floor_V035_P1": "compensator_status=infeasible_deadzone",
+    "M23A_S2_marble_floor_V035_P2": "compensator_status=infeasible_deadzone",
+    "M23A_S2_marble_floor_V035_P3": "compensator_status=infeasible_deadzone"
+  },
+  "hardware_execution": false,
+  "physical_validation": "not_started",
+  "deployment_ready": false,
+  "claim_boundary": "executable plan only - no hardware execution and no tracking improvement claim"
+}

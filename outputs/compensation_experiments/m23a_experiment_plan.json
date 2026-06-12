@@ -1,6 +1,6 @@
 {
   "experiment_id": "m23a_k1_compensation_S2_marble_floor",
-  "generated_at": "2026-06-11T09:34:31.988953+00:00",
+  "generated_at": "2026-06-12T03:12:27.942272+00:00",
   "m23a_status": "experiment_design_only",
   "physical_validation": "not_started",
   "deployment_ready": false,
@@ -16,17 +16,30 @@
     0.55
   ],
   "repeats": 3,
-  "risk_policy": "balanced",
+  "risk_policy": "permissive",
+  "minimum_confidence": 0.0,
   "total_planned_trials": 36,
   "planned_pairs": 18,
-  "infeasible_compensation_targets": 18,
+  "executable_trials": 24,
+  "executable_pairs": 12,
+  "infeasible_compensation_targets": 6,
   "direct_trials": 18,
   "compensated_trials": 18,
   "trial_plan_csv": "outputs\\compensation_experiments\\m23a_trial_plan.csv",
+  "executable_trial_plan_csv": "outputs\\compensation_experiments\\m23a_executable_trial_plan.csv",
   "compensator_version": "M22-C",
   "randomization_seed": 42,
-  "randomized": true,
+  "randomized": false,
   "go1_g1_included": false,
   "hardware_execution": false,
-  "disclaimer": "experiment design only \u2014 no hardware execution \u2014 no physical validation claim"
+  "warnings": [],
+  "excluded_pair_reasons": {
+    "M23A_S2_marble_floor_V030_P1": "compensator_status=infeasible_deadzone",
+    "M23A_S2_marble_floor_V030_P2": "compensator_status=infeasible_deadzone",
+    "M23A_S2_marble_floor_V030_P3": "compensator_status=infeasible_deadzone",
+    "M23A_S2_marble_floor_V035_P1": "compensator_status=infeasible_deadzone",
+    "M23A_S2_marble_floor_V035_P2": "compensator_status=infeasible_deadzone",
+    "M23A_S2_marble_floor_V035_P3": "compensator_status=infeasible_deadzone"
+  },
+  "disclaimer": "experiment design only - no hardware execution - no physical validation claim"
 }

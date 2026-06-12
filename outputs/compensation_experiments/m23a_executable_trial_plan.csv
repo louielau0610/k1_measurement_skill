@@ -1,16 +1,4 @@
 trial_id,pair_id,surface,desired_velocity_mps,condition,command_velocity_mps,risk_policy,compensator_status,compensator_reason,repeat_index,order_in_pair,randomization_seed,physical_run_status,notes
-M23A_S2_marble_floor_V030_dire_R1,M23A_S2_marble_floor_V030_P1,S2_marble_floor,0.3,direct,0.3,na_direct,na_direct_baseline,u_cmd = v_desired (no compensation),1,1,42,planned,
-M23A_S2_marble_floor_V030_comp_R1,M23A_S2_marble_floor_V030_P1,S2_marble_floor,0.3,compensated,,permissive,infeasible_deadzone,desired velocity 0.300 is below minimum effective actual velocity 0.354,1,2,42,not_executable,excluded_from_executable_plan
-M23A_S2_marble_floor_V030_dire_R2,M23A_S2_marble_floor_V030_P2,S2_marble_floor,0.3,direct,0.3,na_direct,na_direct_baseline,u_cmd = v_desired (no compensation),2,1,42,planned,
-M23A_S2_marble_floor_V030_comp_R2,M23A_S2_marble_floor_V030_P2,S2_marble_floor,0.3,compensated,,permissive,infeasible_deadzone,desired velocity 0.300 is below minimum effective actual velocity 0.354,2,2,42,not_executable,excluded_from_executable_plan
-M23A_S2_marble_floor_V030_dire_R3,M23A_S2_marble_floor_V030_P3,S2_marble_floor,0.3,direct,0.3,na_direct,na_direct_baseline,u_cmd = v_desired (no compensation),3,1,42,planned,
-M23A_S2_marble_floor_V030_comp_R3,M23A_S2_marble_floor_V030_P3,S2_marble_floor,0.3,compensated,,permissive,infeasible_deadzone,desired velocity 0.300 is below minimum effective actual velocity 0.354,3,2,42,not_executable,excluded_from_executable_plan
-M23A_S2_marble_floor_V035_dire_R1,M23A_S2_marble_floor_V035_P1,S2_marble_floor,0.35,direct,0.35,na_direct,na_direct_baseline,u_cmd = v_desired (no compensation),1,1,42,planned,
-M23A_S2_marble_floor_V035_comp_R1,M23A_S2_marble_floor_V035_P1,S2_marble_floor,0.35,compensated,,permissive,infeasible_deadzone,desired velocity 0.350 is below minimum effective actual velocity 0.354,1,2,42,not_executable,excluded_from_executable_plan
-M23A_S2_marble_floor_V035_dire_R2,M23A_S2_marble_floor_V035_P2,S2_marble_floor,0.35,direct,0.35,na_direct,na_direct_baseline,u_cmd = v_desired (no compensation),2,1,42,planned,
-M23A_S2_marble_floor_V035_comp_R2,M23A_S2_marble_floor_V035_P2,S2_marble_floor,0.35,compensated,,permissive,infeasible_deadzone,desired velocity 0.350 is below minimum effective actual velocity 0.354,2,2,42,not_executable,excluded_from_executable_plan
-M23A_S2_marble_floor_V035_dire_R3,M23A_S2_marble_floor_V035_P3,S2_marble_floor,0.35,direct,0.35,na_direct,na_direct_baseline,u_cmd = v_desired (no compensation),3,1,42,planned,
-M23A_S2_marble_floor_V035_comp_R3,M23A_S2_marble_floor_V035_P3,S2_marble_floor,0.35,compensated,,permissive,infeasible_deadzone,desired velocity 0.350 is below minimum effective actual velocity 0.354,3,2,42,not_executable,excluded_from_executable_plan
 M23A_S2_marble_floor_V040_dire_R1,M23A_S2_marble_floor_V040_P1,S2_marble_floor,0.4,direct,0.4,na_direct,na_direct_baseline,u_cmd = v_desired (no compensation),1,1,42,planned,
 M23A_S2_marble_floor_V040_comp_R1,M23A_S2_marble_floor_V040_P1,S2_marble_floor,0.4,compensated,0.38188437161486893,permissive,feasible_but_risky,offline inverse lookup computed from measured monotonic segment,1,2,42,planned,
 M23A_S2_marble_floor_V040_dire_R2,M23A_S2_marble_floor_V040_P2,S2_marble_floor,0.4,direct,0.4,na_direct,na_direct_baseline,u_cmd = v_desired (no compensation),2,1,42,planned,

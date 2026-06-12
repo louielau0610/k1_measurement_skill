@@ -22,7 +22,8 @@
   },
   "invalid_debug_sessions": [
     "m23b_k1_s2_20260612_095811",
-    "failed_auto_subprocess_sessions_before_hotfix2"
+    "failed_auto_subprocess_sessions_before_hotfix2",
+    "m23b_k1_s2_sync3_20260612_104753"
   ],
 
   "scripts_to_transfer": [
@@ -31,7 +32,14 @@
     "scripts/send_m23b_k1_velocity_command.py"
   ],
 
-  "input_trial_plan": "outputs/compensation_experiments/m23a_trial_plan.csv",
+  "input_trial_plan": "outputs/compensation_experiments/m23a_executable_trial_plan.csv",
+  "full_traceability_trial_plan": "outputs/compensation_experiments/m23a_trial_plan.csv",
+  "trial_plan_hotfix": {
+    "pre_hotfix_issue": "compensated rows in m23a_trial_plan.csv had blank command_velocity_mps",
+    "formal_execution_plan": "outputs/compensation_experiments/m23a_executable_trial_plan.csv",
+    "direct_baseline_only_debug_session": "m23b_k1_s2_sync3_20260612_104753",
+    "claim_boundary": "plan hotfix only; no tracking improvement or compensation validation claim"
+  },
 
   "expected_robot_output_paths": {
     "session_base": "data/compensation_experiments/m23b_k1/<session_id>/",
@@ -80,6 +88,7 @@
     "requires operator on physical Booster K1 robot",
     "ROS2 logger mock used for offline testing",
     "failed auto-subprocess sessions before hotfix2 are invalid/debug",
+    "m23b_k1_s2_sync3_20260612_104753 is direct-baseline-only/debug",
     "no real-time compensation loop"
   ]
 }
