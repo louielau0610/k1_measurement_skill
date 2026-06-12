@@ -1,0 +1,170 @@
+[
+  {
+    "schema_version": "revised_offline_velocity_compensation_v0.1",
+    "platform": "booster_k1",
+    "robot_model": "Booster K1",
+    "surface_type": "S2_marble_floor",
+    "desired_actual_velocity_mps": 0.4,
+    "identity_command_velocity_mps": 0.4,
+    "candidate_compensated_command_velocity_mps": 0.38188437161486893,
+    "final_command_velocity_mps": 0.4,
+    "expected_direct_error_mps": 0.006667000000000034,
+    "expected_compensated_error_mps": 0.024483000000000033,
+    "expected_benefit_mps": -0.017816,
+    "benefit_gate_passed": false,
+    "correction_magnitude_mps": 0.01811562838513109,
+    "correction_limited": false,
+    "profile_mismatch_suspected": true,
+    "feasibility_status": "identity_preferred",
+    "reason": "direct command error is already within the good-enough threshold",
+    "warnings": [
+      "profile_mismatch_suspected"
+    ],
+    "benefit_gate": {
+      "expected_direct_error_mps": 0.006667000000000034,
+      "expected_compensated_error_mps": 0.024483000000000033,
+      "expected_benefit_mps": -0.017816,
+      "minimum_expected_benefit_mps": 0.02,
+      "passed": false,
+      "reason": "expected benefit below threshold or unavailable"
+    },
+    "profile_mismatch": {
+      "suspected": true,
+      "old_profile_predicted_actual_velocity_mps": 0.36373378794145655,
+      "observed_direct_actual_velocity_mps": 0.393333,
+      "difference_mps": 0.029599212058543434,
+      "threshold_mps": 0.03,
+      "reason": "profile prediction differs from M23-C direct physical result"
+    },
+    "m22c_feasibility_status": "feasible_but_risky",
+    "offline_only": true,
+    "physical_validation_status": "not_started",
+    "deployment_ready": false
+  },
+  {
+    "schema_version": "revised_offline_velocity_compensation_v0.1",
+    "platform": "booster_k1",
+    "robot_model": "Booster K1",
+    "surface_type": "S2_marble_floor",
+    "desired_actual_velocity_mps": 0.45,
+    "identity_command_velocity_mps": 0.45,
+    "candidate_compensated_command_velocity_mps": 0.4165612727217716,
+    "final_command_velocity_mps": 0.45,
+    "expected_direct_error_mps": 0.007499999999999951,
+    "expected_compensated_error_mps": 0.040383,
+    "expected_benefit_mps": -0.03288300000000005,
+    "benefit_gate_passed": false,
+    "correction_magnitude_mps": 0.033438727278228386,
+    "correction_limited": false,
+    "profile_mismatch_suspected": true,
+    "feasibility_status": "identity_preferred",
+    "reason": "direct command error is already within the good-enough threshold",
+    "warnings": [
+      "profile_mismatch_suspected"
+    ],
+    "benefit_gate": {
+      "expected_direct_error_mps": 0.007499999999999951,
+      "expected_compensated_error_mps": 0.040383,
+      "expected_benefit_mps": -0.03288300000000005,
+      "minimum_expected_benefit_mps": 0.02,
+      "passed": false,
+      "reason": "expected benefit below threshold or unavailable"
+    },
+    "profile_mismatch": {
+      "suspected": true,
+      "old_profile_predicted_actual_velocity_mps": 0.4982146994264897,
+      "observed_direct_actual_velocity_mps": 0.44250000000000006,
+      "difference_mps": 0.055714699426489656,
+      "threshold_mps": 0.03,
+      "reason": "profile prediction differs from M23-C direct physical result"
+    },
+    "m22c_feasibility_status": "feasible_but_risky",
+    "offline_only": true,
+    "physical_validation_status": "not_started",
+    "deployment_ready": false
+  },
+  {
+    "schema_version": "revised_offline_velocity_compensation_v0.1",
+    "platform": "booster_k1",
+    "robot_model": "Booster K1",
+    "surface_type": "S2_marble_floor",
+    "desired_actual_velocity_mps": 0.5,
+    "identity_command_velocity_mps": 0.5,
+    "candidate_compensated_command_velocity_mps": 0.4518249304121061,
+    "final_command_velocity_mps": 0.5,
+    "expected_direct_error_mps": 0.00833299999999998,
+    "expected_compensated_error_mps": 0.05570000000000003,
+    "expected_benefit_mps": -0.04736700000000005,
+    "benefit_gate_passed": false,
+    "correction_magnitude_mps": 0.048175069587893915,
+    "correction_limited": false,
+    "profile_mismatch_suspected": true,
+    "feasibility_status": "identity_preferred",
+    "reason": "direct command error is already within the good-enough threshold",
+    "warnings": [
+      "profile_mismatch_suspected"
+    ],
+    "benefit_gate": {
+      "expected_direct_error_mps": 0.00833299999999998,
+      "expected_compensated_error_mps": 0.05570000000000003,
+      "expected_benefit_mps": -0.04736700000000005,
+      "minimum_expected_benefit_mps": 0.02,
+      "passed": false,
+      "reason": "expected benefit below threshold or unavailable"
+    },
+    "profile_mismatch": {
+      "suspected": true,
+      "old_profile_predicted_actual_velocity_mps": 0.6343102041384411,
+      "observed_direct_actual_velocity_mps": 0.491667,
+      "difference_mps": 0.14264320413844106,
+      "threshold_mps": 0.03,
+      "reason": "profile prediction differs from M23-C direct physical result"
+    },
+    "m22c_feasibility_status": "feasible_but_risky",
+    "offline_only": true,
+    "physical_validation_status": "not_started",
+    "deployment_ready": false
+  },
+  {
+    "schema_version": "revised_offline_velocity_compensation_v0.1",
+    "platform": "booster_k1",
+    "robot_model": "Booster K1",
+    "surface_type": "S2_marble_floor",
+    "desired_actual_velocity_mps": 0.55,
+    "identity_command_velocity_mps": 0.55,
+    "candidate_compensated_command_velocity_mps": 0.5029348230314161,
+    "final_command_velocity_mps": 0.55,
+    "expected_direct_error_mps": 0.009167000000000036,
+    "expected_compensated_error_mps": 0.055450000000000055,
+    "expected_benefit_mps": -0.04628300000000002,
+    "benefit_gate_passed": false,
+    "correction_magnitude_mps": 0.04706517696858392,
+    "correction_limited": false,
+    "profile_mismatch_suspected": true,
+    "feasibility_status": "identity_preferred",
+    "reason": "direct command error is already within the good-enough threshold",
+    "warnings": [
+      "profile_mismatch_suspected"
+    ],
+    "benefit_gate": {
+      "expected_direct_error_mps": 0.009167000000000036,
+      "expected_compensated_error_mps": 0.055450000000000055,
+      "expected_benefit_mps": -0.04628300000000002,
+      "minimum_expected_benefit_mps": 0.02,
+      "passed": false,
+      "reason": "expected benefit below threshold or unavailable"
+    },
+    "profile_mismatch": {
+      "suspected": true,
+      "old_profile_predicted_actual_velocity_mps": 0.6396337661761724,
+      "observed_direct_actual_velocity_mps": 0.540833,
+      "difference_mps": 0.0988007661761724,
+      "threshold_mps": 0.03,
+      "reason": "profile prediction differs from M23-C direct physical result"
+    },
+    "m22c_feasibility_status": "feasible_but_risky",
+    "offline_only": true,
+    "physical_validation_status": "not_started",
+    "deployment_ready": false
+  }
+]

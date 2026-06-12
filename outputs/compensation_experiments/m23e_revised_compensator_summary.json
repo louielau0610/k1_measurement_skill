@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-06-12T05:04:43.411575+00:00",
+  "surface": "S2_marble_floor",
+  "desired_velocities_mps": [
+    0.4,
+    0.45,
+    0.5,
+    0.55
+  ],
+  "decision_count": 4,
+  "identity_fallback_count": 4,
+  "benefit_gate_rejection_count": 0,
+  "overcorrection_rejection_count": 0,
+  "profile_mismatch_suspected_count": 4,
+  "harmful_m23c_commands_selected": 0,
+  "all_final_commands_identity": true,
+  "physical_validation_status": "not_started",
+  "deployment_ready": false,
+  "hardware_execution": false,
+  "claim_boundary": "offline revised compensator sweep only; no physical validation or tracking-improvement claim"
+}

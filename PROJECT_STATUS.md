@@ -177,6 +177,21 @@ Failure labels:
 
 M23-D does not implement the revised compensator, run hardware, claim tracking improvement, or claim deployment readiness. Deployment readiness remains false. GO1/G1 work remains blocked until a revised K1 compensator is designed, offline-validated, and physically revalidated on K1.
 
+## M23-E Revised Offline Compensator
+
+M23-E implements the revised offline compensator logic required by the M23-D diagnosis. The revised module wraps the M22-C candidate command with identity fallback, a benefit gate, correction magnitude limiting, and profile mismatch detection.
+
+Offline sweep result on the M23-C S2 velocities:
+
+- desired velocities: 0.40, 0.45, 0.50, 0.55 m/s
+- identity fallback count: 4/4
+- harmful M23-C compensated commands selected: 0
+- profile mismatch suspected count: 4/4
+- `physical_validation_status=not_started`
+- `deployment_ready=false`
+
+M23-E does NOT run hardware, claim physical validation, claim tracking improvement, claim deployment readiness, or start GO1/G1 work. K1 physical revalidation is still required before any broader claim.
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

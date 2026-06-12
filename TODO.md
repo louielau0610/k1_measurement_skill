@@ -59,6 +59,7 @@
 - [x] M23-A hotfix executable compensated trial plan.
 - [x] M23-C analyze K1 S2 physical compensation before/after results.
 - [x] M23-D negative result diagnosis and revised compensator plan.
+- [x] M23-E revised offline compensator with identity fallback and benefit gate.
 - [ ] Revise M22-C compensator policy after M23-C negative physical result.
 - [ ] Run SDK state discovery on the physical K1 shell with Booster SDK sourced.
 - [ ] Source `/opt/booster/BoosterRos2Interface/install/setup.bash` on K1 and run ROS2 odometer standing smoke logger.
