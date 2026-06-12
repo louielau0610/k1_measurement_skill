@@ -253,6 +253,41 @@ Flags:
 - `go1_g1_blocked=true`
 - `next_milestone=M24-B physical direct-refresh run on Booster K1`
 
+## M24-C S2 Profile Refresh Analysis
+
+M24-C ingests and analyzes the clean M24-B direct-refresh session `m24b_s2_profile_refresh_clean_20260612_145358`. The partial/debug session `m24b_s2_profile_refresh_20260612_143912` is explicitly excluded.
+
+Clean session verification:
+
+- trial count: 30
+- executed/skipped/invalid: 30/0/0
+- surface: `S2_marble_floor`
+- condition: `direct_refresh`
+- velocity groups: 6
+- repeats per velocity: 5
+- QC passed: true
+
+Profile analysis result:
+
+- old-profile comparable velocities: 5
+- profile mismatch count: 5
+- M23-C overlap count: 4
+- M24-C/M23-C consistency count: 0
+- profile status decision: `inconclusive_environment_dependent`
+- candidate profile: `outputs/compensation_experiments/m24c_s2_current_profile_candidate.json`
+
+M24-C creates a candidate current S2 profile only. It does NOT overwrite `k1_gold_profile_v1`, claim compensation improvement, claim revised compensator physical validation, claim deployment readiness, claim navigation improvement, or start GO1/G1 work.
+
+Flags:
+
+- `physical_compensation_improvement_validated=false`
+- `gold_profile_overwritten=false`
+- `candidate_profile_created=true`
+- `revised_compensator_status=offline_only`
+- `deployment_ready=false`
+- `go1_g1_blocked=true`
+- `next_milestone=collect_more_controlled_s2_refresh_data_or_diagnose_m24b_near_zero_extraction`
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

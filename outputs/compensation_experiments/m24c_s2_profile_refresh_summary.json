@@ -1,0 +1,83 @@
+{
+  "analysis_id": "m24c_s2_profile_refresh_analysis",
+  "generated_at": "2026-06-12T07:20:10.340258+00:00",
+  "session_id": "m24b_s2_profile_refresh_clean_20260612_145358",
+  "session_dir": "data\\compensation_experiments\\m24b_s2_profile_refresh\\m24b_s2_profile_refresh_clean_20260612_145358",
+  "trial_count": 30,
+  "executed_count": 30,
+  "skipped_count": 0,
+  "invalid_count": 0,
+  "velocity_group_count": 6,
+  "repeats_per_velocity": {
+    "0.35": 5,
+    "0.40": 5,
+    "0.45": 5,
+    "0.50": 5,
+    "0.55": 5,
+    "0.60": 5
+  },
+  "profile_mismatch_count": 5,
+  "old_profile_available_count": 5,
+  "m23c_overlap_count": 4,
+  "m24c_matches_m23c_count": 0,
+  "profile_status_decision": "inconclusive_environment_dependent",
+  "candidate_profile_created": true,
+  "candidate_profile_path": "outputs/compensation_experiments/m24c_s2_current_profile_candidate.json",
+  "gold_profile_overwritten": false,
+  "compensation_improvement_claimed": false,
+  "revised_compensator_physical_validation_claimed": false,
+  "deployment_ready": false,
+  "navigation_improvement_claimed": false,
+  "go1_g1_validation": false,
+  "cross_platform_validation": false,
+  "universal_k1_generalization": false,
+  "thresholds": {
+    "profile_mismatch_threshold_mps": 0.03,
+    "near_optimal_threshold_mps": 0.02,
+    "m23c_consistency_threshold_mps": 0.03,
+    "no_motion_threshold_mps": 0.02,
+    "repeat_variability_metric": "sample standard deviation of measured actual velocity",
+    "repeat_variability_flag_threshold_mps": 0.03
+  },
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "trial_count": 30,
+    "extracted_row_count": 30,
+    "executed_count": 30,
+    "skipped_count": 0,
+    "invalid_count": 0,
+    "surface_values": [
+      "S2_marble_floor"
+    ],
+    "condition_values": [
+      "direct_refresh"
+    ],
+    "command_velocities_mps": [
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6
+    ],
+    "velocity_group_count": 6,
+    "repeats_per_velocity": {
+      "0.35": 5,
+      "0.40": 5,
+      "0.45": 5,
+      "0.50": 5,
+      "0.55": 5,
+      "0.60": 5
+    },
+    "qc_overall_pass": true
+  },
+  "run_summary": {
+    "executed": 30,
+    "skipped": 0,
+    "invalid": 0,
+    "total": 30
+  },
+  "next_recommended_milestone": "Collect more controlled S2 refresh data before compensation validation",
+  "claim_boundary": "Direct-response profile refresh analysis only; no compensation improvement, deployment, navigation, GO1/G1, cross-platform, or universal K1 claim."
+}

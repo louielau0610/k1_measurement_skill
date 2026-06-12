@@ -1,0 +1,5 @@
+desired_velocity_mps,m23c_direct_mean_actual_velocity_mps,m24c_refresh_mean_actual_velocity_mps,old_m19c_s2_mean_actual_velocity_mps,abs_diff_m24c_vs_m23c,abs_diff_m24c_vs_m19c,m24c_matches_m23c_better_than_m19c,consistent_with_profile_staleness
+0.4,0.393333,0.000672,0.363734,0.392661,0.363062,False,False
+0.45,0.4425,0.001837,0.498215,0.440663,0.496378,True,False
+0.5,0.491667,0.000825,0.63431,0.490842,0.633485,True,False
+0.55,0.540833,-0.000372,,0.541205,,False,False

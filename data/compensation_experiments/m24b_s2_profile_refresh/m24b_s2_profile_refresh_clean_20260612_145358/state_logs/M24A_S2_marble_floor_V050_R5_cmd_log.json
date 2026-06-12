@@ -1,0 +1,8 @@
+{
+  "trial_id": "M24A_S2_marble_floor_V050_R5",
+  "command_velocity_mps": 0.5,
+  "interface": "lo",
+  "sys_executable": "/usr/bin/python3",
+  "status": "ok",
+  "return_code": 0
+}

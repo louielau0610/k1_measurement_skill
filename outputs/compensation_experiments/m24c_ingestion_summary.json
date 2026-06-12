@@ -1,0 +1,14 @@
+{
+  "ingested_at": "2026-06-12T07:20:10.341271+00:00",
+  "archive_filename": "m24b_s2_profile_refresh_results_m24b_s2_profile_refresh_clean_20260612_145358.tar.gz",
+  "archive_path": "m24b_s2_profile_refresh_results_m24b_s2_profile_refresh_clean_20260612_145358.tar.gz",
+  "archive_size_bytes": 2592380,
+  "archive_sha256": "6ec01e59935ed04a5fa3751b7369ed5dc8d0e2cceccf9ce101ccdea3c5cf4c87",
+  "extracted_session_path": "data\\compensation_experiments\\m24b_s2_profile_refresh\\m24b_s2_profile_refresh_clean_20260612_145358",
+  "session_id": "m24b_s2_profile_refresh_clean_20260612_145358",
+  "clean_session_used": true,
+  "partial_debug_session_excluded": "m24b_s2_profile_refresh_20260612_143912",
+  "no_fabricated_data": true,
+  "gold_profile_overwritten": false,
+  "notes": "Only the clean M24-B session is used for formal M24-C analysis."
+}

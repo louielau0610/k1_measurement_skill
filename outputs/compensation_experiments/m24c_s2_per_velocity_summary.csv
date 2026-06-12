@@ -1,0 +1,7 @@
+surface,condition,command_velocity_mps,desired_velocity_mps,n,mean_actual_velocity_mps,median_actual_velocity_mps,std_actual_velocity_mps,min_actual_velocity_mps,max_actual_velocity_mps,mean_tracking_error_mps,mean_abs_tracking_error_mps,median_abs_tracking_error_mps,max_abs_tracking_error_mps,mean_yaw_drift_deg,median_yaw_drift_deg,max_yaw_drift_deg,mean_imu_yaw_drift_deg,no_motion_rate,repeat_variability_mps,repeat_variability_flag,direct_near_optimal_flag
+S2_marble_floor,direct_refresh,0.35,0.35,5,0.000744,-1e-06,0.00176,-0.000817,0.003452,-0.349256,0.349256,0.350001,0.350817,0.731094,0.582698,2.319161,0.760429,1.0,0.00176,False,False
+S2_marble_floor,direct_refresh,0.4,0.4,5,0.000672,0.000824,0.000695,-2e-06,0.00165,-0.399328,0.399328,0.399176,0.400002,0.337484,0.088637,1.188143,0.330047,1.0,0.000695,False,False
+S2_marble_floor,direct_refresh,0.45,0.45,5,0.001837,0.0,0.004953,-0.001447,0.010625,-0.448163,0.448163,0.45,0.451447,1.444346,0.018449,6.72429,1.442158,1.0,0.004953,False,False
+S2_marble_floor,direct_refresh,0.5,0.5,5,0.000825,0.0,0.001864,-3.6e-05,0.00416,-0.499175,0.499175,0.5,0.500036,0.50591,0.003667,2.487725,0.483794,1.0,0.001864,False,False
+S2_marble_floor,direct_refresh,0.55,0.55,5,-0.000372,-0.001258,0.00205,-0.001963,0.003042,-0.550372,0.550372,0.551258,0.551963,0.608871,0.687721,1.300786,0.612595,1.0,0.00205,False,False
+S2_marble_floor,direct_refresh,0.6,0.6,5,0.000709,0.001423,0.001795,-0.001504,0.002365,-0.599291,0.599291,0.598577,0.601504,0.391663,0.122728,1.222234,0.409986,1.0,0.001795,False,False

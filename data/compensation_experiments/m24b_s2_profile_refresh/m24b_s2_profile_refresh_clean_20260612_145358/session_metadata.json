@@ -1,0 +1,29 @@
+{
+  "session_id": "m24b_s2_profile_refresh_clean_20260612_145358",
+  "milestone": "M24-B",
+  "platform": "booster_k1",
+  "robot_model": "Booster K1",
+  "surface": "S2_marble_floor",
+  "condition": "direct_refresh",
+  "trial_plan_source": "/home/booster/outputs/compensation_experiments/m24a_s2_profile_refresh_plan.csv",
+  "expected_trial_count": 30,
+  "interface": "lo",
+  "split_process_required": true,
+  "runner_imports_rclpy": false,
+  "runner_imports_booster_sdk": false,
+  "permit_enabled": true,
+  "created_at": "2026-06-12T06:53:59.026666+00:00",
+  "physical_profile_refresh_status": "execution_in_progress",
+  "profile_update_status": "not_updated",
+  "deployment_ready": false,
+  "go1_g1_blocked": true,
+  "timing": {
+    "idle_sec": 2.0,
+    "command_sec": 6.0,
+    "stop_sec": 2.0
+  },
+  "logger_startup_sec": 0.5,
+  "sdk_python": "/usr/bin/python3",
+  "sdk_env_setup_provided": false,
+  "claim_boundary": "direct refresh execution only; no profile update or compensation improvement claim"
+}

@@ -1,0 +1,86 @@
+{
+  "qc_time": "2026-06-12T07:06:55.252581+00:00",
+  "session_dir": "/home/booster/data/compensation_experiments/m24b_s2_profile_refresh/m24b_s2_profile_refresh_clean_20260612_145358",
+  "overall_pass": true,
+  "expected_trial_count": 30,
+  "executed_trial_count": 30,
+  "skipped_trial_count": 0,
+  "velocity_group_count": 6,
+  "expected_repeats_per_velocity": 5,
+  "profile_update_status": "not_updated",
+  "deployment_ready": false,
+  "go1_g1_blocked": true,
+  "errors": [],
+  "warnings": [],
+  "checks": [
+    {
+      "check": "session_metadata_exists",
+      "pass": true
+    },
+    {
+      "check": "trial_records_exists",
+      "pass": true
+    },
+    {
+      "check": "extracted_results_exists",
+      "pass": true
+    },
+    {
+      "check": "planned_trial_count_30",
+      "pass": true
+    },
+    {
+      "check": "executed_trial_count_30",
+      "pass": true
+    },
+    {
+      "check": "skipped_trial_count_0",
+      "pass": true
+    },
+    {
+      "check": "s2_only",
+      "pass": true
+    },
+    {
+      "check": "direct_refresh_only",
+      "pass": true
+    },
+    {
+      "check": "no_compensated_condition",
+      "pass": true
+    },
+    {
+      "check": "six_velocity_groups",
+      "pass": true
+    },
+    {
+      "check": "five_repeats_per_velocity",
+      "pass": true
+    },
+    {
+      "check": "extraction_status_ok",
+      "pass": true
+    },
+    {
+      "check": "no_missing_measured_velocity",
+      "pass": true
+    },
+    {
+      "check": "no_missing_yaw_drift",
+      "pass": true
+    },
+    {
+      "check": "gold_profile_not_overwritten",
+      "pass": true
+    },
+    {
+      "check": "deployment_ready_false",
+      "pass": true
+    },
+    {
+      "check": "go1_g1_blocked",
+      "pass": true
+    }
+  ],
+  "claim_boundary": "QC only; no K1 gold profile overwrite and no compensation improvement claim"
+}

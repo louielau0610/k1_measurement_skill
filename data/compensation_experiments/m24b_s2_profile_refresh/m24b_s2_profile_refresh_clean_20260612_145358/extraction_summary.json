@@ -1,0 +1,18 @@
+{
+  "extracted_at": "2026-06-12T07:06:55.168078+00:00",
+  "session_dir": "/home/booster/data/compensation_experiments/m24b_s2_profile_refresh/m24b_s2_profile_refresh_clean_20260612_145358",
+  "session_id": "m24b_s2_profile_refresh_clean_20260612_145358",
+  "planned_records": 30,
+  "extracted_results": 30,
+  "ok_count": 30,
+  "invalid_count": 0,
+  "extraction_method": "odometer_forward_projection_window",
+  "analysis_window_sec": [
+    1.0,
+    6.0
+  ],
+  "profile_update_status": "not_updated",
+  "deployment_ready": false,
+  "go1_g1_blocked": true,
+  "claim_boundary": "extraction only; no profile refresh claim until QC passes and no compensation improvement claim"
+}
