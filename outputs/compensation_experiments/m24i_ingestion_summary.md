@@ -1,0 +1,6 @@
+# M24-I Ingestion Summary
+- Archive: m24h_controlled_s2_replication_results_m24h_controlled_s2_replication_clean_20260612_171419.tar.gz
+- Size: 1707097 bytes
+- SHA256: 63a090ecdb379062
+- Session: m24h_controlled_s2_replication_clean_20260612_171419
+- Path: data\compensation_experiments\m24h_controlled_s2_replication\m24h_controlled_s2_replication_clean_20260612_171419

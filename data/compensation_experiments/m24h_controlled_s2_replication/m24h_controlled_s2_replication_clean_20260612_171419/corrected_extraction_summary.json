@@ -1,0 +1,8 @@
+{
+  "extraction_time": "2026-06-12T09:21:22.736906+00:00",
+  "method": "command_phase_with_1.0s_trim",
+  "total_logs": 20,
+  "extracted": 20,
+  "corrected_extraction": true,
+  "disclaimer": "M24-H controlled replication \u2014 corrected extraction \u2014 no profile adoption claim"
+}

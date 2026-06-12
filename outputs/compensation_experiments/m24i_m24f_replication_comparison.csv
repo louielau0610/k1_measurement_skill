@@ -1,0 +1,5 @@
+command_velocity_mps,m24f_mean_actual_mps,m24i_mean_actual_mps,difference_mps,absolute_difference_mps,reproducibility_threshold_mps,replication_match_flag
+0.4,0.011353,0.028194,0.016841,0.016841,0.03,yes
+0.45,0.039635,0.063342,0.023707,0.023707,0.03,yes
+0.5,0.029037,0.05457,0.025533,0.025533,0.03,yes
+0.55,0.049154,0.087978,0.038824,0.038824,0.03,no

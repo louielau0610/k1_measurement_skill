@@ -1,0 +1,16 @@
+{
+  "session_id": "m24h_controlled_s2_replication_clean_20260612_171419",
+  "surface": "S2_marble_floor",
+  "robot_id": "",
+  "firmware_or_software_notes": "",
+  "battery_level_start": "",
+  "battery_level_end": "",
+  "warmup_status": "",
+  "start_pose_label": "",
+  "path_label": "",
+  "path_length_m": "",
+  "operator_reset_required": true,
+  "reset_confirmation_required": true,
+  "extraction_window_method": "command_phase_with_1s_trim",
+  "notes": ""
+}

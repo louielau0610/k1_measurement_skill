@@ -1,0 +1,15 @@
+{
+  "decision": "response_reproducible_profile_adoption_planning_allowed",
+  "reason": "3/4 velocities match M24-F within 0.03m/s threshold. Controlled S2 response is reproducible enough for profile adoption planning.",
+  "analysis_time": "2026-06-12T09:30:41.936826+00:00",
+  "m24f_match_count": 3,
+  "m24f_total": 4,
+  "m19c_match_count": 0,
+  "m19c_total": 4,
+  "reproducibility_threshold": 0.03,
+  "gold_profile_overwritten": false,
+  "candidate_profile_adopted": false,
+  "compensation_validated": false,
+  "deployment_ready": false,
+  "go1_g1_blocked": true
+}

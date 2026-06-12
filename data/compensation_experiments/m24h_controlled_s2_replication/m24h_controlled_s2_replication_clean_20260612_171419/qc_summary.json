@@ -1,0 +1,141 @@
+{
+  "qc_time": "2026-06-12T09:21:22.819609+00:00",
+  "overall_pass": true,
+  "checks_passed": 26,
+  "checks_total": 26,
+  "errors": [],
+  "warnings": [],
+  "checks": [
+    {
+      "check": "session_metadata_exists",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "surface_is_S2",
+      "pass": true,
+      "detail": "S2_marble_floor"
+    },
+    {
+      "check": "condition_is_direct_refresh_controlled",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "gold_profile_not_overwritten",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "profile_not_adopted",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "deployment_ready_false",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "go1_g1_blocked",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "controlled_metadata_exists",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "trial_records_exists",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "trial_count_is_20",
+      "pass": true,
+      "detail": "got 20"
+    },
+    {
+      "check": "all_20_executed",
+      "pass": true,
+      "detail": "exec=20 skip=0"
+    },
+    {
+      "check": "no_invalid_trials",
+      "pass": true,
+      "detail": "invalid=0"
+    },
+    {
+      "check": "all_direct_refresh_controlled",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "four_velocity_groups",
+      "pass": true,
+      "detail": "{'0.4': 5, '0.45': 5, '0.5': 5, '0.55': 5}"
+    },
+    {
+      "check": "velocity_0.4_5_repeats",
+      "pass": true,
+      "detail": "got 5"
+    },
+    {
+      "check": "velocity_0.45_5_repeats",
+      "pass": true,
+      "detail": "got 5"
+    },
+    {
+      "check": "velocity_0.5_5_repeats",
+      "pass": true,
+      "detail": "got 5"
+    },
+    {
+      "check": "velocity_0.55_5_repeats",
+      "pass": true,
+      "detail": "got 5"
+    },
+    {
+      "check": "no_compensated_rows",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "state_logs_dir_exists",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "state_log_count_20",
+      "pass": true,
+      "detail": "got 20"
+    },
+    {
+      "check": "corrected_extraction_exists",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "extraction_count_20",
+      "pass": true,
+      "detail": "got 20"
+    },
+    {
+      "check": "no_missing_measured_velocity",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no_missing_yaw_drift",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "all_extraction_ok",
+      "pass": true,
+      "detail": "0"
+    }
+  ],
+  "disclaimer": "M24-H controlled replication QC \u2014 not physical validation"
+}

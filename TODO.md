@@ -69,6 +69,7 @@
 - [x] M24-F correct S2 profile extraction and rerun corrected analysis.
 - [x] M24-G controlled S2 replication design.
 - [x] M24-H controlled S2 replication execution pack.
+- [x] M24-I controlled S2 replication analysis.
 - [x] M24-H hotfix controlled runner subprocess arguments after invalid/debug first attempt.
 - [ ] Run M24-B direct-only S2 current-condition profile refresh on Booster K1.
 - [x] Analyze M24-C old-vs-current S2 profile mismatch before any new compensation validation.

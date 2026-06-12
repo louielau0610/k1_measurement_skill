@@ -1,0 +1,8 @@
+{
+  "ingestion_time": "2026-06-12T09:30:41.922342+00:00",
+  "archive_filename": "m24h_controlled_s2_replication_results_m24h_controlled_s2_replication_clean_20260612_171419.tar.gz",
+  "archive_size_bytes": 1707097,
+  "checksum_sha256_16": "63a090ecdb379062",
+  "extracted_session_path": "data\\compensation_experiments\\m24h_controlled_s2_replication\\m24h_controlled_s2_replication_clean_20260612_171419",
+  "session_id": "m24h_controlled_s2_replication_clean_20260612_171419"
+}

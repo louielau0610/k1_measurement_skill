@@ -1,0 +1,18 @@
+{
+  "session_id": "m24h_controlled_s2_replication_clean_20260612_171419",
+  "surface": "S2_marble_floor",
+  "condition": "direct_refresh_controlled",
+  "total_trials": 20,
+  "planned_velocities": [
+    0.4,
+    0.45,
+    0.5,
+    0.55
+  ],
+  "created_at": "2026-06-12T09:14:19.606258+00:00",
+  "physical_run_status": "in_progress",
+  "deployment_ready": false,
+  "go1_g1_blocked": true,
+  "profile_adoption_status": "not_adopted",
+  "gold_profile_overwritten": false
+}

@@ -426,6 +426,40 @@ Flags:
 - `deployment_ready=false`
 - `go1_g1_blocked=true`
 
+## M24-I Controlled S2 Replication Analysis
+
+M24-I ingests the clean M24-H controlled replication result package, verifies session completeness, computes per-velocity statistics, compares against M24-F/M19C/M23-C, and makes a controlled response decision.
+
+Key findings:
+- **20 trials**: all executed, 0 skipped, 0 invalid.
+- **4 velocity groups** × 5 repeats: 0.40, 0.45, 0.50, 0.55.
+- **3/4 velocities** match M24-F within 0.03 m/s reproducibility threshold.
+- **0/4 velocities** match M19C — S2 response has drifted from gold profile.
+- **Decision**: `response_reproducible_profile_adoption_planning_allowed`
+- **Candidate profile**: `outputs/compensation_experiments/m24i_controlled_s2_profile_candidate.json` (candidate only, not adopted)
+
+Artifacts:
+- `scripts/analyze_m24i_controlled_s2_replication.py` — analysis script
+- `outputs/compensation_experiments/m24i_ingestion_summary.json`
+- `outputs/compensation_experiments/m24i_controlled_s2_per_velocity_summary.csv`
+- `outputs/compensation_experiments/m24i_m24f_replication_comparison.csv`
+- `outputs/compensation_experiments/m24i_old_m19c_comparison.csv`
+- `outputs/compensation_experiments/m24i_m23c_direct_comparison.csv`
+- `outputs/compensation_experiments/m24i_controlled_s2_replication_summary.json`
+- `outputs/compensation_experiments/m24i_controlled_s2_replication_decision.md`
+- `outputs/compensation_experiments/m24i_controlled_s2_profile_candidate.json`
+- `outputs/compensation_experiments/m24i_controlled_s2_profile_candidate.md`
+- `outputs/compensation_experiments/m24i_controlled_s2_replication_report.md`
+- `docs/m24i_controlled_s2_replication_analysis.md`
+- `docs/m24i_profile_adoption_readiness_boundary.md`
+
+Flags:
+- `gold_profile_overwritten=false`
+- `candidate_profile_adopted=false`
+- `compensation_validated=false`
+- `deployment_ready=false`
+- `go1_g1_blocked=true`
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

@@ -1,0 +1,5 @@
+command_velocity_mps,m19c_mean_actual_mps,m24i_mean_actual_mps,absolute_difference_mps,mismatch_flag
+0.4,0.363734,0.028194,0.33554,yes
+0.45,0.498215,0.063342,0.434873,yes
+0.5,0.63431,0.05457,0.57974,yes
+0.55,unavailable,0.087978,unavailable,unavailable

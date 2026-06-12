@@ -1,0 +1,5 @@
+command_velocity_mps,desired_velocity_mps,n,mean_actual_velocity_mps,median_actual_velocity_mps,std_actual_velocity_mps,min_actual_velocity_mps,max_actual_velocity_mps,mean_tracking_error_mps,mean_abs_tracking_error_mps,median_abs_tracking_error_mps,max_abs_tracking_error_mps,mean_yaw_drift_deg,median_yaw_drift_deg,max_yaw_drift_deg,repeat_variability_mps,repeat_variability_flag,direct_near_optimal_flag
+0.4,0.4,5,0.028194,0.032358,0.026114,0.000616,0.057707,-0.371806,0.371806,0.367642,0.399384,1.9388,1.5493,4.1612,0.026114,acceptable,no
+0.45,0.45,5,0.063342,0.068857,0.018674,0.033614,0.081474,-0.386658,0.386658,0.381143,0.416386,3.2209,3.3518,6.4054,0.018674,acceptable,no
+0.5,0.5,5,0.05457,0.052712,0.041743,0.000585,0.099475,-0.44543,0.44543,0.447288,0.499415,1.0968,0.4568,2.5729,0.041743,high_variability,no
+0.55,0.55,5,0.087978,0.087762,0.017427,0.066185,0.107932,-0.462022,0.462022,0.462238,0.483815,1.0233,0.5945,3.2581,0.017427,acceptable,no
