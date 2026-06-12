@@ -228,6 +228,31 @@ Flags:
 - `go1_g1_blocked=true`
 - `next_milestone=M24-B direct-only S2 current-condition profile refresh`
 
+## M24-B S2 Profile Refresh Execution Pack
+
+M24-B creates the execution pack needed to run the M24-A direct-only Booster K1 S2 profile refresh. It adds a dry-run-default runner, a ROS2 odometer logger wrapper, extraction and QC scripts, robot transfer commands, execution protocol, and an execution-pack manifest.
+
+Expected run shape:
+
+- surface: `S2_marble_floor`
+- condition: `direct_refresh` only
+- planned trials: 30
+- velocity groups: 6
+- repeats per velocity: 5
+- session base: `data/compensation_experiments/m24b_s2_profile_refresh/<session_id>/`
+
+M24-B does NOT execute hardware in the repository, fabricate extracted physical results, overwrite `k1_gold_profile_v1`, claim revised compensation improvement, claim deployment readiness, or start GO1/G1 work.
+
+Flags:
+
+- `m24b_execution_pack_status=ready_not_run`
+- `physical_profile_refresh_status=not_run`
+- `profile_update_status=not_updated`
+- `revised_compensator_status=offline_only`
+- `deployment_ready=false`
+- `go1_g1_blocked=true`
+- `next_milestone=M24-B physical direct-refresh run on Booster K1`
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

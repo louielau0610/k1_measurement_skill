@@ -1,0 +1,65 @@
+{
+  "milestone": "M24-B",
+  "status": "execution_pack_ready",
+  "platform": "booster_k1",
+  "robot_model": "Booster K1",
+  "surface": "S2_marble_floor",
+  "condition": "direct_refresh",
+  "expected_trial_count": 30,
+  "expected_velocity_groups": 6,
+  "expected_repeats_per_velocity": 5,
+  "expected_input_plan": "outputs/compensation_experiments/m24a_s2_profile_refresh_plan.csv",
+  "scripts_included": [
+    "scripts/run_m24b_s2_profile_refresh_trials.py",
+    "scripts/log_m24b_s2_profile_refresh_trial.py",
+    "scripts/send_m23b_k1_velocity_command.py",
+    "scripts/extract_m24b_s2_profile_refresh_trials.py",
+    "scripts/qc_m24b_s2_profile_refresh_session.py"
+  ],
+  "docs_included": [
+    "docs/m24b_robot_transfer_and_run_commands.md",
+    "docs/m24b_s2_profile_refresh_execution_protocol.md"
+  ],
+  "expected_output_session_structure": {
+    "base_dir": "data/compensation_experiments/m24b_s2_profile_refresh/<session_id>/",
+    "files": [
+      "session_metadata.json",
+      "trial_records.csv",
+      "run_summary.json",
+      "state_logs/<trial_id>.csv",
+      "state_logs/<trial_id>_cmd_log.json",
+      "extracted_results.csv",
+      "extraction_summary.json",
+      "extraction_report.md",
+      "qc_summary.json",
+      "qc_report.md"
+    ]
+  },
+  "runner_command_dry_run": "python3 scripts/run_m24b_s2_profile_refresh_trials.py --trial-plan outputs/compensation_experiments/m24a_s2_profile_refresh_plan.csv --surface S2_marble_floor --session-id m24b_s2_profile_refresh_YYYYMMDD_HHMMSS",
+  "runner_command_execute": "python3 scripts/run_m24b_s2_profile_refresh_trials.py --trial-plan outputs/compensation_experiments/m24a_s2_profile_refresh_plan.csv --surface S2_marble_floor --interface eth0 --session-id m24b_s2_profile_refresh_YYYYMMDD_HHMMSS --sdk-python python3 --logger-startup-sec 0.5 --execute",
+  "extraction_command": "python3 scripts/extract_m24b_s2_profile_refresh_trials.py --session-dir data/compensation_experiments/m24b_s2_profile_refresh/<session_id>",
+  "qc_command": "python3 scripts/qc_m24b_s2_profile_refresh_session.py --session-dir data/compensation_experiments/m24b_s2_profile_refresh/<session_id>",
+  "physical_run_status": "not_run",
+  "profile_update_status": "not_updated",
+  "deployment_ready": false,
+  "go1_g1_blocked": true,
+  "split_process_boundary": {
+    "runner_imports_rclpy": false,
+    "runner_imports_booster_sdk": false,
+    "logger_imports_booster_sdk": false,
+    "sdk_sender_imports_rclpy": false
+  },
+  "safety": {
+    "dry_run_default": true,
+    "execute_requires_flag": true,
+    "per_trial_permit_default": true
+  },
+  "claim_boundary": {
+    "hardware_executed_in_repo": false,
+    "physical_results_fabricated": false,
+    "k1_gold_profile_overwritten": false,
+    "compensation_improvement_claimed": false,
+    "deployment_ready": false,
+    "go1_g1_validation": false
+  }
+}
