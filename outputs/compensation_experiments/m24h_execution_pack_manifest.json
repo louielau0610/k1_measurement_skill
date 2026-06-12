@@ -11,7 +11,7 @@
     "scripts/run_m24h_controlled_s2_replication_trials.py",
     "scripts/extract_m24h_controlled_s2_replication_trials.py",
     "scripts/qc_m24h_controlled_s2_replication_session.py",
-    "scripts/log_m23b_k1_compensation_trial.py",
+    "scripts/log_m24h_controlled_s2_replication_trial.py",
     "scripts/send_m23b_k1_velocity_command.py"
   ],
 
@@ -47,7 +47,9 @@
     "dry_run_default": true,
     "execute_requires_flag": true,
     "per_trial_permit_default": true,
-    "split_process_enforced": true
+    "split_process_enforced": true,
+    "sdk_command_log_dir_required": true,
+    "hotfix_note": "Use M24-H logger accepting direct_refresh_controlled and pass --log-dir to SDK sender."
   },
 
   "claim_boundary": {

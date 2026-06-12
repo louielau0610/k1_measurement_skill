@@ -12,8 +12,12 @@
 | `scripts/run_m24h_controlled_s2_replication_trials.py` | Controlled runner — strict S2/direct only, auto subprocesses |
 | `scripts/extract_m24h_controlled_s2_replication_trials.py` | Corrected extractor — command-phase window with trim |
 | `scripts/qc_m24h_controlled_s2_replication_session.py` | QC — 20 trials, 4 groups × 5 repeats, no compensated |
-| `scripts/log_m23b_k1_compensation_trial.py` | Reused ROS2 state logger |
+| `scripts/log_m24h_controlled_s2_replication_trial.py` | Controlled ROS2 state logger accepting `direct_refresh_controlled` |
 | `scripts/send_m23b_k1_velocity_command.py` | Reused Booster SDK command sender |
+
+## Hotfix Boundary
+
+The first M24-H physical attempt used the M23-B logger and omitted `--log-dir` for the SDK sender. That attempted session is invalid/debug because both subprocesses exited with argument errors and the robot did not move. Formal controlled replication must use the hotfixed runner and M24-H logger.
 
 ## Input Plan
 

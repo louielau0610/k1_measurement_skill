@@ -1,6 +1,6 @@
 # M24-H Controlled S2 Replication Execution Protocol
 
-**Status**: Execution pack. Physical run has not occurred.
+**Status**: Execution pack. The first physical attempt before the subprocess hotfix is invalid/debug.
 **Physical run status**: `not_run`
 
 ## Physical Setup
@@ -49,9 +49,13 @@ Update `battery_level_end` after session.
 
 ## Split-Process Architecture
 
-- Logger subprocess: `log_m23b_k1_compensation_trial.py` (rclpy only)
-- SDK subprocess: `send_m23b_k1_velocity_command.py` (Booster SDK only)
+- Logger subprocess: `log_m24h_controlled_s2_replication_trial.py` (rclpy only; accepts `direct_refresh_controlled`)
+- SDK subprocess: `send_m23b_k1_velocity_command.py` (Booster SDK only; runner passes `--log-dir <session_state_logs_dir>`)
 - Runner: orchestrates both, imports neither rclpy nor SDK
+
+## Hotfix Note
+
+The first M24-H physical attempt failed before robot motion because the runner invoked the old M23-B logger, which rejects `direct_refresh_controlled`, and did not pass the SDK sender's required `--log-dir`. That attempted session is invalid/debug. Formal controlled replication must use the hotfixed runner.
 
 ## Post-Run
 

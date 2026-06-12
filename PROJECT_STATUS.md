@@ -417,6 +417,8 @@ M24-H creates the execution pack for the M24-G controlled S2 replication experim
 
 M24-H does NOT execute hardware, fabricate results, overwrite the gold profile, adopt any candidate profile, claim compensation improvement, claim deployment readiness, or start GO1/G1 work.
 
+**M24-H Hotfix (2026-06-12)**: The first physical attempt failed before robot motion because the runner invoked the old M23-B logger, which only accepts `direct`/`compensated`, and omitted `--log-dir` for the SDK sender. Both subprocesses exited with argument errors (`rc=2`), so that attempted session is invalid/debug. The hotfixed runner uses the M24-H controlled logger and passes `--log-dir <session_state_logs_dir>` to the SDK sender. Formal controlled replication must use the hotfixed runner.
+
 Flags:
 - `physical_run_status=not_run`
 - `profile_adoption_status=not_adopted`

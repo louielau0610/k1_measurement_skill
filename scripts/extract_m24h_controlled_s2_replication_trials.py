@@ -126,7 +126,7 @@ def _extract_trial(log_path: Path, trial_id: str, trim_sec: float) -> dict[str, 
     r0 = rows[0]
     return {
         "trial_id": trial_id,
-        "replication_group_id": r0.get("pair_id", r0.get("refresh_group_id", "")),
+        "replication_group_id": r0.get("replication_group_id", r0.get("pair_id", r0.get("refresh_group_id", ""))),
         "surface": "S2_marble_floor",
         "condition": r0.get("condition", "direct_refresh_controlled"),
         "command_velocity_mps": float(r0.get("command_velocity_mps", 0)),

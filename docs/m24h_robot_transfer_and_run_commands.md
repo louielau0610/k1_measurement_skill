@@ -11,9 +11,9 @@ $K1_IP = "<K1_IP>"
 ssh robot@$K1_IP "mkdir -p ~/k1_measurement_skill/scripts ~/k1_measurement_skill/outputs/compensation_experiments"
 
 scp scripts/run_m24h_controlled_s2_replication_trials.py robot@${K1_IP}:~/k1_measurement_skill/scripts/
+scp scripts/log_m24h_controlled_s2_replication_trial.py robot@${K1_IP}:~/k1_measurement_skill/scripts/
 scp scripts/extract_m24h_controlled_s2_replication_trials.py robot@${K1_IP}:~/k1_measurement_skill/scripts/
 scp scripts/qc_m24h_controlled_s2_replication_session.py robot@${K1_IP}:~/k1_measurement_skill/scripts/
-scp scripts/log_m23b_k1_compensation_trial.py robot@${K1_IP}:~/k1_measurement_skill/scripts/
 scp scripts/send_m23b_k1_velocity_command.py robot@${K1_IP}:~/k1_measurement_skill/scripts/
 scp outputs/compensation_experiments/m24g_controlled_s2_replication_plan.csv robot@${K1_IP}:~/k1_measurement_skill/outputs/compensation_experiments/
 scp outputs/compensation_experiments/m24h_controlled_metadata_template.json robot@${K1_IP}:~/k1_measurement_skill/outputs/compensation_experiments/
@@ -50,6 +50,12 @@ python scripts/run_m24h_controlled_s2_replication_trials.py \
 ```
 
 Use actual date/time for session ID.
+
+The hotfixed runner launches `log_m24h_controlled_s2_replication_trial.py`, which accepts `direct_refresh_controlled`, and passes `--log-dir` to the SDK sender so command logs are written under the session `state_logs/` directory.
+
+## Invalid/Debug Attempt Boundary
+
+The first M24-H physical attempt before this hotfix invoked the M23-B logger and omitted the SDK sender `--log-dir` argument. Both subprocesses failed with argument errors (`rc=2`), and the robot did not move. Treat that attempted session as invalid/debug. Formal controlled replication must use this hotfixed runner.
 
 ## 6. Post-Run Extraction (Corrected)
 

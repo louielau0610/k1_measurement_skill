@@ -69,6 +69,7 @@
 - [x] M24-F correct S2 profile extraction and rerun corrected analysis.
 - [x] M24-G controlled S2 replication design.
 - [x] M24-H controlled S2 replication execution pack.
+- [x] M24-H hotfix controlled runner subprocess arguments after invalid/debug first attempt.
 - [ ] Run M24-B direct-only S2 current-condition profile refresh on Booster K1.
 - [x] Analyze M24-C old-vs-current S2 profile mismatch before any new compensation validation.
 - [ ] Collect more controlled S2 refresh data or diagnose M24-B near-zero extracted velocity before compensation validation.
@@ -131,6 +132,7 @@
 - [ ] Do not run a second compensation validation while M24-D adoption decision is `investigate_extraction_before_profile_decision`.
 - [ ] Do not treat M24-F corrected candidate profile as adopted or deployment-ready.
 - [ ] Do not run compensation validation before M24-G/H controlled S2 replication is analyzed.
+- [ ] Do not treat the first failed M24-H physical attempt as valid controlled replication data.
 - [ ] Do not claim publication readiness from M13-P1 artifacts.
 - [ ] Do not claim novelty from P1 seed literature search alone.
 - [ ] Do not claim novelty or performance superiority from P2 positioning alone.

@@ -38,7 +38,7 @@ ALLOWED_SURFACE = "S2_marble_floor"
 ALLOWED_CONDITION = "direct_refresh_controlled"
 ALLOWED_VELOCITIES = {0.40, 0.45, 0.50, 0.55}
 
-LOGGER_SCRIPT = "scripts/log_m23b_k1_compensation_trial.py"
+LOGGER_SCRIPT = "scripts/log_m24h_controlled_s2_replication_trial.py"
 SDK_SCRIPT = "scripts/send_m23b_k1_velocity_command.py"
 
 TRIAL_RECORD_FIELDS = [
@@ -201,7 +201,7 @@ def main(argv: list[str] | None = None) -> int:
                 continue
 
         # Launch logger subprocess
-        logger_cmd = [sys.executable, logger_py, "--trial-id", tid, "--pair-id", gid,
+        logger_cmd = [sys.executable, logger_py, "--trial-id", tid, "--replication-group-id", gid,
                       "--condition", ALLOWED_CONDITION, "--desired-velocity", str(v_desired),
                       "--command-velocity", str(v_cmd), "--output-dir", str(state_log_dir)]
         print(f"    [LOGGER] {' '.join(logger_cmd)}")
@@ -210,7 +210,7 @@ def main(argv: list[str] | None = None) -> int:
 
         # Launch SDK subprocess
         sdk_cmd = [args.sdk_python, sdk_py, "--trial-id", tid, "--command-velocity", str(v_cmd),
-                   "--interface", args.interface]
+                   "--interface", args.interface, "--log-dir", str(state_log_dir)]
         print(f"    [SDK]    {' '.join(sdk_cmd)}")
         sdk_proc = subprocess.Popen(sdk_cmd)
 
