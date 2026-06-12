@@ -90,7 +90,7 @@ def test_safety_flags_remain_false_for_downstream_control() -> None:
 
 def test_missing_required_artifact_causes_clear_error(tmp_path: Path) -> None:
     repo_copy = tmp_path / "repo"
-    shutil.copytree(REPO_ROOT, repo_copy, ignore=shutil.ignore_patterns(".git", "__pycache__"))
+    shutil.copytree(REPO_ROOT, repo_copy, ignore=shutil.ignore_patterns(".git", "__pycache__", ".pytest_cache", "data", "*.tar.gz"))
     (repo_copy / "outputs" / "research_risk" / "navigation_risk_map_v1.json").unlink()
 
     try:
