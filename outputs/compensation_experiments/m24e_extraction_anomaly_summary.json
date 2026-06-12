@@ -1,0 +1,13 @@
+{
+  "audit_time": "2026-06-12T07:57:52.097312+00:00",
+  "total_trials_audited": 30,
+  "anomalies_found": 0,
+  "labels_assigned": [
+    "extraction_issue_not_found"
+  ],
+  "detailed_anomalies": [],
+  "method_d_ok_count": 30,
+  "method_d_tiny_forward_count": 0,
+  "method_d_tiny_forward_ratio": 0.0,
+  "is_original_extraction_reproduced": true
+}

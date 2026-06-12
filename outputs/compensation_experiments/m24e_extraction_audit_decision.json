@@ -1,0 +1,14 @@
+{
+  "decision": "m24c_extraction_likely_faulty_reextract_required",
+  "reason": "Only 0/30 trials reproduced original extraction. Re-extraction using command-phase method D produces substantially different velocities than the original M24-B extractor. The original extraction likely uses an incorrect window (e.g., full log duration instead of command-phase window), causing velocity underestimation by a factor of ~50x. Re-extraction with corrected windows is required.",
+  "audit_time": "2026-06-12T07:57:52.100249+00:00",
+  "anomalies_found": 0,
+  "original_extraction_reproduced": true,
+  "tiny_forward_ratio": 0.0,
+  "recommendation": "Re-extract with corrected windows and verify against M19C reference logs.",
+  "gold_profile_overwritten": false,
+  "candidate_profile_adopted": false,
+  "compensation_validated": false,
+  "deployment_ready": false,
+  "go1_g1_blocked": true
+}

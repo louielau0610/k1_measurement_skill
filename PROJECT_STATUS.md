@@ -318,6 +318,38 @@ Flags:
 - `go1_g1_blocked=true`
 - `next_milestone=extraction_audit_or_controlled_s2_direct_replication`
 
+## M24-E Extraction Method Audit
+
+M24-E audits raw M24-B state logs to determine whether M24-C's large discrepancy is caused by extraction-method or raw-log interpretation issues. It is offline only.
+
+Key findings:
+
+- **0/30 trials** reproduced original M24-B extraction when re-extracted with command-phase window.
+- Original extraction underestimates velocity by ~50-110× compared to re-extraction.
+- **Decision**: `m24c_extraction_likely_faulty_reextract_required`
+- Raw logs are structurally valid (0 schema/timestamp anomalies).
+- The original extractor likely used full ~9-10s log duration instead of ~6s command-phase window.
+
+Artifacts:
+- `scripts/audit_m24e_extraction_method.py` — main audit script (5 extraction windows, cross-check, anomaly detection, decision)
+- `outputs/compensation_experiments/m24e_reextracted_trial_metrics.csv` — 150 re-extracted trial metrics
+- `outputs/compensation_experiments/m24e_extraction_method_comparison.csv` — per-method per-velocity comparison
+- `outputs/compensation_experiments/m24e_m24c_crosscheck.csv` — original vs re-extracted cross-check
+- `outputs/compensation_experiments/m24e_extraction_anomaly_summary.json` — anomaly labels
+- `outputs/compensation_experiments/m24e_extraction_audit_decision.json` — audit decision
+- `docs/m24e_extraction_method_audit.md` — full audit documentation
+- `docs/m24e_raw_log_reanalysis_boundary.md` — boundary documentation
+
+M24-E does NOT execute hardware, overwrite the gold profile, adopt the candidate profile, claim compensation improvement, claim deployment readiness, or start GO1/G1 work.
+
+Flags:
+- `gold_profile_overwritten=false`
+- `candidate_profile_adopted=false`
+- `extraction_fault_identified=true`
+- `reextraction_required=true`
+- `deployment_ready=false`
+- `go1_g1_blocked=true`
+
 ## M22-B Velocity Compensation Algorithm Specification
 
 M22-B formalizes the first velocity compensation algorithm as a specification-only milestone. It defines:

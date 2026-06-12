@@ -65,6 +65,7 @@
 - [x] M24-B S2 profile refresh execution pack.
 - [x] M24-C analyze clean S2 profile refresh results.
 - [x] M24-D response consistency audit and profile adoption boundary.
+- [x] M24-E extraction method audit and raw log reanalysis.
 - [ ] Run M24-B direct-only S2 current-condition profile refresh on Booster K1.
 - [x] Analyze M24-C old-vs-current S2 profile mismatch before any new compensation validation.
 - [ ] Collect more controlled S2 refresh data or diagnose M24-B near-zero extracted velocity before compensation validation.
