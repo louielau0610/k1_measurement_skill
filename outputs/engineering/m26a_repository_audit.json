@@ -1,0 +1,556 @@
+{
+  "audit_metadata": {
+    "milestone": "M26-A",
+    "date": "2026-06-15",
+    "branch": "engineering/m26a-program-reset-audit",
+    "auditor": "automated-repository-scan",
+    "schema_version": "m26a_audit_v1",
+    "evidence_classifications_used": [
+      "verified_in_repository",
+      "verified_by_upstream_reference",
+      "assumption",
+      "unknown",
+      "conflict"
+    ]
+  },
+  "repository_snapshot": {
+    "python_packages": {
+      "calibration_core": {
+        "path": "calibration_core/",
+        "file_count": 19,
+        "role": "cross_platform_calibration_core",
+        "has_hardware_imports": false,
+        "has_network_side_effects": false,
+        "has_filesystem_mutations": true,
+        "has_robot_command_logic": false,
+        "import_time_side_effects": false,
+        "k1_specific_leaks": [
+          "compensation_models.py: SUPPORTED_EMPIRICAL_PLATFORM = 'booster_k1'",
+          "profile_loader.py: load_k1_gold_profile() hardcoded path",
+          "__init__.py: exports load_k1_gold_profile"
+        ]
+      },
+      "k1_measurement": {
+        "path": "k1_measurement/",
+        "file_count": 21,
+        "role": "k1_measurement_tooling",
+        "has_hardware_imports": true,
+        "hardware_imports_guarded": true,
+        "has_network_side_effects": true,
+        "network_effects_type": "ros2_readonly_subprocess",
+        "has_filesystem_mutations": true,
+        "has_robot_command_logic": true,
+        "robot_command_default": "dry_run",
+        "import_time_side_effects": false
+      },
+      "platforms/booster_k1": {
+        "path": "platforms/booster_k1/",
+        "file_count": 10,
+        "role": "k1_hardware_adapter",
+        "validation_status": "hardware_validated_reference",
+        "has_hardware_imports": true,
+        "has_network_side_effects": true,
+        "has_filesystem_mutations": true,
+        "has_robot_command_logic": true,
+        "command_sequence": "kPrepare -> kWalking -> Move(vx, 0.0, 0.0)",
+        "execution_requires_explicit_enable": true
+      },
+      "platforms/unitree_g1": {
+        "path": "platforms/unitree_g1/",
+        "file_count": 4,
+        "role": "g1_scaffold_adapter",
+        "validation_status": "scaffold_only",
+        "has_hardware_imports": false,
+        "has_network_side_effects": false,
+        "has_robot_command_logic": false,
+        "all_methods_raise_not_implemented": true
+      },
+      "platforms/unitree_go1": {
+        "path": "platforms/unitree_go1/",
+        "file_count": 4,
+        "role": "go1_scaffold_adapter",
+        "validation_status": "scaffold_only",
+        "has_hardware_imports": false,
+        "has_network_side_effects": false,
+        "has_robot_command_logic": false,
+        "all_methods_raise_not_implemented": true
+      }
+    },
+    "scripts": {
+      "path": "scripts/",
+      "file_count": 93,
+      "categories": [
+        "analysis",
+        "audit",
+        "compensation_offline",
+        "extraction",
+        "field_session",
+        "k1_sdk_ros2_logging",
+        "profile_building",
+        "qc_validation",
+        "discovery_diagnostic",
+        "report_generation"
+      ]
+    },
+    "configs": {
+      "path": "configs/",
+      "file_count": 11,
+      "authoritative_safety_config": "configs/m25_k1_safe_speed_operator_confirmation.yaml"
+    },
+    "config": {
+      "path": "config/",
+      "file_count": 2
+    },
+    "tests": {
+      "path": "tests/",
+      "file_count": 62,
+      "framework": "pytest",
+      "requires_hardware_sdk": false,
+      "all_offline_safe": true
+    },
+    "docs": {
+      "path": "docs/",
+      "file_count_approx": 72,
+      "subdirs": ["modules"]
+    },
+    "outputs": {
+      "path": "outputs/",
+      "subdir_count": 15
+    },
+    "data": {
+      "path": "data/",
+      "subdir_count": 8
+    }
+  },
+  "significant_findings": [
+    {
+      "id": "F-001",
+      "path": "calibration_core/compensation_models.py",
+      "line": 14,
+      "category": "boundary_violation",
+      "current_responsibility": "compensation data models",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "none",
+      "safety_relevance": "low",
+      "migration_disposition": "replace_hardcoded_platform_with_registry_lookup",
+      "evidence_status": "verified_in_repository",
+      "finding": "SUPPORTED_EMPIRICAL_PLATFORM = 'booster_k1' hardcoded in generic core module",
+      "notes": "Should use platform_registry to determine supported platforms dynamically"
+    },
+    {
+      "id": "F-002",
+      "path": "calibration_core/profile_loader.py",
+      "category": "boundary_violation",
+      "current_responsibility": "profile loading",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "filesystem_read",
+      "safety_relevance": "low",
+      "migration_disposition": "parameterize_path_keep_convenience_in_adapter",
+      "evidence_status": "verified_in_repository",
+      "finding": "load_k1_gold_profile() hardcodes K1 gold profile path",
+      "notes": "Convenience function should move to K1 adapter; core should accept path parameter"
+    },
+    {
+      "id": "F-003",
+      "path": "calibration_core/__init__.py",
+      "category": "boundary_violation",
+      "current_responsibility": "core public API",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "none",
+      "safety_relevance": "low",
+      "migration_disposition": "deprecate_in_core_export_from_adapter",
+      "evidence_status": "verified_in_repository",
+      "finding": "load_k1_gold_profile exported from core __init__.py",
+      "notes": "K1-specific convenience should not be in core public API"
+    },
+    {
+      "id": "F-004",
+      "path": "configs/m25_k1_safe_speed_operator_confirmation.yaml",
+      "category": "safety_config",
+      "current_responsibility": "authoritative K1 safety limit",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "none",
+      "safety_relevance": "critical",
+      "migration_disposition": "preserve_as_k1_safety_source_of_truth",
+      "evidence_status": "verified_in_repository",
+      "finding": "safe_command_speed_max: 0.6 m/s, operator-confirmed, hashed into preflight/plan/session/audit trail",
+      "notes": "Primary safety provenance artifact for K1"
+    },
+    {
+      "id": "F-005",
+      "path": "platforms/booster_k1/adapter.py",
+      "category": "command_execution",
+      "current_responsibility": "K1 hardware command adapter",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "hardware_motion_possible",
+      "safety_relevance": "critical",
+      "migration_disposition": "preserve_with_safety_gates",
+      "evidence_status": "verified_in_repository",
+      "finding": "Validated command sequence kPrepare -> kWalking -> Move(vx, 0.0, 0.0). Raises NotImplementedError if execution not explicitly enabled.",
+      "notes": "Primary K1 motion execution path. Requires explicit operator enablement."
+    },
+    {
+      "id": "F-006",
+      "path": "scripts/send_m23b_k1_velocity_command.py",
+      "category": "command_execution",
+      "current_responsibility": "M23-B K1 velocity command sending",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "hardware_motion_possible",
+      "safety_relevance": "critical",
+      "migration_disposition": "migrate_to_adapter_command_interface",
+      "evidence_status": "verified_in_repository",
+      "finding": "Contains conditional K1 velocity command execution with explicit flags",
+      "notes": "Must be migrated to use adapter pattern with safety envelope enforcement"
+    },
+    {
+      "id": "F-007",
+      "path": "k1_measurement/command_runner.py",
+      "category": "command_execution",
+      "current_responsibility": "K1 command runner abstraction",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "hardware_motion_possible_when_enabled",
+      "safety_relevance": "high",
+      "migration_disposition": "align_with_target_adapter_interface",
+      "evidence_status": "verified_in_repository",
+      "finding": "K1CommandRunner defaults to dry_run=True. Validates speed against safe maximum. Contains VelocityCommand dataclass with safety fields.",
+      "notes": "Good safety defaults; needs alignment with target VelocityCommand contract"
+    },
+    {
+      "id": "F-008",
+      "path": "calibration_core/platform_registry.py",
+      "category": "registry",
+      "current_responsibility": "cross-platform adapter registry",
+      "current_platform_scope": "multi_platform",
+      "side_effect_classification": "dynamic_import",
+      "safety_relevance": "low",
+      "migration_disposition": "preserve_and_harden",
+      "evidence_status": "verified_in_repository",
+      "finding": "Dynamically imports all three platform adapters at function scope. Good separation from core logic.",
+      "notes": "Acceptable pattern; ensure import errors are caught gracefully"
+    },
+    {
+      "id": "F-009",
+      "path": "outputs/real_k1_validation_m19/k1_gold_profile_v1.json",
+      "category": "gold_data",
+      "current_responsibility": "authoritative K1 calibration reference",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "none",
+      "safety_relevance": "high",
+      "migration_disposition": "preserve_immutable",
+      "evidence_status": "verified_in_repository",
+      "finding": "K1 gold calibration profile. Must not be overwritten or altered.",
+      "notes": "Immutable reference for all K1 compensation decisions"
+    },
+    {
+      "id": "F-010",
+      "path": "k1_measurement/full_range_velocity_profile.py",
+      "category": "domain_config",
+      "current_responsibility": "M25 full-range velocity profiling contracts",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "none",
+      "safety_relevance": "medium",
+      "migration_disposition": "extract_k1_constants_to_config",
+      "evidence_status": "verified_in_repository",
+      "finding": "Contains K1-specific speed domains (valid_command_speed_min, safe_command_speed_max, high_priority_region)",
+      "notes": "Domain constants should be loaded from platform config, not hardcoded in module"
+    },
+    {
+      "id": "F-011",
+      "path": "docs/modules/",
+      "category": "ambiguous_role",
+      "current_responsibility": "recently added documentation",
+      "current_platform_scope": "unknown",
+      "side_effect_classification": "none",
+      "safety_relevance": "none",
+      "migration_disposition": "review_and_integrate",
+      "evidence_status": "verified_in_repository",
+      "finding": "Untracked files: calibration_core_implementation.md, calibration_core_principles.md, platforms_implementation.md, platforms_principles.md, project_overview.md",
+      "notes": "New documentation being added; role to be established"
+    },
+    {
+      "id": "F-012",
+      "path": "paper/",
+      "category": "paused_work",
+      "current_responsibility": "academic paper artifacts",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "none",
+      "safety_relevance": "none",
+      "migration_disposition": "preserve_historical",
+      "evidence_status": "verified_in_repository",
+      "finding": "Paper directory with 9 subdirectories (claims, experiments, figures, latex, manuscript, method, positioning, related_work, tables)",
+      "notes": "Paused as part of M26-A program reset"
+    },
+    {
+      "id": "F-013",
+      "path": "calibration_core/command_adapter.py",
+      "category": "interface",
+      "current_responsibility": "platform-agnostic command adapter protocol",
+      "current_platform_scope": "multi_platform",
+      "side_effect_classification": "none",
+      "safety_relevance": "high",
+      "migration_disposition": "evolve_to_target_RobotAdapter_interface",
+      "evidence_status": "verified_in_repository",
+      "finding": "RobotCommandAdapter Protocol defines connect, prepare, enter_motion_mode, send_velocity, stop, close",
+      "notes": "Needs alignment with target MotionLifecycle and VelocityCommand contracts"
+    },
+    {
+      "id": "F-014",
+      "path": "calibration_core/velocity_compensation.py",
+      "category": "compensation",
+      "current_responsibility": "offline velocity compensation (M22-C prototype)",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "filesystem_read",
+      "safety_relevance": "medium",
+      "migration_disposition": "align_with_target_CompensationDecision_contract",
+      "evidence_status": "verified_in_repository",
+      "finding": "Offline compensator prototype; no hardware execution. Consumes K1 gold profile.",
+      "notes": "No hardware motion; purely computational"
+    },
+    {
+      "id": "F-015",
+      "path": "calibration_core/revised_velocity_compensation.py",
+      "category": "compensation",
+      "current_responsibility": "revised offline compensator (M23-E)",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "filesystem_read",
+      "safety_relevance": "medium",
+      "migration_disposition": "align_with_target_CompensationDecision_contract",
+      "evidence_status": "verified_in_repository",
+      "finding": "Revised M23-E compensator with identity fallback and benefit gate. No hardware execution.",
+      "notes": "Incorporates lessons from negative M23-C physical result"
+    },
+    {
+      "id": "F-016",
+      "path": "k1_measurement/logger_node.py",
+      "category": "safety",
+      "current_responsibility": "safe logger skeleton",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "none",
+      "safety_relevance": "high",
+      "migration_disposition": "preserve_safety_pattern",
+      "evidence_status": "verified_in_repository",
+      "finding": "K1MeasurementLogger intentionally does NOT import rclpy; refuses unsafe setup",
+      "notes": "Exemplary safety pattern for all adapters"
+    },
+    {
+      "id": "F-017",
+      "path": "contracts/",
+      "category": "schemas",
+      "current_responsibility": "external interface contracts",
+      "current_platform_scope": "multi_platform",
+      "side_effect_classification": "none",
+      "safety_relevance": "low",
+      "migration_disposition": "evolve_to_target_schemas_layer",
+      "evidence_status": "verified_in_repository",
+      "finding": "Three contract files: downstream_interface.md, measurement_profile_schema.json, raw_log_schema.md",
+      "notes": "Foundation for target schemas/ layer"
+    },
+    {
+      "id": "F-018",
+      "path": "config/experiment_forward_v0.yaml",
+      "category": "stale_config",
+      "current_responsibility": "M8 legacy experiment config",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "none",
+      "safety_relevance": "low",
+      "migration_disposition": "mark_historical_or_supersede",
+      "evidence_status": "verified_in_repository",
+      "finding": "M8 forward baseline experiment config; may be superseded by M25 configs",
+      "notes": "Confirm whether still in active use"
+    },
+    {
+      "id": "F-019",
+      "path": "k1_measurement/ros2_readonly_validator.py",
+      "category": "telemetry",
+      "current_responsibility": "ROS2 topic discovery",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "network_readonly",
+      "safety_relevance": "medium",
+      "migration_disposition": "preserve_readonly_pattern",
+      "evidence_status": "verified_in_repository",
+      "finding": "Structured read-only ROS2 topic validation via subprocess; no subscriptions, no command publishing",
+      "notes": "Good pattern for telemetry discovery without side effects"
+    },
+    {
+      "id": "F-020",
+      "path": "k1_measurement/field_logging.py",
+      "category": "telemetry",
+      "current_responsibility": "ROS2 bag record launcher",
+      "current_platform_scope": "booster_k1",
+      "side_effect_classification": "network_readonly",
+      "safety_relevance": "medium",
+      "migration_disposition": "adapt_to_target_TelemetryStream_interface",
+      "evidence_status": "verified_in_repository",
+      "finding": "Builds ros2 bag record commands for read-only multi-topic logging; does not auto-execute",
+      "notes": "Read-only telemetry acquisition pattern"
+    },
+    {
+      "id": "F-021",
+      "path": "tests/",
+      "category": "tests",
+      "current_responsibility": "test suite",
+      "current_platform_scope": "multi_platform",
+      "side_effect_classification": "none",
+      "safety_relevance": "none",
+      "migration_disposition": "preserve_and_extend",
+      "evidence_status": "verified_in_repository",
+      "finding": "62 test files, all pytest-based, all runnable without hardware SDK, no robot commands",
+      "notes": "Well-structured test suite with milestone-based organization"
+    },
+    {
+      "id": "F-022",
+      "path": "pyproject.toml",
+      "category": "packaging",
+      "current_responsibility": "project metadata",
+      "current_platform_scope": "multi_platform",
+      "side_effect_classification": "none",
+      "safety_relevance": "low",
+      "migration_disposition": "update_for_multi_platform_scope",
+      "evidence_status": "verified_in_repository",
+      "finding": "Package name: k1-measurement-skill. Description references Booster Robotics K1 only.",
+      "notes": "Should be updated to reflect multi-platform scope when implementation begins"
+    }
+  ],
+  "safety_critical_paths": [
+    {
+      "path": "platforms/booster_k1/adapter.py",
+      "risk": "hardware_motion",
+      "gate": "explicit_operator_enablement_required",
+      "status": "verified_in_repository"
+    },
+    {
+      "path": "scripts/send_m23b_k1_velocity_command.py",
+      "risk": "hardware_motion",
+      "gate": "explicit_execution_flags_required",
+      "status": "verified_in_repository"
+    },
+    {
+      "path": "k1_measurement/command_runner.py",
+      "risk": "hardware_motion_when_enabled",
+      "gate": "dry_run_default_speed_validation",
+      "status": "verified_in_repository"
+    },
+    {
+      "path": "configs/m25_k1_safe_speed_operator_confirmation.yaml",
+      "risk": "safety_limit_definition",
+      "gate": "operator_confirmation_hash_in_audit_trail",
+      "status": "verified_in_repository"
+    },
+    {
+      "path": "k1_measurement/logger_node.py",
+      "risk": "safe_import_pattern",
+      "gate": "refuses_unsafe_setup",
+      "status": "verified_in_repository"
+    }
+  ],
+  "architecture_boundary_violations": [
+    {
+      "violation": "K1 platform string hardcoded in core module",
+      "path": "calibration_core/compensation_models.py",
+      "severity": "medium",
+      "fix": "Use platform_registry.get_platform() or accept platform as parameter"
+    },
+    {
+      "violation": "K1-specific profile loader in core public API",
+      "path": "calibration_core/profile_loader.py",
+      "severity": "medium",
+      "fix": "Move load_k1_gold_profile() to platforms/booster_k1/"
+    },
+    {
+      "violation": "K1-specific export in core __init__.py",
+      "path": "calibration_core/__init__.py",
+      "severity": "low",
+      "fix": "Remove from core exports; re-export from adapter package"
+    },
+    {
+      "violation": "K1 command sequence referenced in generic protocol docstring",
+      "path": "calibration_core/command_adapter.py",
+      "severity": "low",
+      "fix": "Make docstring platform-agnostic"
+    }
+  ],
+  "duplicated_constants": [
+    {
+      "constant": "safe_command_speed_max = 0.6",
+      "locations": [
+        "configs/m25_k1_safe_speed_operator_confirmation.yaml",
+        "configs/m25_k1_s2_real_collection.yaml",
+        "k1_measurement/full_range_velocity_profile.py",
+        "multiple test files"
+      ],
+      "authoritative_source": "configs/m25_k1_safe_speed_operator_confirmation.yaml"
+    },
+    {
+      "constant": "valid_command_speed_min = 0.35",
+      "locations": [
+        "configs/m25_full_range_velocity_profile_template.yaml",
+        "k1_measurement/full_range_velocity_profile.py"
+      ],
+      "authoritative_source": "configs/m25_full_range_velocity_profile_template.yaml"
+    },
+    {
+      "constant": "command_sequence = kPrepare -> kWalking -> Move(vx, 0.0, 0.0)",
+      "locations": [
+        "platforms/booster_k1/adapter.py",
+        "k1_measurement/command_runner.py",
+        "docs/m25s_k1_safe_speed_integration.md",
+        "README.md"
+      ],
+      "authoritative_source": "platforms/booster_k1/adapter.py"
+    }
+  ],
+  "stale_or_historical_paths": [
+    {
+      "path": "config/experiment_forward_v0.yaml",
+      "status": "possibly_superseded",
+      "note": "M8 legacy config; verify if still active"
+    },
+    {
+      "path": "paper/",
+      "status": "paused",
+      "note": "All paper work paused per M26-A"
+    },
+    {
+      "path": "reports/dummy_measurement_report.md",
+      "status": "example_artifact",
+      "note": "Valid example, not stale"
+    }
+  ],
+  "ambiguous_files": [
+    {
+      "path": "docs/modules/calibration_core_implementation.md",
+      "status": "untracked_new",
+      "note": "Recently added, role being established"
+    },
+    {
+      "path": "docs/modules/calibration_core_principles.md",
+      "status": "untracked_new",
+      "note": "Recently added, role being established"
+    },
+    {
+      "path": "docs/modules/platforms_implementation.md",
+      "status": "untracked_new",
+      "note": "Recently added, role being established"
+    },
+    {
+      "path": "docs/modules/platforms_principles.md",
+      "status": "untracked_new",
+      "note": "Recently added, role being established"
+    },
+    {
+      "path": "docs/project_overview.md",
+      "status": "untracked_new",
+      "note": "Recently added, role being established"
+    }
+  ],
+  "unresolved_unknowns": [
+    "No CI configuration found (no .github/ directory)",
+    "No Docker configuration found",
+    "No pre-commit hooks configuration found",
+    "Unitree G1 adapter has no vendor SDK imports — actual SDK API surface unknown",
+    "Unitree GO1 adapter has no vendor SDK imports — actual SDK API surface unknown",
+    "G1 and GO1 platform capabilities are entirely undocumented beyond scaffold placeholders",
+    "ROS2 topic mapping for K1 remains TBD per README",
+    "Actual K1 exploration and formal data collection not yet executed"
+  ]
+}

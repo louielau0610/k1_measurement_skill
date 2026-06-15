@@ -1,5 +1,34 @@
 # K1 速度测量工具包
 
+## M26-A 工程重置与多平台架构冻结
+
+M26-A 暂停所有非工程实验分支，将仓库重新定位为**工程级、agent 可调用的腿式机器人速度标定技能**，明确支持以下目标平台：
+
+1. **Booster K1** — 双足人形机器人（硬件验证参考实现）
+2. **Unitree G1** — 双足人形机器人（仅脚手架）
+3. **Unitree GO1** — 四足机器人（仅脚手架）
+
+M26-A 是纯文档、盘点、架构和迁移规划里程碑，**不连接机器人、不发送运动命令、不安装 SDK、不执行物理测试、不修改金标定、不改变补偿模型行为**。
+
+关键工程文档：
+
+- `docs/engineering/m26a_program_reset.md` — 工程重置声明
+- `docs/engineering/current_repository_inventory.md` — 仓库盘点
+- `docs/engineering/current_dependency_map.md` — 当前依赖关系图
+- `docs/engineering/target_multi_platform_skill_architecture.md` — 目标架构
+- `docs/engineering/target_end_to_end_use_chain.md` — 端到端使用链
+- `docs/engineering/preliminary_core_contracts.md` — 核心接口契约
+- `docs/engineering/platform_capability_matrix.md` — 平台能力矩阵
+- `docs/engineering/multi_platform_migration_plan.md` — 迁移计划
+- `docs/adr/` — 架构决策记录（ADR-0001 至 ADR-0005）
+- `outputs/engineering/m26a_repository_audit.json` — 机器可读审计
+- `outputs/engineering/m26a_platform_capability_matrix.json` — 平台能力矩阵 JSON
+- `outputs/engineering/m26a_readiness.json` — 工程就绪追踪
+
+**暂停的工作**：M25 数据采集、M26-M28 建模/补偿/验证、yaw drift 研究、deadzone 研究、论文工作（P 系列）、在线 yaw 调整、物理补偿实验。
+
+**G1/GO1 就绪声明**：在物理验收里程碑完成之前，不得声称 G1 或 GO1 运行时支持。
+
 ## M25-T K1 SDK 运动路径与安全上限统一
 
 M25-T 将 K1 preflight 对齐到已确认的 SDK 命令路径：`booster_sdk_kPrepare_kWalking_Move`。当前 K1 adapter 的固定执行序列是 `kPrepare -> kWalking -> Move(vx, 0.0, 0.0)`；`control_mode` 和 `gait_mode` 只是可选元数据，不再作为当前 K1 配置的执行阻塞项。这里不把 `kWalking` 描述为用户可选 gait，它只是固定验证序列的一部分。

@@ -1,5 +1,42 @@
 # K1 Velocity Measurement Toolkit
 
+## M26-A Engineering Program Reset and Multi-Platform Architecture Freeze
+
+M26-A pauses all non-engineering experimental branches of work and reframes the
+repository as an **engineering-grade, agent-callable legged robot velocity
+calibration skill** with explicitly scoped target platforms:
+
+1. **Booster K1** — biped humanoid (hardware-validated reference)
+2. **Unitree G1** — biped humanoid (scaffold only)
+3. **Unitree GO1** — quadruped (scaffold only)
+
+M26-A is documentation, inventory, architecture, and migration planning only.
+It does **not** connect to any robot, send motion commands, install SDKs,
+perform physical tests, alter the gold calibration profile, or change
+compensation model behavior.
+
+Key engineering documents:
+
+- `docs/engineering/m26a_program_reset.md` — Program reset declaration
+- `docs/engineering/current_repository_inventory.md` — Repository inventory
+- `docs/engineering/current_dependency_map.md` — Current dependency map
+- `docs/engineering/target_multi_platform_skill_architecture.md` — Target architecture
+- `docs/engineering/target_end_to_end_use_chain.md` — End-to-end use chain
+- `docs/engineering/preliminary_core_contracts.md` — Core contract specifications
+- `docs/engineering/platform_capability_matrix.md` — Platform capability matrix
+- `docs/engineering/multi_platform_migration_plan.md` — Phased migration plan
+- `docs/adr/` — Architecture Decision Records (ADR-0001 through ADR-0005)
+- `outputs/engineering/m26a_repository_audit.json` — Machine-readable audit
+- `outputs/engineering/m26a_platform_capability_matrix.json` — Capability matrix JSON
+- `outputs/engineering/m26a_readiness.json` — Engineering readiness tracker
+
+**Paused work**: M25 data collection, M26-M28 modeling/compensation/validation,
+yaw drift research, deadzone research, paper work (P-series), online yaw
+adjustment, physical compensation experiments.
+
+**G1/GO1 readiness claim**: No G1 or GO1 runtime support is claimed before
+physical acceptance milestones are completed.
+
 ## M25 Active Scope: Full-Range Velocity Profiling
 
 M25 refocuses the active repository on longitudinal command velocity versus measured actual velocity across the complete configured valid command-speed domain, excluding the deadzone by an explicit engineering boundary. The active domain is `[0.35, 0.60] m/s` for the current K1 experiment configuration; `safe_command_speed_max` is confirmed at `0.6 m/s` via operator confirmation. No command above `0.6 m/s` is permitted.

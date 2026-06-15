@@ -1,0 +1,46 @@
+{
+  "readiness_metadata": {
+    "milestone": "M26-A",
+    "date": "2026-06-15",
+    "schema_version": "m26a_readiness_v1",
+    "note": "M26-A is documentation, inventory, architecture, and migration planning only. All implementation and hardware verification fields must remain false."
+  },
+  "readiness": {
+    "repository_audited": true,
+    "target_architecture_defined": true,
+    "migration_plan_defined": true,
+    "core_contracts_implemented": false,
+    "mock_adapter_ready": false,
+    "k1_adapter_implemented": false,
+    "k1_adapter_hardware_verified": false,
+    "g1_adapter_implemented": false,
+    "g1_adapter_hardware_verified": false,
+    "go1_adapter_implemented": false,
+    "go1_adapter_hardware_verified": false,
+    "unified_skill_interface_ready": false,
+    "release_ready": false
+  },
+  "field_notes": {
+    "repository_audited": "Complete: 22 significant findings documented in outputs/engineering/m26a_repository_audit.json",
+    "target_architecture_defined": "Complete: documented in docs/engineering/target_multi_platform_skill_architecture.md",
+    "migration_plan_defined": "Complete: 16-phase plan in docs/engineering/multi_platform_migration_plan.md",
+    "core_contracts_implemented": "Specification only; contracts documented in docs/engineering/preliminary_core_contracts.md",
+    "mock_adapter_ready": "Not implemented; specification in ADR-0001 and migration plan Phase 2",
+    "k1_adapter_implemented": "Existing K1 adapter needs extraction to target architecture (Phase 3)",
+    "k1_adapter_hardware_verified": "Existing K1 adapter has hardware validation history (M19C) but must be re-verified after migration",
+    "g1_adapter_implemented": "Scaffold only; implementation planned for Phase 4",
+    "g1_adapter_hardware_verified": "No G1 hardware verification has been performed",
+    "go1_adapter_implemented": "Scaffold only; implementation planned for Phase 5",
+    "go1_adapter_hardware_verified": "No GO1 hardware verification has been performed",
+    "unified_skill_interface_ready": "Not implemented; planned for Phase 10",
+    "release_ready": "Not ready; requires all phases through M30-R"
+  },
+  "prohibited_claims": [
+    "Do not claim G1 implementation readiness",
+    "Do not claim GO1 implementation readiness",
+    "Do not claim cross-platform runtime support",
+    "Do not claim physical verification for G1 or GO1",
+    "Do not claim compensation effectiveness without physical validation",
+    "Do not claim universal legged robot support"
+  ]
+}

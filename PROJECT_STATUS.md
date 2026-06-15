@@ -1,5 +1,68 @@
 # Project Status
 
+## M26-A Engineering Program Reset and Multi-Platform Architecture Freeze
+
+M26-A is the active milestone. All non-engineering experimental branches of work are paused. The repository is reframed as an engineering-grade, agent-callable legged robot velocity calibration skill supporting:
+
+- **Booster K1** — biped humanoid (hardware-validated reference)
+- **Unitree G1** — biped humanoid (scaffold only)
+- **Unitree GO1** — quadruped (scaffold only)
+
+M26-A is documentation, inventory, architecture, and migration planning only. It does NOT connect to any robot, send motion commands, install SDKs, perform physical tests, alter the gold calibration profile, or change compensation model behavior.
+
+Key M26-A artifacts:
+
+- `docs/engineering/m26a_program_reset.md`
+- `docs/engineering/current_repository_inventory.md`
+- `docs/engineering/current_dependency_map.md`
+- `docs/engineering/target_multi_platform_skill_architecture.md`
+- `docs/engineering/target_end_to_end_use_chain.md`
+- `docs/engineering/preliminary_core_contracts.md`
+- `docs/engineering/platform_capability_matrix.md`
+- `docs/engineering/multi_platform_migration_plan.md`
+- `docs/adr/ADR-0001` through `ADR-0005`
+- `outputs/engineering/m26a_repository_audit.json`
+- `outputs/engineering/m26a_platform_capability_matrix.json`
+- `outputs/engineering/m26a_readiness.json`
+
+Current M26-A state:
+
+```
+repository_audited: true
+target_architecture_defined: true
+migration_plan_defined: true
+core_contracts_implemented: false
+mock_adapter_ready: false
+k1_adapter_implemented: false (per target architecture)
+g1_adapter_implemented: false
+g1_adapter_hardware_verified: false
+go1_adapter_implemented: false
+go1_adapter_hardware_verified: false
+unified_skill_interface_ready: false
+release_ready: false
+```
+
+### Paused Work
+
+| Work Stream | Status | Notes |
+|---|---|---|
+| M25 exploration data collection | Paused | Awaiting operator-controlled procedure |
+| M25 formal profile data collection | Paused | Blocked until exploration reviewed |
+| M26 full-range response model comparison | Paused | Requires real formal profile data |
+| M27 inverse velocity compensation | Paused | Requires M26 |
+| M28 direct-vs-compensated validation | Paused | Requires M27 |
+| Yaw drift / yaw compensation | Paused | Removed from active objectives |
+| Deadzone estimation | Abandoned | Removed from roadmap |
+| Paper/manuscript work (P-series) | Paused | All paper branches frozen |
+| Physical compensation experiments | Paused | M23 negative result |
+
+### Prohibited Claims
+
+- Do not claim G1 or GO1 implementation readiness
+- Do not claim cross-platform runtime support
+- Do not claim physical verification for G1 or GO1
+- Do not claim universal legged robot support
+
 ## M25 Full-Range Velocity Profiling Refocus
 
 M25 is the active milestone. The project is now focused on longitudinal full-range velocity profiling across the configured valid command domain, excluding the deadzone by an explicit engineering lower boundary rather than estimating it.

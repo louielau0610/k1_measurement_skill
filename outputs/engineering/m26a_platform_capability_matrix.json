@@ -1,0 +1,150 @@
+{
+  "matrix_metadata": {
+    "milestone": "M26-A",
+    "date": "2026-06-15",
+    "schema_version": "m26a_capability_matrix_v1",
+    "status_values": [
+      "verified_existing",
+      "upstream_documented",
+      "planned",
+      "unsupported",
+      "unknown",
+      "requires_hardware_verification"
+    ]
+  },
+  "platforms": {
+    "booster_k1": {
+      "platform_id": "booster_k1",
+      "robot_model": "Booster K1",
+      "morphology": "biped_humanoid",
+      "sdk": "Booster Robotics SDK",
+      "middleware": "Fast-DDS",
+      "validation_status": "hardware_validated_reference",
+      "safe_speed_max_mps": 0.6,
+      "valid_command_domain_mps": [0.35, 0.60],
+      "capabilities": {
+        "connect_disconnect": "verified_existing",
+        "high_level_body_velocity_command": "verified_existing",
+        "vx_forward_velocity": "verified_existing",
+        "vy_lateral_velocity": "verified_existing",
+        "yaw_rate_wz": "verified_existing",
+        "explicit_stop": "verified_existing",
+        "locomotion_mode_transition": "verified_existing",
+        "robot_mode_observation": "verified_existing",
+        "body_velocity_telemetry": "verified_existing",
+        "pose_odometry_telemetry": "verified_existing",
+        "imu_telemetry": "verified_existing",
+        "yaw_heading_telemetry": "verified_existing",
+        "battery_telemetry": "verified_existing",
+        "command_acknowledgement": "verified_existing",
+        "state_stream": "verified_existing",
+        "emergency_stop_mechanism": "verified_existing",
+        "simulator_availability": "unknown",
+        "dry_run_support": "verified_existing",
+        "command_ttl_enforcement": "planned",
+        "operator_confirmation_support": "verified_existing",
+        "platform_version_reporting": "verified_existing",
+        "firmware_version_reporting": "unknown"
+      },
+      "notes": [
+        "Hardware validated via M19C full 72-measurement run",
+        "Forward velocity only validated in calibration context",
+        "vy and wz command interfaces exist but not calibration-validated",
+        "Safe speed 0.6 m/s operator-confirmed at 2026-06-15"
+      ]
+    },
+    "unitree_g1": {
+      "platform_id": "unitree_g1",
+      "robot_model": "Unitree G1",
+      "morphology": "biped_humanoid",
+      "sdk": "Unitree SDK2 / unitree_sdk2_python",
+      "middleware": "CycloneDDS",
+      "validation_status": "scaffold_only",
+      "safe_speed_max_mps": null,
+      "valid_command_domain_mps": null,
+      "capabilities": {
+        "connect_disconnect": "planned",
+        "high_level_body_velocity_command": "upstream_documented",
+        "vx_forward_velocity": "upstream_documented",
+        "vy_lateral_velocity": "upstream_documented",
+        "yaw_rate_wz": "upstream_documented",
+        "explicit_stop": "upstream_documented",
+        "locomotion_mode_transition": "upstream_documented",
+        "robot_mode_observation": "unknown",
+        "body_velocity_telemetry": "upstream_documented",
+        "pose_odometry_telemetry": "upstream_documented",
+        "imu_telemetry": "upstream_documented",
+        "yaw_heading_telemetry": "unknown",
+        "battery_telemetry": "unknown",
+        "command_acknowledgement": "unknown",
+        "state_stream": "upstream_documented",
+        "emergency_stop_mechanism": "upstream_documented",
+        "simulator_availability": "upstream_documented",
+        "dry_run_support": "planned",
+        "command_ttl_enforcement": "planned",
+        "operator_confirmation_support": "planned",
+        "platform_version_reporting": "unknown",
+        "firmware_version_reporting": "unknown"
+      },
+      "notes": [
+        "All adapter methods currently raise NotImplementedError",
+        "No physical verification has been performed",
+        "Actual SDK API surface unknown",
+        "Telemetry topic names unknown",
+        "G1/H1-2 IDL family to be investigated",
+        "No implementation readiness"
+      ]
+    },
+    "unitree_go1": {
+      "platform_id": "unitree_go1",
+      "robot_model": "Unitree GO1",
+      "morphology": "quadruped",
+      "sdk": "legacy unitree_legged_sdk",
+      "middleware": "UDP",
+      "validation_status": "scaffold_only",
+      "safe_speed_max_mps": null,
+      "valid_command_domain_mps": null,
+      "capabilities": {
+        "connect_disconnect": "planned",
+        "high_level_body_velocity_command": "upstream_documented",
+        "vx_forward_velocity": "upstream_documented",
+        "vy_lateral_velocity": "upstream_documented",
+        "yaw_rate_wz": "upstream_documented",
+        "explicit_stop": "upstream_documented",
+        "locomotion_mode_transition": "upstream_documented",
+        "robot_mode_observation": "unknown",
+        "body_velocity_telemetry": "upstream_documented",
+        "pose_odometry_telemetry": "upstream_documented",
+        "imu_telemetry": "upstream_documented",
+        "yaw_heading_telemetry": "unknown",
+        "battery_telemetry": "unknown",
+        "command_acknowledgement": "unknown",
+        "state_stream": "upstream_documented",
+        "emergency_stop_mechanism": "upstream_documented",
+        "simulator_availability": "upstream_documented",
+        "dry_run_support": "planned",
+        "command_ttl_enforcement": "planned",
+        "operator_confirmation_support": "planned",
+        "platform_version_reporting": "unknown",
+        "firmware_version_reporting": "unknown"
+      },
+      "notes": [
+        "All adapter methods currently raise NotImplementedError",
+        "No physical verification has been performed",
+        "Uses legacy unitree_legged_sdk (may have compatibility issues)",
+        "UDP protocol details to be investigated",
+        "Different morphology class (quadruped vs biped)",
+        "No implementation readiness"
+      ]
+    }
+  },
+  "physical_verification_milestones": [
+    "bench_connection_test",
+    "readonly_telemetry_test",
+    "controlled_motion_test",
+    "safety_mechanism_test",
+    "full_measurement_session",
+    "profile_validation"
+  ],
+  "g1_go1_readiness_claim": "No G1 or GO1 implementation readiness is claimed. All hardware capabilities for G1 and GO1 require physical verification before status can be upgraded from 'planned' or 'unknown'."
+}

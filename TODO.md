@@ -1,5 +1,41 @@
 ﻿# TODO
 
+## M26-A Engineering Program Reset and Architecture Freeze
+
+- [x] Create program reset document (`docs/engineering/m26a_program_reset.md`)
+- [x] Perform full repository inventory and audit (`outputs/engineering/m26a_repository_audit.json`)
+- [x] Document current dependency map (`docs/engineering/current_dependency_map.md`)
+- [x] Define target multi-platform skill architecture (`docs/engineering/target_multi_platform_skill_architecture.md`)
+- [x] Define end-to-end use chain (`docs/engineering/target_end_to_end_use_chain.md`)
+- [x] Specify preliminary core contracts (`docs/engineering/preliminary_core_contracts.md`)
+- [x] Create platform capability matrix (`docs/engineering/platform_capability_matrix.md`, JSON)
+- [x] Record architecture decisions (ADR-0001 through ADR-0005)
+- [x] Create phased migration plan (`docs/engineering/multi_platform_migration_plan.md`)
+- [x] Create engineering readiness tracker (`outputs/engineering/m26a_readiness.json`)
+- [x] Update project navigation (README.md, README.en.md, PROJECT_STATUS.md, TODO.md)
+
+## Paused Work (per M26-A)
+
+- [ ] M25 exploration data collection — PAUSED (awaiting operator-controlled procedure)
+- [ ] M25 formal profile data collection — PAUSED (blocked until exploration reviewed)
+- [ ] M26: compare full-range monotonic response models — PAUSED (requires real formal data)
+- [ ] M27: implement or finalize inverse velocity compensation — PAUSED (requires M26)
+- [ ] M28: run full-range direct-vs-compensated real-robot validation — PAUSED (requires M27)
+- [ ] All yaw drift / yaw compensation work — PAUSED
+- [ ] All deadzone research — ABANDONED
+- [ ] All paper/manuscript work (P-series) — PAUSED
+- [ ] Online yaw adjustment — PAUSED
+- [ ] Physical compensation experiments — PAUSED (M23 negative result)
+
+## Active M26-A Follow-Up (Post M26-A Implementation)
+
+- [ ] M26-B: Implement unified domain contracts and schemas (Phase 1 of migration plan)
+- [ ] M26-C: Implement adapter registry and mock adapter (Phase 2)
+- [ ] M26-D: Extract K1 adapter to target architecture (Phase 3)
+- [ ] M27-G1: Implement G1 adapter (Phase 4)
+- [ ] M27-GO1: Implement GO1 adapter (Phase 5)
+- [ ] M27-T: Unified telemetry and time semantics (Phase 6)
+
 ## Active M25 Follow-Up
 
 - [x] Add full-range valid speed-domain contract with explicit safe-maximum requirement.
