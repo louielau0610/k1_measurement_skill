@@ -1,5 +1,31 @@
 # Project Status
 
+## M25 Full-Range Velocity Profiling Refocus
+
+M25 is the active milestone. The project is now focused on longitudinal full-range velocity profiling across the configured valid command domain, excluding the deadzone by an explicit engineering lower boundary rather than estimating it.
+
+Active M25 contract:
+
+- `valid_command_speed_min` defaults to `0.35` as an engineering applicability boundary.
+- `safe_command_speed_max` is required for executable plans and is not guessed.
+- `0.80-1.00 m/s` is a dense high-priority actual-speed validation region, not the full applicability range.
+- Deadzone research and yaw drift/yaw compensation work are removed from active M25 objectives.
+- M25 creates measurement/profile foundations only and does not claim compensation performance.
+
+New active artifacts:
+
+- `docs/m25_full_range_velocity_profiling.md`
+- `docs/m25_repository_cleanup_manifest.md`
+- `configs/m25_full_range_velocity_profile_template.yaml`
+- `k1_measurement/full_range_velocity_profile.py`
+- `scripts/validate_m25_full_range_velocity_config.py`
+- `scripts/plan_full_range_velocity_profile.py`
+- `scripts/validate_m25_collected_session.py`
+- `scripts/build_m25_candidate_profile.py`
+- `scripts/audit_m25_historical_compatibility.py`
+
+Next roadmap: M26 full-range monotonic response model comparison, M27 inverse compensation implementation/finalization, M28 full-range direct-vs-compensated real-robot validation.
+
 ## 当前阶段
 
 **Step 1 (Measurement Module) is complete.** Step 2 (Velocity Compensation Principle Research) is the next phase.

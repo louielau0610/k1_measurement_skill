@@ -1,0 +1,41 @@
+{
+  "schema_version": "m25_full_range_velocity_profile_v1",
+  "audited_at": "2026-06-15T06:27:58.679381+00:00",
+  "historical_use_policy": "historical_reference_only",
+  "sessions_inspected": 3,
+  "valid_speed_rows_retained": 50,
+  "rows_excluded": 24,
+  "sessions": [
+    {
+      "path": "outputs\\real_k1_validation_m19\\repeated_validation_table.csv",
+      "status": "historical_reference_only",
+      "row_count": 24,
+      "valid_speed_rows_retained": 0,
+      "rows_excluded": 24,
+      "exclusion_reasons": {
+        "below_valid_speed_domain": 9,
+        "missing_actual_speed": 15
+      },
+      "extraction_compatibility": "compatible_if_required_m25_velocity_fields_are_present"
+    },
+    {
+      "path": "data\\compensation_experiments\\m24b_s2_profile_refresh\\m24b_s2_profile_refresh_clean_20260612_145358\\corrected_extracted_results.csv",
+      "status": "historical_reference_only",
+      "row_count": 30,
+      "valid_speed_rows_retained": 30,
+      "rows_excluded": 0,
+      "exclusion_reasons": {},
+      "extraction_compatibility": "compatible_if_required_m25_velocity_fields_are_present"
+    },
+    {
+      "path": "data\\compensation_experiments\\m24h_controlled_s2_replication\\m24h_controlled_s2_replication_clean_20260612_171419\\corrected_extracted_results.csv",
+      "status": "historical_reference_only",
+      "row_count": 20,
+      "valid_speed_rows_retained": 20,
+      "rows_excluded": 0,
+      "exclusion_reasons": {},
+      "extraction_compatibility": "compatible_if_required_m25_velocity_fields_are_present"
+    }
+  ],
+  "deadzone_inference_performed": false
+}

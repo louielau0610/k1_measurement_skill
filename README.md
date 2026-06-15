@@ -1,5 +1,27 @@
 # K1 速度测量工具包
 
+## M25 当前主线：全范围纵向速度画像
+
+M25 将当前主动路线重定向到 K1 纵向 `command velocity -> measured actual velocity` 的全范围画像。适用命令域由显式工程配置给出：
+
+```text
+[valid_command_speed_min, safe_command_speed_max]
+```
+
+`valid_command_speed_min` 是补偿器适用下界，不是 deadzone 估计；`safe_command_speed_max` 不在仓库中猜测，必须来自已验证机器人配置、SDK 适配层或操作者配置。缺少安全上界时，可生成阻塞说明，但不能生成可执行 trial plan。
+
+0.80-1.00 m/s 是高优先级密集验证区间，不是唯一适用范围。主动路线已放弃 deadzone 研究；yaw drift / yaw compensation 暂停并从 M25 目标、模型特征、验证指标和 benefit gate 中移除。M25 只建立测量、计划、profile contract 和候选 profile 基础，不声明补偿效果。
+
+关键文档和入口：
+
+- `docs/m25_full_range_velocity_profiling.md`
+- `docs/m25_repository_cleanup_manifest.md`
+- `configs/m25_full_range_velocity_profile_template.yaml`
+- `k1_measurement/full_range_velocity_profile.py`
+- `scripts/plan_full_range_velocity_profile.py`
+
+后续路线：M26 比较全范围单调响应模型，M27 实现或最终确定 inverse velocity compensation，M28 做全范围 direct-vs-compensated 真实机器人验证。
+
 ## M14 研究数据集 v1
 
 M14 现在可以从 Measurement v0 artifact 构造 `outputs/research_datasets/velocity_response_dataset_v1.json`，并生成 validation report 与 future trial template。M14 只做数据集构造和校验，不实现建模、速度补偿、导航控制或 safe command adapter，也不声称 publication readiness。

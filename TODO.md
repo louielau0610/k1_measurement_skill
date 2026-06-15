@@ -1,5 +1,25 @@
 ﻿# TODO
 
+## Active M25 Follow-Up
+
+- [x] Add full-range valid speed-domain contract with explicit safe-maximum requirement.
+- [x] Add M25 exploration and formal profile planning commands.
+- [x] Add M25 collected-session validation, historical audit, and candidate-profile dry-run/build commands.
+- [x] Document the M25 full-range refocus and cleanup manifest.
+- [ ] Configure `safe_command_speed_max` from validated robot/operator evidence before generating executable M25 plans.
+- [ ] Collect M25 exploration data across the configured valid command domain.
+- [ ] Collect M25 formal profile data with dense sampling around 0.80-1.00 m/s.
+- [ ] M26: compare full-range monotonic response models after M25 data collection.
+- [ ] M27: implement or finalize inverse velocity compensation.
+- [ ] M28: run full-range direct-vs-compensated real-robot validation.
+
+## Active Scope Boundary
+
+- [ ] Do not estimate or model a deadzone in M25.
+- [ ] Do not compensate commands inside the deadzone.
+- [ ] Do not use yaw drift as an M25 model feature, objective, metric, gate, or roadmap target.
+- [ ] Do not claim compensation success or validated profile status from planned or candidate M25 artifacts.
+
 ## Completed
 
 - [x] M0 project structure

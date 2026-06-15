@@ -1,0 +1,39 @@
+{
+  "schema_version": "m25_full_range_velocity_profile_v1",
+  "milestone": "M25",
+  "phase": "exploration",
+  "generated_at": "2026-06-15T06:27:57.314997+00:00",
+  "status": "blocked",
+  "executable": false,
+  "errors": [
+    {
+      "code": "safe_command_limit_not_configured",
+      "field": "safe_command_speed_max",
+      "message": "safe_command_speed_max is required for executable M25 plans"
+    },
+    {
+      "code": "safe_command_limit_not_configured",
+      "field": "safe_command_speed_max",
+      "message": "safe maximum is required"
+    },
+    {
+      "code": "safe_command_limit_not_configured",
+      "field": "safe_command_speed_max",
+      "message": "safe maximum is required"
+    }
+  ],
+  "valid_speed_domain": {
+    "valid_command_speed_min": 0.35,
+    "safe_command_speed_max": null,
+    "high_priority_actual_speed_min": 0.8,
+    "high_priority_actual_speed_max": 1.0
+  },
+  "surface": "S2_marble_floor",
+  "robot_id": "booster_k1_unit_unspecified",
+  "random_seed": 250625,
+  "randomization": "deterministic_random",
+  "command_points_mps": [],
+  "repeats_per_command": 0,
+  "trial_count": 0,
+  "trials": []
+}

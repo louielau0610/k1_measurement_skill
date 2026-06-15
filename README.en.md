@@ -1,5 +1,21 @@
 # K1 Velocity Measurement Toolkit
 
+## M25 Active Scope: Full-Range Velocity Profiling
+
+M25 refocuses the active repository on longitudinal command velocity versus measured actual velocity across the complete configured valid command-speed domain, excluding the deadzone by an explicit engineering boundary. The active domain is `[valid_command_speed_min, safe_command_speed_max]`; `safe_command_speed_max` is not guessed and executable plans are blocked until it is configured from validated robot/operator evidence.
+
+The 0.80-1.00 m/s actual-speed region is a dense high-priority validation region, not the full applicability range. Deadzone research has been abandoned for the active roadmap, and yaw drift / yaw compensation work is paused and removed from active M25 objectives. M25 establishes the measurement/profile foundation only; it does not claim compensation success or validate an inverse compensator.
+
+Key M25 artifacts:
+
+- `docs/m25_full_range_velocity_profiling.md`
+- `docs/m25_repository_cleanup_manifest.md`
+- `configs/m25_full_range_velocity_profile_template.yaml`
+- `k1_measurement/full_range_velocity_profile.py`
+- `scripts/plan_full_range_velocity_profile.py`
+
+Next milestones: M26 compares full-range monotonic response models, M27 implements or finalizes inverse velocity compensation, and M28 performs full-range direct-vs-compensated real-robot validation.
+
 ## Positioning
 
 `k1_measurement_skill` is the measurement-first module of the larger **K1 Velocity Measurement, Compensation, and Navigation Safety Pipeline**.
