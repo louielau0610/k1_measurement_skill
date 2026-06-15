@@ -16,8 +16,8 @@ import yaml
 
 
 SCHEMA_VERSION = "m25_full_range_velocity_profile_v1"
-DEFAULT_EXPLORATION_COMMANDS = [0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00]
-DEFAULT_FORMAL_COMMANDS = [0.40, 0.45, 0.50, 0.55, 0.60, 0.70, 0.80, 0.85, 0.90, 0.95, 1.00]
+DEFAULT_EXPLORATION_COMMANDS = [0.35, 0.40, 0.50, 0.60]
+DEFAULT_FORMAL_COMMANDS = [0.35, 0.40, 0.45, 0.50, 0.55, 0.60]
 PROFILE_STATUSES = {"planned", "collected", "candidate", "validated", "rejected"}
 DECISION_CODES = {
     "below_valid_speed_domain",
@@ -42,8 +42,8 @@ class M25ValidationError(ValueError):
 class ValidSpeedDomain:
     valid_command_speed_min: float = 0.35
     safe_command_speed_max: float | None = None
-    high_priority_actual_speed_min: float = 0.80
-    high_priority_actual_speed_max: float = 1.00
+    high_priority_actual_speed_min: float = 0.50
+    high_priority_actual_speed_max: float = 0.60
 
     @classmethod
     def from_mapping(cls, data: dict[str, Any]) -> "ValidSpeedDomain":

@@ -28,7 +28,7 @@ None. Existing mixed-purpose historical modules remain available for legacy test
 | `scripts/validate_m25_collected_session.py` | code | CLI for collected-session contract validation. | New isolated entry point. |
 | `scripts/build_m25_candidate_profile.py` | code | CLI for candidate-profile dry-run/build. | New isolated entry point. |
 | `scripts/audit_m25_historical_compatibility.py` | code | CLI for historical compatibility audit. | New isolated entry point. |
-| `configs/m25_full_range_velocity_profile_template.yaml` | config | Default M25 template with unresolved safe maximum. | New isolated config. |
+| `configs/m25_full_range_velocity_profile_template.yaml` | config | M25 template with K1 domain (safe max resolved via M25-S confirmation file). | Config. |
 | `tests/test_m25_full_range_velocity_profile.py` | test | Focused M25 contract, planning, profile, audit, CLI, and import-boundary tests. | New isolated tests. |
 
 ## Intentionally Preserved Historical Or Raw Artifacts

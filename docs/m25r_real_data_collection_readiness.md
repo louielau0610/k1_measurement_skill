@@ -1,51 +1,53 @@
 # M25-R Real-Data Collection Readiness
 
-M25-R closes operational gaps before real full-range velocity-profile collection. It does not start M26 response-model fitting.
+M25-R closes operational gaps before real full-range velocity-profile collection. M25-S has now resolved the safe-speed confirmation. M26 response-model fitting remains blocked.
 
-## Current State
+## Current State (as of M25-S)
 
 - M25 engineering contract: complete.
-- `safe_command_speed_max`: unresolved in the committed template.
-- Exploration collection: blocked until safe speed confirmation and preflight pass.
-- Formal collection: blocked until safe speed confirmation, preflight pass, and exploration data review or documented override.
+- `safe_command_speed_max`: confirmed at `0.6 m/s` via M25-S operator confirmation.
+- Exploration collection: blocked on unresolved operational fields (control_mode, gait_mode).
+- Formal collection: blocked on operational fields and exploration data review.
 - M26 modeling: blocked until real formal profile data exist.
 
 ## Safe-Speed Resolution
 
-No authoritative safe maximum was found in repository configuration, SDK adapter constraints, or active safeguards. Historical executed commands are not treated as proof of a robot-wide safe maximum.
+The K1 safe forward command-speed maximum has been confirmed as `0.6 m/s`. The confirmation file is:
 
-Operators must copy and complete:
+```text
+configs/m25_k1_safe_speed_operator_confirmation.yaml
+```
+
+The unresolved template remains preserved at:
 
 ```text
 configs/m25_k1_safe_speed_operator_confirmation_template.yaml
 ```
 
-Allowed evidence types are:
-
-- `sdk_documentation`
-- `validated_robot_configuration`
-- `lab_protocol`
-- `supervisor_approval`
-- `operator_confirmation`
-
-Validate the completed file with:
+Validate the confirmed file (speed-only):
 
 ```powershell
-py scripts/validate_m25_safe_speed_confirmation.py --config <completed_confirmation.yaml>
+py scripts/validate_m25_safe_speed_confirmation.py --config configs/m25_k1_safe_speed_operator_confirmation.yaml --speed-only
 ```
 
 ## Preflight
 
-The preflight template is:
+The concrete K1/S2 real-collection configuration is:
+
+```text
+configs/m25_k1_s2_real_collection.yaml
+```
+
+The generic template remains preserved at:
 
 ```text
 configs/m25_real_collection_preflight_template.yaml
 ```
 
-Validate it with:
+Validate the K1 config:
 
 ```powershell
-py scripts/validate_m25_real_collection_preflight.py --config configs/m25_real_collection_preflight_template.yaml
+py scripts/validate_m25_real_collection_preflight.py --config configs/m25_k1_s2_real_collection.yaml
 ```
 
 The committed template is expected to fail closed because safe speed, control mode, and gait mode are unresolved.

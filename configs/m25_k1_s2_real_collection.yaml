@@ -1,0 +1,49 @@
+schema_version: m25r_real_collection_preflight_v1
+m25_config_path: configs/m25_full_range_velocity_profile_template.yaml
+safe_speed_confirmation_path: configs/m25_k1_safe_speed_operator_confirmation.yaml
+
+robot_id: k1
+surface_id: s2
+control_mode: null
+gait_mode: null
+require_control_mode: true
+require_gait_mode: true
+
+valid_speed_domain:
+  valid_command_speed_min: 0.35
+  safe_command_speed_max: 0.60
+  high_priority_actual_speed_min: 0.50
+  high_priority_actual_speed_max: 0.60
+
+exploration_command_points:
+  - 0.35
+  - 0.40
+  - 0.50
+  - 0.60
+exploration_repeats: 3
+
+formal_command_grid:
+  - 0.35
+  - 0.40
+  - 0.45
+  - 0.50
+  - 0.55
+  - 0.60
+formal_repeats: 5
+
+trial_duration_sec: 8.0
+warmup_duration_sec: 1.0
+steady_window_start_sec: 2.0
+steady_window_end_sec: 6.0
+logger_output_dir: outputs/full_range_velocity_profile/local_preflight_probe
+required_input_mappings: []
+
+execution_safeguards:
+  dry_run_default: true
+  require_execute_flag: true
+  require_operator_confirmation: true
+  emergency_stop_briefing_required: true
+
+exploration_review_complete: false
+formal_override_reason: null
+git_commit: record_at_session_creation

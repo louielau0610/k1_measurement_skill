@@ -45,15 +45,17 @@ def test_preflight_blocked_when_safe_max_unresolved() -> None:
 def test_preflight_ready_with_fixture_only_safe_max(tmp_path: Path) -> None:
     preflight = _write_preflight(tmp_path, safe_max=1.0)
     result = evaluate_preflight(preflight)
+    assert result["safe_command_speed_max_resolved"] is True
+    assert result["safe_command_speed_max"] == 1.0
     assert result["ready"] is True
-    assert result["exploration_trial_count"] == 21
-    assert result["formal_trial_count"] == 55
+    assert result["exploration_trial_count"] == 12
+    assert result["formal_trial_count"] == 30
     assert len(result["config_hash"]) == 64
     assert len(result["plan_hashes"]["exploration"]) == 64
 
 
 def test_preflight_rejects_command_above_safe_max(tmp_path: Path) -> None:
-    preflight = _write_preflight(tmp_path, safe_max=0.9)
+    preflight = _write_preflight(tmp_path, safe_max=0.55)
     result = evaluate_preflight(preflight)
     assert result["ready"] is False
     assert any(error["code"] == "above_safe_command_limit" for error in result["blocked_reasons"])
@@ -102,7 +104,13 @@ def test_exploration_gate_ready_and_missing_high_priority(tmp_path: Path) -> Non
 
 def test_exploration_gate_safe_limit_prevents_requested_coverage(tmp_path: Path) -> None:
     rows = [_gate_row(0.7, 0.65), _gate_row(0.7, 0.66), _gate_row(0.7, 0.67)]
-    result = evaluate_exploration_gate(_write_rows(tmp_path / "limited.csv", rows), ValidSpeedDomain(safe_command_speed_max=0.7))
+    domain = ValidSpeedDomain(
+        valid_command_speed_min=0.35,
+        safe_command_speed_max=0.7,
+        high_priority_actual_speed_min=0.80,
+        high_priority_actual_speed_max=1.00,
+    )
+    result = evaluate_exploration_gate(_write_rows(tmp_path / "limited.csv", rows), domain)
     assert "safe_limit_prevents_requested_coverage" in result["decisions"]
 
 
@@ -140,6 +148,152 @@ def test_serialization_round_trip_and_no_final_m26_model(tmp_path: Path) -> None
     gate_csv = _write_rows(tmp_path / "gate.csv", [_gate_row(0.4, 0.35), _gate_row(0.4, 0.36), _gate_row(0.4, 0.37)])
     gate = evaluate_exploration_gate(gate_csv, ValidSpeedDomain(safe_command_speed_max=1.0))
     assert gate["m26_model_fitted"] is False
+
+
+# --- M25-S K1-specific tests ---
+
+
+def test_k1_safe_speed_confirmation_value(tmp_path: Path) -> None:
+    """K1 safe-speed confirmation has value 0.6."""
+    confirmation = _write_confirmation(tmp_path, safe_max=0.6, evidence_type="operator_confirmation")
+    result = validate_safe_speed_confirmation(confirmation, require_context=False)
+    assert result["valid"] is True
+    assert result["confirmation"]["safe_command_speed_max"] == 0.6
+
+
+def test_k1_rejects_command_above_0_6_in_preflight(tmp_path: Path) -> None:
+    """K1 preflight rejects commands above 0.6."""
+    preflight = _write_preflight(tmp_path, safe_max=0.6)
+    result = evaluate_preflight(preflight)
+    # With default K1 grids up to 0.60, no point exceeds 0.6
+    assert result["safe_command_speed_max"] == 0.6
+    # Grid points should all be within [0.35, 0.60]
+    domain = result["resolved_speed_domain"]
+    assert domain["safe_command_speed_max"] == 0.6
+
+
+def test_k1_exploration_12_trials(tmp_path: Path) -> None:
+    """K1 exploration plan has 12 trials."""
+    preflight = _write_preflight(tmp_path, safe_max=0.6)
+    result = evaluate_preflight(preflight)
+    assert result["exploration_trial_count"] == 12
+
+
+def test_k1_formal_30_trials(tmp_path: Path) -> None:
+    """K1 formal plan has 30 trials."""
+    preflight = _write_preflight(tmp_path, safe_max=0.6)
+    result = evaluate_preflight(preflight)
+    assert result["formal_trial_count"] == 30
+
+
+def test_k1_no_command_above_0_6_in_package(tmp_path: Path) -> None:
+    """K1 collection packages contain no commands above 0.6."""
+    preflight = _write_preflight(tmp_path, safe_max=0.6)
+    exploration, _, _ = write_collection_package(preflight, "exploration", tmp_path)
+    formal, _, _ = write_collection_package(preflight, "formal", tmp_path)
+    assert exploration["safe_command_speed_max"] == 0.6
+    assert formal["safe_command_speed_max"] == 0.6
+
+
+def test_k1_safe_speed_resolved_but_preflight_blocked(tmp_path: Path) -> None:
+    """K1 safe-speed is resolved but preflight is blocked on operational fields."""
+    preflight = _write_preflight(tmp_path, safe_max=0.6, control_mode="TBD")
+    result = evaluate_preflight(preflight)
+    assert result["safe_command_speed_max_resolved"] is True
+    assert result["safe_command_speed_max"] == 0.6
+    assert result["ready"] is False
+    codes = {error["code"] for error in result["blocked_reasons"]}
+    assert "unresolved_placeholder" in codes
+    assert "safe_command_limit_not_configured" not in codes
+
+
+def test_k1_high_priority_region_0_50_to_0_60(tmp_path: Path) -> None:
+    """K1 domain-aware high-priority interval is 0.50–0.60."""
+    preflight = _write_preflight(tmp_path, safe_max=0.6)
+    result = evaluate_preflight(preflight)
+    domain = result["resolved_speed_domain"]
+    assert domain["high_priority_actual_speed_min"] == 0.5
+    assert domain["high_priority_actual_speed_max"] == 0.6
+
+
+def test_k1_gate_safe_limit_prevents_requested_coverage(tmp_path: Path) -> None:
+    """Exploration gate returns safe_limit_prevents_requested_coverage when data
+    cannot reach high-priority region within the safe command limit."""
+    rows = [_gate_row(0.35, 0.31), _gate_row(0.35, 0.32), _gate_row(0.35, 0.33),
+            _gate_row(0.40, 0.36), _gate_row(0.40, 0.37), _gate_row(0.40, 0.38),
+            _gate_row(0.50, 0.46), _gate_row(0.50, 0.47), _gate_row(0.50, 0.48),
+            _gate_row(0.60, 0.49), _gate_row(0.60, 0.49), _gate_row(0.60, 0.49)]
+    domain = ValidSpeedDomain(
+        valid_command_speed_min=0.35,
+        safe_command_speed_max=0.6,
+        high_priority_actual_speed_min=0.50,
+        high_priority_actual_speed_max=0.60,
+    )
+    result = evaluate_exploration_gate(_write_rows(tmp_path / "k1_limited.csv", rows), domain)
+    assert "safe_limit_prevents_requested_coverage" in result["decisions"]
+
+
+def test_k1_formal_blocked_before_exploration_approval(tmp_path: Path) -> None:
+    """Formal collection remains blocked before exploration approval."""
+    preflight = _write_preflight(tmp_path, safe_max=0.6, exploration_review_complete=False)
+    _, _, _ = write_collection_package(preflight, "exploration", tmp_path)
+    formal, _, _ = write_collection_package(preflight, "formal", tmp_path)
+    assert formal["ready"] is False
+    codes = {error["code"] for error in formal["blocked_reasons"]}
+    assert "formal_blocked_before_exploration_review" in codes
+
+
+def test_k1_gate_no_0_8_1_0_dependency(tmp_path: Path) -> None:
+    """Exploration gate does not require 0.8-1.0 coverage for K1 config."""
+    # Data covering 0.35-0.60 with good actual speeds in high-priority region
+    rows = []
+    for cmd, base_actual in [(0.35, 0.32), (0.40, 0.37), (0.50, 0.48), (0.60, 0.58)]:
+        for r in range(3):
+            rows.append(_gate_row(cmd, base_actual + r * 0.005))
+    domain = ValidSpeedDomain(
+        valid_command_speed_min=0.35,
+        safe_command_speed_max=0.6,
+        high_priority_actual_speed_min=0.50,
+        high_priority_actual_speed_max=0.60,
+    )
+    result = evaluate_exploration_gate(_write_rows(tmp_path / "k1_ready.csv", rows), domain)
+    assert result["ready"] is True
+    assert result["decisions"] == ["ready_for_formal_collection"]
+
+
+def test_k1_separate_safe_speed_and_preflight_states(tmp_path: Path) -> None:
+    """Safe-speed can be ready while execution preflight is blocked."""
+    preflight = _write_preflight(tmp_path, safe_max=0.6, control_mode="null", exploration_review_complete=False)
+    result = evaluate_preflight(preflight)
+    assert result["safe_command_speed_max_resolved"] is True
+    assert result["ready"] is False
+    assert any(error["field"] == "control_mode" for error in result["blocked_reasons"])
+
+
+def test_k1_cli_safe_speed_only_exit_code(tmp_path: Path) -> None:
+    """CLI --speed-only validation succeeds for valid K1 confirmation."""
+    confirmation = _write_confirmation(tmp_path, safe_max=0.6)
+    result = subprocess.run(
+        [sys.executable, "scripts/validate_m25_safe_speed_confirmation.py", "--config", str(confirmation), "--speed-only"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert result.returncode == 0
+
+
+def test_k1_collection_package_contents(tmp_path: Path) -> None:
+    """Generated K1 collection package contains correct trial counts and safe max."""
+    preflight = _write_preflight(tmp_path, safe_max=0.6)
+    pkg, json_path, md_path = write_collection_package(preflight, "exploration", tmp_path)
+    assert pkg["safe_command_speed_max_resolved"] is True
+    assert pkg["safe_command_speed_max"] == 0.6
+    assert pkg["preflight"]["exploration_trial_count"] == 12
+    assert pkg["preflight"]["formal_trial_count"] == 30
+    md_text = md_path.read_text(encoding="utf-8")
+    assert "Safe-speed resolved: `true`" in md_text
+    assert "Safe command speed max: `0.6`" in md_text
 
 
 def _write_confirmation(tmp_path: Path, *, safe_max: float = 1.0, evidence_type: str = "operator_confirmation") -> Path:

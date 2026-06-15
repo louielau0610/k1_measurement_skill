@@ -8,9 +8,9 @@ M25 将当前主动路线重定向到 K1 纵向 `command velocity -> measured ac
 [valid_command_speed_min, safe_command_speed_max]
 ```
 
-`valid_command_speed_min` 是补偿器适用下界，不是 deadzone 估计；`safe_command_speed_max` 不在仓库中猜测，必须来自已验证机器人配置、SDK 适配层或操作者配置。缺少安全上界时，可生成阻塞说明，但不能生成可执行 trial plan。
+`valid_command_speed_min` 是补偿器适用下界，不是 deadzone 估计；`safe_command_speed_max` 已确认为 `0.6 m/s`（由操作者确认）。当前 K1 实验配置的有效命令域为 `[0.35, 0.60] m/s`，高优先级评估区间为 `0.50-0.60 m/s`。命令速度不得超出 `0.6 m/s`。
 
-0.80-1.00 m/s 是高优先级密集验证区间，不是唯一适用范围。主动路线已放弃 deadzone 研究；yaw drift / yaw compensation 暂停并从 M25 目标、模型特征、验证指标和 benefit gate 中移除。M25 只建立测量、计划、profile contract 和候选 profile 基础，不声明补偿效果。
+M25 主动路线已放弃 deadzone 研究；yaw drift / yaw compensation 暂停并从 M25 目标、模型特征、验证指标和 benefit gate 中移除。M25 只建立测量、计划、profile contract 和候选 profile 基础，不声明补偿效果。
 
 关键文档和入口：
 
@@ -24,12 +24,18 @@ M25 将当前主动路线重定向到 K1 纵向 `command velocity -> measured ac
 
 ## M25-R 采集就绪闭环
 
-M25-R 新增 safe-speed 操作者确认、真实采集 preflight、保持阻塞的 exploration/formal collection package，以及 exploration-to-formal gate。当前提交仍然没有解析 `safe_command_speed_max`，因此真实机器人运动执行继续阻塞。
+M25-R 新增 safe-speed 操作者确认、真实采集 preflight、保持阻塞的 exploration/formal collection package，以及 exploration-to-formal gate。
+
+## M25-S K1 安全速度集成
+
+M25-S 将已确认的 K1 安全前向命令速度上限 `0.6 m/s` 集成到 M25/M25-R 真实采集流程中。当前 exploration plan 为 4 个命令点 × 3 次重复 = 12 次试验，formal plan 为 6 × 5 = 30 次试验。安全速度已确认，但完整执行 preflight 仍因 control_mode/gait_mode 等操作字段未解析而阻塞。
 
 从这里开始：
 
 - `docs/m25r_real_data_collection_readiness.md`
-- `configs/m25_k1_safe_speed_operator_confirmation_template.yaml`
+- `docs/m25s_k1_safe_speed_integration.md`
+- `configs/m25_k1_safe_speed_operator_confirmation.yaml`
+- `configs/m25_k1_s2_real_collection.yaml`
 - `configs/m25_real_collection_preflight_template.yaml`
 
 在真实 formal profile 数据可用之前，不得启动 M26 response-model fitting。

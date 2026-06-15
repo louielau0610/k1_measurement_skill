@@ -7,10 +7,11 @@ M25 is the active milestone. The project is now focused on longitudinal full-ran
 Active M25 contract:
 
 - `valid_command_speed_min` defaults to `0.35` as an engineering applicability boundary.
-- `safe_command_speed_max` is required for executable plans and is not guessed.
-- `0.80-1.00 m/s` is a dense high-priority actual-speed validation region, not the full applicability range.
+- `safe_command_speed_max` is confirmed at `0.6 m/s` for the current K1 experiment configuration.
+- `0.50-0.60 m/s` is the dense high-priority actual-speed evaluation region for the current K1 config.
 - Deadzone research and yaw drift/yaw compensation work are removed from active M25 objectives.
 - M25 creates measurement/profile foundations only and does not claim compensation performance.
+- The generic architecture supports other robots/configurations with different valid speed domains.
 
 New active artifacts:
 
@@ -30,13 +31,49 @@ Next roadmap: M26 full-range monotonic response model comparison, M27 inverse co
 
 M25-R is a closure milestone after commit `69aa216`. It classifies the dirty working tree, adds generated-output policy, creates a safe-speed operator confirmation process, and adds a real-collection preflight validator.
 
-Current M25-R state:
+M25-R state (as of M25-S closure):
 
-- `safe_command_speed_max` remains unresolved; no authoritative value was found in repository configuration or SDK adapter constraints.
-- Exploration package generation exists but is blocked until safe-speed confirmation and preflight pass.
-- Formal package generation exists but is blocked until safe-speed confirmation, preflight pass, and exploration review or documented override.
+- `safe_command_speed_max` is now resolved at `0.6 m/s` via M25-S.
+- Exploration package generation exists and is blocked only on unresolved operational fields (control_mode, gait_mode).
+- Formal package generation is blocked on operational fields and exploration review.
 - No robot motion has been executed by M25-R.
 - No M26 model has been fitted or selected.
+
+## M25-S K1 Safe-Speed Integration
+
+M25-S integrates the confirmed K1 safe forward command-speed maximum of `0.6 m/s` into the M25/M25-R real-collection workflow.
+
+Key deliverables:
+
+- **Safe-speed confirmation**: `configs/m25_k1_safe_speed_operator_confirmation.yaml` — confirms `safe_command_speed_max: 0.6` via operator evidence.
+- **K1 real-collection config**: `configs/m25_k1_s2_real_collection.yaml` — concrete K1/S2 configuration with domain `[0.35, 0.60]` m/s.
+- **Updated planner/grids**: Exploration grid `[0.35, 0.40, 0.50, 0.60]` (12 trials), formal grid `[0.35, 0.40, 0.45, 0.50, 0.55, 0.60]` (30 trials).
+- **Domain-aware exploration gate**: No longer requires `0.8-1.0` coverage. Evaluates `0.35-0.60` command coverage with high-priority region `0.50-0.60`.
+- **Separate safe-speed/preflight states**: Safe-speed confirmation can be ready while execution preflight remains blocked on operational fields.
+- **24 new K1-specific tests**: CLI exit codes, serialization round-trips, exploration/formal grid verification, package content checks.
+
+Current state:
+
+```
+M25 contract: complete
+M25-R collection tooling: complete
+M25-S safe-speed integration: complete
+K1 safe command maximum: resolved at 0.6 m/s
+real execution readiness: depends on remaining operational preflight fields (control_mode, gait_mode)
+exploration: not yet executed
+formal collection: blocked until exploration data reviewed
+M26: blocked until real formal data exist
+yaw: paused
+deadzone work: abandoned
+```
+
+Do not claim:
+- No command above `0.6 m/s` was generated.
+- No robot motion was automatically executed.
+- No actual-speed reachability was assumed.
+- No real data were fabricated.
+- No M26 model was fitted.
+- M26 remains blocked until exploration and formal real-robot data are collected.
 
 ## 当前阶段
 

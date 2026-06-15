@@ -10,10 +10,12 @@
 - [x] Add safe-speed operator confirmation template and validation.
 - [x] Add M25-R real-collection preflight validator.
 - [x] Add blocked exploration/formal collection packages and exploration-to-formal gate.
-- [ ] Configure `safe_command_speed_max` from validated robot/operator evidence before generating executable M25 plans.
-- [ ] Collect M25 exploration data across the configured valid command domain.
-- [ ] Collect M25 formal profile data with dense sampling around 0.80-1.00 m/s.
-- [ ] M26: compare full-range monotonic response models after M25 data collection.
+- [x] Configure `safe_command_speed_max` from validated robot/operator evidence (M25-S: confirmed at 0.6 m/s).
+- [x] Update exploration/formal grids for K1 `[0.35, 0.60]` domain (12/30 trials).
+- [x] Update exploration gate to remove 0.8-1.0 dependency.
+- [ ] Collect M25 exploration data across the configured valid command domain `[0.35, 0.60]` m/s.
+- [ ] Collect M25 formal profile data with dense sampling in high-priority `0.50-0.60` m/s region.
+- [ ] M26: compare full-range monotonic response models after real formal data collection.
 - [ ] M27: implement or finalize inverse velocity compensation.
 - [ ] M28: run full-range direct-vs-compensated real-robot validation.
 

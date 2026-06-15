@@ -46,19 +46,19 @@ Targets outside the observed actual-speed reachability interval are rejected. Th
 
 The reusable implementation is `k1_measurement/full_range_velocity_profile.py`.
 
-Phase A, exploration, covers the configured command domain using three repeats per command by default. The template command points are:
+Phase A, exploration, covers the configured command domain using three repeats per command by default. The current K1 template command points are:
 
 ```text
-0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00
+0.35, 0.40, 0.50, 0.60
 ```
 
-Phase B, formal collection, uses five repeats per command by default with denser sampling around the high-priority 0.80-1.00 m/s actual-speed region:
+Phase B, formal collection, uses five repeats per command by default with denser sampling around the high-priority 0.50-0.60 m/s region:
 
 ```text
-0.40, 0.45, 0.50, 0.55, 0.60, 0.70, 0.80, 0.85, 0.90, 0.95, 1.00
+0.35, 0.40, 0.45, 0.50, 0.55, 0.60
 ```
 
-The high-priority interval is not the full applicability range and is not assumed reachable. Additional points above 1.0 m/s are permitted only when `safe_command_speed_max` explicitly allows them.
+The high-priority interval (`0.50-0.60 m/s`) is not the full applicability range; actual-speed reachability is not yet known. Commands above `0.60 m/s` are not permitted for the current K1 experiment configuration. The generic architecture supports other robots/configurations with different valid speed domains.
 
 ## Stable-Speed Extraction Contract
 

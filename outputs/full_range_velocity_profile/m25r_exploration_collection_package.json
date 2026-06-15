@@ -2,27 +2,9 @@
   "schema_version": "m25r_real_collection_preflight_v1",
   "package": "m25r_exploration_collection",
   "ready": false,
+  "safe_command_speed_max_resolved": true,
+  "safe_command_speed_max": 0.6,
   "blocked_reasons": [
-    {
-      "code": "unresolved_placeholder",
-      "field": "evidence_type",
-      "message": "evidence_type is required"
-    },
-    {
-      "code": "unresolved_placeholder",
-      "field": "evidence_reference",
-      "message": "evidence_reference is required"
-    },
-    {
-      "code": "unresolved_placeholder",
-      "field": "confirmed_by",
-      "message": "confirmed_by is required"
-    },
-    {
-      "code": "unresolved_placeholder",
-      "field": "confirmed_at",
-      "message": "confirmed_at is required"
-    },
     {
       "code": "unresolved_placeholder",
       "field": "control_mode",
@@ -32,21 +14,6 @@
       "code": "unresolved_placeholder",
       "field": "gait_mode",
       "message": "gait_mode is required"
-    },
-    {
-      "code": "safe_command_limit_not_configured",
-      "field": "safe_command_speed_max",
-      "message": "safe_command_speed_max must be positive and non-null"
-    },
-    {
-      "code": "safe_command_limit_not_configured",
-      "field": "safe_command_speed_max",
-      "message": "safe_command_speed_max is required for executable M25 plans"
-    },
-    {
-      "code": "safe_command_limit_not_configured",
-      "field": "safe_command_speed_max",
-      "message": "safe maximum is required"
     }
   ],
   "warnings": [
@@ -58,26 +25,6 @@
     "blocked_reasons": [
       {
         "code": "unresolved_placeholder",
-        "field": "evidence_type",
-        "message": "evidence_type is required"
-      },
-      {
-        "code": "unresolved_placeholder",
-        "field": "evidence_reference",
-        "message": "evidence_reference is required"
-      },
-      {
-        "code": "unresolved_placeholder",
-        "field": "confirmed_by",
-        "message": "confirmed_by is required"
-      },
-      {
-        "code": "unresolved_placeholder",
-        "field": "confirmed_at",
-        "message": "confirmed_at is required"
-      },
-      {
-        "code": "unresolved_placeholder",
         "field": "control_mode",
         "message": "control_mode is required"
       },
@@ -85,55 +32,42 @@
         "code": "unresolved_placeholder",
         "field": "gait_mode",
         "message": "gait_mode is required"
-      },
-      {
-        "code": "safe_command_limit_not_configured",
-        "field": "safe_command_speed_max",
-        "message": "safe_command_speed_max must be positive and non-null"
-      },
-      {
-        "code": "safe_command_limit_not_configured",
-        "field": "safe_command_speed_max",
-        "message": "safe_command_speed_max is required for executable M25 plans"
-      },
-      {
-        "code": "safe_command_limit_not_configured",
-        "field": "safe_command_speed_max",
-        "message": "safe maximum is required"
       }
     ],
     "warnings": [
       "formal collection remains blocked until exploration data have been reviewed"
     ],
+    "safe_command_speed_max_resolved": true,
+    "safe_command_speed_max": 0.6,
     "resolved_speed_domain": {
       "valid_command_speed_min": 0.35,
-      "safe_command_speed_max": null,
-      "high_priority_actual_speed_min": 0.8,
-      "high_priority_actual_speed_max": 1.0
+      "safe_command_speed_max": 0.6,
+      "high_priority_actual_speed_min": 0.5,
+      "high_priority_actual_speed_max": 0.6
     },
-    "exploration_trial_count": 0,
-    "formal_trial_count": 0,
+    "exploration_trial_count": 12,
+    "formal_trial_count": 30,
     "random_seed": 250625,
-    "config_hash": "80014e4e28d3483c2ca801a17b645b9957fb42e723736fbf305a59a7e9be8329",
+    "config_hash": "783918c8bd7e11263fb066802121e896aa49de51a54d98b14f51394f0dab09a4",
     "plan_hashes": {
-      "exploration": "d056136d74a61cf9d05a2240066a0232213ea9f3a2a15c20ba1dcf0e9a29d0d6",
-      "formal": "be48e995a1eba7e84a08ae0b133af2150577c570601049b777bc817b5b725efc"
+      "exploration": "ed5d6a9a1862c36d065fd392470f9f45458262b5418a4ae366479df45471b667",
+      "formal": "b52804cb45800d0c22361c4b645f56a763833af411fd52b5e28e97d699c2340f"
     },
     "robot_id": "k1",
-    "surface_id": "S2_marble_floor",
+    "surface_id": "s2",
     "control_mode": null,
     "gait_mode": null,
     "git_commit": "record_at_session_creation",
-    "evaluated_at": "2026-06-15T06:44:05.552166+00:00"
+    "evaluated_at": "2026-06-15T07:19:40.314647+00:00"
   },
   "operator_commands": {
-    "preflight_validation": "py scripts/validate_m25_real_collection_preflight.py --config configs\\m25_real_collection_preflight_template.yaml",
-    "dry_run_generation": "py scripts/prepare_m25r_collection_package.py --config configs\\m25_real_collection_preflight_template.yaml --phase exploration",
+    "preflight_validation": "py scripts/validate_m25_real_collection_preflight.py --config configs\\m25_k1_s2_real_collection.yaml",
+    "dry_run_generation": "py scripts/prepare_m25r_collection_package.py --config configs\\m25_k1_s2_real_collection.yaml --phase exploration",
     "print_only_inspection": "py scripts/plan_full_range_velocity_profile.py --config configs/m25_full_range_velocity_profile_template.yaml --phase exploration",
     "real_execution": "BLOCKED until preflight ready; then run the existing guarded robot runner with --execute and per-trial operator confirmation",
     "session_validation": "py scripts/validate_m25_collected_session.py --config configs/m25_full_range_velocity_profile_template.yaml --session <collected_extraction.csv>",
     "candidate_profile_generation": "py scripts/build_m25_candidate_profile.py --config configs/m25_full_range_velocity_profile_template.yaml --session <collected_extraction.csv> --dry-run"
   },
   "scientific_boundary": "no robot motion is executed by package generation; no M26 model is fitted",
-  "created_at": "2026-06-15T06:44:05.555174+00:00"
+  "created_at": "2026-06-15T07:19:40.320649+00:00"
 }

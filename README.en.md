@@ -2,9 +2,9 @@
 
 ## M25 Active Scope: Full-Range Velocity Profiling
 
-M25 refocuses the active repository on longitudinal command velocity versus measured actual velocity across the complete configured valid command-speed domain, excluding the deadzone by an explicit engineering boundary. The active domain is `[valid_command_speed_min, safe_command_speed_max]`; `safe_command_speed_max` is not guessed and executable plans are blocked until it is configured from validated robot/operator evidence.
+M25 refocuses the active repository on longitudinal command velocity versus measured actual velocity across the complete configured valid command-speed domain, excluding the deadzone by an explicit engineering boundary. The active domain is `[0.35, 0.60] m/s` for the current K1 experiment configuration; `safe_command_speed_max` is confirmed at `0.6 m/s` via operator confirmation. No command above `0.6 m/s` is permitted.
 
-The 0.80-1.00 m/s actual-speed region is a dense high-priority validation region, not the full applicability range. Deadzone research has been abandoned for the active roadmap, and yaw drift / yaw compensation work is paused and removed from active M25 objectives. M25 establishes the measurement/profile foundation only; it does not claim compensation success or validate an inverse compensator.
+The 0.50-0.60 m/s region is the dense high-priority evaluation region for the current K1 config. Deadzone research has been abandoned for the active roadmap, and yaw drift / yaw compensation work is paused and removed from active M25 objectives. M25 establishes the measurement/profile foundation only; it does not claim compensation success or validate an inverse compensator.
 
 Key M25 artifacts:
 
@@ -18,12 +18,18 @@ Next milestones: M26 compares full-range monotonic response models, M27 implemen
 
 ## M25-R Readiness
 
-M25-R adds safe-speed operator confirmation, real-collection preflight validation, blocked exploration/formal collection packages, and an exploration-to-formal gate. The committed safe maximum remains unresolved, so robot-motion execution is still blocked.
+M25-R adds safe-speed operator confirmation, real-collection preflight validation, blocked exploration/formal collection packages, and an exploration-to-formal gate.
+
+## M25-S K1 Safe-Speed Integration
+
+M25-S integrates the confirmed K1 safe forward command-speed maximum of `0.6 m/s` into the M25/M25-R real-collection workflow. The current exploration plan has 12 trials (4 command points × 3 repeats) and the formal plan has 30 trials (6 × 5). Safe speed is resolved; full execution preflight remains blocked on unresolved operational fields (control_mode, gait_mode).
 
 Start here:
 
 - `docs/m25r_real_data_collection_readiness.md`
-- `configs/m25_k1_safe_speed_operator_confirmation_template.yaml`
+- `docs/m25s_k1_safe_speed_integration.md`
+- `configs/m25_k1_safe_speed_operator_confirmation.yaml`
+- `configs/m25_k1_s2_real_collection.yaml`
 - `configs/m25_real_collection_preflight_template.yaml`
 
 M26 response-model fitting must not proceed until real formal profile data exist.

@@ -5,31 +5,23 @@ robot_id: booster_k1_unit_unspecified
 valid_speed_domain:
   valid_command_speed_min: 0.35
   safe_command_speed_max: null
-  high_priority_actual_speed_min: 0.80
-  high_priority_actual_speed_max: 1.00
+  high_priority_actual_speed_min: 0.50
+  high_priority_actual_speed_max: 0.60
 
 exploration_command_points:
+  - 0.35
   - 0.40
   - 0.50
   - 0.60
-  - 0.70
-  - 0.80
-  - 0.90
-  - 1.00
 exploration_repeats: 3
 
 formal_command_grid:
+  - 0.35
   - 0.40
   - 0.45
   - 0.50
   - 0.55
   - 0.60
-  - 0.70
-  - 0.80
-  - 0.85
-  - 0.90
-  - 0.95
-  - 1.00
 formal_repeats: 5
 
 random_seed: 250625

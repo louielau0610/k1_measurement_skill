@@ -1,0 +1,9 @@
+robot_id: k1
+control_mode: null
+gait_mode: null
+safe_command_speed_max: 0.6
+evidence_type: operator_confirmation
+evidence_reference: "User-confirmed K1 safe forward command-speed maximum: 0.6 m/s"
+confirmed_by: "operator"
+confirmed_at: "2026-06-15T00:00:00Z"
+notes: "Safe-speed limit confirmed for current K1 experiment configuration. Control mode and gait mode remain unresolved for preflight execution readiness."

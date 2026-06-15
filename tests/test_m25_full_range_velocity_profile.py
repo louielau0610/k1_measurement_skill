@@ -76,18 +76,39 @@ def test_exploration_and_formal_plan_generation() -> None:
     formal = plan_phase(_config(), "formal")
     assert exploration["executable"] is True
     assert formal["executable"] is True
+    assert exploration["trial_count"] == 12
+    assert formal["trial_count"] == 30
+
+
+def test_exploration_and_formal_plan_with_legacy_large_domain() -> None:
+    """Generic planner supports larger domains for non-K1 configurations."""
+    config = M25Config(
+        valid_speed_domain=ValidSpeedDomain(
+            valid_command_speed_min=0.35,
+            safe_command_speed_max=1.0,
+            high_priority_actual_speed_min=0.80,
+            high_priority_actual_speed_max=1.00,
+        ),
+        exploration_command_points=[0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00],
+        formal_command_grid=[0.40, 0.45, 0.50, 0.55, 0.60, 0.70, 0.80, 0.85, 0.90, 0.95, 1.00],
+        random_seed=123,
+    )
+    exploration = plan_phase(config, "exploration")
+    formal = plan_phase(config, "formal")
+    assert exploration["executable"] is True
+    assert formal["executable"] is True
     assert exploration["trial_count"] == 21
     assert formal["trial_count"] == 55
 
 
 def test_formal_default_is_denser_around_high_priority_region() -> None:
     formal_points = _config().formal_command_grid
-    high_priority = [p for p in formal_points if 0.8 <= p <= 1.0]
-    lower = [p for p in formal_points if p < 0.8]
-    assert len(high_priority) == 5
-    assert len(lower) == 6
+    high_priority = [p for p in formal_points if 0.50 <= p <= 0.60]
+    lower = [p for p in formal_points if p < 0.50]
+    assert len(high_priority) == 3
+    assert len(lower) == 3
     assert min(round(b - a, 2) for a, b in zip(high_priority, high_priority[1:])) == 0.05
-    assert max(round(b - a, 2) for a, b in zip(lower, lower[1:])) == 0.10
+    assert max(round(b - a, 2) for a, b in zip(lower, lower[1:])) == 0.05
 
 
 def test_candidate_profile_status_and_reachability_fields(tmp_path: Path) -> None:
@@ -168,6 +189,135 @@ def test_validate_collected_session_reports_contract_errors(tmp_path: Path) -> N
     result = validate_collected_session(session, ValidSpeedDomain(safe_command_speed_max=1.0))
     assert result["valid"] is False
     assert "below_valid_speed_domain" in result["errors"][0]["message"]
+
+
+# --- M25-S K1-specific tests ---
+
+
+def test_k1_safe_speed_max_0_6_accepted() -> None:
+    """Commands exactly at 0.6 m/s are accepted."""
+    domain = ValidSpeedDomain(safe_command_speed_max=0.6)
+    domain.check_command(0.6)  # must not raise
+
+
+def test_k1_rejects_command_above_0_6() -> None:
+    """Commands above 0.6 m/s are rejected."""
+    domain = ValidSpeedDomain(safe_command_speed_max=0.6)
+    with pytest.raises(M25ValidationError) as exc:
+        domain.check_command(0.61)
+    assert exc.value.code == "above_safe_command_limit"
+
+
+def test_k1_rejects_command_0_7_and_above() -> None:
+    """0.70, 0.80, 0.90, 1.00 are all rejected."""
+    domain = ValidSpeedDomain(safe_command_speed_max=0.6)
+    for speed in [0.70, 0.80, 0.90, 1.00]:
+        with pytest.raises(M25ValidationError) as exc:
+            domain.check_command(speed)
+        assert exc.value.code == "above_safe_command_limit"
+
+
+def test_k1_lower_applicability_boundary_0_35() -> None:
+    """Commands below 0.35 m/s are rejected."""
+    domain = ValidSpeedDomain(valid_command_speed_min=0.35, safe_command_speed_max=0.6)
+    with pytest.raises(M25ValidationError) as exc:
+        domain.check_command(0.34)
+    assert exc.value.code == "below_valid_speed_domain"
+    domain.check_command(0.35)  # must not raise
+
+
+def test_k1_exploration_grid() -> None:
+    """K1 exploration grid is [0.35, 0.40, 0.50, 0.60]."""
+    config = M25Config(
+        valid_speed_domain=ValidSpeedDomain(safe_command_speed_max=0.6),
+        exploration_command_points=[0.35, 0.40, 0.50, 0.60],
+        formal_command_grid=[0.35, 0.40, 0.45, 0.50, 0.55, 0.60],
+        random_seed=250625,
+    )
+    plan = plan_phase(config, "exploration")
+    assert plan["executable"] is True
+    assert plan["trial_count"] == 12
+    assert plan["command_points_mps"] == [0.35, 0.40, 0.50, 0.60]
+    assert all(p <= 0.6 for p in plan["command_points_mps"])
+
+
+def test_k1_formal_grid_and_total() -> None:
+    """K1 formal grid has 6 points × 5 repeats = 30 trials."""
+    config = M25Config(
+        valid_speed_domain=ValidSpeedDomain(safe_command_speed_max=0.6),
+        exploration_command_points=[0.35, 0.40, 0.50, 0.60],
+        formal_command_grid=[0.35, 0.40, 0.45, 0.50, 0.55, 0.60],
+        random_seed=250625,
+    )
+    plan = plan_phase(config, "formal")
+    assert plan["executable"] is True
+    assert plan["trial_count"] == 30
+    assert plan["command_points_mps"] == [0.35, 0.40, 0.45, 0.50, 0.55, 0.60]
+    assert all(p <= 0.6 for p in plan["command_points_mps"])
+
+
+def test_k1_no_command_above_0_6_in_plans() -> None:
+    """All generated K1 trial commands are within [0.35, 0.60]."""
+    config = M25Config(
+        valid_speed_domain=ValidSpeedDomain(safe_command_speed_max=0.6),
+        random_seed=250625,
+    )
+    for phase in ("exploration", "formal"):
+        plan = plan_phase(config, phase)
+        if plan["executable"]:
+            for trial in plan["trials"]:
+                assert 0.35 <= trial["command_speed_mps"] <= 0.6
+
+
+def test_k1_high_priority_region_0_50_to_0_60() -> None:
+    """High-priority region is 0.50–0.60 for K1 configuration."""
+    config = M25Config(
+        valid_speed_domain=ValidSpeedDomain(
+            safe_command_speed_max=0.6,
+            high_priority_actual_speed_min=0.50,
+            high_priority_actual_speed_max=0.60,
+        ),
+        random_seed=250625,
+    )
+    plan = plan_phase(config, "formal")
+    region = plan.get("high_priority_actual_speed_region", [])
+    assert region == [0.50, 0.60]
+    # Upper region points (0.50, 0.55, 0.60) are the denser part
+    upper = [p for p in plan["command_points_mps"] if p >= 0.50]
+    assert len(upper) == 3
+
+
+def test_k1_deterministic_randomized_ordering() -> None:
+    """K1 exploration plan has deterministic randomized ordering."""
+    config = M25Config(
+        valid_speed_domain=ValidSpeedDomain(safe_command_speed_max=0.6),
+        random_seed=250625,
+    )
+    plan1 = plan_phase(config, "exploration")
+    plan2 = plan_phase(config, "exploration")
+    assert [t["trial_id"] for t in plan1["trials"]] == [t["trial_id"] for t in plan2["trials"]]
+    # Verify randomization is not just sorted order
+    speeds = [t["command_speed_mps"] for t in plan1["trials"]]
+    assert speeds != sorted(speeds)
+
+
+def test_generic_planner_supports_larger_domains() -> None:
+    """Generic planner still supports larger speed domains for other configs."""
+    config = M25Config(
+        valid_speed_domain=ValidSpeedDomain(
+            valid_command_speed_min=0.35,
+            safe_command_speed_max=1.0,
+            high_priority_actual_speed_min=0.80,
+            high_priority_actual_speed_max=1.00,
+        ),
+        exploration_command_points=[0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00],
+        formal_command_grid=[0.40, 0.45, 0.50, 0.55, 0.60, 0.70, 0.80, 0.85, 0.90, 0.95, 1.00],
+        random_seed=123,
+    )
+    plan = plan_phase(config, "exploration")
+    assert plan["executable"] is True
+    assert plan["trial_count"] == 21
+    assert 1.0 in plan["command_points_mps"]
 
 
 def _write_rows(path: Path, rows: list[dict[str, str]]) -> Path:

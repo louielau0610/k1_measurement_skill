@@ -115,20 +115,33 @@ def evaluate_preflight(path: str | Path) -> dict[str, Any]:
     blocked.extend(confirmation_errors)
 
     safe_max = confirmation.safe_command_speed_max
+    # Allow preflight config to override domain values directly
+    domain_override = config.get("valid_speed_domain", {}) or {}
     resolved_domain = ValidSpeedDomain(
-        valid_command_speed_min=m25_config.valid_speed_domain.valid_command_speed_min,
+        valid_command_speed_min=float(domain_override.get("valid_command_speed_min", m25_config.valid_speed_domain.valid_command_speed_min)),
         safe_command_speed_max=safe_max,
-        high_priority_actual_speed_min=m25_config.valid_speed_domain.high_priority_actual_speed_min,
-        high_priority_actual_speed_max=m25_config.valid_speed_domain.high_priority_actual_speed_max,
+        high_priority_actual_speed_min=float(domain_override.get("high_priority_actual_speed_min", m25_config.valid_speed_domain.high_priority_actual_speed_min)),
+        high_priority_actual_speed_max=float(domain_override.get("high_priority_actual_speed_max", m25_config.valid_speed_domain.high_priority_actual_speed_max)),
+    )
+    # Allow preflight to override command grids directly
+    exploration_points = (
+        [float(v) for v in config["exploration_command_points"]]
+        if config.get("exploration_command_points") is not None
+        else m25_config.exploration_command_points
+    )
+    formal_grid = (
+        [float(v) for v in config["formal_command_grid"]]
+        if config.get("formal_command_grid") is not None
+        else m25_config.formal_command_grid
     )
     resolved_m25 = M25Config(
         valid_speed_domain=resolved_domain,
         surface=str(config.get("surface_id") or m25_config.surface),
         robot_id=str(config.get("robot_id") or confirmation.robot_id or m25_config.robot_id),
-        exploration_command_points=m25_config.exploration_command_points,
-        formal_command_grid=m25_config.formal_command_grid,
-        exploration_repeats=m25_config.exploration_repeats,
-        formal_repeats=m25_config.formal_repeats,
+        exploration_command_points=exploration_points,
+        formal_command_grid=formal_grid,
+        exploration_repeats=int(config.get("exploration_repeats", m25_config.exploration_repeats)),
+        formal_repeats=int(config.get("formal_repeats", m25_config.formal_repeats)),
         random_seed=m25_config.random_seed,
         randomization=m25_config.randomization,
     )
@@ -185,11 +198,14 @@ def evaluate_preflight(path: str | Path) -> dict[str, Any]:
 
     blocked = _dedupe_errors(blocked)
     ready = not blocked
+    safe_max_resolved = confirmation.safe_command_speed_max is not None and _is_positive_finite(confirmation.safe_command_speed_max)
     return {
         "schema_version": SCHEMA_VERSION,
         "ready": ready,
         "blocked_reasons": blocked,
         "warnings": warnings,
+        "safe_command_speed_max_resolved": safe_max_resolved,
+        "safe_command_speed_max": safe_max,
         "resolved_speed_domain": resolved_domain.as_dict(),
         "exploration_trial_count": exploration_plan.get("trial_count", 0),
         "formal_trial_count": formal_plan.get("trial_count", 0),
@@ -224,6 +240,8 @@ def build_collection_package(preflight_path: str | Path, phase: str) -> dict[str
         "schema_version": SCHEMA_VERSION,
         "package": f"m25r_{phase}_collection",
         "ready": package_ready,
+        "safe_command_speed_max_resolved": preflight.get("safe_command_speed_max_resolved", False),
+        "safe_command_speed_max": preflight.get("safe_command_speed_max"),
         "blocked_reasons": blocked,
         "warnings": preflight["warnings"],
         "preflight": preflight,
@@ -253,10 +271,14 @@ def write_collection_package(preflight_path: str | Path, phase: str, output_dir:
 
 
 def collection_package_markdown(package: dict[str, Any]) -> str:
+    safe_max = package.get("safe_command_speed_max")
+    safe_resolved = package.get("safe_command_speed_max_resolved", False)
     lines = [
         f"# {package['package']}",
         "",
         f"- Ready: `{str(package['ready']).lower()}`",
+        f"- Safe-speed resolved: `{str(safe_resolved).lower()}`",
+        f"- Safe command speed max: `{safe_max}`",
         f"- Exploration trials: {package['preflight']['exploration_trial_count']}",
         f"- Formal trials: {package['preflight']['formal_trial_count']}",
         f"- Random seed: `{package['preflight']['random_seed']}`",
@@ -296,6 +318,23 @@ def evaluate_exploration_gate(path: str | Path, domain: ValidSpeedDomain, *, min
     missing_repeats = [cmd for cmd, group in by_command.items() if len(group) < min_repeats]
     if missing_repeats:
         decisions.append("insufficient_valid_trials")
+    # Command coverage check across the valid domain
+    commands_covered = sorted(by_command.keys())
+    if domain.safe_command_speed_max is not None:
+        # Check coverage across valid command range
+        covered_range = max(commands_covered) - min(commands_covered) if len(commands_covered) >= 2 else 0.0
+        full_range = domain.safe_command_speed_max - domain.valid_command_speed_min
+        if full_range > 0 and covered_range < 0.5 * full_range:
+            # Only suggest grid extension if we are not already at the safe limit
+            if max(commands_covered) < domain.safe_command_speed_max - 0.01:
+                decisions.append("requires_grid_extension")
+    # Upper-range coverage: check if high-priority command region is covered
+    if domain.safe_command_speed_max is not None:
+        hp_low = max(domain.high_priority_actual_speed_min, domain.valid_command_speed_min)
+        hp_high = domain.safe_command_speed_max
+        upper_covered = [c for c in commands_covered if c >= hp_low]
+        if not upper_covered:
+            decisions.append("high_priority_region_not_covered")
     actuals = [_float_or_none(row.get("estimated_actual_speed", row.get("measured_actual_velocity_mps"))) for row in valid_rows]
     actual_values = [v for v in actuals if v is not None]
     if actual_values and max(actual_values) < domain.high_priority_actual_speed_min:
@@ -303,11 +342,18 @@ def evaluate_exploration_gate(path: str | Path, domain: ValidSpeedDomain, *, min
             decisions.append("safe_limit_prevents_requested_coverage")
         else:
             decisions.append("high_priority_region_not_covered")
-    if len(by_command) < 2:
-        decisions.append("requires_grid_extension")
+    # Grid refinement: check for non-monotonic actual speed ordering
     ordered = sorted((cmd, _mean_actual(group)) for cmd, group in by_command.items())
     if len(ordered) >= 2 and any(curr < prev - 0.05 for (_, prev), (_, curr) in zip(ordered, ordered[1:])):
         decisions.append("requires_grid_refinement")
+    # Grid extension: ensure sufficient command points
+    if len(by_command) < 2:
+        decisions.append("requires_grid_extension")
+    # Never recommend exceeding the safe limit
+    if domain.safe_command_speed_max is not None:
+        for cmd in commands_covered:
+            if cmd > domain.safe_command_speed_max:
+                decisions.append("above_safe_command_limit")
     if not decisions:
         decisions.append("ready_for_formal_collection")
     unique = []
@@ -321,6 +367,7 @@ def evaluate_exploration_gate(path: str | Path, domain: ValidSpeedDomain, *, min
         "valid_trial_count": len(valid_rows),
         "per_command_counts": {f"{cmd:.3f}": len(group) for cmd, group in sorted(by_command.items())},
         "high_priority_region": [domain.high_priority_actual_speed_min, domain.high_priority_actual_speed_max],
+        "safe_command_speed_max": domain.safe_command_speed_max,
         "m26_model_fitted": False,
     }
 

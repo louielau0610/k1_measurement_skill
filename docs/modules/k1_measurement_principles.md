@@ -39,7 +39,7 @@
 - 新增报告或图像输出时，保证缺失输入可跳过或给出明确 warning。
 ## M25 Full-Range Velocity Principles
 
-M25 treats the valid command-speed domain as an explicit configuration contract, not as a discovered deadzone threshold. `safe_command_speed_max` must be externally validated before executable plans can be produced. The high-priority 0.80-1.00 m/s region is sampled densely but does not define the full supported range.
+M25 treats the valid command-speed domain as an explicit configuration contract, not as a discovered deadzone threshold. `safe_command_speed_max` is confirmed at `0.6 m/s` for the current K1 experiment configuration via operator evidence. The high-priority `0.50-0.60 m/s` region is sampled densely but does not define the full supported range. The generic architecture supports other robots/configurations with different valid speed domains.
 
 The active M25 module only models longitudinal command speed versus measured actual speed. Historical yaw fields may remain in raw logs, but M25 does not use yaw drift as a feature, objective, metric, quality gate, or roadmap target. Candidate profiles expose observed actual-speed reachability and must reject unreachable targets unless a future milestone adds an explicit extrapolation policy.
 

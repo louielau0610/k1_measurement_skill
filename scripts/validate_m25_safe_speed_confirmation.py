@@ -16,9 +16,10 @@ from k1_measurement.m25_real_collection_preflight import validate_safe_speed_con
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Validate M25 safe-speed operator confirmation.")
     parser.add_argument("--config", type=Path, default=Path("configs/m25_k1_safe_speed_operator_confirmation_template.yaml"))
+    parser.add_argument("--speed-only", action="store_true", help="Validate safe-speed value only; do not require control/gait context.")
     args = parser.parse_args(argv)
     try:
-        result = validate_safe_speed_confirmation(args.config)
+        result = validate_safe_speed_confirmation(args.config, require_context=not args.speed_only)
     except Exception as exc:
         print(json.dumps({"valid": False, "errors": [{"code": "confirmation_load_failed", "message": str(exc)}]}), file=sys.stderr)
         return 2
