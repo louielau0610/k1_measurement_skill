@@ -258,8 +258,8 @@ def encode_preflight_report(report: PreflightReport) -> dict[str, Any]:
 
 
 def encode_calibration_profile(profile: CalibrationProfile) -> dict[str, Any]:
-    """Encode CalibrationProfile."""
-    return profile.to_dict()
+    """Encode CalibrationProfile (includes content digest)."""
+    return profile.to_dict_with_digest()
 
 
 def encode_compensation_decision(decision: CompensationDecision) -> dict[str, Any]:

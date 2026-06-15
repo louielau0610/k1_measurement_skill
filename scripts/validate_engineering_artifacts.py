@@ -168,25 +168,31 @@ def validate_forbidden_imports() -> int:
 
 
 def validate_readiness_no_false_claims() -> int:
-    """Verify readiness files do not claim G1/GO1 implementation."""
-    m26a_path = REPO_ROOT / "outputs" / "engineering" / "m26a_readiness.json"
-    m26b_path = REPO_ROOT / "outputs" / "engineering" / "m26b_readiness.json"
+    """Verify all engineering JSON files do not claim G1/GO1 implementation."""
+    eng_dir = REPO_ROOT / "outputs" / "engineering"
+    if not eng_dir.is_dir():
+        fail(f"Engineering output directory not found: {eng_dir}")
+        return EXIT_FAIL
 
     errors = 0
-    for path in (m26a_path, m26b_path):
-        if not path.exists():
-            continue
-        data = parse_json(path)
+    false_claim_keys = (
+        "g1_adapter_implemented", "go1_adapter_implemented",
+        "g1_adapter_hardware_verified", "go1_adapter_hardware_verified",
+    )
+
+    for fpath in sorted(eng_dir.glob("*.json")):
+        data = parse_json(fpath)
         if data is None:
-            errors += 1
             continue
-        readiness = data.get("readiness", data)
-        for key in ("g1_adapter_implemented", "go1_adapter_implemented",
-                     "g1_adapter_hardware_verified", "go1_adapter_hardware_verified"):
-            val = readiness.get(key)
-            if val is True:
-                fail(f"{path.name}: {key} is true (should be false)")
-                errors += 1
+        # Check top-level readiness and nested readiness
+        for section in (data, data.get("readiness", {})):
+            if not isinstance(section, dict):
+                continue
+            for key in false_claim_keys:
+                val = section.get(key)
+                if val is True:
+                    fail(f"{fpath.name}: {key} is true (should be false)")
+                    errors += 1
 
     if errors == 0:
         ok("No false G1/GO1 implementation claims")

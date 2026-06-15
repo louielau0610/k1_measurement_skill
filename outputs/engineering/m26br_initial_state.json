@@ -1,0 +1,40 @@
+{
+  "initial_state_metadata": {
+    "milestone": "M26-BR",
+    "date": "2026-06-15",
+    "schema_version": "m26br_initial_state_v1"
+  },
+  "local_state": {
+    "branch": "engineering/m26b-core-contracts",
+    "local_head": "e2feecabd909fd6a6ed5430d480814ac860d1b2b",
+    "remote_head": "e2feecabd909fd6a6ed5430d480814ac860d1b2b",
+    "ahead_behind": "up to date with origin"
+  },
+  "dirty_paths_before_remediation": [
+    "outputs/compensation_experiments/m24e_extraction_anomaly_report.md",
+    "outputs/compensation_experiments/m24e_extraction_anomaly_summary.json",
+    "outputs/compensation_experiments/m24e_extraction_audit_decision.json",
+    "outputs/compensation_experiments/m24e_extraction_audit_decision.md",
+    "outputs/compensation_experiments/m24e_m24c_crosscheck.md",
+    "outputs/real_k1_validation_m19/m19_validation_report.md",
+    "outputs/real_k1_validation_m19/repeated_validation_summary.json"
+  ],
+  "dirty_path_analysis": {
+    "root_cause": "semantic_content_change_by_validation_run",
+    "detail": "Running the full test suite (pytest tests/) triggered M24-E and M19 validation scripts that regenerated output files with new timestamps (2026-06-15 vs committed 2026-06-12). The m19_validation_report.md was substantially rewritten. These are NOT CRLF line-ending diffs.",
+    "eol_metadata": "Not applicable — changes were semantic, not line-ending only.",
+    "ignore_space_at_eol_exit_code": 1,
+    "action_taken": "Restored all 7 files to committed state via git checkout --",
+    "post_restore_status": "clean"
+  },
+  "file_count_verification": {
+    "reported_52_created_files": true,
+    "reported_13_schemas": true,
+    "discrepancies": "none"
+  },
+  "original_dirty_worktree": {
+    "path": "C:/Users/86138/Desktop/Calibration Claw/k1_measurement_skill",
+    "status": "unmodified_by_m26br",
+    "confirmation": "Original M26-A worktree was not touched"
+  }
+}

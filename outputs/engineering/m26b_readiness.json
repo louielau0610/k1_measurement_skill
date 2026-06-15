@@ -7,29 +7,29 @@
   },
   "readiness": {
     "domain_contracts": {
-      "maturity": "implemented_unverified",
-      "description": "Pure platform-independent value objects with invariants",
+      "maturity": "bench_verified",
+      "description": "Pure platform-independent value objects with invariants. 212 tests exercise construction, validation, and boundaries.",
       "notes": "All domain objects reject invalid state at construction. No vendor SDK imports."
     },
     "port_interfaces": {
-      "maturity": "implemented_unverified",
+      "maturity": "bench_verified",
       "description": "Abstract Protocol interfaces for hardware, telemetry, authorization, storage, audit, clock, factory",
-      "notes": "8 port interfaces defined. No concrete implementations."
+      "notes": "8 port interfaces defined. All importable without vendor SDKs."
     },
     "versioned_schemas": {
-      "maturity": "implemented_unverified",
-      "description": "13 versioned JSON Schema documents (v1.0.0) with stable URN identifiers",
-      "notes": "All schemas use urn:calibration-skill:schema:*:v1 naming."
+      "maturity": "bench_verified",
+      "description": "13 versioned JSON Schema documents (Draft 2020-12) with stable URN identifiers. All 13 pass metaschema validation. All local $ref values resolve.",
+      "notes": "Full Draft 2020-12 validation implemented via jsonschema 4.26.0."
     },
     "deterministic_codecs": {
-      "maturity": "implemented_unverified",
-      "description": "Explicit encode/decode functions with canonical JSON, round-trip tested",
-      "notes": "NaN and Infinity rejected. Stable enum strings. Sorted keys for hashing."
+      "maturity": "bench_verified",
+      "description": "Explicit encode/decode functions with canonical JSON, round-trip tested. NaN/Inf rejected. Stable enum strings.",
+      "notes": "Canonical digest test vectors verified. List-order sensitivity documented."
     },
     "architecture_enforcement": {
       "maturity": "bench_verified",
-      "description": "Tests verify no forbidden imports, no import-time side effects",
-      "notes": "Domain, ports, schemas layers scanned for vendor SDK imports."
+      "description": "Tests verify no forbidden imports, no import-time side effects (socket, subprocess, sleep, env vars)",
+      "notes": "Import-side-effect instrumentation confirms zero network/FS/process side effects."
     },
     "mock_adapter": {
       "maturity": "not_started",

@@ -192,8 +192,13 @@ class CalibrationDataset:
             "trial_ids": list(self.trial_ids),
             "data_quality_summary": self.data_quality_summary,
             "provenance": self.provenance,
-            "content_digest": self.content_digest,
         }
+
+    def to_dict_with_digest(self) -> dict[str, Any]:
+        """Full dict including content digest."""
+        result = self.to_dict()
+        result["content_digest"] = self.content_digest
+        return result
 
 
 @dataclass(frozen=True)
@@ -267,8 +272,13 @@ class CalibrationProfile:
             "safety_policy_compatibility": list(self.safety_policy_compatibility),
             "creation_provenance": self.creation_provenance,
             "status": self.status.value,
-            "content_digest": self.content_digest,
         }
+
+    def to_dict_with_digest(self) -> dict[str, Any]:
+        """Full dict including content digest."""
+        result = self.to_dict()
+        result["content_digest"] = self.content_digest
+        return result
 
 
 @dataclass(frozen=True)

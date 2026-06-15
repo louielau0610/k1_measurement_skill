@@ -1,19 +1,28 @@
 {
   "validation_metadata": {
-    "milestone": "M26-B",
+    "milestone": "M26-BR",
     "date": "2026-06-15",
-    "schema_version": "m26b_validation_summary_v1"
+    "schema_version": "m26b_validation_summary_v1",
+    "validation_model": "evidence_commit_model",
+    "note": "This summary describes the staged M26-BR implementation. The evidence commit will be created after validation."
   },
   "environment": {
-    "commit": "ac98fae4f6ff4dc95065e8347fa1188b93cddd50",
     "python_version": "3.12.3",
+    "jsonschema_version": "4.26.0",
+    "referencing_version": "0.37.0",
+    "schema_draft": "Draft 2020-12",
     "platform": "win32"
   },
   "commands": [
     {
       "command": "python scripts/validate_engineering_artifacts.py",
       "exit_code": 0,
-      "description": "Engineering artifact validation"
+      "description": "Engineering artifact validation (8 checks)"
+    },
+    {
+      "command": "python -c \"from calibration_skill.schemas.validation import validate_schema_documents; ...\"",
+      "exit_code": 0,
+      "description": "Schema document metaschema validation"
     },
     {
       "command": "python -m compileall calibration_skill calibration_core k1_measurement platforms scripts tests -q",
@@ -21,9 +30,9 @@
       "description": "Python syntax validation"
     },
     {
-      "command": "python -m pytest tests/calibration_skill -q",
+      "command": "python -m pytest tests/calibration_skill/ -v --tb=short",
       "exit_code": 0,
-      "description": "M26-B targeted tests"
+      "description": "M26-B/BR contract tests"
     },
     {
       "command": "python -m pytest tests/ --tb=no -q",
@@ -32,10 +41,16 @@
     }
   ],
   "results": {
-    "test_count_targeted": 127,
-    "test_count_full_suite": 1033,
-    "json_artifact_count": 7,
+    "test_count_targeted": 212,
+    "test_count_full_suite": 1118,
+    "json_artifact_count": 8,
     "schema_count": 13,
+    "schema_metaschema_valid": 13,
+    "schema_metaschema_total": 13,
+    "local_ref_resolution": "all_resolved",
+    "valid_fixture_count": 26,
+    "invalid_fixture_count": 12,
+    "codec_payload_validation": "all_passed",
     "forbidden_import_scan": "clean",
     "markdown_link_result": "all_resolved",
     "path_existence_result": "all_exist",
