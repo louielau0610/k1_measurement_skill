@@ -25,6 +25,12 @@ reports/figures/*.png
 reports/figures/*.jpg
 reports/figures/*.pdf
 
+# Local real-robot sessions and reproducible M25 validation scratch files
+data/measurement_sessions/
+outputs/full_range_velocity_profile/*_fixture.csv
+outputs/full_range_velocity_profile/m25_resolved_safe_config_for_validation.yaml
+outputs/full_range_velocity_profile/local_preflight_probe/
+
 # ROS2 / colcon
 build/
 install/

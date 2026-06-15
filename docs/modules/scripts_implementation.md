@@ -111,3 +111,10 @@
 - `scripts/validate_m25_collected_session.py:16` validates collected trial rows against the M25 domain and extraction contract.
 - `scripts/build_m25_candidate_profile.py:16` builds or dry-runs a candidate profile from valid collected rows.
 - `scripts/audit_m25_historical_compatibility.py:23` audits historical CSV/JSON rows for valid-speed reuse as `historical_reference_only`.
+
+## M25-R CLI Entry Points
+
+- `scripts/validate_m25_safe_speed_confirmation.py:16` validates operator safe-speed evidence files.
+- `scripts/validate_m25_real_collection_preflight.py:16` validates real-collection readiness and exits nonzero while blocked.
+- `scripts/prepare_m25r_collection_package.py:16` writes exploration/formal collection package JSON and Markdown artifacts.
+- `scripts/evaluate_m25_exploration_gate.py:17` evaluates exploration extraction readiness for formal collection without M26 model fitting.

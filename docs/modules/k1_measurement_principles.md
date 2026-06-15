@@ -42,3 +42,9 @@
 M25 treats the valid command-speed domain as an explicit configuration contract, not as a discovered deadzone threshold. `safe_command_speed_max` must be externally validated before executable plans can be produced. The high-priority 0.80-1.00 m/s region is sampled densely but does not define the full supported range.
 
 The active M25 module only models longitudinal command speed versus measured actual speed. Historical yaw fields may remain in raw logs, but M25 does not use yaw drift as a feature, objective, metric, quality gate, or roadmap target. Candidate profiles expose observed actual-speed reachability and must reject unreachable targets unless a future milestone adds an explicit extrapolation policy.
+
+## M25-R Readiness Principles
+
+Safe maximum resolution is evidence-gated: historical execution at a speed is not sufficient proof of robot-wide safety. Real collection remains blocked until an operator/supervisor confirmation file supplies a positive safe maximum, context, evidence reference, and confirmation metadata.
+
+Preflight and package generation are hardware-inert. They may create JSON/Markdown planning artifacts and hashes, but they must not call robot command APIs. The exploration-to-formal gate checks coverage and extraction quality only; it must not fit, select, or validate the future M26 monotonic model.

@@ -57,3 +57,38 @@ Historical files were retained when they met at least one of these conditions:
 ## Reference Cleanup Confirmation
 
 The active M25 module and CLI wrappers do not import deadzone detection, deadzone compensation, yaw drift modeling, yaw compensation, real-time yaw broadcast, or yaw-based benefit-gate modules. Remaining deadzone/yaw references are historical, raw-schema compatibility, explicit out-of-scope statements, or legacy milestone material.
+
+## M25-R Second Audit
+
+M25-R performed a stricter dependency-aware audit of the dirty working tree, generated outputs, historical artifacts, and active M25 files.
+
+### Deleted Files
+
+None.
+
+### Retained Dirty Or Untracked Paths
+
+| Path | Decision | Evidence |
+|------|----------|----------|
+| `AGENTS.md` | retain | User-authored documentation rule; unrelated to M25-R implementation. |
+| `outputs/compensation_experiments/m24e_extraction_anomaly_report.md` | retain | Timestamp-only generated diff; not staged, not raw data. |
+| `outputs/compensation_experiments/m24e_extraction_anomaly_summary.json` | retain | Timestamp-only generated diff; not staged, not raw data. |
+| `outputs/compensation_experiments/m24e_extraction_audit_decision.json` | retain | Timestamp-only generated diff; not staged, not raw data. |
+| `outputs/compensation_experiments/m24e_extraction_audit_decision.md` | retain | Timestamp-only generated diff; not staged, not raw data. |
+| `outputs/compensation_experiments/m24e_m24c_crosscheck.md` | retain | Timestamp-only generated diff; not staged, not raw data. |
+| `outputs/real_k1_validation_m19/m19_validation_report.md` | requires user review | Historical evidence rewrite; not safe to discard or stage. |
+| `outputs/real_k1_validation_m19/repeated_validation_summary.json` | requires user review | Large historical evidence rewrite; not safe to discard or stage. |
+| `data/measurement_sessions/` | ignore via `.gitignore` | Local raw/session execution tree; preserved and ignored for future status hygiene. |
+| `docs/project_overview.md` | retain | Pre-existing documentation artifact. |
+| `docs/modules/calibration_core_implementation.md` | retain | Pre-existing documentation artifact. |
+| `docs/modules/calibration_core_principles.md` | retain | Pre-existing documentation artifact. |
+| `docs/modules/platforms_implementation.md` | retain | Pre-existing documentation artifact. |
+| `docs/modules/platforms_principles.md` | retain | Pre-existing documentation artifact. |
+
+### Generated Output Policy Changes
+
+`.gitignore` now ignores local `data/measurement_sessions/` trees, M25 fixture CSVs, temporary resolved safe-speed validation configs, and M25 local preflight write probes. Existing tracked scientific summaries remain tracked.
+
+### Active Artifact Audit Result
+
+No active M25-R code imports deadzone or yaw-compensation modules. No M26 model-fitting code was added. Obsolete generated files were not deleted because the only conclusive candidates were either already tracked historical summaries, raw/session-like data, or unrelated timestamp-only changes whose ownership predates M25-R.

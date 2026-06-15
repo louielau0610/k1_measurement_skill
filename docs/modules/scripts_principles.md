@@ -40,3 +40,7 @@
 ## M25 CLI Principles
 
 M25 scripts are deterministic, planning-first, and hardware-inert. They report machine-readable JSON errors, return nonzero exit codes for blocked executable plans or invalid sessions, and never execute robot motion. The planner records the random seed in generated artifacts so trial ordering is reproducible.
+
+## M25-R CLI Principles
+
+M25-R scripts distinguish planning inspection from executable readiness. Blocked preflight/package commands intentionally return nonzero while still writing inspectable artifacts where appropriate. Temporary fixture safe-speed values are allowed only in tests and validation commands; they must not be committed as real evidence.

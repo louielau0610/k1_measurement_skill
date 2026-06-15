@@ -1,0 +1,9 @@
+robot_id: k1
+control_mode: null
+gait_mode: null
+safe_command_speed_max: null
+evidence_type: null
+evidence_reference: null
+confirmed_by: null
+confirmed_at: null
+notes: null

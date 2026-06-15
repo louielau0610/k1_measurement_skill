@@ -26,6 +26,18 @@ New active artifacts:
 
 Next roadmap: M26 full-range monotonic response model comparison, M27 inverse compensation implementation/finalization, M28 full-range direct-vs-compensated real-robot validation.
 
+## M25-R Repository Hygiene And Real-Data Readiness
+
+M25-R is a closure milestone after commit `69aa216`. It classifies the dirty working tree, adds generated-output policy, creates a safe-speed operator confirmation process, and adds a real-collection preflight validator.
+
+Current M25-R state:
+
+- `safe_command_speed_max` remains unresolved; no authoritative value was found in repository configuration or SDK adapter constraints.
+- Exploration package generation exists but is blocked until safe-speed confirmation and preflight pass.
+- Formal package generation exists but is blocked until safe-speed confirmation, preflight pass, and exploration review or documented override.
+- No robot motion has been executed by M25-R.
+- No M26 model has been fitted or selected.
+
 ## 当前阶段
 
 **Step 1 (Measurement Module) is complete.** Step 2 (Velocity Compensation Principle Research) is the next phase.

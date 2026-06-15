@@ -16,6 +16,18 @@ Key M25 artifacts:
 
 Next milestones: M26 compares full-range monotonic response models, M27 implements or finalizes inverse velocity compensation, and M28 performs full-range direct-vs-compensated real-robot validation.
 
+## M25-R Readiness
+
+M25-R adds safe-speed operator confirmation, real-collection preflight validation, blocked exploration/formal collection packages, and an exploration-to-formal gate. The committed safe maximum remains unresolved, so robot-motion execution is still blocked.
+
+Start here:
+
+- `docs/m25r_real_data_collection_readiness.md`
+- `configs/m25_k1_safe_speed_operator_confirmation_template.yaml`
+- `configs/m25_real_collection_preflight_template.yaml`
+
+M26 response-model fitting must not proceed until real formal profile data exist.
+
 ## Positioning
 
 `k1_measurement_skill` is the measurement-first module of the larger **K1 Velocity Measurement, Compensation, and Navigation Safety Pipeline**.

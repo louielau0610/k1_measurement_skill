@@ -6,6 +6,10 @@
 - [x] Add M25 exploration and formal profile planning commands.
 - [x] Add M25 collected-session validation, historical audit, and candidate-profile dry-run/build commands.
 - [x] Document the M25 full-range refocus and cleanup manifest.
+- [x] Add M25-R working-tree classification and generated-output policy.
+- [x] Add safe-speed operator confirmation template and validation.
+- [x] Add M25-R real-collection preflight validator.
+- [x] Add blocked exploration/formal collection packages and exploration-to-formal gate.
 - [ ] Configure `safe_command_speed_max` from validated robot/operator evidence before generating executable M25 plans.
 - [ ] Collect M25 exploration data across the configured valid command domain.
 - [ ] Collect M25 formal profile data with dense sampling around 0.80-1.00 m/s.

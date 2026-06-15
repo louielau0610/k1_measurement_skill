@@ -114,3 +114,19 @@ Planning commands generate JSON and Markdown artifacts under `outputs/full_range
 - M26 compares full-range monotonic response models after M25 data collection.
 - M27 implements or finalizes inverse velocity compensation.
 - M28 performs full-range direct-versus-compensated real-robot validation.
+
+## M25-R Readiness Closure
+
+M25-R adds the safe-speed confirmation and real-collection preflight layer. The committed project still leaves `safe_command_speed_max: null`; executable real-robot collection remains blocked until an operator or supervisor completes `configs/m25_k1_safe_speed_operator_confirmation_template.yaml` with evidence.
+
+Readiness artifacts:
+
+- `configs/m25_k1_safe_speed_operator_confirmation_template.yaml`
+- `configs/m25_real_collection_preflight_template.yaml`
+- `docs/m25r_real_data_collection_readiness.md`
+- `scripts/validate_m25_safe_speed_confirmation.py`
+- `scripts/validate_m25_real_collection_preflight.py`
+- `scripts/prepare_m25r_collection_package.py`
+- `scripts/evaluate_m25_exploration_gate.py`
+
+M25-R also keeps formal collection blocked until exploration extraction has been reviewed or a documented override is provided. M26 modeling remains blocked until real formal profile data are available.

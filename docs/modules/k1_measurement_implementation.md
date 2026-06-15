@@ -248,3 +248,13 @@
 - `k1_measurement/full_range_velocity_profile.py:335` builds candidate full-range velocity profiles without marking them validated.
 - `k1_measurement/full_range_velocity_profile.py:383` rejects targets outside the observed reachable actual-speed interval.
 - `k1_measurement/full_range_velocity_profile.py:393` audits historical rows as `historical_reference_only` without deadzone inference.
+
+## M25-R Real Collection Preflight
+
+- `k1_measurement/m25_real_collection_preflight.py:30` defines `SafeSpeedConfirmation`, the operator/supervisor evidence contract for resolving `safe_command_speed_max`.
+- `k1_measurement/m25_real_collection_preflight.py:86` validates safe-speed confirmation files and rejects unresolved placeholders or unsupported evidence types.
+- `k1_measurement/m25_real_collection_preflight.py:101` evaluates real-collection preflight readiness, including speed domain, timing, output writability, mappings, safeguards, hashes, and trial counts.
+- `k1_measurement/m25_real_collection_preflight.py:210` builds exploration/formal collection packages without executing robot motion.
+- `k1_measurement/m25_real_collection_preflight.py:241` writes package JSON/Markdown artifacts.
+- `k1_measurement/m25_real_collection_preflight.py:276` evaluates the exploration-to-formal gate without fitting an M26 model.
+- `k1_measurement/m25_real_collection_preflight.py:326` and `k1_measurement/m25_real_collection_preflight.py:330` provide deterministic file/object hashes for reproducibility metadata.

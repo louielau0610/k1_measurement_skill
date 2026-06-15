@@ -22,6 +22,18 @@ M25 将当前主动路线重定向到 K1 纵向 `command velocity -> measured ac
 
 后续路线：M26 比较全范围单调响应模型，M27 实现或最终确定 inverse velocity compensation，M28 做全范围 direct-vs-compensated 真实机器人验证。
 
+## M25-R 采集就绪闭环
+
+M25-R 新增 safe-speed 操作者确认、真实采集 preflight、保持阻塞的 exploration/formal collection package，以及 exploration-to-formal gate。当前提交仍然没有解析 `safe_command_speed_max`，因此真实机器人运动执行继续阻塞。
+
+从这里开始：
+
+- `docs/m25r_real_data_collection_readiness.md`
+- `configs/m25_k1_safe_speed_operator_confirmation_template.yaml`
+- `configs/m25_real_collection_preflight_template.yaml`
+
+在真实 formal profile 数据可用之前，不得启动 M26 response-model fitting。
+
 ## M14 研究数据集 v1
 
 M14 现在可以从 Measurement v0 artifact 构造 `outputs/research_datasets/velocity_response_dataset_v1.json`，并生成 validation report 与 future trial template。M14 只做数据集构造和校验，不实现建模、速度补偿、导航控制或 safe command adapter，也不声称 publication readiness。
