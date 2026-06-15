@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:calibration-skill:schema:safety_envelope:v1",
+  "title": "Safety Envelope",
+  "description": "Safety envelope for velocity commands v1.0.0",
+  "type": "object",
+  "required": [
+    "policy_id", "policy_hash",
+    "max_abs_vx_mps", "max_abs_vy_mps", "max_abs_wz_radps",
+    "max_command_duration_s", "max_telemetry_age_ms", "stop_timeout_s",
+    "allowed_command_frames", "operator_authorization_required"
+  ],
+  "properties": {
+    "policy_id": {"type": "string", "minLength": 1},
+    "policy_hash": {"type": "string", "minLength": 1},
+    "max_abs_vx_mps": {"type": "number", "minimum": 0},
+    "max_abs_vy_mps": {"type": "number", "minimum": 0},
+    "max_abs_wz_radps": {"type": "number", "minimum": 0},
+    "max_command_duration_s": {"type": "number", "exclusiveMinimum": 0},
+    "max_telemetry_age_ms": {"type": "number", "exclusiveMinimum": 0},
+    "stop_timeout_s": {"type": "number", "exclusiveMinimum": 0},
+    "allowed_command_frames": {
+      "type": "array",
+      "items": {"type": "string", "enum": ["body", "odom", "map", "unknown"]},
+      "minItems": 1
+    },
+    "operator_authorization_required": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

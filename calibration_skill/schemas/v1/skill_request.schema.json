@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:calibration-skill:schema:skill_request:v1",
+  "title": "Skill Request Envelope",
+  "description": "Agent-callable skill request envelope v1.0.0",
+  "type": "object",
+  "required": ["schema_version", "request_id", "operation", "platform", "dry_run"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Schema version identifier",
+      "const": "1.0.0"
+    },
+    "request_id": {
+      "type": "string",
+      "description": "Unique request identifier",
+      "minLength": 1
+    },
+    "operation": {
+      "type": "string",
+      "description": "Operation name",
+      "minLength": 1
+    },
+    "platform": {
+      "type": "string",
+      "description": "Target robot platform",
+      "enum": ["booster_k1", "unitree_g1", "unitree_go1", "mock"]
+    },
+    "robot_id": {
+      "type": "string",
+      "description": "Target robot identifier (optional)"
+    },
+    "dry_run": {
+      "type": "boolean",
+      "description": "Whether this is a dry-run request"
+    },
+    "payload": {
+      "description": "Operation-specific payload"
+    },
+    "issued_at": {
+      "type": "string",
+      "description": "ISO 8601 timestamp when the request was issued"
+    },
+    "caller_metadata": {
+      "type": "object",
+      "description": "Caller metadata"
+    }
+  },
+  "additionalProperties": false
+}

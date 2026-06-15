@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:calibration-skill:schema:robot_identity:v1",
+  "title": "Robot Identity",
+  "description": "Robot identity descriptor v1.0.0",
+  "type": "object",
+  "required": ["platform", "morphology", "robot_id", "adapter_name", "adapter_version"],
+  "properties": {
+    "platform": {
+      "type": "string",
+      "enum": ["booster_k1", "unitree_g1", "unitree_go1", "mock"]
+    },
+    "morphology": {
+      "type": "string",
+      "enum": ["biped_humanoid", "quadruped", "synthetic"]
+    },
+    "robot_id": {"type": "string", "minLength": 1},
+    "adapter_name": {"type": "string", "minLength": 1},
+    "adapter_version": {"type": "string", "minLength": 1},
+    "hardware_serial": {"type": "string"},
+    "firmware_version": {"type": "string"},
+    "sdk_family": {"type": "string"},
+    "sdk_version": {"type": "string"},
+    "metadata": {"type": "object"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,46 @@
+{
+  "validation_metadata": {
+    "milestone": "M26-B",
+    "date": "2026-06-15",
+    "schema_version": "m26b_validation_summary_v1"
+  },
+  "environment": {
+    "commit": "ac98fae4f6ff4dc95065e8347fa1188b93cddd50",
+    "python_version": "3.12.3",
+    "platform": "win32"
+  },
+  "commands": [
+    {
+      "command": "python scripts/validate_engineering_artifacts.py",
+      "exit_code": 0,
+      "description": "Engineering artifact validation"
+    },
+    {
+      "command": "python -m compileall calibration_skill calibration_core k1_measurement platforms scripts tests -q",
+      "exit_code": 0,
+      "description": "Python syntax validation"
+    },
+    {
+      "command": "python -m pytest tests/calibration_skill -q",
+      "exit_code": 0,
+      "description": "M26-B targeted tests"
+    },
+    {
+      "command": "python -m pytest tests/ --tb=no -q",
+      "exit_code": 0,
+      "description": "Full test suite"
+    }
+  ],
+  "results": {
+    "test_count_targeted": 127,
+    "test_count_full_suite": 1033,
+    "json_artifact_count": 7,
+    "schema_count": 13,
+    "forbidden_import_scan": "clean",
+    "markdown_link_result": "all_resolved",
+    "path_existence_result": "all_exist",
+    "import_side_effect_test": "passed",
+    "hardware_command_attempted": false,
+    "network_operation_attempted": false
+  }
+}

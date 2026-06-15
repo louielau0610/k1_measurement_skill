@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:calibration-skill:schema:velocity_command:v1",
+  "title": "Velocity Command",
+  "description": "Velocity command for a legged robot v1.0.0",
+  "type": "object",
+  "required": [
+    "vx_mps", "vy_mps", "wz_radps",
+    "sequence_id", "issued_monotonic_ns", "expiry_monotonic_ns",
+    "requested_duration_s", "frame", "safety_policy_id",
+    "safety_policy_hash", "source"
+  ],
+  "properties": {
+    "vx_mps": {"type": "number"},
+    "vy_mps": {"type": "number"},
+    "wz_radps": {"type": "number"},
+    "sequence_id": {"type": "string", "minLength": 1},
+    "issued_monotonic_ns": {"type": "integer", "minimum": 0},
+    "expiry_monotonic_ns": {"type": "integer", "minimum": 0},
+    "requested_duration_s": {"type": "number", "exclusiveMinimum": 0},
+    "frame": {"type": "string", "enum": ["body", "odom", "map", "unknown"]},
+    "safety_policy_id": {"type": "string", "minLength": 1},
+    "safety_policy_hash": {"type": "string", "minLength": 1},
+    "source": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

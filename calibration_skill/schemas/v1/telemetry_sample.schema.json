@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:calibration-skill:schema:telemetry_sample:v1",
+  "title": "Telemetry Sample",
+  "description": "Normalized telemetry sample v1.0.0",
+  "type": "object",
+  "required": ["robot_id", "sample_sequence_id", "received_monotonic_ns"],
+  "properties": {
+    "robot_id": {"type": "string", "minLength": 1},
+    "sample_sequence_id": {"type": "integer", "minimum": 0},
+    "received_monotonic_ns": {"type": "integer", "minimum": 0},
+    "frame": {"type": "string", "enum": ["body", "odom", "map", "unknown"]},
+    "source_timestamp_ns": {"type": "integer"},
+    "pose": {
+      "type": "object",
+      "properties": {
+        "position": {
+          "type": "object",
+          "properties": {"x": {"type": "number"}, "y": {"type": "number"}, "z": {"type": "number"}}
+        },
+        "orientation": {
+          "type": "object",
+          "properties": {"x": {"type": "number"}, "y": {"type": "number"}, "z": {"type": "number"}, "w": {"type": "number"}}
+        }
+      }
+    },
+    "body_twist": {
+      "type": "object",
+      "properties": {
+        "linear": {
+          "type": "object",
+          "properties": {"x": {"type": "number"}, "y": {"type": "number"}, "z": {"type": "number"}}
+        },
+        "angular": {
+          "type": "object",
+          "properties": {"x": {"type": "number"}, "y": {"type": "number"}, "z": {"type": "number"}}
+        }
+      }
+    },
+    "imu_accel": {
+      "type": "object",
+      "properties": {"x": {"type": "number"}, "y": {"type": "number"}, "z": {"type": "number"}}
+    },
+    "imu_gyro": {
+      "type": "object",
+      "properties": {"x": {"type": "number"}, "y": {"type": "number"}, "z": {"type": "number"}}
+    },
+    "heading_rad": {"type": "number"},
+    "battery_voltage": {"type": "number"},
+    "battery_percentage": {"type": "number"},
+    "robot_mode": {"type": "string"},
+    "source_adapter": {"type": "string"},
+    "quality_flags": {"type": "array", "items": {"type": "string"}},
+    "raw_reference": {"type": "string"}
+  },
+  "additionalProperties": false
+}

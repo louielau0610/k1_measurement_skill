@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:calibration-skill:schema:execution_audit_record:v1",
+  "title": "Execution Audit Record",
+  "description": "Execution audit record v1.0.0",
+  "type": "object",
+  "required": [
+    "session_id", "requested_operation", "platform", "robot_id",
+    "software_version", "adapter_version", "safety_policy_id",
+    "safety_policy_hash", "authorization_id", "started_monotonic_ns",
+    "session_status"
+  ],
+  "properties": {
+    "session_id": {"type": "string", "minLength": 1},
+    "requested_operation": {"type": "string", "minLength": 1},
+    "platform": {"type": "string", "enum": ["booster_k1", "unitree_g1", "unitree_go1", "mock"]},
+    "robot_id": {"type": "string", "minLength": 1},
+    "software_version": {"type": "string", "minLength": 1},
+    "adapter_version": {"type": "string", "minLength": 1},
+    "safety_policy_id": {"type": "string", "minLength": 1},
+    "safety_policy_hash": {"type": "string", "minLength": 1},
+    "authorization_id": {"type": "string", "minLength": 1},
+    "started_monotonic_ns": {"type": "integer", "minimum": 0},
+    "completed_monotonic_ns": {"type": "integer"},
+    "requested_command": {"type": "object"},
+    "validated_command": {"type": "object"},
+    "receipt": {"type": "object"},
+    "telemetry_evidence": {"type": "object"},
+    "cleanup_result": {"type": "string"},
+    "errors": {"type": "array", "items": {"type": "string"}},
+    "provenance_hashes": {"type": "object"},
+    "session_status": {"type": "string"}
+  },
+  "additionalProperties": false
+}

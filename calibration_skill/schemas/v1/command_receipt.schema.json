@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:calibration-skill:schema:command_receipt:v1",
+  "title": "Command Receipt",
+  "description": "Receipt for a velocity command v1.0.0",
+  "type": "object",
+  "required": ["command_sequence_id", "disposition", "received_monotonic_ns"],
+  "properties": {
+    "command_sequence_id": {"type": "string", "minLength": 1},
+    "disposition": {
+      "type": "string",
+      "enum": ["accepted", "rejected", "expired", "cancelled", "unknown"]
+    },
+    "adapter_receipt_id": {"type": "string"},
+    "received_monotonic_ns": {"type": "integer", "minimum": 0},
+    "accepted_monotonic_ns": {"type": "integer"},
+    "rejection_error": {"$ref": "urn:calibration-skill:schema:error:v1"},
+    "adapter_state": {"type": "string"},
+    "acknowledgement_evidence": {"type": "string"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,139 @@
+{
+  "contract_inventory_metadata": {
+    "milestone": "M26-B",
+    "date": "2026-06-15",
+    "schema_version": "m26b_contract_inventory_v1"
+  },
+  "contracts": [
+    {
+      "public_name": "RobotIdentity",
+      "module": "calibration_skill.domain.identity",
+      "kind": "value_object",
+      "contract_version": "1.0.0",
+      "platform_independence": "full",
+      "serialization_support": "json_codec",
+      "corresponding_schema": "robot_identity.schema.json",
+      "invariants": ["non-empty robot_id", "non-empty adapter_name", "non-empty adapter_version"],
+      "side_effects": "none",
+      "maturity": "implemented_unverified",
+      "test_references": ["tests/calibration_skill/test_domain_identity.py"]
+    },
+    {
+      "public_name": "CapabilityDescriptor",
+      "module": "calibration_skill.domain.capabilities",
+      "kind": "value_object",
+      "contract_version": "1.0.0",
+      "platform_independence": "full",
+      "serialization_support": "json_codec",
+      "corresponding_schema": "capability_descriptor.schema.json",
+      "invariants": ["explicit capabilities", "unknown != unsupported"],
+      "side_effects": "none",
+      "maturity": "implemented_unverified",
+      "test_references": ["tests/calibration_skill/test_domain_capabilities.py"]
+    },
+    {
+      "public_name": "VelocityCommand",
+      "module": "calibration_skill.domain.motion",
+      "kind": "value_object",
+      "contract_version": "1.0.0",
+      "platform_independence": "full",
+      "serialization_support": "json_codec",
+      "corresponding_schema": "velocity_command.schema.json",
+      "invariants": ["finite values", "expiry > issued", "positive duration", "no silent max velocity"],
+      "side_effects": "none",
+      "maturity": "implemented_unverified",
+      "test_references": ["tests/calibration_skill/test_domain_motion.py"]
+    },
+    {
+      "public_name": "CommandReceipt",
+      "module": "calibration_skill.domain.motion",
+      "kind": "value_object",
+      "contract_version": "1.0.0",
+      "platform_independence": "full",
+      "serialization_support": "json_codec",
+      "corresponding_schema": "command_receipt.schema.json",
+      "invariants": ["non-empty sequence_id", "explicit disposition"],
+      "side_effects": "none",
+      "maturity": "implemented_unverified",
+      "test_references": ["tests/calibration_skill/test_domain_motion.py"]
+    },
+    {
+      "public_name": "TelemetrySample",
+      "module": "calibration_skill.domain.telemetry",
+      "kind": "value_object",
+      "contract_version": "1.0.0",
+      "platform_independence": "full",
+      "serialization_support": "json_codec",
+      "corresponding_schema": "telemetry_sample.schema.json",
+      "invariants": ["finite timestamps", "missing != zero", "zero is valid measurement"],
+      "side_effects": "none",
+      "maturity": "implemented_unverified",
+      "test_references": ["tests/calibration_skill/test_domain_telemetry.py"]
+    },
+    {
+      "public_name": "SafetyEnvelope",
+      "module": "calibration_skill.domain.safety",
+      "kind": "value_object",
+      "contract_version": "1.0.0",
+      "platform_independence": "full",
+      "serialization_support": "json_codec",
+      "corresponding_schema": "safety_envelope.schema.json",
+      "invariants": ["explicit max values", "finite non-negative limits", "positive timeouts"],
+      "side_effects": "none",
+      "maturity": "implemented_unverified",
+      "test_references": ["tests/calibration_skill/test_domain_safety.py"]
+    },
+    {
+      "public_name": "OperatorAuthorization",
+      "module": "calibration_skill.domain.safety",
+      "kind": "value_object",
+      "contract_version": "1.0.0",
+      "platform_independence": "full",
+      "serialization_support": "json_codec",
+      "corresponding_schema": "operator_authorization.schema.json",
+      "invariants": ["expiry > issued", "non-empty operations", "explicit platform/robot"],
+      "side_effects": "none",
+      "maturity": "implemented_unverified",
+      "test_references": ["tests/calibration_skill/test_domain_safety.py"]
+    },
+    {
+      "public_name": "PreflightReport",
+      "module": "calibration_skill.domain.safety",
+      "kind": "value_object",
+      "contract_version": "1.0.0",
+      "platform_independence": "full",
+      "serialization_support": "json_codec",
+      "corresponding_schema": "preflight_report.schema.json",
+      "invariants": ["warnings != blockers", "blocked => not ready"],
+      "side_effects": "none",
+      "maturity": "implemented_unverified",
+      "test_references": ["tests/calibration_skill/test_domain_safety.py"]
+    },
+    {
+      "public_name": "RobotAdapter",
+      "module": "calibration_skill.ports.robot",
+      "kind": "protocol_interface",
+      "contract_version": "1.0.0",
+      "platform_independence": "full",
+      "serialization_support": "none",
+      "corresponding_schema": null,
+      "invariants": ["no concrete implementation", "all platforms implement same interface"],
+      "side_effects": "none",
+      "maturity": "implemented_unverified",
+      "test_references": ["tests/calibration_skill/test_ports.py"]
+    },
+    {
+      "public_name": "DomainError",
+      "module": "calibration_skill.domain.errors",
+      "kind": "value_object",
+      "contract_version": "1.0.0",
+      "platform_independence": "full",
+      "serialization_support": "json_codec",
+      "corresponding_schema": "error.schema.json",
+      "invariants": ["stable code", "no traceback in serialization"],
+      "side_effects": "none",
+      "maturity": "implemented_unverified",
+      "test_references": ["tests/calibration_skill/test_domain_calibration.py"]
+    }
+  ]
+}

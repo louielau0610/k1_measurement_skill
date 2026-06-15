@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:calibration-skill:schema:capability_descriptor:v1",
+  "title": "Capability Descriptor",
+  "description": "Platform capability descriptor v1.0.0",
+  "type": "object",
+  "required": ["platform_id", "capabilities"],
+  "properties": {
+    "platform_id": {"type": "string", "minLength": 1},
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["capability_id", "support", "evidence", "maturity"],
+        "properties": {
+          "capability_id": {"type": "string", "minLength": 1},
+          "support": {"type": "string", "enum": ["supported", "unsupported", "unknown", "requires_hardware_verification"]},
+          "evidence": {"type": "string", "enum": ["none", "repository_observed", "upstream_documented", "bench_verified", "hardware_verified"]},
+          "maturity": {"type": "string", "enum": ["not_started", "legacy_existing", "scaffolded", "implemented_unverified", "bench_verified", "hardware_verified", "blocked", "unsupported"]},
+          "constraints": {"type": "string"},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}},
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

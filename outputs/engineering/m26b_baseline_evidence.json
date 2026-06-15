@@ -1,0 +1,39 @@
+{
+  "baseline_metadata": {
+    "milestone": "M26-B",
+    "date": "2026-06-15",
+    "schema_version": "m26b_baseline_evidence_v1"
+  },
+  "source": {
+    "commit": "ac98fae4f6ff4dc95065e8347fa1188b93cddd50",
+    "branch": "engineering/m26a-program-reset-audit",
+    "subject": "M26-A freeze multi-platform skill architecture",
+    "origin_main_commit": "00b481cf7edaed326c9afb5a9ee06a18a3eed6c2",
+    "merge_base_with_origin_main": "00b481cf7edaed326c9afb5a9ee06a18a3eed6c2"
+  },
+  "ancestry": {
+    "m26a_commits_not_in_origin_main": [
+      "ac98fae M26-A freeze multi-platform skill architecture"
+    ],
+    "m25r_ancestry_present": true,
+    "m25r_commits": [
+      "eb30e25 M25-T align K1 SDK motion context and safety limit",
+      "2c3fa7e M25-S integrate K1 0.6 mps safe-speed limit",
+      "c73982a M25-R prepare safe full-range real-data collection"
+    ],
+    "ancestry_accepted_for_m26b": true,
+    "reason": "M26-A commit ac98fae was verified to contain all 20 M26-A deliverables (docs/adr/*, docs/engineering/*, outputs/engineering/*, updated README/PROJECT_STATUS/TODO). M25-R ancestry is present in the chain leading to ac98fae. The clean worktree was created from ac98fae which includes M26-A and all ancestor commits. No discrepancies found."
+  },
+  "clean_worktree": {
+    "path": "C:/Users/86138/Desktop/Calibration Claw/k1_measurement_skill_m26b",
+    "branch": "engineering/m26b-core-contracts",
+    "status_before_implementation": "clean",
+    "head_commit": "ac98fae4f6ff4dc95065e8347fa1188b93cddd50"
+  },
+  "original_worktree": {
+    "path": "C:/Users/86138/Desktop/Calibration Claw/k1_measurement_skill",
+    "branch": "engineering/m26a-program-reset-audit",
+    "status": "dirty_with_preserved_m25r_changes",
+    "note": "Pre-existing dirty changes preserved, not modified by M26-B"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "readiness_metadata": {
+    "milestone": "M26-B",
+    "date": "2026-06-15",
+    "schema_version": "m26b_readiness_v1",
+    "note": "M26-B implements domain contracts, port interfaces, versioned schemas, and deterministic codecs. No adapters or runtime."
+  },
+  "readiness": {
+    "domain_contracts": {
+      "maturity": "implemented_unverified",
+      "description": "Pure platform-independent value objects with invariants",
+      "notes": "All domain objects reject invalid state at construction. No vendor SDK imports."
+    },
+    "port_interfaces": {
+      "maturity": "implemented_unverified",
+      "description": "Abstract Protocol interfaces for hardware, telemetry, authorization, storage, audit, clock, factory",
+      "notes": "8 port interfaces defined. No concrete implementations."
+    },
+    "versioned_schemas": {
+      "maturity": "implemented_unverified",
+      "description": "13 versioned JSON Schema documents (v1.0.0) with stable URN identifiers",
+      "notes": "All schemas use urn:calibration-skill:schema:*:v1 naming."
+    },
+    "deterministic_codecs": {
+      "maturity": "implemented_unverified",
+      "description": "Explicit encode/decode functions with canonical JSON, round-trip tested",
+      "notes": "NaN and Infinity rejected. Stable enum strings. Sorted keys for hashing."
+    },
+    "architecture_enforcement": {
+      "maturity": "bench_verified",
+      "description": "Tests verify no forbidden imports, no import-time side effects",
+      "notes": "Domain, ports, schemas layers scanned for vendor SDK imports."
+    },
+    "mock_adapter": {
+      "maturity": "not_started",
+      "description": "Mock adapter not yet implemented (planned for M26-C)"
+    },
+    "k1_adapter_migration": {
+      "maturity": "legacy_existing",
+      "description": "Existing K1 adapter in platforms/booster_k1/; not yet migrated to new architecture"
+    },
+    "g1_adapter": {
+      "maturity": "scaffolded",
+      "description": "G1 adapter scaffold exists in platforms/unitree_g1/; not yet implemented"
+    },
+    "go1_adapter": {
+      "maturity": "scaffolded",
+      "description": "GO1 adapter scaffold exists in platforms/unitree_go1/; not yet implemented"
+    },
+    "unified_skill_runtime": {
+      "maturity": "not_started",
+      "description": "Skill runtime not yet implemented"
+    },
+    "hardware_verification": {
+      "maturity": "not_started",
+      "description": "No hardware verification has been performed for new architecture"
+    },
+    "release": {
+      "maturity": "not_started",
+      "description": "Not ready for release"
+    }
+  },
+  "prohibited_claims": [
+    "No G1 or GO1 implementation readiness is claimed",
+    "No K1 migration is complete under the new architecture",
+    "No hardware verification has been performed",
+    "No cross-platform runtime is operational"
+  ]
+}

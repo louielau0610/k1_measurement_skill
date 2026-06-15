@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:calibration-skill:schema:calibration_profile:v1",
+  "title": "Calibration Profile",
+  "description": "Calibration profile v1.0.0",
+  "type": "object",
+  "required": [
+    "profile_id", "profile_version", "platform", "robot_id",
+    "environment_applicability", "model", "training_dataset_digest",
+    "status", "content_digest"
+  ],
+  "properties": {
+    "profile_id": {"type": "string", "minLength": 1},
+    "profile_version": {"type": "string", "minLength": 1},
+    "platform": {"type": "string", "enum": ["booster_k1", "unitree_g1", "unitree_go1", "mock"]},
+    "robot_id": {"type": "string", "minLength": 1},
+    "environment_applicability": {
+      "type": "object",
+      "required": ["surface_type"],
+      "properties": {
+        "surface_type": {"type": "string", "minLength": 1},
+        "condition": {"type": "string"},
+        "slope": {"type": "string"},
+        "notes": {"type": "string"}
+      }
+    },
+    "model": {
+      "type": "object",
+      "required": ["model_id", "platform", "model_type"],
+      "properties": {
+        "model_id": {"type": "string", "minLength": 1},
+        "platform": {"type": "string"},
+        "model_type": {"type": "string", "minLength": 1},
+        "parameters": {"type": "object"},
+        "training_dataset_digest": {"type": "string"},
+        "validation_metrics": {"type": "object"},
+        "domain_min_mps": {"type": "number"},
+        "domain_max_mps": {"type": "number"}
+      }
+    },
+    "training_dataset_digest": {"type": "string"},
+    "validation_evidence": {"type": "object"},
+    "safety_policy_compatibility": {"type": "array", "items": {"type": "string"}},
+    "creation_provenance": {"type": "object"},
+    "status": {"type": "string", "enum": ["gold", "candidate", "deprecated", "experimental"]},
+    "content_digest": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

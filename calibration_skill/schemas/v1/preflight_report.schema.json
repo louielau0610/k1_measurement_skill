@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:calibration-skill:schema:preflight_report:v1",
+  "title": "Preflight Report",
+  "description": "Preflight check report v1.0.0",
+  "type": "object",
+  "required": ["platform", "robot_id", "checked_monotonic_ns", "overall_status", "checks"],
+  "properties": {
+    "platform": {"type": "string", "enum": ["booster_k1", "unitree_g1", "unitree_go1", "mock"]},
+    "robot_id": {"type": "string", "minLength": 1},
+    "checked_monotonic_ns": {"type": "integer", "minimum": 0},
+    "overall_status": {"type": "string", "enum": ["passed", "failed", "warning"]},
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["check_id", "name", "status"],
+        "properties": {
+          "check_id": {"type": "string", "minLength": 1},
+          "name": {"type": "string", "minLength": 1},
+          "status": {"type": "string", "enum": ["passed", "failed", "warning"]},
+          "detail": {"type": "string"},
+          "evidence_ref": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "blocker_count": {"type": "integer", "minimum": 0},
+    "warning_count": {"type": "integer", "minimum": 0},
+    "is_ready": {"type": "boolean"},
+    "required_operator_actions": {"type": "array", "items": {"type": "string"}},
+    "safety_policy_ref": {"type": "string"},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
