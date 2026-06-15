@@ -20,9 +20,15 @@ Next milestones: M26 compares full-range monotonic response models, M27 implemen
 
 M25-R adds safe-speed operator confirmation, real-collection preflight validation, blocked exploration/formal collection packages, and an exploration-to-formal gate.
 
+## M25-T K1 SDK Motion Context
+
+M25-T aligns the K1 preflight with the confirmed SDK command path: `booster_sdk_kPrepare_kWalking_Move`. The current adapter validates the fixed sequence `kPrepare -> kWalking -> Move(vx, 0.0, 0.0)`. `control_mode` and `gait_mode` are optional metadata for this K1 adapter, not mandatory execution blockers, and `kWalking` is documented only as part of the fixed validated sequence.
+
+The authoritative safety limit is loaded from `configs/m25_k1_safe_speed_operator_confirmation.yaml`, with `safe_command_speed_max: 0.6` for the current K1 experiment configuration. Exploration is package-ready with 12 planned trials; formal collection remains blocked until exploration review is approved.
+
 ## M25-S K1 Safe-Speed Integration
 
-M25-S integrates the confirmed K1 safe forward command-speed maximum of `0.6 m/s` into the M25/M25-R real-collection workflow. The current exploration plan has 12 trials (4 command points × 3 repeats) and the formal plan has 30 trials (6 × 5). Safe speed is resolved; full execution preflight remains blocked on unresolved operational fields (control_mode, gait_mode).
+M25-S integrates the confirmed K1 safe forward command-speed maximum of `0.6 m/s` into the M25/M25-R real-collection workflow. The current exploration plan has 12 trials (4 command points x 3 repeats) and the formal plan has 30 trials (6 x 5). Safe speed is resolved through validated configuration provenance.
 
 Start here:
 

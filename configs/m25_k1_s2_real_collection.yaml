@@ -6,8 +6,16 @@ robot_id: k1
 surface_id: s2
 control_mode: null
 gait_mode: null
-require_control_mode: true
-require_gait_mode: true
+require_control_mode: false
+require_gait_mode: false
+command_source: booster_sdk_kPrepare_kWalking_Move
+motion_sequence:
+  - kPrepare
+  - kWalking
+  - Move
+move_command:
+  vy: 0.0
+  wz: 0.0
 
 valid_speed_domain:
   valid_command_speed_min: 0.35

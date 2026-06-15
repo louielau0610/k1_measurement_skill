@@ -11,6 +11,18 @@ M25-S integrates the confirmed K1 safe forward command-speed maximum of `0.6 m/s
 - **Confirmed at**: 2026-06-15
 - **Validation**: `py scripts/validate_m25_safe_speed_confirmation.py --config configs/m25_k1_safe_speed_operator_confirmation.yaml --speed-only` → `valid: true`
 
+## M25-T Motion Context Update
+
+The current K1 adapter does not expose independently configurable `control_mode` or `gait_mode` values in the active command path. M25-T therefore treats those fields as optional metadata for this adapter and validates the fixed SDK motion path instead:
+
+```text
+command_source: booster_sdk_kPrepare_kWalking_Move
+motion_sequence: kPrepare -> kWalking -> Move
+move_command: Move(vx, 0.0, 0.0)
+```
+
+`kWalking` is documented only as part of the fixed validated command sequence. It is not claimed as a user-selectable gait mode.
+
 ## Current K1 Valid Command Domain
 
 ```
@@ -83,8 +95,9 @@ The gate no longer requires coverage of `0.8-1.0 m/s`. Commands above `0.60 m/s`
 |-------|--------|
 | `safe_command_speed_max_resolved` | `true` |
 | `safe_command_speed_max` | `0.6` |
-| Exploration executable | blocked on control_mode, gait_mode |
-| Formal executable | blocked on control_mode, gait_mode, exploration review |
+| K1 motion path | resolved |
+| Exploration executable | ready after preflight and safeguards |
+| Formal executable | blocked on exploration review |
 | M26 modeling | blocked until real formal data exist |
 
 ## Files
@@ -95,6 +108,8 @@ The gate no longer requires coverage of `0.8-1.0 m/s`. Commands above `0.60 m/s`
 - `docs/m25s_k1_safe_speed_integration.md`
 
 ### Modified
+
+M25-T additionally updates `k1_measurement/command_runner.py` so generic runner validation fails closed without an explicit speed limit, and updates preflight/package metadata with safety provenance.
 - `k1_measurement/full_range_velocity_profile.py` — Updated defaults, grids, ValidSpeedDomain
 - `k1_measurement/m25_real_collection_preflight.py` — Added domain/grid overrides, safe-speed resolution, gate semantics
 - `scripts/validate_m25_safe_speed_confirmation.py` — Added `--speed-only` flag
@@ -115,6 +130,7 @@ The gate no longer requires coverage of `0.8-1.0 m/s`. Commands above `0.60 m/s`
 
 ## Scientific Boundary
 
+- No mode or gait name was invented.
 - No command above `0.6 m/s` was generated.
 - No robot motion was automatically executed.
 - No actual-speed reachability was assumed.

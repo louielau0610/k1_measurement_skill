@@ -3,14 +3,14 @@
 - Ready: `false`
 - Safe-speed resolved: `true`
 - Safe command speed max: `0.6`
+- Command source: `booster_sdk_kPrepare_kWalking_Move`
+- Motion path resolved: `true`
 - Exploration trials: 12
 - Formal trials: 30
 - Random seed: `250625`
 
 ## Blocked Reasons
 
-- `unresolved_placeholder`: control_mode is required
-- `unresolved_placeholder`: gait_mode is required
 - `formal_blocked_before_exploration_review`: formal collection requires reviewed exploration data or documented override
 
 ## Operator Commands

@@ -75,6 +75,97 @@ def test_unresolved_placeholders_block_preflight(tmp_path: Path) -> None:
     assert any(error["field"] == "control_mode" for error in result["blocked_reasons"])
 
 
+def test_k1_preflight_passes_without_control_mode_when_not_required(tmp_path: Path) -> None:
+    preflight = _write_preflight(
+        tmp_path,
+        safe_max=0.6,
+        robot_id="k1",
+        control_mode="null",
+        gait_mode="null",
+        require_control_mode=False,
+        require_gait_mode=False,
+    )
+    result = evaluate_preflight(preflight)
+    assert result["ready"] is True
+    assert result["mode_context_policy"]["control_mode_required"] is False
+    assert result["mode_context_policy"]["motion_path_resolved"] is True
+
+
+def test_k1_preflight_passes_without_gait_mode_when_not_required(tmp_path: Path) -> None:
+    preflight = _write_preflight(
+        tmp_path,
+        safe_max=0.6,
+        robot_id="k1",
+        gait_mode="null",
+        require_control_mode=False,
+        require_gait_mode=False,
+    )
+    result = evaluate_preflight(preflight)
+    assert result["ready"] is True
+    assert result["mode_context_policy"]["gait_mode_required"] is False
+
+
+def test_generic_config_still_requires_mode_fields_when_flags_true(tmp_path: Path) -> None:
+    preflight = _write_preflight(
+        tmp_path,
+        safe_max=1.0,
+        robot_id="generic_fixture",
+        control_mode="null",
+        gait_mode="null",
+        require_control_mode=True,
+        require_gait_mode=True,
+        include_motion_path=False,
+    )
+    result = evaluate_preflight(preflight)
+    assert result["ready"] is False
+    fields = {error["field"] for error in result["blocked_reasons"]}
+    assert "control_mode" in fields
+    assert "gait_mode" in fields
+
+
+def test_missing_k1_command_source_blocks_preflight(tmp_path: Path) -> None:
+    preflight = _write_preflight(
+        tmp_path,
+        safe_max=0.6,
+        robot_id="k1",
+        require_control_mode=False,
+        require_gait_mode=False,
+        command_source="null",
+    )
+    result = evaluate_preflight(preflight)
+    assert result["ready"] is False
+    assert any(error["code"] == "missing_command_source" for error in result["blocked_reasons"])
+
+
+def test_invalid_k1_motion_sequence_blocks_preflight(tmp_path: Path) -> None:
+    preflight = _write_preflight(
+        tmp_path,
+        safe_max=0.6,
+        robot_id="k1",
+        require_control_mode=False,
+        require_gait_mode=False,
+        motion_sequence=["kWalking", "Move"],
+    )
+    result = evaluate_preflight(preflight)
+    assert result["ready"] is False
+    assert any(error["code"] == "invalid_motion_sequence" for error in result["blocked_reasons"])
+
+
+def test_k1_fixed_sdk_motion_sequence_passes(tmp_path: Path) -> None:
+    preflight = _write_preflight(
+        tmp_path,
+        safe_max=0.6,
+        robot_id="k1",
+        require_control_mode=False,
+        require_gait_mode=False,
+        motion_sequence=["kPrepare", "kWalking", "Move"],
+    )
+    result = evaluate_preflight(preflight)
+    assert result["ready"] is True
+    assert result["mode_context_policy"]["command_source"] == "booster_sdk_kPrepare_kWalking_Move"
+    assert result["mode_context_policy"]["motion_sequence"] == ["kPrepare", "kWalking", "Move"]
+
+
 def test_collection_packages_and_formal_gate(tmp_path: Path) -> None:
     preflight = _write_preflight(tmp_path, safe_max=1.0, exploration_review_complete=False)
     exploration, exploration_json, exploration_md = write_collection_package(preflight, "exploration", tmp_path)
@@ -296,6 +387,17 @@ def test_k1_collection_package_contents(tmp_path: Path) -> None:
     assert "Safe command speed max: `0.6`" in md_text
 
 
+def test_plan_and_package_share_resolved_limit_and_provenance(tmp_path: Path) -> None:
+    preflight = _write_preflight(tmp_path, safe_max=0.6)
+    result = evaluate_preflight(preflight)
+    package, _, _ = write_collection_package(preflight, "exploration", tmp_path)
+    plan = result["plans"]["exploration"]
+    assert plan["safe_command_speed_max"] == 0.6
+    assert package["execution_audit_trail"]["runner_required_safe_command_speed_max"] == 0.6
+    assert plan["safety_provenance"]["source_hash"] == package["session_metadata"]["safe_speed_confirmation_hash"]
+    assert package["execution_audit_trail"]["safety_provenance"]["source_hash"] == result["safe_speed_confirmation_hash"]
+
+
 def _write_confirmation(tmp_path: Path, *, safe_max: float = 1.0, evidence_type: str = "operator_confirmation") -> Path:
     path = tmp_path / "confirmation.yaml"
     path.write_text(
@@ -319,23 +421,29 @@ def _write_preflight(
     tmp_path: Path,
     *,
     safe_max: float,
+    robot_id: str = "k1_fixture",
     control_mode: str = "velocity",
+    gait_mode: str = "trot",
+    require_control_mode: bool = True,
+    require_gait_mode: bool = True,
+    include_motion_path: bool = True,
+    command_source: str = "booster_sdk_kPrepare_kWalking_Move",
+    motion_sequence: list[str] | None = None,
     logger_output_dir: str | None = None,
     exploration_review_complete: bool = True,
 ) -> Path:
     confirmation = _write_confirmation(tmp_path, safe_max=safe_max)
     preflight = tmp_path / "preflight.yaml"
     out = logger_output_dir or str(tmp_path / "logs")
-    preflight.write_text(
-        "\n".join([
+    lines = [
             "m25_config_path: configs/m25_full_range_velocity_profile_template.yaml",
             f"safe_speed_confirmation_path: {confirmation}",
-            "robot_id: k1_fixture",
+            f"robot_id: {robot_id}",
             "surface_id: S2_marble_floor",
             f"control_mode: {control_mode}",
-            "gait_mode: trot",
-            "require_control_mode: true",
-            "require_gait_mode: true",
+            f"gait_mode: {gait_mode}",
+            f"require_control_mode: {str(require_control_mode).lower()}",
+            f"require_gait_mode: {str(require_gait_mode).lower()}",
             "trial_duration_sec: 8.0",
             "warmup_duration_sec: 1.0",
             "steady_window_start_sec: 2.0",
@@ -348,9 +456,18 @@ def _write_preflight(
             "  require_operator_confirmation: true",
             "  emergency_stop_briefing_required: true",
             f"exploration_review_complete: {str(exploration_review_complete).lower()}",
-        ]) + "\n",
-        encoding="utf-8",
-    )
+    ]
+    if include_motion_path:
+        sequence = motion_sequence or ["kPrepare", "kWalking", "Move"]
+        lines.extend([
+            f"command_source: {command_source}",
+            "motion_sequence:",
+            *[f"  - {item}" for item in sequence],
+            "move_command:",
+            "  vy: 0.0",
+            "  wz: 0.0",
+        ])
+    preflight.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return preflight
 
 

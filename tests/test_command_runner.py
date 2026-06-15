@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from k1_measurement.command_runner import CommandSafetyError, K1CommandRunner
+from k1_measurement.command_runner import CommandRunner, CommandSafetyError, K1CommandRunner, VelocityCommand
 from k1_measurement.trial_manager import K1TrialManager
 
 
@@ -13,34 +13,61 @@ def test_command_runner_defaults_to_dry_run() -> None:
 
 
 def test_safety_check_allows_safe_dry_run_inputs() -> None:
-    runner = K1CommandRunner()
+    runner = K1CommandRunner(max_vx_cmd_mps=0.6)
 
-    assert runner.safety_check(0.3, 0.0, 0.0) is True
+    assert runner.safety_check(0.6, 0.0, 0.0) is True
 
 
 def test_safety_check_rejects_vx_above_limit() -> None:
-    runner = K1CommandRunner()
+    runner = K1CommandRunner(max_vx_cmd_mps=0.6)
 
     with pytest.raises(CommandSafetyError):
-        runner.safety_check(0.5, 0.0, 0.0)
+        runner.safety_check(0.61, 0.0, 0.0)
+
+
+def test_safety_check_fails_closed_without_explicit_limit() -> None:
+    runner = K1CommandRunner()
+
+    with pytest.raises(CommandSafetyError, match="max_vx_cmd_mps"):
+        runner.safety_check(0.3, 0.0, 0.0)
+
+
+def test_command_runner_no_longer_silently_uses_0_4() -> None:
+    runner = CommandRunner()
+
+    with pytest.raises(CommandSafetyError, match="max_vx_cmd_mps"):
+        runner.validate(VelocityCommand(0.4))
+
+
+def test_command_runner_explicit_0_6_accepts_0_6() -> None:
+    runner = CommandRunner(max_vx_cmd_mps=0.6)
+
+    runner.validate(VelocityCommand(0.6))
+
+
+def test_command_runner_explicit_0_6_rejects_above_0_6() -> None:
+    runner = CommandRunner(max_vx_cmd_mps=0.6)
+
+    with pytest.raises(CommandSafetyError, match="exceeds"):
+        runner.validate(VelocityCommand(0.61))
 
 
 def test_safety_check_rejects_nonzero_vy_when_disabled() -> None:
-    runner = K1CommandRunner()
+    runner = K1CommandRunner(max_vx_cmd_mps=0.6)
 
     with pytest.raises(CommandSafetyError):
         runner.safety_check(0.2, 0.1, 0.0)
 
 
 def test_safety_check_rejects_nonzero_wz_when_disabled() -> None:
-    runner = K1CommandRunner()
+    runner = K1CommandRunner(max_vx_cmd_mps=0.6)
 
     with pytest.raises(CommandSafetyError):
         runner.safety_check(0.2, 0.0, 0.1)
 
 
 def test_send_velocity_command_dry_run_does_not_raise() -> None:
-    runner = K1CommandRunner()
+    runner = K1CommandRunner(max_vx_cmd_mps=0.6)
 
     runner.send_velocity_command(0.2, 0.0, 0.0)
 
@@ -53,13 +80,13 @@ def test_send_stop_command_dry_run_does_not_raise() -> None:
 
 def test_run_single_trial_dry_run_does_not_raise() -> None:
     trial = K1TrialManager().generate_trial_plan()[0]
-    runner = K1CommandRunner()
+    runner = K1CommandRunner(max_vx_cmd_mps=0.6)
 
     runner.run_single_trial(trial)
 
 
 def test_send_velocity_command_real_mode_raises_not_implemented() -> None:
-    runner = K1CommandRunner(dry_run=False)
+    runner = K1CommandRunner(dry_run=False, max_vx_cmd_mps=0.6)
 
     with pytest.raises(NotImplementedError):
         runner.send_velocity_command(
@@ -73,7 +100,7 @@ def test_send_velocity_command_real_mode_raises_not_implemented() -> None:
 
 def test_run_single_trial_real_mode_raises_not_implemented() -> None:
     trial = K1TrialManager().generate_trial_plan()[0]
-    runner = K1CommandRunner(dry_run=False)
+    runner = K1CommandRunner(dry_run=False, max_vx_cmd_mps=0.6)
 
     with pytest.raises(NotImplementedError):
         runner.run_single_trial(

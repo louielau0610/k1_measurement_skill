@@ -13,6 +13,9 @@
 - [x] Configure `safe_command_speed_max` from validated robot/operator evidence (M25-S: confirmed at 0.6 m/s).
 - [x] Update exploration/formal grids for K1 `[0.35, 0.60]` domain (12/30 trials).
 - [x] Update exploration gate to remove 0.8-1.0 dependency.
+- [x] Align K1 preflight with fixed SDK path `kPrepare -> kWalking -> Move(vx, 0.0, 0.0)`.
+- [x] Treat K1 `control_mode` and `gait_mode` as optional metadata while preserving generic required-mode flags.
+- [x] Propagate validated `safe_command_speed_max` provenance into M25 plans, packages, session metadata, and execution audit trail.
 - [ ] Collect M25 exploration data across the configured valid command domain `[0.35, 0.60]` m/s.
 - [ ] Collect M25 formal profile data with dense sampling in high-priority `0.50-0.60` m/s region.
 - [ ] M26: compare full-range monotonic response models after real formal data collection.

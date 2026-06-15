@@ -31,16 +31,23 @@ class K1CommandRunner:
 
     def __init__(
         self,
-        config_path: str = "config/experiment_forward_v0.yaml",
+        config_path: str | None = None,
         dry_run: bool = True,
+        max_vx_cmd_mps: float | None = None,
+        safety_provenance: dict[str, Any] | None = None,
     ) -> None:
-        self.config_path = Path(config_path)
+        self.config_path = None if config_path is None else Path(config_path)
         self.dry_run = dry_run
+        self.max_vx_cmd_mps = max_vx_cmd_mps
+        self.safety_provenance = safety_provenance or {}
         self._config: dict[str, Any] | None = None
 
     def load_config(self) -> dict[str, Any]:
         """Load the experiment YAML config."""
 
+        if self.config_path is None:
+            self._config = {}
+            return self._config
         with self.config_path.open("r", encoding="utf-8") as file:
             config = yaml.safe_load(file) or {}
         if not isinstance(config, dict):
@@ -64,12 +71,12 @@ class K1CommandRunner:
     ) -> bool:
         """Validate command safety limits without sending anything."""
 
-        safety = self.config["safety"]
-        max_vx = float(safety["max_vx_cmd_mps"])
+        max_vx = self._resolved_max_vx()
         if vx < 0:
             raise CommandSafetyError("vx must be non-negative")
         if vx > max_vx:
-            raise CommandSafetyError("vx exceeds safety.max_vx_cmd_mps")
+            raise CommandSafetyError("vx exceeds resolved max_vx_cmd_mps")
+        safety = self.config.get("safety", {})
         if not bool(safety.get("allow_lateral_motion", False)) and vy != 0.0:
             raise CommandSafetyError("vy must be 0 when lateral motion is disabled")
         if not bool(safety.get("allow_turning", False)) and wz != 0.0:
@@ -133,13 +140,30 @@ class K1CommandRunner:
         print(f"DRY RUN ONLY: stop phase {trial['stop_duration_sec']} sec")
         self.send_stop_command()
 
+    def _resolved_max_vx(self) -> float:
+        if self.max_vx_cmd_mps is not None:
+            return float(self.max_vx_cmd_mps)
+        safety = self.config.get("safety", {})
+        value = safety.get("max_vx_cmd_mps")
+        if value is None:
+            raise CommandSafetyError("max_vx_cmd_mps must be explicitly configured before validation or execution")
+        return float(value)
+
 
 class CommandRunner(K1CommandRunner):
     """Backward-compatible wrapper around K1CommandRunner."""
 
-    def __init__(self, max_vx_cmd_mps: float = 0.4, dry_run: bool = True) -> None:
-        super().__init__(dry_run=dry_run)
-        self.max_vx_cmd_mps = max_vx_cmd_mps
+    def __init__(
+        self,
+        max_vx_cmd_mps: float | None = None,
+        dry_run: bool = True,
+        safety_provenance: dict[str, Any] | None = None,
+    ) -> None:
+        super().__init__(
+            dry_run=dry_run,
+            max_vx_cmd_mps=max_vx_cmd_mps,
+            safety_provenance=safety_provenance,
+        )
 
     def validate(self, command: VelocityCommand, manual_confirmed: bool = False) -> None:
         self.safety_check(

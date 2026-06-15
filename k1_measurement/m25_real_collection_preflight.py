@@ -85,11 +85,17 @@ def load_safe_speed_confirmation(path: str | Path) -> SafeSpeedConfirmation:
 
 def validate_safe_speed_confirmation(path: str | Path, *, require_context: bool = True) -> dict[str, Any]:
     confirmation = load_safe_speed_confirmation(path)
-    errors = confirmation.validate(require_context=require_context)
+    effective_require_context = require_context and confirmation.robot_id != "k1"
+    errors = confirmation.validate(require_context=effective_require_context)
     return {
         "schema_version": SCHEMA_VERSION,
         "valid": not errors,
         "errors": errors,
+        "mode_context_policy": (
+            "fixed_sdk_motion_sequence" if confirmation.robot_id == "k1" else "explicit_mode_context"
+        ),
+        "control_mode_required": effective_require_context,
+        "gait_mode_required": effective_require_context,
         "confirmation": confirmation.as_dict(),
     }
 
@@ -109,8 +115,10 @@ def evaluate_preflight(path: str | Path) -> dict[str, Any]:
 
     confirmation_path = _resolve(config_path, config.get("safe_speed_confirmation_path"))
     confirmation = load_safe_speed_confirmation(confirmation_path)
+    require_control_mode = bool(config.get("require_control_mode", True))
+    require_gait_mode = bool(config.get("require_gait_mode", True))
     confirmation_errors = confirmation.validate(
-        require_context=bool(config.get("require_control_mode", True) or config.get("require_gait_mode", True))
+        require_context=bool(require_control_mode or require_gait_mode)
     )
     blocked.extend(confirmation_errors)
 
@@ -134,6 +142,15 @@ def evaluate_preflight(path: str | Path) -> dict[str, Any]:
         if config.get("formal_command_grid") is not None
         else m25_config.formal_command_grid
     )
+    config_hash = file_sha256(config_path)
+    confirmation_hash = file_sha256(confirmation_path)
+    safety_provenance = {
+        "safe_command_speed_max": safe_max,
+        "source_path": str(confirmation_path),
+        "source_hash": confirmation_hash,
+        "preflight_config_path": str(config_path),
+        "preflight_config_hash": config_hash,
+    }
     resolved_m25 = M25Config(
         valid_speed_domain=resolved_domain,
         surface=str(config.get("surface_id") or m25_config.surface),
@@ -149,9 +166,11 @@ def evaluate_preflight(path: str | Path) -> dict[str, Any]:
     for field_name in ("robot_id", "surface_id"):
         if _is_placeholder(config.get(field_name)):
             blocked.append(_error("unresolved_placeholder", field_name, f"{field_name} is required"))
-    if config.get("require_control_mode", True) and _is_placeholder(config.get("control_mode")):
+    mode_context = _mode_context_policy(config)
+    blocked.extend(_validate_mode_context(config, mode_context))
+    if require_control_mode and _is_placeholder(config.get("control_mode")):
         blocked.append(_error("unresolved_placeholder", "control_mode", "control_mode is required"))
-    if config.get("require_gait_mode", True) and _is_placeholder(config.get("gait_mode")):
+    if require_gait_mode and _is_placeholder(config.get("gait_mode")):
         blocked.append(_error("unresolved_placeholder", "gait_mode", "gait_mode is required"))
     for field_name in ("trial_duration_sec", "warmup_duration_sec", "steady_window_start_sec", "steady_window_end_sec"):
         if not _is_positive_finite(_float_or_none(config.get(field_name))):
@@ -188,6 +207,8 @@ def evaluate_preflight(path: str | Path) -> dict[str, Any]:
 
     exploration_plan = plan_phase(resolved_m25, "exploration")
     formal_plan = plan_phase(resolved_m25, "formal")
+    _attach_safety_and_motion_metadata(exploration_plan, safety_provenance, mode_context)
+    _attach_safety_and_motion_metadata(formal_plan, safety_provenance, mode_context)
     for plan in (exploration_plan, formal_plan):
         if not plan["executable"]:
             blocked.extend(plan["errors"])
@@ -210,11 +231,18 @@ def evaluate_preflight(path: str | Path) -> dict[str, Any]:
         "exploration_trial_count": exploration_plan.get("trial_count", 0),
         "formal_trial_count": formal_plan.get("trial_count", 0),
         "random_seed": m25_config.random_seed,
-        "config_hash": file_sha256(config_path),
+        "config_hash": config_hash,
+        "safe_speed_confirmation_hash": confirmation_hash,
+        "safety_provenance": safety_provenance,
         "plan_hashes": {
             "exploration": object_sha256(exploration_plan),
             "formal": object_sha256(formal_plan),
         },
+        "plans": {
+            "exploration": exploration_plan,
+            "formal": formal_plan,
+        },
+        "mode_context_policy": mode_context,
         "robot_id": resolved_m25.robot_id,
         "surface_id": resolved_m25.surface,
         "control_mode": config.get("control_mode"),
@@ -245,6 +273,21 @@ def build_collection_package(preflight_path: str | Path, phase: str) -> dict[str
         "blocked_reasons": blocked,
         "warnings": preflight["warnings"],
         "preflight": preflight,
+        "execution_audit_trail": {
+            "safe_command_speed_max": preflight.get("safe_command_speed_max"),
+            "safety_provenance": preflight.get("safety_provenance"),
+            "mode_context_policy": preflight.get("mode_context_policy"),
+            "plan_hash": preflight.get("plan_hashes", {}).get(phase),
+            "runner_required_safe_command_speed_max": preflight.get("safe_command_speed_max"),
+            "runner_config_provenance_required": True,
+        },
+        "session_metadata": {
+            "safe_command_speed_max": preflight.get("safe_command_speed_max"),
+            "safe_speed_confirmation_hash": preflight.get("safe_speed_confirmation_hash"),
+            "preflight_config_hash": preflight.get("config_hash"),
+            "command_source": preflight.get("mode_context_policy", {}).get("command_source"),
+            "motion_sequence": preflight.get("mode_context_policy", {}).get("motion_sequence"),
+        },
         "operator_commands": {
             "preflight_validation": f"py scripts/validate_m25_real_collection_preflight.py --config {preflight_path}",
             "dry_run_generation": f"py scripts/prepare_m25r_collection_package.py --config {preflight_path} --phase {script_phase}",
@@ -279,6 +322,8 @@ def collection_package_markdown(package: dict[str, Any]) -> str:
         f"- Ready: `{str(package['ready']).lower()}`",
         f"- Safe-speed resolved: `{str(safe_resolved).lower()}`",
         f"- Safe command speed max: `{safe_max}`",
+        f"- Command source: `{package['preflight'].get('mode_context_policy', {}).get('command_source')}`",
+        f"- Motion path resolved: `{str(package['preflight'].get('mode_context_policy', {}).get('motion_path_resolved', False)).lower()}`",
         f"- Exploration trials: {package['preflight']['exploration_trial_count']}",
         f"- Formal trials: {package['preflight']['formal_trial_count']}",
         f"- Random seed: `{package['preflight']['random_seed']}`",
@@ -379,6 +424,84 @@ def file_sha256(path: str | Path) -> str:
 def object_sha256(data: Any) -> str:
     encoded = json.dumps(data, sort_keys=True, separators=(",", ":"), default=str).encode("utf-8")
     return hashlib.sha256(encoded).hexdigest()
+
+
+def _mode_context_policy(config: dict[str, Any]) -> dict[str, Any]:
+    robot_id = _optional_text(config.get("robot_id"))
+    command_source = _optional_text(config.get("command_source"))
+    sequence = config.get("motion_sequence") or []
+    if not isinstance(sequence, list):
+        sequence = []
+    move_command = config.get("move_command") or {}
+    if not isinstance(move_command, dict):
+        move_command = {}
+    if robot_id == "k1":
+        return {
+            "mode_context_policy": "fixed_sdk_motion_sequence",
+            "control_mode_required": bool(config.get("require_control_mode", False)),
+            "gait_mode_required": bool(config.get("require_gait_mode", False)),
+            "command_source": command_source,
+            "motion_sequence": [str(item) for item in sequence],
+            "move_command": {
+                "vy": _float_or_none(move_command.get("vy")),
+                "wz": _float_or_none(move_command.get("wz")),
+            },
+            "motion_path_resolved": False,
+        }
+    return {
+        "mode_context_policy": "explicit_mode_context",
+        "control_mode_required": bool(config.get("require_control_mode", True)),
+        "gait_mode_required": bool(config.get("require_gait_mode", True)),
+        "command_source": command_source,
+        "motion_sequence": [str(item) for item in sequence],
+        "move_command": move_command,
+        "motion_path_resolved": False,
+    }
+
+
+def _validate_mode_context(config: dict[str, Any], policy: dict[str, Any]) -> list[dict[str, str]]:
+    if policy["mode_context_policy"] != "fixed_sdk_motion_sequence":
+        return []
+    errors: list[dict[str, str]] = []
+    sequence = policy["motion_sequence"]
+    move_command = policy["move_command"]
+    if _is_placeholder(policy.get("command_source")):
+        errors.append(_error("missing_command_source", "command_source", "K1 fixed SDK motion path requires command_source"))
+    if not sequence:
+        errors.append(_error("missing_motion_sequence", "motion_sequence", "K1 fixed SDK motion path requires motion_sequence"))
+    if "kPrepare" not in sequence:
+        errors.append(_error("invalid_motion_sequence", "motion_sequence", "K1 motion sequence must include kPrepare"))
+    if "kWalking" not in sequence:
+        errors.append(_error("invalid_motion_sequence", "motion_sequence", "K1 motion sequence must include kWalking"))
+    if not sequence or sequence[-1] != "Move":
+        errors.append(_error("invalid_motion_sequence", "motion_sequence", "K1 final motion operation must be Move"))
+    if move_command.get("vy") != 0.0:
+        errors.append(_error("invalid_move_command", "move_command.vy", "K1 Move command must fix vy to 0.0"))
+    if move_command.get("wz") != 0.0:
+        errors.append(_error("invalid_move_command", "move_command.wz", "K1 Move command must fix wz to 0.0"))
+    policy["move_uses_planned_vx"] = True
+    policy["motion_path_resolved"] = not errors
+    return errors
+
+
+def _attach_safety_and_motion_metadata(
+    plan: dict[str, Any],
+    safety_provenance: dict[str, Any],
+    mode_context: dict[str, Any],
+) -> None:
+    plan["safe_command_speed_max"] = safety_provenance["safe_command_speed_max"]
+    plan["safety_provenance"] = safety_provenance
+    plan["mode_context_policy"] = mode_context
+    for trial in plan.get("trials", []):
+        trial["safe_command_speed_max"] = safety_provenance["safe_command_speed_max"]
+        trial["safety_provenance"] = safety_provenance
+        trial["command_source"] = mode_context.get("command_source")
+        trial["motion_sequence"] = mode_context.get("motion_sequence")
+        trial["move_command"] = {
+            "vx": "planned_command_speed_mps",
+            "vy": 0.0,
+            "wz": 0.0,
+        }
 
 
 def _read_rows(path: Path) -> list[dict[str, Any]]:

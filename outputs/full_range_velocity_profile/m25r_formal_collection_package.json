@@ -6,16 +6,6 @@
   "safe_command_speed_max": 0.6,
   "blocked_reasons": [
     {
-      "code": "unresolved_placeholder",
-      "field": "control_mode",
-      "message": "control_mode is required"
-    },
-    {
-      "code": "unresolved_placeholder",
-      "field": "gait_mode",
-      "message": "gait_mode is required"
-    },
-    {
       "code": "formal_blocked_before_exploration_review",
       "field": "exploration_review_complete",
       "message": "formal collection requires reviewed exploration data or documented override"
@@ -26,19 +16,8 @@
   ],
   "preflight": {
     "schema_version": "m25r_real_collection_preflight_v1",
-    "ready": false,
-    "blocked_reasons": [
-      {
-        "code": "unresolved_placeholder",
-        "field": "control_mode",
-        "message": "control_mode is required"
-      },
-      {
-        "code": "unresolved_placeholder",
-        "field": "gait_mode",
-        "message": "gait_mode is required"
-      }
-    ],
+    "ready": true,
+    "blocked_reasons": [],
     "warnings": [
       "formal collection remains blocked until exploration data have been reviewed"
     ],
@@ -53,17 +32,1509 @@
     "exploration_trial_count": 12,
     "formal_trial_count": 30,
     "random_seed": 250625,
-    "config_hash": "783918c8bd7e11263fb066802121e896aa49de51a54d98b14f51394f0dab09a4",
+    "config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7",
+    "safe_speed_confirmation_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+    "safety_provenance": {
+      "safe_command_speed_max": 0.6,
+      "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+      "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+      "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+      "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+    },
     "plan_hashes": {
-      "exploration": "781ed3d27ddb6ce3e919652ed940abf980a289c005d47c3000a08ce9e8f5362e",
-      "formal": "0781ce315afa43a67a5367cd9d16c3377462f78935ae05e62ab99af85e50e1cc"
+      "exploration": "a8bafb475fdee42292630caf8dbc7b20cb52094870d14e0114289c3d47232354",
+      "formal": "443f0abb125ec92139273fb0b9d40b6370331598be3e3d01a9887718be1d9cce"
+    },
+    "plans": {
+      "exploration": {
+        "schema_version": "m25_full_range_velocity_profile_v1",
+        "milestone": "M25",
+        "phase": "exploration",
+        "purpose": "coverage_exploration",
+        "generated_at": "2026-06-15T07:47:49.732472+00:00",
+        "status": "planned",
+        "executable": true,
+        "errors": [],
+        "valid_speed_domain": {
+          "valid_command_speed_min": 0.35,
+          "safe_command_speed_max": 0.6,
+          "high_priority_actual_speed_min": 0.5,
+          "high_priority_actual_speed_max": 0.6
+        },
+        "surface": "s2",
+        "robot_id": "k1",
+        "random_seed": 250625,
+        "randomization": "deterministic_random",
+        "command_points_mps": [
+          0.35,
+          0.4,
+          0.5,
+          0.6
+        ],
+        "repeats_per_command": 3,
+        "trial_count": 12,
+        "trials": [
+          {
+            "trial_id": "M25_exploration_V035_R3",
+            "phase": "exploration",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.35,
+            "repeat_index": 3,
+            "group_id": "M25_exploration_V035",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 1,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_exploration_V035_R1",
+            "phase": "exploration",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.35,
+            "repeat_index": 1,
+            "group_id": "M25_exploration_V035",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 2,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_exploration_V040_R2",
+            "phase": "exploration",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.4,
+            "repeat_index": 2,
+            "group_id": "M25_exploration_V040",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 3,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_exploration_V040_R3",
+            "phase": "exploration",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.4,
+            "repeat_index": 3,
+            "group_id": "M25_exploration_V040",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 4,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_exploration_V050_R2",
+            "phase": "exploration",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.5,
+            "repeat_index": 2,
+            "group_id": "M25_exploration_V050",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 5,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_exploration_V035_R2",
+            "phase": "exploration",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.35,
+            "repeat_index": 2,
+            "group_id": "M25_exploration_V035",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 6,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_exploration_V060_R2",
+            "phase": "exploration",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.6,
+            "repeat_index": 2,
+            "group_id": "M25_exploration_V060",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 7,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_exploration_V060_R3",
+            "phase": "exploration",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.6,
+            "repeat_index": 3,
+            "group_id": "M25_exploration_V060",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 8,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_exploration_V050_R3",
+            "phase": "exploration",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.5,
+            "repeat_index": 3,
+            "group_id": "M25_exploration_V050",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 9,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_exploration_V060_R1",
+            "phase": "exploration",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.6,
+            "repeat_index": 1,
+            "group_id": "M25_exploration_V060",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 10,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_exploration_V050_R1",
+            "phase": "exploration",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.5,
+            "repeat_index": 1,
+            "group_id": "M25_exploration_V050",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 11,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_exploration_V040_R1",
+            "phase": "exploration",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.4,
+            "repeat_index": 1,
+            "group_id": "M25_exploration_V040",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 12,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          }
+        ],
+        "high_priority_actual_speed_region": [
+          0.5,
+          0.6
+        ],
+        "claim_boundary": "planning only; no hardware execution and no compensation performance claim",
+        "safe_command_speed_max": 0.6,
+        "safety_provenance": {
+          "safe_command_speed_max": 0.6,
+          "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+          "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+          "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+          "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+        },
+        "mode_context_policy": {
+          "mode_context_policy": "fixed_sdk_motion_sequence",
+          "control_mode_required": false,
+          "gait_mode_required": false,
+          "command_source": "booster_sdk_kPrepare_kWalking_Move",
+          "motion_sequence": [
+            "kPrepare",
+            "kWalking",
+            "Move"
+          ],
+          "move_command": {
+            "vy": 0.0,
+            "wz": 0.0
+          },
+          "motion_path_resolved": true,
+          "move_uses_planned_vx": true
+        }
+      },
+      "formal": {
+        "schema_version": "m25_full_range_velocity_profile_v1",
+        "milestone": "M25",
+        "phase": "formal",
+        "purpose": "formal_profile_collection",
+        "generated_at": "2026-06-15T07:47:49.733466+00:00",
+        "status": "planned",
+        "executable": true,
+        "errors": [],
+        "valid_speed_domain": {
+          "valid_command_speed_min": 0.35,
+          "safe_command_speed_max": 0.6,
+          "high_priority_actual_speed_min": 0.5,
+          "high_priority_actual_speed_max": 0.6
+        },
+        "surface": "s2",
+        "robot_id": "k1",
+        "random_seed": 250625,
+        "randomization": "deterministic_random",
+        "command_points_mps": [
+          0.35,
+          0.4,
+          0.45,
+          0.5,
+          0.55,
+          0.6
+        ],
+        "repeats_per_command": 5,
+        "trial_count": 30,
+        "trials": [
+          {
+            "trial_id": "M25_formal_V055_R1",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.55,
+            "repeat_index": 1,
+            "group_id": "M25_formal_V055",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 1,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V055_R4",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.55,
+            "repeat_index": 4,
+            "group_id": "M25_formal_V055",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 2,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V060_R2",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.6,
+            "repeat_index": 2,
+            "group_id": "M25_formal_V060",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 3,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V050_R3",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.5,
+            "repeat_index": 3,
+            "group_id": "M25_formal_V050",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 4,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V040_R4",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.4,
+            "repeat_index": 4,
+            "group_id": "M25_formal_V040",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 5,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V035_R1",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.35,
+            "repeat_index": 1,
+            "group_id": "M25_formal_V035",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 6,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V050_R1",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.5,
+            "repeat_index": 1,
+            "group_id": "M25_formal_V050",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 7,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V060_R5",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.6,
+            "repeat_index": 5,
+            "group_id": "M25_formal_V060",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 8,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V035_R2",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.35,
+            "repeat_index": 2,
+            "group_id": "M25_formal_V035",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 9,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V035_R4",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.35,
+            "repeat_index": 4,
+            "group_id": "M25_formal_V035",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 10,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V045_R2",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.45,
+            "repeat_index": 2,
+            "group_id": "M25_formal_V045",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 11,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V050_R5",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.5,
+            "repeat_index": 5,
+            "group_id": "M25_formal_V050",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 12,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V055_R2",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.55,
+            "repeat_index": 2,
+            "group_id": "M25_formal_V055",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 13,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V055_R3",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.55,
+            "repeat_index": 3,
+            "group_id": "M25_formal_V055",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 14,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V045_R1",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.45,
+            "repeat_index": 1,
+            "group_id": "M25_formal_V045",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 15,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V060_R3",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.6,
+            "repeat_index": 3,
+            "group_id": "M25_formal_V060",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 16,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V040_R5",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.4,
+            "repeat_index": 5,
+            "group_id": "M25_formal_V040",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 17,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V060_R4",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.6,
+            "repeat_index": 4,
+            "group_id": "M25_formal_V060",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 18,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V035_R3",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.35,
+            "repeat_index": 3,
+            "group_id": "M25_formal_V035",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 19,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V045_R5",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.45,
+            "repeat_index": 5,
+            "group_id": "M25_formal_V045",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 20,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V035_R5",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.35,
+            "repeat_index": 5,
+            "group_id": "M25_formal_V035",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 21,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V045_R4",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.45,
+            "repeat_index": 4,
+            "group_id": "M25_formal_V045",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 22,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V040_R1",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.4,
+            "repeat_index": 1,
+            "group_id": "M25_formal_V040",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 23,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V040_R2",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.4,
+            "repeat_index": 2,
+            "group_id": "M25_formal_V040",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 24,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V050_R2",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.5,
+            "repeat_index": 2,
+            "group_id": "M25_formal_V050",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 25,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V055_R5",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.55,
+            "repeat_index": 5,
+            "group_id": "M25_formal_V055",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 26,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V060_R1",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.6,
+            "repeat_index": 1,
+            "group_id": "M25_formal_V060",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 27,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V050_R4",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.5,
+            "repeat_index": 4,
+            "group_id": "M25_formal_V050",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 28,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V045_R3",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.45,
+            "repeat_index": 3,
+            "group_id": "M25_formal_V045",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 29,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          },
+          {
+            "trial_id": "M25_formal_V040_R3",
+            "phase": "formal",
+            "surface": "s2",
+            "robot_id": "k1",
+            "command_speed_mps": 0.4,
+            "repeat_index": 3,
+            "group_id": "M25_formal_V040",
+            "physical_run_status": "planned",
+            "notes": "direct command profiling only; no compensation in M25 planning",
+            "order_index": 30,
+            "safe_command_speed_max": 0.6,
+            "safety_provenance": {
+              "safe_command_speed_max": 0.6,
+              "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+              "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+              "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+              "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+            },
+            "command_source": "booster_sdk_kPrepare_kWalking_Move",
+            "motion_sequence": [
+              "kPrepare",
+              "kWalking",
+              "Move"
+            ],
+            "move_command": {
+              "vx": "planned_command_speed_mps",
+              "vy": 0.0,
+              "wz": 0.0
+            }
+          }
+        ],
+        "high_priority_actual_speed_region": [
+          0.5,
+          0.6
+        ],
+        "claim_boundary": "planning only; no hardware execution and no compensation performance claim",
+        "safe_command_speed_max": 0.6,
+        "safety_provenance": {
+          "safe_command_speed_max": 0.6,
+          "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+          "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+          "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+          "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+        },
+        "mode_context_policy": {
+          "mode_context_policy": "fixed_sdk_motion_sequence",
+          "control_mode_required": false,
+          "gait_mode_required": false,
+          "command_source": "booster_sdk_kPrepare_kWalking_Move",
+          "motion_sequence": [
+            "kPrepare",
+            "kWalking",
+            "Move"
+          ],
+          "move_command": {
+            "vy": 0.0,
+            "wz": 0.0
+          },
+          "motion_path_resolved": true,
+          "move_uses_planned_vx": true
+        }
+      }
+    },
+    "mode_context_policy": {
+      "mode_context_policy": "fixed_sdk_motion_sequence",
+      "control_mode_required": false,
+      "gait_mode_required": false,
+      "command_source": "booster_sdk_kPrepare_kWalking_Move",
+      "motion_sequence": [
+        "kPrepare",
+        "kWalking",
+        "Move"
+      ],
+      "move_command": {
+        "vy": 0.0,
+        "wz": 0.0
+      },
+      "motion_path_resolved": true,
+      "move_uses_planned_vx": true
     },
     "robot_id": "k1",
     "surface_id": "s2",
     "control_mode": null,
     "gait_mode": null,
     "git_commit": "record_at_session_creation",
-    "evaluated_at": "2026-06-15T07:19:46.340398+00:00"
+    "evaluated_at": "2026-06-15T07:47:49.734468+00:00"
+  },
+  "execution_audit_trail": {
+    "safe_command_speed_max": 0.6,
+    "safety_provenance": {
+      "safe_command_speed_max": 0.6,
+      "source_path": "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill\\configs\\m25_k1_safe_speed_operator_confirmation.yaml",
+      "source_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+      "preflight_config_path": "configs\\m25_k1_s2_real_collection.yaml",
+      "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7"
+    },
+    "mode_context_policy": {
+      "mode_context_policy": "fixed_sdk_motion_sequence",
+      "control_mode_required": false,
+      "gait_mode_required": false,
+      "command_source": "booster_sdk_kPrepare_kWalking_Move",
+      "motion_sequence": [
+        "kPrepare",
+        "kWalking",
+        "Move"
+      ],
+      "move_command": {
+        "vy": 0.0,
+        "wz": 0.0
+      },
+      "motion_path_resolved": true,
+      "move_uses_planned_vx": true
+    },
+    "plan_hash": "443f0abb125ec92139273fb0b9d40b6370331598be3e3d01a9887718be1d9cce",
+    "runner_required_safe_command_speed_max": 0.6,
+    "runner_config_provenance_required": true
+  },
+  "session_metadata": {
+    "safe_command_speed_max": 0.6,
+    "safe_speed_confirmation_hash": "bb6bf807b0c2e5cce3bcccbf197db4b8c88d5ce4063d081760d8c2d9b60d319f",
+    "preflight_config_hash": "1faf634da96d15545fd85a879a00a138eac3535d080b7e79dfcfa84f60d22da7",
+    "command_source": "booster_sdk_kPrepare_kWalking_Move",
+    "motion_sequence": [
+      "kPrepare",
+      "kWalking",
+      "Move"
+    ]
   },
   "operator_commands": {
     "preflight_validation": "py scripts/validate_m25_real_collection_preflight.py --config configs\\m25_k1_s2_real_collection.yaml",
@@ -74,5 +1545,5 @@
     "candidate_profile_generation": "py scripts/build_m25_candidate_profile.py --config configs/m25_full_range_velocity_profile_template.yaml --session <collected_extraction.csv> --dry-run"
   },
   "scientific_boundary": "no robot motion is executed by package generation; no M26 model is fitted",
-  "created_at": "2026-06-15T07:19:46.345382+00:00"
+  "created_at": "2026-06-15T07:47:49.739473+00:00"
 }

@@ -1,5 +1,11 @@
 # K1 速度测量工具包
 
+## M25-T K1 SDK 运动路径与安全上限统一
+
+M25-T 将 K1 preflight 对齐到已确认的 SDK 命令路径：`booster_sdk_kPrepare_kWalking_Move`。当前 K1 adapter 的固定执行序列是 `kPrepare -> kWalking -> Move(vx, 0.0, 0.0)`；`control_mode` 和 `gait_mode` 只是可选元数据，不再作为当前 K1 配置的执行阻塞项。这里不把 `kWalking` 描述为用户可选 gait，它只是固定验证序列的一部分。
+
+`safe_command_speed_max` 仍由 `configs/m25_k1_safe_speed_operator_confirmation.yaml` 提供，当前 K1 实验配置为 `0.6 m/s`。exploration package 已可执行就绪（仍需真实操作流程确认），formal package 仍在 exploration review gate 前阻塞。探索计划为 `[0.35, 0.40, 0.50, 0.60]` × 3 = 12 次，正式计划为 `[0.35, 0.40, 0.45, 0.50, 0.55, 0.60]` × 5 = 30 次。
+
 ## M25 当前主线：全范围纵向速度画像
 
 M25 将当前主动路线重定向到 K1 纵向 `command velocity -> measured actual velocity` 的全范围画像。适用命令域由显式工程配置给出：

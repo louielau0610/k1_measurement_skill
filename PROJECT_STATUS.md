@@ -39,6 +39,20 @@ M25-R state (as of M25-S closure):
 - No robot motion has been executed by M25-R.
 - No M26 model has been fitted or selected.
 
+## M25-T K1 SDK Motion Context And Safety Limit Unification
+
+M25-T aligns the concrete K1 preflight with the confirmed SDK motion path instead of requiring invented mode or gait names.
+
+Current K1 motion context:
+
+- command source: `booster_sdk_kPrepare_kWalking_Move`
+- motion sequence: `kPrepare -> kWalking -> Move(vx, 0.0, 0.0)`
+- `control_mode_required=false`
+- `gait_mode_required=false`
+- `kWalking` is part of the fixed validated SDK sequence, not a documented user-selectable gait.
+
+Safety provenance is unified through `configs/m25_k1_safe_speed_operator_confirmation.yaml`, which supplies `safe_command_speed_max: 0.6` and is hashed into preflight output, plans, collection packages, session metadata, and execution audit trail metadata. Generic command-runner validation now fails closed when no maximum is explicitly supplied. Exploration package generation is ready with 12 trials and no mode/gait blocker. Formal package generation remains blocked before exploration review approval. No yaw/deadzone logic is imported into the active M25 path.
+
 ## M25-S K1 Safe-Speed Integration
 
 M25-S integrates the confirmed K1 safe forward command-speed maximum of `0.6 m/s` into the M25/M25-R real-collection workflow.
@@ -58,8 +72,10 @@ Current state:
 M25 contract: complete
 M25-R collection tooling: complete
 M25-S safe-speed integration: complete
+M25-T SDK motion context: complete
 K1 safe command maximum: resolved at 0.6 m/s
-real execution readiness: depends on remaining operational preflight fields (control_mode, gait_mode)
+K1 motion path: resolved as kPrepare -> kWalking -> Move(vx, 0.0, 0.0)
+real execution readiness: exploration package ready; physical execution still requires operator-controlled real-robot procedure
 exploration: not yet executed
 formal collection: blocked until exploration data reviewed
 M26: blocked until real formal data exist
