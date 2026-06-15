@@ -1,5 +1,28 @@
 # K1 Velocity Measurement Toolkit
 
+## M26-B Unified Domain Contracts and Schemas
+
+M26-B implements the platform-independent contract layer: pure domain value
+objects, invariant validation, error taxonomy, capability and maturity models,
+hardware-facing port interfaces, deterministic JSON codecs, and versioned
+JSON Schemas.
+
+The new `calibration_skill` package (`domain/`, `ports/`, `schemas/`) is
+independently importable and testable without any vendor SDK installed.
+
+Key M26-B artifacts:
+
+- `calibration_skill/domain/` — Pure platform-independent value objects
+- `calibration_skill/ports/` — Abstract Protocol interfaces
+- `calibration_skill/schemas/v1/` — 13 versioned JSON Schemas (v1.0.0)
+- `docs/engineering/m26b_error_taxonomy.md` — Error taxonomy
+- `outputs/engineering/m26b_readiness.json` — Readiness (ImplementationMaturity model)
+- `scripts/validate_engineering_artifacts.py` — Engineering artifact validator
+
+**Important**: M26-B implements no adapters. The existing K1 adapter has not
+been migrated. G1/GO1 adapters are not implemented. No platform adapter is
+operational under the new architecture.
+
 ## M26-A Engineering Program Reset and Multi-Platform Architecture Freeze
 
 M26-A pauses all non-engineering experimental branches of work and reframes the

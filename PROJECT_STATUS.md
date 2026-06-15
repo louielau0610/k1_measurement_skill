@@ -1,5 +1,46 @@
 # Project Status
 
+## M26-B Unified Domain Contracts and Schemas
+
+M26-B is the active milestone. It implements the platform-independent contract
+layer for the multi-platform calibration skill.
+
+M26-B deliverables:
+
+- `calibration_skill/domain/` — 10 modules: enums, errors, identity, capabilities,
+  readiness, motion, telemetry, safety, calibration
+- `calibration_skill/ports/` — 8 Protocol interfaces: RobotAdapter, TelemetryStream,
+  OperatorAuthorizationProvider, EmergencyStop, ProfileRepository, AuditSink,
+  MonotonicClock, AdapterFactory
+- `calibration_skill/schemas/v1/` — 13 versioned JSON Schemas (v1.0.0)
+- `calibration_skill/schemas/codec.py` — Deterministic JSON codecs with round-trip tests
+- `tests/calibration_skill/` — 127 focused tests (domain validity, codecs,
+  architecture boundaries, import side effects, schema validation)
+- `scripts/validate_engineering_artifacts.py` — 8-check engineering artifact validator
+
+M26-B does NOT implement any platform adapter, connect to hardware, or import
+vendor SDKs. The core package is importable without any vendor SDK.
+
+Current M26-B state:
+
+```
+domain_contracts: implemented_unverified
+port_interfaces: implemented_unverified
+versioned_schemas: implemented_unverified
+deterministic_codecs: implemented_unverified
+architecture_enforcement: bench_verified
+mock_adapter: not_started
+k1_adapter_migration: legacy_existing
+g1_adapter: scaffolded
+go1_adapter: scaffolded
+unified_skill_runtime: not_started
+hardware_verification: not_started
+release: not_started
+```
+
+No new-architecture platform adapter is operational yet.
+Hardware use remains prohibited through M26-B.
+
 ## M26-A Engineering Program Reset and Multi-Platform Architecture Freeze
 
 M26-A is the active milestone. All non-engineering experimental branches of work are paused. The repository is reframed as an engineering-grade, agent-callable legged robot velocity calibration skill supporting:

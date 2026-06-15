@@ -1,5 +1,22 @@
 # K1 速度测量工具包
 
+## M26-B 统一领域契约与模式
+
+M26-B 实现平台无关的契约层：纯领域值对象、不变式验证、错误分类、能力与成熟度模型、硬件端口接口、确定性 JSON 编解码器、版本化 JSON Schema。
+
+新增 `calibration_skill` 包（`domain/`、`ports/`、`schemas/`），可在无任何厂商 SDK 的情况下独立导入和测试。
+
+关键 M26-B 产物：
+
+- `calibration_skill/domain/` — 纯平台无关值对象和不变式
+- `calibration_skill/ports/` — 抽象 Protocol 接口
+- `calibration_skill/schemas/v1/` — 13 个版本化 JSON Schema（v1.0.0）
+- `docs/engineering/m26b_error_taxonomy.md` — 错误分类
+- `outputs/engineering/m26b_readiness.json` — 就绪追踪（使用 ImplementationMaturity 模型）
+- `scripts/validate_engineering_artifacts.py` — 工程产物验证器
+
+**重要**：M26-B 不实现任何适配器。现有 K1 适配器未迁移。G1/GO1 适配器尚未实现。新架构下无平台适配器可运行。
+
 ## M26-A 工程重置与多平台架构冻结
 
 M26-A 暂停所有非工程实验分支，将仓库重新定位为**工程级、agent 可调用的腿式机器人速度标定技能**，明确支持以下目标平台：
