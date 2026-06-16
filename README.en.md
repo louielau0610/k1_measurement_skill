@@ -215,3 +215,22 @@ py scripts/validate_real_k1_topic_mapping.py --mapping outputs/m8_field_session_
 ```
 
 The default template mapping still contains `TBD`, so the mapping validator returns a controlled validation failure rather than a Python crash.
+# M26-C Mock Adapter and Dry-Run Skill Service
+
+M26-C adds the first executable hardware-free layer above the M26-B contracts.
+It includes a mock-only adapter registry, deterministic `MockRobotAdapter`,
+dry-run `SkillService`, and mock end-to-end operation with in-memory audit
+generation.
+
+Key M26-C artifacts:
+
+- `calibration_skill/adapters/registry.py`
+- `calibration_skill/adapters/mock.py`
+- `calibration_skill/skill/service.py`
+- `calibration_skill/runtime/dry_run.py`
+- `docs/engineering/m26c_mock_adapter_and_skill_service.md`
+- `docs/engineering/m26c_dry_run_end_to_end.md`
+- `outputs/engineering/m26c_readiness.json`
+
+M26-C is mock-only. It does not migrate K1, implement G1 or GO1, connect to
+hardware, open sockets, start DDS, send UDP, or import vendor SDK runtimes.

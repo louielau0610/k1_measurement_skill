@@ -1,0 +1,46 @@
+{
+  "readiness_metadata": {
+    "milestone": "M26-C",
+    "date": "2026-06-17",
+    "schema_version": "m26c_readiness_v1",
+    "note": "M26-C implements mock-only dry-run execution. No real platform adapter is operational under the new architecture."
+  },
+  "readiness": {
+    "domain_contracts": {"maturity": "bench_verified"},
+    "port_interfaces": {"maturity": "bench_verified"},
+    "versioned_schemas": {"maturity": "bench_verified"},
+    "deterministic_codecs": {"maturity": "bench_verified"},
+    "architecture_enforcement": {"maturity": "bench_verified"},
+    "mock_adapter": {
+      "maturity": "bench_verified",
+      "description": "Strict hardware-free MockRobotAdapter with deterministic clock, telemetry, command receipts, and failure injection."
+    },
+    "adapter_registry": {
+      "maturity": "bench_verified",
+      "description": "Explicit mock-only registry. No hardware discovery, filesystem scanning, or vendor imports."
+    },
+    "skill_service_skeleton": {
+      "maturity": "bench_verified",
+      "description": "Deterministic dry-run SkillService for preflight, command, telemetry, stop, and end-to-end operations."
+    },
+    "dry_run_end_to_end": {
+      "maturity": "bench_verified",
+      "description": "Mock-only end-to-end flow covers connect, preflight, locomotion ready, command, telemetry, stop, restore, and audit."
+    },
+    "k1_adapter_migration": {"maturity": "legacy_existing"},
+    "g1_adapter": {"maturity": "scaffolded"},
+    "go1_adapter": {"maturity": "scaffolded"},
+    "unified_skill_runtime": {
+      "maturity": "implemented_unverified",
+      "description": "Only a dry-run mock service skeleton exists; no real platform runtime."
+    },
+    "hardware_verification": {"maturity": "not_started"},
+    "release": {"maturity": "not_started"}
+  },
+  "prohibited_claims": [
+    "No K1 migration is complete under the new architecture.",
+    "No G1 or GO1 runtime support is implemented.",
+    "No hardware verification has been performed.",
+    "No release readiness is claimed."
+  ]
+}

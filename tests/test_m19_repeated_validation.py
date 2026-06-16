@@ -61,6 +61,8 @@ def test_region_classification_deadzone():
     agg = compute_per_command(records, 0.10, DEFAULT_WEIGHTS)
     assert agg.region_label == "deadzone"
 
-def test_analyzer_runs_pending():
+def test_analyzer_runs_pending(tmp_path, monkeypatch):
     import scripts.analyze_m19_repeated_validation as am
+    monkeypatch.setattr(am, "OUTPUT_DIR", tmp_path / "outputs")
+    monkeypatch.setattr(am, "INPUT_DIR", tmp_path / "inputs")
     assert am.main() == 0

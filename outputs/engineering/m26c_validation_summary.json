@@ -1,0 +1,55 @@
+{
+  "validation_metadata": {
+    "milestone": "M26-C",
+    "date": "2026-06-17",
+    "schema_version": "m26c_validation_summary_v1",
+    "note": "Updated after local validation commands complete."
+  },
+  "commands": [
+    {
+      "command": "python scripts/validate_engineering_artifacts.py",
+      "exit_code": 9009,
+      "description": "Windows Store python alias failed before running repository code"
+    },
+    {
+      "command": "py -3.12 scripts/validate_engineering_artifacts.py",
+      "exit_code": 0,
+      "description": "Engineering artifact validation, including M26-C layering/readiness checks"
+    },
+    {
+      "command": "py -3.12 -m compileall calibration_skill calibration_core k1_measurement platforms scripts tests -q",
+      "exit_code": 0,
+      "description": "Python syntax validation"
+    },
+    {
+      "command": "py -3.12 -m pytest tests/calibration_skill -q",
+      "exit_code": 0,
+      "description": "Targeted calibration_skill contract and M26-C tests"
+    },
+    {
+      "command": "py -3.12 -m pytest tests/ --tb=no -q",
+      "exit_code": 0,
+      "description": "Full test suite fallback because scripts/run_tests_hermetically.py is absent"
+    },
+    {
+      "command": "git status --porcelain=v1",
+      "exit_code": 0,
+      "description": "Post-full-suite porcelain check"
+    }
+  ],
+  "results": {
+    "targeted_test_count": 238,
+    "full_suite_test_count": 1144,
+    "hermetic_runner_available": false,
+    "hermetic_runner_result": "not_available",
+    "porcelain_after_full_suite": "Only intended M26-C implementation, docs, artifacts, and legacy test hermeticity fixes were present; no historical output files were modified by the final full-suite run.",
+    "engineering_json_artifact_count": 11,
+    "schema_count": 13,
+    "validator_check_count": 10,
+    "hardware_command_attempted": false,
+    "network_operation_attempted": false,
+    "dds_started": false,
+    "udp_sent": false,
+    "vendor_runtime_used": false
+  }
+}

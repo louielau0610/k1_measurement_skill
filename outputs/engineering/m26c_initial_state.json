@@ -1,0 +1,31 @@
+{
+  "initial_state_metadata": {
+    "milestone": "M26-C",
+    "date": "2026-06-17",
+    "schema_version": "m26c_initial_state_v1"
+  },
+  "source": {
+    "source_branch": "engineering/m26b-core-contracts",
+    "source_commit": "62a8f6d078edbffe671e5667ccacae0a9f54a9fa",
+    "source_commit_subject": "M26-BR close schema and contract evidence gaps"
+  },
+  "branch": {
+    "created_branch": "engineering/m26c-mock-skill-dryrun",
+    "starting_porcelain_output": ""
+  },
+  "environment": {
+    "python_version": "Python 3.12.3",
+    "pytest_version": "pytest 9.0.3",
+    "jsonschema_version": "4.26.0"
+  },
+  "readiness_gate": {
+    "m26b_readiness_fields_conservative": true,
+    "m26c_starts_from_clean_state": true,
+    "notes": [
+      "M26-B marked mock_adapter not_started.",
+      "M26-B marked unified_skill_runtime not_started.",
+      "M26-B marked hardware_verification and release not_started.",
+      "No K1, G1, or GO1 runtime support was claimed at M26-C start."
+    ]
+  }
+}

@@ -134,6 +134,45 @@
       "side_effects": "none",
       "maturity": "implemented_unverified",
       "test_references": ["tests/calibration_skill/test_domain_calibration.py"]
+    },
+    {
+      "public_name": "AdapterRegistry",
+      "module": "calibration_skill.adapters.registry",
+      "kind": "dry_run_registry",
+      "contract_version": "1.0.0",
+      "platform_independence": "mock_only",
+      "serialization_support": "none",
+      "corresponding_schema": null,
+      "invariants": ["explicit registration only", "mock-only in M26-C", "dry_run required", "duplicate registration rejected"],
+      "side_effects": "none",
+      "maturity": "bench_verified",
+      "test_references": ["tests/calibration_skill/test_adapter_registry.py"]
+    },
+    {
+      "public_name": "MockRobotAdapter",
+      "module": "calibration_skill.adapters.mock",
+      "kind": "mock_adapter",
+      "contract_version": "1.0.0",
+      "platform_independence": "mock_only",
+      "serialization_support": "via_domain_codecs",
+      "corresponding_schema": null,
+      "invariants": ["injected monotonic clock", "no hardware evidence", "deterministic telemetry", "structured rejections"],
+      "side_effects": "in_memory_only",
+      "maturity": "bench_verified",
+      "test_references": ["tests/calibration_skill/test_mock_adapter.py"]
+    },
+    {
+      "public_name": "SkillService",
+      "module": "calibration_skill.skill.service",
+      "kind": "dry_run_service",
+      "contract_version": "1.0.0",
+      "platform_independence": "mock_only",
+      "serialization_support": "skill_request_response_envelopes",
+      "corresponding_schema": "skill_request.schema.json, skill_response.schema.json",
+      "invariants": ["schema_version explicit", "dry_run true required", "mock platform only", "structured errors"],
+      "side_effects": "in_memory_audit_only",
+      "maturity": "bench_verified",
+      "test_references": ["tests/calibration_skill/test_skill_service.py", "tests/calibration_skill/test_dry_run_end_to_end.py"]
     }
   ]
 }

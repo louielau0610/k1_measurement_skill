@@ -65,5 +65,9 @@
     "No K1 migration is complete under the new architecture",
     "No hardware verification has been performed",
     "No cross-platform runtime is operational"
-  ]
+  ],
+  "successor_note": {
+    "m26c_readiness": "outputs/engineering/m26c_readiness.json",
+    "note": "M26-B values remain a historical snapshot. M26-C adds mock-only dry-run progress without changing K1/G1/GO1 or hardware readiness claims."
+  }
 }

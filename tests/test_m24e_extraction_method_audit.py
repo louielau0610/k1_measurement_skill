@@ -58,10 +58,10 @@ class TestAuditScript:
     def test_script_exists(self) -> None:
         assert AUDIT_SCRIPT.exists(), f"Missing: {AUDIT_SCRIPT}"
 
-    def test_script_runs_on_session(self) -> None:
+    def test_script_runs_on_session(self, tmp_path: Path) -> None:
         """Audit should run successfully on the M24-B session."""
         result = subprocess.run(
-            [sys.executable, str(AUDIT_SCRIPT)],
+            [sys.executable, str(AUDIT_SCRIPT), "--output-dir", str(tmp_path)],
             cwd=ROOT, capture_output=True, text=True, timeout=120,
         )
         assert result.returncode == 0, f"Audit failed: {result.stderr}"

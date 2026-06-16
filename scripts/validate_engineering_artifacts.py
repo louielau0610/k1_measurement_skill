@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""M26-B Engineering Artifact Validator.
+"""M26 Engineering Artifact Validator.
 
 Validates:
 1. All engineering JSON artifacts parse
@@ -10,6 +10,8 @@ Validates:
 6. No numerical safety maximum is silently defaulted in generic contracts
 7. Schema IDs and versions are unique and stable
 8. All JSON Schema files parse as JSON
+9. M26-C layering boundaries are preserved
+10. M26-C readiness does not claim real-platform or hardware support
 
 Produces deterministic failure messages and nonzero exit code on failure.
 Does NOT modify any files.
@@ -144,7 +146,7 @@ def validate_audit_paths() -> int:
 
 
 def validate_forbidden_imports() -> int:
-    """Scan new calibration_skill Python modules for forbidden imports."""
+    """Scan calibration_skill Python modules for forbidden imports."""
     errors = 0
     skill_dir = REPO_ROOT / "calibration_skill"
 
@@ -270,8 +272,68 @@ def validate_no_network_or_hardware() -> int:
     return EXIT_FAIL if errors > 0 else EXIT_OK
 
 
+def validate_m26c_layering() -> int:
+    """Verify domain/ports/schemas do not depend on adapters, skill, or runtime."""
+    errors = 0
+    restricted_dirs = [
+        REPO_ROOT / "calibration_skill" / "domain",
+        REPO_ROOT / "calibration_skill" / "ports",
+        REPO_ROOT / "calibration_skill" / "schemas",
+    ]
+    forbidden_refs = (
+        "calibration_skill.adapters",
+        "calibration_skill.skill",
+        "calibration_skill.runtime",
+    )
+    for directory in restricted_dirs:
+        for py_file in sorted(directory.glob("*.py")):
+            content = py_file.read_text(encoding="utf-8")
+            for ref in forbidden_refs:
+                if ref in content:
+                    rel = py_file.relative_to(REPO_ROOT)
+                    fail(f"M26-C layering violation: {rel} references {ref}")
+                    errors += 1
+    if errors == 0:
+        ok("M26-C layering boundaries clean")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
+def validate_m26c_readiness() -> int:
+    """Verify M26-C readiness claims remain mock-only and hardware-free."""
+    readiness_path = REPO_ROOT / "outputs" / "engineering" / "m26c_readiness.json"
+    if not readiness_path.exists():
+        fail(f"M26-C readiness file not found: {readiness_path}")
+        return EXIT_FAIL
+    data = parse_json(readiness_path)
+    if data is None:
+        return EXIT_FAIL
+    readiness = data.get("readiness", {})
+    errors = 0
+    expected = {
+        "mock_adapter": "bench_verified",
+        "adapter_registry": "bench_verified",
+        "skill_service_skeleton": "bench_verified",
+        "dry_run_end_to_end": "bench_verified",
+        "hardware_verification": "not_started",
+        "release": "not_started",
+    }
+    for key, maturity in expected.items():
+        actual = readiness.get(key, {}).get("maturity")
+        if actual != maturity:
+            fail(f"m26c_readiness.json: {key} maturity is {actual!r}, expected {maturity!r}")
+            errors += 1
+    for key in ("k1_adapter_migration", "g1_adapter", "go1_adapter"):
+        actual = readiness.get(key, {}).get("maturity")
+        if actual == "hardware_verified":
+            fail(f"m26c_readiness.json: {key} must not be hardware_verified")
+            errors += 1
+    if errors == 0:
+        ok("M26-C readiness remains mock-only and hardware-free")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
 def main() -> int:
-    print("=== M26-B Engineering Artifact Validator ===\n")
+    print("=== M26 Engineering Artifact Validator ===\n")
 
     results = [
         ("JSON artifacts", validate_engineering_json_artifacts()),
@@ -282,6 +344,8 @@ def main() -> int:
         ("Silent safety defaults", validate_no_silent_safety_defaults()),
         ("Schema IDs unique", validate_schema_ids_unique()),
         ("No network/hardware ops", validate_no_network_or_hardware()),
+        ("M26-C layering", validate_m26c_layering()),
+        ("M26-C readiness", validate_m26c_readiness()),
     ]
 
     print()

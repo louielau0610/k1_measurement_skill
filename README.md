@@ -241,3 +241,23 @@ v_actual = f(v_cmd, environment, robot_state)
 - `outputs/research_foundation/m13_research_foundation_summary.json`
 
 M13 只定义研究问题、建模计划、数据集 schema、schema 校验 CLI 和测试。M13 不启动文献综述，不启动 P1，不撰写完整论文草稿，不实现速度补偿、反向命令映射、导航控制或 safe command adapter。`battery_state` 保持可选，`remote_controller_state` 永久不进入范围。
+# M26-C Mock Adapter 与 Dry-Run Skill Service
+
+M26-C 在 M26-B 合约层之上新增第一个可执行但完全 hardware-free 的 skill
+层：显式 mock-only `AdapterRegistry`、确定性的 `MockRobotAdapter`、
+dry-run `SkillService`，以及带内存审计记录的 `dry_run_end_to_end` 流程。
+
+关键 M26-C 产物：
+
+- `calibration_skill/adapters/registry.py`
+- `calibration_skill/adapters/mock.py`
+- `calibration_skill/skill/service.py`
+- `calibration_skill/runtime/dry_run.py`
+- `docs/engineering/m26c_mock_adapter_and_skill_service.md`
+- `docs/engineering/m26c_dry_run_end_to_end.md`
+- `outputs/engineering/m26c_readiness.json`
+
+**边界**：M26-C 仅支持 mock 平台与 dry-run。它不迁移 K1，不实现 G1/GO1，
+不连接硬件，不打开 socket，不启动 DDS，不发送 UDP，也不导入 vendor SDK
+runtime。新架构下仍不声明 K1/G1/GO1 runtime support、hardware verification
+或 release readiness。

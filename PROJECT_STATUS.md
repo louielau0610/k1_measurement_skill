@@ -1,8 +1,50 @@
 # Project Status
 
+## M26-C Mock Adapter and Dry-Run Skill Service
+
+M26-C is the active milestone. It adds the first executable, hardware-free skill
+layer on top of the M26-B contracts.
+
+M26-C deliverables:
+
+- `calibration_skill/adapters/registry.py` - explicit mock-only adapter registry
+- `calibration_skill/adapters/mock.py` - deterministic `MockRobotAdapter`
+- `calibration_skill/skill/service.py` - dry-run `SkillService`
+- `calibration_skill/runtime/dry_run.py` - mock-only service composition helper
+- `docs/engineering/m26c_mock_adapter_and_skill_service.md`
+- `docs/engineering/m26c_dry_run_end_to_end.md`
+- `outputs/engineering/m26c_readiness.json`
+
+Supported M26-C operations are `preflight`, `dry_run_velocity_command`,
+`dry_run_collect_telemetry`, `dry_run_stop`, and `dry_run_end_to_end`.
+
+M26-C does NOT migrate K1, implement G1 or GO1, connect to hardware, open
+sockets, start DDS, send UDP, or import vendor SDK runtimes. Runtime support is
+mock-only and dry-run-only.
+
+Current M26-C state:
+
+```
+domain_contracts: bench_verified
+port_interfaces: bench_verified
+versioned_schemas: bench_verified
+deterministic_codecs: bench_verified
+architecture_enforcement: bench_verified
+mock_adapter: bench_verified
+adapter_registry: bench_verified
+skill_service_skeleton: bench_verified
+dry_run_end_to_end: bench_verified
+k1_adapter_migration: legacy_existing
+g1_adapter: scaffolded
+go1_adapter: scaffolded
+unified_skill_runtime: implemented_unverified (mock dry-run only)
+hardware_verification: not_started
+release: not_started
+```
+
 ## M26-B Unified Domain Contracts and Schemas
 
-M26-B is the active milestone. It implements the platform-independent contract
+M26-B implemented the platform-independent contract
 layer for the multi-platform calibration skill.
 
 M26-B deliverables:

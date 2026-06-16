@@ -29,12 +29,19 @@
 
 ## Active M26-A Follow-Up (Post M26-A Implementation)
 
-- [ ] M26-B: Implement unified domain contracts and schemas (Phase 1 of migration plan)
-- [ ] M26-C: Implement adapter registry and mock adapter (Phase 2)
+- [x] M26-B: Implement unified domain contracts and schemas (Phase 1 of migration plan)
+- [x] M26-C: Implement adapter registry, mock adapter, skill service skeleton, and dry-run end-to-end flow (Phase 2)
 - [ ] M26-D: Extract K1 adapter to target architecture (Phase 3)
 - [ ] M27-G1: Implement G1 adapter (Phase 4)
 - [ ] M27-GO1: Implement GO1 adapter (Phase 5)
 - [ ] M27-T: Unified telemetry and time semantics (Phase 6)
+
+## Active M26-C Scope Boundary
+
+- [x] Keep M26-C mock-only and dry-run-only.
+- [x] Do not register K1, G1, or GO1 factories in the new registry.
+- [x] Do not claim hardware verification or release readiness.
+- [ ] Begin M26-D K1 migration only after M26-C is closed.
 
 ## Active M25 Follow-Up
 
