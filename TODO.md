@@ -31,7 +31,8 @@
 
 - [x] M26-B: Implement unified domain contracts and schemas (Phase 1 of migration plan)
 - [x] M26-C: Implement adapter registry, mock adapter, skill service skeleton, and dry-run end-to-end flow (Phase 2)
-- [ ] M26-D: Extract K1 adapter to target architecture (Phase 3)
+- [x] M26-D: Add agent-callable dry-run CLI and JSON I/O contract
+- [ ] Post-M26-D: Extract K1 adapter to target architecture (Phase 3)
 - [ ] M27-G1: Implement G1 adapter (Phase 4)
 - [ ] M27-GO1: Implement GO1 adapter (Phase 5)
 - [ ] M27-T: Unified telemetry and time semantics (Phase 6)
@@ -41,7 +42,14 @@
 - [x] Keep M26-C mock-only and dry-run-only.
 - [x] Do not register K1, G1, or GO1 factories in the new registry.
 - [x] Do not claim hardware verification or release readiness.
-- [ ] Begin M26-D K1 migration only after M26-C is closed.
+- [ ] Begin K1 migration only after M26-D CLI closure.
+
+## Active M26-D Scope Boundary
+
+- [x] Provide agent-callable JSON CLI for mock dry-run only.
+- [x] Add deterministic example requests and operation catalog.
+- [x] Keep K1/G1/GO1 runtime support unavailable in the new skill CLI.
+- [x] Do not claim hardware verification or release readiness.
 
 ## Active M25 Follow-Up
 

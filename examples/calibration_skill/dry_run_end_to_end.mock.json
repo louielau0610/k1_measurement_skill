@@ -1,0 +1,54 @@
+{
+  "caller_metadata": {
+    "example": "m26d"
+  },
+  "dry_run": true,
+  "operation": "dry_run_end_to_end",
+  "payload": {
+    "operator_authorization": {
+      "authorization_id": "example-auth-1",
+      "authorized_operations": [
+        "dry_run_end_to_end"
+      ],
+      "evidence_reference": "simulated-operator-confirmation",
+      "expiry_monotonic_ns": 3000000000,
+      "issued_monotonic_ns": 500000000,
+      "operator_id": "example-operator",
+      "platform": "mock",
+      "robot_id": "mock-robot",
+      "safety_policy_hash": "mock-hash",
+      "safety_policy_id": "mock-policy"
+    },
+    "safety_envelope": {
+      "allowed_command_frames": [
+        "body"
+      ],
+      "max_abs_vx_mps": 0.5,
+      "max_abs_vy_mps": 0.4,
+      "max_abs_wz_radps": 0.8,
+      "max_command_duration_s": 2.0,
+      "max_telemetry_age_ms": 100.0,
+      "operator_authorization_required": true,
+      "policy_hash": "mock-hash",
+      "policy_id": "mock-policy",
+      "stop_timeout_s": 1.0
+    },
+    "velocity_command": {
+      "expiry_monotonic_ns": 2000000000,
+      "frame": "body",
+      "issued_monotonic_ns": 1000000000,
+      "requested_duration_s": 0.5,
+      "safety_policy_hash": "mock-hash",
+      "safety_policy_id": "mock-policy",
+      "sequence_id": "example-command-1",
+      "source": "m26d-example",
+      "vx_mps": 0.1,
+      "vy_mps": 0.0,
+      "wz_radps": 0.0
+    }
+  },
+  "platform": "mock",
+  "request_id": "example-dry_run_end_to_end",
+  "robot_id": "mock-robot",
+  "schema_version": "1.0.0"
+}

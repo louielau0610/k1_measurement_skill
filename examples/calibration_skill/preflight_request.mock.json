@@ -1,0 +1,12 @@
+{
+  "caller_metadata": {
+    "example": "m26d"
+  },
+  "dry_run": true,
+  "operation": "preflight",
+  "payload": {},
+  "platform": "mock",
+  "request_id": "example-preflight",
+  "robot_id": "mock-robot",
+  "schema_version": "1.0.0"
+}

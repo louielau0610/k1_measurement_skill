@@ -241,6 +241,21 @@ v_actual = f(v_cmd, environment, robot_state)
 - `outputs/research_foundation/m13_research_foundation_summary.json`
 
 M13 只定义研究问题、建模计划、数据集 schema、schema 校验 CLI 和测试。M13 不启动文献综述，不启动 P1，不撰写完整论文草稿，不实现速度补偿、反向命令映射、导航控制或 safe command adapter。`battery_state` 保持可选，`remote_controller_state` 永久不进入范围。
+# M26-D Agent-Callable Dry-Run CLI
+
+M26-D 新增 agent 可调用的确定性 JSON CLI，用于调用 mock-only dry-run skill：
+
+```powershell
+py -3.12 -m calibration_skill.cli manifest
+py -3.12 -m calibration_skill.cli operations
+py -3.12 -m calibration_skill.cli validate --input examples/calibration_skill/dry_run_end_to_end.mock.json
+py -3.12 -m calibration_skill.cli invoke --input examples/calibration_skill/dry_run_end_to_end.mock.json --pretty
+```
+
+CLI 支持 stdin/stdout 与文件输入输出，响应兼容 `skill_response.schema.json`，
+并拒绝真实平台请求。M26-D 仍然只支持 mock 平台与 dry-run，不声明 K1/G1/GO1
+runtime support、hardware verification 或 release readiness。
+
 # M26-C Mock Adapter 与 Dry-Run Skill Service
 
 M26-C 在 M26-B 合约层之上新增第一个可执行但完全 hardware-free 的 skill

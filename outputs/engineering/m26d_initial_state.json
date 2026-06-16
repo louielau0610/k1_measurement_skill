@@ -1,0 +1,40 @@
+{
+  "initial_state_metadata": {
+    "milestone": "M26-D",
+    "date": "2026-06-17",
+    "schema_version": "m26d_initial_state_v1"
+  },
+  "source": {
+    "source_branch": "engineering/m26c-mock-skill-dryrun",
+    "source_commit": "9440621e76cf688a32854beec286b28a4aa7c11d",
+    "remote_commit": "9440621e76cf688a32854beec286b28a4aa7c11d",
+    "source_commit_subject": "M26-C add mock adapter and dry-run skill service"
+  },
+  "worktree": {
+    "starting_porcelain_output": "",
+    "clean": true,
+    "historical_output_files_dirty": false
+  },
+  "environment": {
+    "python_version": "Python 3.12.3",
+    "pytest_version": "pytest 9.0.3",
+    "jsonschema_version": "4.26.0"
+  },
+  "m26c_readiness_values": {
+    "domain_contracts": "bench_verified",
+    "port_interfaces": "bench_verified",
+    "versioned_schemas": "bench_verified",
+    "deterministic_codecs": "bench_verified",
+    "architecture_enforcement": "bench_verified",
+    "mock_adapter": "bench_verified",
+    "adapter_registry": "bench_verified",
+    "skill_service_skeleton": "bench_verified",
+    "dry_run_end_to_end": "bench_verified",
+    "k1_adapter_migration": "legacy_existing",
+    "g1_adapter": "scaffolded",
+    "go1_adapter": "scaffolded",
+    "unified_skill_runtime": "implemented_unverified",
+    "hardware_verification": "not_started",
+    "release": "not_started"
+  }
+}

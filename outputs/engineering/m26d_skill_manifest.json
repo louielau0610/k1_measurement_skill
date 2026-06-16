@@ -1,0 +1,222 @@
+{
+  "contract_version": "1.0.0",
+  "dry_run_only": true,
+  "error_codes": [
+    "configuration_invalid",
+    "unsupported_platform",
+    "schema_version_unsupported",
+    "operator_authorization_required",
+    "operator_authorization_expired",
+    "command_expired",
+    "command_outside_safety_envelope",
+    "wrong_motion_state"
+  ],
+  "examples": {
+    "dry_run_collect_telemetry": "examples/calibration_skill/dry_run_collect_telemetry.mock.json",
+    "dry_run_end_to_end": "examples/calibration_skill/dry_run_end_to_end.mock.json",
+    "dry_run_stop": "examples/calibration_skill/dry_run_stop.mock.json",
+    "dry_run_velocity_command": "examples/calibration_skill/dry_run_velocity_command.mock.json",
+    "invalid_dry_run_false": "examples/calibration_skill/invalid_dry_run_false_request.json",
+    "invalid_missing_safety": "examples/calibration_skill/invalid_missing_safety_request.json",
+    "invalid_real_platform": "examples/calibration_skill/invalid_real_platform_request.json",
+    "preflight": "examples/calibration_skill/preflight_request.mock.json"
+  },
+  "exit_codes": {
+    "hermeticity_or_forbidden_runtime_violation": 6,
+    "internal_error": 5,
+    "malformed_input_json": 3,
+    "output_write_failure": 4,
+    "request_rejected": 1,
+    "success": 0,
+    "usage_error": 2
+  },
+  "hardware_support": "not_supported",
+  "input_schema_ids": [
+    "urn:calibration-skill:schema:skill_request:v1"
+  ],
+  "non_goals": [
+    "No K1 migration in M26-D.",
+    "No G1 or GO1 runtime support.",
+    "No hardware connection, DDS, UDP, socket, or vendor SDK runtime.",
+    "No physical motion operation."
+  ],
+  "operations": [
+    {
+      "adapter_requirement": "mock",
+      "audit_behavior": "no execution audit record",
+      "cleanup_behavior": "restore_safe_state",
+      "description": "Run mock dry-run preflight checks.",
+      "dry_run_required": true,
+      "expected_response_result_fields": [
+        "preflight_report"
+      ],
+      "hardware_motion_possible": false,
+      "name": "preflight",
+      "possible_error_codes": [
+        "configuration_invalid",
+        "unsupported_platform"
+      ],
+      "required_capabilities": [
+        "dry_run"
+      ],
+      "required_request_payload_fields": []
+    },
+    {
+      "adapter_requirement": "mock",
+      "audit_behavior": "in_memory_execution_audit_record",
+      "cleanup_behavior": "stop_then_restore",
+      "description": "Validate and dispatch a mock velocity command.",
+      "dry_run_required": true,
+      "expected_response_result_fields": [
+        "receipt",
+        "stop_receipt",
+        "audit_record"
+      ],
+      "hardware_motion_possible": false,
+      "name": "dry_run_velocity_command",
+      "possible_error_codes": [
+        "configuration_invalid",
+        "command_expired",
+        "command_outside_safety_envelope",
+        "operator_authorization_required",
+        "operator_authorization_expired"
+      ],
+      "required_capabilities": [
+        "dry_run",
+        "high_level_body_velocity_command",
+        "command_acknowledgement"
+      ],
+      "required_request_payload_fields": [
+        "safety_envelope",
+        "velocity_command",
+        "operator_authorization_when_required"
+      ]
+    },
+    {
+      "adapter_requirement": "mock",
+      "audit_behavior": "no execution audit record",
+      "cleanup_behavior": "restore_safe_state",
+      "description": "Collect deterministic mock telemetry.",
+      "dry_run_required": true,
+      "expected_response_result_fields": [
+        "telemetry_sample"
+      ],
+      "hardware_motion_possible": false,
+      "name": "dry_run_collect_telemetry",
+      "possible_error_codes": [
+        "configuration_invalid",
+        "unsupported_platform"
+      ],
+      "required_capabilities": [
+        "dry_run",
+        "body_velocity_telemetry"
+      ],
+      "required_request_payload_fields": []
+    },
+    {
+      "adapter_requirement": "mock",
+      "audit_behavior": "no execution audit record",
+      "cleanup_behavior": "restore_safe_state",
+      "description": "Issue a mock stop command.",
+      "dry_run_required": true,
+      "expected_response_result_fields": [
+        "receipt"
+      ],
+      "hardware_motion_possible": false,
+      "name": "dry_run_stop",
+      "possible_error_codes": [
+        "configuration_invalid",
+        "unsupported_platform"
+      ],
+      "required_capabilities": [
+        "dry_run",
+        "explicit_stop"
+      ],
+      "required_request_payload_fields": []
+    },
+    {
+      "adapter_requirement": "mock",
+      "audit_behavior": "in_memory_execution_audit_record",
+      "cleanup_behavior": "stop_attempted_then_restore_on_failure",
+      "description": "Run the full mock dry-run flow with audit generation.",
+      "dry_run_required": true,
+      "expected_response_result_fields": [
+        "receipt",
+        "telemetry_sample",
+        "stop_receipt",
+        "audit_record"
+      ],
+      "hardware_motion_possible": false,
+      "name": "dry_run_end_to_end",
+      "possible_error_codes": [
+        "configuration_invalid",
+        "command_expired",
+        "command_outside_safety_envelope",
+        "operator_authorization_required",
+        "operator_authorization_expired"
+      ],
+      "required_capabilities": [
+        "dry_run",
+        "high_level_body_velocity_command",
+        "body_velocity_telemetry",
+        "explicit_stop",
+        "locomotion_mode_transition",
+        "state_stream"
+      ],
+      "required_request_payload_fields": [
+        "safety_envelope",
+        "velocity_command",
+        "operator_authorization_when_required"
+      ]
+    }
+  ],
+  "output_schema_ids": [
+    "urn:calibration-skill:schema:skill_response:v1"
+  ],
+  "platform_support": {
+    "booster_k1": {
+      "dry_run_only": false,
+      "maturity": "legacy_existing",
+      "status": "not_available_new_runtime"
+    },
+    "mock": {
+      "dry_run_only": true,
+      "maturity": "bench_verified",
+      "status": "supported"
+    },
+    "unitree_g1": {
+      "dry_run_only": false,
+      "maturity": "scaffolded",
+      "status": "not_available"
+    },
+    "unitree_go1": {
+      "dry_run_only": false,
+      "maturity": "scaffolded",
+      "status": "not_available"
+    }
+  },
+  "readiness_status": {
+    "agent_cli": "bench_verified",
+    "hardware_verification": "not_started",
+    "json_io_contract": "bench_verified",
+    "release": "not_started"
+  },
+  "safety_requirements": {
+    "dry_run_required": true,
+    "operator_authorization_required_when_safety_envelope_requires_it": true,
+    "platform_must_be": "mock",
+    "safety_envelope_required_for": [
+      "dry_run_velocity_command",
+      "dry_run_end_to_end"
+    ]
+  },
+  "skill_name": "calibration_skill",
+  "skill_version": "0.1.0-m26d",
+  "supported_operations": [
+    "preflight",
+    "dry_run_velocity_command",
+    "dry_run_collect_telemetry",
+    "dry_run_stop",
+    "dry_run_end_to_end"
+  ]
+}

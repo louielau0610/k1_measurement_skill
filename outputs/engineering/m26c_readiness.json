@@ -42,5 +42,9 @@
     "No G1 or GO1 runtime support is implemented.",
     "No hardware verification has been performed.",
     "No release readiness is claimed."
-  ]
+  ],
+  "successor_note": {
+    "m26d_readiness": "outputs/engineering/m26d_readiness.json",
+    "note": "M26-C remains the mock service milestone. M26-D adds agent-callable JSON CLI invocation without changing real-platform readiness."
+  }
 }

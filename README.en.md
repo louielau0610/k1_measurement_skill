@@ -215,6 +215,23 @@ py scripts/validate_real_k1_topic_mapping.py --mapping outputs/m8_field_session_
 ```
 
 The default template mapping still contains `TBD`, so the mapping validator returns a controlled validation failure rather than a Python crash.
+# M26-D Agent-Callable Dry-Run CLI
+
+M26-D adds a deterministic JSON CLI for agents to call the mock-only dry-run
+skill:
+
+```powershell
+py -3.12 -m calibration_skill.cli manifest
+py -3.12 -m calibration_skill.cli operations
+py -3.12 -m calibration_skill.cli validate --input examples/calibration_skill/dry_run_end_to_end.mock.json
+py -3.12 -m calibration_skill.cli invoke --input examples/calibration_skill/dry_run_end_to_end.mock.json --pretty
+```
+
+The CLI supports stdin/stdout and file input/output, returns
+`skill_response.schema.json`-compatible responses, and rejects real platforms.
+M26-D remains mock-only and dry-run-only; no K1/G1/GO1 runtime support or
+hardware verification is claimed.
+
 # M26-C Mock Adapter and Dry-Run Skill Service
 
 M26-C adds the first executable hardware-free layer above the M26-B contracts.

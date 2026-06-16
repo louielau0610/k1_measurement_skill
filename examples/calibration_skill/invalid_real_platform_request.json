@@ -1,0 +1,12 @@
+{
+  "caller_metadata": {
+    "example": "m26d-invalid"
+  },
+  "dry_run": true,
+  "operation": "preflight",
+  "payload": {},
+  "platform": "booster_k1",
+  "request_id": "invalid-real-platform",
+  "robot_id": "k1-not-available",
+  "schema_version": "1.0.0"
+}

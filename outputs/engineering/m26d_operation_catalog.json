@@ -1,0 +1,133 @@
+{
+  "operations": [
+    {
+      "adapter_requirement": "mock",
+      "audit_behavior": "no execution audit record",
+      "cleanup_behavior": "restore_safe_state",
+      "description": "Run mock dry-run preflight checks.",
+      "dry_run_required": true,
+      "expected_response_result_fields": [
+        "preflight_report"
+      ],
+      "hardware_motion_possible": false,
+      "name": "preflight",
+      "possible_error_codes": [
+        "configuration_invalid",
+        "unsupported_platform"
+      ],
+      "required_capabilities": [
+        "dry_run"
+      ],
+      "required_request_payload_fields": []
+    },
+    {
+      "adapter_requirement": "mock",
+      "audit_behavior": "in_memory_execution_audit_record",
+      "cleanup_behavior": "stop_then_restore",
+      "description": "Validate and dispatch a mock velocity command.",
+      "dry_run_required": true,
+      "expected_response_result_fields": [
+        "receipt",
+        "stop_receipt",
+        "audit_record"
+      ],
+      "hardware_motion_possible": false,
+      "name": "dry_run_velocity_command",
+      "possible_error_codes": [
+        "configuration_invalid",
+        "command_expired",
+        "command_outside_safety_envelope",
+        "operator_authorization_required",
+        "operator_authorization_expired"
+      ],
+      "required_capabilities": [
+        "dry_run",
+        "high_level_body_velocity_command",
+        "command_acknowledgement"
+      ],
+      "required_request_payload_fields": [
+        "safety_envelope",
+        "velocity_command",
+        "operator_authorization_when_required"
+      ]
+    },
+    {
+      "adapter_requirement": "mock",
+      "audit_behavior": "no execution audit record",
+      "cleanup_behavior": "restore_safe_state",
+      "description": "Collect deterministic mock telemetry.",
+      "dry_run_required": true,
+      "expected_response_result_fields": [
+        "telemetry_sample"
+      ],
+      "hardware_motion_possible": false,
+      "name": "dry_run_collect_telemetry",
+      "possible_error_codes": [
+        "configuration_invalid",
+        "unsupported_platform"
+      ],
+      "required_capabilities": [
+        "dry_run",
+        "body_velocity_telemetry"
+      ],
+      "required_request_payload_fields": []
+    },
+    {
+      "adapter_requirement": "mock",
+      "audit_behavior": "no execution audit record",
+      "cleanup_behavior": "restore_safe_state",
+      "description": "Issue a mock stop command.",
+      "dry_run_required": true,
+      "expected_response_result_fields": [
+        "receipt"
+      ],
+      "hardware_motion_possible": false,
+      "name": "dry_run_stop",
+      "possible_error_codes": [
+        "configuration_invalid",
+        "unsupported_platform"
+      ],
+      "required_capabilities": [
+        "dry_run",
+        "explicit_stop"
+      ],
+      "required_request_payload_fields": []
+    },
+    {
+      "adapter_requirement": "mock",
+      "audit_behavior": "in_memory_execution_audit_record",
+      "cleanup_behavior": "stop_attempted_then_restore_on_failure",
+      "description": "Run the full mock dry-run flow with audit generation.",
+      "dry_run_required": true,
+      "expected_response_result_fields": [
+        "receipt",
+        "telemetry_sample",
+        "stop_receipt",
+        "audit_record"
+      ],
+      "hardware_motion_possible": false,
+      "name": "dry_run_end_to_end",
+      "possible_error_codes": [
+        "configuration_invalid",
+        "command_expired",
+        "command_outside_safety_envelope",
+        "operator_authorization_required",
+        "operator_authorization_expired"
+      ],
+      "required_capabilities": [
+        "dry_run",
+        "high_level_body_velocity_command",
+        "body_velocity_telemetry",
+        "explicit_stop",
+        "locomotion_mode_transition",
+        "state_stream"
+      ],
+      "required_request_payload_fields": [
+        "safety_envelope",
+        "velocity_command",
+        "operator_authorization_when_required"
+      ]
+    }
+  ],
+  "schema_version": "m26d_operation_catalog_v1"
+}

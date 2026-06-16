@@ -1,0 +1,61 @@
+{
+  "validation_metadata": {
+    "milestone": "M26-D",
+    "date": "2026-06-17",
+    "schema_version": "m26d_validation_summary_v1",
+    "note": "Updated after final validation commands complete."
+  },
+  "branch": "engineering/m26d-agent-skill-cli",
+  "source_commit": "9440621e76cf688a32854beec286b28a4aa7c11d",
+  "commit_under_test": "working tree on engineering/m26d-agent-skill-cli before final commit",
+  "environment": {
+    "python_version": "Python 3.12.3",
+    "pytest_version": "pytest 9.0.3",
+    "jsonschema_version": "4.26.0"
+  },
+  "results": {
+    "manifest_validation": "passed",
+    "cli_tests": "passed",
+    "example_validation": "passed",
+    "all_calibration_skill_tests": "267 passed",
+    "full_suite": "1173 passed",
+    "targeted_m26d_test_count": 29,
+    "calibration_skill_test_count": 267,
+    "full_suite_test_count": 1173,
+    "hermetic_runner_available": false,
+    "hermetic_runner_result": "not_available",
+    "final_porcelain_output": "Only intended M26-D source, docs, examples, tests, and engineering artifacts were dirty before commit; no historical output files were modified by the final full-suite run.",
+    "hardware_operation_attempted": false,
+    "network_operation_attempted": false,
+    "vendor_runtime_used": false
+  },
+  "commands": [
+    {
+      "command": "py -3.12 scripts/validate_engineering_artifacts.py",
+      "exit_code": 0
+    },
+    {
+      "command": "py -3.12 -m compileall calibration_skill calibration_core k1_measurement platforms scripts tests -q",
+      "exit_code": 0
+    },
+    {
+      "command": "py -3.12 -m pytest tests/calibration_skill/test_skill_manifest.py tests/calibration_skill/test_skill_cli.py tests/calibration_skill/test_skill_cli_examples.py tests/calibration_skill/test_agent_invocation_contract.py tests/calibration_skill/test_m26d_architecture_boundaries.py -q",
+      "exit_code": 0,
+      "test_count": 29
+    },
+    {
+      "command": "py -3.12 -m pytest tests/calibration_skill -q",
+      "exit_code": 0,
+      "test_count": 267
+    },
+    {
+      "command": "py -3.12 -m pytest tests/ --tb=no -q",
+      "exit_code": 0,
+      "test_count": 1173
+    },
+    {
+      "command": "git status --porcelain=v1",
+      "exit_code": 0
+    }
+  ]
+}

@@ -1,8 +1,38 @@
 # Project Status
 
+## M26-D Agent-Callable Dry-Run CLI
+
+M26-D is the active milestone. It turns the M26-C mock dry-run service into a
+deterministic agent-callable JSON CLI.
+
+M26-D deliverables:
+
+- `calibration_skill/cli.py` - JSON stdin/stdout and file input/output CLI
+- `calibration_skill/skill/manifest.py` - stable machine-readable skill manifest
+- `calibration_skill/skill/manifest.schema.json`
+- `examples/calibration_skill/` - deterministic valid and invalid requests
+- `outputs/engineering/m26d_skill_manifest.json`
+- `outputs/engineering/m26d_operation_catalog.json`
+- `docs/engineering/m26d_agent_invocation_interface.md`
+- `docs/engineering/m26d_cli_json_io_contract.md`
+- `docs/engineering/m26d_example_requests.md`
+
+CLI examples:
+
+```powershell
+py -3.12 -m calibration_skill.cli manifest
+py -3.12 -m calibration_skill.cli operations
+py -3.12 -m calibration_skill.cli validate --input examples/calibration_skill/dry_run_end_to_end.mock.json
+py -3.12 -m calibration_skill.cli invoke --input examples/calibration_skill/dry_run_end_to_end.mock.json --pretty
+```
+
+M26-D remains mock-only and dry-run-only. It does not migrate K1, implement G1
+or GO1, connect to hardware, open sockets, start DDS, send UDP, or import vendor
+SDK runtimes.
+
 ## M26-C Mock Adapter and Dry-Run Skill Service
 
-M26-C is the active milestone. It adds the first executable, hardware-free skill
+M26-C added the first executable, hardware-free skill
 layer on top of the M26-B contracts.
 
 M26-C deliverables:

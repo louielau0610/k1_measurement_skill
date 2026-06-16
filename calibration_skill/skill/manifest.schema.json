@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:calibration-skill:schema:skill_manifest:m26d",
+  "title": "M26-D Skill Manifest",
+  "type": "object",
+  "required": [
+    "skill_name",
+    "skill_version",
+    "contract_version",
+    "dry_run_only",
+    "hardware_support",
+    "supported_operations",
+    "operations",
+    "platform_support",
+    "examples",
+    "error_codes",
+    "exit_codes",
+    "readiness_status",
+    "non_goals"
+  ],
+  "properties": {
+    "skill_name": {"type": "string", "minLength": 1},
+    "skill_version": {"type": "string", "minLength": 1},
+    "contract_version": {"type": "string", "const": "1.0.0"},
+    "dry_run_only": {"type": "boolean", "const": true},
+    "hardware_support": {"type": "string", "const": "not_supported"},
+    "input_schema_ids": {"type": "array", "items": {"type": "string"}},
+    "output_schema_ids": {"type": "array", "items": {"type": "string"}},
+    "supported_operations": {"type": "array", "items": {"type": "string"}, "minItems": 5, "maxItems": 5},
+    "operations": {"type": "array", "items": {"type": "object"}, "minItems": 5, "maxItems": 5},
+    "platform_support": {"type": "object"},
+    "safety_requirements": {"type": "object"},
+    "examples": {"type": "object"},
+    "error_codes": {"type": "array", "items": {"type": "string"}},
+    "exit_codes": {"type": "object"},
+    "readiness_status": {"type": "object"},
+    "non_goals": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

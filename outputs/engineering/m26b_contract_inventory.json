@@ -173,6 +173,19 @@
       "side_effects": "in_memory_audit_only",
       "maturity": "bench_verified",
       "test_references": ["tests/calibration_skill/test_skill_service.py", "tests/calibration_skill/test_dry_run_end_to_end.py"]
+    },
+    {
+      "public_name": "Skill CLI",
+      "module": "calibration_skill.cli",
+      "kind": "agent_callable_cli",
+      "contract_version": "1.0.0",
+      "platform_independence": "mock_only",
+      "serialization_support": "skill_request_response_envelopes",
+      "corresponding_schema": "skill_request.schema.json, skill_response.schema.json, calibration_skill/skill/manifest.schema.json",
+      "invariants": ["dry_run true required", "mock platform only", "deterministic JSON output", "no traceback by default"],
+      "side_effects": "stdout_or_explicit_output_file_only",
+      "maturity": "bench_verified",
+      "test_references": ["tests/calibration_skill/test_skill_cli.py", "tests/calibration_skill/test_agent_invocation_contract.py"]
     }
   ]
 }

@@ -73,6 +73,13 @@ class SkillService:
         request_id = str(request.get("request_id", ""))
         operation = str(request.get("operation", ""))
         try:
+            if request.get("schema_version") != CURRENT_SCHEMA_VERSION:
+                return self._reject(request_id, operation, DomainError(
+                    code=ERROR_SCHEMA_VERSION_UNSUPPORTED,
+                    message="Unsupported schema_version",
+                    retryable=False,
+                    details={"supported": CURRENT_SCHEMA_VERSION, "actual": request.get("schema_version")},
+                ))
             validation = validate_skill_request(request)
             if not validation.get("valid"):
                 return self._reject(request_id, operation, DomainError(

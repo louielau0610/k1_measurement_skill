@@ -12,6 +12,8 @@ Validates:
 8. All JSON Schema files parse as JSON
 9. M26-C layering boundaries are preserved
 10. M26-C readiness does not claim real-platform or hardware support
+11. M26-D manifest and operation catalog are stable
+12. M26-D examples are deterministic and path-portable
 
 Produces deterministic failure messages and nonzero exit code on failure.
 Does NOT modify any files.
@@ -25,6 +27,8 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 FORBIDDEN_IMPORTS = [
     "booster_robotics_sdk",
@@ -332,6 +336,123 @@ def validate_m26c_readiness() -> int:
     return EXIT_FAIL if errors > 0 else EXIT_OK
 
 
+def validate_m26d_manifest_and_catalog() -> int:
+    """Verify M26-D manifest/catalog artifacts match the code source of truth."""
+    errors = 0
+    try:
+        from calibration_skill.skill.manifest import build_skill_manifest, operation_catalog
+    except Exception as exc:
+        fail(f"Could not import M26-D manifest module: {exc}")
+        return EXIT_FAIL
+
+    manifest_path = REPO_ROOT / "outputs" / "engineering" / "m26d_skill_manifest.json"
+    catalog_path = REPO_ROOT / "outputs" / "engineering" / "m26d_operation_catalog.json"
+    schema_path = REPO_ROOT / "calibration_skill" / "skill" / "manifest.schema.json"
+    for path in (manifest_path, catalog_path, schema_path):
+        if not path.exists():
+            fail(f"M26-D required artifact missing: {path.relative_to(REPO_ROOT)}")
+            errors += 1
+    if errors:
+        return EXIT_FAIL
+
+    manifest = parse_json(manifest_path)
+    catalog = parse_json(catalog_path)
+    schema = parse_json(schema_path)
+    if manifest != build_skill_manifest():
+        fail("m26d_skill_manifest.json does not match build_skill_manifest()")
+        errors += 1
+    expected_ops = [op["name"] for op in operation_catalog()]
+    if catalog.get("operations") != operation_catalog():
+        fail("m26d_operation_catalog.json does not match operation_catalog()")
+        errors += 1
+    if manifest and manifest.get("supported_operations") != expected_ops:
+        fail("M26-D manifest supported_operations mismatch")
+        errors += 1
+    if manifest and any("physical" in op for op in manifest.get("supported_operations", [])):
+        fail("M26-D manifest lists a physical operation")
+        errors += 1
+    if manifest and manifest.get("platform_support", {}).get("mock", {}).get("dry_run_only") is not True:
+        fail("M26-D manifest must mark mock dry_run_only=true")
+        errors += 1
+    if manifest and manifest.get("platform_support", {}).get("booster_k1", {}).get("status") == "supported":
+        fail("M26-D manifest must not mark booster_k1 supported")
+        errors += 1
+    if errors == 0:
+        ok("M26-D manifest and operation catalog stable")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
+def validate_m26d_examples() -> int:
+    """Verify examples parse, contain no machine-local paths, and cover required files."""
+    example_dir = REPO_ROOT / "examples" / "calibration_skill"
+    required = {
+        "preflight_request.mock.json",
+        "dry_run_velocity_command.mock.json",
+        "dry_run_collect_telemetry.mock.json",
+        "dry_run_stop.mock.json",
+        "dry_run_end_to_end.mock.json",
+        "invalid_real_platform_request.json",
+        "invalid_dry_run_false_request.json",
+        "invalid_missing_safety_request.json",
+    }
+    errors = 0
+    if not example_dir.is_dir():
+        fail(f"M26-D example directory missing: {example_dir}")
+        return EXIT_FAIL
+    found = {p.name for p in example_dir.glob("*.json")}
+    for name in sorted(required - found):
+        fail(f"M26-D required example missing: {name}")
+        errors += 1
+    for path in sorted(example_dir.glob("*.json")):
+        data = parse_json(path)
+        if data is None:
+            errors += 1
+            continue
+        text = path.read_text(encoding="utf-8")
+        if "C:\\" in text or "\\Users\\" in text or "Users/" in text:
+            fail(f"M26-D example contains machine-local path: {path.name}")
+            errors += 1
+        if data.get("schema_version") != "1.0.0":
+            fail(f"M26-D example has wrong schema_version: {path.name}")
+            errors += 1
+    if errors == 0:
+        ok("M26-D examples parse and are path-portable")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
+def validate_m26d_readiness() -> int:
+    """Verify M26-D readiness contains CLI progress but no hardware claims."""
+    readiness_path = REPO_ROOT / "outputs" / "engineering" / "m26d_readiness.json"
+    if not readiness_path.exists():
+        fail(f"M26-D readiness file not found: {readiness_path}")
+        return EXIT_FAIL
+    data = parse_json(readiness_path)
+    if data is None:
+        return EXIT_FAIL
+    readiness = data.get("readiness", {})
+    errors = 0
+    expected = {
+        "agent_cli": "bench_verified",
+        "json_io_contract": "bench_verified",
+        "unified_skill_runtime": "dry_run_only",
+        "hardware_verification": "not_started",
+        "release": "not_started",
+    }
+    for key, maturity in expected.items():
+        actual = readiness.get(key, {}).get("maturity")
+        if actual != maturity:
+            fail(f"m26d_readiness.json: {key} maturity is {actual!r}, expected {maturity!r}")
+            errors += 1
+    for key in ("k1_adapter_migration", "g1_adapter", "go1_adapter"):
+        actual = readiness.get(key, {}).get("maturity")
+        if actual in ("bench_verified", "hardware_verified"):
+            fail(f"m26d_readiness.json: {key} must not claim new runtime support")
+            errors += 1
+    if errors == 0:
+        ok("M26-D readiness remains dry-run-only")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
 def main() -> int:
     print("=== M26 Engineering Artifact Validator ===\n")
 
@@ -346,6 +467,9 @@ def main() -> int:
         ("No network/hardware ops", validate_no_network_or_hardware()),
         ("M26-C layering", validate_m26c_layering()),
         ("M26-C readiness", validate_m26c_readiness()),
+        ("M26-D manifest/catalog", validate_m26d_manifest_and_catalog()),
+        ("M26-D examples", validate_m26d_examples()),
+        ("M26-D readiness", validate_m26d_readiness()),
     ]
 
     print()

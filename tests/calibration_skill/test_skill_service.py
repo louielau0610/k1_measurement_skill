@@ -31,7 +31,7 @@ def test_unknown_operation_schema_version_missing_id_dry_run_and_real_platform_r
     assert svc.handle_request(request("nope"))["error"]["code"] == "configuration_invalid"
     bad_version = request(OP_PREFLIGHT)
     bad_version["schema_version"] = "2.0.0"
-    assert svc.handle_request(bad_version)["error"]["code"] == "configuration_invalid"
+    assert svc.handle_request(bad_version)["error"]["code"] == "schema_version_unsupported"
     missing_id = request(OP_PREFLIGHT, request_id="")
     assert svc.handle_request(missing_id)["error"]["code"] == "configuration_invalid"
     assert svc.handle_request(request(OP_PREFLIGHT, dry_run=False))["error"]["code"] == "unsupported_platform"

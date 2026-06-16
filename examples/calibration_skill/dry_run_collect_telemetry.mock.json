@@ -1,0 +1,12 @@
+{
+  "caller_metadata": {
+    "example": "m26d"
+  },
+  "dry_run": true,
+  "operation": "dry_run_collect_telemetry",
+  "payload": {},
+  "platform": "mock",
+  "request_id": "example-dry_run_collect_telemetry",
+  "robot_id": "mock-robot",
+  "schema_version": "1.0.0"
+}
