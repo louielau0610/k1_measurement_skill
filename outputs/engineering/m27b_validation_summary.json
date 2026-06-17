@@ -1,0 +1,19 @@
+{
+  "milestone": "M27-B",
+  "date": "2026-06-17",
+  "status": "pending_final_validation",
+  "hardware_used": false,
+  "vendor_sdk_imported": false,
+  "default_k1_registration": false,
+  "socket_or_dds_used": false,
+  "historical_outputs_modified": false,
+  "gold_profiles_or_raw_data_modified": false,
+  "validation_commands": [
+    "py -3.12 scripts/validate_engineering_artifacts.py",
+    "py -3.12 -m compileall calibration_skill calibration_core k1_measurement platforms scripts tests -q",
+    "py -3.12 -m pytest tests/calibration_skill/test_booster_k1_config.py tests/calibration_skill/test_booster_k1_capabilities.py tests/calibration_skill/test_booster_k1_identity.py tests/calibration_skill/test_booster_k1_fake_runtime.py tests/calibration_skill/test_booster_k1_adapter.py tests/calibration_skill/test_booster_k1_registry_boundary.py tests/calibration_skill/test_booster_k1_no_vendor_boundary.py tests/calibration_skill/test_booster_k1_telemetry_mapping.py tests/calibration_skill/test_m27b_readiness.py -q",
+    "py -3.12 -m pytest tests/calibration_skill -q",
+    "py -3.12 scripts/run_tests_hermetically.py -- py -3.12 -m pytest tests/ --tb=no -q",
+    "py -3.12 scripts/run_local_release_gate.py --summary outputs/engineering/m27b_release_gate_summary.json"
+  ]
+}

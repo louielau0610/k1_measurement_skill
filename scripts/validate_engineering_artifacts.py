@@ -23,7 +23,9 @@ Validates:
 19. M27-A M26-D manifest still marks K1 unavailable
 20. M27-A no new Booster SDK import in core calibration_skill layers
 21. M27-A no hardware readiness field is upgraded
-22. M27-A K1 migration remains planning-only
+22. M27-A K1 migration remains planning-only until M27-B artifacts exist
+23. M27-B K1 fake-runtime artifacts exist
+24. M27-B K1 remains no-hardware and not default-registered
 
 Produces deterministic failure messages and nonzero exit code on failure.
 Does NOT modify any files.
@@ -721,6 +723,7 @@ def validate_m27a_no_hardware_readiness_upgrade() -> int:
 def validate_m27a_k1_planning_only() -> int:
     """Verify K1 migration remains planning-only; no implementation files created."""
     errors = 0
+    m27b_readiness = REPO_ROOT / "outputs" / "engineering" / "m27b_readiness.json"
     # Check that no K1 adapter implementation exists in calibration_skill/adapters/
     adapters_dir = REPO_ROOT / "calibration_skill" / "adapters"
     k1_adapter_files = [
@@ -730,7 +733,7 @@ def validate_m27a_k1_planning_only() -> int:
         adapters_dir / "booster_k1_adapter.py",
     ]
     for path in k1_adapter_files:
-        if path.exists():
+        if path.exists() and not m27b_readiness.exists():
             fail(f"K1 adapter implementation exists (should not before M27-B): {path.relative_to(REPO_ROOT)}")
             errors += 1
     # Verify no K1 registration call in any __init__.py or startup
@@ -748,7 +751,71 @@ def validate_m27a_k1_planning_only() -> int:
             fail("calibration_skill/adapters/__init__.py may auto-register K1")
             errors += 1
     if errors == 0:
-        ok("K1 migration remains planning-only")
+        ok("K1 migration boundary remains explicit")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
+def validate_m27b_artifacts_exist() -> int:
+    """Verify required M27-B docs and machine-readable artifacts exist."""
+    required = [
+        "docs/engineering/m27b_k1_adapter_skeleton.md",
+        "docs/engineering/m27b_k1_fake_runtime_contract.md",
+        "docs/engineering/m27b_k1_no_hardware_boundary.md",
+        "outputs/engineering/m27b_initial_state.json",
+        "outputs/engineering/m27b_readiness.json",
+        "outputs/engineering/m27b_validation_summary.json",
+        "outputs/engineering/m27b_k1_adapter_contract_report.json",
+        "calibration_skill/adapters/booster_k1/adapter.py",
+        "calibration_skill/adapters/booster_k1/runtime.py",
+        "tests/calibration_skill/fakes/fake_booster_k1_runtime.py",
+    ]
+    errors = 0
+    for rel in required:
+        if not (REPO_ROOT / rel).exists():
+            fail(f"M27-B required artifact missing: {rel}")
+            errors += 1
+    if errors == 0:
+        ok("M27-B artifacts exist")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
+def validate_m27b_no_hardware_boundary() -> int:
+    """Verify M27-B K1 skeleton remains fake-runtime-only."""
+    errors = 0
+    readiness_path = REPO_ROOT / "outputs" / "engineering" / "m27b_readiness.json"
+    summary_path = REPO_ROOT / "outputs" / "engineering" / "m27b_validation_summary.json"
+    readiness_data = parse_json(readiness_path) if readiness_path.exists() else None
+    summary_data = parse_json(summary_path) if summary_path.exists() else None
+    if not isinstance(readiness_data, dict):
+        fail("M27-B readiness file missing or invalid")
+        return EXIT_FAIL
+    readiness = readiness_data.get("readiness", {})
+    expected = {
+        "k1_adapter_migration": {"fake_runtime_verified", "implemented_unverified"},
+        "k1_new_runtime_support": {"fake_runtime_only"},
+        "k1_hardware_verification": {"not_started"},
+        "hardware_verification": {"not_started"},
+        "release": {"pre_release_only"},
+    }
+    for key, allowed in expected.items():
+        actual = readiness.get(key, {}).get("maturity")
+        if actual not in allowed:
+            fail(f"m27b_readiness.json: {key} maturity is {actual!r}, expected one of {sorted(allowed)}")
+            errors += 1
+    if isinstance(summary_data, dict):
+        for key in ("hardware_used", "vendor_sdk_imported", "default_k1_registration", "socket_or_dds_used"):
+            if summary_data.get(key) is not False:
+                fail(f"m27b_validation_summary.json: {key} must be false")
+                errors += 1
+    manifest_path = REPO_ROOT / "outputs" / "engineering" / "m26d_skill_manifest.json"
+    manifest = parse_json(manifest_path)
+    if isinstance(manifest, dict):
+        status = manifest.get("platform_support", {}).get("booster_k1", {}).get("status")
+        if status == "supported":
+            fail("Default CLI manifest must not mark booster_k1 supported")
+            errors += 1
+    if errors == 0:
+        ok("M27-B K1 no-hardware boundary clean")
     return EXIT_FAIL if errors > 0 else EXIT_OK
 
 
@@ -780,6 +847,8 @@ def main() -> int:
         ("M27-A no new Booster SDK", validate_m27a_no_new_booster_sdk()),
         ("M27-A no hardware readiness upgrade", validate_m27a_no_hardware_readiness_upgrade()),
         ("M27-A K1 planning only", validate_m27a_k1_planning_only()),
+        ("M27-B artifacts", validate_m27b_artifacts_exist()),
+        ("M27-B no hardware boundary", validate_m27b_no_hardware_boundary()),
     ]
 
     print()

@@ -1,6 +1,20 @@
 ﻿# TODO
 
-## M27-A K1 Legacy Adapter Extraction Plan and Compatibility Boundary (current)
+## M27-B K1 Adapter Skeleton, Fake Booster Runtime, and No-Hardware Tests (current)
+
+- [x] Add `calibration_skill.adapters.booster_k1` package skeleton
+- [x] Add explicit K1 adapter config with dry-run and hardware gates
+- [x] Add conservative K1 fake-runtime capability descriptor
+- [x] Add K1 identity mapping
+- [x] Add Booster K1 fake runtime protocol
+- [x] Add no-hardware `BoosterK1Adapter` against injected runtime only
+- [x] Add deterministic fake runtime for tests
+- [x] Add lifecycle, safety, command, telemetry, registry, and no-vendor tests
+- [x] Add M27-B engineering docs and readiness artifacts
+
+**M27-B remains fake-runtime-only. M27-C is required before any real SDK integration.**
+
+## M27-A K1 Legacy Adapter Extraction Plan and Compatibility Boundary
 
 - [x] K1 legacy adapter inventory (`docs/engineering/m27a_k1_legacy_inventory.md`, JSON)
 - [x] K1 command path audit (`docs/engineering/m27a_k1_command_path_audit.md`, JSON)
@@ -14,11 +28,11 @@
 - [x] Planning artifact tests (`tests/calibration_skill/test_m27a_k1_planning_artifacts.py`)
 - [x] Readiness and documentation updates
 
-**M27-A does NOT implement migration. M27-B is the first implementation step.**
+**M27-A does NOT implement migration. M27-B adds only a fake-runtime skeleton.**
 
 ## Post-M27-A
 
-- [ ] M27-B: Implement K1 RobotAdapter with subprocess sidecar (non-hardware tests first)
+- [x] M27-B: Implement K1 fake-runtime RobotAdapter skeleton (no hardware)
 - [ ] M27-C: Hardware-gated K1 integration and validation
 - [ ] Post-M26-D: Extract K1 adapter to target architecture (Phase 3)
 - [ ] M27-G1: Implement G1 adapter (Phase 4)

@@ -1,0 +1,32 @@
+{
+  "milestone": "M27-B",
+  "adapter": "BoosterK1Adapter",
+  "platform": "booster_k1",
+  "runtime_boundary": "injected_fake_booster_runtime_protocol",
+  "default_registered": false,
+  "hardware_verified": false,
+  "vendor_sdk_imported": false,
+  "contract_coverage": {
+    "RobotIdentity": "mapped from explicit config and optional fake runtime metadata",
+    "CapabilityDescriptor": "conservative fake-runtime-only descriptor",
+    "ConnectionConfig": "supported only through explicit fake registration helper",
+    "RobotAdapter.connect": "delegates to injected runtime connect",
+    "RobotAdapter.disconnect": "delegates to injected runtime disconnect",
+    "RobotAdapter.preflight": "checks dry-run gate, fake runtime mode, and runtime health",
+    "RobotAdapter.enter_locomotion_ready": "prepare then walking fake lifecycle",
+    "RobotAdapter.send_velocity_command": "validates state, expiry, safety envelope, authorization, and forward-only K1 axis support",
+    "RobotAdapter.stop": "delegates to fake runtime stop and preserves unacknowledged stop as structured receipt",
+    "RobotAdapter.restore_safe_state": "delegates to fake runtime restore",
+    "TelemetrySample": "normalized from fake odometry and fake state"
+  },
+  "unsupported_in_m27b": [
+    "real Booster SDK runtime",
+    "hardware connection",
+    "K1 production registration",
+    "velocity_y",
+    "yaw_rate",
+    "emergency_stop",
+    "G1 runtime",
+    "GO1 runtime"
+  ]
+}

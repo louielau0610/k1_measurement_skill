@@ -83,7 +83,7 @@ class AdapterRegistry:
         dry_run: bool,
         required_capabilities: tuple[str, ...] = (),
     ) -> list[DomainError]:
-        if platform != RobotPlatform.MOCK:
+        if platform != RobotPlatform.MOCK and platform not in self._records:
             return [DomainError(
                 code=ERROR_UNSUPPORTED_PLATFORM,
                 message=f"M26-C supports only mock dry-run platform, got {platform.value}",
@@ -106,7 +106,7 @@ class AdapterRegistry:
         if not dry_run:
             return [DomainError(
                 code=ERROR_UNSUPPORTED_PLATFORM,
-                message="M26-C adapter creation requires explicit dry_run=true",
+                message="adapter creation requires explicit dry_run=true",
                 retryable=False,
             )]
         try:
@@ -117,6 +117,12 @@ class AdapterRegistry:
                 message=f"no adapter factory registered for platform {platform.value}",
                 retryable=False,
                 details={"platform": platform.value},
+            )]
+        if record.dry_run_only and not dry_run:
+            return [DomainError(
+                code=ERROR_UNSUPPORTED_PLATFORM,
+                message="dry-run-only adapter requires dry_run=true",
+                retryable=False,
             )]
         negotiation = negotiate_capabilities(record.capabilities, required_capabilities)
         if not negotiation.satisfied:

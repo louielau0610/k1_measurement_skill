@@ -1,5 +1,18 @@
 # K1 Velocity Measurement Toolkit
 
+## M27-B K1 Fake-Runtime Adapter Skeleton
+
+M27-B adds the `calibration_skill.adapters.booster_k1` package with a K1
+adapter skeleton, explicit K1 config, conservative capability descriptor,
+identity mapping, fake Booster runtime protocol, and a `BoosterK1Adapter` that
+works only against an injected fake runtime.
+
+M27-B is still no-hardware. It does not connect to K1, send physical commands,
+import the real Booster SDK, open sockets, start DDS/UDP, register K1 as a
+default available platform, or claim hardware verification. K1 can be registered
+only through an explicit fake-runtime test helper. The default CLI/runtime
+remains mock-only. M27-C is required before any real SDK integration.
+
 ## M27-A K1 Legacy Adapter Extraction Plan and Compatibility Boundary
 
 M27-A is a planning and audit milestone only. It produces the K1 legacy adapter
@@ -7,8 +20,8 @@ inventory, command/telemetry/safety path audits, RobotAdapter mapping, vendor
 runtime isolation design, compatibility test plan, and migration risk register.
 
 M27-A does NOT implement any migration, connect to K1, send motion commands, or
-import Booster SDK into the new runtime. **M27-B will be the first possible K1
-implementation step.**
+import Booster SDK into the new runtime. M27-B adds the fake-runtime-only
+skeleton, but still does not provide real K1 runtime support.
 
 ## M26-E Packaging and Local Release Gate
 

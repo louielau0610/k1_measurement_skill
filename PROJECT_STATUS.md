@@ -1,6 +1,33 @@
 # Project Status
 
-## M27-A K1 Legacy Adapter Extraction Plan and Compatibility Boundary (current)
+## M27-B K1 Adapter Skeleton, Fake Booster Runtime, and No-Hardware Tests (current)
+
+M27-B implements the first new-architecture Booster K1 adapter skeleton under
+`calibration_skill.adapters.booster_k1`. The adapter uses only an injected fake
+runtime protocol and remains outside the default CLI/runtime path.
+
+M27-B deliverables:
+
+- `calibration_skill/adapters/booster_k1/` - K1 config, capabilities, identity,
+  runtime protocol, adapter, errors, and explicit fake registration helper
+- `tests/calibration_skill/fakes/fake_booster_k1_runtime.py`
+- `tests/calibration_skill/test_booster_k1_*.py`
+- `docs/engineering/m27b_k1_adapter_skeleton.md`
+- `docs/engineering/m27b_k1_fake_runtime_contract.md`
+- `docs/engineering/m27b_k1_no_hardware_boundary.md`
+- `outputs/engineering/m27b_*.json`
+
+M27-B does NOT:
+
+- Import the real Booster SDK
+- Connect to K1 or send physical commands
+- Open sockets, DDS, FastDDS, ROS2, or UDP
+- Register K1 in the default dry-run CLI/runtime
+- Claim K1 hardware verification
+- Implement G1 or GO1 runtime support
+- Begin M27-C real SDK integration
+
+## M27-A K1 Legacy Adapter Extraction Plan and Compatibility Boundary
 
 M27-A is a planning and audit milestone only. It produces the K1 legacy adapter
 inventory, command path audit, telemetry path audit, safety-gate audit, RobotAdapter

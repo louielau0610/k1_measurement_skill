@@ -1,0 +1,40 @@
+{
+  "readiness_metadata": {
+    "milestone": "M27-B",
+    "date": "2026-06-17",
+    "schema_version": "m27b_readiness_v1",
+    "note": "M27-B implements a Booster K1 fake-runtime adapter skeleton only. No hardware was used or verified."
+  },
+  "readiness": {
+    "domain_contracts": {"maturity": "bench_verified"},
+    "port_interfaces": {"maturity": "bench_verified"},
+    "versioned_schemas": {"maturity": "bench_verified"},
+    "deterministic_codecs": {"maturity": "bench_verified"},
+    "architecture_enforcement": {"maturity": "bench_verified"},
+    "mock_adapter": {"maturity": "bench_verified"},
+    "adapter_registry": {"maturity": "bench_verified"},
+    "skill_service_skeleton": {"maturity": "bench_verified"},
+    "dry_run_end_to_end": {"maturity": "bench_verified"},
+    "agent_cli": {"maturity": "bench_verified"},
+    "packaging_metadata": {"maturity": "bench_verified"},
+    "local_release_gate": {"maturity": "bench_verified"},
+    "k1_legacy_inventory": {"maturity": "bench_verified"},
+    "k1_migration_plan": {"maturity": "bench_verified"},
+    "k1_adapter_migration": {"maturity": "fake_runtime_verified"},
+    "k1_new_runtime_support": {"maturity": "fake_runtime_only"},
+    "k1_hardware_verification": {"maturity": "not_started"},
+    "g1_adapter": {"maturity": "scaffolded"},
+    "go1_adapter": {"maturity": "scaffolded"},
+    "unified_skill_runtime": {"maturity": "dry_run_only"},
+    "hardware_verification": {"maturity": "not_started"},
+    "release": {"maturity": "pre_release_only"}
+  },
+  "prohibited_claims": [
+    "No real Booster SDK runtime was implemented.",
+    "No K1 hardware connection was attempted.",
+    "No K1 hardware verification is claimed.",
+    "No K1 factory is registered by default.",
+    "No G1 or GO1 runtime support is claimed.",
+    "M27-C is required before real SDK integration."
+  ]
+}

@@ -1,10 +1,21 @@
-﻿# M27-A K1 旧版适配器盘点与迁移边界规划
+﻿# M27-B K1 fake-runtime 适配器骨架
+
+M27-B 添加 `calibration_skill.adapters.booster_k1` 包，提供 K1 新架构适配器骨架、
+显式 K1 配置、保守能力描述、身份映射、fake Booster runtime Protocol、以及
+只针对 fake runtime 的 `BoosterK1Adapter`。
+
+M27-B 仍然是 no-hardware 里程碑：不连接 K1，不发送物理命令，不导入真实 Booster SDK，
+不打开 socket，不启动 DDS/UDP，不把 K1 注册为默认可用平台，也不声称 hardware verified。
+K1 仅可通过显式测试注册函数接入 fake runtime；默认 CLI/runtime 仍然是 mock-only。
+真实 SDK 集成必须等到 M27-C，并且要放在单独的 fail-closed vendor runtime 边界后。
+
+# M27-A K1 旧版适配器盘点与迁移边界规划
 
 M27-A 是纯规划/审计里程碑。产出 K1 旧版适配器盘点、命令路径审计、遥测路径审计、
 安全门审计、RobotAdapter 映射、厂商运行时隔离设计、兼容性测试计划、迁移风险登记册。
 
 M27-A 不实施任何迁移、不连接 K1、不发送运动命令、不导入 Booster SDK 到新运行时。
-**M27-B 才是第一个可能的 K1 实施步骤。**
+M27-B 已添加 fake-runtime-only 骨架，但仍不提供真实 K1 runtime。
 
 # M26-E 包装与本地发布门禁
 
