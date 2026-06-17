@@ -1,11 +1,17 @@
-"""Explicit K1 fake-runtime registration helper."""
+"""Explicit K1 registration helpers."""
 from __future__ import annotations
 
 from collections.abc import Callable
 
 from calibration_skill.adapters.booster_k1.adapter import BoosterK1Adapter
 from calibration_skill.adapters.booster_k1.capabilities import booster_k1_capabilities
-from calibration_skill.adapters.booster_k1.config import BoosterK1AdapterConfig, K1_FAKE_RUNTIME_MODE
+from calibration_skill.adapters.booster_k1.config import (
+    BoosterK1AdapterConfig,
+    BoosterK1HardwareGate,
+    K1_FAKE_RUNTIME_MODE,
+    K1_VENDOR_RUNTIME_MODE,
+)
+from calibration_skill.adapters.booster_k1.vendor_runtime import create_booster_k1_vendor_runtime
 from calibration_skill.adapters.registry import AdapterFactoryRecord, AdapterRegistry
 from calibration_skill.domain.enums import RobotPlatform
 from calibration_skill.ports.factory import ConnectionConfig
@@ -34,6 +40,33 @@ def register_booster_k1_fake_adapter(
     )
 
 
+def register_booster_k1_vendor_adapter(registry: AdapterRegistry) -> None:
+    """Register a fail-closed vendor placeholder in an explicit registry only."""
+    if RobotPlatform.BOOSTER_K1 in registry._records:
+        raise ValueError("adapter factory already registered for platform booster_k1")
+
+    def create(config: ConnectionConfig):
+        extra = dict(config.extra)
+        gate = extra.get("hardware_gate")
+        if gate is not None and not isinstance(gate, BoosterK1HardwareGate):
+            raise ValueError("hardware_gate must be a BoosterK1HardwareGate")
+        return create_booster_k1_vendor_runtime(
+            hardware_gate=gate,
+            now_ns=int(extra.get("now_ns", 0)),
+            expected_robot_id=config.robot_id,
+            expected_safety_policy_id=str(extra.get("safety_policy_id", "")),
+            expected_safety_policy_hash=str(extra.get("safety_policy_hash", "")),
+            future_implementation_enabled=bool(extra.get("future_implementation_enabled", False)),
+        )
+
+    registry._records[RobotPlatform.BOOSTER_K1] = AdapterFactoryRecord(
+        platform=RobotPlatform.BOOSTER_K1,
+        creator=create,
+        capabilities=booster_k1_capabilities(),
+        dry_run_only=True,
+    )
+
+
 def _config_from_connection(config: ConnectionConfig) -> BoosterK1AdapterConfig:
     if config.platform != RobotPlatform.BOOSTER_K1:
         raise ValueError("K1 fake adapter requires booster_k1 ConnectionConfig")
@@ -41,7 +74,7 @@ def _config_from_connection(config: ConnectionConfig) -> BoosterK1AdapterConfig:
     runtime_mode = str(extra.get("runtime_mode", K1_FAKE_RUNTIME_MODE))
     allow_hardware = bool(extra.get("allow_hardware", False))
     dry_run = bool(extra.get("dry_run", True))
-    if runtime_mode != K1_FAKE_RUNTIME_MODE or allow_hardware or not dry_run:
+    if runtime_mode != K1_FAKE_RUNTIME_MODE or runtime_mode == K1_VENDOR_RUNTIME_MODE or allow_hardware or not dry_run:
         raise ValueError("M27-B K1 registration accepts only dry-run fake runtime configs")
     return BoosterK1AdapterConfig(
         robot_id=config.robot_id,

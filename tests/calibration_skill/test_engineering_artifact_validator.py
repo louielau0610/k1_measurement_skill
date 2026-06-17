@@ -25,7 +25,7 @@ class TestValidatorHappyPath:
     def test_validator_passes_on_clean_repo(self):
         exit_code, stdout, stderr = _run_validator()
         assert exit_code == 0, f"Validator failed:\n{stdout}\n{stderr}"
-        assert "ALL 25 CHECKS PASSED" in stdout
+        assert "ALL 27 CHECKS PASSED" in stdout
 
     def test_validator_does_not_modify_tracked_files(self):
         """Running the validator must not change any tracked files."""

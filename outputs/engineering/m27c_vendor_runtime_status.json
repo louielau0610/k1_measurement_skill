@@ -1,0 +1,10 @@
+{
+  "sdk_family": "booster_k1",
+  "sdk_importable_without_importing": false,
+  "detection_method": "importlib.util.find_spec",
+  "ordinary_runtime_import_safe": true,
+  "vendor_runtime_implemented": false,
+  "hardware_gate_required": true,
+  "hardware_enabled": false,
+  "reason": "M27-C placeholder: SDK may be detected without import, but real runtime remains not implemented."
+}

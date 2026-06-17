@@ -1,4 +1,4 @@
-"""K1 adapter configuration for the M27-B fake-runtime skeleton."""
+"""K1 adapter configuration and hardware gate contracts."""
 from __future__ import annotations
 
 import math
@@ -6,9 +6,15 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from calibration_skill.domain.enums import CoordinateFrame
+from calibration_skill.domain.errors import DomainError
 from calibration_skill.domain.safety import SafetyEnvelope
+from calibration_skill.adapters.booster_k1.errors import (
+    ERROR_K1_HARDWARE_GATE_EXPIRED,
+    ERROR_K1_HARDWARE_GATE_INCOMPLETE,
+)
 
 K1_FAKE_RUNTIME_MODE = "fake_booster_runtime"
+K1_VENDOR_RUNTIME_MODE = "vendor_runtime_placeholder"
 
 
 def _require_non_empty(value: str, name: str) -> None:
@@ -93,4 +99,89 @@ class BoosterK1AdapterConfig:
             stop_timeout_s=self.stop_timeout_s,
             allowed_command_frames=(CoordinateFrame.BODY,),
             operator_authorization_required=self.operator_authorization_required,
+        )
+
+
+@dataclass(frozen=True)
+class BoosterK1HardwareGate:
+    """Explicit real-hardware gate for future K1 vendor runtime work."""
+    allow_hardware: bool
+    operator_confirmed_hardware: bool
+    hardware_session_id: str
+    safety_policy_id: str
+    safety_policy_hash: str
+    expected_robot_id: str
+    expected_adapter_mode: str
+    require_physical_estop_confirmation: bool
+    require_clear_test_area_confirmation: bool
+    require_battery_state_confirmation: bool
+    require_network_isolation_confirmation: bool
+    require_manual_operator_present: bool
+    evidence_reference: str
+    expires_monotonic_ns: int
+
+    def __post_init__(self) -> None:
+        for name in (
+            "hardware_session_id",
+            "safety_policy_id",
+            "safety_policy_hash",
+            "expected_robot_id",
+            "expected_adapter_mode",
+            "evidence_reference",
+        ):
+            _require_non_empty(str(getattr(self, name)), name)
+        if self.expires_monotonic_ns <= 0:
+            raise ValueError("expires_monotonic_ns must be positive")
+
+    def validate(self, *, now_ns: int, expected_robot_id: str, expected_safety_policy_id: str, expected_safety_policy_hash: str) -> list[DomainError]:
+        """Validate the gate with an explicit monotonic timestamp."""
+        errors: list[DomainError] = []
+        if now_ns >= self.expires_monotonic_ns:
+            errors.append(DomainError(
+                ERROR_K1_HARDWARE_GATE_EXPIRED,
+                "K1 hardware gate has expired",
+                retryable=False,
+                details={"expires_monotonic_ns": self.expires_monotonic_ns, "now_ns": now_ns},
+            ))
+        required_flags = {
+            "allow_hardware": self.allow_hardware,
+            "operator_confirmed_hardware": self.operator_confirmed_hardware,
+            "require_physical_estop_confirmation": self.require_physical_estop_confirmation,
+            "require_clear_test_area_confirmation": self.require_clear_test_area_confirmation,
+            "require_battery_state_confirmation": self.require_battery_state_confirmation,
+            "require_network_isolation_confirmation": self.require_network_isolation_confirmation,
+            "require_manual_operator_present": self.require_manual_operator_present,
+        }
+        missing = [name for name, enabled in required_flags.items() if enabled is not True]
+        if missing:
+            errors.append(DomainError(
+                ERROR_K1_HARDWARE_GATE_INCOMPLETE,
+                "K1 hardware gate is incomplete",
+                retryable=False,
+                details={"missing_confirmations": tuple(missing)},
+            ))
+        mismatches: dict[str, object] = {}
+        if self.expected_robot_id != expected_robot_id:
+            mismatches["expected_robot_id"] = self.expected_robot_id
+        if self.safety_policy_id != expected_safety_policy_id:
+            mismatches["safety_policy_id"] = self.safety_policy_id
+        if self.safety_policy_hash != expected_safety_policy_hash:
+            mismatches["safety_policy_hash"] = "mismatch"
+        if self.expected_adapter_mode != K1_VENDOR_RUNTIME_MODE:
+            mismatches["expected_adapter_mode"] = self.expected_adapter_mode
+        if mismatches:
+            errors.append(DomainError(
+                ERROR_K1_HARDWARE_GATE_INCOMPLETE,
+                "K1 hardware gate does not match requested runtime",
+                retryable=False,
+                details=mismatches,
+            ))
+        return errors
+
+    def is_valid(self, *, now_ns: int, expected_robot_id: str, expected_safety_policy_id: str, expected_safety_policy_hash: str) -> bool:
+        return not self.validate(
+            now_ns=now_ns,
+            expected_robot_id=expected_robot_id,
+            expected_safety_policy_id=expected_safety_policy_id,
+            expected_safety_policy_hash=expected_safety_policy_hash,
         )

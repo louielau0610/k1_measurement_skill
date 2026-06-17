@@ -26,6 +26,8 @@ Validates:
 22. M27-A K1 migration remains planning-only until M27-B artifacts exist
 23. M27-B K1 fake-runtime artifacts exist
 24. M27-B K1 remains no-hardware and not default-registered
+25. M27-C vendor runtime boundary artifacts exist
+26. M27-C K1 vendor runtime remains disabled and no-hardware
 
 Produces deterministic failure messages and nonzero exit code on failure.
 Does NOT modify any files.
@@ -488,6 +490,14 @@ def validate_m26e_packaging_metadata() -> int:
         if any(forbidden in dep for dep in dependencies):
             fail(f"M26-E pyproject lists forbidden dependency {forbidden}")
             errors += 1
+    optional = project.get("optional-dependencies", {})
+    booster_extra = optional.get("booster-k1")
+    if booster_extra is not None:
+        for dep in [str(dep).lower() for dep in booster_extra]:
+            for forbidden in FORBIDDEN_IMPORTS:
+                if forbidden in dep:
+                    fail(f"M27-C booster-k1 optional extra lists forbidden dependency {forbidden}")
+                    errors += 1
     package_include = setuptools.get("packages", {}).get("find", {}).get("include", [])
     if "calibration_skill*" not in package_include:
         fail("M26-E pyproject does not include calibration_skill package")
@@ -819,6 +829,86 @@ def validate_m27b_no_hardware_boundary() -> int:
     return EXIT_FAIL if errors > 0 else EXIT_OK
 
 
+def validate_m27c_artifacts_exist() -> int:
+    """Verify required M27-C docs, code, and machine-readable artifacts exist."""
+    required = [
+        "calibration_skill/adapters/booster_k1/vendor_runtime.py",
+        "docs/engineering/m27c_k1_vendor_runtime_boundary.md",
+        "docs/engineering/m27c_k1_hardware_gate.md",
+        "docs/engineering/m27c_k1_future_booster_sdk_integration.md",
+        "outputs/engineering/m27c_initial_state.json",
+        "outputs/engineering/m27c_readiness.json",
+        "outputs/engineering/m27c_validation_summary.json",
+        "outputs/engineering/m27c_vendor_runtime_status.json",
+        "outputs/engineering/m27c_hardware_gate_contract.json",
+        "tests/calibration_skill/test_booster_k1_vendor_runtime_boundary.py",
+        "tests/calibration_skill/test_booster_k1_hardware_gate.py",
+        "tests/calibration_skill/test_booster_k1_vendor_registration_boundary.py",
+        "tests/calibration_skill/test_m27c_readiness.py",
+    ]
+    errors = 0
+    for rel in required:
+        if not (REPO_ROOT / rel).exists():
+            fail(f"M27-C required artifact missing: {rel}")
+            errors += 1
+    if errors == 0:
+        ok("M27-C artifacts exist")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
+def validate_m27c_no_hardware_boundary() -> int:
+    """Verify M27-C vendor boundary remains fail-closed and no-hardware."""
+    errors = 0
+    readiness = parse_json(REPO_ROOT / "outputs" / "engineering" / "m27c_readiness.json")
+    summary = parse_json(REPO_ROOT / "outputs" / "engineering" / "m27c_validation_summary.json")
+    status = parse_json(REPO_ROOT / "outputs" / "engineering" / "m27c_vendor_runtime_status.json")
+    if not isinstance(readiness, dict) or not isinstance(summary, dict) or not isinstance(status, dict):
+        fail("M27-C readiness, summary, or vendor status is missing/invalid")
+        return EXIT_FAIL
+    readiness_values = readiness.get("readiness", {})
+    expected = {
+        "k1_adapter_migration": {"fake_runtime_verified"},
+        "k1_new_runtime_support": {"fake_runtime_only"},
+        "k1_vendor_runtime_boundary": {"bench_verified"},
+        "k1_vendor_runtime": {"not_implemented"},
+        "k1_hardware_gate": {"bench_verified"},
+        "k1_hardware_verification": {"not_started"},
+        "hardware_verification": {"not_started"},
+        "release": {"pre_release_only"},
+    }
+    for key, allowed in expected.items():
+        actual = readiness_values.get(key, {}).get("maturity")
+        if actual not in allowed:
+            fail(f"m27c_readiness.json: {key} maturity is {actual!r}, expected one of {sorted(allowed)}")
+            errors += 1
+    for key in ("hardware_used", "vendor_sdk_imported", "default_k1_real_registration", "socket_or_dds_used", "real_vendor_runtime_implemented"):
+        if summary.get(key) is not False:
+            fail(f"m27c_validation_summary.json: {key} must be false")
+            errors += 1
+    if status.get("vendor_runtime_implemented") is not False:
+        fail("m27c_vendor_runtime_status.json must mark vendor_runtime_implemented=false")
+        errors += 1
+    if status.get("hardware_enabled") is not False:
+        fail("m27c_vendor_runtime_status.json must mark hardware_enabled=false")
+        errors += 1
+    if status.get("ordinary_runtime_import_safe") is not True:
+        fail("m27c_vendor_runtime_status.json must mark ordinary_runtime_import_safe=true")
+        errors += 1
+    pyproject = tomllib.loads((REPO_ROOT / "pyproject.toml").read_text(encoding="utf-8"))
+    booster_extra = pyproject.get("project", {}).get("optional-dependencies", {}).get("booster-k1")
+    if booster_extra != []:
+        fail("M27-C booster-k1 optional extra must remain an empty placeholder")
+        errors += 1
+    manifest = parse_json(REPO_ROOT / "outputs" / "engineering" / "m26d_skill_manifest.json")
+    if isinstance(manifest, dict):
+        if manifest.get("platform_support", {}).get("booster_k1", {}).get("status") == "supported":
+            fail("Default CLI manifest must not mark real booster_k1 supported")
+            errors += 1
+    if errors == 0:
+        ok("M27-C K1 vendor runtime boundary remains disabled")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
 def main() -> int:
     print("=== M26/M27 Engineering Artifact Validator ===\n")
 
@@ -849,6 +939,8 @@ def main() -> int:
         ("M27-A K1 planning only", validate_m27a_k1_planning_only()),
         ("M27-B artifacts", validate_m27b_artifacts_exist()),
         ("M27-B no hardware boundary", validate_m27b_no_hardware_boundary()),
+        ("M27-C artifacts", validate_m27c_artifacts_exist()),
+        ("M27-C no hardware boundary", validate_m27c_no_hardware_boundary()),
     ]
 
     print()

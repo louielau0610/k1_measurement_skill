@@ -1,0 +1,20 @@
+{
+  "milestone": "M27-C",
+  "date": "2026-06-18",
+  "status": "pending_final_validation",
+  "hardware_used": false,
+  "vendor_sdk_imported": false,
+  "default_k1_real_registration": false,
+  "real_vendor_runtime_implemented": false,
+  "socket_or_dds_used": false,
+  "historical_outputs_modified": false,
+  "gold_profiles_or_raw_data_modified": false,
+  "validation_commands": [
+    "py -3.12 scripts/validate_engineering_artifacts.py",
+    "py -3.12 -m compileall calibration_skill calibration_core k1_measurement platforms scripts tests -q",
+    "py -3.12 -m pytest tests/calibration_skill/test_booster_k1_vendor_runtime_boundary.py tests/calibration_skill/test_booster_k1_hardware_gate.py tests/calibration_skill/test_booster_k1_vendor_registration_boundary.py tests/calibration_skill/test_m27c_readiness.py -q",
+    "py -3.12 -m pytest tests/calibration_skill -q",
+    "py -3.12 scripts/run_tests_hermetically.py -- py -3.12 -m pytest tests/ --tb=no -q",
+    "py -3.12 scripts/run_local_release_gate.py --summary outputs/engineering/m27c_release_gate_summary.json"
+  ]
+}

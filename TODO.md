@@ -1,6 +1,18 @@
 ﻿# TODO
 
-## M27-B K1 Adapter Skeleton, Fake Booster Runtime, and No-Hardware Tests (current)
+## M27-C K1 Vendor Runtime Boundary and Fail-Closed Placeholder (current)
+
+- [x] Add fail-closed K1 vendor runtime placeholder
+- [x] Add explicit `BoosterK1HardwareGate`
+- [x] Add SDK availability detection without importing SDK
+- [x] Add structured unavailable-runtime errors
+- [x] Add explicit vendor registration placeholder that remains disabled by default
+- [x] Add M27-C vendor boundary, hardware gate, registration, and readiness tests
+- [x] Add M27-C engineering docs and readiness artifacts
+
+**M27-C remains no-hardware. M27-D is required before any SDK bench integration.**
+
+## M27-B K1 Adapter Skeleton, Fake Booster Runtime, and No-Hardware Tests
 
 - [x] Add `calibration_skill.adapters.booster_k1` package skeleton
 - [x] Add explicit K1 adapter config with dry-run and hardware gates
@@ -33,7 +45,8 @@
 ## Post-M27-A
 
 - [x] M27-B: Implement K1 fake-runtime RobotAdapter skeleton (no hardware)
-- [ ] M27-C: Hardware-gated K1 integration and validation
+- [x] M27-C: Add fail-closed K1 vendor runtime boundary
+- [ ] M27-D: Hardware-gated K1 SDK bench integration and validation
 - [ ] Post-M26-D: Extract K1 adapter to target architecture (Phase 3)
 - [ ] M27-G1: Implement G1 adapter (Phase 4)
 - [ ] M27-GO1: Implement GO1 adapter (Phase 5)

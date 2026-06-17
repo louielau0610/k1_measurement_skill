@@ -1,5 +1,17 @@
 # K1 Velocity Measurement Toolkit
 
+## M27-C K1 Vendor Runtime Boundary
+
+M27-C adds the fail-closed real Booster K1 vendor runtime boundary:
+`vendor_runtime.py`, `BoosterK1HardwareGate`, SDK availability detection,
+structured unavailable-runtime errors, and an explicit vendor registration
+placeholder. This prepares future M27-D bench integration only.
+
+M27-C does not connect to K1, send physical commands, import the real Booster
+SDK, open network or DDS/UDP paths, register real K1 by default, or claim
+hardware verification. Even a valid-looking hardware gate still fails closed in
+M27-C. M27-D is required before SDK bench integration.
+
 ## M27-B K1 Fake-Runtime Adapter Skeleton
 
 M27-B adds the `calibration_skill.adapters.booster_k1` package with a K1

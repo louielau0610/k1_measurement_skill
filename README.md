@@ -1,4 +1,14 @@
-﻿# M27-B K1 fake-runtime 适配器骨架
+﻿# M27-C K1 vendor runtime 边界与 fail-closed 占位符
+
+M27-C 添加 K1 真实厂商 runtime 的 fail-closed 边界：`vendor_runtime.py`、
+`BoosterK1HardwareGate`、SDK 可用性检测、结构化 unavailable 错误，以及显式 vendor
+注册占位函数。该边界只为未来 M27-D bench 集成做准备。
+
+M27-C 不连接 K1，不发送物理命令，不导入真实 Booster SDK，不打开网络或 DDS/UDP，
+不把真实 K1 runtime 注册到默认 CLI/runtime，也不声称 hardware verified。即使硬件门禁
+看起来完整，真实 runtime 创建在 M27-C 仍会 fail closed。M27-D 才能开始 SDK bench 集成。
+
+# M27-B K1 fake-runtime 适配器骨架
 
 M27-B 添加 `calibration_skill.adapters.booster_k1` 包，提供 K1 新架构适配器骨架、
 显式 K1 配置、保守能力描述、身份映射、fake Booster runtime Protocol、以及

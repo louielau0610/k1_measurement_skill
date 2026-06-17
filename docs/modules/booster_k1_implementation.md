@@ -3,15 +3,19 @@
 ## Responsibility
 
 `calibration_skill/adapters/booster_k1/` contains the M27-B Booster K1
-fake-runtime adapter skeleton. It conforms to the existing M26-B/M26-C contracts
-without importing the real Booster SDK or registering K1 in the default runtime.
+fake-runtime adapter skeleton and the M27-C fail-closed vendor runtime boundary.
+It conforms to the existing M26-B/M26-C contracts without importing the real
+Booster SDK or registering K1 in the default runtime.
 
 ## Public Files And Symbols
 
 - `calibration_skill/adapters/booster_k1/config.py`: `_require_non_empty` line
-  14, `_require_finite_non_negative` line 19, `BoosterK1AdapterConfig` line 27,
-  `BoosterK1AdapterConfig.__post_init__` line 46,
-  `BoosterK1AdapterConfig.to_safety_envelope` line 77.
+  20, `_require_finite_non_negative` line 25, `BoosterK1AdapterConfig` line 33,
+  `BoosterK1AdapterConfig.__post_init__` line 52,
+  `BoosterK1AdapterConfig.to_safety_envelope` line 83,
+  `BoosterK1HardwareGate` line 106, `BoosterK1HardwareGate.__post_init__`
+  line 123, `BoosterK1HardwareGate.validate` line 136,
+  `BoosterK1HardwareGate.is_valid` line 181.
 - `calibration_skill/adapters/booster_k1/capabilities.py`: `_supported` line 38,
   `_unsupported` line 49, `_unknown` line 59, `booster_k1_capabilities` line 69.
 - `calibration_skill/adapters/booster_k1/identity.py`: `booster_k1_identity`
@@ -30,8 +34,15 @@ without importing the real Booster SDK or registering K1 in the default runtime.
   `_command_rejection_error` line 243, `_rejected_receipt` line 279,
   `_check` line 290.
 - `calibration_skill/adapters/booster_k1/registry.py`:
-  `register_booster_k1_fake_adapter` line 16, inner `create` line 24,
-  `_config_from_connection` line 37.
+  `register_booster_k1_fake_adapter` line 22, inner fake `create` line 30,
+  `register_booster_k1_vendor_adapter` line 43, inner vendor `create` line 48,
+  `_config_from_connection` line 70.
+- `calibration_skill/adapters/booster_k1/vendor_runtime.py`:
+  `BoosterK1VendorRuntimeStatus` line 24, `BoosterK1RuntimeUnavailable` line
+  47, `BoosterK1VendorRuntime` line 62,
+  `detect_booster_sdk_availability` line 103,
+  `create_booster_k1_vendor_runtime` line 119,
+  `dry_run_package_forbidden_error` line 164.
 - `tests/calibration_skill/fakes/fake_booster_k1_runtime.py`:
   `FakeBoosterK1FailureConfig` line 16, `FakeBoosterK1Runtime` line 25,
   `connect` line 66, `enter_prepare_mode` line 93,
@@ -53,7 +64,13 @@ calling `send_body_velocity(vx, 0.0, 0.0)`.
 Telemetry normalization reads fake robot state, fake odometry, and optional fake
 battery data, then produces a platform-independent `TelemetrySample`.
 
+M27-C vendor runtime creation runs through `BoosterK1HardwareGate` validation,
+SDK availability detection with `importlib.util.find_spec`, and then still
+raises `BoosterK1RuntimeUnavailable` because real runtime startup is not
+implemented in this milestone.
+
 ## Tests
 
-The implementation is covered by `tests/calibration_skill/test_booster_k1_*.py`
-and the fake runtime in `tests/calibration_skill/fakes/`.
+The implementation is covered by `tests/calibration_skill/test_booster_k1_*.py`,
+`tests/calibration_skill/test_m27c_readiness.py`, and the fake runtime in
+`tests/calibration_skill/fakes/`.

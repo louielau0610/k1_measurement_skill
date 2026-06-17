@@ -1,6 +1,35 @@
 # Project Status
 
-## M27-B K1 Adapter Skeleton, Fake Booster Runtime, and No-Hardware Tests (current)
+## M27-C K1 Vendor Runtime Boundary and Fail-Closed Placeholder (current)
+
+M27-C prepares the real Booster K1 runtime boundary without enabling real
+hardware execution. It adds a fail-closed vendor runtime placeholder, an
+explicit hardware gate model, SDK availability detection without SDK import, and
+tests proving the real K1 path cannot be reached accidentally.
+
+M27-C deliverables:
+
+- `calibration_skill/adapters/booster_k1/vendor_runtime.py`
+- `BoosterK1HardwareGate` in `calibration_skill/adapters/booster_k1/config.py`
+- Explicit fail-closed vendor registration helper
+- `tests/calibration_skill/test_booster_k1_vendor_*.py`
+- `docs/engineering/m27c_k1_vendor_runtime_boundary.md`
+- `docs/engineering/m27c_k1_hardware_gate.md`
+- `docs/engineering/m27c_k1_future_booster_sdk_integration.md`
+- `outputs/engineering/m27c_*.json`
+
+M27-C does NOT:
+
+- Import the real Booster SDK
+- Construct SDK objects
+- Connect to K1 or send physical commands
+- Open network, DDS, FastDDS, ROS2, or UDP paths
+- Register real K1 in the default dry-run CLI/runtime
+- Claim K1 hardware verification
+- Implement G1 or GO1 runtime support
+- Begin M27-D bench integration
+
+## M27-B K1 Adapter Skeleton, Fake Booster Runtime, and No-Hardware Tests
 
 M27-B implements the first new-architecture Booster K1 adapter skeleton under
 `calibration_skill.adapters.booster_k1`. The adapter uses only an injected fake

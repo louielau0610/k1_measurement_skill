@@ -1,0 +1,29 @@
+{
+  "milestone": "M27-C",
+  "contract": "BoosterK1HardwareGate",
+  "required_fields": [
+    "allow_hardware",
+    "operator_confirmed_hardware",
+    "hardware_session_id",
+    "safety_policy_id",
+    "safety_policy_hash",
+    "expected_robot_id",
+    "expected_adapter_mode",
+    "require_physical_estop_confirmation",
+    "require_clear_test_area_confirmation",
+    "require_battery_state_confirmation",
+    "require_network_isolation_confirmation",
+    "require_manual_operator_present",
+    "evidence_reference",
+    "expires_monotonic_ns"
+  ],
+  "validation": {
+    "explicit_now_ns_required": true,
+    "allow_hardware_alone_sufficient": false,
+    "expired_gate_valid": false,
+    "empty_evidence_valid": false,
+    "m27c_real_runtime_creation_allowed": false
+  },
+  "default_runtime_registered": false,
+  "hardware_verified": false
+}

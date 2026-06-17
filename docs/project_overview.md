@@ -17,7 +17,8 @@ Booster K1 support is limited to the M27-B fake-runtime adapter skeleton.
 - `calibration_skill/adapters/mock.py`: deterministic mock adapter used by the
   default dry-run service.
 - `calibration_skill/adapters/booster_k1/`: M27-B K1 fake-runtime adapter
-  skeleton. It is not registered by default and imports no vendor SDK.
+  skeleton plus M27-C fail-closed vendor runtime boundary. Neither path is
+  registered by default, and ordinary imports do not import a vendor SDK.
 - `calibration_skill/skill/`: mock-only service layer and stable CLI manifest.
 - `calibration_skill/runtime/dry_run.py`: default mock-only service composition.
 - `scripts/`: validation, packaging, release-gate, and historical experiment
@@ -30,6 +31,8 @@ Booster K1 support is limited to the M27-B fake-runtime adapter skeleton.
 - Default CLI/runtime remains mock-only and dry-run-only.
 - K1 fake adapter registration is explicit and test-local.
 - M27-B K1 config requires `dry_run=true` and rejects `allow_hardware=true`.
+- M27-C vendor runtime creation requires a complete hardware gate and still
+  fails closed as not implemented.
 - No Booster SDK import is allowed in ordinary runtime paths.
 - No hardware connection, socket, DDS, FastDDS, ROS2, UDP, or physical command
   is part of M27-B.
