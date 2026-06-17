@@ -1,0 +1,14 @@
+{
+  "milestone": "M26-E",
+  "source_branch": "engineering/m26d-agent-skill-cli",
+  "source_commit": "b757a798be5e23c1604d029f458ee0eab7c9afa6",
+  "remote_commit": "b757a798be5e23c1604d029f458ee0eab7c9afa6",
+  "starting_porcelain": "",
+  "python_version": "Python 3.12.3",
+  "pytest_version": "pytest 9.0.3",
+  "jsonschema_version": "4.26.0",
+  "build_module_installed": false,
+  "wheel_module_installed": false,
+  "m26d_readiness_fields_are_conservative": true,
+  "worktree_clean": true
+}

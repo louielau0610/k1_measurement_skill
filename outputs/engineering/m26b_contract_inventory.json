@@ -187,5 +187,22 @@
       "maturity": "bench_verified",
       "test_references": ["tests/calibration_skill/test_skill_cli.py", "tests/calibration_skill/test_agent_invocation_contract.py"]
     }
-  ]
+  ],
+  "m26e_distribution_extension": {
+    "package_name": "calibration-skill",
+    "console_script": "calibration-skill = calibration_skill.cli:main",
+    "package_scope": "calibration_skill dry-run runtime only",
+    "package_data": [
+      "calibration_skill/schemas/v1/*.schema.json",
+      "calibration_skill/skill/manifest.schema.json"
+    ],
+    "excluded_runtime_boundaries": [
+      "vendor SDK dependencies",
+      "ROS2/DDS runtime dependencies",
+      "raw robot logs",
+      "historical outputs",
+      "gold profiles"
+    ],
+    "maturity": "bench_verified_after_m26e_release_gate"
+  }
 }

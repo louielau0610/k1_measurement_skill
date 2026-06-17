@@ -1,0 +1,39 @@
+{
+  "readiness_metadata": {
+    "milestone": "M26-E",
+    "date": "2026-06-17",
+    "schema_version": "m26e_readiness_v1",
+    "note": "M26-E adds local packaging metadata, console script exposure, hermetic test runner, and local release gate for the mock dry-run skill only."
+  },
+  "readiness": {
+    "domain_contracts": {"maturity": "bench_verified"},
+    "port_interfaces": {"maturity": "bench_verified"},
+    "versioned_schemas": {"maturity": "bench_verified"},
+    "deterministic_codecs": {"maturity": "bench_verified"},
+    "architecture_enforcement": {"maturity": "bench_verified"},
+    "mock_adapter": {"maturity": "bench_verified"},
+    "adapter_registry": {"maturity": "bench_verified"},
+    "skill_service_skeleton": {"maturity": "bench_verified"},
+    "dry_run_end_to_end": {"maturity": "bench_verified"},
+    "agent_cli": {"maturity": "bench_verified"},
+    "json_io_contract": {"maturity": "bench_verified"},
+    "packaging_metadata": {"maturity": "bench_verified"},
+    "console_script": {"maturity": "bench_verified"},
+    "local_release_gate": {"maturity": "bench_verified"},
+    "wheel_build": {"maturity": "not_verified_due_missing_build_tool"},
+    "sdist_build": {"maturity": "not_verified_due_missing_build_tool"},
+    "install_smoke": {"maturity": "bench_verified"},
+    "k1_adapter_migration": {"maturity": "legacy_existing"},
+    "g1_adapter": {"maturity": "scaffolded"},
+    "go1_adapter": {"maturity": "scaffolded"},
+    "unified_skill_runtime": {"maturity": "dry_run_only"},
+    "hardware_verification": {"maturity": "not_started"},
+    "release": {"maturity": "pre_release_only"}
+  },
+  "prohibited_claims": [
+    "No K1, G1, or GO1 runtime support is claimed in the new calibration_skill package.",
+    "No hardware verification has been performed.",
+    "No stable or final release readiness is claimed.",
+    "No vendor SDK, ROS2, DDS, socket, UDP, or robot connection is used by M26-E."
+  ]
+}

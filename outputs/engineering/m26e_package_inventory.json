@@ -1,0 +1,49 @@
+{
+  "milestone": "M26-E",
+  "package_name": "calibration-skill",
+  "included_packages": [
+    "calibration_skill"
+  ],
+  "included_package_data": [
+    "calibration_skill/schemas/v1/*.schema.json",
+    "calibration_skill/skill/manifest.schema.json"
+  ],
+  "excluded_high_risk_paths": [
+    "data/",
+    "outputs/",
+    "platforms/",
+    "dist/",
+    "build/",
+    "*.egg-info/",
+    ".venv/",
+    "vendor SDK binaries",
+    "raw robot logs",
+    "gold profiles",
+    "secrets"
+  ],
+  "dependency_list": [
+    "jsonschema>=4.18"
+  ],
+  "optional_extras": {
+    "dev": [
+      "pytest>=7.0"
+    ]
+  },
+  "console_scripts": {
+    "calibration-skill": "calibration_skill.cli:main"
+  },
+  "built_artifacts_status": {
+    "wheel": "skipped_missing_dependency",
+    "sdist": "skipped_missing_dependency",
+    "reason": "python build module is not installed",
+    "dist_committed": false
+  },
+  "install_smoke_status": "passed_editable_temp_venv",
+  "no_vendor_status": "passed_runtime_import_guard",
+  "runtime_boundary": {
+    "dry_run_only": true,
+    "hardware_support": "not_supported",
+    "vendor_sdk_required": false,
+    "ros2_or_dds_required": false
+  }
+}

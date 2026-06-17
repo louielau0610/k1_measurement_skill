@@ -1,3 +1,22 @@
+﻿# M26-E 包装与本地发布门禁
+
+M26-E 将硬件无关的 `calibration_skill` dry-run CLI 包装为本地
+`calibration-skill` Python 包，并增加 console script、hermetic test runner、
+local release gate、package inventory 与 distribution-readiness 文档。
+
+常用命令：
+
+```powershell
+py -3.12 -m calibration_skill.cli manifest
+calibration-skill manifest
+calibration-skill examples --operation dry_run_end_to_end
+py -3.12 scripts/run_tests_hermetically.py -- py -3.12 -m pytest tests/ --tb=no -q
+py -3.12 scripts/run_local_release_gate.py --summary outputs/engineering/m26e_release_gate_summary.json
+```
+
+M26-E 仍然只是 pre-release 本地工程门禁：不迁移 K1，不实现 G1/GO1 runtime，
+不连接硬件，不打开 socket，不启动 DDS，不发送 UDP，也不导入 vendor SDK runtime。
+
 # K1 速度测量工具包
 
 ## M26-B 统一领域契约与模式

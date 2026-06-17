@@ -32,6 +32,7 @@
 - [x] M26-B: Implement unified domain contracts and schemas (Phase 1 of migration plan)
 - [x] M26-C: Implement adapter registry, mock adapter, skill service skeleton, and dry-run end-to-end flow (Phase 2)
 - [x] M26-D: Add agent-callable dry-run CLI and JSON I/O contract
+- [x] M26-E: Add local package metadata, console script, hermetic test runner, and release gate
 - [ ] Post-M26-D: Extract K1 adapter to target architecture (Phase 3)
 - [ ] M27-G1: Implement G1 adapter (Phase 4)
 - [ ] M27-GO1: Implement GO1 adapter (Phase 5)
@@ -50,6 +51,14 @@
 - [x] Add deterministic example requests and operation catalog.
 - [x] Keep K1/G1/GO1 runtime support unavailable in the new skill CLI.
 - [x] Do not claim hardware verification or release readiness.
+
+## Active M26-E Scope Boundary
+
+- [x] Package only the dry-run `calibration_skill` runtime.
+- [x] Expose `calibration-skill` as a local console script.
+- [x] Add a hermetic test runner and local release gate.
+- [x] Keep wheel/sdist verification conditional on local build tooling.
+- [x] Do not claim stable public release, hardware verification, or K1/G1/GO1 runtime support.
 
 ## Active M25 Follow-Up
 

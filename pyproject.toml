@@ -1,15 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "k1-measurement-skill"
-version = "0.0.1"
-description = "Measurement pipeline for Booster Robotics K1 forward velocity tracking."
+name = "calibration-skill"
+version = "0.1.0"
+description = "Hardware-free dry-run calibration skill CLI and contracts."
+readme = "README.en.md"
 requires-python = ">=3.10"
 dependencies = [
-    "numpy>=1.24",
-    "pandas>=2.0",
-    "matplotlib>=3.7",
-    "pyyaml>=6.0",
-    "scipy>=1.10",
-    "jsonschema>=4.0"
+    "jsonschema>=4.18"
 ]
 
 [project.optional-dependencies]
@@ -17,8 +17,17 @@ dev = [
     "pytest>=7.0"
 ]
 
+[project.scripts]
+calibration-skill = "calibration_skill.cli:main"
+
 [tool.setuptools.packages.find]
-include = ["k1_measurement*"]
+include = ["calibration_skill*"]
+
+[tool.setuptools.package-data]
+calibration_skill = [
+    "schemas/v1/*.schema.json",
+    "skill/manifest.schema.json"
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

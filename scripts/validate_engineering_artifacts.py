@@ -14,6 +14,10 @@ Validates:
 10. M26-C readiness does not claim real-platform or hardware support
 11. M26-D manifest and operation catalog are stable
 12. M26-D examples are deterministic and path-portable
+13. M26-E packaging metadata is dry-run-only and local-package ready
+14. M26-E release scripts exist and avoid repository restore commands
+15. M26-E distribution documents exist
+16. M26-E readiness remains conservative
 
 Produces deterministic failure messages and nonzero exit code on failure.
 Does NOT modify any files.
@@ -24,6 +28,7 @@ import json
 import os
 import re
 import sys
+import tomllib
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -453,6 +458,121 @@ def validate_m26d_readiness() -> int:
     return EXIT_FAIL if errors > 0 else EXIT_OK
 
 
+def validate_m26e_packaging_metadata() -> int:
+    """Verify M26-E package metadata exposes only the dry-run calibration skill."""
+    pyproject_path = REPO_ROOT / "pyproject.toml"
+    if not pyproject_path.exists():
+        fail("pyproject.toml not found")
+        return EXIT_FAIL
+    data = tomllib.loads(pyproject_path.read_text(encoding="utf-8"))
+    project = data.get("project", {})
+    setuptools = data.get("tool", {}).get("setuptools", {})
+    errors = 0
+    if project.get("name") != "calibration-skill":
+        fail("M26-E package name must be calibration-skill")
+        errors += 1
+    scripts = project.get("scripts", {})
+    if scripts.get("calibration-skill") != "calibration_skill.cli:main":
+        fail("M26-E console script calibration-skill is missing or incorrect")
+        errors += 1
+    dependencies = [dep.lower() for dep in project.get("dependencies", [])]
+    for forbidden in FORBIDDEN_IMPORTS:
+        if any(forbidden in dep for dep in dependencies):
+            fail(f"M26-E pyproject lists forbidden dependency {forbidden}")
+            errors += 1
+    package_include = setuptools.get("packages", {}).get("find", {}).get("include", [])
+    if "calibration_skill*" not in package_include:
+        fail("M26-E pyproject does not include calibration_skill package")
+        errors += 1
+    package_data = setuptools.get("package-data", {}).get("calibration_skill", [])
+    for required in ("schemas/v1/*.schema.json", "skill/manifest.schema.json"):
+        if required not in package_data:
+            fail(f"M26-E package data missing {required}")
+            errors += 1
+    if errors == 0:
+        ok("M26-E packaging metadata is conservative")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
+def validate_m26e_release_scripts() -> int:
+    """Verify M26-E release scripts exist and do not auto-restore repository files."""
+    errors = 0
+    scripts = [
+        REPO_ROOT / "scripts" / "run_tests_hermetically.py",
+        REPO_ROOT / "scripts" / "run_local_release_gate.py",
+    ]
+    forbidden_restore_calls = (
+        '["git", "checkout"',
+        '["git", "restore"',
+        '["git", "reset"',
+        '["git", "clean"',
+    )
+    for script in scripts:
+        if not script.exists():
+            fail(f"M26-E script missing: {script.relative_to(REPO_ROOT)}")
+            errors += 1
+            continue
+        text = script.read_text(encoding="utf-8")
+        for forbidden in forbidden_restore_calls:
+            if forbidden in text:
+                fail(f"M26-E script contains forbidden restore command call: {script.name}: {forbidden}")
+                errors += 1
+    if errors == 0:
+        ok("M26-E release scripts exist and avoid restore commands")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
+def validate_m26e_docs_exist() -> int:
+    """Verify required M26-E distribution-readiness documents exist."""
+    docs = [
+        REPO_ROOT / "docs" / "engineering" / "m26e_packaging_and_release_gate.md",
+        REPO_ROOT / "docs" / "engineering" / "m26e_distribution_readiness.md",
+        REPO_ROOT / "docs" / "engineering" / "m26e_no_vendor_runtime_boundary.md",
+    ]
+    errors = 0
+    for doc in docs:
+        if not doc.exists():
+            fail(f"M26-E doc missing: {doc.relative_to(REPO_ROOT)}")
+            errors += 1
+    if errors == 0:
+        ok("M26-E docs exist")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
+def validate_m26e_readiness() -> int:
+    """Verify M26-E readiness claims packaging progress without hardware release claims."""
+    readiness_path = REPO_ROOT / "outputs" / "engineering" / "m26e_readiness.json"
+    if not readiness_path.exists():
+        fail(f"M26-E readiness file not found: {readiness_path}")
+        return EXIT_FAIL
+    data = parse_json(readiness_path)
+    if data is None:
+        return EXIT_FAIL
+    readiness = data.get("readiness", {})
+    errors = 0
+    expected = {
+        "packaging_metadata": "bench_verified",
+        "console_script": "bench_verified",
+        "local_release_gate": "bench_verified",
+        "unified_skill_runtime": "dry_run_only",
+        "hardware_verification": "not_started",
+        "release": "pre_release_only",
+    }
+    for key, maturity in expected.items():
+        actual = readiness.get(key, {}).get("maturity")
+        if actual != maturity:
+            fail(f"m26e_readiness.json: {key} maturity is {actual!r}, expected {maturity!r}")
+            errors += 1
+    for key in ("k1_adapter_migration", "g1_adapter", "go1_adapter"):
+        actual = readiness.get(key, {}).get("maturity")
+        if actual in ("bench_verified", "hardware_verified", "supported"):
+            fail(f"m26e_readiness.json: {key} must not claim new runtime support")
+            errors += 1
+    if errors == 0:
+        ok("M26-E readiness remains pre-release and hardware-free")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
 def main() -> int:
     print("=== M26 Engineering Artifact Validator ===\n")
 
@@ -470,6 +590,10 @@ def main() -> int:
         ("M26-D manifest/catalog", validate_m26d_manifest_and_catalog()),
         ("M26-D examples", validate_m26d_examples()),
         ("M26-D readiness", validate_m26d_readiness()),
+        ("M26-E packaging metadata", validate_m26e_packaging_metadata()),
+        ("M26-E release scripts", validate_m26e_release_scripts()),
+        ("M26-E docs", validate_m26e_docs_exist()),
+        ("M26-E readiness", validate_m26e_readiness()),
     ]
 
     print()

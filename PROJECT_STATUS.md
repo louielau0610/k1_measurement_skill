@@ -1,8 +1,40 @@
 # Project Status
 
+## M26-E Packaging and Local Release Gate
+
+M26-E is the active packaging milestone. It turns the M26-D mock dry-run CLI
+into a locally packageable engineering artifact with package metadata, a
+`calibration-skill` console script, a hermetic test runner, and a local release
+gate.
+
+M26-E deliverables:
+
+- `pyproject.toml` - `calibration-skill` package metadata for `calibration_skill`
+- `scripts/run_tests_hermetically.py` - strict no-mutation test runner
+- `scripts/run_local_release_gate.py` - deterministic local release checks
+- `docs/engineering/m26e_packaging_and_release_gate.md`
+- `docs/engineering/m26e_distribution_readiness.md`
+- `docs/engineering/m26e_no_vendor_runtime_boundary.md`
+- `outputs/engineering/m26e_readiness.json`
+- `outputs/engineering/m26e_package_inventory.json`
+
+CLI examples:
+
+```powershell
+py -3.12 -m calibration_skill.cli manifest
+calibration-skill manifest
+calibration-skill examples --operation dry_run_end_to_end
+calibration-skill validate --input examples/calibration_skill/dry_run_end_to_end.mock.json
+calibration-skill invoke --input examples/calibration_skill/dry_run_end_to_end.mock.json
+```
+
+M26-E remains mock-only, dry-run-only, and pre-release-only. It does not migrate
+K1, implement G1 or GO1, connect to hardware, open sockets, start DDS, send UDP,
+or import vendor SDK runtimes.
+
 ## M26-D Agent-Callable Dry-Run CLI
 
-M26-D is the active milestone. It turns the M26-C mock dry-run service into a
+M26-D turned the M26-C mock dry-run service into a
 deterministic agent-callable JSON CLI.
 
 M26-D deliverables:

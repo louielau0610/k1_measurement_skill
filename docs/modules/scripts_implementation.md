@@ -118,3 +118,11 @@
 - `scripts/validate_m25_real_collection_preflight.py:16` validates real-collection readiness and exits nonzero while blocked.
 - `scripts/prepare_m25r_collection_package.py:16` writes exploration/formal collection package JSON and Markdown artifacts.
 - `scripts/evaluate_m25_exploration_gate.py:17` evaluates exploration extraction readiness for formal collection without M26 model fitting.
+
+## M26-E Packaging and Release Gate Scripts
+
+- `scripts/run_tests_hermetically.py`: `git_status` line 29, `run_child` line 42, `build_summary` line 52, `parse_args` line 73, `main` line 83, `_human_summary` line 133.
+- `scripts/run_local_release_gate.py`: `run` line 29, `git_status` line 40, `check_repo_clean` line 47, `validate_packaging_metadata` line 65, `inspect_artifacts` line 95, `build_check` line 121, `install_smoke` line 132, `no_vendor_check` line 146, `check_order` line 167, `write_summary` line 186, `main` line 191.
+- `calibration_skill/cli.py`: package console entry point `main` line 27, parser construction `_parser` line 55, validation `_validate` line 83, dry-run invocation `_invoke` line 111, generated example payloads `_example_request` line 203.
+
+M26-E scripts are packaging and validation orchestration only. They do not connect to hardware, call vendor processes, start DDS, send UDP, or restore repository state automatically.

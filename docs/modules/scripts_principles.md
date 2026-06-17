@@ -44,3 +44,9 @@ M25 scripts are deterministic, planning-first, and hardware-inert. They report m
 ## M25-R CLI Principles
 
 M25-R scripts distinguish planning inspection from executable readiness. Blocked preflight/package commands intentionally return nonzero while still writing inspectable artifacts where appropriate. Temporary fixture safe-speed values are allowed only in tests and validation commands; they must not be committed as real evidence.
+
+## M26-E Release-Gate Principles
+
+M26-E release scripts are local engineering gates, not publishing tools. They must be deterministic, hardware-free, and conservative about claims. A dirty initial repository is a failure, an unexpected final repository mutation is a failure, and scripts must report the mutation rather than repairing it.
+
+The release gate may write only an explicitly requested summary path. Build checks are conditional on local build tooling and must not install missing build tools from the internet. Vendor SDKs, ROS2, DDS, sockets, UDP, and hardware adapters remain outside the dry-run package boundary.

@@ -1,5 +1,25 @@
 # K1 Velocity Measurement Toolkit
 
+## M26-E Packaging and Local Release Gate
+
+M26-E packages the hardware-free `calibration_skill` dry-run CLI as the local
+`calibration-skill` Python package. It adds a console script, hermetic test
+runner, local release gate, package inventory, and distribution-readiness docs.
+
+Useful commands:
+
+```powershell
+py -3.12 -m calibration_skill.cli manifest
+calibration-skill manifest
+calibration-skill examples --operation dry_run_end_to_end
+py -3.12 scripts/run_tests_hermetically.py -- py -3.12 -m pytest tests/ --tb=no -q
+py -3.12 scripts/run_local_release_gate.py --summary outputs/engineering/m26e_release_gate_summary.json
+```
+
+M26-E is pre-release-only. It does not migrate K1, implement G1 or GO1 runtime
+support, connect to hardware, open sockets, start DDS, send UDP, or import
+vendor SDK runtimes.
+
 ## M26-B Unified Domain Contracts and Schemas
 
 M26-B implements the platform-independent contract layer: pure domain value

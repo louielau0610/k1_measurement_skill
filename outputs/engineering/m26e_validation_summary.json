@@ -1,0 +1,102 @@
+{
+  "milestone": "M26-E",
+  "status": "passed_with_optional_build_tool_missing",
+  "commands": [
+    {
+      "command": "git status --porcelain=v1",
+      "exit_code": 0
+    },
+    {
+      "command": "git branch --show-current",
+      "exit_code": 0
+    },
+    {
+      "command": "git rev-parse HEAD",
+      "exit_code": 0
+    },
+    {
+      "command": "git rev-parse origin/engineering/m26d-agent-skill-cli",
+      "exit_code": 0
+    },
+    {
+      "command": "git log --oneline --decorate -5",
+      "exit_code": 0
+    },
+    {
+      "command": "py -3.12 --version",
+      "exit_code": 0
+    },
+    {
+      "command": "py -3.12 -m pytest --version",
+      "exit_code": 0
+    },
+    {
+      "command": "py -3.12 -c \"import jsonschema; print(jsonschema.__version__)\"",
+      "exit_code": 0
+    },
+    {
+      "command": "py -3.12 -c \"import importlib.util; print(importlib.util.find_spec('build') is not None)\"",
+      "exit_code": 0,
+      "result": false
+    },
+    {
+      "command": "py -3.12 -c \"import importlib.util; print(importlib.util.find_spec('wheel') is not None)\"",
+      "exit_code": 0,
+      "result": false
+    },
+    {
+      "command": "py -3.12 -m pytest tests/calibration_skill/test_packaging_metadata.py tests/calibration_skill/test_console_entrypoint.py tests/calibration_skill/test_local_release_gate.py tests/calibration_skill/test_no_vendor_runtime.py tests/calibration_skill/test_package_data_access.py tests/calibration_skill/test_hermetic_test_runner.py -q",
+      "exit_code": 0,
+      "test_count": 29
+    },
+    {
+      "command": "py -3.12 scripts/validate_engineering_artifacts.py",
+      "exit_code": 0
+    },
+    {
+      "command": "py -3.12 -m compileall calibration_skill calibration_core k1_measurement platforms scripts tests -q",
+      "exit_code": 0
+    },
+    {
+      "command": "py -3.12 -m pytest tests/calibration_skill -q",
+      "exit_code": 0,
+      "test_count": 296
+    },
+    {
+      "command": "py -3.12 -m build",
+      "exit_code": 1,
+      "result": "No module named build"
+    },
+    {
+      "command": "git status --short",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --stat",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --name-only",
+      "exit_code": 0
+    },
+    {
+      "command": "py -3.12 scripts/run_tests_hermetically.py -- py -3.12 -m pytest tests/ --tb=no -q",
+      "exit_code": 0,
+      "test_count": 1202,
+      "repository_mutated": false
+    },
+    {
+      "command": "py -3.12 scripts/run_local_release_gate.py --summary outputs/engineering/m26e_release_gate_summary.json",
+      "exit_code": 0
+    }
+  ],
+  "notes": [
+    "The optional build module is not installed locally; wheel and sdist build verification are skipped_missing_dependency.",
+    "Editable install smoke passed in a temporary virtual environment with --no-deps.",
+    "No dist, temp virtual environment, raw data, gold profile, or historical output artifact is committed."
+  ]
+}
