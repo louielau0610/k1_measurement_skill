@@ -204,5 +204,11 @@
       "gold profiles"
     ],
     "maturity": "bench_verified_after_m26e_release_gate"
+  },
+  "m27a_status": {
+    "milestone": "M27-A",
+    "status": "in_progress",
+    "date": "2026-06-17",
+    "note": "M27-A is planning/audit only. K1-to-RobotAdapter mapping documented but not implemented."
   }
 }

@@ -1,5 +1,30 @@
 ﻿# TODO
 
+## M27-A K1 Legacy Adapter Extraction Plan and Compatibility Boundary (current)
+
+- [x] K1 legacy adapter inventory (`docs/engineering/m27a_k1_legacy_inventory.md`, JSON)
+- [x] K1 command path audit (`docs/engineering/m27a_k1_command_path_audit.md`, JSON)
+- [x] K1 telemetry path audit (`docs/engineering/m27a_k1_telemetry_path_audit.md`, JSON)
+- [x] K1 safety-gate audit (`docs/engineering/m27a_k1_safety_gate_audit.md`, JSON)
+- [x] K1-to-RobotAdapter mapping (`docs/engineering/m27a_k1_to_robot_adapter_mapping.md`, JSON)
+- [x] Vendor runtime isolation design (`docs/engineering/m27a_k1_vendor_runtime_isolation.md`)
+- [x] Compatibility test plan (`docs/engineering/m27a_k1_compatibility_test_plan.md`, JSON)
+- [x] Migration risk register (`docs/engineering/m27a_k1_migration_risk_register.md`, JSON)
+- [x] Architecture guard updates (`scripts/validate_engineering_artifacts.py` M27-A checks)
+- [x] Planning artifact tests (`tests/calibration_skill/test_m27a_k1_planning_artifacts.py`)
+- [x] Readiness and documentation updates
+
+**M27-A does NOT implement migration. M27-B is the first implementation step.**
+
+## Post-M27-A
+
+- [ ] M27-B: Implement K1 RobotAdapter with subprocess sidecar (non-hardware tests first)
+- [ ] M27-C: Hardware-gated K1 integration and validation
+- [ ] Post-M26-D: Extract K1 adapter to target architecture (Phase 3)
+- [ ] M27-G1: Implement G1 adapter (Phase 4)
+- [ ] M27-GO1: Implement GO1 adapter (Phase 5)
+- [ ] M27-T: Unified telemetry and time semantics (Phase 6)
+
 ## M26-A Engineering Program Reset and Architecture Freeze
 
 - [x] Create program reset document (`docs/engineering/m26a_program_reset.md`)

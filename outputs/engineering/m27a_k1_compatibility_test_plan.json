@@ -1,0 +1,166 @@
+{
+  "test_plan_metadata": {
+    "milestone": "M27-A",
+    "date": "2026-06-17",
+    "schema_version": "m27a_k1_compatibility_test_plan_v1",
+    "status": "planning_only",
+    "target_milestones": "M27-B (non-hardware tests), M27-C (hardware-gated tests)"
+  },
+  "non_hardware_tests": [
+    {
+      "id": "NH-001",
+      "name": "import_boundary_test",
+      "description": "Verify import calibration_skill succeeds without Booster SDK; verify adapters/booster_k1 import fails gracefully without SDK",
+      "requires_hardware": false,
+      "test_file": "tests/calibration_skill/test_m27b_k1_adapter_import_boundary.py"
+    },
+    {
+      "id": "NH-002",
+      "name": "adapter_factory_test",
+      "description": "Verify K1 adapter factory creates RobotAdapter instance; verify dry_run=True works without SDK",
+      "requires_hardware": false,
+      "test_file": "tests/calibration_skill/test_m27b_k1_adapter_factory.py"
+    },
+    {
+      "id": "NH-003",
+      "name": "safety_config_parsing_test",
+      "description": "Parse m25_k1_safe_speed_operator_confirmation.yaml into SafetyEnvelope; verify max_abs_vx_mps=0.6",
+      "requires_hardware": false,
+      "test_file": "tests/calibration_skill/test_m27b_k1_safety_config.py"
+    },
+    {
+      "id": "NH-004",
+      "name": "command_mapping_test",
+      "description": "Verify VelocityCommand maps to legacy command parameters; verify duration/hz computation",
+      "requires_hardware": false,
+      "test_file": "tests/calibration_skill/test_m27b_k1_command_mapping.py"
+    },
+    {
+      "id": "NH-005",
+      "name": "dry_run_k1_adapter_test",
+      "description": "Full dry-run lifecycle: connect→preflight→enter_locomotion_ready→send_velocity_command→stop→disconnect; all dry_run=True",
+      "requires_hardware": false,
+      "test_file": "tests/calibration_skill/test_m27b_k1_dry_run_adapter.py"
+    },
+    {
+      "id": "NH-006",
+      "name": "fake_booster_sdk_test",
+      "description": "Create fake/mock Booster SDK classes; verify adapter calls correct methods in correct order",
+      "requires_hardware": false,
+      "test_file": "tests/calibration_skill/test_m27b_k1_fake_sdk.py"
+    },
+    {
+      "id": "NH-007",
+      "name": "telemetry_normalization_test",
+      "description": "Feed recorded telemetry CSV through normalization; verify TelemetrySample invariants",
+      "requires_hardware": false,
+      "test_file": "tests/calibration_skill/test_m27b_k1_telemetry_normalization.py"
+    },
+    {
+      "id": "NH-008",
+      "name": "no_vendor_install_test",
+      "description": "Verify pip install calibration-skill (without [booster_k1] extra) does not pull Booster SDK; verify core imports work",
+      "requires_hardware": false,
+      "test_file": "tests/calibration_skill/test_m27b_k1_no_vendor_install.py"
+    },
+    {
+      "id": "NH-009",
+      "name": "adapter_registry_k1_not_registered_test",
+      "description": "Verify K1 factory is NOT auto-registered; registration must be explicit and gated",
+      "requires_hardware": false,
+      "test_file": "tests/calibration_skill/test_m27a_k1_planning_artifacts.py"
+    },
+    {
+      "id": "NH-010",
+      "name": "safety_envelope_no_silent_default_test",
+      "description": "Verify SafetyEnvelope construction requires explicit max values; no default to unlimited",
+      "requires_hardware": false,
+      "test_file": "tests/calibration_skill/test_m27b_k1_safety_no_default.py"
+    },
+    {
+      "id": "NH-011",
+      "name": "connection_config_no_auto_connect_test",
+      "description": "Verify ConnectionConfig construction does not trigger network activity or SDK import",
+      "requires_hardware": false,
+      "test_file": "tests/calibration_skill/test_m27b_k1_no_auto_connect.py"
+    },
+    {
+      "id": "NH-012",
+      "name": "operator_authorization_expiry_test",
+      "description": "Verify expired OperatorAuthorization rejects commands; verify expiry check on each operation",
+      "requires_hardware": false,
+      "test_file": "tests/calibration_skill/test_m27b_k1_operator_auth.py"
+    }
+  ],
+  "hardware_gated_tests": [
+    {
+      "id": "HW-001",
+      "name": "k1_connection_preflight",
+      "description": "Connect to real K1 on robot network; verify ConnectionState transitions; verify preflight passes",
+      "requires_hardware": true,
+      "hardware_requirements": "Booster K1 robot on network; SDK environment; operator present",
+      "ci_excluded": true
+    },
+    {
+      "id": "HW-002",
+      "name": "k1_lifecycle_transition",
+      "description": "Full lifecycle: DISCONNECTED→CONNECTED→LOCOMOTION_READY→MOVING→STOPPING→SAFE_STOPPED→DISCONNECTED",
+      "requires_hardware": true,
+      "hardware_requirements": "Booster K1 robot; SDK environment; operator present; clear floor area",
+      "ci_excluded": true
+    },
+    {
+      "id": "HW-003",
+      "name": "k1_bounded_velocity_command",
+      "description": "Send velocity command within SafetyEnvelope (e.g., 0.40 m/s); verify CommandReceipt; verify telemetry captures motion",
+      "requires_hardware": true,
+      "hardware_requirements": "Booster K1 robot; SDK environment; ROS2 telemetry; operator present; clear floor area",
+      "ci_excluded": true
+    },
+    {
+      "id": "HW-004",
+      "name": "k1_stop_acknowledgement",
+      "description": "Send stop command during motion; verify robot stops; verify CommandReceipt with stopped disposition",
+      "requires_hardware": true,
+      "hardware_requirements": "Booster K1 robot; SDK environment; operator present; clear floor area",
+      "ci_excluded": true
+    },
+    {
+      "id": "HW-005",
+      "name": "k1_telemetry_sample_capture",
+      "description": "Capture live telemetry during command; verify TelemetrySample fields populated; verify timestamps monotonically increasing",
+      "requires_hardware": true,
+      "hardware_requirements": "Booster K1 robot; ROS2 telemetry active; odometer publishing",
+      "ci_excluded": true
+    },
+    {
+      "id": "HW-006",
+      "name": "k1_safety_rejection",
+      "description": "Attempt command exceeding SafetyEnvelope; verify rejection before any motion",
+      "requires_hardware": true,
+      "hardware_requirements": "Booster K1 robot; SDK environment; operator present",
+      "ci_excluded": true
+    },
+    {
+      "id": "HW-007",
+      "name": "k1_emergency_stop",
+      "description": "Execute emergency stop during motion; verify immediate stop; verify robot enters safe state",
+      "requires_hardware": true,
+      "hardware_requirements": "Booster K1 robot; SDK environment; operator present; clear floor area; emergency stop procedure defined",
+      "ci_excluded": true
+    },
+    {
+      "id": "HW-008",
+      "name": "k1_audit_package_generation",
+      "description": "Execute trial; verify ExecutionAuditRecord contains receipt, telemetry window, safety envelope, authorization",
+      "requires_hardware": true,
+      "hardware_requirements": "Booster K1 robot; full test infrastructure",
+      "ci_excluded": true
+    }
+  ],
+  "ci_policy": {
+    "rule": "ALL hardware_gated_tests MUST be excluded from CI",
+    "mechanism": "pytest marker: @pytest.mark.hardware_gated or @pytest.mark.skip(reason='requires K1 hardware')",
+    "ci_command": "py -3.12 -m pytest tests/ -k 'not hardware_gated' -q"
+  }
+}

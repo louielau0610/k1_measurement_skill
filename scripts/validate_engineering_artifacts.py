@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""M26 Engineering Artifact Validator.
+"""M26/M27 Engineering Artifact Validator.
 
 Validates:
 1. All engineering JSON artifacts parse
@@ -18,6 +18,12 @@ Validates:
 14. M26-E release scripts exist and avoid repository restore commands
 15. M26-E distribution documents exist
 16. M26-E readiness remains conservative
+17. M27-A output JSON files parse
+18. M27-A K1 remains not registered in AdapterRegistry
+19. M27-A M26-D manifest still marks K1 unavailable
+20. M27-A no new Booster SDK import in core calibration_skill layers
+21. M27-A no hardware readiness field is upgraded
+22. M27-A K1 migration remains planning-only
 
 Produces deterministic failure messages and nonzero exit code on failure.
 Does NOT modify any files.
@@ -573,8 +579,181 @@ def validate_m26e_readiness() -> int:
     return EXIT_FAIL if errors > 0 else EXIT_OK
 
 
+# ── M27-A validation ────────────────────────────────────────────────────
+
+def validate_m27a_output_json_parse() -> int:
+    """Verify all M27-A output JSON files parse as valid JSON."""
+    m27a_files = [
+        "m27a_initial_state.json",
+        "m27a_k1_legacy_inventory.json",
+        "m27a_k1_command_path_audit.json",
+        "m27a_k1_telemetry_path_audit.json",
+        "m27a_k1_safety_gate_audit.json",
+        "m27a_k1_to_robot_adapter_mapping.json",
+        "m27a_k1_compatibility_test_plan.json",
+        "m27a_k1_migration_risk_register.json",
+        "m27a_readiness.json",
+        "m27a_validation_summary.json",
+    ]
+    errors = 0
+    for filename in m27a_files:
+        path = REPO_ROOT / "outputs" / "engineering" / filename
+        if not path.exists():
+            fail(f"M27-A output missing: {filename}")
+            errors += 1
+            continue
+        data = parse_json(path)
+        if data is None:
+            errors += 1
+        else:
+            ok(f"M27-A JSON parsed: {filename}")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
+def validate_m27a_k1_not_in_registry() -> int:
+    """Verify K1 remains not registered in M26-C AdapterRegistry."""
+    errors = 0
+    registry_py = REPO_ROOT / "calibration_skill" / "adapters" / "registry.py"
+    if not registry_py.exists():
+        fail("AdapterRegistry file not found")
+        return EXIT_FAIL
+    content = registry_py.read_text(encoding="utf-8")
+    # Verify registry rejects non-MOCK platforms
+    if "platform != RobotPlatform.MOCK" not in content:
+        fail("AdapterRegistry may have weakened MOCK-only guard")
+        errors += 1
+    # Verify no K1 registration
+    if "RobotPlatform.BOOSTER_K1" in content and "register" in content:
+        # Check context — may be in error message, not registration
+        if 'register(' in content[content.find("RobotPlatform.BOOSTER_K1"):content.find("RobotPlatform.BOOSTER_K1") + 200]:
+            fail("AdapterRegistry appears to register BOOSTER_K1")
+            errors += 1
+    if errors == 0:
+        ok("K1 not registered in AdapterRegistry")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
+def validate_m27a_m26d_manifest_k1_unavailable() -> int:
+    """Verify M26-D CLI manifest still marks K1 unavailable in new runtime."""
+    errors = 0
+    manifest_path = REPO_ROOT / "outputs" / "engineering" / "m26d_skill_manifest.json"
+    if not manifest_path.exists():
+        fail("M26-D manifest not found")
+        return EXIT_FAIL
+    data = parse_json(manifest_path)
+    if data is None:
+        return EXIT_FAIL
+    k1_status = data.get("platform_support", {}).get("booster_k1", {}).get("status", "unknown")
+    if k1_status == "supported":
+        fail("M26-D manifest marks booster_k1 as supported (should be unavailable)")
+        errors += 1
+    if data.get("platform_support", {}).get("mock", {}).get("dry_run_only") is not True:
+        fail("M26-D manifest mock platform must be dry_run_only=true")
+        errors += 1
+    if errors == 0:
+        ok("M26-D manifest K1 unavailable")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
+def validate_m27a_no_new_booster_sdk() -> int:
+    """Verify no new Booster SDK import appears under generic calibration_skill."""
+    errors = 0
+    # Directories that must remain vendor-free
+    vendor_free_dirs = [
+        REPO_ROOT / "calibration_skill" / "skill",
+        REPO_ROOT / "calibration_skill" / "runtime",
+        REPO_ROOT / "calibration_skill" / "domain",
+        REPO_ROOT / "calibration_skill" / "ports",
+        REPO_ROOT / "calibration_skill" / "schemas",
+    ]
+    booster_patterns = (
+        "booster_robotics_sdk",
+        "B1LocoClient",
+        "ChannelFactory",
+        "RobotMode",
+    )
+    for directory in vendor_free_dirs:
+        if not directory.is_dir():
+            continue
+        for py_file in directory.rglob("*.py"):
+            content = py_file.read_text(encoding="utf-8")
+            for pattern in booster_patterns:
+                if pattern in content:
+                    rel = py_file.relative_to(REPO_ROOT)
+                    fail(f"Booster SDK import '{pattern}' in vendor-free layer: {rel}")
+                    errors += 1
+    if errors == 0:
+        ok("No Booster SDK in calibration_skill core layers")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
+def validate_m27a_no_hardware_readiness_upgrade() -> int:
+    """Verify no hardware readiness field is upgraded in M27-A."""
+    errors = 0
+    readiness_path = REPO_ROOT / "outputs" / "engineering" / "m27a_readiness.json"
+    if not readiness_path.exists():
+        fail("M27-A readiness file not found")
+        return EXIT_FAIL
+    data = parse_json(readiness_path)
+    if data is None:
+        return EXIT_FAIL
+    readiness = data.get("readiness", {})
+    # These must remain not_started or the equivalent
+    must_not_be_verified = {
+        "k1_new_runtime_support": "not_started",
+        "hardware_verification": "not_started",
+    }
+    for key, expected in must_not_be_verified.items():
+        actual = readiness.get(key, {}).get("maturity")
+        if actual != expected:
+            fail(f"m27a_readiness.json: {key} maturity is {actual!r}, expected {expected!r}")
+            errors += 1
+    # K1 adapter migration must be "planned" not "implemented" or "bench_verified"
+    k1_migration = readiness.get("k1_adapter_migration", {}).get("maturity")
+    if k1_migration in ("bench_verified", "hardware_verified", "implemented"):
+        fail(f"m27a_readiness.json: k1_adapter_migration must not be {k1_migration}")
+        errors += 1
+    if errors == 0:
+        ok("M27-A readiness no hardware upgrade")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
+def validate_m27a_k1_planning_only() -> int:
+    """Verify K1 migration remains planning-only; no implementation files created."""
+    errors = 0
+    # Check that no K1 adapter implementation exists in calibration_skill/adapters/
+    adapters_dir = REPO_ROOT / "calibration_skill" / "adapters"
+    k1_adapter_files = [
+        adapters_dir / "booster_k1" / "adapter.py",
+        adapters_dir / "booster_k1" / "__init__.py",
+        adapters_dir / "k1_adapter.py",
+        adapters_dir / "booster_k1_adapter.py",
+    ]
+    for path in k1_adapter_files:
+        if path.exists():
+            fail(f"K1 adapter implementation exists (should not before M27-B): {path.relative_to(REPO_ROOT)}")
+            errors += 1
+    # Verify no K1 registration call in any __init__.py or startup
+    skill_init = REPO_ROOT / "calibration_skill" / "__init__.py"
+    if skill_init.exists():
+        content = skill_init.read_text(encoding="utf-8")
+        if "BOOSTER_K1" in content and "register" in content:
+            fail("calibration_skill/__init__.py may register K1")
+            errors += 1
+    # Verify the register call with BOOSTER_K1 is guarded or absent from adapter __init__
+    adapter_init = adapters_dir / "__init__.py"
+    if adapter_init.exists():
+        content = adapter_init.read_text(encoding="utf-8")
+        if "BOOSTER_K1" in content and "register" in content:
+            fail("calibration_skill/adapters/__init__.py may auto-register K1")
+            errors += 1
+    if errors == 0:
+        ok("K1 migration remains planning-only")
+    return EXIT_FAIL if errors > 0 else EXIT_OK
+
+
 def main() -> int:
-    print("=== M26 Engineering Artifact Validator ===\n")
+    print("=== M26/M27 Engineering Artifact Validator ===\n")
 
     results = [
         ("JSON artifacts", validate_engineering_json_artifacts()),
@@ -594,6 +773,13 @@ def main() -> int:
         ("M26-E release scripts", validate_m26e_release_scripts()),
         ("M26-E docs", validate_m26e_docs_exist()),
         ("M26-E readiness", validate_m26e_readiness()),
+        # ── M27-A checks ──
+        ("M27-A output JSON parse", validate_m27a_output_json_parse()),
+        ("M27-A K1 not in registry", validate_m27a_k1_not_in_registry()),
+        ("M27-A M26-D manifest K1 unavailable", validate_m27a_m26d_manifest_k1_unavailable()),
+        ("M27-A no new Booster SDK", validate_m27a_no_new_booster_sdk()),
+        ("M27-A no hardware readiness upgrade", validate_m27a_no_hardware_readiness_upgrade()),
+        ("M27-A K1 planning only", validate_m27a_k1_planning_only()),
     ]
 
     print()

@@ -1,0 +1,39 @@
+{
+  "initial_state_metadata": {
+    "milestone": "M27-A",
+    "date": "2026-06-17",
+    "schema_version": "m27a_initial_state_v1"
+  },
+  "source": {
+    "branch": "engineering/m26e-packaging-release-gate",
+    "source_commit": "e2f9fdf5c56afd4ed3b917629fa8998bcfc5065b",
+    "remote_commit": "e2f9fdf5c56afd4ed3b917629fa8998bcfc5065b",
+    "starting_porcelain": "",
+    "worktree_clean": true
+  },
+  "environment": {
+    "python_version": "3.12.3",
+    "pytest_version": "9.0.3",
+    "jsonschema_version": "4.26.0"
+  },
+  "m26e_readiness": {
+    "domain_contracts": "bench_verified",
+    "port_interfaces": "bench_verified",
+    "versioned_schemas": "bench_verified",
+    "deterministic_codecs": "bench_verified",
+    "architecture_enforcement": "bench_verified",
+    "mock_adapter": "bench_verified",
+    "adapter_registry": "bench_verified",
+    "skill_service_skeleton": "bench_verified",
+    "dry_run_end_to_end": "bench_verified",
+    "agent_cli": "bench_verified",
+    "packaging_metadata": "bench_verified",
+    "local_release_gate": "bench_verified",
+    "k1_adapter_migration": "legacy_existing",
+    "g1_adapter": "scaffolded",
+    "go1_adapter": "scaffolded",
+    "unified_skill_runtime": "dry_run_only",
+    "hardware_verification": "not_started",
+    "release": "pre_release_only"
+  }
+}

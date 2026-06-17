@@ -1,0 +1,169 @@
+{
+  "risk_register_metadata": {
+    "milestone": "M27-A",
+    "date": "2026-06-17",
+    "schema_version": "m27a_k1_migration_risk_register_v1",
+    "status": "planning_only"
+  },
+  "risks": [
+    {
+      "id": "RISK-001",
+      "name": "SDK environment mismatch",
+      "description": "Booster SDK may require specific Python version, OS packages, or environment variables not available in all contexts",
+      "severity": "high",
+      "likelihood": "medium",
+      "mitigation": "Subprocess sidecar with --sdk-python and --sdk-env-setup; lazy SDK loading",
+      "test_evidence_required": "NH-001 import boundary test; HW-001 connection preflight",
+      "blocking_status": "non_blocking_for_m27b"
+    },
+    {
+      "id": "RISK-002",
+      "name": "FastDDS configuration",
+      "description": "Booster ROS2 interface uses FastDDS; configuration may conflict or be missing",
+      "severity": "medium",
+      "likelihood": "medium",
+      "mitigation": "ROS2 discovery documented in M19R-C; use existing setup.bash sourcing pattern",
+      "test_evidence_required": "HW-001 connection preflight; HW-005 telemetry capture",
+      "blocking_status": "non_blocking_for_m27b"
+    },
+    {
+      "id": "RISK-003",
+      "name": "K1 mode lifecycle uncertainty",
+      "description": "SDK RobotMode enum values and valid transitions not fully documented; kPrepare/kWalking sequence may have undocumented requirements",
+      "severity": "high",
+      "likelihood": "medium",
+      "mitigation": "Replicate exact legacy sequence; add generous timeouts; hardware-gated lifecycle test",
+      "test_evidence_required": "HW-002 lifecycle transition test",
+      "blocking_status": "blocking_for_m27c"
+    },
+    {
+      "id": "RISK-004",
+      "name": "Command frame ambiguity",
+      "description": "Move(vx, vy, w) coordinate frame not explicitly documented; assumed body frame",
+      "severity": "medium",
+      "likelihood": "low",
+      "mitigation": "Use body frame as default; expose CoordinateFrame in adapter config",
+      "test_evidence_required": "HW-003 bounded velocity command; verify motion direction matches command",
+      "blocking_status": "non_blocking_for_m27b"
+    },
+    {
+      "id": "RISK-005",
+      "name": "Odometry frame ambiguity",
+      "description": "Odometer x/y/theta frame relative to start pose or global frame unclear",
+      "severity": "medium",
+      "likelihood": "medium",
+      "mitigation": "Use relative frame assumption (dx from trial start); document assumption",
+      "test_evidence_required": "HW-005 telemetry capture; compare odometer motion against expected direction",
+      "blocking_status": "non_blocking_for_m27b"
+    },
+    {
+      "id": "RISK-006",
+      "name": "Yaw drift variability",
+      "description": "Yaw drift magnitude may vary with surface, speed, battery; 0.0 deg mean in M23-C may not generalize",
+      "severity": "medium",
+      "likelihood": "medium",
+      "mitigation": "Capture yaw in telemetry; flag anomalous drift; do not assume zero",
+      "test_evidence_required": "NH-007 telemetry normalization; HW-005 telemetry capture",
+      "blocking_status": "non_blocking"
+    },
+    {
+      "id": "RISK-007",
+      "name": "Speed deadband",
+      "description": "0.20 m/s low-speed deadzone observed; commands near deadband may produce no motion",
+      "severity": "low",
+      "likelihood": "high",
+      "mitigation": "Document deadband; enforce minimum command velocity above deadband in preflight",
+      "test_evidence_required": "NH-003 safety config parsing; HW-003 bounded velocity command",
+      "blocking_status": "non_blocking"
+    },
+    {
+      "id": "RISK-008",
+      "name": "Profile/environment mismatch",
+      "description": "Gold profile (M19C) collected on specific surface/conditions; may not match current environment",
+      "severity": "medium",
+      "likelihood": "medium",
+      "mitigation": "M24 profile refresh workflow; S2 marble floor as reference surface",
+      "test_evidence_required": "Profile comparison tests in M24 analysis scripts",
+      "blocking_status": "non_blocking_for_m27b"
+    },
+    {
+      "id": "RISK-009",
+      "name": "Battery/state missing data",
+      "description": "No battery level or robot state data in telemetry stream; cannot detect low-battery degraded performance",
+      "severity": "medium",
+      "likelihood": "high",
+      "mitigation": "Add battery/state to telemetry requirements for M27-C; operator checklist includes battery check",
+      "test_evidence_required": "NH-007 telemetry normalization (verify battery field handled as missing)",
+      "blocking_status": "non_blocking"
+    },
+    {
+      "id": "RISK-010",
+      "name": "Operator confirmation bypass risk",
+      "description": "Operator confirmation is a YAML file; no runtime challenge-response; could be edited accidentally",
+      "severity": "medium",
+      "likelihood": "low",
+      "mitigation": "Hash safety config into audit trail; preflight validates hash; OperatorAuthorization with expiry",
+      "test_evidence_required": "NH-012 operator auth expiry; NH-010 safety no-default",
+      "blocking_status": "non_blocking_for_m27b"
+    },
+    {
+      "id": "RISK-011",
+      "name": "Stale telemetry",
+      "description": "ROS2 subscriber may receive stale messages; no timestamp-based staleness detection in legacy",
+      "severity": "medium",
+      "likelihood": "medium",
+      "mitigation": "Add message age check in TelemetryStream; flag or discard stale samples",
+      "test_evidence_required": "NH-007 telemetry normalization; HW-005 telemetry capture",
+      "blocking_status": "non_blocking"
+    },
+    {
+      "id": "RISK-012",
+      "name": "Stop acknowledgement uncertainty",
+      "description": "Legacy stop sends Move(0,0,0) but does not verify robot actually stopped (no velocity feedback check)",
+      "severity": "high",
+      "likelihood": "medium",
+      "mitigation": "Add telemetry-based stop verification; check velocity near zero after stop phase",
+      "test_evidence_required": "HW-004 stop acknowledgement; HW-007 emergency stop",
+      "blocking_status": "blocking_for_m27c"
+    },
+    {
+      "id": "RISK-013",
+      "name": "Import-time vendor side effects",
+      "description": "Booster SDK import may trigger DDS initialization, network calls, or hardware polling",
+      "severity": "high",
+      "likelihood": "low",
+      "mitigation": "Lazy import only when dry_run=False; subprocess isolation; never import at module level",
+      "test_evidence_required": "NH-001 import boundary; NH-011 no auto-connect",
+      "blocking_status": "non_blocking_for_m27b"
+    },
+    {
+      "id": "RISK-014",
+      "name": "Package dependency contamination",
+      "description": "Adding booster_robotics_sdk_python as dependency would make calibration-skill uninstallable without robot SDK",
+      "severity": "high",
+      "likelihood": "low",
+      "mitigation": "SDK as optional extra [booster_k1]; never in core dependencies; enforced by pyproject.toml validation",
+      "test_evidence_required": "NH-008 no-vendor install test",
+      "blocking_status": "non_blocking_for_m27b"
+    },
+    {
+      "id": "RISK-015",
+      "name": "Windows vs Ubuntu divergence",
+      "description": "Core development on Windows (no SDK, no ROS2); robot runs Ubuntu (SDK + ROS2); subprocess, paths, and env differ",
+      "severity": "medium",
+      "likelihood": "high",
+      "mitigation": "Subprocess sidecar handles both; dry-run tests pass on both; hardware tests Ubuntu-only",
+      "test_evidence_required": "NH-001 through NH-012 on Windows; HW-001 through HW-008 on Ubuntu",
+      "blocking_status": "non_blocking"
+    }
+  ],
+  "summary": {
+    "total_risks": 15,
+    "high_severity": 4,
+    "medium_severity": 9,
+    "low_severity": 2,
+    "blocking_for_m27c": 2,
+    "blocking_risks": ["RISK-003 K1 mode lifecycle uncertainty", "RISK-012 Stop acknowledgement uncertainty"],
+    "non_blocking": 13
+  }
+}

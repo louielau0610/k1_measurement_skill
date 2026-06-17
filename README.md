@@ -1,4 +1,12 @@
-﻿# M26-E 包装与本地发布门禁
+﻿# M27-A K1 旧版适配器盘点与迁移边界规划
+
+M27-A 是纯规划/审计里程碑。产出 K1 旧版适配器盘点、命令路径审计、遥测路径审计、
+安全门审计、RobotAdapter 映射、厂商运行时隔离设计、兼容性测试计划、迁移风险登记册。
+
+M27-A 不实施任何迁移、不连接 K1、不发送运动命令、不导入 Booster SDK 到新运行时。
+**M27-B 才是第一个可能的 K1 实施步骤。**
+
+# M26-E 包装与本地发布门禁
 
 M26-E 将硬件无关的 `calibration_skill` dry-run CLI 包装为本地
 `calibration-skill` Python 包，并增加 console script、hermetic test runner、

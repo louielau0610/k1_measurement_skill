@@ -1,0 +1,12 @@
+{
+  "checks": [
+    {
+      "allowed_summary_porcelain": "",
+      "name": "repository_initially_clean",
+      "porcelain": " M PROJECT_STATUS.md\n M README.en.md\n M README.md\n M TODO.md\n M outputs/engineering/m26b_contract_inventory.json\n M outputs/engineering/m26e_readiness.json\n M scripts/validate_engineering_artifacts.py\n M tests/calibration_skill/test_engineering_artifact_validator.py\n?? docs/engineering/m27a_k1_command_path_audit.md\n?? docs/engineering/m27a_k1_compatibility_test_plan.md\n?? docs/engineering/m27a_k1_legacy_inventory.md\n?? docs/engineering/m27a_k1_migration_risk_register.md\n?? docs/engineering/m27a_k1_safety_gate_audit.md\n?? docs/engineering/m27a_k1_telemetry_path_audit.md\n?? docs/engineering/m27a_k1_to_robot_adapter_mapping.md\n?? docs/engineering/m27a_k1_vendor_runtime_isolation.md\n?? outputs/engineering/m27a_calibration_skill_test_results.txt\n?? outputs/engineering/m27a_initial_state.json\n?? outputs/engineering/m27a_k1_command_path_audit.json\n?? outputs/engineering/m27a_k1_compatibility_test_plan.json\n?? outputs/engineering/m27a_k1_legacy_inventory.json\n?? outputs/engineering/m27a_k1_migration_risk_register.json\n?? outputs/engineering/m27a_k1_safety_gate_audit.json\n?? outputs/engineering/m27a_k1_telemetry_path_audit.json\n?? outputs/engineering/m27a_k1_to_robot_adapter_mapping.json\n?? outputs/engineering/m27a_readiness.json\n?? outputs/engineering/m27a_validation_summary.json\n?? tests/calibration_skill/test_m27a_k1_planning_artifacts.py\n",
+      "status": "failed"
+    }
+  ],
+  "milestone": "M26-E",
+  "status": "failed"
+}

@@ -1,0 +1,123 @@
+{
+  "audit_metadata": {
+    "milestone": "M27-A",
+    "date": "2026-06-17",
+    "schema_version": "m27a_k1_command_path_audit_v1",
+    "audit_type": "command_path",
+    "method": "repository evidence only; no K1 connection; no hardware"
+  },
+  "verified_motion_chain": {
+    "sequence": ["kPrepare", "kWalking", "Move(vx, 0.0, 0.0)"],
+    "verification_status": "verified_from_repository_evidence",
+    "source_file": "scripts/send_m23b_k1_velocity_command.py",
+    "source_lines": "RobotMode.kPrepare → sleep(prepare_sec) → RobotMode.kWalking → sleep(walking_sec) → Move(v,0,0) loop"
+  },
+  "entry_scripts": [
+    {
+      "script": "scripts/send_m23b_k1_velocity_command.py",
+      "entry_point": "main()",
+      "arguments": ["--trial-id", "--command-velocity", "--interface", "--idle-sec", "--command-sec", "--stop-sec", "--prepare-sec", "--walking-sec", "--log-dir"],
+      "role": "primary K1 velocity command sender",
+      "sdk_imports": ["B1LocoClient", "ChannelFactory", "RobotMode"]
+    },
+    {
+      "script": "scripts/run_m23b_k1_compensation_trials.py",
+      "entry_point": "main()",
+      "arguments": ["--execute", "--dry-run", "--sdk-python", "--sdk-env-setup", "--logger-startup-sec"],
+      "role": "compensation trial orchestrator; launches SDK as subprocess"
+    },
+    {
+      "script": "scripts/run_booster_k1_measurement.py",
+      "entry_point": "main()",
+      "arguments": ["--execute", "--dry-run"],
+      "role": "measurement orchestrator; dry-run default"
+    }
+  ],
+  "argument_gates": [
+    {
+      "gate": "--execute flag",
+      "location": "run_m23b_k1_compensation_trials.py, run_booster_k1_measurement.py, run_m24b_s2_profile_refresh_trials.py, run_m24h_controlled_s2_replication_trials.py",
+      "default": "dry-run (no hardware)",
+      "fail_safe": "omitting --execute prevents all SDK calls"
+    },
+    {
+      "gate": "--command-velocity",
+      "location": "send_m23b_k1_velocity_command.py",
+      "validation": "required float; no silent default",
+      "fail_safe": "argparse enforces required argument"
+    },
+    {
+      "gate": "safe_command_speed_max",
+      "location": "configs/m25_k1_safe_speed_operator_confirmation.yaml",
+      "value": 0.6,
+      "enforcement": "command_runner.py fails closed when no max supplied"
+    }
+  ],
+  "dry_run_behavior": {
+    "default": true,
+    "scripts_affected": ["run_m23b_k1_compensation_trials.py", "run_booster_k1_measurement.py", "run_m24b_s2_profile_refresh_trials.py", "run_m24h_controlled_s2_replication_trials.py"],
+    "description": "All orchestrators default to dry-run; --execute flag required for any hardware path"
+  },
+  "operator_confirmation": {
+    "config_file": "configs/m25_k1_safe_speed_operator_confirmation.yaml",
+    "mechanism": "YAML file with operator-confirmed safe speed; hashed into preflight output and audit trail",
+    "confirmed_by": "operator",
+    "confirmed_at": "2026-06-15T00:00:00Z"
+  },
+  "speed_limits": {
+    "safe_max": 0.6,
+    "unit": "m/s",
+    "source": "configs/m25_k1_safe_speed_operator_confirmation.yaml",
+    "enforcement": "command_runner.py fails closed; preflight validates against config"
+  },
+  "command_duration": {
+    "idle_sec": 2.0,
+    "command_sec": 6.0,
+    "stop_sec": 2.0,
+    "prepare_sec": 3.0,
+    "walking_sec": 2.0,
+    "send_hz": 10,
+    "source": "scripts/send_m23b_k1_velocity_command.py"
+  },
+  "lifecycle_sequence": [
+    {"phase": "import_check", "description": "Verify Booster SDK imports available", "hardware": false},
+    {"phase": "channel_init", "description": "ChannelFactory.Instance().Init(0, interface)", "hardware": true},
+    {"phase": "client_init", "description": "B1LocoClient().Init()", "hardware": true},
+    {"phase": "prepare", "description": "RobotMode(kPrepare), sleep(prepare_sec)", "hardware": true},
+    {"phase": "walking_setup", "description": "RobotMode(kWalking), sleep(walking_sec)", "hardware": true},
+    {"phase": "idle", "description": "Move(0,0,0) at 10Hz for idle_sec", "hardware": true},
+    {"phase": "command", "description": "Move(vx,0,0) at 10Hz for command_sec", "hardware": true},
+    {"phase": "stop", "description": "Move(0,0,0) at 10Hz for stop_sec", "hardware": true},
+    {"phase": "final_stop", "description": "Move(0,0,0) in finally block", "hardware": true}
+  ],
+  "stop_behavior": {
+    "normal_stop": "Move(0,0,0) sent at 10Hz for stop_sec seconds",
+    "finally_stop": "Move(0,0,0) sent in finally block regardless of exception",
+    "fail_closed": "SDK import failure returns exit code 1 without any motor movement",
+    "error_stop": "Exception caught; Move(0,0,0) attempted in finally"
+  },
+  "error_handling": [
+    {"scenario": "SDK not importable", "behavior": "prints error, writes log, exits code 1; no motor movement", "fail_safe": true},
+    {"scenario": "Runtime exception during command", "behavior": "caught, logged, finally block sends stop; exits code 1", "fail_safe": true},
+    {"scenario": "Subprocess failure", "behavior": "orchestrator detects non-zero exit; trial not marked executed", "fail_safe": true}
+  ],
+  "logging": {
+    "command_log_fields": ["trial_id", "command_velocity", "import_status", "prepare_status", "walking_status", "phases", "exit_status", "error"],
+    "log_format": "JSON per-trial command log",
+    "log_location": "--log-dir argument",
+    "audit_trail": "command log written for every execution attempt including failures"
+  },
+  "hardware_motion_points": [
+    {"location": "ChannelFactory.Instance().Init(0, interface)", "file": "send_m23b_k1_velocity_command.py", "risk": "network connection to robot"},
+    {"location": "client.RobotMode(RobotMode.kPrepare)", "file": "send_m23b_k1_velocity_command.py", "risk": "mode change on robot"},
+    {"location": "client.RobotMode(RobotMode.kWalking)", "file": "send_m23b_k1_velocity_command.py", "risk": "mode change to walking"},
+    {"location": "client.Move(vx, 0.0, 0.0)", "file": "send_m23b_k1_velocity_command.py", "risk": "physical robot motion"},
+    {"location": "client.Move(0.0, 0.0, 0.0)", "file": "send_m23b_k1_velocity_command.py", "risk": "stop command to robot"}
+  ],
+  "provenance": {
+    "verified_against": "scripts/send_m23b_k1_velocity_command.py",
+    "verification_method": "static code analysis of repository source",
+    "limitations": "No live K1 connection; chain verified from source code only",
+    "assumptions": ["Booster SDK API behaves as documented in code", "kPrepare/kWalking are valid RobotMode enum values"]
+  }
+}

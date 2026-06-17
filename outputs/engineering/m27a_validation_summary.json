@@ -1,0 +1,23 @@
+{
+  "validation_metadata": {
+    "milestone": "M27-A",
+    "date": "2026-06-17",
+    "schema_version": "m27a_validation_summary_v1"
+  },
+  "validation_results": {
+    "json_artifact_parse": {"status": "pending", "note": "Run validate_engineering_artifacts.py to confirm"},
+    "m27a_output_json_parse": {"status": "pending"},
+    "k1_not_in_registry": {"status": "pending", "note": "Verified by test_m27a_k1_planning_artifacts.py"},
+    "m26d_manifest_k1_unavailable": {"status": "pending"},
+    "no_new_booster_sdk_import": {"status": "pending"},
+    "no_hardware_readiness_upgrade": {"status": "pending"},
+    "k1_migration_planning_only": {"status": "pending"},
+    "compileall": {"status": "pending"},
+    "m27a_targeted_tests": {"status": "pending"},
+    "calibration_skill_tests": {"status": "pending"},
+    "full_suite_hermetic": {"status": "pending"},
+    "local_release_gate": {"status": "pending"},
+    "final_porcelain": {"status": "pending"},
+    "git_diff_check": {"status": "pending"}
+  }
+}

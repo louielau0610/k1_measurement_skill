@@ -1,5 +1,38 @@
 # Project Status
 
+## M27-A K1 Legacy Adapter Extraction Plan and Compatibility Boundary (current)
+
+M27-A is a planning and audit milestone only. It produces the K1 legacy adapter
+inventory, command path audit, telemetry path audit, safety-gate audit, RobotAdapter
+mapping, vendor runtime isolation design, compatibility test plan, and migration
+risk register.
+
+M27-A deliverables:
+
+- `docs/engineering/m27a_k1_legacy_inventory.md`
+- `docs/engineering/m27a_k1_command_path_audit.md`
+- `docs/engineering/m27a_k1_telemetry_path_audit.md`
+- `docs/engineering/m27a_k1_safety_gate_audit.md`
+- `docs/engineering/m27a_k1_to_robot_adapter_mapping.md`
+- `docs/engineering/m27a_k1_vendor_runtime_isolation.md`
+- `docs/engineering/m27a_k1_compatibility_test_plan.md`
+- `docs/engineering/m27a_k1_migration_risk_register.md`
+- `outputs/engineering/m27a_*.json` — structured audit artifacts
+- `tests/calibration_skill/test_m27a_k1_planning_artifacts.py`
+- Updated `scripts/validate_engineering_artifacts.py` with M27-A checks
+
+M27-A does NOT:
+
+- Import Booster SDK into calibration_skill runtime
+- Implement migrated K1 adapter
+- Register K1 in AdapterRegistry
+- Connect to K1 or send motion commands
+- Modify gold profiles or raw measurement data
+- Claim K1/G1/GO1 runtime support
+- Begin M27-B implementation
+
+**M27-B will be the first possible K1 implementation step.**
+
 ## M26-E Packaging and Local Release Gate
 
 M26-E is the active packaging milestone. It turns the M26-D mock dry-run CLI

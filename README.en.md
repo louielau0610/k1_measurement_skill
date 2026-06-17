@@ -1,5 +1,15 @@
 # K1 Velocity Measurement Toolkit
 
+## M27-A K1 Legacy Adapter Extraction Plan and Compatibility Boundary
+
+M27-A is a planning and audit milestone only. It produces the K1 legacy adapter
+inventory, command/telemetry/safety path audits, RobotAdapter mapping, vendor
+runtime isolation design, compatibility test plan, and migration risk register.
+
+M27-A does NOT implement any migration, connect to K1, send motion commands, or
+import Booster SDK into the new runtime. **M27-B will be the first possible K1
+implementation step.**
+
 ## M26-E Packaging and Local Release Gate
 
 M26-E packages the hardware-free `calibration_skill` dry-run CLI as the local

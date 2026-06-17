@@ -1,0 +1,98 @@
+{
+  "audit_metadata": {
+    "milestone": "M27-A",
+    "date": "2026-06-17",
+    "schema_version": "m27a_k1_safety_gate_audit_v1",
+    "audit_type": "safety_gate",
+    "method": "repository evidence only"
+  },
+  "authoritative_safety_config": {
+    "path": "configs/m25_k1_safe_speed_operator_confirmation.yaml",
+    "verified": true,
+    "content": {
+      "robot_id": "k1",
+      "control_mode": null,
+      "gait_mode": null,
+      "safe_command_speed_max": 0.6,
+      "evidence_type": "operator_confirmation",
+      "confirmed_by": "operator",
+      "confirmed_at": "2026-06-15T00:00:00Z"
+    }
+  },
+  "max_speed": {
+    "value": 0.6,
+    "unit": "m/s",
+    "verification": "confirmed from m25_k1_safe_speed_operator_confirmation.yaml",
+    "enforcement": "command_runner.py fails closed when no explicit max supplied"
+  },
+  "operator_confirmation_mechanism": {
+    "type": "YAML configuration file with operator attestation",
+    "file": "configs/m25_k1_safe_speed_operator_confirmation.yaml",
+    "template": "configs/m25_k1_safe_speed_operator_confirmation_template.yaml",
+    "provenance": "hashed into preflight output, plans, collection packages, session metadata, and audit trail"
+  },
+  "dry_run_default": {
+    "status": true,
+    "scope": "all trial runners (M23-B, M24-B, M24-H, M21-B)",
+    "mechanism": "--execute flag required for any hardware path; default is dry-run"
+  },
+  "fail_closed_behavior": {
+    "description": "All command paths fail closed — no motion occurs without explicit authorization",
+    "cases": [
+      {"scenario": "SDK not importable", "result": "exit code 1, no motor movement, error logged"},
+      {"scenario": "No --execute flag", "result": "dry-run only, no subprocess launched"},
+      {"scenario": "No safe_command_speed_max", "result": "command_runner.py raises error, no command sent"},
+      {"scenario": "Subprocess failure", "result": "trial not marked executed, error logged"},
+      {"scenario": "Runtime exception", "result": "finally block sends Move(0,0,0)"}
+    ]
+  },
+  "command_expiry": {
+    "mechanism": "command-sec duration (default 6.0s) limits command window",
+    "ttl_behavior": "no explicit TTL beyond command duration; stop phase follows command",
+    "gap": "no TCP-like TTL or heartbeat timeout — command runs for fixed duration"
+  },
+  "stop_restore_behavior": {
+    "normal_stop": "Move(0,0,0) at 10Hz for stop_sec (default 2.0s)",
+    "finally_stop": "Move(0,0,0) in finally block — best-effort regardless of exception",
+    "restore": "no explicit state restore beyond stop; robot remains in last mode"
+  },
+  "unsafe_defaults": {
+    "assessment": "no silent unsafe defaults found",
+    "details": [
+      "command_runner.py requires explicit max speed; no fallback to unlimited",
+      "all orchestrators default to dry-run; --execute required",
+      "SDK import failure prevents any motion",
+      "argparse requires --command-velocity; no default"
+    ]
+  },
+  "gaps_against_m26b_safety_envelope": {
+    "gaps": [
+      {
+        "gap": "No explicit max_abs_vy_mps or max_abs_wz_radps in K1 safety config",
+        "severity": "medium",
+        "note": "K1 only uses forward (vx) commands; lateral/rotational not in scope"
+      },
+      {
+        "gap": "No timeout/connection-loss detection in safety config",
+        "severity": "medium",
+        "note": "Command runs for fixed duration; no heartbeat or connection monitoring"
+      },
+      {
+        "gap": "No preflight checklist integration in legacy path",
+        "severity": "low",
+        "note": "M25 preflight exists in k1_measurement module but not integrated with SDK path"
+      },
+      {
+        "gap": "Control mode and gait mode are null in safety config",
+        "severity": "low",
+        "note": "SDK path uses fixed kPrepare→kWalking sequence; not configurable"
+      }
+    ],
+    "addressed_by_m26b": [
+      "SafetyEnvelope provides explicit max values for all axes",
+      "OperatorAuthorization provides expiry and operation gating",
+      "PreflightReport integrates checklist into connection flow",
+      "ConnectionState.DEGRADED/FAULTED handles connection loss"
+    ]
+  }
+}

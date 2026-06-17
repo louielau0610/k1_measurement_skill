@@ -1,0 +1,122 @@
+{
+  "audit_metadata": {
+    "milestone": "M27-A",
+    "date": "2026-06-17",
+    "schema_version": "m27a_k1_telemetry_path_audit_v1",
+    "audit_type": "telemetry_path",
+    "method": "repository evidence only"
+  },
+  "telemetry_sources": [
+    {
+      "source": "ROS2 /odometer_state",
+      "message_type": "booster_interface/msg/Odometer",
+      "fields": ["x", "y", "theta"],
+      "discovery": "source /opt/booster/BoosterRos2Interface/install/setup.bash",
+      "primary": true,
+      "files": ["scripts/log_k1_ros2_odometer_state.py", "scripts/log_m23b_k1_compensation_trial.py", "scripts/log_m24b_s2_profile_refresh_trial.py", "scripts/log_m24h_controlled_s2_replication_trial.py"]
+    },
+    {
+      "source": "ROS2 /low_state.imu_state.rpy",
+      "message_type": "low_state IMU",
+      "fields": ["roll", "pitch", "yaw"],
+      "primary": false,
+      "role": "yaw fallback when odometer theta unavailable",
+      "files": ["scripts/log_m23b_k1_compensation_trial.py"]
+    },
+    {
+      "source": "ROS2 IMU topics",
+      "message_type": "sensor_msgs/Imu",
+      "fields": ["orientation", "angular_velocity"],
+      "primary": false,
+      "role": "secondary yaw fallback",
+      "files": ["configs/real_k1_topic_mapping_template.yaml"]
+    },
+    {
+      "source": "Booster SDK state (read-only)",
+      "message_type": "SDK internal state",
+      "fields": ["position", "yaw"],
+      "primary": false,
+      "role": "SDK-level state discovery; not used as primary telemetry source",
+      "files": ["scripts/log_k1_sdk_state_smoke.py", "scripts/discover_k1_sdk_state_sources.py"]
+    }
+  ],
+  "logger_scripts": [
+    {
+      "file": "scripts/log_k1_ros2_odometer_state.py",
+      "layer": "M19C",
+      "subscribes": ["/odometer_state"],
+      "sdk_import": false
+    },
+    {
+      "file": "scripts/log_m23b_k1_compensation_trial.py",
+      "layer": "M23-B",
+      "subscribes": ["/odometer_state", "/low_state"],
+      "sdk_import": false
+    },
+    {
+      "file": "scripts/log_m24b_s2_profile_refresh_trial.py",
+      "layer": "M24-B",
+      "subscribes": ["/odometer_state", "/low_state"],
+      "sdk_import": false
+    },
+    {
+      "file": "scripts/log_m24h_controlled_s2_replication_trial.py",
+      "layer": "M24-H",
+      "subscribes": ["/odometer_state", "/low_state"],
+      "sdk_import": false
+    },
+    {
+      "file": "scripts/start_real_k1_field_logger.py",
+      "layer": "Field",
+      "subscribes": ["/odometer_state", "/low_state"],
+      "sdk_import": false
+    },
+    {
+      "file": "scripts/log_k1_sdk_state_smoke.py",
+      "layer": "M19R-C",
+      "subscribes": ["SDK state (read-only)"],
+      "sdk_import": true
+    }
+  ],
+  "timestamps": {
+    "source": "ROS2 message header timestamps",
+    "format": "ROS Time (seconds + nanoseconds)",
+    "utc_conversion": "not available; ROS time only"
+  },
+  "extraction_windows": {
+    "method": "per-trial extraction from state CSV",
+    "velocity_computation": "dx/dt from odometer x position",
+    "yaw_computation": "dtheta/dt from odometer theta or IMU rpy yaw",
+    "deadzone_behavior": "0.20 m/s low-speed deadzone observed in M19C smoke tests"
+  },
+  "stale_telemetry_handling": {
+    "mechanism": "ROS2 subscriber queue; messages processed on arrival",
+    "timeout": "none explicit; logger runs for trial duration",
+    "missing_data": "CSV fields empty for missed samples; extraction skips incomplete windows"
+  },
+  "data_quality_flags": {
+    "qc_checks": ["pair completeness", "field presence", "no command copy", "no premature physical validation claim"],
+    "qc_scripts": ["scripts/qc_booster_k1_measurement_session.py", "scripts/qc_m23b_k1_compensation_session.py"]
+  },
+  "known_limitations": [
+    "No UTC timestamps — only ROS time",
+    "GetFrameTransform downgraded — frames are local body-part, not odom/world/map",
+    "0.20 m/s deadzone — low-speed measurements unreliable",
+    "Yaw drift computed from odometer theta only — no external ground truth",
+    "No battery/state data in telemetry stream",
+    "Local Windows cannot import ROS2/Booster packages — all real telemetry must run on robot"
+  ],
+  "telemetry_sample_mapping": {
+    "odometer_x": "TelemetrySample.position_x",
+    "odometer_y": "TelemetrySample.position_y",
+    "odometer_theta": "TelemetrySample.yaw",
+    "imu_rpy_yaw": "TelemetrySample.yaw (fallback)",
+    "ros_timestamp": "TelemetrySample.timestamp",
+    "velocity_computed": "TelemetrySample.velocity_vx"
+  },
+  "split_process_enforcement": {
+    "rule": "ROS2 logger subprocess MUST NOT import Booster SDK",
+    "enforced_by": "tests/test_m23b_auto_sdk_command_subprocess.py",
+    "verified": true
+  }
+}

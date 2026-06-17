@@ -1,0 +1,195 @@
+{
+  "mapping_metadata": {
+    "milestone": "M27-A",
+    "date": "2026-06-17",
+    "schema_version": "m27a_k1_to_robot_adapter_mapping_v1",
+    "status": "planning_only — no implementation",
+    "target_milestones": "M27-B (adapter implementation), M27-C (hardware integration)"
+  },
+  "mappings": [
+    {
+      "contract": "RobotIdentity",
+      "legacy_source": "configs/m25_k1_safe_speed_operator_confirmation.yaml (robot_id: k1), .env.example (K1_ROBOT_IP)",
+      "proposed_method": "RobotIdentity(robot_id='k1', adapter_name='booster_k1', adapter_version='1.0.0')",
+      "behavior_equivalence": "robot_id maps directly; adapter metadata is new",
+      "required_adapter_state": "none (static identity)",
+      "safety_preconditions": "none",
+      "telemetry_requirements": "none",
+      "test_strategy": "identity round-trip serialization; equals/hash",
+      "migration_risk": "low"
+    },
+    {
+      "contract": "CapabilityDescriptor",
+      "legacy_source": "M21-B platform config (config.yaml), M25 preflight capabilities",
+      "proposed_method": "CapabilityDescriptor with explicit: velocity_command, telemetry_odometer, safety_envelope",
+      "behavior_equivalence": "new structured capabilities vs implicit legacy assumptions",
+      "required_adapter_state": "none (static descriptor)",
+      "safety_preconditions": "none",
+      "telemetry_requirements": "none",
+      "test_strategy": "capability negotiation; unknown vs unsupported distinction",
+      "migration_risk": "low"
+    },
+    {
+      "contract": "ConnectionConfig",
+      "legacy_source": ".env.example (K1_ROBOT_IP), scripts/send_m23b_k1_velocity_command.py (--interface)",
+      "proposed_method": "ConnectionConfig(platform=BOOSTER_K1, host='192.168.x.x', interface='lo', credentials=None)",
+      "behavior_equivalence": "maps IP and interface; adds explicit platform enum",
+      "required_adapter_state": "DISCONNECTED",
+      "safety_preconditions": "must not auto-connect",
+      "telemetry_requirements": "none",
+      "test_strategy": "config serialization; no auto-connect on construction",
+      "migration_risk": "low"
+    },
+    {
+      "contract": "RobotAdapter.connect",
+      "legacy_source": "ChannelFactory.Instance().Init(0, interface) + B1LocoClient().Init()",
+      "proposed_method": "async connect() → ConnectionState.CONNECTED",
+      "behavior_equivalence": "channel init + client init wrapped in single connect call",
+      "required_adapter_state": "DISCONNECTED → CONNECTING → CONNECTED",
+      "safety_preconditions": "OperatorAuthorization valid; PreflightReport ready; dry_run=false",
+      "telemetry_requirements": "none at connect time",
+      "test_strategy": "mock SDK for non-hardware; hardware-gated for real SDK",
+      "migration_risk": "medium (SDK environment dependency)"
+    },
+    {
+      "contract": "RobotAdapter.disconnect",
+      "legacy_source": "no explicit disconnect in legacy; client goes out of scope",
+      "proposed_method": "async disconnect() → ConnectionState.DISCONNECTED; send stop first",
+      "behavior_equivalence": "explicit disconnect replaces implicit scope-based cleanup",
+      "required_adapter_state": "any → DISCONNECTED",
+      "safety_preconditions": "send stop command before disconnect",
+      "telemetry_requirements": "flush and close telemetry stream",
+      "test_strategy": "verify stop-before-disconnect; resource cleanup",
+      "migration_risk": "low"
+    },
+    {
+      "contract": "RobotAdapter.preflight",
+      "legacy_source": "k1_measurement/m25_real_collection_preflight.py",
+      "proposed_method": "async preflight() → PreflightReport",
+      "behavior_equivalence": "preflight checks SDK availability, config validity, safety envelope",
+      "required_adapter_state": "DISCONNECTED or CONNECTED",
+      "safety_preconditions": "SafetyEnvelope loaded; OperatorAuthorization checked",
+      "telemetry_requirements": "none",
+      "test_strategy": "mock preflight; safety config parsing; operator auth validation",
+      "migration_risk": "low"
+    },
+    {
+      "contract": "RobotAdapter.motion_state",
+      "legacy_source": "SDK RobotMode (kPrepare, kWalking); no explicit state query in legacy",
+      "proposed_method": "property motion_state → MotionLifecycleState",
+      "behavior_equivalence": "maps kPrepare→PREPARING, kWalking→LOCOMOTION_READY, Move()→MOVING",
+      "required_adapter_state": "CONNECTED",
+      "safety_preconditions": "none (read-only query)",
+      "telemetry_requirements": "none",
+      "test_strategy": "state transition validation; mock SDK mode reporting",
+      "migration_risk": "medium (SDK state query API uncertain)"
+    },
+    {
+      "contract": "RobotAdapter.enter_locomotion_ready",
+      "legacy_source": "client.RobotMode(kPrepare) + sleep + client.RobotMode(kWalking) + sleep",
+      "proposed_method": "async enter_locomotion_ready() → kPrepare → kWalking sequence",
+      "behavior_equivalence": "replicates legacy prepare+walking setup sequence",
+      "required_adapter_state": "CONNECTED → PREPARING → LOCOMOTION_READY",
+      "safety_preconditions": "SafetyEnvelope active; OperatorAuthorization unexpired; preflight passed",
+      "telemetry_requirements": "start telemetry stream before or during locomotion ready",
+      "test_strategy": "mock adapter sequence test; hardware-gated lifecycle test",
+      "migration_risk": "high (mode lifecycle timing dependent on SDK)"
+    },
+    {
+      "contract": "RobotAdapter.send_velocity_command",
+      "legacy_source": "_send_phase(client, velocity, duration_sec, phase, log) in send_m23b_k1_velocity_command.py",
+      "proposed_method": "async send_velocity_command(VelocityCommand) → CommandReceipt",
+      "behavior_equivalence": "Move(vx,0,0) at configured Hz for configured duration; returns receipt",
+      "required_adapter_state": "LOCOMOTION_READY or MOVING",
+      "safety_preconditions": "velocity within SafetyEnvelope; OperatorAuthorization covers velocity_command; dry_run=false",
+      "telemetry_requirements": "telemetry stream active during command",
+      "test_strategy": "mock adapter returns fake receipt; hardware-gated for real SDK",
+      "migration_risk": "high (core hardware path; command frame and duration critical)"
+    },
+    {
+      "contract": "RobotAdapter.stop",
+      "legacy_source": "client.Move(0.0, 0.0, 0.0) in stop phase and finally block",
+      "proposed_method": "async stop() → CommandReceipt; repeated Move(0,0,0) until acknowledged",
+      "behavior_equivalence": "zero-velocity command; guaranteed attempt even on error",
+      "required_adapter_state": "any → STOPPING → SAFE_STOPPED",
+      "safety_preconditions": "must work regardless of current state (safety-critical)",
+      "telemetry_requirements": "telemetry stream may be stopped after stop acknowledged",
+      "test_strategy": "stop from various states; stop-during-error; hardware-gated stop ack",
+      "migration_risk": "high (safety-critical; must be reliable)"
+    },
+    {
+      "contract": "RobotAdapter.restore_safe_state",
+      "legacy_source": "no explicit restore; robot left in last mode after stop",
+      "proposed_method": "async restore_safe_state() → SAFE_STOPPED; additional mode reset if needed",
+      "behavior_equivalence": "new explicit safe state restoration beyond simple stop",
+      "required_adapter_state": "any → SAFE_STOPPED",
+      "safety_preconditions": "must be callable from any state including FAULTED",
+      "telemetry_requirements": "none",
+      "test_strategy": "restore from FAULTED, MOVING, UNKNOWN states",
+      "migration_risk": "medium (SDK mode restoration API uncertain)"
+    },
+    {
+      "contract": "TelemetryStream",
+      "legacy_source": "ROS2 subscriber scripts (log_m23b_k1_compensation_trial.py, etc.)",
+      "proposed_method": "TelemetryStream with subscribe/unsubscribe; yields TelemetrySample",
+      "behavior_equivalence": "wraps ROS2 odometer subscriber into normalized TelemetrySample stream",
+      "required_adapter_state": "CONNECTED",
+      "safety_preconditions": "read-only; no safety risk",
+      "telemetry_requirements": "must handle stale/missing data; deadzone awareness",
+      "test_strategy": "replay recorded telemetry; fake ROS2 messages; normalization tests",
+      "migration_risk": "medium (ROS2 dependency; message format stability)"
+    },
+    {
+      "contract": "SafetyEnvelope",
+      "legacy_source": "configs/m25_k1_safe_speed_operator_confirmation.yaml (safe_command_speed_max: 0.6)",
+      "proposed_method": "SafetyEnvelope(max_abs_vx_mps=0.6, max_abs_vy_mps=0.0, max_abs_wz_radps=0.0, ...)",
+      "behavior_equivalence": "maps safe speed max to structured envelope; adds explicit vy/wz limits",
+      "required_adapter_state": "none (static value object)",
+      "safety_preconditions": "must be explicitly provided; no silent defaults",
+      "telemetry_requirements": "none",
+      "test_strategy": "envelope parsing from YAML; validation of explicit values; no-default test",
+      "migration_risk": "low"
+    },
+    {
+      "contract": "OperatorAuthorization",
+      "legacy_source": "configs/m25_k1_safe_speed_operator_confirmation.yaml (operator confirmation)",
+      "proposed_method": "OperatorAuthorization with expiry, platform, operations list",
+      "behavior_equivalence": "formalizes operator confirmation into expiring authorization token",
+      "required_adapter_state": "any (pre-connect validation)",
+      "safety_preconditions": "must have expiry; must list explicit operations; must name platform",
+      "telemetry_requirements": "none",
+      "test_strategy": "expiry validation; operation gating; serialization",
+      "migration_risk": "low"
+    },
+    {
+      "contract": "CommandReceipt",
+      "legacy_source": "command_log dict in send_m23b_k1_velocity_command.py",
+      "proposed_method": "CommandReceipt with sequence_id, disposition, issued_at, completed_at",
+      "behavior_equivalence": "formalizes legacy command log JSON into typed receipt",
+      "required_adapter_state": "post-command",
+      "safety_preconditions": "none",
+      "telemetry_requirements": "none",
+      "test_strategy": "receipt invariants; serialization; disposition enum coverage",
+      "migration_risk": "low"
+    },
+    {
+      "contract": "ExecutionAuditRecord",
+      "legacy_source": "command_log JSON + preflight hashes + session metadata",
+      "proposed_method": "ExecutionAuditRecord aggregating receipt, telemetry window, safety envelope, auth",
+      "behavior_equivalence": "combines multiple legacy audit artifacts into single record",
+      "required_adapter_state": "post-execution",
+      "safety_preconditions": "all sub-records must be present",
+      "telemetry_requirements": "telemetry window must be captured",
+      "test_strategy": "audit record completeness; hash chain; serialization",
+      "migration_risk": "low"
+    }
+  ],
+  "summary": {
+    "total_mappings": 17,
+    "high_risk": 3,
+    "medium_risk": 5,
+    "low_risk": 9,
+    "high_risk_items": ["send_velocity_command", "stop", "enter_locomotion_ready"],
+    "implementation_status": "none — planning only per M27-A scope"
+  }
+}
