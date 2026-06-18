@@ -1,0 +1,38 @@
+{
+  "milestone": "M27-D",
+  "created_at": "2026-06-18",
+  "readiness": {
+    "k1_vendor_sdk_binding": "implementation_verified",
+    "k1_vendor_runtime": "zero_motion_test_verified",
+    "k1_zero_motion_bench": "not_executed",
+    "k1_hardware_connection": "not_verified",
+    "k1_motion_command": "not_verified",
+    "k1_velocity_tracking": "not_verified",
+    "k1_yaw_control": "not_verified",
+    "k1_compensation": "not_verified",
+    "k1_hardware_verification": "not_started",
+    "g1_hardware_support": "not_implemented",
+    "go1_hardware_support": "not_implemented",
+    "release": "pre_release_only",
+    "sdk_import_isolation": "verified",
+    "zero_motion_enforcement": "test_verified",
+    "binding_architecture": "implemented",
+    "fake_runtime_path": "unchanged",
+    "default_registry": "mock_only",
+    "default_cli": "mock_only"
+  },
+  "requires_hardware_bench_for": [
+    "k1_zero_motion_bench -> bench_verified",
+    "k1_hardware_connection -> bench_verified"
+  ],
+  "remains_not_verified_even_after_bench": [
+    "k1_motion_command",
+    "k1_velocity_tracking",
+    "k1_yaw_control",
+    "k1_compensation"
+  ],
+  "implementation_only_not_hardware": [
+    "k1_vendor_sdk_binding",
+    "k1_vendor_runtime"
+  ]
+}

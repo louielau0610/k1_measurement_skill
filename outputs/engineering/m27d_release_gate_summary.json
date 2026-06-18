@@ -1,0 +1,28 @@
+{
+  "milestone": "M27-D",
+  "gate_type": "local_release",
+  "created_at": "2026-06-18",
+  "status": "pending_validation",
+  "checks": {
+    "repository_clean": "pending",
+    "engineering_artifacts": "pending",
+    "python_compile": "pending",
+    "targeted_tests": "pending",
+    "hermetic_tests": "pending",
+    "import_isolation": "pending",
+    "artifact_validator": "pending",
+    "release_gate": "pending"
+  },
+  "m27d_specific_checks": [
+    "zero_motion_enforcement_tests",
+    "import_isolation_tests",
+    "binding_protocol_tests",
+    "runtime_lifecycle_tests",
+    "hardware_gate_tests",
+    "registration_boundary_tests",
+    "artifact_determinism_tests",
+    "bench_runner_structure_tests"
+  ],
+  "no_hardware_required": true,
+  "no_sdk_required": true
+}

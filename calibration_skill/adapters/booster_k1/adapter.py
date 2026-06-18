@@ -1,12 +1,23 @@
-"""No-hardware Booster K1 adapter skeleton against an injected fake runtime."""
+"""Booster K1 adapter supporting both fake and vendor runtime modes.
+
+M27-D: Refactored to distinguish fake_booster_runtime and vendor_runtime.
+Fake mode remains dry-run-only as in M27-B. Vendor mode requires
+dry_run=False, allow_hardware=True, and a validated hardware gate.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass, field
 
 from calibration_skill.adapters.booster_k1.capabilities import booster_k1_capabilities
-from calibration_skill.adapters.booster_k1.config import BoosterK1AdapterConfig, K1_FAKE_RUNTIME_MODE
+from calibration_skill.adapters.booster_k1.config import (
+    BoosterK1AdapterConfig,
+    K1_FAKE_RUNTIME_MODE,
+    K1_VENDOR_RUNTIME_MODE,
+    BoosterK1HardwareGate,
+)
 from calibration_skill.adapters.booster_k1.errors import (
     ERROR_K1_HARDWARE_GATE_CLOSED,
+    ERROR_K1_HARDWARE_GATE_MISSING,
     ERROR_K1_RUNTIME_MODE_UNSUPPORTED,
     ERROR_K1_RUNTIME_UNHEALTHY,
     ERROR_K1_UNSUPPORTED_AXIS,
@@ -42,7 +53,7 @@ from calibration_skill.domain.telemetry import Pose3D, Quaternion, TelemetrySamp
 
 @dataclass
 class BoosterK1Adapter:
-    """RobotAdapter-compatible K1 skeleton using only an injected runtime."""
+    """RobotAdapter-compatible K1 adapter supporting fake and vendor runtimes."""
     config: BoosterK1AdapterConfig
     runtime: BoosterK1RuntimeProtocol
     capabilities_value: CapabilityDescriptor = field(default_factory=booster_k1_capabilities)
@@ -54,12 +65,29 @@ class BoosterK1Adapter:
     _receipt_sequence: int = 0
 
     def __post_init__(self) -> None:
-        if self.config.runtime_mode != K1_FAKE_RUNTIME_MODE:
-            raise ValueError("M27-B BoosterK1Adapter accepts only fake_booster_runtime")
-        if not self.config.dry_run or self.config.allow_hardware:
-            raise ValueError("M27-B BoosterK1Adapter requires dry_run=true and allow_hardware=false")
+        self._validate_runtime_mode()
         self._identity = booster_k1_identity(self.config, self.runtime.identity_metadata())
         self.safety_envelope = self.config.to_safety_envelope()
+
+    def _validate_runtime_mode(self) -> None:
+        """Validate runtime mode and hardware configuration."""
+        mode = self.config.runtime_mode
+        if mode == K1_FAKE_RUNTIME_MODE:
+            # M27-B fake runtime: must be dry-run, no hardware
+            if not self.config.dry_run or self.config.allow_hardware:
+                raise ValueError("M27-B BoosterK1Adapter requires dry_run=true and allow_hardware=false for fake runtime")
+            self.authorized_operation = "k1_fake_runtime_velocity_command"
+        elif mode == K1_VENDOR_RUNTIME_MODE:
+            # M27-D vendor runtime: requires dry_run=False, allow_hardware=True
+            if self.config.dry_run or not self.config.allow_hardware:
+                raise ValueError("M27-D BoosterK1Adapter requires dry_run=false and allow_hardware=true for vendor runtime")
+            self.authorized_operation = "k1_vendor_runtime_velocity_command"
+        else:
+            raise ValueError(f"Unsupported K1 runtime mode: {mode}")
+
+    @property
+    def is_vendor_mode(self) -> bool:
+        return self.config.runtime_mode == K1_VENDOR_RUNTIME_MODE
 
     @property
     def identity(self) -> RobotIdentity:
@@ -99,31 +127,54 @@ class BoosterK1Adapter:
 
     def preflight(self) -> PreflightReport:
         now_ns = self.runtime.now_ns()
-        checks = [
-            self._check(
+        checks: list[PreflightCheck] = []
+
+        if self.is_vendor_mode:
+            # Vendor mode preflight checks
+            checks.append(self._check(
+                "k1.vendor_hardware",
+                "K1 vendor hardware gate",
+                not self.config.dry_run and self.config.allow_hardware,
+                "K1 vendor mode configured with hardware enabled.",
+                "K1 vendor mode requires hardware enabled.",
+                ERROR_K1_HARDWARE_GATE_CLOSED,
+            ))
+            checks.append(self._check(
+                "k1.runtime_mode",
+                "K1 runtime mode",
+                self.config.runtime_mode == K1_VENDOR_RUNTIME_MODE,
+                "Vendor Booster runtime selected.",
+                "Vendor runtime mode expected.",
+                ERROR_K1_RUNTIME_MODE_UNSUPPORTED,
+            ))
+            evidence_refs = ("m27d_vendor_runtime_preflight",)
+        else:
+            # Fake mode preflight checks (M27-B compatible)
+            checks.append(self._check(
                 "k1.dry_run",
                 "K1 dry-run gate",
                 self.config.dry_run and not self.config.allow_hardware,
                 "M27-B K1 adapter is dry-run fake-runtime only.",
                 "Hardware mode is not permitted in M27-B.",
                 ERROR_K1_HARDWARE_GATE_CLOSED,
-            ),
-            self._check(
+            ))
+            checks.append(self._check(
                 "k1.runtime_mode",
                 "K1 runtime mode",
                 self.config.runtime_mode == K1_FAKE_RUNTIME_MODE,
                 "Fake Booster runtime selected.",
                 "Only fake_booster_runtime is supported in M27-B.",
                 ERROR_K1_RUNTIME_MODE_UNSUPPORTED,
-            ),
-        ]
+            ))
+            evidence_refs = ("m27b_fake_runtime_preflight",)
+
         health = self.runtime.health_check()
         checks.append(self._check(
             "k1.runtime_health",
-            "K1 fake runtime health",
+            "K1 runtime health",
             health.healthy,
-            health.detail or "Fake runtime health check passed.",
-            health.detail or "Fake runtime health check failed.",
+            health.detail or "Runtime health check passed.",
+            health.detail or "Runtime health check failed.",
             ERROR_K1_RUNTIME_UNHEALTHY,
         ))
         return PreflightReport(
@@ -132,7 +183,7 @@ class BoosterK1Adapter:
             checked_monotonic_ns=now_ns,
             checks=tuple(checks),
             safety_policy_ref=self.safety_envelope.policy_id,
-            evidence_refs=("m27b_fake_runtime_preflight",),
+            evidence_refs=evidence_refs,
         )
 
     def enter_locomotion_ready(self) -> None:
@@ -156,11 +207,13 @@ class BoosterK1Adapter:
         if not runtime_receipt.accepted:
             error = DomainError(
                 ERROR_PRECONDITION_FAILED,
-                runtime_receipt.detail or "Fake runtime rejected K1 velocity command",
+                runtime_receipt.detail or "Runtime rejected K1 velocity command",
                 retryable=False,
             )
             return self._rejected_receipt(command.sequence_id, runtime_receipt.received_monotonic_ns, error)
+
         self._motion_state = MotionLifecycleState.MOVING
+        evidence_prefix = "m27d-vendor" if self.is_vendor_mode else "m27b-fake"
         return CommandReceipt(
             command_sequence_id=command.sequence_id,
             disposition=CommandDisposition.ACCEPTED,
@@ -168,20 +221,21 @@ class BoosterK1Adapter:
             received_monotonic_ns=runtime_receipt.received_monotonic_ns,
             accepted_monotonic_ns=runtime_receipt.received_monotonic_ns,
             adapter_state=self._motion_state.value,
-            acknowledgement_evidence="m27b-fake-runtime-receipt-no-physical-motion",
+            acknowledgement_evidence=f"{evidence_prefix}-runtime-receipt-no-physical-motion",
         )
 
     def stop(self) -> CommandReceipt:
         runtime_receipt = self.runtime.stop()
+        evidence_prefix = "m27d-vendor" if self.is_vendor_mode else "m27b-fake"
         if not runtime_receipt.accepted:
-            error = DomainError(ERROR_STOP_UNACKNOWLEDGED, runtime_receipt.detail or "K1 fake stop unacknowledged", retryable=True)
+            error = DomainError(ERROR_STOP_UNACKNOWLEDGED, runtime_receipt.detail or "K1 stop unacknowledged", retryable=True)
             return CommandReceipt(
                 command_sequence_id=runtime_receipt.runtime_receipt_id,
                 disposition=CommandDisposition.REJECTED,
                 received_monotonic_ns=runtime_receipt.received_monotonic_ns,
                 rejection_error=error,
                 adapter_state=self._motion_state.value,
-                acknowledgement_evidence="m27b-fake-runtime-stop-unacknowledged",
+                acknowledgement_evidence=f"{evidence_prefix}-runtime-stop-unacknowledged",
             )
         self._motion_state = MotionLifecycleState.SAFE_STOPPED
         return CommandReceipt(
@@ -191,7 +245,7 @@ class BoosterK1Adapter:
             received_monotonic_ns=runtime_receipt.received_monotonic_ns,
             accepted_monotonic_ns=runtime_receipt.received_monotonic_ns,
             adapter_state=self._motion_state.value,
-            acknowledgement_evidence="m27b-fake-runtime-stop-accepted",
+            acknowledgement_evidence=f"{evidence_prefix}-runtime-stop-accepted",
         )
 
     def restore_safe_state(self) -> None:
@@ -212,7 +266,12 @@ class BoosterK1Adapter:
         heading_rad = None
         sample_sequence = 0
         received_ns = state.source_monotonic_ns
-        flags = ["m27b_fake_runtime", "no_hardware"]
+        if self.is_vendor_mode:
+            flags = ["m27d_vendor_runtime"]
+            evidence = "m27d-vendor-runtime-telemetry"
+        else:
+            flags = ["m27b_fake_runtime", "no_hardware"]
+            evidence = "m27b-fake-runtime-telemetry"
         if odom is not None:
             sample_sequence = odom.sequence_id
             received_ns = odom.sample_monotonic_ns

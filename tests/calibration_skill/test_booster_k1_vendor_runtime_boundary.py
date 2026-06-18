@@ -41,15 +41,15 @@ def test_importing_vendor_runtime_does_not_import_booster_sdk(monkeypatch):
 
     def guarded(name, *args, **kwargs):
         seen.append(name)
-        if name == "booster_robotics_sdk":
+        if name == "booster_robotics_sdk_python":
             raise AssertionError("SDK import attempted")
         return real_import(name, *args, **kwargs)
 
     monkeypatch.setattr(builtins, "__import__", guarded)
     import calibration_skill.adapters.booster_k1.vendor_runtime as vendor_runtime
 
-    assert vendor_runtime.BOOSTER_SDK_MODULE == "booster_robotics_sdk"
-    assert "booster_robotics_sdk" not in seen
+    assert vendor_runtime.BOOSTER_SDK_MODULE == "booster_robotics_sdk_python"
+    assert "booster_robotics_sdk_python" not in seen
 
 
 def test_detection_uses_find_spec_without_importing(monkeypatch):
@@ -58,7 +58,7 @@ def test_detection_uses_find_spec_without_importing(monkeypatch):
     calls = []
     monkeypatch.setattr(importlib.util, "find_spec", lambda name: calls.append(name) or None)
     status = detect_booster_sdk_availability()
-    assert calls == ["booster_robotics_sdk"]
+    assert calls == ["booster_robotics_sdk_python"]
     assert status.sdk_importable_without_importing is False
     assert status.detection_method == "importlib.util.find_spec"
 
@@ -67,7 +67,7 @@ def test_sdk_unavailable_structured_status():
     status = detect_booster_sdk_availability()
     assert status.sdk_family == "booster_k1"
     assert status.ordinary_runtime_import_safe is True
-    assert status.vendor_runtime_implemented is False
+    assert status.vendor_runtime_implemented is True
     assert status.hardware_gate_required is True
     assert status.hardware_enabled is False
 
@@ -127,6 +127,7 @@ def test_missing_sdk_gives_structured_unavailable_error():
             expected_safety_policy_id="k1-safe",
             expected_safety_policy_hash="hash",
             status=unavailable,
+            enable_vendor_runtime=True,
         )
     assert exc.value.error.code == ERROR_K1_SDK_UNAVAILABLE
     assert exc.value.to_dict()["status"]["hardware_enabled"] is False

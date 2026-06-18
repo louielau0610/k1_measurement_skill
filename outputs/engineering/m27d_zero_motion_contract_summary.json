@@ -1,0 +1,54 @@
+{
+  "milestone": "M27-D",
+  "contract_type": "zero_motion_bench",
+  "created_at": "2026-06-18",
+  "zero_motion_enforcement": {
+    "runtime_boundary": true,
+    "binding_boundary": true,
+    "bench_runner_boundary": true,
+    "tolerance": 1e-9,
+    "error_code": "k1_m27d_nonzero_motion_forbidden",
+    "forbidden_vx_mps": [0.35, 0.40, 0.50, 0.60],
+    "forbidden_vy_mps": "any non-zero",
+    "forbidden_wz_radps": "any non-zero"
+  },
+  "required_confirmations": [
+    "operator_confirmed_hardware",
+    "physical_estop_confirmed",
+    "clear_test_area_confirmed",
+    "battery_state_confirmed",
+    "network_isolation_confirmed",
+    "manual_operator_present"
+  ],
+  "required_flags": [
+    "enable_vendor_runtime",
+    "execute_hardware"
+  ],
+  "artifact_schema": {
+    "manifest": "m27d_manifest.json",
+    "gate_evidence": "m27d_gate_evidence.json",
+    "sdk_detection": "m27d_sdk_detection.json",
+    "runtime_trace": "m27d_runtime_trace.jsonl",
+    "telemetry_snapshot": "m27d_telemetry_snapshot.json",
+    "result_summary": "m27d_result_summary.json"
+  },
+  "result_statuses": [
+    "not_executed",
+    "blocked_by_gate",
+    "sdk_unavailable",
+    "sdk_import_failed",
+    "binding_construction_failed",
+    "connection_failed",
+    "read_only_checks_failed",
+    "stop_unacknowledged",
+    "safe_state_unverified",
+    "bench_passed"
+  ],
+  "prohibited_content": [
+    "secrets",
+    "credentials",
+    "raw_sdk_object_reprs",
+    "memory_addresses",
+    "uncontrolled_tracebacks"
+  ]
+}

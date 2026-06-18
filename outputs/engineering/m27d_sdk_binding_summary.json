@@ -1,0 +1,60 @@
+{
+  "milestone": "M27-D",
+  "title": "Booster K1 Isolated SDK Binding and Zero-Motion Bench Integration",
+  "created_at": "2026-06-18",
+  "binding_class": "BoosterK1VendorBinding",
+  "sdk_family": "booster_k1",
+  "sdk_import_path": "booster_robotics_sdk_python",
+  "sdk_entry_classes": ["B1LocoClient", "ChannelFactory", "RobotMode"],
+  "verified_motion_sequence": ["kPrepare", "kWalking", "Move(vx, 0.0, 0.0)"],
+  "verification_sources": [
+    "scripts/send_m23b_k1_velocity_command.py",
+    "scripts/run_m19c_ros2_odometer_trials.py"
+  ],
+  "zero_motion_only": true,
+  "zero_motion_tolerance": 1e-9,
+  "forbidden_velocities_mps": [0.35, 0.40, 0.50, 0.60],
+  "binding_version": "m27d.1",
+  "vendor_runtime_mode": "vendor_runtime",
+  "sdk_import_isolation": {
+    "import_guard": "importlib.util.find_spec",
+    "import_triggers_only_in_factory": true,
+    "ordinary_import_safe": true,
+    "default_registry_mock_only": true,
+    "default_cli_mock_only": true
+  },
+  "runtime_lifecycle": {
+    "connect_idempotent": true,
+    "disconnect_idempotent": true,
+    "reject_commands_disconnected": true,
+    "reject_commands_before_locomotion_ready": true,
+    "safe_restoration_on_failure": true,
+    "clock_injectable": true
+  },
+  "verified_sdk_operations": {
+    "ChannelFactory_Init": "verified",
+    "B1LocoClient_Init": "verified",
+    "RobotMode_kPrepare": "verified",
+    "RobotMode_kWalking": "verified",
+    "Move_zero": "verified",
+    "odometry_direct_sdk": "unverified",
+    "battery_direct_sdk": "unverified",
+    "GetMode": "assumed"
+  },
+  "hardware_gate_fields": [
+    "allow_hardware",
+    "operator_confirmed_hardware",
+    "hardware_session_id",
+    "safety_policy_id",
+    "safety_policy_hash",
+    "expected_robot_id",
+    "expected_adapter_mode",
+    "require_physical_estop_confirmation",
+    "require_clear_test_area_confirmation",
+    "require_battery_state_confirmation",
+    "require_network_isolation_confirmation",
+    "require_manual_operator_present",
+    "evidence_reference",
+    "expires_monotonic_ns"
+  ]
+}

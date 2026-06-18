@@ -14,7 +14,7 @@ from calibration_skill.adapters.booster_k1.errors import (
 )
 
 K1_FAKE_RUNTIME_MODE = "fake_booster_runtime"
-K1_VENDOR_RUNTIME_MODE = "vendor_runtime_placeholder"
+K1_VENDOR_RUNTIME_MODE = "vendor_runtime"
 
 
 def _require_non_empty(value: str, name: str) -> None:

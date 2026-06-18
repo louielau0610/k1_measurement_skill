@@ -1,6 +1,42 @@
 # Project Status
 
-## M27-C K1 Vendor Runtime Boundary and Fail-Closed Placeholder (current)
+## M27-D Booster K1 Isolated SDK Binding and Zero-Motion Bench Integration (current)
+
+M27-D implements the isolated Booster K1 SDK binding needed by
+`BoosterK1VendorRuntime`, together with an explicitly hardware-gated,
+zero-motion bench validation package.
+
+M27-D deliverables:
+
+- `calibration_skill/adapters/booster_k1/vendor_binding.py` — Real SDK binding with verified imports
+- `calibration_skill/adapters/booster_k1/vendor_types.py` — Vendor binding protocol and types
+- `calibration_skill/adapters/booster_k1/vendor_runtime.py` — Updated runtime backed by vendor binding
+- `calibration_skill/adapters/booster_k1/adapter.py` — Refactored for fake/vendor mode support
+- `calibration_skill/adapters/booster_k1/config.py` — Updated vendor runtime mode
+- `calibration_skill/adapters/booster_k1/errors.py` — M27-D error codes + `BoosterK1DomainError`
+- `calibration_skill/adapters/booster_k1/registry.py` — Explicit vendor registration with gate
+- `scripts/run_m27d_k1_zero_motion_bench.py` — Standalone zero-motion bench runner
+- `tests/calibration_skill/test_booster_k1_m27d_*.py` — 8 new test files (96 tests)
+- `tests/calibration_skill/fakes/fake_booster_k1_vendor_binding.py` — Fake binding for tests
+- `docs/engineering/m27d_*.md` — 4 new engineering docs
+- `outputs/engineering/m27d_*.json` — 6 new engineering artifacts
+
+M27-D verified SDK imports (from existing repository code):
+- `from booster_robotics_sdk_python import B1LocoClient, ChannelFactory, RobotMode`
+
+M27-D zero-motion enforcement:
+- Runtime and binding both reject nonzero vx, vy, wz (1e-9 tolerance)
+- Known K1 velocities 0.35–0.60 m/s explicitly blocked
+- Error code: `k1_m27d_nonzero_motion_forbidden`
+
+M27-D does NOT:
+- Execute any nonzero velocity command
+- Verify hardware motion
+- Claim G1/GO1 support
+- Register vendor runtime in default CLI/registry
+- Modify historical data or gold profiles
+
+## M27-C K1 Vendor Runtime Boundary and Fail-Closed Placeholder
 
 M27-C prepares the real Booster K1 runtime boundary without enabling real
 hardware execution. It adds a fail-closed vendor runtime placeholder, an
