@@ -1,10 +1,11 @@
 #!/usr/bin/env python
-"""Run the local M26-E packaging and release gate."""
+"""Run the local packaging and release gate."""
 from __future__ import annotations
 
 import argparse
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -185,7 +186,32 @@ def check_order(summary_path: Path | None) -> list[tuple[str, Any]]:
 
 def write_summary(path: Path, summary: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(normalize_summary(summary), indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def normalize_summary(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {key: normalize_summary(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [normalize_summary(item) for item in value]
+    if isinstance(value, str):
+        text = re.sub(r"m26e-install-smoke-[A-Za-z0-9_]+", "m26e-install-smoke-<tmp>", value)
+        text = re.sub(r"pip-ephem-wheel-cache-[A-Za-z0-9_]+", "pip-ephem-wheel-cache-<tmp>", text)
+        text = re.sub(r"sha256=[0-9a-fA-F]{64}", "sha256=<sha256>", text)
+        text = re.sub(r"\b\d+ passed in [0-9.]+s(?: \([0-9:]+\))?", lambda m: m.group(0).split(" in ")[0] + " in <duration>", text)
+        return text
+    return value
+
+
+def infer_milestone(summary_path: Path | None) -> str:
+    if summary_path is None:
+        return "M26-E"
+    name = summary_path.name.lower()
+    if name.startswith("m27d1_"):
+        return "M27-D.1"
+    if name.startswith("m27d_"):
+        return "M27-D"
+    return "M26-E"
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -217,7 +243,7 @@ def main(argv: list[str] | None = None) -> int:
 
     checks = check_order(summary_path)
     summary = {
-        "milestone": "M26-E",
+        "milestone": infer_milestone(summary_path),
         "status": "passed" if all(item[1].get("status") in {"passed", "skipped_missing_dependency"} for item in checks) else "failed",
         "checks": [{"name": name, **result} for name, result in checks],
     }

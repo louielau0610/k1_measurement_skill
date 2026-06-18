@@ -1,5 +1,38 @@
 # Project Status
 
+## M27-D.1 Booster K1 Zero-Motion Audit Closure (current)
+
+M27-D.1 corrects semantic and evidence-quality defects in M27-D before any real
+K1 connection or zero-motion bench run. It is an offline corrective milestone:
+no real Booster SDK was imported during validation, no K1 connection occurred,
+no DDS/UDP/ROS2/network path was opened, no physical command was sent, and no
+hardware bench was executed.
+
+Audit closures:
+
+- SDK evidence now separates diagnostic package probe
+  `booster_robotics_sdk_python` from authoritative direct modules
+  `B1LocoClient`, `ChannelFactory`, and `RobotMode`.
+- Verified direct imports are exactly
+  `from B1LocoClient import B1LocoClient`,
+  `from ChannelFactory import ChannelFactory`, and
+  `from RobotMode import RobotMode`.
+- Direct imports and class resolution occur only after all hardware gates,
+  policy checks, explicit enable flags, hardware execution enablement, and
+  direct-module discovery have passed.
+- Missing hardware gate reports `k1_hardware_gate_missing`, not SDK
+  unavailable.
+- Zero velocity dispatch never transitions to `MOVING`; stop acceptance is
+  separated from physical safe-state observation.
+- Bench status remains `safe_state_unverified` when no independent post-stop
+  telemetry is available.
+- Health checks are labelled `binding_readiness` with
+  `communication_verified=false`.
+- `GetMode()` is optional/unverified and cannot be required or used as physical
+  safe-state evidence.
+- Default CLI and registry remain mock-only; fake K1 tests remain supported;
+  no G1/GO1 hardware support is claimed.
+
 ## M27-D Booster K1 Isolated SDK Binding and Zero-Motion Bench Integration (current)
 
 M27-D implements the isolated Booster K1 SDK binding needed by

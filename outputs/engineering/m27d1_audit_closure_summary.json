@@ -1,0 +1,64 @@
+{
+  "milestone": "M27-D.1",
+  "source_commit": "c6d89a58b6c3a9c0f86a417739d2bc4278c4f14e",
+  "audit_findings": [
+    "package probe was conflated with verified SDK imports",
+    "direct SDK imports could be attempted before all gates were proven",
+    "missing hardware gate was misclassified as SDK unavailable",
+    "zero command incorrectly transitioned lifecycle state to moving",
+    "bench safe-state evidence was circular",
+    "health check was labelled as communication health without a communication probe",
+    "GetMode was treated as a verified SDK operation without repository evidence",
+    "vendor exception messages required stricter sanitization",
+    "readiness matrix claims were too strong"
+  ],
+  "findings_closed": [
+    "direct entry module discovery and explicit direct imports are separated",
+    "factory order fails closed before direct SDK imports",
+    "missing hardware gate reports k1_hardware_gate_missing",
+    "zero command receipts preserve non-moving lifecycle state",
+    "stop command acceptance is separated from physical safe-state observation",
+    "health scope is binding_readiness with communication_verified=false",
+    "GetMode is optional_unverified and never physical safe-state evidence",
+    "hostile vendor exception messages are sanitized",
+    "readiness matrix is pre-release and unit-test-only for zero-motion"
+  ],
+  "verified_direct_imports": {
+    "source_path": "scripts/send_m23b_k1_velocity_command.py",
+    "lines": {
+      "B1LocoClient": 29,
+      "ChannelFactory": 30,
+      "RobotMode": 31,
+      "package_probe": 65
+    },
+    "imports": [
+      "from B1LocoClient import B1LocoClient",
+      "from ChannelFactory import ChannelFactory",
+      "from RobotMode import RobotMode"
+    ]
+  },
+  "package_probe_semantics": {
+    "package_probe_module": "booster_robotics_sdk_python",
+    "package_probe_discoverable": "find_spec(package_probe_module) only",
+    "direct_entry_modules_discoverable": "all direct module specs found without importing",
+    "direct_imports_verified": "true only after import_module and class resolution succeed"
+  },
+  "zero_motion_state_semantics": {
+    "generic_zero_command_moves_to_moving": false,
+    "stop_sets_internal_command_state_only": true,
+    "physical_stop_claimed": false
+  },
+  "safe_state_evidence_semantics": {
+    "stop_command_accepted": "SDK call returned without reported rejection",
+    "internal_safe_state_claim": "command-derived software state",
+    "physical_safe_state_observed": "requires independent telemetry",
+    "default_physical_safe_state_verification": "unavailable"
+  },
+  "health_check_scope": {
+    "scope": "binding_readiness",
+    "communication_verified": false
+  },
+  "hardware_used": false,
+  "sdk_imported_during_validation": false,
+  "network_used": false
+}

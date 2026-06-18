@@ -279,3 +279,17 @@
 - [ ] Do not claim novelty from P1 seed literature search alone.
 - [ ] Do not claim novelty or performance superiority from P2 positioning alone.
 - [ ] Do not treat M18 scaffold files as a full paper draft.
+# M27-D.1 K1 Zero-Motion Audit Closure (current)
+
+- [x] Preserve package probe as diagnostic-only evidence.
+- [x] Use verified direct SDK entry modules: `B1LocoClient`, `ChannelFactory`, `RobotMode`.
+- [x] Gate direct imports behind complete hardware gate, policy checks, vendor runtime enablement, hardware execution enablement, and direct-module discovery.
+- [x] Classify missing gate as `k1_hardware_gate_missing`.
+- [x] Prevent zero velocity dispatch from transitioning to `MOVING`.
+- [x] Separate stop command acceptance from physical safe-state observation.
+- [x] Scope health check as `binding_readiness` with `communication_verified=false`.
+- [x] Treat `GetMode()` as optional/unverified and never as physical evidence.
+- [x] Keep default CLI and registry mock-only.
+- [x] Keep fake K1 path supported and make no G1/GO1 hardware-support claim.
+
+**M27-D.1 remains offline. Do not connect K1 or begin M27-E.**

@@ -27,11 +27,13 @@ from calibration_skill.adapters.booster_k1.errors import (
     ERROR_K1_BINDING_CONSTRUCTION_FAILED,
     ERROR_K1_BINDING_OPERATION_FAILED,
     ERROR_K1_CONNECTION_FAILED,
+    ERROR_K1_HARDWARE_GATE_MISSING,
     ERROR_K1_M27D_NONZERO_MOTION_FORBIDDEN,
     ERROR_K1_SDK_IMPORT_FAILED,
     ERROR_K1_SDK_UNAVAILABLE,
     ERROR_K1_VENDOR_RUNTIME_DISABLED,
     ERROR_K1_HARDWARE_EXECUTION_DISABLED,
+    sanitize_vendor_message,
 )
 from calibration_skill.adapters.booster_k1.runtime import (
     BoosterK1RuntimeCommandReceipt,
@@ -50,7 +52,9 @@ from calibration_skill.domain.errors import DomainError
 # These are the exact import paths verified in the repository by
 # scripts/send_m23b_k1_velocity_command.py and
 # scripts/run_m19c_ros2_odometer_trials.py.
-VERIFIED_SDK_ENTRY_MODULE = "booster_robotics_sdk_python"
+PACKAGE_PROBE_MODULE = "booster_robotics_sdk_python"
+VERIFIED_SDK_ENTRY_MODULE = PACKAGE_PROBE_MODULE
+VERIFIED_DIRECT_ENTRY_MODULES = ("B1LocoClient", "ChannelFactory", "RobotMode")
 VERIFIED_SDK_CLASSES = ("B1LocoClient", "ChannelFactory", "RobotMode")
 VERIFIED_MOTION_SEQUENCE = ("kPrepare", "kWalking", "Move(vx, 0.0, 0.0)")
 
@@ -61,38 +65,45 @@ BINDING_VERSION = "m27d.1"
 
 
 def detect_booster_sdk_availability_detailed() -> BoosterK1VendorSDKDetection:
-    """Detect whether verified Booster SDK entry classes are discoverable.
-
-    Uses importlib.util.find_spec to check without importing.
-    Checks for the verified package 'booster_robotics_sdk_python'
-    and three verified entry classes.
-    """
+    """Detect Booster SDK evidence without importing direct SDK modules."""
     errors: list[str] = []
     try:
-        spec = importlib.util.find_spec(VERIFIED_SDK_ENTRY_MODULE)
-        discoverable = spec is not None
+        package_spec = importlib.util.find_spec(PACKAGE_PROBE_MODULE)
+        package_probe_discoverable = package_spec is not None
     except Exception as exc:
-        discoverable = False
-        errors.append(f"find_spec({VERIFIED_SDK_ENTRY_MODULE}) raised: {exc}")
+        package_probe_discoverable = False
+        errors.append(
+            f"find_spec({PACKAGE_PROBE_MODULE}) raised "
+            f"{exc.__class__.__name__}: {sanitize_vendor_message(exc)}"
+        )
 
-    verified_imports_found = discoverable
-    if discoverable:
-        # Verify that the three known entry classes resolve
-        for cls_name in VERIFIED_SDK_CLASSES:
-            try:
-                # Check if the class is accessible from the module namespace
-                # without importing the module itself (using loader if possible)
-                pass  # Full verification requires import; done in factory
-            except Exception:
-                pass
+    direct_specs: dict[str, bool] = {}
+    for module_name in VERIFIED_DIRECT_ENTRY_MODULES:
+        try:
+            direct_specs[module_name] = importlib.util.find_spec(module_name) is not None
+        except Exception as exc:
+            direct_specs[module_name] = False
+            errors.append(
+                f"find_spec({module_name}) raised "
+                f"{exc.__class__.__name__}: {sanitize_vendor_message(exc)}"
+            )
+
+    direct_discoverable = all(direct_specs.get(name, False) for name in VERIFIED_DIRECT_ENTRY_MODULES)
 
     return BoosterK1VendorSDKDetection(
-        sdk_import_path=VERIFIED_SDK_ENTRY_MODULE,
-        discoverable=discoverable,
-        detection_method="importlib.util.find_spec",
+        sdk_import_path=",".join(VERIFIED_DIRECT_ENTRY_MODULES),
+        discoverable=direct_discoverable,
+        detection_method="package_probe_and_direct_module_find_spec",
         sdk_entry_classes=VERIFIED_SDK_CLASSES,
-        verified_imports_found=verified_imports_found,
+        verified_imports_found=False,
         detection_errors=tuple(errors),
+        package_probe_module=PACKAGE_PROBE_MODULE,
+        package_probe_discoverable=package_probe_discoverable,
+        direct_entry_modules=VERIFIED_DIRECT_ENTRY_MODULES,
+        direct_entry_module_specs=direct_specs,
+        direct_entry_modules_discoverable=direct_discoverable,
+        direct_imports_attempted=False,
+        direct_imports_verified=False,
     )
 
 
@@ -100,44 +111,41 @@ def _import_verified_sdk():
     """Import the verified Booster SDK entry classes.
 
     Returns (B1LocoClient, ChannelFactory, RobotMode) or raises.
-    Uses the exact import paths verified in the repository.
+    Uses the exact direct import modules verified in the repository.
     """
     errors: list[str] = []
-    try:
-        module = importlib.import_module(VERIFIED_SDK_ENTRY_MODULE)
-    except ImportError as exc:
-        errors.append(f"import {VERIFIED_SDK_ENTRY_MODULE}: {exc}")
-    except Exception as exc:
-        errors.append(f"import {VERIFIED_SDK_ENTRY_MODULE}: {exc.__class__.__name__}: {exc}")
-
-    if errors:
-        raise ImportError("; ".join(errors))
-
-    B1LocoClient_cls = None
-    ChannelFactory_cls = None
-    RobotMode_enum = None
-
-    for cls_name in VERIFIED_SDK_CLASSES:
+    resolved: dict[str, Any] = {}
+    module_by_class = {
+        "B1LocoClient": "B1LocoClient",
+        "ChannelFactory": "ChannelFactory",
+        "RobotMode": "RobotMode",
+    }
+    for class_name, module_name in module_by_class.items():
         try:
-            obj = getattr(module, cls_name, None)
-            if obj is None:
-                errors.append(f"{cls_name} not found in {VERIFIED_SDK_ENTRY_MODULE}")
-                continue
-            if cls_name == "B1LocoClient":
-                B1LocoClient_cls = obj
-            elif cls_name == "ChannelFactory":
-                ChannelFactory_cls = obj
-            elif cls_name == "RobotMode":
-                RobotMode_enum = obj
+            module = importlib.import_module(module_name)
+            resolved[class_name] = getattr(module, class_name)
+        except ImportError as exc:
+            errors.append(f"import {module_name}: {sanitize_vendor_message(exc)}")
+        except AttributeError as exc:
+            errors.append(f"{class_name} missing from {module_name}: {sanitize_vendor_message(exc)}")
         except Exception as exc:
-            errors.append(f"{cls_name} from {VERIFIED_SDK_ENTRY_MODULE}: {exc}")
+            errors.append(
+                f"import {module_name}: {exc.__class__.__name__}: "
+                f"{sanitize_vendor_message(exc)}"
+            )
 
     if errors:
         raise ImportError("; ".join(errors))
-    if B1LocoClient_cls is None or ChannelFactory_cls is None or RobotMode_enum is None:
-        raise ImportError("One or more verified SDK entry classes not resolved")
 
-    return B1LocoClient_cls, ChannelFactory_cls, RobotMode_enum
+    return resolved["B1LocoClient"], resolved["ChannelFactory"], resolved["RobotMode"]
+
+
+def _read_sdk_version() -> str | None:
+    try:
+        module = importlib.import_module(PACKAGE_PROBE_MODULE)
+        return getattr(module, "__version__", None)
+    except Exception:
+        return None
 
 
 def _is_zero_motion(vx_mps: float, vy_mps: float, wz_radps: float) -> bool:
@@ -188,12 +196,13 @@ class BoosterK1VendorBinding:
             sdk_family="booster_k1",
             sdk_version=self._sdk_version,
             binding_version=BINDING_VERSION,
-            sdk_import_path=VERIFIED_SDK_ENTRY_MODULE,
+            sdk_import_path=",".join(VERIFIED_DIRECT_ENTRY_MODULES),
             sdk_entry_classes=VERIFIED_SDK_CLASSES,
+            direct_entry_modules=VERIFIED_DIRECT_ENTRY_MODULES,
             verified_motion_sequence=VERIFIED_MOTION_SEQUENCE,
             zero_motion_only=True,
             support_level="zero_motion_bench_only",
-            note="M27-D zero-motion binding; no nonzero velocity permitted",
+            note="M27-D.1 zero-motion binding; direct imports verified only after hardware gates pass",
         )
 
     @staticmethod
@@ -216,6 +225,7 @@ class BoosterK1VendorBinding:
                 retryable=False,
                 details={
                     "sdk_module": VERIFIED_SDK_ENTRY_MODULE,
+                    "direct_entry_modules": list(VERIFIED_DIRECT_ENTRY_MODULES),
                     "sdk_classes": list(VERIFIED_SDK_CLASSES),
                 },
                 cause_type=type(exc).__name__,
@@ -225,14 +235,7 @@ class BoosterK1VendorBinding:
         binding._B1LocoClient = B1LocoClient_cls
         binding._ChannelFactory = ChannelFactory_cls
         binding._RobotMode = RobotMode_enum
-        try:
-            binding._sdk_version = getattr(
-                importlib.import_module(VERIFIED_SDK_ENTRY_MODULE),
-                "__version__",
-                None,
-            )
-        except Exception:
-            binding._sdk_version = None
+        binding._sdk_version = _read_sdk_version()
         return binding
 
     # --- Protocol methods ---
@@ -254,7 +257,7 @@ class BoosterK1VendorBinding:
             self._channel = None
             raise BoosterK1DomainError(
                 ERROR_K1_CONNECTION_FAILED,
-                f"K1 SDK connection failed: {exc}",
+                f"K1 SDK connection failed: {sanitize_vendor_message(exc)}",
                 retryable=True,
                 details={"interface": self.interface, "timeout_s": timeout_s},
                 cause_type=type(exc).__name__,
@@ -294,7 +297,7 @@ class BoosterK1VendorBinding:
         except Exception as exc:
             raise BoosterK1DomainError(
                 ERROR_K1_BINDING_OPERATION_FAILED,
-                f"K1 enter_prepare_mode failed: {exc}",
+                f"K1 enter_prepare_mode failed: {sanitize_vendor_message(exc)}",
                 retryable=True,
                 details={"operation": "kPrepare"},
                 cause_type=type(exc).__name__,
@@ -313,7 +316,7 @@ class BoosterK1VendorBinding:
         except Exception as exc:
             raise BoosterK1DomainError(
                 ERROR_K1_BINDING_OPERATION_FAILED,
-                f"K1 enter_walking_mode failed: {exc}",
+                f"K1 enter_walking_mode failed: {sanitize_vendor_message(exc)}",
                 retryable=True,
                 details={"operation": "kWalking"},
                 cause_type=type(exc).__name__,
@@ -353,19 +356,22 @@ class BoosterK1VendorBinding:
         now_ns = self.now_ns_fn()
         try:
             self._client.Move(float(vx_mps), float(vy_mps), float(wz_radps))
-            self._motion_state = MotionLifecycleState.MOVING
             return BoosterK1RuntimeCommandReceipt(
                 accepted=True,
                 runtime_receipt_id=f"k1-vendor-receipt-{self._receipt_counter}",
                 received_monotonic_ns=now_ns,
-                detail="M27-D zero-motion command accepted",
+                detail="M27-D.1 zero command accepted; physical stopping not independently verified",
+                zero_command_accepted=True,
+                physical_stop_verified=False,
+                internal_command_state=self._motion_state.value,
             )
         except Exception as exc:
             return BoosterK1RuntimeCommandReceipt(
                 accepted=False,
                 runtime_receipt_id=f"k1-vendor-receipt-{self._receipt_counter}",
                 received_monotonic_ns=now_ns,
-                detail=f"SDK Move failed: {exc}",
+                detail=f"SDK Move failed: {sanitize_vendor_message(exc)}",
+                internal_command_state=self._motion_state.value,
             )
 
     def stop(self) -> BoosterK1RuntimeCommandReceipt:
@@ -383,14 +389,19 @@ class BoosterK1VendorBinding:
                 accepted=True,
                 runtime_receipt_id=f"k1-vendor-stop-{self._receipt_counter}",
                 received_monotonic_ns=now_ns,
-                detail="M27-D stop command accepted via Move(0,0,0)",
+                detail="M27-D.1 stop command accepted via Move(0,0,0); physical stop not independently verified",
+                zero_command_accepted=True,
+                stop_command_accepted=True,
+                physical_stop_verified=False,
+                internal_command_state=self._motion_state.value,
             )
         except Exception as exc:
             return BoosterK1RuntimeCommandReceipt(
                 accepted=False,
                 runtime_receipt_id=f"k1-vendor-stop-{self._receipt_counter}",
                 received_monotonic_ns=now_ns,
-                detail=f"SDK stop failed: {exc}",
+                detail=f"SDK stop failed: {sanitize_vendor_message(exc)}",
+                internal_command_state=self._motion_state.value,
             )
 
     def restore_safe_state(self) -> None:
@@ -420,7 +431,7 @@ class BoosterK1VendorBinding:
         """Read robot state. Returns best-effort state from SDK.
 
         The verified repository subscribes to /robot_states via ROS2.
-        Direct SDK state reading uses client.GetMode() pattern.
+        Direct SDK GetMode() evidence is provisional and optional only.
         """
         self._require_connected()
         now_ns = self.now_ns_fn()
@@ -444,7 +455,9 @@ class BoosterK1VendorBinding:
             metadata={
                 "sdk_family": "booster_k1",
                 "binding_version": BINDING_VERSION,
-                "reading_method": "sdk_direct" if hasattr(self._client, "GetMode") else "inferred",
+                "reading_method": "sdk_optional_unverified_GetMode" if hasattr(self._client, "GetMode") else "inferred",
+                "get_mode_verified": False,
+                "physical_safe_state_evidence": False,
             },
         )
 
@@ -458,31 +471,33 @@ class BoosterK1VendorBinding:
         return None
 
     def health_check(self) -> BoosterK1RuntimeHealth:
-        """Check SDK and communication health."""
+        """Check binding readiness; transport communication is not verified."""
         now_ns = self.now_ns_fn()
         if not self._connected:
             return BoosterK1RuntimeHealth(
                 healthy=False,
                 checked_monotonic_ns=now_ns,
                 detail="K1 vendor binding is not connected",
+                scope="binding_readiness",
+                communication_verified=False,
             )
         if self._client is None:
             return BoosterK1RuntimeHealth(
                 healthy=False,
                 checked_monotonic_ns=now_ns,
                 detail="K1 vendor binding has no active client",
+                scope="binding_readiness",
+                communication_verified=False,
             )
-        try:
-            # Minimal health check: verify client is accessible
-            healthy = True
-            detail = "K1 vendor binding health check passed"
-        except Exception as exc:
-            healthy = False
-            detail = f"K1 vendor binding health check failed: {exc}"
         return BoosterK1RuntimeHealth(
-            healthy=healthy,
+            healthy=True,
             checked_monotonic_ns=now_ns,
-            detail=detail,
+            detail=(
+                "binding object and client handle are present; transport "
+                "communication was not independently verified"
+            ),
+            scope="binding_readiness",
+            communication_verified=False,
         )
 
     # --- Internal helpers ---
@@ -527,7 +542,7 @@ def create_vendor_binding(
     # Step 1: hardware gate exists
     if hardware_gate is None:
         raise BoosterK1DomainError(
-            ERROR_K1_SDK_UNAVAILABLE,
+            ERROR_K1_HARDWARE_GATE_MISSING,
             "Booster K1 vendor binding requires an explicit hardware gate",
             retryable=False,
         )
@@ -547,7 +562,9 @@ def create_vendor_binding(
             details=gate_errors[0].details,
         )
 
-    # Step 5: vendor runtime explicitly enabled
+    # Step 5: adapter mode is vendor_runtime (validated by hardware gate).
+
+    # Step 6: vendor runtime explicitly enabled
     if not enable_vendor_runtime:
         raise BoosterK1DomainError(
             ERROR_K1_VENDOR_RUNTIME_DISABLED,
@@ -555,7 +572,7 @@ def create_vendor_binding(
             retryable=False,
         )
 
-    # Step 6: hardware execution explicitly enabled
+    # Step 7: hardware execution explicitly enabled
     if not execute_hardware:
         raise BoosterK1DomainError(
             ERROR_K1_HARDWARE_EXECUTION_DISABLED,
@@ -563,17 +580,17 @@ def create_vendor_binding(
             retryable=False,
         )
 
-    # Step 7: SDK discoverable
+    # Step 8: direct SDK entry modules discoverable
     detection = detect_booster_sdk_availability_detailed()
-    if not detection.discoverable:
+    if not detection.direct_entry_modules_discoverable:
         raise BoosterK1DomainError(
             ERROR_K1_SDK_UNAVAILABLE,
-            "Booster K1 SDK is not discoverable",
+            "Booster K1 direct SDK entry modules are not discoverable",
             retryable=False,
             details={"detection": detection.to_dict()},
         )
 
-    # Steps 8-9: import SDK and construct binding
+    # Steps 9-10: import SDK and construct binding
     try:
         binding = BoosterK1VendorBinding.create_with_sdk_import(
             interface=interface,

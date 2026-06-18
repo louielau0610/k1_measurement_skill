@@ -31,6 +31,7 @@ class BoosterK1VendorBindingMetadata:
     zero_motion_only: bool
     support_level: str
     note: str = ""
+    direct_entry_modules: tuple[str, ...] = ()
 
     def to_dict(self) -> dict[str, object]:
         return {
@@ -40,6 +41,7 @@ class BoosterK1VendorBindingMetadata:
             "binding_version": self.binding_version,
             "sdk_import_path": self.sdk_import_path,
             "sdk_entry_classes": list(self.sdk_entry_classes),
+            "direct_entry_modules": list(self.direct_entry_modules),
             "verified_motion_sequence": list(self.verified_motion_sequence),
             "zero_motion_only": self.zero_motion_only,
             "support_level": self.support_level,
@@ -126,6 +128,13 @@ class BoosterK1VendorSDKDetection:
     sdk_entry_classes: tuple[str, ...]
     verified_imports_found: bool
     detection_errors: tuple[str, ...]
+    package_probe_module: str = "booster_robotics_sdk_python"
+    package_probe_discoverable: bool = False
+    direct_entry_modules: tuple[str, ...] = ()
+    direct_entry_module_specs: dict[str, bool] = field(default_factory=dict)
+    direct_entry_modules_discoverable: bool = False
+    direct_imports_attempted: bool = False
+    direct_imports_verified: bool = False
 
     def to_dict(self) -> dict[str, object]:
         return {
@@ -135,4 +144,11 @@ class BoosterK1VendorSDKDetection:
             "sdk_entry_classes": list(self.sdk_entry_classes),
             "verified_imports_found": self.verified_imports_found,
             "detection_errors": list(self.detection_errors),
+            "package_probe_module": self.package_probe_module,
+            "package_probe_discoverable": self.package_probe_discoverable,
+            "direct_entry_modules": list(self.direct_entry_modules),
+            "direct_entry_module_specs": dict(self.direct_entry_module_specs),
+            "direct_entry_modules_discoverable": self.direct_entry_modules_discoverable,
+            "direct_imports_attempted": self.direct_imports_attempted,
+            "direct_imports_verified": self.direct_imports_verified,
         }

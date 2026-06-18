@@ -324,3 +324,31 @@ dry-run `SkillService`，以及带内存审计记录的 `dry_run_end_to_end` 流
 不连接硬件，不打开 socket，不启动 DDS，不发送 UDP，也不导入 vendor SDK
 runtime。新架构下仍不声明 K1/G1/GO1 runtime support、hardware verification
 或 release readiness。
+# M27-D.1 K1 零运动审计闭环
+
+M27-D.1 修正 M27-D 工程审计发现，但仍是严格离线的 audit-closure 里程碑：
+没有连接 K1，没有导入真实 Booster SDK 进行验证，没有打开 DDS/UDP/ROS2/网络路径，
+没有发送零速或非零物理命令，也没有执行 M27-D 硬件 bench。
+
+已确认的历史 robot-side 直接导入是：
+
+```python
+from B1LocoClient import B1LocoClient
+from ChannelFactory import ChannelFactory
+from RobotMode import RobotMode
+```
+
+`importlib.util.find_spec("booster_robotics_sdk_python")` 只保留为诊断性 package
+probe；它不证明上述三个直接入口模块或类可用。真实 binding 只有在硬件门禁完整、
+未过期、robot/policy/hash 匹配、adapter mode 为 `vendor_runtime`、`enable_vendor_runtime`
+和 `execute_hardware` 均显式开启、且三个直接入口模块可发现之后，才会尝试直接导入。
+
+零速命令接受只表示 SDK 调用未报告拒绝，不是物理停止证据。`stop()` 可记录内部
+command-derived `SAFE_STOPPED` 状态，但 bench runner 必须把 `stop_command_accepted`、
+`internal_safe_state_claim` 和独立 `physical_safe_state_observed` 分开；没有独立后验遥测时，
+状态为 `safe_state_unverified`。health check 当前范围是 `binding_readiness`，
+`communication_verified=false`。`GetMode()` 在本仓库中未被确认为历史 verified SDK 调用，
+只可作为 optional/unverified best-effort，不能阻塞 binding，也不能作为物理安全状态证据。
+
+默认 CLI 和 registry 仍是 mock-only。fake K1 测试路径仍可用。G1/GO1 硬件支持不存在。
+M27-D.1 不开始 M27-E，不修改历史 raw data、gold profile 或真实实验输出。

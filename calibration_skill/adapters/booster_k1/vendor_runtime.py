@@ -6,7 +6,6 @@ domain types and enforces zero-motion.
 """
 from __future__ import annotations
 
-import importlib.util
 import time
 from dataclasses import dataclass
 from typing import Any
@@ -16,6 +15,7 @@ from calibration_skill.adapters.booster_k1.errors import (
     BoosterK1DomainError,
     ERROR_K1_HARDWARE_GATE_INCOMPLETE,
     ERROR_K1_HARDWARE_GATE_MISSING,
+    ERROR_K1_HARDWARE_EXECUTION_DISABLED,
     ERROR_K1_M27D_NONZERO_MOTION_FORBIDDEN,
     ERROR_K1_SDK_UNAVAILABLE,
     ERROR_K1_VENDOR_RUNTIME_DISABLED,
@@ -54,6 +54,8 @@ class BoosterK1VendorRuntimeStatus:
     hardware_gate_required: bool
     hardware_enabled: bool
     reason: str
+    package_probe_discoverable: bool = False
+    direct_entry_modules_discoverable: bool = False
 
     def to_dict(self) -> dict[str, object]:
         return {
@@ -65,6 +67,8 @@ class BoosterK1VendorRuntimeStatus:
             "hardware_gate_required": self.hardware_gate_required,
             "hardware_enabled": self.hardware_enabled,
             "reason": self.reason,
+            "package_probe_discoverable": self.package_probe_discoverable,
+            "direct_entry_modules_discoverable": self.direct_entry_modules_discoverable,
         }
 
 
@@ -308,22 +312,29 @@ class BoosterK1VendorRuntime:
 # --- Standalone detection and factory functions ---
 
 def detect_booster_sdk_availability() -> BoosterK1VendorRuntimeStatus:
-    """Detect whether the verified SDK module is discoverable without importing it."""
-    found = importlib.util.find_spec(BOOSTER_SDK_MODULE) is not None
+    """Detect package probe and direct entry modules without importing them."""
+    from calibration_skill.adapters.booster_k1.vendor_binding import (
+        detect_booster_sdk_availability_detailed,
+    )
+
+    detection = detect_booster_sdk_availability_detailed()
+    found = detection.direct_entry_modules_discoverable
     reason = (
-        "SDK module discoverable; M27-D zero-motion binding available"
+        "Direct SDK entry modules discoverable; M27-D.1 zero-motion binding available"
         if found
-        else "SDK module not discoverable"
+        else "Direct SDK entry modules not discoverable"
     )
     return BoosterK1VendorRuntimeStatus(
         sdk_family="booster_k1",
         sdk_importable_without_importing=found,
-        detection_method="importlib.util.find_spec",
+        detection_method=detection.detection_method,
         ordinary_runtime_import_safe=True,
         vendor_runtime_implemented=True,
         hardware_gate_required=True,
         hardware_enabled=False,
         reason=reason,
+        package_probe_discoverable=detection.package_probe_discoverable,
+        direct_entry_modules_discoverable=detection.direct_entry_modules_discoverable,
     )
 
 
@@ -357,15 +368,13 @@ def create_booster_k1_vendor_runtime(
 
     No SDK import or SDK object construction occurs before steps 1-6 pass.
     """
-    runtime_status = status or detect_booster_sdk_availability()
-
     # Step 1: hardware gate exists
     if hardware_gate is None:
         raise BoosterK1RuntimeUnavailable(DomainError(
             ERROR_K1_HARDWARE_GATE_MISSING,
             "K1 vendor runtime requires an explicit hardware gate",
             retryable=False,
-        ), runtime_status)
+        ), status)
 
     # Steps 2-4: gate validation (includes robot ID, policy ID, policy hash)
     gate_errors = hardware_gate.validate(
@@ -375,7 +384,7 @@ def create_booster_k1_vendor_runtime(
         expected_safety_policy_hash=expected_safety_policy_hash,
     )
     if gate_errors:
-        raise BoosterK1RuntimeUnavailable(gate_errors[0], runtime_status)
+        raise BoosterK1RuntimeUnavailable(gate_errors[0], status)
 
     # Step 5: adapter mode check (done via expected_adapter_mode in gate)
 
@@ -385,17 +394,27 @@ def create_booster_k1_vendor_runtime(
             ERROR_K1_VENDOR_RUNTIME_NOT_IMPLEMENTED,
             "K1 vendor runtime is not explicitly enabled",
             retryable=False,
-        ), runtime_status)
+        ), status)
 
-    # Step 7: SDK discoverable
+    # Step 7: hardware execution explicitly enabled
+    if not execute_hardware:
+        raise BoosterK1RuntimeUnavailable(DomainError(
+            ERROR_K1_HARDWARE_EXECUTION_DISABLED,
+            "K1 hardware execution is not explicitly enabled",
+            retryable=False,
+        ), status)
+
+    runtime_status = status or detect_booster_sdk_availability()
+
+    # Step 8: direct SDK entry modules discoverable
     if not runtime_status.sdk_importable_without_importing:
         raise BoosterK1RuntimeUnavailable(DomainError(
             ERROR_K1_SDK_UNAVAILABLE,
-            "Booster K1 SDK is unavailable; ordinary package remains no-vendor",
+            "Booster K1 direct SDK entry modules are unavailable; ordinary package remains no-vendor",
             retryable=False,
         ), runtime_status)
 
-    # Steps 8-9: import SDK and construct binding
+    # Steps 9-10: import SDK and construct binding
     from calibration_skill.adapters.booster_k1.vendor_binding import create_vendor_binding
 
     try:

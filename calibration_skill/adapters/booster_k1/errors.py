@@ -1,6 +1,8 @@
 """Booster K1 adapter-specific domain error codes."""
 from __future__ import annotations
 
+import re
+
 ERROR_K1_HARDWARE_GATE_CLOSED = "k1_hardware_gate_closed"
 ERROR_K1_RUNTIME_MODE_UNSUPPORTED = "k1_runtime_mode_unsupported"
 ERROR_K1_UNSUPPORTED_AXIS = "k1_unsupported_axis"
@@ -27,6 +29,25 @@ ERROR_K1_VENDOR_RUNTIME_NOT_LOCOMOTION_READY = "k1_vendor_runtime_not_locomotion
 ERROR_K1_BINDING_OPERATION_FAILED = "k1_binding_operation_failed"
 
 
+_MEMORY_ADDRESS_RE = re.compile(r"0x[0-9a-fA-F]+")
+_SECRET_TOKEN_RE = re.compile(
+    r"(?i)(password|passwd|secret|token|credential|api[_-]?key)\s*[:=]\s*[^,\s;]+"
+)
+
+
+def sanitize_vendor_message(value: object, *, max_length: int = 180) -> str:
+    """Return a short vendor message safe for structured artifacts."""
+    text = str(value)
+    text = text.replace("\r", " ").replace("\n", " ")
+    text = _MEMORY_ADDRESS_RE.sub("0x<redacted>", text)
+    text = _SECRET_TOKEN_RE.sub(r"\1=<redacted>", text)
+    text = text.replace("Traceback (most recent call last):", "Traceback <redacted>:")
+    text = " ".join(text.split())
+    if len(text) > max_length:
+        return text[: max_length - 3] + "..."
+    return text
+
+
 class BoosterK1DomainError(Exception):
     """Base exception for Booster K1 domain errors.
 
@@ -45,7 +66,7 @@ class BoosterK1DomainError(Exception):
     def to_dict(self) -> dict[str, object]:
         result: dict[str, object] = {
             "code": self.code,
-            "message": self.message,
+            "message": sanitize_vendor_message(self.message),
             "retryable": self.retryable,
         }
         if self.details:

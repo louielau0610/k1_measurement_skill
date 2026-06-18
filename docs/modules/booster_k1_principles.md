@@ -59,3 +59,22 @@ registration.
 Use the M27-B targeted tests, full `tests/calibration_skill`, the engineering
 artifact validator, the hermetic full suite, and the local release gate before
 claiming readiness beyond fake-runtime-only.
+
+## M27-D.1 Principles
+
+- The package probe `booster_robotics_sdk_python` is diagnostic only.
+- Authoritative direct SDK dependencies are `B1LocoClient.B1LocoClient`,
+  `ChannelFactory.ChannelFactory`, and `RobotMode.RobotMode`.
+- Direct SDK imports must occur only after complete hardware gate validation,
+  adapter mode `vendor_runtime`, explicit vendor runtime enablement, explicit
+  hardware execution enablement, and direct-module discovery.
+- Missing hardware gates, policy mismatches, and authorization/configuration
+  failures must not be reported as SDK unavailable.
+- Zero command acceptance never proves physical stopping and must not move the
+  lifecycle to `MOVING`.
+- Internal `SAFE_STOPPED` is command-derived software state. Physical safe-state
+  verification requires independent post-command telemetry.
+- Health checks without a verified SDK communication operation are binding
+  readiness checks with `communication_verified=false`.
+- `GetMode()` is optional/unverified best effort until repository evidence
+  proves the exact method and behavior.

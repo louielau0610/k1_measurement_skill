@@ -117,12 +117,14 @@ class FakeBoosterK1VendorBinding:
                 received_monotonic_ns=now_ns,
                 detail="injected rejection",
             )
-        self.motion_state = MotionLifecycleState.MOVING
         return BoosterK1RuntimeCommandReceipt(
             accepted=True,
             runtime_receipt_id=f"fake-receipt-{self._receipt_counter}",
             received_monotonic_ns=now_ns,
-            detail="accepted",
+            detail="accepted zero command; physical stop not independently verified",
+            zero_command_accepted=True,
+            physical_stop_verified=False,
+            internal_command_state=self.motion_state.value,
         )
 
     def stop(self) -> BoosterK1RuntimeCommandReceipt:
@@ -144,6 +146,10 @@ class FakeBoosterK1VendorBinding:
             runtime_receipt_id=f"fake-stop-{self._receipt_counter}",
             received_monotonic_ns=now_ns,
             detail="stopped",
+            zero_command_accepted=True,
+            stop_command_accepted=True,
+            physical_stop_verified=False,
+            internal_command_state=self.motion_state.value,
         )
 
     def restore_safe_state(self) -> None:
@@ -198,4 +204,6 @@ class FakeBoosterK1VendorBinding:
             healthy=self.connected,
             checked_monotonic_ns=now_ns,
             detail="fake binding healthy" if self.connected else "fake binding not connected",
+            scope="binding_readiness",
+            communication_verified=False,
         )

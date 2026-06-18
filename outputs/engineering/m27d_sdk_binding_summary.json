@@ -1,11 +1,19 @@
 {
   "milestone": "M27-D",
-  "title": "Booster K1 Isolated SDK Binding and Zero-Motion Bench Integration",
+  "title": "Booster K1 Isolated SDK Binding and Zero-Motion Audit Closure",
   "created_at": "2026-06-18",
   "binding_class": "BoosterK1VendorBinding",
   "sdk_family": "booster_k1",
-  "sdk_import_path": "booster_robotics_sdk_python",
+  "package_probe_module": "booster_robotics_sdk_python",
+  "package_probe_semantics": "diagnostic only; does not prove direct entry modules or classes",
+  "sdk_import_path": "B1LocoClient,ChannelFactory,RobotMode",
+  "direct_entry_modules": ["B1LocoClient", "ChannelFactory", "RobotMode"],
   "sdk_entry_classes": ["B1LocoClient", "ChannelFactory", "RobotMode"],
+  "authoritative_runtime_dependencies": [
+    "B1LocoClient.B1LocoClient",
+    "ChannelFactory.ChannelFactory",
+    "RobotMode.RobotMode"
+  ],
   "verified_motion_sequence": ["kPrepare", "kWalking", "Move(vx, 0.0, 0.0)"],
   "verification_sources": [
     "scripts/send_m23b_k1_velocity_command.py",
@@ -17,8 +25,9 @@
   "binding_version": "m27d.1",
   "vendor_runtime_mode": "vendor_runtime",
   "sdk_import_isolation": {
-    "import_guard": "importlib.util.find_spec",
+    "import_guard": "package_probe_and_direct_module_find_spec",
     "import_triggers_only_in_factory": true,
+    "direct_import_verification_only_after_explicit_import": true,
     "ordinary_import_safe": true,
     "default_registry_mock_only": true,
     "default_cli_mock_only": true
@@ -36,10 +45,20 @@
     "B1LocoClient_Init": "verified",
     "RobotMode_kPrepare": "verified",
     "RobotMode_kWalking": "verified",
-    "Move_zero": "verified",
+    "Move_zero": "verified_command_call_only",
     "odometry_direct_sdk": "unverified",
     "battery_direct_sdk": "unverified",
-    "GetMode": "assumed"
+    "GetMode": "optional_unverified"
+  },
+  "zero_motion_state_semantics": {
+    "generic_zero_velocity_dispatch": "preserves idle or locomotion-ready state; never marks MOVING",
+    "stop": "records command-derived SAFE_STOPPED internal state only",
+    "physical_stop_verification": "requires independent post-command telemetry and is not provided by internal state"
+  },
+  "health_check_scope": {
+    "scope": "binding_readiness",
+    "communication_verified": false,
+    "detail": "binding object and client handle are present; transport communication was not independently verified"
   },
   "hardware_gate_fields": [
     "allow_hardware",

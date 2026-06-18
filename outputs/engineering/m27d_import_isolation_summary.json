@@ -12,8 +12,23 @@
     "sdk_import_only_in_factory_function": true,
     "sdk_import_gated_by_hardware_gate": true,
     "sdk_import_gated_by_enable_vendor_runtime": true,
-    "sdk_import_gated_by_execute_hardware": true
+    "sdk_import_gated_by_execute_hardware": true,
+    "direct_module_find_spec_before_import": true,
+    "package_probe_not_authoritative_runtime_blocker": true
   },
+  "construction_order": [
+    "hardware_gate_exists",
+    "gate_complete",
+    "gate_not_expired",
+    "expected_robot_id_matches",
+    "safety_policy_id_matches",
+    "safety_policy_hash_matches",
+    "adapter_mode_vendor_runtime",
+    "vendor_runtime_enabled",
+    "hardware_execution_enabled",
+    "direct_entry_modules_discoverable",
+    "direct_imports_and_class_resolution"
+  ],
   "forbidden_at_module_level": [
     "booster_robotics_sdk_python",
     "booster_robotics_sdk",

@@ -48,3 +48,27 @@ All errors use `DomainError` with:
 - `retryable` — Whether retry is appropriate
 - `details` — Structured context (no tracebacks, no SDK object reprs)
 - `cause_type` — Original exception class name (sanitized)
+
+## M27-D.1 Failure-Matrix Corrections
+
+SDK availability is split into distinct evidence:
+
+- `package_probe_discoverable`: only
+  `find_spec("booster_robotics_sdk_python")`.
+- `direct_entry_modules_discoverable`: all of `B1LocoClient`,
+  `ChannelFactory`, and `RobotMode` specs found without importing.
+- `direct_imports_verified`: true only after explicit direct imports and class
+  resolution succeed.
+
+`k1_sdk_unavailable` is reserved for direct SDK entry-module discovery failures.
+It must not be used for missing gates, policy mismatches, authorization, or
+configuration failures. A missing hardware gate is `k1_hardware_gate_missing`.
+
+Direct import failures use `k1_sdk_import_failed`; missing
+`B1LocoClient.B1LocoClient`, `ChannelFactory.ChannelFactory`, or
+`RobotMode.RobotMode` fails closed.
+
+Structured vendor errors must not serialize uncontrolled raw SDK reprs, memory
+addresses, credentials, network secrets, or full tracebacks. Allowed evidence is
+stable error code, sanitized operation/message, exception class name, and
+retryable flag.

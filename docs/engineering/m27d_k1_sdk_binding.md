@@ -96,3 +96,46 @@ Known K1 velocities 0.35–0.60 m/s are explicitly rejected.
 - Odometry and battery reading via direct SDK is unverified (returns None)
 - `control_mode` and `gait_mode` not introduced as mandatory runtime requirements
 - Real bench run required to upgrade `k1_zero_motion_bench` to `bench_verified`
+
+## M27-D.1 Audit Closure Corrections
+
+The authoritative SDK runtime dependencies are direct entry modules and classes:
+
+```python
+from B1LocoClient import B1LocoClient
+from ChannelFactory import ChannelFactory
+from RobotMode import RobotMode
+```
+
+Repository evidence: `scripts/send_m23b_k1_velocity_command.py:29`,
+`:30`, and `:31`. The same script probes
+`importlib.util.find_spec("booster_robotics_sdk_python")` at line 65, but that
+package probe is diagnostic only and does not prove the direct modules/classes
+are available.
+
+M27-D.1 construction order is fail-closed:
+
+1. hardware gate exists
+2. gate is complete
+3. gate is not expired
+4. expected robot ID matches
+5. safety policy ID matches
+6. safety policy hash matches
+7. adapter mode is `vendor_runtime`
+8. vendor runtime is explicitly enabled
+9. hardware execution is explicitly enabled
+10. direct entry modules are discoverable
+11. direct imports and class resolution are attempted
+
+Generic zero-velocity dispatch preserves `IDLE` or `LOCOMOTION_READY` and never
+sets `MOVING`. Explicit `stop()` records a command-derived internal
+`SAFE_STOPPED` state only; it is not independent physical evidence.
+
+Health checks are scoped as `binding_readiness` with
+`communication_verified=false`. `GetMode()` is optional/unverified best effort
+and cannot be required for binding construction or used as physical safe-state
+evidence.
+
+M27-D.1 used no hardware, ran no M27-D hardware bench, verified no nonzero
+motion, and leaves default registry/CLI mock-only. No G1/GO1 hardware support
+exists.

@@ -74,3 +74,28 @@ implemented in this milestone.
 The implementation is covered by `tests/calibration_skill/test_booster_k1_*.py`,
 `tests/calibration_skill/test_m27c_readiness.py`, and the fake runtime in
 `tests/calibration_skill/fakes/`.
+
+## M27-D.1 Addendum
+
+Current vendor binding and bench entry points:
+
+- `calibration_skill/adapters/booster_k1/vendor_binding.py`:
+  `detect_booster_sdk_availability_detailed` line 67,
+  `_import_verified_sdk` line 110, `BoosterK1VendorBinding` line 161, and
+  `create_vendor_binding` line 514.
+- `calibration_skill/adapters/booster_k1/vendor_runtime.py`:
+  `create_booster_k1_vendor_runtime` line 341.
+- `scripts/run_m27d_k1_zero_motion_bench.py`: `run_bench` line 170.
+
+M27-D.1 changes SDK detection to distinguish
+`booster_robotics_sdk_python` package probing from authoritative direct entry
+modules `B1LocoClient`, `ChannelFactory`, and `RobotMode`. Direct imports and
+class resolution occur only after all hardware gates and explicit enable flags
+have passed.
+
+Zero velocity command receipts record `zero_command_accepted=true` without
+moving lifecycle state to `MOVING`. Explicit stop records
+`stop_command_accepted=true` and may set a command-derived internal
+`SAFE_STOPPED` state, but physical safe-state observation remains unavailable
+unless independent telemetry exists. Runtime health reports binding readiness,
+not verified transport communication.

@@ -1,0 +1,193 @@
+{
+  "checks": [
+    {
+      "allowed_summary_porcelain": "",
+      "name": "repository_initially_clean",
+      "porcelain": "",
+      "status": "passed"
+    },
+    {
+      "command": [
+        "py",
+        "-3.12",
+        "scripts/validate_engineering_artifacts.py"
+      ],
+      "name": "engineering_artifact_validation",
+      "returncode": 0,
+      "status": "passed",
+      "stderr": "",
+      "stdout": "=== M26/M27 Engineering Artifact Validator ===\n\n  OK: JSON parsed: m26a_platform_capability_matrix.json\n  OK: JSON parsed: m26a_readiness.json\n  OK: JSON parsed: m26a_repository_audit.json\n  OK: JSON parsed: m26b_baseline_evidence.json\n  OK: JSON parsed: m26b_contract_inventory.json\n  OK: JSON parsed: m26b_readiness.json\n  OK: JSON parsed: m26b_validation_summary.json\n  OK: JSON parsed: m26br_initial_state.json\n  OK: JSON parsed: m26c_initial_state.json\n  OK: JSON parsed: m26c_readiness.json\n  OK: JSON parsed: m26c_validation_summary.json\n  OK: JSON parsed: m26d_initial_state.json\n  OK: JSON parsed: m26d_operation_catalog.json\n  OK: JSON parsed: m26d_readiness.json\n  OK: JSON parsed: m26d_skill_manifest.json\n  OK: JSON parsed: m26d_validation_summary.json\n  OK: JSON parsed: m26e_initial_state.json\n  OK: JSON parsed: m26e_package_inventory.json\n  OK: JSON parsed: m26e_readiness.json\n  OK: JSON parsed: m26e_release_gate_summary.json\n  OK: JSON parsed: m26e_validation_summary.json\n  OK: JSON parsed: m27a_initial_state.json\n  OK: JSON parsed: m27a_k1_command_path_audit.json\n  OK: JSON parsed: m27a_k1_compatibility_test_plan.json\n  OK: JSON parsed: m27a_k1_legacy_inventory.json\n  OK: JSON parsed: m27a_k1_migration_risk_register.json\n  OK: JSON parsed: m27a_k1_safety_gate_audit.json\n  OK: JSON parsed: m27a_k1_telemetry_path_audit.json\n  OK: JSON parsed: m27a_k1_to_robot_adapter_mapping.json\n  OK: JSON parsed: m27a_readiness.json\n  OK: JSON parsed: m27a_release_gate_summary.json\n  OK: JSON parsed: m27a_validation_summary.json\n  OK: JSON parsed: m27b_initial_state.json\n  OK: JSON parsed: m27b_k1_adapter_contract_report.json\n  OK: JSON parsed: m27b_readiness.json\n  OK: JSON parsed: m27b_release_gate_summary.json\n  OK: JSON parsed: m27b_validation_summary.json\n  OK: JSON parsed: m27c_hardware_gate_contract.json\n  OK: JSON parsed: m27c_initial_state.json\n  OK: JSON parsed: m27c_readiness.json\n  OK: JSON parsed: m27c_release_gate_summary.json\n  OK: JSON parsed: m27c_validation_summary.json\n  OK: JSON parsed: m27c_vendor_runtime_status.json\n  OK: JSON parsed: m27d1_audit_closure_summary.json\n  OK: JSON parsed: m27d1_release_gate_summary.json\n  OK: JSON parsed: m27d_import_isolation_summary.json\n  OK: JSON parsed: m27d_readiness_summary.json\n  OK: JSON parsed: m27d_release_gate_summary.json\n  OK: JSON parsed: m27d_sdk_binding_summary.json\n  OK: JSON parsed: m27d_zero_motion_contract_summary.json\n  OK: All Markdown links resolve\n  OK: All audit paths exist\n  OK: No forbidden vendor imports in calibration_skill\n  OK: No false G1/GO1 implementation claims\n  OK: No silent safety defaults\n  OK: All 13 schema IDs unique\n  OK: No network/hardware operations in calibration_skill\n  OK: M26-C layering boundaries clean\n  OK: M26-C readiness remains mock-only and hardware-free\n  OK: M26-D manifest and operation catalog stable\n  OK: M26-D examples parse and are path-portable\n  OK: M26-D readiness remains dry-run-only\n  OK: M26-E packaging metadata is conservative\n  OK: M26-E release scripts exist and avoid restore commands\n  OK: M26-E docs exist\n  OK: M26-E readiness remains pre-release and hardware-free\n  OK: M27-A JSON parsed: m27a_initial_state.json\n  OK: M27-A JSON parsed: m27a_k1_legacy_inventory.json\n  OK: M27-A JSON parsed: m27a_k1_command_path_audit.json\n  OK: M27-A JSON parsed: m27a_k1_telemetry_path_audit.json\n  OK: M27-A JSON parsed: m27a_k1_safety_gate_audit.json\n  OK: M27-A JSON parsed: m27a_k1_to_robot_adapter_mapping.json\n  OK: M27-A JSON parsed: m27a_k1_compatibility_test_plan.json\n  OK: M27-A JSON parsed: m27a_k1_migration_risk_register.json\n  OK: M27-A JSON parsed: m27a_readiness.json\n  OK: M27-A JSON parsed: m27a_validation_summary.json\n  OK: K1 not registered in AdapterRegistry\n  OK: M26-D manifest K1 unavailable\n  OK: No Booster SDK in calibration_skill core layers\n  OK: M27-A readiness no hardware upgrade\n  OK: K1 migration boundary remains explicit\n  OK: M27-B artifacts exist\n  OK: M27-B K1 no-hardware boundary clean\n  OK: M27-C artifacts exist\n  OK: M27-C K1 vendor runtime boundary remains disabled\n\nALL 27 CHECKS PASSED\n"
+    },
+    {
+      "command": [
+        "py",
+        "-3.12",
+        "-m",
+        "compileall",
+        "calibration_skill",
+        "calibration_core",
+        "k1_measurement",
+        "platforms",
+        "scripts",
+        "tests",
+        "-q"
+      ],
+      "name": "compileall",
+      "returncode": 0,
+      "status": "passed",
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "py",
+        "-3.12",
+        "-m",
+        "pytest",
+        "tests/calibration_skill",
+        "-q"
+      ],
+      "name": "targeted_calibration_skill_tests",
+      "returncode": 0,
+      "status": "passed",
+      "stderr": "",
+      "stdout": "........................................................................ [ 13%]\n........................................................................ [ 27%]\n........................................................................ [ 40%]\n........................................................................ [ 54%]\n........................................................................ [ 67%]\n........................................................................ [ 81%]\n........................................................................ [ 94%]\n............................                                             [100%]\n532 passed in <duration>\n"
+    },
+    {
+      "command": [
+        "py",
+        "-3.12",
+        "scripts/run_tests_hermetically.py",
+        "--",
+        "py",
+        "-3.12",
+        "-m",
+        "pytest",
+        "tests/",
+        "--tb=no",
+        "-q"
+      ],
+      "name": "full_suite_hermetic",
+      "returncode": 0,
+      "status": "passed",
+      "stderr": "",
+      "stdout": "{\"child_returncode\": 0, \"command\": [\"py\", \"-3.12\", \"-m\", \"pytest\", \"tests/\", \"--tb=no\", \"-q\"], \"exit_code\": 0, \"repository_mutated\": false, \"runner\": \"run_tests_hermetically\"}\n........................................................................ [  5%]\n........................................................................ [ 10%]\n........................................................................ [ 15%]\n........................................................................ [ 20%]\n........................................................................ [ 25%]\n........................................................................ [ 30%]\n........................................................................ [ 35%]\n........................................................................ [ 40%]\n........................................................................ [ 45%]\n........................................................................ [ 50%]\n........................................................................ [ 55%]\n........................................................................ [ 60%]\n........................................................................ [ 65%]\n........................................................................ [ 70%]\n........................................................................ [ 75%]\n........................................................................ [ 80%]\n........................................................................ [ 85%]\n........................................................................ [ 90%]\n........................................................................ [ 95%]\n......................................................................   [100%]\n1438 passed in <duration>\n"
+    },
+    {
+      "command": [
+        "py",
+        "-3.12",
+        "-m",
+        "calibration_skill.cli",
+        "manifest"
+      ],
+      "name": "cli_manifest_smoke",
+      "returncode": 0,
+      "status": "passed",
+      "stderr": "",
+      "stdout": "{\"contract_version\":\"1.0.0\",\"dry_run_only\":true,\"error_codes\":[\"configuration_invalid\",\"unsupported_platform\",\"schema_version_unsupported\",\"operator_authorization_required\",\"operator_authorization_expired\",\"command_expired\",\"command_outside_safety_envelope\",\"wrong_motion_state\"],\"examples\":{\"dry_run_collect_telemetry\":\"examples/calibration_skill/dry_run_collect_telemetry.mock.json\",\"dry_run_end_to_end\":\"examples/calibration_skill/dry_run_end_to_end.mock.json\",\"dry_run_stop\":\"examples/calibration_skill/dry_run_stop.mock.json\",\"dry_run_velocity_command\":\"examples/calibration_skill/dry_run_velocity_command.mock.json\",\"invalid_dry_run_false\":\"examples/calibration_skill/invalid_dry_run_false_request.json\",\"invalid_missing_safety\":\"examples/calibration_skill/invalid_missing_safety_request.json\",\"invalid_real_platform\":\"examples/calibration_skill/invalid_real_platform_request.json\",\"preflight\":\"examples/calibration_skill/preflight_request.mock.json\"},\"exit_codes\":{\"hermeticity_or_forbidden_runtime_violation\":6,\"internal_error\":5,\"malformed_input_json\":3,\"output_write_failure\":4,\"request_rejected\":1,\"success\":0,\"usage_error\":2},\"hardware_support\":\"not_supported\",\"input_schema_ids\":[\"urn:calibration-skill:schema:skill_request:v1\"],\"non_goals\":[\"No K1 migration in M26-D.\",\"No G1 or GO1 runtime support.\",\"No hardware connection, DDS, UDP, socket, or vendor SDK runtime.\",\"No physical motion operation.\"],\"operations\":[{\"adapter_requirement\":\"mock\",\"audit_behavior\":\"no execution audit record\",\"cleanup_behavior\":\"restore_safe_state\",\"description\":\"Run mock dry-run preflight checks.\",\"dry_run_required\":true,\"expected_response_result_fields\":[\"preflight_report\"],\"hardware_motion_possible\":false,\"name\":\"preflight\",\"possible_error_codes\":[\"configuration_invalid\",\"unsupported_platform\"],\"required_capabilities\":[\"dry_run\"],\"required_request_payload_fields\":[]},{\"adapter_requirement\":\"mock\",\"audit_behavior\":\"in_memory_execution_audit_record\",\"cleanup_behavior\":\"stop_then_restore\",\"description\":\"Validate and dispatch a mock velocity command.\",\"dry_run_required\":true,\"expected_response_result_fields\":[\"receipt\",\"stop_receipt\",\"audit_record\"],\"hardware_motion_possible\":false,\"name\":\"dry_run_velocity_command\",\"possible_error_codes\":[\"configuration_invalid\",\"command_expired\",\"command_outside_safety_envelope\",\"operator_authorization_required\",\"operator_authorization_expired\"],\"required_capabilities\":[\"dry_run\",\"high_level_body_velocity_command\",\"command_acknowledgement\"],\"required_request_payload_fields\":[\"safety_envelope\",\"velocity_command\",\"operator_authorization_when_required\"]},{\"adapter_requirement\":\"mock\",\"audit_behavior\":\"no execution audit record\",\"cleanup_behavior\":\"restore_safe_state\",\"description\":\"Collect deterministic mock telemetry.\",\"dry_run_required\":true,\"expected_response_result_fields\":[\"telemetry_sample\"],\"hardware_motion_possible\":false,\"name\":\"dry_run_collect_telemetry\",\"possible_error_codes\":[\"configuration_invalid\",\"unsupported_platform\"],\"required_capabilities\":[\"dry_run\",\"body_velocity_telemetry\"],\"required_request_payload_fields\":[]},{\"adapter_requirement\":\"mock\",\"audit_behavior\":\"no execution audit record\",\"cleanup_behavior\":\"restore_safe_state\",\"description\":\"Issue a mock stop command.\",\"dry_run_required\":true,\"expected_response_result_fields\":[\"receipt\"],\"hardware_motion_possible\":false,\"name\":\"dry_run_stop\",\"possible_error_codes\":[\"configuration_invalid\",\"unsupported_platform\"],\"required_capabilities\":[\"dry_run\",\"explicit_stop\"],\"required_request_payload_fields\":[]},{\"adapter_requirement\":\"mock\",\"audit_behavior\":\"in_memory_execution_audit_record\",\"cleanup_behavior\":\"stop_attempted_then_restore_on_failure\",\"description\":\"Run the full mock dry-run flow with audit generation.\",\"dry_run_required\":true,\"expected_response_result_fields\":[\"receipt\",\"telemetry_sample\",\"stop_receipt\",\"audit_record\"],\"hardware_motion_possible\":false,\"name\":\"dry_run_end_to_end\",\"possible_error_codes\":[\"configuration_invalid\",\"command_expired\",\"command_outside_safety_envelope\",\"operator_authorization_required\",\"operator_authorization_expired\"],\"required_capabilities\":[\"dry_run\",\"high_level_body_velocity_command\",\"body_velocity_telemetry\",\"explicit_stop\",\"locomotion_mode_transition\",\"state_stream\"],\"required_request_payload_fields\":[\"safety_envelope\",\"velocity_command\",\"operator_authorization_when_required\"]}],\"output_schema_ids\":[\"urn:calibration-skill:schema:skill_response:v1\"],\"platform_support\":{\"booster_k1\":{\"dry_run_only\":false,\"maturity\":\"legacy_existing\",\"status\":\"not_available_new_runtime\"},\"mock\":{\"dry_run_only\":true,\"maturity\":\"bench_verified\",\"status\":\"supported\"},\"unitree_g1\":{\"dry_run_only\":false,\"maturity\":\"scaffolded\",\"status\":\"not_available\"},\"unitree_go1\":{\"dry_run_only\":false,\"maturity\":\"scaffolded\",\"status\":\"not_available\"}},\"readiness_status\":{\"agent_cli\":\"bench_verified\",\"hardware_verification\":\"not_started\",\"json_io_contract\":\"bench_verified\",\"release\":\"not_started\"},\"safety_requirements\":{\"dry_run_required\":true,\"operator_authorization_required_when_safety_envelope_requires_it\":true,\"platform_must_be\":\"mock\",\"safety_envelope_required_for\":[\"dry_run_velocity_command\",\"dry_run_end_to_end\"]},\"skill_name\":\"calibration_skill\",\"skill_version\":\"0.1.0-m26d\",\"supported_operations\":[\"preflight\",\"dry_run_velocity_command\",\"dry_run_collect_telemetry\",\"dry_run_stop\",\"dry_run_end_to_end\"]}\n"
+    },
+    {
+      "command": [
+        "py",
+        "-3.12",
+        "-m",
+        "calibration_skill.cli",
+        "examples",
+        "--operation",
+        "dry_run_end_to_end"
+      ],
+      "name": "cli_examples_smoke",
+      "returncode": 0,
+      "status": "passed",
+      "stderr": "",
+      "stdout": "{\"caller_metadata\":{\"example\":\"m26d\"},\"dry_run\":true,\"operation\":\"dry_run_end_to_end\",\"payload\":{\"operator_authorization\":{\"authorization_id\":\"example-auth-1\",\"authorized_operations\":[\"dry_run_end_to_end\"],\"evidence_reference\":\"simulated-operator-confirmation\",\"expiry_monotonic_ns\":3000000000,\"issued_monotonic_ns\":500000000,\"operator_id\":\"example-operator\",\"platform\":\"mock\",\"robot_id\":\"mock-robot\",\"safety_policy_hash\":\"mock-hash\",\"safety_policy_id\":\"mock-policy\"},\"safety_envelope\":{\"allowed_command_frames\":[\"body\"],\"max_abs_vx_mps\":0.5,\"max_abs_vy_mps\":0.4,\"max_abs_wz_radps\":0.8,\"max_command_duration_s\":2.0,\"max_telemetry_age_ms\":100.0,\"operator_authorization_required\":true,\"policy_hash\":\"mock-hash\",\"policy_id\":\"mock-policy\",\"stop_timeout_s\":1.0},\"velocity_command\":{\"expiry_monotonic_ns\":2000000000,\"frame\":\"body\",\"issued_monotonic_ns\":1000000000,\"requested_duration_s\":0.5,\"safety_policy_hash\":\"mock-hash\",\"safety_policy_id\":\"mock-policy\",\"sequence_id\":\"example-command-1\",\"source\":\"m26d-example\",\"vx_mps\":0.1,\"vy_mps\":0.0,\"wz_radps\":0.0}},\"platform\":\"mock\",\"request_id\":\"example-dry_run_end_to_end\",\"robot_id\":\"mock-robot\",\"schema_version\":\"1.0.0\"}\n"
+    },
+    {
+      "console_scripts": {
+        "calibration-skill": "calibration_skill.cli:main"
+      },
+      "dependencies": [
+        "jsonschema>=4.18"
+      ],
+      "errors": [],
+      "name": "packaging_metadata_validation",
+      "package_data": [
+        "schemas/v1/*.schema.json",
+        "skill/manifest.schema.json"
+      ],
+      "project_name": "calibration-skill",
+      "status": "passed"
+    },
+    {
+      "name": "build_wheel_sdist",
+      "reason": "python build module is not installed",
+      "status": "skipped_missing_dependency"
+    },
+    {
+      "console_cli": {
+        "command": [
+          "C:\\Users\\86138\\AppData\\Local\\Temp\\m26e-install-smoke-<tmp>\\venv\\Scripts\\calibration-skill.exe",
+          "manifest"
+        ],
+        "returncode": 0,
+        "status": "passed",
+        "stderr": "",
+        "stdout": "{\"contract_version\":\"1.0.0\",\"dry_run_only\":true,\"error_codes\":[\"configuration_invalid\",\"unsupported_platform\",\"schema_version_unsupported\",\"operator_authorization_required\",\"operator_authorization_expired\",\"command_expired\",\"command_outside_safety_envelope\",\"wrong_motion_state\"],\"examples\":{\"dry_run_collect_telemetry\":\"examples/calibration_skill/dry_run_collect_telemetry.mock.json\",\"dry_run_end_to_end\":\"examples/calibration_skill/dry_run_end_to_end.mock.json\",\"dry_run_stop\":\"examples/calibration_skill/dry_run_stop.mock.json\",\"dry_run_velocity_command\":\"examples/calibration_skill/dry_run_velocity_command.mock.json\",\"invalid_dry_run_false\":\"examples/calibration_skill/invalid_dry_run_false_request.json\",\"invalid_missing_safety\":\"examples/calibration_skill/invalid_missing_safety_request.json\",\"invalid_real_platform\":\"examples/calibration_skill/invalid_real_platform_request.json\",\"preflight\":\"examples/calibration_skill/preflight_request.mock.json\"},\"exit_codes\":{\"hermeticity_or_forbidden_runtime_violation\":6,\"internal_error\":5,\"malformed_input_json\":3,\"output_write_failure\":4,\"request_rejected\":1,\"success\":0,\"usage_error\":2},\"hardware_support\":\"not_supported\",\"input_schema_ids\":[\"urn:calibration-skill:schema:skill_request:v1\"],\"non_goals\":[\"No K1 migration in M26-D.\",\"No G1 or GO1 runtime support.\",\"No hardware connection, DDS, UDP, socket, or vendor SDK runtime.\",\"No physical motion operation.\"],\"operations\":[{\"adapter_requirement\":\"mock\",\"audit_behavior\":\"no execution audit record\",\"cleanup_behavior\":\"restore_safe_state\",\"description\":\"Run mock dry-run preflight checks.\",\"dry_run_required\":true,\"expected_response_result_fields\":[\"preflight_report\"],\"hardware_motion_possible\":false,\"name\":\"preflight\",\"possible_error_codes\":[\"configuration_invalid\",\"unsupported_platform\"],\"required_capabilities\":[\"dry_run\"],\"required_request_payload_fields\":[]},{\"adapter_requirement\":\"mock\",\"audit_behavior\":\"in_memory_execution_audit_record\",\"cleanup_behavior\":\"stop_then_restore\",\"description\":\"Validate and dispatch a mock velocity command.\",\"dry_run_required\":true,\"expected_response_result_fields\":[\"receipt\",\"stop_receipt\",\"audit_record\"],\"hardware_motion_possible\":false,\"name\":\"dry_run_velocity_command\",\"possible_error_codes\":[\"configuration_invalid\",\"command_expired\",\"command_outside_safety_envelope\",\"operator_authorization_required\",\"operator_authorization_expired\"],\"required_capabilities\":[\"dry_run\",\"high_level_body_velocity_command\",\"command_acknowledgement\"],\"required_request_payload_fields\":[\"safety_envelope\",\"velocity_command\",\"operator_authorization_when_required\"]},{\"adapter_requirement\":\"mock\",\"audit_behavior\":\"no execution audit record\",\"cleanup_behavior\":\"restore_safe_state\",\"description\":\"Collect deterministic mock telemetry.\",\"dry_run_required\":true,\"expected_response_result_fields\":[\"telemetry_sample\"],\"hardware_motion_possible\":false,\"name\":\"dry_run_collect_telemetry\",\"possible_error_codes\":[\"configuration_invalid\",\"unsupported_platform\"],\"required_capabilities\":[\"dry_run\",\"body_velocity_telemetry\"],\"required_request_payload_fields\":[]},{\"adapter_requirement\":\"mock\",\"audit_behavior\":\"no execution audit record\",\"cleanup_behavior\":\"restore_safe_state\",\"description\":\"Issue a mock stop command.\",\"dry_run_required\":true,\"expected_response_result_fields\":[\"receipt\"],\"hardware_motion_possible\":false,\"name\":\"dry_run_stop\",\"possible_error_codes\":[\"configuration_invalid\",\"unsupported_platform\"],\"required_capabilities\":[\"dry_run\",\"explicit_stop\"],\"required_request_payload_fields\":[]},{\"adapter_requirement\":\"mock\",\"audit_behavior\":\"in_memory_execution_audit_record\",\"cleanup_behavior\":\"stop_attempted_then_restore_on_failure\",\"description\":\"Run the full mock dry-run flow with audit generation.\",\"dry_run_required\":true,\"expected_response_result_fields\":[\"receipt\",\"telemetry_sample\",\"stop_receipt\",\"audit_record\"],\"hardware_motion_possible\":false,\"name\":\"dry_run_end_to_end\",\"possible_error_codes\":[\"configuration_invalid\",\"command_expired\",\"command_outside_safety_envelope\",\"operator_authorization_required\",\"operator_authorization_expired\"],\"required_capabilities\":[\"dry_run\",\"high_level_body_velocity_command\",\"body_velocity_telemetry\",\"explicit_stop\",\"locomotion_mode_transition\",\"state_stream\"],\"required_request_payload_fields\":[\"safety_envelope\",\"velocity_command\",\"operator_authorization_when_required\"]}],\"output_schema_ids\":[\"urn:calibration-skill:schema:skill_response:v1\"],\"platform_support\":{\"booster_k1\":{\"dry_run_only\":false,\"maturity\":\"legacy_existing\",\"status\":\"not_available_new_runtime\"},\"mock\":{\"dry_run_only\":true,\"maturity\":\"bench_verified\",\"status\":\"supported\"},\"unitree_g1\":{\"dry_run_only\":false,\"maturity\":\"scaffolded\",\"status\":\"not_available\"},\"unitree_go1\":{\"dry_run_only\":false,\"maturity\":\"scaffolded\",\"status\":\"not_available\"}},\"readiness_status\":{\"agent_cli\":\"bench_verified\",\"hardware_verification\":\"not_started\",\"json_io_contract\":\"bench_verified\",\"release\":\"not_started\"},\"safety_requirements\":{\"dry_run_required\":true,\"operator_authorization_required_when_safety_envelope_requires_it\":true,\"platform_must_be\":\"mock\",\"safety_envelope_required_for\":[\"dry_run_velocity_command\",\"dry_run_end_to_end\"]},\"skill_name\":\"calibration_skill\",\"skill_version\":\"0.1.0-m26d\",\"supported_operations\":[\"preflight\",\"dry_run_velocity_command\",\"dry_run_collect_telemetry\",\"dry_run_stop\",\"dry_run_end_to_end\"]}\n"
+      },
+      "install": {
+        "command": [
+          "C:\\Users\\86138\\AppData\\Local\\Temp\\m26e-install-smoke-<tmp>\\venv\\Scripts\\python.exe",
+          "-m",
+          "pip",
+          "install",
+          "--no-deps",
+          "-e",
+          "C:\\Users\\86138\\Desktop\\Calibration Claw\\k1_measurement_skill"
+        ],
+        "returncode": 0,
+        "status": "passed",
+        "stderr": "",
+        "stdout": "Obtaining file:///C:/Users/86138/Desktop/Calibration%20Claw/k1_measurement_skill\n  Installing build dependencies: started\n  Installing build dependencies: finished with status 'done'\n  Checking if build backend supports build_editable: started\n  Checking if build backend supports build_editable: finished with status 'done'\n  Getting requirements to build editable: started\n  Getting requirements to build editable: finished with status 'done'\n  Preparing editable metadata (pyproject.toml): started\n  Preparing editable metadata (pyproject.toml): finished with status 'done'\nBuilding wheels for collected packages: calibration-skill\n  Building editable for calibration-skill (pyproject.toml): started\n  Building editable for calibration-skill (pyproject.toml): finished with status 'done'\n  Created wheel for calibration-skill: filename=calibration_skill-0.1.0-0.editable-py3-none-any.whl size=9223 sha256=<sha256>\n  Stored in directory: C:\\Users\\86138\\AppData\\Local\\Temp\\pip-ephem-wheel-cache-<tmp>\\wheels\\57\\5b\\bf\\be801cabfea5ffff50939c2b12743d6e22eb714b17d45cda64\nSuccessfully built calibration-skill\nInstalling collected packages: calibration-skill\nSuccessfully installed calibration-skill-0.1.0\n"
+      },
+      "module_cli": {
+        "command": [
+          "C:\\Users\\86138\\AppData\\Local\\Temp\\m26e-install-smoke-<tmp>\\venv\\Scripts\\python.exe",
+          "-m",
+          "calibration_skill.cli",
+          "manifest"
+        ],
+        "returncode": 0,
+        "status": "passed",
+        "stderr": "",
+        "stdout": "{\"contract_version\":\"1.0.0\",\"dry_run_only\":true,\"error_codes\":[\"configuration_invalid\",\"unsupported_platform\",\"schema_version_unsupported\",\"operator_authorization_required\",\"operator_authorization_expired\",\"command_expired\",\"command_outside_safety_envelope\",\"wrong_motion_state\"],\"examples\":{\"dry_run_collect_telemetry\":\"examples/calibration_skill/dry_run_collect_telemetry.mock.json\",\"dry_run_end_to_end\":\"examples/calibration_skill/dry_run_end_to_end.mock.json\",\"dry_run_stop\":\"examples/calibration_skill/dry_run_stop.mock.json\",\"dry_run_velocity_command\":\"examples/calibration_skill/dry_run_velocity_command.mock.json\",\"invalid_dry_run_false\":\"examples/calibration_skill/invalid_dry_run_false_request.json\",\"invalid_missing_safety\":\"examples/calibration_skill/invalid_missing_safety_request.json\",\"invalid_real_platform\":\"examples/calibration_skill/invalid_real_platform_request.json\",\"preflight\":\"examples/calibration_skill/preflight_request.mock.json\"},\"exit_codes\":{\"hermeticity_or_forbidden_runtime_violation\":6,\"internal_error\":5,\"malformed_input_json\":3,\"output_write_failure\":4,\"request_rejected\":1,\"success\":0,\"usage_error\":2},\"hardware_support\":\"not_supported\",\"input_schema_ids\":[\"urn:calibration-skill:schema:skill_request:v1\"],\"non_goals\":[\"No K1 migration in M26-D.\",\"No G1 or GO1 runtime support.\",\"No hardware connection, DDS, UDP, socket, or vendor SDK runtime.\",\"No physical motion operation.\"],\"operations\":[{\"adapter_requirement\":\"mock\",\"audit_behavior\":\"no execution audit record\",\"cleanup_behavior\":\"restore_safe_state\",\"description\":\"Run mock dry-run preflight checks.\",\"dry_run_required\":true,\"expected_response_result_fields\":[\"preflight_report\"],\"hardware_motion_possible\":false,\"name\":\"preflight\",\"possible_error_codes\":[\"configuration_invalid\",\"unsupported_platform\"],\"required_capabilities\":[\"dry_run\"],\"required_request_payload_fields\":[]},{\"adapter_requirement\":\"mock\",\"audit_behavior\":\"in_memory_execution_audit_record\",\"cleanup_behavior\":\"stop_then_restore\",\"description\":\"Validate and dispatch a mock velocity command.\",\"dry_run_required\":true,\"expected_response_result_fields\":[\"receipt\",\"stop_receipt\",\"audit_record\"],\"hardware_motion_possible\":false,\"name\":\"dry_run_velocity_command\",\"possible_error_codes\":[\"configuration_invalid\",\"command_expired\",\"command_outside_safety_envelope\",\"operator_authorization_required\",\"operator_authorization_expired\"],\"required_capabilities\":[\"dry_run\",\"high_level_body_velocity_command\",\"command_acknowledgement\"],\"required_request_payload_fields\":[\"safety_envelope\",\"velocity_command\",\"operator_authorization_when_required\"]},{\"adapter_requirement\":\"mock\",\"audit_behavior\":\"no execution audit record\",\"cleanup_behavior\":\"restore_safe_state\",\"description\":\"Collect deterministic mock telemetry.\",\"dry_run_required\":true,\"expected_response_result_fields\":[\"telemetry_sample\"],\"hardware_motion_possible\":false,\"name\":\"dry_run_collect_telemetry\",\"possible_error_codes\":[\"configuration_invalid\",\"unsupported_platform\"],\"required_capabilities\":[\"dry_run\",\"body_velocity_telemetry\"],\"required_request_payload_fields\":[]},{\"adapter_requirement\":\"mock\",\"audit_behavior\":\"no execution audit record\",\"cleanup_behavior\":\"restore_safe_state\",\"description\":\"Issue a mock stop command.\",\"dry_run_required\":true,\"expected_response_result_fields\":[\"receipt\"],\"hardware_motion_possible\":false,\"name\":\"dry_run_stop\",\"possible_error_codes\":[\"configuration_invalid\",\"unsupported_platform\"],\"required_capabilities\":[\"dry_run\",\"explicit_stop\"],\"required_request_payload_fields\":[]},{\"adapter_requirement\":\"mock\",\"audit_behavior\":\"in_memory_execution_audit_record\",\"cleanup_behavior\":\"stop_attempted_then_restore_on_failure\",\"description\":\"Run the full mock dry-run flow with audit generation.\",\"dry_run_required\":true,\"expected_response_result_fields\":[\"receipt\",\"telemetry_sample\",\"stop_receipt\",\"audit_record\"],\"hardware_motion_possible\":false,\"name\":\"dry_run_end_to_end\",\"possible_error_codes\":[\"configuration_invalid\",\"command_expired\",\"command_outside_safety_envelope\",\"operator_authorization_required\",\"operator_authorization_expired\"],\"required_capabilities\":[\"dry_run\",\"high_level_body_velocity_command\",\"body_velocity_telemetry\",\"explicit_stop\",\"locomotion_mode_transition\",\"state_stream\"],\"required_request_payload_fields\":[\"safety_envelope\",\"velocity_command\",\"operator_authorization_when_required\"]}],\"output_schema_ids\":[\"urn:calibration-skill:schema:skill_response:v1\"],\"platform_support\":{\"booster_k1\":{\"dry_run_only\":false,\"maturity\":\"legacy_existing\",\"status\":\"not_available_new_runtime\"},\"mock\":{\"dry_run_only\":true,\"maturity\":\"bench_verified\",\"status\":\"supported\"},\"unitree_g1\":{\"dry_run_only\":false,\"maturity\":\"scaffolded\",\"status\":\"not_available\"},\"unitree_go1\":{\"dry_run_only\":false,\"maturity\":\"scaffolded\",\"status\":\"not_available\"}},\"readiness_status\":{\"agent_cli\":\"bench_verified\",\"hardware_verification\":\"not_started\",\"json_io_contract\":\"bench_verified\",\"release\":\"not_started\"},\"safety_requirements\":{\"dry_run_required\":true,\"operator_authorization_required_when_safety_envelope_requires_it\":true,\"platform_must_be\":\"mock\",\"safety_envelope_required_for\":[\"dry_run_velocity_command\",\"dry_run_end_to_end\"]},\"skill_name\":\"calibration_skill\",\"skill_version\":\"0.1.0-m26d\",\"supported_operations\":[\"preflight\",\"dry_run_velocity_command\",\"dry_run_collect_telemetry\",\"dry_run_stop\",\"dry_run_end_to_end\"]}\n"
+      },
+      "name": "install_smoke",
+      "status": "passed"
+    },
+    {
+      "name": "no_vendor_sdk_import",
+      "result": {
+        "command": [
+          "py",
+          "-3.12",
+          "-c",
+          "\nimport builtins\nforbidden = {'booster_robotics_sdk','unitree_sdk2','unitree_legged_sdk','rclpy','cyclonedds','fastdds'}\nreal_import = builtins.__import__\nseen = []\ndef guarded(name, *args, **kwargs):\n    root = name.split('.')[0].lower()\n    if root in forbidden:\n        raise RuntimeError('forbidden import attempted: ' + name)\n    seen.append(name)\n    return real_import(name, *args, **kwargs)\nbuiltins.__import__ = guarded\nimport calibration_skill.cli as cli\ncode = cli.main(['invoke', '--input', 'examples/calibration_skill/dry_run_end_to_end.mock.json'])\nraise SystemExit(code)\n"
+        ],
+        "returncode": 0,
+        "status": "passed",
+        "stderr": "",
+        "stdout": "{\"audit_reference\":\"audit-example-dry_run_end_to_end\",\"operation\":\"dry_run_end_to_end\",\"request_id\":\"example-dry_run_end_to_end\",\"result\":{\"audit_record\":{\"adapter_version\":\"m26c.mock.1\",\"audit_digest\":\"e0a5077e7118e888a80f775127e3c5783caaa23100bcb84bcd52c8bbd08163e3\",\"authorization_id\":\"example-auth-1\",\"cleanup_result\":\"stop_then_restore\",\"completed_monotonic_ns\":1070000000,\"hardware_evidence_claimed\":false,\"platform\":\"mock\",\"provenance_hashes\":{\"canonical_request_sha256\":\"f309f1aa0f9976a76f71948d73e7726c8188dbc8a5b3941cfc02724d29d36c34\"},\"receipt\":{\"accepted_monotonic_ns\":1040000000,\"acknowledgement_evidence\":\"mock-dry-run-accepted-no-physical-motion\",\"adapter_receipt_id\":\"mock-receipt-0001\",\"adapter_state\":\"moving\",\"command_sequence_id\":\"example-command-1\",\"disposition\":\"accepted\",\"received_monotonic_ns\":1040000000},\"requested_command\":{\"expiry_monotonic_ns\":2000000000,\"frame\":\"body\",\"issued_monotonic_ns\":1000000000,\"requested_duration_s\":0.5,\"safety_policy_hash\":\"mock-hash\",\"safety_policy_id\":\"mock-policy\",\"sequence_id\":\"example-command-1\",\"source\":\"m26d-example\",\"vx_mps\":0.1,\"vy_mps\":0.0,\"wz_radps\":0.0},\"requested_operation\":\"dry_run_end_to_end\",\"robot_id\":\"mock-robot\",\"safety_policy_hash\":\"mock-hash\",\"safety_policy_id\":\"mock-policy\",\"session_id\":\"audit-example-dry_run_end_to_end\",\"session_status\":\"success\",\"software_version\":\"m26c.skill.1\",\"started_monotonic_ns\":1000000000,\"telemetry_evidence\":{\"body_twist\":{\"angular\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"linear\":{\"x\":0.0,\"y\":0.0,\"z\":0.0}},\"frame\":\"body\",\"heading_rad\":0.0,\"quality_flags\":[\"mock\",\"dry_run\"],\"received_monotonic_ns\":1050000000,\"robot_id\":\"mock-robot\",\"robot_mode\":\"moving\",\"sample_sequence_id\":1,\"source_adapter\":\"MockRobotAdapter\"},\"validated_command\":{\"expiry_monotonic_ns\":2000000000,\"frame\":\"body\",\"issued_monotonic_ns\":1000000000,\"requested_duration_s\":0.5,\"safety_policy_hash\":\"mock-hash\",\"safety_policy_id\":\"mock-policy\",\"sequence_id\":\"example-command-1\",\"source\":\"m26d-example\",\"vx_mps\":0.1,\"vy_mps\":0.0,\"wz_radps\":0.0}},\"receipt\":{\"accepted_monotonic_ns\":1040000000,\"acknowledgement_evidence\":\"mock-dry-run-accepted-no-physical-motion\",\"adapter_receipt_id\":\"mock-receipt-0001\",\"adapter_state\":\"moving\",\"command_sequence_id\":\"example-command-1\",\"disposition\":\"accepted\",\"received_monotonic_ns\":1040000000},\"stop_receipt\":{\"accepted_monotonic_ns\":1060000000,\"acknowledgement_evidence\":\"mock-stop-accepted-no-physical-motion\",\"adapter_receipt_id\":\"mock-stop-receipt-0002\",\"adapter_state\":\"safe_stopped\",\"command_sequence_id\":\"mock-stop-0002\",\"disposition\":\"accepted\",\"received_monotonic_ns\":1060000000},\"telemetry_sample\":{\"body_twist\":{\"angular\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"linear\":{\"x\":0.0,\"y\":0.0,\"z\":0.0}},\"frame\":\"body\",\"heading_rad\":0.0,\"quality_flags\":[\"mock\",\"dry_run\"],\"received_monotonic_ns\":1050000000,\"robot_id\":\"mock-robot\",\"robot_mode\":\"moving\",\"sample_sequence_id\":1,\"source_adapter\":\"MockRobotAdapter\"}},\"schema_version\":\"1.0.0\",\"status\":\"success\",\"warnings\":[]}\n"
+      },
+      "status": "passed"
+    },
+    {
+      "allowed_summary_porcelain": "",
+      "name": "repository_final_clean",
+      "porcelain": "",
+      "status": "passed"
+    }
+  ],
+  "milestone": "M27-D.1",
+  "status": "passed"
+}

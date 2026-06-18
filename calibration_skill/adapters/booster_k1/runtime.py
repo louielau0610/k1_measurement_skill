@@ -16,6 +16,8 @@ class BoosterK1RuntimeHealth:
     healthy: bool
     checked_monotonic_ns: int
     detail: str = ""
+    scope: str = "binding_readiness"
+    communication_verified: bool = False
 
 
 @dataclass(frozen=True)
@@ -24,6 +26,10 @@ class BoosterK1RuntimeCommandReceipt:
     runtime_receipt_id: str
     received_monotonic_ns: int
     detail: str = ""
+    zero_command_accepted: bool = False
+    stop_command_accepted: bool = False
+    physical_stop_verified: bool = False
+    internal_command_state: str = ""
 
 
 @dataclass(frozen=True)

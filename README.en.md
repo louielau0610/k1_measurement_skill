@@ -1,5 +1,40 @@
 # K1 Velocity Measurement Toolkit
 
+## M27-D.1 K1 Zero-Motion Audit Closure
+
+M27-D.1 closes engineering audit findings from M27-D. It remains strictly
+offline: no K1 connection occurred, the real Booster SDK was not imported
+during validation, no DDS/UDP/ROS2/network path was opened, no zero or nonzero
+physical command was sent, and the M27-D hardware bench has not run.
+
+The verified historical robot-side SDK imports are:
+
+```python
+from B1LocoClient import B1LocoClient
+from ChannelFactory import ChannelFactory
+from RobotMode import RobotMode
+```
+
+`importlib.util.find_spec("booster_robotics_sdk_python")` is diagnostic package
+probe evidence only. It does not prove those three direct entry modules or
+classes exist. The real binding attempts direct imports only after the hardware
+gate exists, is complete and unexpired, robot/policy/hash match, adapter mode is
+`vendor_runtime`, `enable_vendor_runtime` and `execute_hardware` are explicit,
+and all three direct entry modules are discoverable.
+
+Zero command acceptance means only that the SDK call was not rejected; it is not
+physical stop evidence. `stop()` records an internal command-derived
+`SAFE_STOPPED` state, while bench evidence separates `stop_command_accepted`,
+`internal_safe_state_claim`, and independent `physical_safe_state_observed`.
+Without independent post-command telemetry, the bench status is
+`safe_state_unverified`. Health checks are scoped as `binding_readiness` with
+`communication_verified=false`. `GetMode()` is optional/unverified best effort,
+not a required binding operation and not physical safe-state evidence.
+
+Default CLI and registry paths remain mock-only. The fake K1 test path remains
+supported. No G1/GO1 hardware support exists. M27-D.1 does not begin M27-E and
+does not modify historical raw data, gold profiles, or real experiment outputs.
+
 ## M27-C K1 Vendor Runtime Boundary
 
 M27-C adds the fail-closed real Booster K1 vendor runtime boundary:

@@ -58,9 +58,9 @@ def test_detection_uses_find_spec_without_importing(monkeypatch):
     calls = []
     monkeypatch.setattr(importlib.util, "find_spec", lambda name: calls.append(name) or None)
     status = detect_booster_sdk_availability()
-    assert calls == ["booster_robotics_sdk_python"]
+    assert calls == ["booster_robotics_sdk_python", "B1LocoClient", "ChannelFactory", "RobotMode"]
     assert status.sdk_importable_without_importing is False
-    assert status.detection_method == "importlib.util.find_spec"
+    assert status.detection_method == "package_probe_and_direct_module_find_spec"
 
 
 def test_sdk_unavailable_structured_status():
@@ -128,6 +128,7 @@ def test_missing_sdk_gives_structured_unavailable_error():
             expected_safety_policy_hash="hash",
             status=unavailable,
             enable_vendor_runtime=True,
+            execute_hardware=True,
         )
     assert exc.value.error.code == ERROR_K1_SDK_UNAVAILABLE
     assert exc.value.to_dict()["status"]["hardware_enabled"] is False

@@ -12,6 +12,29 @@
     "forbidden_vy_mps": "any non-zero",
     "forbidden_wz_radps": "any non-zero"
   },
+  "zero_motion_state_semantics": {
+    "generic_zero_velocity_dispatch": {
+      "accepted_receipt_field": "zero_command_accepted",
+      "moves_to_moving": false,
+      "state_preservation": ["idle", "locomotion_ready"],
+      "physical_stop_claimed": false
+    },
+    "explicit_stop": {
+      "accepted_receipt_field": "stop_command_accepted",
+      "internal_command_state_allowed": "safe_stopped",
+      "internal_state_is_physical_evidence": false
+    }
+  },
+  "safe_state_evidence": {
+    "stop_command_accepted_means": "SDK call returned without reported rejection",
+    "internal_safe_state_claim": "command-derived software state",
+    "physical_safe_state_observed_requires": "independent post-command telemetry",
+    "default_when_no_independent_signal": {
+      "physical_safe_state_observed": false,
+      "physical_safe_state_verification": "unavailable",
+      "bench_status": "safe_state_unverified"
+    }
+  },
   "required_confirmations": [
     "operator_confirmed_hardware",
     "physical_estop_confirmed",

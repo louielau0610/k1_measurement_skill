@@ -86,6 +86,11 @@ Output directory receives:
 | `safe_state_unverified` | Robot not in safe state after stop |
 | `bench_passed` | All checks passed |
 
+M27-D.1 correction: `safe_state_unverified` is also the conservative status
+when a stop command is accepted but no independent post-stop physical telemetry
+is available. The runner must not output `bench_passed` merely because an
+internal runtime variable reports `SAFE_STOPPED`.
+
 ## Safety Notes
 
 - M27-D forbids all nonzero velocity commands
@@ -93,3 +98,26 @@ Output directory receives:
 - Physical E-stop must remain accessible throughout
 - Operator must be prepared to use physical E-stop
 - Do not enter walking mode unless required for stop command issuance
+
+## M27-D.1 Evidence Discipline
+
+The bench result separates:
+
+- `stop_command_attempted`
+- `stop_command_accepted`
+- `internal_command_state`
+- `internal_safe_state_claim`
+- `physical_safe_state_observed`
+- `physical_safe_state_observation_source`
+- `physical_safe_state_verification`
+
+`stop_command_accepted` proves only that the SDK stop/zero command returned
+without a reported rejection. `internal_safe_state_claim` is command-derived
+software state. `physical_safe_state_observed=true` requires independent
+post-command telemetry, such as verified odometry, velocity telemetry, or a
+verified vendor robot-state signal. Reading the same internal runtime state is
+not independent evidence.
+
+As of M27-D.1, no M27-D hardware bench has run, no real Booster SDK was imported
+during validation, no network/DDS/UDP/ROS2 path was opened, and no physical
+zero or nonzero command was sent.

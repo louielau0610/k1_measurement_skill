@@ -73,7 +73,8 @@ class TestFakeVendorBinding:
 
         receipt = binding.send_body_velocity(vx_mps=0.0, vy_mps=0.0, wz_radps=0.0)
         assert receipt.accepted
-        assert binding.current_motion_state() == MotionLifecycleState.MOVING
+        assert receipt.zero_command_accepted
+        assert binding.current_motion_state() == MotionLifecycleState.LOCOMOTION_READY
 
     def test_stop_command(self):
         binding = FakeBoosterK1VendorBinding()
@@ -195,7 +196,7 @@ class TestVendorSDKDetection:
         )
         detection = detect_booster_sdk_availability_detailed()
         assert isinstance(detection, BoosterK1VendorSDKDetection)
-        assert detection.detection_method == "importlib.util.find_spec"
+        assert detection.detection_method == "package_probe_and_direct_module_find_spec"
         assert len(detection.sdk_entry_classes) == 3
         assert "B1LocoClient" in detection.sdk_entry_classes
         assert "ChannelFactory" in detection.sdk_entry_classes
@@ -207,7 +208,8 @@ class TestVendorSDKDetection:
         )
         detection = detect_booster_sdk_availability_detailed()
         d = detection.to_dict()
-        assert "sdk_import_path" in d
+        assert "package_probe_discoverable" in d
+        assert "direct_entry_modules_discoverable" in d
         assert "discoverable" in d
         assert "detection_method" in d
 
@@ -219,5 +221,5 @@ class TestVendorSDKDetection:
         status = detect_booster_sdk_availability()
         # In test env without SDK, this should report not found
         # or found (if installed); either is fine.
-        assert status.detection_method == "importlib.util.find_spec"
+        assert status.detection_method == "package_probe_and_direct_module_find_spec"
         assert status.ordinary_runtime_import_safe

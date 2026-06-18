@@ -86,6 +86,13 @@ class BenchResult:
     runtime_trace: list[dict[str, object]] = field(default_factory=list)
     telemetry_snapshot: dict[str, object] = field(default_factory=dict)
     identity: dict[str, object] = field(default_factory=dict)
+    stop_command_attempted: bool = False
+    stop_command_accepted: bool = False
+    internal_command_state: str = ""
+    internal_safe_state_claim: bool = False
+    physical_safe_state_observed: bool = False
+    physical_safe_state_observation_source: str = "none"
+    physical_safe_state_verification: str = "unavailable"
     errors: list[str] = field(default_factory=list)
 
     def to_summary(self) -> dict[str, object]:
@@ -94,6 +101,13 @@ class BenchResult:
             "evidence_reference": self.evidence_reference,
             "started_at": self.started_at,
             "finished_at": self.finished_at,
+            "stop_command_attempted": self.stop_command_attempted,
+            "stop_command_accepted": self.stop_command_accepted,
+            "internal_command_state": self.internal_command_state,
+            "internal_safe_state_claim": self.internal_safe_state_claim,
+            "physical_safe_state_observed": self.physical_safe_state_observed,
+            "physical_safe_state_observation_source": self.physical_safe_state_observation_source,
+            "physical_safe_state_verification": self.physical_safe_state_verification,
             "errors": self.errors,
         }
 
@@ -108,9 +122,11 @@ def _timestamp_iso() -> str:
 
 def _error_to_dict(error: Exception) -> dict[str, object]:
     """Serialize an exception without tracebacks, secrets, or raw SDK objects."""
+    from calibration_skill.adapters.booster_k1.errors import sanitize_vendor_message
+
     result: dict[str, object] = {
         "type": type(error).__name__,
-        "message": str(error),
+        "message": sanitize_vendor_message(error),
     }
     if hasattr(error, "to_dict"):
         try:
@@ -200,7 +216,7 @@ def run_bench(args: argparse.Namespace) -> BenchResult:
         })
     except Exception as exc:
         result.status = STATUS_BLOCKED_BY_GATE
-        result.errors.append(f"Gate construction failed: {exc}")
+        result.errors.append(f"Gate construction failed: {_error_to_dict(exc)['message']}")
         add_trace("gate_construction", False, exc)
         result.finished_at = _timestamp_iso()
         result.runtime_trace = [t.to_dict() for t in trace]
@@ -225,7 +241,7 @@ def run_bench(args: argparse.Namespace) -> BenchResult:
             return result
     except Exception as exc:
         result.status = STATUS_BLOCKED_BY_GATE
-        result.errors.append(f"Gate validation failed: {exc}")
+        result.errors.append(f"Gate validation failed: {_error_to_dict(exc)['message']}")
         add_trace("gate_validation", False, exc)
         result.finished_at = _timestamp_iso()
         result.runtime_trace = [t.to_dict() for t in trace]
@@ -288,28 +304,28 @@ def run_bench(args: argparse.Namespace) -> BenchResult:
         add_trace("binding_construction", True)
     except BoosterK1RuntimeUnavailable as exc:
         result.status = STATUS_BINDING_CONSTRUCTION_FAILED
-        result.errors.append(str(exc))
+        result.errors.append(_error_to_dict(exc)["message"])
         add_trace("binding_construction", False, exc)
         result.finished_at = _timestamp_iso()
         result.runtime_trace = [t.to_dict() for t in trace]
         return result
     except DomainError as exc:
         result.status = STATUS_BINDING_CONSTRUCTION_FAILED
-        result.errors.append(str(exc))
+        result.errors.append(_error_to_dict(exc)["message"])
         add_trace("binding_construction", False, exc)
         result.finished_at = _timestamp_iso()
         result.runtime_trace = [t.to_dict() for t in trace]
         return result
     except ImportError as exc:
         result.status = STATUS_SDK_IMPORT_FAILED
-        result.errors.append(f"SDK import failed: {exc}")
+        result.errors.append(f"SDK import failed: {_error_to_dict(exc)['message']}")
         add_trace("sdk_import", False, exc)
         result.finished_at = _timestamp_iso()
         result.runtime_trace = [t.to_dict() for t in trace]
         return result
     except Exception as exc:
         result.status = STATUS_BINDING_CONSTRUCTION_FAILED
-        result.errors.append(f"Binding construction failed: {exc}")
+        result.errors.append(f"Binding construction failed: {_error_to_dict(exc)['message']}")
         add_trace("binding_construction", False, exc)
         result.finished_at = _timestamp_iso()
         result.runtime_trace = [t.to_dict() for t in trace]
@@ -331,7 +347,7 @@ def run_bench(args: argparse.Namespace) -> BenchResult:
             add_trace("connect", True)
         except Exception as exc:
             result.status = STATUS_CONNECTION_FAILED
-            result.errors.append(f"Connection failed: {exc}")
+            result.errors.append(f"Connection failed: {_error_to_dict(exc)['message']}")
             add_trace("connect", False, exc)
             result.finished_at = _timestamp_iso()
             result.runtime_trace = [t.to_dict() for t in trace]
@@ -343,7 +359,7 @@ def run_bench(args: argparse.Namespace) -> BenchResult:
             result.identity = _sanitize_dict(dict(identity))
             add_trace("read_identity", True)
         except Exception as exc:
-            result.errors.append(f"Identity read failed: {exc}")
+            result.errors.append(f"Identity read failed: {_error_to_dict(exc)['message']}")
             add_trace("read_identity", False, exc)
 
         # Phase 9: Read initial motion state
@@ -351,7 +367,7 @@ def run_bench(args: argparse.Namespace) -> BenchResult:
             motion_state = runtime.current_motion_state()
             add_trace("read_motion_state", True)
         except Exception as exc:
-            result.errors.append(f"Motion state read failed: {exc}")
+            result.errors.append(f"Motion state read failed: {_error_to_dict(exc)['message']}")
             add_trace("read_motion_state", False, exc)
 
         # Phase 10: Read robot state
@@ -364,7 +380,7 @@ def run_bench(args: argparse.Namespace) -> BenchResult:
             })
             add_trace("read_robot_state", True)
         except Exception as exc:
-            result.errors.append(f"Robot state read failed: {exc}")
+            result.errors.append(f"Robot state read failed: {_error_to_dict(exc)['message']}")
             add_trace("read_robot_state", False, exc)
 
         # Phase 11: Read odometry if available
@@ -383,8 +399,8 @@ def run_bench(args: argparse.Namespace) -> BenchResult:
                 result.telemetry_snapshot["odometry"] = {"available": False}
                 add_trace("read_odometry", True)
         except Exception as exc:
-            result.errors.append(f"Odometry read failed: {exc}")
-            result.telemetry_snapshot["odometry"] = {"available": False, "error": str(exc)}
+            result.errors.append(f"Odometry read failed: {_error_to_dict(exc)['message']}")
+            result.telemetry_snapshot["odometry"] = {"available": False, "error": _error_to_dict(exc)["message"]}
             add_trace("read_odometry", False, exc)
 
         # Phase 12: Read battery if available
@@ -397,7 +413,7 @@ def run_bench(args: argparse.Namespace) -> BenchResult:
                 result.telemetry_snapshot["battery"] = {"available": False}
                 add_trace("read_battery", True)
         except Exception as exc:
-            result.errors.append(f"Battery read failed: {exc}")
+            result.errors.append(f"Battery read failed: {_error_to_dict(exc)['message']}")
             result.telemetry_snapshot["battery"] = {"available": False}
             add_trace("read_battery", False, exc)
 
@@ -407,17 +423,22 @@ def run_bench(args: argparse.Namespace) -> BenchResult:
             result.telemetry_snapshot["health"] = {
                 "healthy": health.healthy,
                 "detail": health.detail,
+                "scope": health.scope,
+                "communication_verified": health.communication_verified,
             }
             add_trace("health_check", health.healthy)
         except Exception as exc:
-            result.errors.append(f"Health check failed: {exc}")
-            result.telemetry_snapshot["health"] = {"healthy": False, "error": str(exc)}
+            result.errors.append(f"Health check failed: {_error_to_dict(exc)['message']}")
+            result.telemetry_snapshot["health"] = {"healthy": False, "error": _error_to_dict(exc)["message"]}
             add_trace("health_check", False, exc)
 
         # Phase 14: Issue explicit stop/zero command
         stop_ok = False
         try:
+            result.stop_command_attempted = True
             stop_receipt = runtime.stop()
+            result.stop_command_accepted = bool(stop_receipt.accepted)
+            result.internal_command_state = stop_receipt.internal_command_state
             if stop_receipt.accepted:
                 stop_ok = True
                 add_trace("stop_command", True)
@@ -425,25 +446,49 @@ def run_bench(args: argparse.Namespace) -> BenchResult:
                 result.errors.append(f"Stop unacknowledged: {stop_receipt.detail}")
                 add_trace("stop_command", False)
         except Exception as exc:
-            result.errors.append(f"Stop command failed: {exc}")
+            result.errors.append(f"Stop command failed: {_error_to_dict(exc)['message']}")
             add_trace("stop_command", False, exc)
 
-        # Phase 15: Verify safe state
+        # Phase 15: Record internal state, then require independent physical evidence.
         try:
             final_state = runtime.current_motion_state()
-            is_safe = final_state in (MotionLifecycleState.SAFE_STOPPED, MotionLifecycleState.IDLE)
-            if is_safe:
-                add_trace("verify_safe_state", True)
-            else:
-                result.errors.append(f"Robot not in safe state: {final_state.value}")
-                add_trace("verify_safe_state", False)
+            result.internal_command_state = final_state.value
+            result.internal_safe_state_claim = final_state in (
+                MotionLifecycleState.SAFE_STOPPED,
+                MotionLifecycleState.IDLE,
+            )
+            add_trace("read_internal_command_state", True)
         except Exception as exc:
-            result.errors.append(f"Safe state verification failed: {exc}")
-            add_trace("verify_safe_state", False, exc)
+            result.errors.append(f"Internal state read failed: {_error_to_dict(exc)['message']}")
+            add_trace("read_internal_command_state", False, exc)
+
+        try:
+            post_stop_odom = runtime.read_odometry()
+            if post_stop_odom is not None and all(
+                value is not None and abs(value) <= 1e-9
+                for value in (post_stop_odom.vx_mps, post_stop_odom.vy_mps, post_stop_odom.wz_radps)
+            ):
+                result.physical_safe_state_observed = True
+                result.physical_safe_state_observation_source = "post_stop_odometry_velocity"
+                result.physical_safe_state_verification = "verified"
+                add_trace("physical_safe_state_verification", True)
+            else:
+                result.physical_safe_state_observed = False
+                result.physical_safe_state_observation_source = "none"
+                result.physical_safe_state_verification = "unavailable"
+                add_trace("physical_safe_state_verification", False)
+        except Exception as exc:
+            result.physical_safe_state_observed = False
+            result.physical_safe_state_observation_source = "none"
+            result.physical_safe_state_verification = "unavailable"
+            result.errors.append(f"Physical safe-state observation failed: {_error_to_dict(exc)['message']}")
+            add_trace("physical_safe_state_verification", False, exc)
 
         # Determine final status
         if not stop_ok:
             result.status = STATUS_STOP_UNACKNOWLEDGED
+        elif not result.physical_safe_state_observed:
+            result.status = STATUS_SAFE_STATE_UNVERIFIED
         elif result.errors:
             result.status = STATUS_READ_ONLY_CHECKS_FAILED
         else:
